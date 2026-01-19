@@ -155,13 +155,18 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "9",
-      title: "크래프트 아이스",
-      subtitle: "느리게 녹아 음료 맛을 오래 유지하는 구형 얼음",
+      title: "STEM 환경별 설치가이드",
+      subtitle: "수도관을 연결해야하는 STEM, 환경에 따라 다른 설치방식을 확인하세요",
       icon: "Sparkles",
       mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/product_img01.png",
-      description: "바 수준의 구형 얼음을 집에서 자동으로 만들어 드립니다. 천천히 녹아 음료 맛을 유지하며, 파티나 손님 접대에 완벽합니다.",
-      highlights: ["자동 구형 얼음 생성", "느린 용해 속도", "음료 맛 유지", "프리미엄 바 경험"],
+      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/stem_install.webm",
+      description: "수도관 매립 여부, 냉장고와 싱크대의 거리 등 환경에 따라 STEM 설치는 달라집니다.",
+      highlights: [
+        "냉장고 장 위치에 수도관 매립○",
+        "수도관 매립X, 냉장고와 싱크대가 붙어있는 경우",
+        "수도관 매립 X, 타공 불가인 경우",
+        "수도관 매립X, 냉장고와 싱크대가 먼 경우",
+      ],
     },
     {
       id: "10",
@@ -170,7 +175,8 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Zap",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
-      description: "납, 수은 등 중금속 9종과 노로바이러스까지 제거하는 3단계 고성능 필터로 깨끗하고 안전한 물을 제공합니다.",
+      description:
+        "납, 수은 등 중금속 9종과 노로바이러스까지 제거하는 3단계 고성능 필터로 깨끗하고 안전한 물을 제공합니다.",
       highlights: ["중금속 9종 제거", "노로바이러스 필터링", "3단계 정수", "정기 케어 서비스"],
     },
   ],
