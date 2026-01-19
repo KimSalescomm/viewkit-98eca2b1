@@ -179,12 +179,34 @@ export const featuresMap: Record<string, Feature[]> = {
         "물이 흐르는 길을 세척, 청소하기 힘든 기계실 세척, 이사 후 재설치까지 다양한 케어서비스 혜택이 있습니다.",
       highlights: ["유로 세척 케어", "기계실 세척(프리미엄)", "고무패킹 케어", "소모품 교체"],
     },
+    {
+      id: "11",
+      title: "도어 인 도어",
+      subtitle: "냉기 손실 없이 자주 쓰는 식품을 쉽게 꺼내세요",
+      icon: "Maximize2",
+      mediaType: "image",
+      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/product_img01.png",
+      description:
+        "문을 전체로 열지 않고 자주 쓰는 음료, 간식 등을 꺼낼 수 있어 냉기 손실을 최소화하고 에너지 효율을 높입니다.",
+      highlights: ["냉기 손실 최소화", "자주 쓰는 식품 수납", "에너지 효율 향상", "편리한 접근성"],
+    },
+    {
+      id: "12",
+      title: "리니어 인버터 컴프레서",
+      subtitle: "20년 무상 보증, 조용하고 효율적인 냉각 시스템",
+      icon: "Zap",
+      mediaType: "image",
+      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
+      description:
+        "LG 리니어 인버터 컴프레서는 마찰을 줄여 소음과 진동을 최소화하고, 뛰어난 에너지 효율로 전기료를 절감합니다.",
+      highlights: ["20년 무상 보증", "저소음 운전", "에너지 효율 1등급", "신선도 오래 유지"],
+    },
   ],
 
   // 세탁기 특장점
   washer: [
     {
-      id: "11",
+      id: "13",
       title: "AI DD 세탁",
       subtitle: "옷감을 인식하여 최적의 세탁 패턴 제공",
       icon: "Cpu",
@@ -195,7 +217,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["18가지 세탁 패턴", "옷감 손상 최소화", "세제 자동 투입", "AI 학습 기능"],
     },
     {
-      id: "12",
+      id: "14",
       title: "스팀 살균",
       subtitle: "99.9% 세균 제거",
       icon: "Zap",
@@ -210,7 +232,7 @@ export const featuresMap: Record<string, Feature[]> = {
   // 에어컨 특장점
   airconditioner: [
     {
-      id: "13",
+      id: "15",
       title: "듀얼 인버터",
       subtitle: "빠른 냉방, 조용한 운전",
       icon: "Wind",
@@ -221,7 +243,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["70% 빠른 냉방", "50% 소음 감소", "10년 무상 보증", "에너지 효율 1등급"],
     },
     {
-      id: "14",
+      id: "16",
       title: "자동 청소 기능",
       subtitle: "언제나 깨끗한 공기",
       icon: "Sparkles",
@@ -236,7 +258,7 @@ export const featuresMap: Record<string, Feature[]> = {
   // 청소기 특장점
   vacuum: [
     {
-      id: "15",
+      id: "17",
       title: "강력한 흡입력",
       subtitle: "200W 파워풀 모터",
       icon: "Zap",
@@ -247,7 +269,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["200W 모터", "5단계 흡입력 조절", "사이클론 시스템", "HEPA 필터"],
     },
     {
-      id: "16",
+      id: "18",
       title: "무선 자유로움",
       subtitle: "60분 장시간 사용",
       icon: "Sparkles",
@@ -262,7 +284,7 @@ export const featuresMap: Record<string, Feature[]> = {
   // PC 특장점
   pc: [
     {
-      id: "17",
+      id: "19",
       title: "최신 게이밍 성능",
       subtitle: "RTX 4090 탑재",
       icon: "Monitor",
@@ -273,7 +295,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["RTX 4090 GPU", "인텔 i9-13900K", "DDR5 32GB RAM", "레이트레이싱 지원"],
     },
     {
-      id: "18",
+      id: "20",
       title: "RGB 쿨링 시스템",
       subtitle: "화려하고 시원하게",
       icon: "Palette",
@@ -288,7 +310,7 @@ export const featuresMap: Record<string, Feature[]> = {
   // 쿠킹 특장점
   cooking: [
     {
-      id: "19",
+      id: "21",
       title: "대용량 수납",
       subtitle: "한 번에 더 많이",
       icon: "Maximize2",
@@ -299,7 +321,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["15인용 대용량", "3단 랙 시스템", "높이 조절 가능", "다양한 식기 수납"],
     },
     {
-      id: "20",
+      id: "22",
       title: "쿼드워시 시스템",
       subtitle: "완벽한 세척력",
       icon: "Sparkles",
