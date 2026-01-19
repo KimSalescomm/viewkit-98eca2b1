@@ -170,14 +170,14 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "10",
-      title: "3단계 정수 필터",
-      subtitle: "중금속과 바이러스까지 걸러내는 안심 정수",
+      title: "STEM 구독 전문케어",
+      subtitle: "물이 흐르는 STEM, 전문가 케어 서비스를 눈으로 확인해 보세요",
       icon: "Zap",
       mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
+      mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/refrigerators_250804.mp4",
       description:
-        "납, 수은 등 중금속 9종과 노로바이러스까지 제거하는 3단계 고성능 필터로 깨끗하고 안전한 물을 제공합니다.",
-      highlights: ["중금속 9종 제거", "노로바이러스 필터링", "3단계 정수", "정기 케어 서비스"],
+        "물이 흐르는 길을 세척, 청소하기 힘든 기계실 세척, 이사 후 재설치까지 다양한 케어서비스 혜택이 있습니다.",
+      highlights: ["유로 세척 케어" "기계실 세척(프리미엄)", "고무패킹 케어", "소모품 교체"],
     },
   ],
 
