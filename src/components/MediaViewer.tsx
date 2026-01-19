@@ -6,13 +6,14 @@ import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface MediaViewerProps {
-  mediaType: "video" | "image" | "table";
+  mediaType: "video" | "image" | "table" | "gallery";
   mediaUrl: string;
   title: string;
   tableData?: ProductComparisonTable[];
+  galleryImages?: string[];
 }
 
-const MediaViewer = ({ mediaType, mediaUrl, title, tableData }: MediaViewerProps) => {
+const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: MediaViewerProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     align: "start",
     containScroll: "trimSnaps",
@@ -237,6 +238,124 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData }: MediaViewerProps
             ))}
           </div>
         )}
+      </div>
+    );
+  }
+
+  // Gallery 타입 - 이미지 캐러셀
+  if (mediaType === "gallery" && galleryImages && galleryImages.length > 0) {
+    return (
+      <div style={{ width: "100%", position: "relative" }}>
+        {/* Carousel Navigation */}
+        {canScrollPrev && (
+          <button
+            onClick={scrollPrev}
+            style={{
+              position: "absolute",
+              left: "8px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              zIndex: 10,
+              background: "rgba(255,255,255,0.9)",
+              border: "none",
+              borderRadius: "50%",
+              width: "44px",
+              height: "44px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+            }}
+          >
+            <ChevronLeft size={24} color="#333" />
+          </button>
+        )}
+        {canScrollNext && (
+          <button
+            onClick={scrollNext}
+            style={{
+              position: "absolute",
+              right: "8px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              zIndex: 10,
+              background: "rgba(255,255,255,0.9)",
+              border: "none",
+              borderRadius: "50%",
+              width: "44px",
+              height: "44px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+            }}
+          >
+            <ChevronRight size={24} color="#333" />
+          </button>
+        )}
+
+        {/* Gallery Carousel */}
+        <div ref={emblaRef} style={{ overflow: "hidden", borderRadius: "16px" }}>
+          <div style={{ display: "flex" }}>
+            {galleryImages.map((imageUrl, idx) => (
+              <div
+                key={idx}
+                style={{
+                  flex: "0 0 100%",
+                  minWidth: "100%",
+                  position: "relative",
+                  paddingBottom: "66.67%", // 3:2 aspect ratio
+                }}
+              >
+                <SafeImage
+                  src={imageUrl}
+                  alt={`${title} - 이미지 ${idx + 1}`}
+                  loading="lazy"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Dots indicator */}
+        <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginTop: "16px" }}>
+          {galleryImages.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => emblaApi?.scrollTo(idx)}
+              style={{
+                width: selectedIndex === idx ? "24px" : "8px",
+                height: "8px",
+                borderRadius: "4px",
+                background: selectedIndex === idx ? "#333" : "#ccc",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                transition: "all 0.3s ease",
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Image counter */}
+        <div style={{ 
+          textAlign: "center", 
+          marginTop: "8px", 
+          fontSize: "14px", 
+          color: "#666" 
+        }}>
+          {selectedIndex + 1} / {galleryImages.length}
+        </div>
       </div>
     );
   }
