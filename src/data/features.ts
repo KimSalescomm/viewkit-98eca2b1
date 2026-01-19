@@ -10,202 +10,337 @@ export interface Feature {
 }
 
 export const featuresMap: Record<string, Feature[]> = {
-  tv: [
-    {
-      id: "dolby-atmos",
-      title: "돌비 애트모스",
-      subtitle: "입체적인 사운드\n몰입감 있는 경험",
-      icon: "Volume2",
-      mediaType: "video",
-      mediaUrl: "https://www.youtube.com/watch?v=example1",
-      description: "돌비 애트모스 기술로 천장에서 쏟아지는 듯한 입체 사운드를 경험하세요. TV 스피커만으로도 영화관 같은 몰입감을 선사합니다.",
-      highlights: ["360도 입체 사운드", "영화관급 오디오", "AI 사운드 최적화", "무선 서라운드 호환"]
-    },
-    {
-      id: "smart-tv",
-      title: "스마트 TV",
-      subtitle: "webOS\n직관적인 인터페이스",
-      icon: "Tv",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/tv/md09041133/gallery/medium02.jpg",
-      description: "webOS 기반의 직관적인 스마트 TV 인터페이스로 넷플릭스, 유튜브 등 다양한 앱을 빠르게 실행하고 AI 음성 제어로 편리하게 사용하세요.",
-      highlights: ["webOS 플랫폼", "AI 음성 제어", "다양한 스트리밍 앱", "매직 리모컨 지원"]
-    },
-    {
-      id: "gaming-mode",
-      title: "게이밍 모드",
-      subtitle: "1ms 응답속도\n120Hz 주사율",
-      icon: "Gamepad2",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/tv/md09041133/gallery/medium03.jpg",
-      description: "1ms GTG 응답속도와 120Hz 주사율로 끊김 없는 게이밍을 경험하세요. VRR, ALLM 지원으로 최적의 게임 환경을 제공합니다.",
-      highlights: ["1ms 응답속도", "120Hz 주사율", "VRR/ALLM 지원", "게임 최적화 엔진"]
-    }
-  ],
-  refrigerator: [
-    {
-      id: "fit-max",
-      title: "Fit&Max",
-      subtitle: "더 넓어진 수납공간\n공간 활용 극대화",
-      icon: "Maximize2",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md09569594/gallery/medium02.jpg",
-      description: "혁신적인 내부 설계로 동일 외관에서 더 넓은 수납 공간을 확보했습니다. 대용량 식재료도 여유롭게 보관하세요.",
-      highlights: ["수납공간 20% 확대", "유연한 선반 구조", "도어 수납 최적화", "냉기 순환 시스템"]
-    },
-    {
-      id: "energy-saving",
-      title: "에너지 절약",
-      subtitle: "인버터 리니어 컴프레서\n1등급 에너지 효율",
-      icon: "Zap",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md09569594/gallery/medium03.jpg",
-      description: "LG 인버터 리니어 컴프레서로 에너지 소비를 최소화하고 소음도 줄였습니다. 10년 보증으로 오래도록 안심하세요.",
-      highlights: ["에너지 1등급", "저소음 설계", "10년 컴프레서 보증", "스마트 인버터"]
-    }
-  ],
+  // 스타일러 특장점
   styler: [
     {
-      id: "dynamic-hanger",
-      title: "다이내믹 무빙행어",
-      subtitle: "360도 스윙\n구석구석 케어",
-      icon: "Shirt",
+      id: "1",
+      title: "다이내막 무빙행어의 움직임",
+      subtitle:
+        "좌우에서 트위스트 회전으로!\n분당 최대 350회 회전해 미세먼지를 99%까지 제거해요.",
+      icon: "dress",
       mediaType: "video",
-      mediaUrl: "https://www.youtube.com/watch?v=styler1",
-      description: "다이내믹 무빙행어가 360도로 스윙하며 의류 구석구석까지 스팀을 전달합니다. 주름 제거부터 살균까지 완벽하게 케어합니다.",
-      highlights: ["360도 스윙 동작", "트루스팀 기술", "99.9% 살균", "섬세한 의류 케어"]
+      mediaUrl:
+        "https://www.lge.co.kr/kr/images/_2023_styler/1.0/tech/movinghanger_pc.mp4",
+      description:
+        "옷에 묻은 오염물질 바람으로 불어내는 것과 탁탁 털어내는 것 중 뭐가 더 잘 제거될까요?\n분당 최대 350회 회전하는 강력한 다이내믹 무빙행어로 밖에서 온 먼지, 세균 털어내세요!",
+      highlights: [
+        "다이내믹 무빙행어",
+        "분당 최대 350회",
+        "다양한 무빙모션",
+        "미세먼지 코스",
+      ],
     },
     {
-      id: "contamination-test",
-      title: "오염도 테스트",
-      subtitle: "AI 센서\n맞춤형 관리",
-      icon: "Sparkles",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/styler/md09536291/gallery/medium02.jpg",
-      description: "AI 센서가 의류의 오염도를 분석하여 최적의 코스를 자동으로 선택합니다. 과잉 케어 없이 효율적으로 관리하세요.",
-      highlights: ["AI 오염도 감지", "맞춤 코스 추천", "에너지 효율 최적화", "스마트 진단"]
-    },
-    {
-      id: "spec-compare",
-      title: "스펙 비교",
-      subtitle: "올뉴 스타일러\n업그레이드 포인트",
-      icon: "Maximize2",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/styler/md09536291/gallery/medium03.jpg",
-      description: "올뉴 스타일러는 기존 모델 대비 성능과 편의성이 크게 향상되었습니다. 더 강력해진 스팀과 더 조용해진 동작을 경험하세요.",
-      highlights: ["스팀량 30% 증가", "소음 20% 감소", "신규 코스 추가", "스마트 연동 강화"]
-    }
-  ],
-  washer: [
-    {
-      id: "ai-dd",
-      title: "AI DD 세탁",
-      subtitle: "직접구동 모터\n최적화된 세탁",
+      id: "2",
+      title: "오염도 테스트 확인하기",
+      subtitle:
+        "옷에도 세균, 먼지가 묻어와요!\n스타일링 후 오염도 대폭 감소",
       icon: "Cpu",
       mediaType: "video",
-      mediaUrl: "https://www.youtube.com/watch?v=washer1",
-      description: "AI DD 기술이 의류의 무게와 소재를 감지하여 최적의 세탁 모션을 자동으로 선택합니다. 옷감 손상은 줄이고 세탁력은 높였습니다.",
-      highlights: ["6가지 세탁 모션", "소재 자동 감지", "옷감 손상 최소화", "에너지 절약"]
+      mediaUrl: "https://youtu.be/Yq1l773oBGA?t=1343",
+      description:
+        "바깥에서 오염된 옷, 스타일러 후에는 오염도가 어떻게 바뀌었을까요? 확인해 보세요",
+      highlights: ["스타일링 코스", "스팀 탈취", "유튜브 리뷰"],
     },
     {
-      id: "steam-sanitize",
-      title: "스팀 살균",
-      subtitle: "트루스팀\n99.9% 살균",
-      icon: "Sparkles",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/washing-machines/md09536334/gallery/medium02.jpg",
-      description: "트루스팀 기술로 세탁물을 99.9% 살균하고 알레르기 유발 물질을 제거합니다. 아이 옷, 속옷 세탁에 안심하세요.",
-      highlights: ["99.9% 살균", "알레르겐 제거", "깊은 침투 스팀", "아기 옷 전용 코스"]
-    }
-  ],
-  vacuum: [
-    {
-      id: "powerful-suction",
-      title: "강력한 흡입력",
-      subtitle: "인버터 모터\n먼지 완벽 제거",
-      icon: "Wind",
-      mediaType: "video",
-      mediaUrl: "https://www.youtube.com/watch?v=vacuum1",
-      description: "스마트 인버터 모터가 강력한 흡입력을 유지하면서도 소음은 최소화합니다. 미세먼지까지 깨끗하게 제거하세요.",
-      highlights: ["강력 흡입력", "저소음 설계", "5단계 여과 시스템", "미세먼지 99.99% 제거"]
-    },
-    {
-      id: "wireless-freedom",
-      title: "무선 자유로움",
-      subtitle: "80분 연속 사용\n가벼운 무게",
-      icon: "Zap",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md09530863/gallery/medium02.jpg",
-      description: "최대 80분 연속 사용 가능한 고용량 배터리와 가벼운 무게로 집안 구석구석 자유롭게 청소하세요.",
-      highlights: ["80분 연속 사용", "1.9kg 경량 설계", "탈착식 배터리", "벽걸이 충전 거치대"]
-    }
-  ],
-  airconditioner: [
-    {
-      id: "dual-inverter",
-      title: "듀얼 인버터",
-      subtitle: "빠른 냉방\n에너지 절약",
-      icon: "Zap",
-      mediaType: "video",
-      mediaUrl: "https://www.youtube.com/watch?v=ac1",
-      description: "듀얼 인버터 컴프레서가 빠르게 냉방하고 적정 온도에서 효율적으로 운전합니다. 에너지 비용을 절감하세요.",
-      highlights: ["빠른 냉방 속도", "에너지 1등급", "저소음 운전", "10년 컴프레서 보증"]
-    },
-    {
-      id: "auto-clean",
-      title: "자동 청소",
-      subtitle: "청정 에어컨\n간편한 관리",
-      icon: "Sparkles",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/air-conditioner/md09530879/gallery/medium02.jpg",
-      description: "자동 청소 기능으로 열교환기의 먼지와 세균을 스스로 제거합니다. 항상 깨끗한 바람을 즐기세요.",
-      highlights: ["자동 건조 기능", "항균 필터", "먼지 자동 제거", "청정 유지 알림"]
-    }
-  ],
-  pc: [
-    {
-      id: "gaming-performance",
-      title: "최신 게이밍 성능",
-      subtitle: "고사양 그래픽\n부드러운 프레임",
-      icon: "Monitor",
-      mediaType: "video",
-      mediaUrl: "https://www.youtube.com/watch?v=pc1",
-      description: "최신 그래픽 카드와 고성능 프로세서로 AAA 게임을 최고 설정에서 부드럽게 즐기세요. e스포츠부터 VR까지 완벽 지원합니다.",
-      highlights: ["RTX 그래픽", "고주사율 지원", "VR Ready", "게임 최적화"]
-    },
-    {
-      id: "rgb-cooling",
-      title: "RGB 쿨링",
-      subtitle: "효율적인 냉각\n스타일리시한 디자인",
+      id: "3",
+      title: "스타일러 모델별 스펙비교",
+      subtitle:
+        "다양한 스타일러 라인업, 내게 필요한 제품을 찾아보세요",
       icon: "Palette",
       mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/monitors/md09515063/gallery/medium02.jpg",
-      description: "RGB LED 조명과 효율적인 쿨링 시스템을 갖춘 세련된 디자인. 게이밍 공간을 화려하게 연출하세요.",
-      highlights: ["RGB 커스터마이징", "듀얼 팬 쿨링", "조용한 냉각", "케이스 일체형"]
-    }
+      mediaUrl:
+        "https://www.lge.co.kr/kr/images/common/pdp_lineup_compare/images/lg-styler/styler_line_up_pc.jpg?w=1200&h=1096&fit=crop",
+      description:
+        "색상과 한번에 걸 수 있는 의류의 수, 핵심 기능 차이가 있으니 꼼꼼히 비교해보세요.",
+      highlights: [
+        "자동 환기",
+        "바지 관리기",
+        "다이내믹 무빙행어",
+      ],
+    },
   ],
-  cooking: [
+  // TV 특장점
+  tv: [
     {
-      id: "large-capacity",
-      title: "대용량 수납",
-      subtitle: "16인용\n한 번에 세척",
-      icon: "UtensilsCrossed",
+      id: "4",
+      title: "돌비 애트모스",
+      subtitle: "입체적인 사운드",
+      icon: "Volume2",
       mediaType: "video",
-      mediaUrl: "https://www.youtube.com/watch?v=dish1",
-      description: "16인용 대용량 식기세척기로 많은 양의 식기도 한 번에 세척하세요. 대형 냄비, 프라이팬도 여유롭게 넣을 수 있습니다.",
-      highlights: ["16인용 대용량", "조절 가능한 선반", "대형 용기 수납", "공간 최적화 설계"]
+      mediaUrl:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      description:
+        "돌비 애트모스 오디오 시스템으로 3차원 입체 음향을 경험하세요. 영화관에서 듣는 것과 같은 몰입감 넘치는 사운드를 가정에서 즐길 수 있습니다.",
+      highlights: [
+        "3D 서라운드 사운드",
+        "오브젝트 기반 오디오",
+        "40W 스테레오 스피커",
+        "서브우퍼 내장",
+      ],
     },
     {
-      id: "quad-wash",
-      title: "쿼드워시 시스템",
-      subtitle: "4방향 분사\n깨끗한 세척",
+      id: "5",
+      title: "스마트 TV 기능",
+      subtitle: "모든 콘텐츠를 한곳에",
+      icon: "Tv",
+      mediaType: "image",
+      mediaUrl:
+        "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=1200&h=800&fit=crop",
+      description:
+        "다양한 스트리밍 서비스와 앱을 지원하는 스마트 플랫폼이 내장되어 있습니다. 음성 명령으로 쉽게 제어하고 원하는 콘텐츠를 빠르게 찾을 수 있습니다.",
+      highlights: [
+        "주요 OTT 앱 지원",
+        "음성 인식 리모컨",
+        "스마트홈 허브 기능",
+        "모바일 미러링",
+      ],
+    },
+    {
+      id: "6",
+      title: "게이밍 모드",
+      subtitle: "프로게이머를 위한 성능",
+      icon: "Gamepad2",
+      mediaType: "video",
+      mediaUrl:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+      description:
+        "1ms 응답속도와 HDMI 2.1 지원으로 최상의 게이밍 환경을 제공합니다. VRR과 ALLM 기술로 화면 끊김 없이 부드러운 게임 플레이가 가능합니다.",
+      highlights: [
+        "1ms 응답속도",
+        "HDMI 2.1 (4K@120Hz)",
+        "VRR & ALLM 지원",
+        "게임 최적화 모드",
+      ],
+    },
+  ],
+
+  // 냉장고 특장점
+  refrigerator: [
+    {
+      id: "7",
+      title: "Fit&Max",
+      subtitle: "빌트인 같은 마법",
+      icon: "Maximize2",
+      mediaType: "video",
+      mediaUrl:
+        "https://www.lge.co.kr/kr/images/convertible-refrigerators/md10574832/XYZ324_hinge_pc.mp4/xcdr/preset/_mp42webm",
+      description:
+        "냉장고 장과의 간격을 최소화, 주방에 조화롭게 어울리는 디자인",
+      highlights: [
+        "도어 걸림없는 제로 클리어런스 힌지",
+        "다양한 Fit&Max 라인업",
+        "빌트인 같은 일체감",
+      ],
+    },
+    {
+      id: "8",
+      title: "에너지 절약",
+      subtitle: "친환경 스마트 기술",
+      icon: "Zap",
+      mediaType: "video",
+      mediaUrl:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+      description:
+        "지능형 밝기 조절과 절전 모드로 전력 소비를 최소화합니다. 환경을 생각하는 에너지 효율 1등급 제품으로 전기료 걱정 없이 사용할 수 있습니다.",
+      highlights: [
+        "에너지효율 1등급",
+        "자동 밝기 조절",
+        "에코 센서 탑재",
+        "대기전력 0.5W 이하",
+      ],
+    },
+  ],
+
+  // 세탁기 특장점
+  washer: [
+    {
+      id: "9",
+      title: "AI DD 세탁",
+      subtitle: "옷감을 인식하여 최적의 세탁 패턴 제공",
+      icon: "Cpu",
+      mediaType: "video",
+      mediaUrl:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      description:
+        "AI 기술이 옷감의 종류와 무게를 자동으로 감지하여 최적의 세탁 모션을 제공합니다. 섬세한 옷감부터 두꺼운 이불까지 완벽하게 세탁합니다.",
+      highlights: [
+        "18가지 세탁 패턴",
+        "옷감 손상 최소화",
+        "세제 자동 투입",
+        "AI 학습 기능",
+      ],
+    },
+    {
+      id: "10",
+      title: "스팀 살균",
+      subtitle: "99.9% 세균 제거",
+      icon: "Zap",
+      mediaType: "image",
+      mediaUrl:
+        "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=1200&h=800&fit=crop",
+      description:
+        "고온 스팀으로 세탁물의 세균과 알레르기 유발물질을 효과적으로 제거합니다. 아기 옷이나 알레르기가 있는 가족의 의류도 안심하고 세탁할 수 있습니다.",
+      highlights: [
+        "60도 고온 스팀",
+        "알레르기 케어",
+        "진드기 제거",
+        "무세제 살균 가능",
+      ],
+    },
+  ],
+
+  // 에어컨 특장점
+  airconditioner: [
+    {
+      id: "11",
+      title: "듀얼 인버터",
+      subtitle: "빠른 냉방, 조용한 운전",
+      icon: "Wind",
+      mediaType: "video",
+      mediaUrl:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+      description:
+        "듀얼 인버터 컴프레서로 일반 에어컨보다 70% 빠르게 냉방하고, 소음은 절반으로 줄였습니다. 빠르고 조용한 쾌적함을 경험하세요.",
+      highlights: [
+        "70% 빠른 냉방",
+        "50% 소음 감소",
+        "10년 무상 보증",
+        "에너지 효율 1등급",
+      ],
+    },
+    {
+      id: "12",
+      title: "자동 청소 기능",
+      subtitle: "언제나 깨끗한 공기",
       icon: "Sparkles",
       mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/dish-washer/md09536282/gallery/medium02.jpg",
-      description: "4개의 분사 암이 모든 방향에서 강력하게 물을 분사하여 식기 구석구석을 깨끗하게 세척합니다.",
-      highlights: ["4방향 분사", "고압 세척", "음식물 분쇄", "스팀 건조"]
-    }
-  ]
+      mediaUrl:
+        "https://images.unsplash.com/photo-1631545806609-c9ba0e07de00?w=1200&h=800&fit=crop",
+      description:
+        "열교환기를 자동으로 세척하고 건조하여 곰팡이와 세균 번식을 방지합니다. 별도의 청소 없이도 항상 깨끗한 공기를 유지합니다.",
+      highlights: [
+        "자동 열교환기 세척",
+        "건조 기능",
+        "필터 알림",
+        "항균 코팅",
+      ],
+    },
+  ],
+
+  // 청소기 특장점
+  vacuum: [
+    {
+      id: "13",
+      title: "강력한 흡입력",
+      subtitle: "200W 파워풀 모터",
+      icon: "Zap",
+      mediaType: "video",
+      mediaUrl:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      description:
+        "200W 고성능 모터로 카펫 깊숙은 곳의 먼지부터 미세먼지까지 강력하게 흡입합니다. 한 번의 청소로 집안 구석구석 깨끗하게 관리할 수 있습니다.",
+      highlights: [
+        "200W 모터",
+        "5단계 흡입력 조절",
+        "사이클론 시스템",
+        "HEPA 필터",
+      ],
+    },
+    {
+      id: "14",
+      title: "무선 자유로움",
+      subtitle: "60분 장시간 사용",
+      icon: "Sparkles",
+      mediaType: "image",
+      mediaUrl:
+        "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=1200&h=800&fit=crop",
+      description:
+        "대용량 배터리로 최대 60분간 연속 사용이 가능합니다. 충전 중에도 스탠드에 보관하여 공간을 절약하고 언제든 꺼내 쓸 수 있습니다.",
+      highlights: [
+        "60분 연속 사용",
+        "착탈식 배터리",
+        "급속 충전",
+        "스탠드 거치대",
+      ],
+    },
+  ],
+
+  // PC 특장점
+  pc: [
+    {
+      id: "15",
+      title: "최신 게이밍 성능",
+      subtitle: "RTX 4090 탑재",
+      icon: "Monitor",
+      mediaType: "video",
+      mediaUrl:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      description:
+        "최신 NVIDIA RTX 4090 그래픽카드와 인텔 13세대 프로세서로 AAA 게임을 최고 옵션에서 플레이할 수 있습니다. 레이트레이싱과 DLSS 3.0을 지원합니다.",
+      highlights: [
+        "RTX 4090 GPU",
+        "인텔 i9-13900K",
+        "DDR5 32GB RAM",
+        "레이트레이싱 지원",
+      ],
+    },
+    {
+      id: "16",
+      title: "RGB 쿨링 시스템",
+      subtitle: "화려하고 시원하게",
+      icon: "Palette",
+      mediaType: "image",
+      mediaUrl:
+        "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=1200&h=800&fit=crop",
+      description:
+        "수냉식 쿨러와 RGB 팬으로 강력한 냉각 성능과 화려한 비주얼을 동시에 제공합니다. 소프트웨어로 다양한 라이팅 효과를 설정할 수 있습니다.",
+      highlights: [
+        "360mm 수냉 쿨러",
+        "RGB 팬 6개",
+        "스마트 온도 제어",
+        "커스터마이징 라이팅",
+      ],
+    },
+  ],
+
+  // 쿠킹 특장점
+  cooking: [
+    {
+      id: "17",
+      title: "대용량 수납",
+      subtitle: "한 번에 더 많이",
+      icon: "Maximize2",
+      mediaType: "image",
+      mediaUrl:
+        "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&h=800&fit=crop",
+      description:
+        "넓은 내부 공간으로 가족 식사 후 많은 식기를 한 번에 세척할 수 있습니다. 다양한 랙 구성으로 효율적인 공간 활용이 가능합니다.",
+      highlights: [
+        "15인용 대용량",
+        "3단 랙 시스템",
+        "높이 조절 가능",
+        "다양한 식기 수납",
+      ],
+    },
+    {
+      id: "18",
+      title: "쿼드워시 시스템",
+      subtitle: "완벽한 세척력",
+      icon: "Sparkles",
+      mediaType: "video",
+      mediaUrl:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      description:
+        "4방향 회전 노즐이 구석구석 강력하게 세척합니다. 찌든 때도 깨끗하게 제거하여 손세척보다 더 위생적입니다.",
+      highlights: [
+        "4방향 회전 분사",
+        "고압 세척",
+        "99.9% 살균",
+        "에너지 절약",
+      ],
+    },
+  ],
 };
 
 export const featureIconMap: Record<string, string> = {
@@ -220,7 +355,8 @@ export const featureIconMap: Record<string, string> = {
   Shirt: "👔",
   Wind: "💨",
   Sparkles: "✨",
-  UtensilsCrossed: "🍽️"
+  UtensilsCrossed: "🍽️",
+  dress: "👗"
 };
 
 export const getFeaturesByProductId = (productId: string): Feature[] => {
