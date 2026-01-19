@@ -11,91 +11,106 @@ interface MediaViewerProps {
 
 const MediaViewer = ({ mediaType, mediaUrl, title, tableData }: MediaViewerProps) => {
   if (mediaType === "table" && tableData) {
+    const specLabels = tableData[0]?.specs.map(s => s.label) || [];
+    
     return (
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "24px",
-        }}
-      >
-        {tableData.map((product, idx) => (
-          <div
-            key={idx}
-            style={{
-              background: "#ffffff",
-              borderRadius: "16px",
-              overflow: "hidden",
-              boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-            }}
-          >
-            <div style={{ padding: "16px", background: "#f9fafb" }}>
+      <div style={{ width: "100%", overflowX: "auto" }}>
+        {/* Product names and images row */}
+        <div 
+          style={{ 
+            display: "grid", 
+            gridTemplateColumns: `120px repeat(${tableData.length}, 1fr)`,
+            gap: "0",
+            marginBottom: "0",
+          }}
+        >
+          <div></div>
+          {tableData.map((product, idx) => (
+            <div
+              key={idx}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                padding: "20px 12px",
+                background: "#f5f5f5",
+              }}
+            >
+              <h4 style={{ 
+                fontSize: "15px", 
+                fontWeight: 600, 
+                color: "#1f1f1f",
+                marginBottom: "16px",
+                textAlign: "center",
+              }}>
+                {product.name}
+              </h4>
               <SafeImage
                 src={product.imageUrl}
                 alt={product.name}
                 style={{
                   width: "100%",
-                  height: "200px",
+                  maxWidth: "160px",
+                  height: "180px",
                   objectFit: "contain",
-                  borderRadius: "8px",
                 }}
               />
             </div>
-            <div style={{ padding: "20px" }}>
-              <h3
-                style={{
-                  fontSize: "18px",
-                  fontWeight: "bold",
-                  color: "#111827",
-                  marginBottom: "16px",
-                  textAlign: "center",
-                }}
-              >
-                {product.name}
-              </h3>
-              <table
-                style={{
-                  width: "100%",
-                  borderCollapse: "collapse",
-                  fontSize: "14px",
-                }}
-              >
-                <tbody>
-                  {product.specs.map((spec, specIdx) => (
-                    <tr key={specIdx}>
-                      <th
-                        style={{
-                          padding: "12px 8px",
-                          background: "#f3f4f6",
-                          fontWeight: 600,
-                          color: "#374151",
-                          textAlign: "left",
-                          borderBottom: "1px solid #e5e7eb",
-                          verticalAlign: "top",
-                          width: "100px",
-                        }}
-                      >
-                        {spec.label}
-                      </th>
-                      <td
-                        style={{
-                          padding: "12px 8px",
-                          color: "#4b5563",
-                          borderBottom: "1px solid #e5e7eb",
-                          verticalAlign: "top",
-                        }}
-                      >
-                        {spec.values.map((value, vIdx) => (
-                          <div key={vIdx} style={{ marginBottom: vIdx < spec.values.length - 1 ? "4px" : 0 }}>
-                            {value}
-                          </div>
-                        ))}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+          ))}
+        </div>
+        
+        {/* Specs table */}
+        {specLabels.map((label, rowIdx) => (
+          <div
+            key={rowIdx}
+            style={{
+              display: "grid",
+              gridTemplateColumns: `120px repeat(${tableData.length}, 1fr)`,
+              borderTop: "1px dotted #ccc",
+              borderBottom: rowIdx === specLabels.length - 1 ? "2px solid #333" : "none",
+            }}
+          >
+            <div
+              style={{
+                padding: "16px 12px",
+                background: "#f9f9f9",
+                fontWeight: 500,
+                fontSize: "13px",
+                color: "#1f1f1f",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              {label}
             </div>
+            {tableData.map((product, colIdx) => {
+              const spec = product.specs.find(s => s.label === label);
+              const values = spec?.values || ["-"];
+              
+              return (
+                <div
+                  key={colIdx}
+                  style={{
+                    padding: "16px 12px",
+                    background: "#fff",
+                    fontSize: "13px",
+                    color: "#333",
+                    textAlign: "center",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    lineHeight: "1.5",
+                  }}
+                >
+                  {values.map((value, vIdx) => (
+                    <div key={vIdx} style={{ marginBottom: vIdx < values.length - 1 ? "2px" : 0 }}>
+                      {value}
+                    </div>
+                  ))}
+                </div>
+              );
+            })}
           </div>
         ))}
       </div>
