@@ -1,12 +1,22 @@
+export interface ProductComparisonTable {
+  name: string;
+  imageUrl: string;
+  specs: {
+    label: string;
+    values: string[];
+  }[];
+}
+
 export interface Feature {
   id: string;
   title: string;
   subtitle: string;
   icon: string;
-  mediaType: "video" | "image";
+  mediaType: "video" | "image" | "table";
   mediaUrl: string;
   description: string;
   highlights: string[];
+  tableData?: ProductComparisonTable[];
 }
 
 export const featuresMap: Record<string, Feature[]> = {
@@ -100,14 +110,35 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "8",
-      title: "에너지 절약",
-      subtitle: "친환경 스마트 기술",
-      icon: "Zap",
-      mediaType: "video",
-      mediaUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
-      description:
-        "지능형 밝기 조절과 절전 모드로 전력 소비를 최소화합니다. 환경을 생각하는 에너지 효율 1등급 제품으로 전기료 걱정 없이 사용할 수 있습니다.",
-      highlights: ["에너지효율 1등급", "자동 밝기 조절", "에코 센서 탑재", "대기전력 0.5W 이하"],
+      title: "STEM 냉장고 라인업 비교",
+      subtitle: "한눈에 보는 LG 디오스 STEM 냉장고,\n라인업별로 어떤 차이가 있는지 알려드릴게요",
+      icon: "Maximize2",
+      mediaType: "table",
+      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/product_img01.png",
+      description: "STEM 얼음정수 냉장고와 STEM 베이직 냉장고의 주요 사양을 비교해보세요.",
+      highlights: ["디스펜서", "얼음 종류", "케어 서비스", "필터"],
+      tableData: [
+        {
+          name: "STEM 얼음정수 냉장고",
+          imageUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/product_img01.png",
+          specs: [
+            { label: "디스펜서", values: ["O"] },
+            { label: "얼음 종류", values: ["각얼음, 조각얼음, 크래프트 아이스, 미니 각얼음"] },
+            { label: "케어 서비스", values: ["정수 필터 교체", "고온·고압 살균 케어", "얼음 저장통 세척", "내·외부 토탈 클리닝"] },
+            { label: "필터", values: ["중금속 9종", "노로 바이러스 걸러 주는 3단계 정수 필터"] },
+          ],
+        },
+        {
+          name: "STEM 베이직 냉장고",
+          imageUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/product_img02.png",
+          specs: [
+            { label: "디스펜서", values: ["-"] },
+            { label: "얼음 종류", values: ["크래프트 아이스, 미니 각얼음"] },
+            { label: "케어 서비스", values: ["정수 필터 교체", "탈취 필터 교체", "고무 패킹 케어", "외부 토탈 클리닝"] },
+            { label: "필터", values: ["중금속 7종", "노로 바이러스 걸러 주는 복합 안심 정수 필터"] },
+          ],
+        },
+      ],
     },
   ],
 

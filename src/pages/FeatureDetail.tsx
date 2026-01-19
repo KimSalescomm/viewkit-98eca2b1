@@ -153,6 +153,7 @@ const FeatureDetail = () => {
             mediaType={feature.mediaType}
             mediaUrl={feature.mediaUrl}
             title={feature.title}
+            tableData={feature.tableData}
           />
         </div>
 
