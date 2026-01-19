@@ -177,7 +177,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/refrigerators_250804.mp4",
       description:
         "물이 흐르는 길을 세척, 청소하기 힘든 기계실 세척, 이사 후 재설치까지 다양한 케어서비스 혜택이 있습니다.",
-      highlights: ["유로 세척 케어" "기계실 세척(프리미엄)", "고무패킹 케어", "소모품 교체"],
+      highlights: ["유로 세척 케어", "기계실 세척(프리미엄)", "고무패킹 케어", "소모품 교체"],
     },
   ],
 
