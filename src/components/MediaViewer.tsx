@@ -1,4 +1,5 @@
 import { convertToEmbedUrl } from "@/utils/videoUtils";
+import SafeImage from "@/components/SafeImage";
 
 interface MediaViewerProps {
   mediaType: "video" | "image";
@@ -78,9 +79,10 @@ const MediaViewer = ({ mediaType, mediaUrl, title }: MediaViewerProps) => {
         background: "#f3f4f6"
       }}
     >
-      <img
+      <SafeImage
         src={mediaUrl}
         alt={title}
+        loading="lazy"
         style={{
           position: "absolute",
           top: 0,
