@@ -12,11 +12,12 @@ export interface Feature {
   title: string;
   subtitle: string;
   icon: string;
-  mediaType: "video" | "image" | "table";
+  mediaType: "video" | "image" | "table" | "gallery";
   mediaUrl: string;
   description: string;
   highlights: string[];
   tableData?: ProductComparisonTable[];
+  galleryImages?: string[];
 }
 
 export const featuresMap: Record<string, Feature[]> = {
@@ -192,14 +193,22 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "12",
-      title: "리니어 인버터 컴프레서",
-      subtitle: "20년 무상 보증, 조용하고 효율적인 냉각 시스템",
-      icon: "Zap",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
+      title: "인테리어 갤러리",
+      subtitle: "공간과 조화를 이루는 LG 냉장고 인테리어 컷",
+      icon: "ImageIcon",
+      mediaType: "gallery",
+      galleryImages: [
+        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
+        "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80",
+        "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=800&q=80",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+        "https://images.unsplash.com/photo-1556909190-ec212be06509?w=800&q=80",
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+      ],
+      mediaUrl: "",
       description:
-        "LG 리니어 인버터 컴프레서는 마찰을 줄여 소음과 진동을 최소화하고, 뛰어난 에너지 효율로 전기료를 절감합니다.",
-      highlights: ["20년 무상 보증", "저소음 운전", "에너지 효율 1등급", "신선도 오래 유지"],
+        "LG 냉장고는 다양한 주방 인테리어와 완벽하게 어울리며, 공간의 품격을 높여줍니다. 모던, 클래식, 미니멀 등 다양한 스타일에 맞는 디자인을 확인해보세요.",
+      highlights: ["다양한 인테리어 연출", "프리미엄 마감재", "공간 효율적 디자인", "트렌디한 컬러 옵션"],
     },
   ],
 
