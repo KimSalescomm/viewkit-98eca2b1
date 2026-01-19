@@ -108,6 +108,8 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData }: MediaViewerProps
                   flex: "0 0 280px",
                   minWidth: "280px",
                   marginRight: idx < tableData.length - 1 ? "16px" : "0",
+                  display: "flex",
+                  flexDirection: "column",
                 }}
               >
                 {/* Product Header */}
@@ -119,6 +121,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData }: MediaViewerProps
                     padding: "20px 12px",
                     background: "#f5f5f5",
                     borderRadius: "12px 12px 0 0",
+                    height: "260px",
                   }}
                 >
                   <h4 style={{ 
@@ -127,19 +130,34 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData }: MediaViewerProps
                     color: "#1f1f1f",
                     marginBottom: "16px",
                     textAlign: "center",
+                    minHeight: "36px",
+                    display: "flex",
+                    alignItems: "center",
                   }}>
                     {product.name}
                   </h4>
-                  <SafeImage
-                    src={product.imageUrl}
-                    alt={product.name}
+                  <div
                     style={{
-                      width: "100%",
-                      maxWidth: "160px",
+                      width: "180px",
                       height: "180px",
-                      objectFit: "contain",
+                      overflow: "hidden",
+                      borderRadius: "8px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
-                  />
+                  >
+                    <SafeImage
+                      src={product.imageUrl}
+                      alt={product.name}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        transform: "scale(1.2)",
+                      }}
+                    />
+                  </div>
                 </div>
                 
                 {/* Product Specs */}
