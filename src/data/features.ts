@@ -187,8 +187,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Maximize2",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10516831/M626_hinge_pc.mp4",
-      description:
-        "냉장고장과의 간격을 4mm로 줄이고, 냉장고가 돌출되지 않는 깔끔한 인테리어 연출.",
+      description: "냉장고장과의 간격을 4mm로 줄이고, 냉장고가 돌출되지 않는 깔끔한 인테리어 연출.",
       highlights: ["제로 클리어런스 힌지", "도어 걸림 없는 밀착 설치", "냉툭튀가 싫다면 Fit & Max 추천"],
     },
     {
