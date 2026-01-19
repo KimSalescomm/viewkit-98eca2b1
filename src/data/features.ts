@@ -91,8 +91,12 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Maximize2",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
-      description: "냉장고 장과의 간격을 최소화, 주방에 조화롭게 어울리는 디자인",
-      highlights: ["도어 걸림없는 제로 클리어런스 힌지", "다양한 Fit&Max 라인업", "빌트인 같은 일체감"],
+      description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
+      highlights: [
+        "흐르는 물로 얼음을 만드는 제빙 시스템",
+        "전문가의 손길로 꼼꼼하게 관리하는 케어 시스템",
+        "식재료를 신선하게 보관하는 냉기 시스템",
+      ],
     },
     {
       id: "8",
