@@ -161,7 +161,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData }: MediaViewerProps
                 </div>
                 
                 {/* Product Specs */}
-                <div style={{ background: "#fff", borderRadius: "0 0 12px 12px", overflow: "hidden" }}>
+                <div style={{ background: "#fff", borderRadius: "0 0 12px 12px", overflow: "hidden", flex: 1 }}>
                   {specLabels.map((label, rowIdx) => {
                     const spec = product.specs.find(s => s.label === label);
                     const values = spec?.values || ["-"];
@@ -176,26 +176,30 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData }: MediaViewerProps
                       >
                         <div
                           style={{
-                            padding: "10px 12px",
+                            padding: "8px 12px",
                             background: "#f9f9f9",
                             fontWeight: 500,
                             fontSize: "12px",
                             color: "#666",
+                            height: "32px",
+                            display: "flex",
+                            alignItems: "center",
                           }}
                         >
                           {label}
                         </div>
                         <div
                           style={{
-                            padding: "12px",
+                            padding: "8px 12px",
                             fontSize: "13px",
                             color: "#333",
                             textAlign: "center",
-                            lineHeight: "1.5",
-                            minHeight: "60px",
+                            lineHeight: "1.4",
+                            height: "48px",
                             display: "flex",
                             flexDirection: "column",
                             justifyContent: "center",
+                            alignItems: "center",
                           }}
                         >
                           {values.map((value, vIdx) => (
