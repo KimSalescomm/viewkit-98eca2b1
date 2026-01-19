@@ -174,7 +174,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "STEM 구독 전문케어",
       subtitle: "물이 흐르는 STEM, 전문가 케어 서비스를 눈으로 확인해 보세요",
       icon: "Zap",
-      mediaType: "image",
+      mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/refrigerators_250804.mp4",
       description:
         "물이 흐르는 길을 세척, 청소하기 힘든 기계실 세척, 이사 후 재설치까지 다양한 케어서비스 혜택이 있습니다.",
