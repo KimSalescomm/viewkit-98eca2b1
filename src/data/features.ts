@@ -86,19 +86,18 @@ export const featuresMap: Record<string, Feature[]> = {
   refrigerator: [
     {
       id: "7",
-      title: "STEM",
+      title: "STEM이란?",
       subtitle: "냉장고를 넘어선 Fresh SYSTEM 직수형 SYSTEM 냉장고",
       icon: "Maximize2",
       mediaType: "video",
-      mediaUrl:
-        "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
-      description: "음식 보관은 기본, 건강한 물과 얼음을 관리하는 직수형 냉장고",
-      highlights: ["흐르는 물론 만드는 제빙 시스템", "전문가의 손길로 깨끗하게 관리하는 케어 시스템
-                     },
+      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
+      description: "냉장고 장과의 간격을 최소화, 주방에 조화롭게 어울리는 디자인",
+      highlights: ["도어 걸림없는 제로 클리어런스 힌지", "다양한 Fit&Max 라인업", "빌트인 같은 일체감"],
+    },
     {
       id: "8",
       title: "에너지 절약",
-      subtitle: "냉장고를 넘어선 Fresh SYSTEM 직수형 SYSTEM 냉장고",
+      subtitle: "친환경 스마트 기술",
       icon: "Zap",
       mediaType: "video",
       mediaUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
