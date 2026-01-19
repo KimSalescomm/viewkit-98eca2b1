@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { products, iconMap } from "@/data/products";
+import SafeImage from "@/components/SafeImage";
 
 const ProductSelection = () => {
   return (
@@ -78,9 +79,10 @@ const ProductSelection = () => {
                   background: "#f9fafb"
                 }}
               >
-                <img
+                <SafeImage
                   src={product.keyVisualImage}
                   alt={product.name}
+                  loading="lazy"
                   style={{
                     width: "100%",
                     height: "100%",

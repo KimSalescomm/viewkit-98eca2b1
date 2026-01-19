@@ -2,6 +2,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { getProductById, iconMap } from "@/data/products";
 import { getFeaturesByProductId } from "@/data/features";
 import FeatureCard from "@/components/FeatureCard";
+import SafeImage from "@/components/SafeImage";
 
 const Home = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -127,9 +128,10 @@ const Home = () => {
             boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)"
           }}
         >
-          <img
+          <SafeImage
             src={product.keyVisualImage}
             alt={product.name}
+            loading="lazy"
             style={{
               width: "100%",
               height: "500px",
