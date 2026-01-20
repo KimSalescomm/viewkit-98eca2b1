@@ -173,7 +173,7 @@ export const featuresMap: Record<string, Feature[]> = {
       id: "10",
       title: "STEM 구독 전문케어",
       subtitle: "물이 흐르는 STEM, 전문가 케어 서비스를 눈으로 확인해 보세요",
-      icon: "Cleaning",
+      icon: "Sparkles",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/refrigerators_250804.mp4",
       description:
