@@ -4,6 +4,7 @@ import { ProductComparisonTable } from "@/data/features";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight, PlayCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface MediaViewerProps {
   mediaType: "video" | "image" | "table" | "gallery" | "youtube";
@@ -18,10 +19,59 @@ const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [proxyUrl, setProxyUrl] = useState<string | null>(null);
+
+  // Check if this is an LGE URL that needs proxying
+  const isLgeUrl = mediaUrl.includes('lge.co.kr') || mediaUrl.includes('lge.com');
+
+  useEffect(() => {
+    const fetchProxyVideo = async () => {
+      if (!isLgeUrl) {
+        setProxyUrl(mediaUrl);
+        return;
+      }
+
+      try {
+        console.log('Fetching video via proxy:', mediaUrl);
+        const { data, error } = await supabase.functions.invoke('video-proxy', {
+          body: { url: mediaUrl },
+        });
+
+        if (error) {
+          console.error('Proxy error:', error);
+          setHasError(true);
+          setIsLoading(false);
+          return;
+        }
+
+        // The response is the video blob, create a blob URL
+        if (data instanceof Blob) {
+          const blobUrl = URL.createObjectURL(data);
+          setProxyUrl(blobUrl);
+        } else {
+          // If streaming didn't work, fall back to direct URL
+          setProxyUrl(mediaUrl);
+        }
+      } catch (err) {
+        console.error('Failed to proxy video:', err);
+        setHasError(true);
+        setIsLoading(false);
+      }
+    };
+
+    fetchProxyVideo();
+
+    return () => {
+      // Clean up blob URL when component unmounts
+      if (proxyUrl?.startsWith('blob:')) {
+        URL.revokeObjectURL(proxyUrl);
+      }
+    };
+  }, [mediaUrl, isLgeUrl]);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || !proxyUrl) return;
 
     const handleCanPlay = () => {
       setIsLoading(false);
@@ -38,20 +88,20 @@ const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
     video.addEventListener("canplay", handleCanPlay);
     video.addEventListener("error", handleError);
 
-    // Timeout fallback - if video doesn't load in 5 seconds, show error
+    // Timeout fallback - if video doesn't load in 10 seconds for proxy, show error
     const timeout = setTimeout(() => {
       if (isLoading) {
         setHasError(true);
         setIsLoading(false);
       }
-    }, 5000);
+    }, isLgeUrl ? 15000 : 5000);
 
     return () => {
       video.removeEventListener("canplay", handleCanPlay);
       video.removeEventListener("error", handleError);
       clearTimeout(timeout);
     };
-  }, [mediaUrl]);
+  }, [proxyUrl, isLgeUrl]);
 
   if (hasError) {
     return (
@@ -135,21 +185,23 @@ const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
           />
         </div>
       )}
-      <video
-        ref={videoRef}
-        src={mediaUrl}
-        muted
-        autoPlay
-        loop
-        playsInline
-        style={{
-          maxWidth: "100%",
-          maxHeight: "80vh",
-          objectFit: "contain",
-          opacity: isLoading ? 0 : 1,
-          transition: "opacity 0.3s",
-        }}
-      />
+      {proxyUrl && (
+        <video
+          ref={videoRef}
+          src={proxyUrl}
+          muted
+          autoPlay
+          loop
+          playsInline
+          style={{
+            maxWidth: "100%",
+            maxHeight: "80vh",
+            objectFit: "contain",
+            opacity: isLoading ? 0 : 1,
+            transition: "opacity 0.3s",
+          }}
+        />
+      )}
     </div>
   );
 };
