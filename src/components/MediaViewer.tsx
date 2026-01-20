@@ -331,9 +331,9 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
     return (
       <div
         style={{
-          position: "relative",
           width: "100%",
-          paddingBottom: "56.25%",
+          display: "flex",
+          justifyContent: "center",
           borderRadius: "16px",
           overflow: "hidden",
           background: "#000"
@@ -341,14 +341,14 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
       >
         <video
           src={mediaUrl}
-          controls
+          muted
+          autoPlay
+          loop
+          playsInline
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover"
+            maxWidth: "100%",
+            maxHeight: "80vh",
+            objectFit: "contain"
           }}
         />
       </div>
