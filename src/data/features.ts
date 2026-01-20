@@ -198,7 +198,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "ImageIcon",
       mediaType: "gallery",
       galleryImages: [
-        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
+        "hhttps://www.lge.co.kr/kr/images/refrigerators/interior/I5.jpg?w=800&q=80",
         "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80",
         "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=800&q=80",
         "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
