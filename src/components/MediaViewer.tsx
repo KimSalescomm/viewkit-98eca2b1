@@ -191,7 +191,6 @@ const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
           src={proxyUrl}
           muted
           autoPlay
-          loop
           playsInline
           style={{
             maxWidth: "100%",
