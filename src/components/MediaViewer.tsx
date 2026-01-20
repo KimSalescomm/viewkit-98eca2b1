@@ -440,6 +440,11 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
     // Detect YouTube Shorts (vertical 9:16 aspect ratio)
     const isShorts = mediaUrl.includes("/shorts/") || mediaUrl.includes("E19Smv1V-tk");
     
+    // Add autoplay parameters to YouTube URL
+    const autoplayUrl = mediaUrl.includes("?") 
+      ? `${mediaUrl}&autoplay=1&mute=1` 
+      : `${mediaUrl}?autoplay=1&mute=1`;
+    
     if (isShorts) {
       return (
         <div
@@ -460,7 +465,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
             }}
           >
             <iframe
-              src={mediaUrl}
+              src={autoplayUrl}
               title={title}
               style={{
                 position: "absolute",
@@ -490,7 +495,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
         }}
       >
         <iframe
-          src={mediaUrl}
+          src={autoplayUrl}
           title={title}
           style={{
             position: "absolute",
@@ -509,6 +514,11 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
 
   if (mediaType === "video") {
     const { embedUrl, isYoutube } = convertToEmbedUrl(mediaUrl);
+    
+    // Add autoplay parameters to YouTube URL
+    const autoplayEmbedUrl = embedUrl.includes("?") 
+      ? `${embedUrl}&autoplay=1&mute=1` 
+      : `${embedUrl}?autoplay=1&mute=1`;
 
     if (isYoutube) {
       return (
@@ -523,7 +533,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
           }}
         >
           <iframe
-            src={embedUrl}
+            src={autoplayEmbedUrl}
             title={title}
             style={{
               position: "absolute",
