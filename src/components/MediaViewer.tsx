@@ -2,8 +2,8 @@ import { convertToEmbedUrl } from "@/utils/videoUtils";
 import SafeImage from "@/components/SafeImage";
 import { ProductComparisonTable } from "@/data/features";
 import useEmblaCarousel from "embla-carousel-react";
-import { useCallback, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, useEffect, useState, useRef } from "react";
+import { ChevronLeft, ChevronRight, PlayCircle } from "lucide-react";
 
 interface MediaViewerProps {
   mediaType: "video" | "image" | "table" | "gallery";
@@ -12,6 +12,147 @@ interface MediaViewerProps {
   tableData?: ProductComparisonTable[];
   galleryImages?: string[];
 }
+
+// VideoPlayer component with error handling
+const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleCanPlay = () => {
+      setIsLoading(false);
+      video.play().catch(() => {
+        setHasError(true);
+      });
+    };
+
+    const handleError = () => {
+      setHasError(true);
+      setIsLoading(false);
+    };
+
+    video.addEventListener("canplay", handleCanPlay);
+    video.addEventListener("error", handleError);
+
+    // Timeout fallback - if video doesn't load in 5 seconds, show error
+    const timeout = setTimeout(() => {
+      if (isLoading) {
+        setHasError(true);
+        setIsLoading(false);
+      }
+    }, 5000);
+
+    return () => {
+      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("error", handleError);
+      clearTimeout(timeout);
+    };
+  }, [mediaUrl]);
+
+  if (hasError) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          borderRadius: "16px",
+          overflow: "hidden",
+          background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "60px 40px",
+          minHeight: "300px",
+        }}
+      >
+        <PlayCircle size={64} color="#fff" style={{ opacity: 0.6, marginBottom: "16px" }} />
+        <p style={{ color: "#fff", fontSize: "16px", textAlign: "center", opacity: 0.8 }}>
+          영상을 로드할 수 없습니다
+        </p>
+        <a
+          href={mediaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            marginTop: "16px",
+            padding: "12px 24px",
+            background: "rgba(255,255,255,0.15)",
+            borderRadius: "8px",
+            color: "#fff",
+            textDecoration: "none",
+            fontSize: "14px",
+            transition: "background 0.2s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "rgba(255,255,255,0.25)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "rgba(255,255,255,0.15)";
+          }}
+        >
+          외부 링크에서 보기
+        </a>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        borderRadius: "16px",
+        overflow: "hidden",
+        background: "#000",
+        position: "relative",
+      }}
+    >
+      {isLoading && (
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#000",
+          }}
+        >
+          <div
+            style={{
+              width: "40px",
+              height: "40px",
+              border: "3px solid rgba(255,255,255,0.3)",
+              borderTopColor: "#fff",
+              borderRadius: "50%",
+              animation: "spin 1s linear infinite",
+            }}
+          />
+        </div>
+      )}
+      <video
+        ref={videoRef}
+        src={mediaUrl}
+        muted
+        autoPlay
+        loop
+        playsInline
+        style={{
+          maxWidth: "100%",
+          maxHeight: "80vh",
+          objectFit: "contain",
+          opacity: isLoading ? 0 : 1,
+          transition: "opacity 0.3s",
+        }}
+      />
+    </div>
+  );
+};
 
 const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: MediaViewerProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
@@ -329,29 +470,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
     }
 
     return (
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          borderRadius: "16px",
-          overflow: "hidden",
-          background: "#000"
-        }}
-      >
-        <video
-          src={mediaUrl}
-          muted
-          autoPlay
-          loop
-          playsInline
-          style={{
-            maxWidth: "100%",
-            maxHeight: "80vh",
-            objectFit: "contain"
-          }}
-        />
-      </div>
+      <VideoPlayer mediaUrl={mediaUrl} />
     );
   }
 
