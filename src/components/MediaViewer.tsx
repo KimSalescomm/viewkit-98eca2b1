@@ -549,9 +549,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
   return (
     <div
       style={{
-        position: "relative",
         width: "100%",
-        paddingBottom: "56.25%",
         borderRadius: "16px",
         overflow: "hidden",
         background: "#f3f4f6"
@@ -562,12 +560,9 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
         alt={title}
         loading="lazy"
         style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
           width: "100%",
-          height: "100%",
-          objectFit: "cover"
+          height: "auto",
+          display: "block"
         }}
       />
     </div>
