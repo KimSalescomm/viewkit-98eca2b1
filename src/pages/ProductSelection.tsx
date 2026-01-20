@@ -13,7 +13,7 @@ const ProductSelection = () => {
     >
       <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "40px" }}>
+        <div style={{ textAlign: "center", marginBottom: "40px", marginTop: "20px" }}>
           <h1
             style={{
               fontSize: "48px",
