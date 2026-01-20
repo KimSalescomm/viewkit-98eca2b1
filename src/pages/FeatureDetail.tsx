@@ -182,7 +182,8 @@ const FeatureDetail = () => {
             style={{
               fontSize: "16px",
               color: "#4b5563",
-              lineHeight: "1.8"
+              lineHeight: "1.8",
+              whiteSpace: "pre-line"
             }}
           >
             {feature.description}
