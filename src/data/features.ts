@@ -161,13 +161,8 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Sparkles",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/stem_install.webm",
-      description: "수도관 매립 여부, 냉장고와 싱크대의 거리 등 환경에 따라 STEM 설치는 달라집니다.",
-      highlights: [
-        "냉장고 장 위치에 수도관 매립○",
-        "수도관 매립X, 냉장고와 싱크대가 붙어있는 경우",
-        "수도관 매립 X, 타공 불가인 경우",
-        "수도관 매립X, 냉장고와 싱크대가 먼 경우",
-      ],
+      description: "✔️CASE 1. 냉장고 장 위치에 수도관이 매립 되어있음\n\n✔️CASE 2. 수도관이 매립되어 있지 않고, 냉장고와 싱크대가 가까이 있음\n\n✔️CASE 3. 수도관이 매립되어 있지 않고, 싱크대 타공이 불가능함\n\n✔️CASE 4. 수도관이 매립되어 있지 않고, 냉장고와 싱크대가 먼 경우",
+      highlights: [],
     },
     {
       id: "10",
