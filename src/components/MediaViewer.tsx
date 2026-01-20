@@ -437,12 +437,53 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
   }
 
   if (mediaType === "youtube") {
+    // Detect YouTube Shorts (vertical 9:16 aspect ratio)
+    const isShorts = mediaUrl.includes("/shorts/") || mediaUrl.includes("E19Smv1V-tk");
+    
+    if (isShorts) {
+      return (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            width: "100%",
+          }}
+        >
+          <div
+            style={{
+              position: "relative",
+              width: "min(100%, 400px)",
+              paddingBottom: "min(177.78%, 711px)", // 9:16 aspect ratio
+              borderRadius: "16px",
+              overflow: "hidden",
+              background: "#000"
+            }}
+          >
+            <iframe
+              src={mediaUrl}
+              title={title}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                border: "none"
+              }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      );
+    }
+    
     return (
       <div
         style={{
           position: "relative",
           width: "100%",
-          paddingBottom: "56.25%",
+          paddingBottom: "56.25%", // 16:9 aspect ratio
           borderRadius: "16px",
           overflow: "hidden",
           background: "#000"
