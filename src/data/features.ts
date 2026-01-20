@@ -174,7 +174,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "STEM 구독 전문케어",
       subtitle: "물이 흐르는 STEM, 전문가 케어 서비스를 눈으로 확인해 보세요",
       icon: "Zap",
-      mediaType: "video",
+      mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/refrigerators_250804.mp4",
       description:
         "물이 흐르는 길을 세척, 청소하기 힘든 기계실 세척, 이사 후 재설치까지 다양한 케어서비스 혜택이 있습니다.",
@@ -182,11 +182,11 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "11",
-      title: "도어 인 도어",
-      subtitle: "냉기 손실 없이 자주 쓰는 식품을 쉽게 꺼내세요",
+      title: "Fit & Max",
+      subtitle: "냉장고 장과의 간격을 최소화한 밀착설치로 인테리어를 업그레이드 해 보세요."
       icon: "Maximize2",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/product_img01.png",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/event/2025/07/02_fit_max/images/fit_max_video.mp4",
       description:
         "문을 전체로 열지 않고 자주 쓰는 음료, 간식 등을 꺼낼 수 있어 냉기 손실을 최소화하고 에너지 효율을 높입니다.",
       highlights: ["냉기 손실 최소화", "자주 쓰는 식품 수납", "에너지 효율 향상", "편리한 접근성"],
