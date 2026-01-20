@@ -104,3 +104,9 @@ All colors MUST be HSL.
     font-family: 'Noto Sans KR', sans-serif;
   }
 }
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
