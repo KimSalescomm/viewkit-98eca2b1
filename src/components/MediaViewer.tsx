@@ -168,9 +168,11 @@ const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
             position: "absolute",
             inset: 0,
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             background: "#000",
+            gap: "16px",
           }}
         >
           <div
@@ -183,6 +185,9 @@ const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
               animation: "spin 1s linear infinite",
             }}
           />
+          <span style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px" }}>
+            로딩중…
+          </span>
         </div>
       )}
       {proxyUrl && (
