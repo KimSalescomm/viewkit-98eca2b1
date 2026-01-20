@@ -12,7 +12,7 @@ export interface Feature {
   title: string;
   subtitle: string;
   icon: string;
-  mediaType: "video" | "image" | "table" | "gallery" | "youtube";
+  mediaType: "video" | "image" | "table" | "gallery";
   mediaUrl: string;
   description: string;
   highlights: string[];
@@ -174,8 +174,8 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "STEM 구독 전문케어",
       subtitle: "물이 흐르는 STEM, 전문가 케어 서비스를 눈으로 확인해 보세요",
       icon: "Sparkles",
-      mediaType: "youtube",
-      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM?si=j4iIwotCwLBvji5k",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/refrigerators_250804.mp4",
       description:
         "물이 흐르는 길을 세척, 청소하기 힘든 기계실 세척, 이사 후 재설치까지 다양한 케어서비스 혜택이 있습니다.",
       highlights: ["유로 세척 케어", "기계실 세척(프리미엄)", "고무패킹 케어", "소모품 교체"],
@@ -185,10 +185,10 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "Fit & Max",
       subtitle: "냉장고 장과의 간격을 최소화한 밀착설치로 인테리어를 업그레이드 해 보세요.",
       icon: "Maximize2",
-      mediaType: "youtube",
-      mediaUrl: "https://www.youtube.com/embed/E19Smv1V-tk",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/event/2025/07/02_fit_max/images/fit_max_video.mp4",
       description:
-        "도어 걸림은 없앤 제로 클리어런스 힌지가 만드는 단 4mm 간격의 완벽에 가까운 밀착! 인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아듭니다.",
+        "냉장고와 가구 사이 단 4mm 간격의 완벽에 가까운 밀착! 인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아듭니다.",
       highlights: ["제로 클리어런스 힌지", "인테리어 냉장고", "다양한 라인업", "냉툭튀가 싫다면 Fit & Max로"],
     },
     {
