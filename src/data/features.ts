@@ -101,7 +101,7 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "냉장고를 넘어선 Fresh SYSTEM 직수형 SYSTEM 냉장고",
       icon: "Seedling",
       mediaType: "youtube",
-      mediaUrl: "https://www.youtube.com/embed/UJwujW2KrCk",
+      mediaUrl: "https://www.youtube.com/embed/ULBpi2Qwf1g",
       description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
       highlights: [
         "흐르는 물로 얼음을 만드는 제빙 시스템",
