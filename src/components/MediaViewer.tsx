@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight, PlayCircle } from "lucide-react";
 
 interface MediaViewerProps {
-  mediaType: "video" | "image" | "table" | "gallery";
+  mediaType: "video" | "image" | "table" | "gallery" | "youtube";
   mediaUrl: string;
   title: string;
   tableData?: ProductComparisonTable[];
