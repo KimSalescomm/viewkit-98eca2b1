@@ -99,7 +99,7 @@ export const featuresMap: Record<string, Feature[]> = {
       id: "7",
       title: "STEM이란?",
       subtitle: "냉장고를 넘어선 Fresh SYSTEM 직수형 SYSTEM 냉장고",
-      icon: "Maximize2",
+      icon: "Seedling",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
       description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
@@ -113,7 +113,7 @@ export const featuresMap: Record<string, Feature[]> = {
       id: "8",
       title: "STEM 냉장고 라인업 비교",
       subtitle: "한눈에 보는 LG 디오스 STEM 냉장고,\n라인업별로 어떤 차이가 있는지 알려드릴게요",
-      icon: "Maximize2",
+      icon: "Search",
       mediaType: "table",
       mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/product_img01.png",
       description: "STEM 얼음정수 냉장고와 STEM 베이직 냉장고의 주요 사양을 비교해보세요.",
@@ -173,7 +173,7 @@ export const featuresMap: Record<string, Feature[]> = {
       id: "10",
       title: "STEM 구독 전문케어",
       subtitle: "물이 흐르는 STEM, 전문가 케어 서비스를 눈으로 확인해 보세요",
-      icon: "Zap",
+      icon: "Cleaning",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/refrigerators_250804.mp4",
       description:
@@ -355,6 +355,10 @@ export const featureIconMap: Record<string, string> = {
   Sparkles: "✨",
   UtensilsCrossed: "🍽️",
   dress: "👗",
+  Seedling: "🌱",
+  Search: "🔍",
+  Cleaning: "🧹",
+  ImageIcon: "🖼️",
 };
 
 export const getFeaturesByProductId = (productId: string): Feature[] => {
