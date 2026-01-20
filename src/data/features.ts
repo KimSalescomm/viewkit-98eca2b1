@@ -159,8 +159,14 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "STEM 환경별 설치가이드",
       subtitle: "수도관을 연결해야하는 STEM, 환경에 따라 다른 설치방식을 확인하세요",
       icon: "Sparkles",
-      mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/stem_install.webm",
+      mediaType: "gallery",
+      mediaUrl: "",
+      galleryImages: [
+        "/images/install1.png",
+        "/images/install2.png",
+        "/images/install3.png",
+        "/images/install4.png",
+      ],
       description:
         "STEM은 직수로 물 또는 얼음을 만들기 위해 수도관 연결이 필요합니다. 수도관 위치에 따른 설치 방법을 확인해 보세요.\n\n✔️CASE 1. 냉장고 장 위치에 수도관이 매립 되어있음\n✔️CASE 2. 수도관이 매립되어 있지 않고, 냉장고와 싱크대가 가까이 있음\n✔️CASE 3. 수도관이 매립되어 있지 않고, 싱크대 타공이 불가능함\n✔️CASE 4. 수도관이 매립되어 있지 않고, 냉장고와 싱크대가 먼 경우",
       highlights: [],
