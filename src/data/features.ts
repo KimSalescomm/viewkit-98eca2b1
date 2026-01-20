@@ -198,12 +198,10 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "ImageIcon",
       mediaType: "gallery",
       galleryImages: [
-        "hhttps://www.lge.co.kr/kr/images/refrigerators/interior/I5.jpg?w=800&q=80",
-        "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80",
-        "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=800&q=80",
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-        "https://images.unsplash.com/photo-1556909190-ec212be06509?w=800&q=80",
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+        "https://www.lge.co.kr/kr/images/refrigerators/interior/I5.jpg",
+        "https://www.lge.co.kr/kr/images/refrigerators/interior/i6.jpg",
+        "https://www.lge.co.kr/kr/images/refrigerators/interior/i2.jpg",
+        "https://www.lge.co.kr/kr/images/refrigerators/md10207839/pdp-re-slide1.jpg",
       ],
       mediaUrl: "",
       description:
