@@ -188,8 +188,8 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/event/2025/07/02_fit_max/images/fit_max_video.mp4",
       description:
-        "문을 전체로 열지 않고 자주 쓰는 음료, 간식 등을 꺼낼 수 있어 냉기 손실을 최소화하고 에너지 효율을 높입니다.",
-      highlights: ["냉기 손실 최소화", "자주 쓰는 식품 수납", "에너지 효율 향상", "편리한 접근성"],
+        "도어 걸림은 없앤 제로 클리어런스 힌지가 만드는 단 4mm 간격의 완벽에 가까운 밀착! 인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아듭니다.".",
+      highlights: ["제로 클리어런스 힌지", "인테리어 냉장고", "다양한 라인업", "냉툭튀가 싫다면 Fit & Max로"],
     },
     {
       id: "12",
