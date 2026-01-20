@@ -8,12 +8,12 @@ const ProductSelection = () => {
       style={{
         minHeight: "100vh",
         background: "linear-gradient(to bottom right, #f9fafb, #dbeafe, #fae8ff)",
-        padding: "32px 24px"
+        padding: "32px 24px",
       }}
     >
       <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "40px", marginTop: "40px" }}>
+        <div style={{ textAlign: "center", marginBottom: "40px", marginTop: "80px" }}>
           <h1
             style={{
               fontSize: "48px",
@@ -21,7 +21,7 @@ const ProductSelection = () => {
               letterSpacing: "0.05em",
               textTransform: "uppercase",
               color: "#1f2937",
-              marginBottom: "16px"
+              marginBottom: "16px",
             }}
           >
             VIEW KIT
@@ -31,14 +31,12 @@ const ProductSelection = () => {
               fontSize: "24px",
               fontWeight: 600,
               color: "#374151",
-              marginBottom: "8px"
+              marginBottom: "8px",
             }}
           >
             제품을 선택해주세요
           </h2>
-          <p style={{ fontSize: "16px", color: "#6b7280" }}>
-            제품별 특장점을 확인하실 수 있습니다
-          </p>
+          <p style={{ fontSize: "16px", color: "#6b7280" }}>제품별 특장점을 확인하실 수 있습니다</p>
         </div>
 
         {/* Product Grid */}
@@ -46,7 +44,7 @@ const ProductSelection = () => {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
-            gap: "16px"
+            gap: "16px",
           }}
         >
           {products.map((product) => (
@@ -60,7 +58,7 @@ const ProductSelection = () => {
                 overflow: "hidden",
                 boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
                 transition: "all 0.3s ease",
-                textDecoration: "none"
+                textDecoration: "none",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "scale(1.03)";
@@ -76,7 +74,7 @@ const ProductSelection = () => {
                 style={{
                   height: "192px",
                   overflow: "hidden",
-                  background: "#f9fafb"
+                  background: "#f9fafb",
                 }}
               >
                 <SafeImage
@@ -88,7 +86,7 @@ const ProductSelection = () => {
                     height: "100%",
                     objectFit: "cover",
                     objectPosition: "top",
-                    transition: "transform 0.3s ease"
+                    transition: "transform 0.3s ease",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "scale(1.1)";
@@ -110,7 +108,7 @@ const ProductSelection = () => {
                       background: "linear-gradient(135deg, #2563eb, #9333ea)",
                       display: "flex",
                       alignItems: "center",
-                      justifyContent: "center"
+                      justifyContent: "center",
                     }}
                   >
                     <span style={{ fontSize: "24px" }}>{iconMap[product.icon]}</span>
@@ -121,7 +119,7 @@ const ProductSelection = () => {
                         fontSize: "20px",
                         fontWeight: "bold",
                         color: "#111827",
-                        margin: 0
+                        margin: 0,
                       }}
                     >
                       {product.name}
@@ -130,7 +128,7 @@ const ProductSelection = () => {
                       style={{
                         fontSize: "14px",
                         color: "#6b7280",
-                        margin: 0
+                        margin: 0,
                       }}
                     >
                       {product.description}
