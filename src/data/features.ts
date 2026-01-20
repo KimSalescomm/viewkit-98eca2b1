@@ -198,17 +198,15 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "ImageIcon",
       mediaType: "gallery",
       galleryImages: [
-        "hhttps://www.lge.co.kr/kr/images/refrigerators/interior/I5.jpg?w=800&q=80",
-        "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80",
-        "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=800&q=80",
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-        "https://images.unsplash.com/photo-1556909190-ec212be06509?w=800&q=80",
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+        "https://www.lge.co.kr/kr/images/refrigerators/interior/I5.jpg",
+        "https://www.lge.co.kr/kr/images/refrigerators/interior/i6.jpg",
+        "https://www.lge.co.kr/kr/images/refrigerators/interior/i2.jpg",
+        "https://www.lge.co.kr/kr/images/refrigerators/md10207839/pdp-re-slide1.jpg",
       ],
       mediaUrl: "",
       description:
         "LG 냉장고는 다양한 주방 인테리어와 완벽하게 어울리며, 공간의 품격을 높여줍니다. 모던, 클래식, 미니멀 등 다양한 스타일에 맞는 디자인을 확인해보세요.",
-      highlights: ["냉장고 장과 하나처럼 어울리는 디자인", "오브제컬렉션만의 색감과 소재", "다양한 냉장고 조합"],
+      highlights: ["다양한 인테리어 연출", "프리미엄 마감재", "공간 효율적 디자인", "트렌디한 컬러 옵션"],
     },
   ],
 
