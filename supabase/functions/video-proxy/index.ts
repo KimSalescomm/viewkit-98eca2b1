@@ -4,6 +4,63 @@ const corsHeaders = {
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
 };
 
+// Allowed domains whitelist - only LGE domains are permitted
+const ALLOWED_DOMAINS = ['lge.co.kr', 'lge.com', 'lgappstv.com'];
+
+// Private IP patterns to block (SSRF protection)
+const PRIVATE_IP_PATTERNS = [
+  /^localhost$/i,
+  /^127\./,
+  /^10\./,
+  /^172\.(1[6-9]|2[0-9]|3[01])\./,
+  /^192\.168\./,
+  /^169\.254\./,  // Link-local
+  /^0\./,         // Invalid
+  /^\[::1\]/,     // IPv6 localhost
+  /^\[fc/i,       // IPv6 private
+  /^\[fd/i,       // IPv6 private
+  /^\[fe80:/i,    // IPv6 link-local
+];
+
+function isPrivateIP(hostname: string): boolean {
+  return PRIVATE_IP_PATTERNS.some(pattern => pattern.test(hostname));
+}
+
+function isAllowedDomain(hostname: string): boolean {
+  return ALLOWED_DOMAINS.some(domain => 
+    hostname === domain || hostname.endsWith(`.${domain}`)
+  );
+}
+
+function validateUrl(urlString: string): { valid: boolean; error?: string; url?: URL } {
+  let urlObj: URL;
+  
+  try {
+    urlObj = new URL(urlString);
+  } catch {
+    return { valid: false, error: 'Invalid URL format' };
+  }
+
+  // Only allow http and https protocols
+  if (urlObj.protocol !== 'https:' && urlObj.protocol !== 'http:') {
+    return { valid: false, error: 'Only HTTP and HTTPS protocols are allowed' };
+  }
+
+  const hostname = urlObj.hostname.toLowerCase();
+
+  // Block private IPs and localhost (SSRF protection)
+  if (isPrivateIP(hostname)) {
+    return { valid: false, error: 'Private or internal addresses are not allowed' };
+  }
+
+  // Only allow whitelisted domains
+  if (!isAllowedDomain(hostname)) {
+    return { valid: false, error: 'Domain not in allowed list' };
+  }
+
+  return { valid: true, url: urlObj };
+}
+
 Deno.serve(async (req) => {
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
@@ -13,9 +70,19 @@ Deno.serve(async (req) => {
   try {
     const { url } = await req.json();
 
-    if (!url) {
+    if (!url || typeof url !== 'string') {
       return new Response(
-        JSON.stringify({ success: false, error: 'URL is required' }),
+        JSON.stringify({ success: false, error: 'URL is required and must be a string' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Validate URL before proxying
+    const validation = validateUrl(url);
+    if (!validation.valid) {
+      console.warn('URL validation failed:', url, validation.error);
+      return new Response(
+        JSON.stringify({ success: false, error: validation.error }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
