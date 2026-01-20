@@ -100,8 +100,8 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "STEM이란?",
       subtitle: "냉장고를 넘어선 Fresh SYSTEM 직수형 SYSTEM 냉장고",
       icon: "Seedling",
-      mediaType: "youtube",
-      mediaUrl: "https://www.youtube.com/embed/ULBpi2Qwf1g",
+      mediaType: "Video",
+      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
       description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
       highlights: [
         "흐르는 물로 얼음을 만드는 제빙 시스템",
@@ -161,7 +161,8 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Sparkles",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/stem_install.webm",
-      description: "STEM은 직수로 물 또는 얼음을 만들기 위해 수도관 연결이 필요합니다. 수도관 위치에 따른 설치 방법을 확인해 보세요.\n\n✔️CASE 1. 냉장고 장 위치에 수도관이 매립 되어있음\n✔️CASE 2. 수도관이 매립되어 있지 않고, 냉장고와 싱크대가 가까이 있음\n✔️CASE 3. 수도관이 매립되어 있지 않고, 싱크대 타공이 불가능함\n✔️CASE 4. 수도관이 매립되어 있지 않고, 냉장고와 싱크대가 먼 경우",
+      description:
+        "STEM은 직수로 물 또는 얼음을 만들기 위해 수도관 연결이 필요합니다. 수도관 위치에 따른 설치 방법을 확인해 보세요.\n\n✔️CASE 1. 냉장고 장 위치에 수도관이 매립 되어있음\n✔️CASE 2. 수도관이 매립되어 있지 않고, 냉장고와 싱크대가 가까이 있음\n✔️CASE 3. 수도관이 매립되어 있지 않고, 싱크대 타공이 불가능함\n✔️CASE 4. 수도관이 매립되어 있지 않고, 냉장고와 싱크대가 먼 경우",
       highlights: [],
     },
     {
