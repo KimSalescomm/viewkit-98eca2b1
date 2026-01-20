@@ -14,6 +14,7 @@ export interface Feature {
   icon: string;
   mediaType: "video" | "image" | "table" | "gallery" | "youtube";
   mediaUrl: string;
+  posterUrl?: string;
   description: string;
   highlights: string[];
   tableData?: ProductComparisonTable[];
