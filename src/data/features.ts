@@ -18,6 +18,8 @@ export interface Feature {
   highlights: string[];
   tableData?: ProductComparisonTable[];
   galleryImages?: string[];
+  /** 영상 로딩/에러 시 표시할 썸네일 URL */
+  posterUrl?: string;
 }
 
 export const featuresMap: Record<string, Feature[]> = {
