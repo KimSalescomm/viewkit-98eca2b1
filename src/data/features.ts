@@ -182,8 +182,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "11",
-      title: "도어 인 도어",
-      subtitle: "냉기 손실 없이 자주 쓰는 식품을 쉽게 꺼내세요",
+      title: "Fit & Max",
+      subtitle: "냉장고 장과의 간격을 최소화한 밀착설치로 인테리어를 업그레이드 해 보세요.",
       icon: "Maximize2",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/event/2025/07/02_fit_max/images/fit_max_video.mp4",
