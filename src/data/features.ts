@@ -159,7 +159,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "STEM 환경별 설치가이드",
       subtitle: "수도관을 연결해야하는 STEM, 환경에 따라 다른 설치방식을 확인하세요",
       icon: "Sparkles",
-      mediaType: "image",
+      mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/stem_install.webm",
       description: "수도관 매립 여부, 냉장고와 싱크대의 거리 등 환경에 따라 STEM 설치는 달라집니다.",
       highlights: [
