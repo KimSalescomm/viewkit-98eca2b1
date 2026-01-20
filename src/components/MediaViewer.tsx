@@ -88,13 +88,13 @@ const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
     video.addEventListener("canplay", handleCanPlay);
     video.addEventListener("error", handleError);
 
-    // Timeout fallback - if video doesn't load in 10 seconds for proxy, show error
+    // Timeout fallback - 120 seconds for LGE proxy (영상 최대 1분45초 + 대기시간), 10 seconds for others
     const timeout = setTimeout(() => {
       if (isLoading) {
         setHasError(true);
         setIsLoading(false);
       }
-    }, isLgeUrl ? 15000 : 5000);
+    }, isLgeUrl ? 120000 : 10000);
 
     return () => {
       video.removeEventListener("canplay", handleCanPlay);
