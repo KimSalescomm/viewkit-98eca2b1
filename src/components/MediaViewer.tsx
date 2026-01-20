@@ -1,5 +1,6 @@
 import { convertToEmbedUrl } from "@/utils/videoUtils";
 import SafeImage from "@/components/SafeImage";
+import VideoWithFallback from "@/components/VideoWithFallback";
 import { ProductComparisonTable } from "@/data/features";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState, useRef } from "react";
@@ -12,6 +13,7 @@ interface MediaViewerProps {
   title: string;
   tableData?: ProductComparisonTable[];
   galleryImages?: string[];
+  posterUrl?: string; // 영상 로딩/에러 시 표시할 썸네일
 }
 
 // VideoPlayer component with error handling
@@ -210,7 +212,7 @@ const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
   );
 };
 
-const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: MediaViewerProps) => {
+const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, posterUrl }: MediaViewerProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     align: "start",
     containScroll: "trimSnaps",
@@ -597,6 +599,22 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
       );
     }
 
+    // posterUrl이 있으면 VideoWithFallback 사용 (poster-first 전략)
+    if (posterUrl) {
+      return (
+        <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+          <div style={{ width: "min(100%, 400px)" }}>
+            <VideoWithFallback
+              videoUrl={mediaUrl}
+              posterUrl={posterUrl}
+              timeoutMs={8000}
+            />
+          </div>
+        </div>
+      );
+    }
+
+    // posterUrl 없으면 기존 VideoPlayer 사용
     return (
       <VideoPlayer mediaUrl={mediaUrl} />
     );
