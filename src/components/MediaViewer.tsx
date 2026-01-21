@@ -198,6 +198,15 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
   if (mediaType === "table" && tableData) {
     const specLabels = tableData[0]?.specs.map(s => s.label) || [];
     
+    // Check if values differ across products for each spec label
+    const hasDifferentValues = (label: string): boolean => {
+      const allValues = tableData.map(product => {
+        const spec = product.specs.find(s => s.label === label);
+        return spec?.values.join('|') || '-';
+      });
+      return new Set(allValues).size > 1;
+    };
+    
     return (
       <div style={{ 
         width: "100%", 
@@ -274,6 +283,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
                 {specLabels.map((label, rowIdx) => {
                   const spec = product.specs.find(s => s.label === label);
                   const values = spec?.values || ["-"];
+                  const isDifferent = hasDifferentValues(label);
                   
                   return (
                     <div
@@ -281,15 +291,16 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
                       style={{
                         borderTop: "1px dotted #ccc",
                         borderBottom: rowIdx === specLabels.length - 1 ? "2px solid #333" : "none",
+                        background: isDifferent ? "#FFF8E1" : "transparent",
                       }}
                     >
                       <div
                         style={{
                           padding: "8px 12px",
-                          background: "#f9f9f9",
+                          background: isDifferent ? "#FFF3C4" : "#f9f9f9",
                           fontWeight: 500,
                           fontSize: "12px",
-                          color: "#666",
+                          color: isDifferent ? "#8B6914" : "#666",
                           height: "32px",
                           display: "flex",
                           alignItems: "center",
