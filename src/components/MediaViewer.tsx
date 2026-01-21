@@ -11,6 +11,7 @@ interface MediaViewerProps {
   title: string;
   tableData?: ProductComparisonTable[];
   galleryImages?: (string | GalleryImage)[];
+  isShorts?: boolean;
 }
 
 // VideoPlayer component with error handling
@@ -154,7 +155,7 @@ const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
   );
 };
 
-const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: MediaViewerProps) => {
+const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isShorts }: MediaViewerProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     align: "start",
     containScroll: "trimSnaps",
@@ -475,6 +476,49 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
           color: "#666" 
         }}>
           {selectedIndex + 1} / {normalizedImages.length}
+        </div>
+      </div>
+    );
+  }
+
+  // YouTube 전용 렌더링 (isShorts 지원)
+  if (mediaType === "youtube") {
+    // Shorts는 9:16 세로 비율, 일반은 16:9 가로 비율
+    const aspectRatio = isShorts ? "177.78%" : "56.25%"; // 9:16 = 177.78%, 16:9 = 56.25%
+    
+    return (
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            position: "relative",
+            width: isShorts ? "min(100%, 400px)" : "100%",
+            paddingBottom: isShorts ? "0" : aspectRatio,
+            height: isShorts ? "min(80vh, 711px)" : "auto", // 400 * 16/9 = 711
+            borderRadius: "16px",
+            overflow: "hidden",
+            background: "#000"
+          }}
+        >
+          <iframe
+            src={mediaUrl}
+            title={title}
+            style={{
+              position: isShorts ? "relative" : "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              border: "none"
+            }}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
         </div>
       </div>
     );
