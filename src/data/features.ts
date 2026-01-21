@@ -1,4 +1,4 @@
-냉장고export interface ProductComparisonTable {
+관냉장고export interface ProductComparisonTable {
   name: string;
   imageUrl: string;
   specs: {
@@ -172,21 +172,21 @@ export const featuresMap: Record<string, Feature[]> = {
         "수도관 매립 여부, 냉장고와 싱크대의 거리 등 환경에 따라 STEM 설치는 달라집니다. 가구색과 유사한 몰딩을 이용해 수도관이 드러나지 않도록 깔끔하게 마감합니다.",
       highlights: ["수도관 매립 여부 확인", "싱크대 타공 가능한지 확인", "몰딩 처리 확인"],
       galleryImages: [
-        { url: "/images/installation-step1.jpeg", title: "Case 1", description: "냉장고 장 위치에 수도관 매립" },
+        { url: "/images/installation-step1.jpeg", title: "1.냉장고장에 수도관이 매립되어 있나요?", description: "냉장고 장에 수도관이 있다면 STEM을 설치하기 가장 좋은 환경이에요! 깔끔하게 수도관을 연결할 수 있어요." },
         {
           url: "/images/installation-step2.jpeg",
-          title: "Case 2",
-          description: "수도관 매립X, 싱크대가 냉장고 바로 옆일 때 (타공)",
+          title: "2.싱크대 거리가 가깝고, 싱크대 타공이 가능한가요?",
+          description: "매립된 수도관이 없다면, 싱크대 옆면에 수도관을 꺼낼만큼 구멍을 내어 수도관이 밖으로 드러나지 않게 설치할 수 있어요.",
         },
         {
           url: "/images/installation-step3.jpeg",
-          title: "Case 3",
-          description: "수도관 매립X, 싱크대를 타공할 수 없을 때",
+          title: "3.싱크대 거리가 가깝지만, 싱크대 타공을 할 수 없다면?",
+          description: "싱크대 아래 걸레받이 틈으로 수도관을 꺼내 연결할 수 있어요. 가구색과 가장 유사항 몰딩으로 깔끔하게 마무리 해드립니다.",
         },
         {
           url: "/images/installation-step4.jpeg",
-          title: "Case 4",
-          description: "수도관 매립X, 싱크대 위치가 냉장고와 멀 때",
+          title: "4.싱크대가 냉장고를 놓을 위치와 다소 떨어져 있나요?",
+          description: "싱크대와 냉장고 사이를 잇는 수도관을 벽면에 가깝게 붙여 설치합니다. 가구색과 가장 유사한 몰딩으로 깔끔하게 마무리 해드립니다",
         },
         {
           url: "/images/installation-step5.jpeg",
