@@ -225,10 +225,26 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "ImageIcon",
       mediaType: "gallery",
       galleryImages: [
-        "https://www.lge.co.kr/kr/images/refrigerators/interior/I5.jpg",
-        "https://www.lge.co.kr/kr/images/refrigerators/interior/i6.jpg",
-        "https://www.lge.co.kr/kr/images/refrigerators/interior/i2.jpg",
-        "https://www.lge.co.kr/kr/images/refrigerators/md10207839/pdp-re-slide1.jpg",
+        {
+          url: "https://www.lge.co.kr/kr/images/refrigerators/interior/I5.jpg",
+          title: "STEM + 김치냉장고 조합",
+          description: "STEM 냉장고와 김치냉장고를 나란히 배치하여 넉넉한 수납과 통일된 인테리어를 완성합니다.",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/images/refrigerators/interior/i6.jpg",
+          title: "컨버터블 냉동고 조합",
+          description: "냉장/냉동 전환이 가능한 컨버터블을 추가하여 계절과 상황에 맞게 활용하세요.",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/images/refrigerators/interior/i2.jpg",
+          title: "빌트인 스타일 연출",
+          description: "Fit & Max의 밀착 설치로 빌트인 못지않은 깔끔한 주방 인테리어를 연출합니다.",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/images/refrigerators/md10207839/pdp-re-slide1.jpg",
+          title: "다양한 컬러 조합",
+          description: "주방 분위기에 맞춰 다양한 컬러 조합으로 나만의 스타일을 완성하세요.",
+        },
       ],
       mediaUrl: "",
       description:
