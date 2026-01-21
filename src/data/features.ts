@@ -14,7 +14,6 @@ export interface Feature {
   icon: string;
   mediaType: "video" | "image" | "table" | "gallery" | "youtube";
   mediaUrl: string;
-  posterUrl?: string;
   description: string;
   highlights: string[];
   tableData?: ProductComparisonTable[];
@@ -124,7 +123,7 @@ export const featuresMap: Record<string, Feature[]> = {
           name: "STEM 얼음정수",
           imageUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/product_img01.png",
           specs: [
-            { label: "냉장고 용량", values: ["800L대"] },
+            { label: "냉장고 용량", values: ["800L 대"] },
             { label: "정수기 디스펜서", values: ["있음", "(정수, 냉수, 각얼음, 조각얼음)"] },
             { label: "얼음 종류", values: ["각얼음, 조각 얼음", "미니 각얼음", "크래프트 아이스"] },
             { label: "정수 필터", values: ["중금속 9종, 노로 바이러스 걸러 주는", "3단계 정수 필터"] },
@@ -146,7 +145,7 @@ export const featuresMap: Record<string, Feature[]> = {
           name: "STEM 베이직 Fit & Max",
           imageUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10553840/gallery/medium-interior01.jpg",
           specs: [
-            { label: "냉장고 용량", values: ["600L대"] },
+            { label: "냉장고 용량", values: ["600L"] },
             { label: "정수기 디스펜서", values: ["-"] },
             { label: "얼음 종류", values: ["각얼음 (트레이)", "크래프트 아이스"] },
             { label: "정수 필터", values: ["중금속 7종, 박테리아 걸러 주는", "복합 안심 정수 필터"] },
@@ -162,9 +161,13 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Sparkles",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/stem_install.webm",
-      description:
-        "STEM은 직수로 물 또는 얼음을 만들기 위해 수도관 연결이 필요합니다. 수도관 위치에 따른 설치 방법을 확인해 보세요.\n\n✔️CASE 1. 냉장고 장 위치에 수도관이 매립 되어있음\n✔️CASE 2. 수도관이 매립되어 있지 않고, 냉장고와 싱크대가 가까이 있음\n✔️CASE 3. 수도관이 매립되어 있지 않고, 싱크대 타공이 불가능함\n✔️CASE 4. 수도관이 매립되어 있지 않고, 냉장고와 싱크대가 먼 경우",
-      highlights: [],
+      description: "수도관 매립 여부, 냉장고와 싱크대의 거리 등 환경에 따라 STEM 설치는 달라집니다.",
+      highlights: [
+        "냉장고 장 위치에 수도관 매립○",
+        "수도관 매립X, 냉장고와 싱크대가 붙어있는 경우",
+        "수도관 매립 X, 타공 불가인 경우",
+        "수도관 매립X, 냉장고와 싱크대가 먼 경우",
+      ],
     },
     {
       id: "10",
@@ -172,7 +175,7 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "물이 흐르는 STEM, 전문가 케어 서비스를 눈으로 확인해 보세요",
       icon: "Sparkles",
       mediaType: "youtube",
-      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM",
+      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM?si=j4iIwotCwLBvji5k",
       description:
         "물이 흐르는 길을 세척, 청소하기 힘든 기계실 세척, 이사 후 재설치까지 다양한 케어서비스 혜택이 있습니다.",
       highlights: ["유로 세척 케어", "기계실 세척(프리미엄)", "고무패킹 케어", "소모품 교체"],
@@ -185,7 +188,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/event/2025/07/02_fit_max/images/fit_max_video.mp4",
       description:
-        "냉장고와 가구 사이 단 4mm 간격의 완벽에 가까운 밀착! 인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아듭니다.",
+        "도어 걸림은 없앤 제로 클리어런스 힌지가 만드는 단 4mm 간격의 완벽에 가까운 밀착! 인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아듭니다.",
       highlights: ["제로 클리어런스 힌지", "인테리어 냉장고", "다양한 라인업", "냉툭튀가 싫다면 Fit & Max로"],
     },
     {
@@ -203,12 +206,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "",
       description:
         "LG 냉장고는 다양한 주방 인테리어와 완벽하게 어울리며, 공간의 품격을 높여줍니다. 모던, 클래식, 미니멀 등 다양한 스타일에 맞는 디자인을 확인해보세요.",
-      highlights: [
-        "다양한 인테리어 연출",
-        "김치,컨버터블 등 다양한 조합",
-        "공간 효율적 디자인",
-        "빌트인 스타일 인테리어",
-      ],
+      highlights: ["다양한 인테리어 연출", "프리미엄 마감재", "공간 효율적 디자인", "트렌디한 컬러 옵션"],
     },
   ],
 

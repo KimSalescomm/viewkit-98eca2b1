@@ -155,7 +155,6 @@ const FeatureDetail = () => {
             title={feature.title}
             tableData={feature.tableData}
             galleryImages={feature.galleryImages}
-            posterUrl={feature.posterUrl}
           />
         </div>
 
@@ -183,8 +182,7 @@ const FeatureDetail = () => {
             style={{
               fontSize: "16px",
               color: "#4b5563",
-              lineHeight: "1.8",
-              whiteSpace: "pre-line"
+              lineHeight: "1.8"
             }}
           >
             {feature.description}

@@ -1,11 +1,9 @@
 import { convertToEmbedUrl } from "@/utils/videoUtils";
 import SafeImage from "@/components/SafeImage";
-import VideoWithFallback from "@/components/VideoWithFallback";
 import { ProductComparisonTable } from "@/data/features";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight, PlayCircle } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 
 interface MediaViewerProps {
   mediaType: "video" | "image" | "table" | "gallery" | "youtube";
@@ -13,7 +11,6 @@ interface MediaViewerProps {
   title: string;
   tableData?: ProductComparisonTable[];
   galleryImages?: string[];
-  posterUrl?: string; // 영상 로딩/에러 시 표시할 썸네일
 }
 
 // VideoPlayer component with error handling
@@ -21,59 +18,10 @@ const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [proxyUrl, setProxyUrl] = useState<string | null>(null);
-
-  // Check if this is an LGE URL that needs proxying
-  const isLgeUrl = mediaUrl.includes('lge.co.kr') || mediaUrl.includes('lge.com');
-
-  useEffect(() => {
-    const fetchProxyVideo = async () => {
-      if (!isLgeUrl) {
-        setProxyUrl(mediaUrl);
-        return;
-      }
-
-      try {
-        console.log('Fetching video via proxy:', mediaUrl);
-        const { data, error } = await supabase.functions.invoke('video-proxy', {
-          body: { url: mediaUrl },
-        });
-
-        if (error) {
-          console.error('Proxy error:', error);
-          setHasError(true);
-          setIsLoading(false);
-          return;
-        }
-
-        // The response is the video blob, create a blob URL
-        if (data instanceof Blob) {
-          const blobUrl = URL.createObjectURL(data);
-          setProxyUrl(blobUrl);
-        } else {
-          // If streaming didn't work, fall back to direct URL
-          setProxyUrl(mediaUrl);
-        }
-      } catch (err) {
-        console.error('Failed to proxy video:', err);
-        setHasError(true);
-        setIsLoading(false);
-      }
-    };
-
-    fetchProxyVideo();
-
-    return () => {
-      // Clean up blob URL when component unmounts
-      if (proxyUrl?.startsWith('blob:')) {
-        URL.revokeObjectURL(proxyUrl);
-      }
-    };
-  }, [mediaUrl, isLgeUrl]);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !proxyUrl) return;
+    if (!video) return;
 
     const handleCanPlay = () => {
       setIsLoading(false);
@@ -90,20 +38,20 @@ const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
     video.addEventListener("canplay", handleCanPlay);
     video.addEventListener("error", handleError);
 
-    // Timeout fallback - 120 seconds for LGE proxy (영상 최대 1분45초 + 대기시간), 10 seconds for others
+    // Timeout fallback - if video doesn't load in 5 seconds, show error
     const timeout = setTimeout(() => {
       if (isLoading) {
         setHasError(true);
         setIsLoading(false);
       }
-    }, isLgeUrl ? 120000 : 10000);
+    }, 5000);
 
     return () => {
       video.removeEventListener("canplay", handleCanPlay);
       video.removeEventListener("error", handleError);
       clearTimeout(timeout);
     };
-  }, [proxyUrl, isLgeUrl]);
+  }, [mediaUrl]);
 
   if (hasError) {
     return (
@@ -170,11 +118,9 @@ const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
             position: "absolute",
             inset: 0,
             display: "flex",
-            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             background: "#000",
-            gap: "16px",
           }}
         >
           <div
@@ -187,32 +133,28 @@ const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
               animation: "spin 1s linear infinite",
             }}
           />
-          <span style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px" }}>
-            로딩중…
-          </span>
         </div>
       )}
-      {proxyUrl && (
-        <video
-          ref={videoRef}
-          src={proxyUrl}
-          muted
-          autoPlay
-          playsInline
-          style={{
-            maxWidth: "100%",
-            maxHeight: "80vh",
-            objectFit: "contain",
-            opacity: isLoading ? 0 : 1,
-            transition: "opacity 0.3s",
-          }}
-        />
-      )}
+      <video
+        ref={videoRef}
+        src={mediaUrl}
+        muted
+        autoPlay
+        loop
+        playsInline
+        style={{
+          maxWidth: "100%",
+          maxHeight: "80vh",
+          objectFit: "contain",
+          opacity: isLoading ? 0 : 1,
+          transition: "opacity 0.3s",
+        }}
+      />
     </div>
   );
 };
 
-const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, posterUrl }: MediaViewerProps) => {
+const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: MediaViewerProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     align: "start",
     containScroll: "trimSnaps",
@@ -494,78 +436,6 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, pos
     );
   }
 
-  if (mediaType === "youtube") {
-    // Detect YouTube Shorts (vertical 9:16 aspect ratio)
-    const isShorts = mediaUrl.includes("/shorts/") || mediaUrl.includes("E19Smv1V-tk");
-    
-    
-    if (isShorts) {
-      return (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            width: "100%",
-          }}
-        >
-          <div
-            style={{
-              position: "relative",
-              width: "min(100%, 400px)",
-              paddingBottom: "min(177.78%, 711px)", // 9:16 aspect ratio
-              borderRadius: "16px",
-              overflow: "hidden",
-              background: "#000"
-            }}
-          >
-            <iframe
-              src={mediaUrl}
-              title={title}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                border: "none"
-              }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </div>
-      );
-    }
-    
-    return (
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          paddingBottom: "56.25%", // 16:9 aspect ratio
-          borderRadius: "16px",
-          overflow: "hidden",
-          background: "#000"
-        }}
-      >
-        <iframe
-          src={mediaUrl}
-          title={title}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            border: "none"
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      </div>
-    );
-  }
-
   if (mediaType === "video") {
     const { embedUrl, isYoutube } = convertToEmbedUrl(mediaUrl);
 
@@ -599,22 +469,6 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, pos
       );
     }
 
-    // posterUrl이 있으면 VideoWithFallback 사용 (poster-first 전략)
-    if (posterUrl) {
-      return (
-        <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-          <div style={{ width: "min(100%, 400px)" }}>
-            <VideoWithFallback
-              videoUrl={mediaUrl}
-              posterUrl={posterUrl}
-              timeoutMs={8000}
-            />
-          </div>
-        </div>
-      );
-    }
-
-    // posterUrl 없으면 기존 VideoPlayer 사용
     return (
       <VideoPlayer mediaUrl={mediaUrl} />
     );
@@ -623,7 +477,9 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, pos
   return (
     <div
       style={{
+        position: "relative",
         width: "100%",
+        paddingBottom: "56.25%",
         borderRadius: "16px",
         overflow: "hidden",
         background: "#f3f4f6"
@@ -634,9 +490,12 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, pos
         alt={title}
         loading="lazy"
         style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
           width: "100%",
-          height: "auto",
-          display: "block"
+          height: "100%",
+          objectFit: "cover"
         }}
       />
     </div>
