@@ -1,4 +1,4 @@
-export interface ProductComparisonTable {
+냉장고export interface ProductComparisonTable {
   name: string;
   imageUrl: string;
   specs: {
@@ -109,7 +109,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Seedling",
       mediaType: "image",
       mediaUrl: "http://open.lge.co.kr/link/2024/usp/39_OBJET/01_WATER/W825_482/usp_06_gif.gif",
-      description: "생수를 채워 넣고, 얼음을 얼리는 게 귀찮고 번거로웠다면 직수형 냉장고 STEM을 추천합니다. 건강한 물과 얼음을 만들고자 했던 DIOS는 물과 양분을 옮기는 식물의 줄기(STEM) 에서 영감을 받아 직수형 냉장고를 만들었습니다.",
+      description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
       highlights: [
         "흐르는 물로 얼음을 만드는 제빙 시스템",
         "전문가가 꼼꼼하게 관리하는 케어 시스템",
@@ -215,7 +215,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "https://www.youtube.com/embed/E19Smv1V-tk?autoplay=1&vq=hd720",
       isShorts: true,
       description:
-        "도어 걸림은 없앤 제로 클리어런스 힌지가 만드는 단 4mm 간격의 완벽에 가까운 밀착! 인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아듭니다.",
+        "제로 클리어런스 힌지가 만드는 단 4mm 간격의 완벽에 가까운 밀착! 빌트인 감성의 인테리어를 꿈꾼다면 공간에 자연스럽게 녹아드는 Fit & MaX를 선택하세요.",
       highlights: ["제로 클리어런스 힌지", "인테리어 냉장고", "다양한 라인업", "냉툭튀가 싫다면 Fit & Max로"],
     },
     {
@@ -228,7 +228,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           url: "https://www.lge.co.kr/kr/images/refrigerators/interior/I5.jpg",
           title: "Fit & Max 냉장고 + 4도어 김치냉장고 조합",
-          description: "노크온이 있는 Fit & Max 냉장고와 든든한 480L 용량의 4도어 김치냉장고, 가족이 많거나 미식을 즐기는 분을 위한 조합",
+          description: "노크온이 있는 Fit & Max 냉장고와 든든한 480L 용량의 4도어 김치냉장고, 가족이 많거나 미식을 즐기는 분께 좋아요",
         },
         {
           url: "https://www.lge.co.kr/kr/images/refrigerators/interior/i6.jpg",
