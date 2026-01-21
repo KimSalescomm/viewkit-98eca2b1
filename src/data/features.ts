@@ -1,4 +1,4 @@
-관냉장고export interface ProductComparisonTable {
+export interface ProductComparisonTable {
   name: string;
   imageUrl: string;
   specs: {
