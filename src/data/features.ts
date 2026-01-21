@@ -167,7 +167,8 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Sparkles",
       mediaType: "gallery",
       mediaUrl: "",
-      description: "수도관 매립 여부, 냉장고와 싱크대의 거리 등 환경에 따라 STEM 설치는 달라집니다.",
+      description:
+        "수도관 매립 여부, 냉장고와 싱크대의 거리 등 환경에 따라 STEM 설치는 달라집니다. 가구색과 유사한 몰딩을 이용해 수도관이 드러나지 않도록 깔끔하게 마감합니다.",
       highlights: [
         "냉장고 장 위치에 수도관 매립○",
         "수도관 매립X, 냉장고와 싱크대가 붙어있는 경우",
@@ -175,10 +176,22 @@ export const featuresMap: Record<string, Feature[]> = {
         "수도관 매립X, 냉장고와 싱크대가 먼 경우",
       ],
       galleryImages: [
-        { url: "/images/installation-step1.jpeg", title: "STEP 1", description: "콘센트 및 수도관 위치 확인" },
-        { url: "/images/installation-step2.jpeg", title: "STEP 2", description: "바닥 배관 연결" },
-        { url: "/images/installation-step3.jpeg", title: "STEP 3", description: "냉장고 수평 맞추기" },
-        { url: "/images/installation-step4.jpeg", title: "STEP 4", description: "설치 완료 모습" },
+        { url: "/images/installation-step1.jpeg", title: "Case 1", description: "냉장고 장 위치에 수도관 매립" },
+        {
+          url: "/images/installation-step2.jpeg",
+          title: "Case 2",
+          description: "수도관 매립X, 싱크대가 냉장고 바로 옆일 때 (타공)",
+        },
+        {
+          url: "/images/installation-step3.jpeg",
+          title: "Case 3",
+          description: "수도관 매립X, 싱크대를 타공할 수 없을 때",
+        },
+        {
+          url: "/images/installation-step4.jpeg",
+          title: "Case 4",
+          description: "수도관 매립X, 싱크대 위치가 냉장고와 멀 때",
+        },
       ],
     },
     {
