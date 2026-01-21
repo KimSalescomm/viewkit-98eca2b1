@@ -188,6 +188,11 @@ export const featuresMap: Record<string, Feature[]> = {
           title: "Case 4",
           description: "수도관 매립X, 싱크대 위치가 냉장고와 멀 때",
         },
+        {
+          url: "/images/installation-step5.jpeg",
+          title: "인테리어에 맞춘 몰딩 부자재",
+          description: "Case3,4처럼 수도관이 밖으로 이어지는 경우에는 주방 가구 컬러에 맞춘 몰딩 부자재로 숨김 처리를 해드립니다.",
+        },
       ],
     },
     {
