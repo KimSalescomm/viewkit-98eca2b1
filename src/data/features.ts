@@ -221,7 +221,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "12",
       title: "함께하면 더 좋은 Fit & Max 조합",
-      subtitle: "인테리어는 Fit, 활용은 Max"
+      subtitle: "인테리어는 Fit, 활용은 Max",
       icon: "ImageIcon",
       mediaType: "gallery",
       galleryImages: [
