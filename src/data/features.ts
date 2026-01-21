@@ -220,8 +220,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "12",
-      title: "인테리어 갤러리",
-      subtitle: "공간과 조화를 이루는 LG 냉장고 인테리어 컷",
+      title: "함께하면 더 좋은 Fit & Max 조합",
+      subtitle: "인테리어는 Fit, 활용은 Max"
       icon: "ImageIcon",
       mediaType: "gallery",
       galleryImages: [
@@ -232,8 +232,8 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
       mediaUrl: "",
       description:
-        "LG 냉장고는 다양한 주방 인테리어와 완벽하게 어울리며, 공간의 품격을 높여줍니다. 모던, 클래식, 미니멀 등 다양한 스타일에 맞는 디자인을 확인해보세요.",
-      highlights: ["다양한 인테리어 연출", "프리미엄 마감재", "공간 효율적 디자인", "트렌디한 컬러 옵션"],
+        "다양한 Fit & Max 라인업, STEM 냉장고, 김치, 냉장,냉동 전용 컨버터블을 내 생활에 맞게 조합해 보세요. 공간은 아름다워지고, 생활은 더 풍요로워집니다.",
+      highlights: ["다양한 인테리어 연출", "조합으로 더 넉넉해지는 용량", "Fit & Max로 트렌디한 인테리어"],
     },
   ],
 
