@@ -1,4 +1,4 @@
-export interface ProductComparisonTable {
+냉장고export interface ProductComparisonTable {
   name: string;
   imageUrl: string;
   specs: {
@@ -227,8 +227,8 @@ export const featuresMap: Record<string, Feature[]> = {
       galleryImages: [
         {
           url: "https://www.lge.co.kr/kr/images/refrigerators/interior/I5.jpg",
-          title: "STEM + 김치냉장고 조합",
-          description: "STEM 냉장고와 김치냉장고를 나란히 배치하여 넉넉한 수납과 통일된 인테리어를 완성합니다.",
+          title: "Fit & Max 냉장고 + 4도어 김치냉장고 조합",
+          description: "노크온이 있는 Fit & Max 냉장고와 든든한 480L 용량의 4도어 김치냉장고, 가족이 많거나 미식을 즐기는 분을 위한 조합",
         },
         {
           url: "https://www.lge.co.kr/kr/images/refrigerators/interior/i6.jpg",
