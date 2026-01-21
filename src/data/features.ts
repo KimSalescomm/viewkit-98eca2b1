@@ -107,8 +107,8 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "STEM이란?",
       subtitle: "냉장고를 넘어선 Fresh SYSTEM 직수형 SYSTEM 냉장고",
       icon: "Seedling",
-      mediaType: "youtube",
-      mediaUrl: "https://www.youtube.com/embed/ULBpi2Qwf1g?autoplay=1&vq=hd720",
+      mediaType: "image",
+      mediaUrl: "http://open.lge.co.kr/link/2024/usp/39_OBJET/01_WATER/W825_482/usp_06_gif.gif",
       description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
       highlights: [
         "흐르는 물로 얼음을 만드는 제빙 시스템",
@@ -163,13 +163,13 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "9",
-      title: "STEM 냉장고 우리집에 설치할 때는?",
-      subtitle: "수도관을 연결해야하는 STEM, 환경에 따라 다른 설치 방식을 확인하세요",
+      title: "STEM 환경별 설치가이드",
+      subtitle: "수도관을 연결해야하는 STEM, 환경에 따라 다른 설치방식을 확인하세요",
       icon: "Sparkles",
       mediaType: "gallery",
       mediaUrl: "",
       description:
-        "수도관을 직접 연결하는 STEM 냉장고는 부엌 환경에 따라 설치가 다릅니다. 몰딩을 이용해 수도관이 드러나지 않도록 깔끔하게 마감합니다.",
+        "수도관 매립 여부, 냉장고와 싱크대의 거리 등 환경에 따라 STEM 설치는 달라집니다. 가구색과 유사한 몰딩을 이용해 수도관이 드러나지 않도록 깔끔하게 마감합니다.",
       highlights: ["수도관 매립 여부 확인", "싱크대 타공 가능한지 확인", "몰딩 처리 확인"],
       galleryImages: [
         { url: "/images/installation-step1.jpeg", title: "Case 1", description: "냉장고 장 위치에 수도관 매립" },
