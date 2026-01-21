@@ -165,6 +165,15 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
   const [canScrollNext, setCanScrollNext] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+  // Prevent out-of-range access when switching between galleries of different sizes
+  const galleryLength = galleryImages?.length ?? 0;
+  useEffect(() => {
+    if (!galleryLength) return;
+    if (selectedIndex < galleryLength) return;
+    setSelectedIndex(0);
+    emblaApi?.scrollTo(0);
+  }, [galleryLength, selectedIndex, emblaApi]);
+
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
@@ -326,7 +335,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
       typeof img === "string" ? { url: img } : img
     );
 
-    const currentImage = normalizedImages[selectedIndex];
+    const currentImage = normalizedImages[selectedIndex] ?? normalizedImages[0];
 
     return (
       <div style={{ width: "100%", position: "relative" }}>
@@ -407,7 +416,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
         </div>
 
         {/* Caption Box */}
-        {(currentImage.title || currentImage.description) && (
+        {(currentImage?.title || currentImage?.description) && (
           <div
             style={{
               background: "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
@@ -416,19 +425,19 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
               borderTop: "1px solid #dee2e6",
             }}
           >
-            {currentImage.title && (
+            {currentImage?.title && (
               <h4
                 style={{
                   fontSize: "18px",
                   fontWeight: 700,
                   color: "#212529",
-                  marginBottom: currentImage.description ? "8px" : 0,
+                  marginBottom: currentImage?.description ? "8px" : 0,
                 }}
               >
                 {currentImage.title}
               </h4>
             )}
-            {currentImage.description && (
+            {currentImage?.description && (
               <p
                 style={{
                   fontSize: "15px",
