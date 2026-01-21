@@ -1,4 +1,4 @@
-export interface ProductComparisonTable {
+냉장고export interface ProductComparisonTable {
   name: string;
   imageUrl: string;
   specs: {
@@ -109,7 +109,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Seedling",
       mediaType: "image",
       mediaUrl: "http://open.lge.co.kr/link/2024/usp/39_OBJET/01_WATER/W825_482/usp_06_gif.gif",
-      description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
+      description: "생수를 채워 넣고, 얼음을 얼리는 게 귀찮고 번거로웠다면 직수형 냉장고 STEM을 추천합니다. 건강한 물과 얼음을 만들고자 했던 DIOS는 물과 양분을 옮기는 식물의 줄기(STEM) 에서 영감을 받아 직수형 냉장고를 만들었습니다.",
       highlights: [
         "흐르는 물로 얼음을 만드는 제빙 시스템",
         "전문가가 꼼꼼하게 관리하는 케어 시스템",
@@ -230,15 +230,20 @@ export const featuresMap: Record<string, Feature[]> = {
           title: "Fit & Max 냉장고 + 4도어 김치냉장고 조합",
           description: "노크온이 있는 Fit & Max 냉장고와 든든한 480L 용량의 4도어 김치냉장고, 가족이 많거나 미식을 즐기는 분을 위한 조합",
         },
-     {
-          url: "https://www.lge.co.kr/kr/images/refrigerators/interior/i2.jpg",
-          title: "Fit & Max 냉장고 + 3도어 김치냉장고 조합",
-          description: "Fit & Max의 밀착 설치와 냉장고 장과 어울리는 컬러로 가구인듯, 가전인듯 빌트인 못지않은 깔끔한 인테리어",
+        {
+          url: "https://www.lge.co.kr/kr/images/refrigerators/interior/i6.jpg",
+          title: "컨버터블 냉동고 조합",
+          description: "냉장/냉동 전환이 가능한 컨버터블을 추가하여 계절과 상황에 맞게 활용하세요.",
         },
         {
-          url: "https://www.lge.co.kr/kr/images/convertible-refrigerators/md10574832/XYZ324_fitmax_01.jpg",
-          title: "Fit & Max 냉장고 + 컨버터블 냉장/냉동/김치",
-          description: "맞춘듯이 들어가는 Fit & Mix, 냉장, 냉동, 김치 중 더하고 싶은 기능이 있다면 컨버터블 Fit & Max로 하나씩 더하기",
+          url: "https://www.lge.co.kr/kr/images/refrigerators/interior/i2.jpg",
+          title: "빌트인 스타일 연출",
+          description: "Fit & Max의 밀착 설치로 빌트인 못지않은 깔끔한 주방 인테리어를 연출합니다.",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/images/refrigerators/md10207839/pdp-re-slide1.jpg",
+          title: "다양한 컬러 조합",
+          description: "주방 분위기에 맞춰 다양한 컬러 조합으로 나만의 스타일을 완성하세요.",
         },
       ],
       mediaUrl: "",
