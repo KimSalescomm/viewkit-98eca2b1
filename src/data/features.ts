@@ -24,6 +24,7 @@ export interface Feature {
   highlights: string[];
   tableData?: ProductComparisonTable[];
   galleryImages?: (string | GalleryImage)[];
+  isShorts?: boolean;
 }
 
 export const featuresMap: Record<string, Feature[]> = {
@@ -106,8 +107,8 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "STEM이란?",
       subtitle: "냉장고를 넘어선 Fresh SYSTEM 직수형 SYSTEM 냉장고",
       icon: "Seedling",
-      mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
+      mediaType: "youtube",
+      mediaUrl: "https://www.youtube.com/embed/ULBpi2Qwf1g?autoplay=1&vq=hd720",
       description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
       highlights: [
         "흐르는 물로 얼음을 만드는 제빙 시스템",
@@ -205,8 +206,9 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "Fit & Max",
       subtitle: "냉장고 장과의 간격을 최소화한 밀착설치로 인테리어를 업그레이드 해 보세요.",
       icon: "Maximize2",
-      mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/event/2025/07/02_fit_max/images/fit_max_video.mp4",
+      mediaType: "youtube",
+      mediaUrl: "https://www.youtube.com/embed/E19Smv1V-tk?autoplay=1&vq=hd720",
+      isShorts: true,
       description:
         "도어 걸림은 없앤 제로 클리어런스 힌지가 만드는 단 4mm 간격의 완벽에 가까운 밀착! 인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아듭니다.",
       highlights: ["제로 클리어런스 힌지", "인테리어 냉장고", "다양한 라인업", "냉툭튀가 싫다면 Fit & Max로"],
