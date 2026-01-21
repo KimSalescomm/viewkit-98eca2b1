@@ -389,8 +389,6 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
                 style={{
                   flex: "0 0 100%",
                   minWidth: "100%",
-                  position: "relative",
-                  paddingBottom: "56.25%", // 16:9 aspect ratio
                 }}
               >
                 <SafeImage
@@ -398,12 +396,9 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
                   alt={image.title || `${title} - 이미지 ${idx + 1}`}
                   loading="lazy"
                   style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
                     width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
+                    height: "auto",
+                    display: "block",
                   }}
                 />
               </div>
@@ -565,9 +560,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
   return (
     <div
       style={{
-        position: "relative",
         width: "100%",
-        paddingBottom: "56.25%",
         borderRadius: "16px",
         overflow: "hidden",
         background: "#f3f4f6"
@@ -578,12 +571,9 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
         alt={title}
         loading="lazy"
         style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
           width: "100%",
-          height: "100%",
-          objectFit: "cover"
+          height: "auto",
+          display: "block",
         }}
       />
     </div>
