@@ -198,13 +198,32 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
   if (mediaType === "table" && tableData) {
     const specLabels = tableData[0]?.specs.map(s => s.label) || [];
     
-    // Check if values differ across products for each spec label
-    const hasDifferentValues = (label: string): boolean => {
+    // Check if THIS product's value differs from the majority for a given spec label
+    const isCellDifferent = (productIdx: number, label: string): boolean => {
       const allValues = tableData.map(product => {
         const spec = product.specs.find(s => s.label === label);
         return spec?.values.join('|') || '-';
       });
-      return new Set(allValues).size > 1;
+      
+      // If all values are the same, no cell is different
+      const uniqueValues = new Set(allValues);
+      if (uniqueValues.size === 1) return false;
+      
+      // If all values are different, highlight all
+      if (uniqueValues.size === allValues.length) return true;
+      
+      // Find the majority value (most common)
+      const valueCounts = allValues.reduce((acc, val) => {
+        acc[val] = (acc[val] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>);
+      
+      const majorityValue = Object.entries(valueCounts).reduce((a, b) => 
+        a[1] >= b[1] ? a : b
+      )[0];
+      
+      // Highlight only if this value differs from the majority
+      return allValues[productIdx] !== majorityValue;
     };
     
     return (
@@ -283,7 +302,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
                 {specLabels.map((label, rowIdx) => {
                   const spec = product.specs.find(s => s.label === label);
                   const values = spec?.values || ["-"];
-                  const isDifferent = hasDifferentValues(label);
+                  const isCellHighlighted = isCellDifferent(idx, label);
                   
                   return (
                     <div
@@ -291,16 +310,16 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
                       style={{
                         borderTop: "1px dotted #ccc",
                         borderBottom: rowIdx === specLabels.length - 1 ? "2px solid #333" : "none",
-                        background: isDifferent ? "#FFF8E1" : "transparent",
+                        background: isCellHighlighted ? "#FFF8E1" : "transparent",
                       }}
                     >
                       <div
                         style={{
                           padding: "8px 12px",
-                          background: isDifferent ? "#FFF3C4" : "#f9f9f9",
+                          background: isCellHighlighted ? "#FFF3C4" : "#f9f9f9",
                           fontWeight: 500,
                           fontSize: "12px",
-                          color: isDifferent ? "#8B6914" : "#666",
+                          color: isCellHighlighted ? "#8B6914" : "#666",
                           height: "32px",
                           display: "flex",
                           alignItems: "center",
