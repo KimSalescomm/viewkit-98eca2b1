@@ -130,7 +130,7 @@ export const featuresMap: Record<string, Feature[]> = {
           name: "STEM 얼음정수",
           imageUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/product_img01.png",
           specs: [
-            { label: "냉장고 용량", values: ["800L 대"] },
+            { label: "냉장고 용량", values: ["800L대"] },
             { label: "정수기 디스펜서", values: ["있음", "(정수, 냉수, 각얼음, 조각얼음)"] },
             { label: "얼음 종류", values: ["각얼음, 조각 얼음", "미니 각얼음", "크래프트 아이스"] },
             { label: "정수 필터", values: ["중금속 9종, 노로 바이러스 걸러 주는", "3단계 정수 필터"] },
@@ -152,7 +152,7 @@ export const featuresMap: Record<string, Feature[]> = {
           name: "STEM 베이직 Fit & Max",
           imageUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10553840/gallery/medium-interior01.jpg",
           specs: [
-            { label: "냉장고 용량", values: ["600L"] },
+            { label: "냉장고 용량", values: ["600L대"] },
             { label: "정수기 디스펜서", values: ["-"] },
             { label: "얼음 종류", values: ["각얼음 (트레이)", "크래프트 아이스"] },
             { label: "정수 필터", values: ["중금속 7종, 박테리아 걸러 주는", "복합 안심 정수 필터"] },
