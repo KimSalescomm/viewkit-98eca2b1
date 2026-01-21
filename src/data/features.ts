@@ -169,12 +169,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "",
       description:
         "수도관 매립 여부, 냉장고와 싱크대의 거리 등 환경에 따라 STEM 설치는 달라집니다. 가구색과 유사한 몰딩을 이용해 수도관이 드러나지 않도록 깔끔하게 마감합니다.",
-      highlights: [
-        "냉장고 장 위치에 수도관 매립○",
-        "수도관 매립X, 냉장고와 싱크대가 붙어있는 경우",
-        "수도관 매립 X, 타공 불가인 경우",
-        "수도관 매립X, 냉장고와 싱크대가 먼 경우",
-      ],
+      highlights: ["수도관 매립 여부 확인", "싱크대 타공 가능한지 확인", "몰딩 처리 확인"],
       galleryImages: [
         { url: "/images/installation-step1.jpeg", title: "Case 1", description: "냉장고 장 위치에 수도관 매립" },
         {
