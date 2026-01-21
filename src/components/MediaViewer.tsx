@@ -1,6 +1,6 @@
 import { convertToEmbedUrl } from "@/utils/videoUtils";
 import SafeImage from "@/components/SafeImage";
-import { ProductComparisonTable } from "@/data/features";
+import { ProductComparisonTable, GalleryImage } from "@/data/features";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight, PlayCircle } from "lucide-react";
@@ -10,7 +10,7 @@ interface MediaViewerProps {
   mediaUrl: string;
   title: string;
   tableData?: ProductComparisonTable[];
-  galleryImages?: string[];
+  galleryImages?: (string | GalleryImage)[];
 }
 
 // VideoPlayer component with error handling
@@ -318,8 +318,15 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
     );
   }
 
-  // Gallery 타입 - 이미지 캐러셀
+  // Gallery 타입 - 이미지 캐러셀 (캡션 지원)
   if (mediaType === "gallery" && galleryImages && galleryImages.length > 0) {
+    // galleryImages를 GalleryImage 배열로 정규화
+    const normalizedImages: GalleryImage[] = galleryImages.map((img) =>
+      typeof img === "string" ? { url: img } : img
+    );
+
+    const currentImage = normalizedImages[selectedIndex];
+
     return (
       <div style={{ width: "100%", position: "relative" }}>
         {/* Carousel Navigation */}
@@ -329,7 +336,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
             style={{
               position: "absolute",
               left: "8px",
-              top: "50%",
+              top: "calc(50% - 40px)",
               transform: "translateY(-50%)",
               zIndex: 10,
               background: "rgba(255,255,255,0.9)",
@@ -353,7 +360,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
             style={{
               position: "absolute",
               right: "8px",
-              top: "50%",
+              top: "calc(50% - 40px)",
               transform: "translateY(-50%)",
               zIndex: 10,
               background: "rgba(255,255,255,0.9)",
@@ -373,21 +380,21 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
         )}
 
         {/* Gallery Carousel */}
-        <div ref={emblaRef} style={{ overflow: "hidden", borderRadius: "16px" }}>
+        <div ref={emblaRef} style={{ overflow: "hidden", borderRadius: "16px 16px 0 0" }}>
           <div style={{ display: "flex" }}>
-            {galleryImages.map((imageUrl, idx) => (
+            {normalizedImages.map((image, idx) => (
               <div
                 key={idx}
                 style={{
                   flex: "0 0 100%",
                   minWidth: "100%",
                   position: "relative",
-                  paddingBottom: "66.67%", // 3:2 aspect ratio
+                  paddingBottom: "56.25%", // 16:9 aspect ratio
                 }}
               >
                 <SafeImage
-                  src={imageUrl}
-                  alt={`${title} - 이미지 ${idx + 1}`}
+                  src={image.url}
+                  alt={image.title || `${title} - 이미지 ${idx + 1}`}
                   loading="lazy"
                   style={{
                     position: "absolute",
@@ -403,9 +410,46 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
           </div>
         </div>
 
+        {/* Caption Box */}
+        {(currentImage.title || currentImage.description) && (
+          <div
+            style={{
+              background: "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
+              padding: "20px 24px",
+              borderRadius: "0 0 16px 16px",
+              borderTop: "1px solid #dee2e6",
+            }}
+          >
+            {currentImage.title && (
+              <h4
+                style={{
+                  fontSize: "18px",
+                  fontWeight: 700,
+                  color: "#212529",
+                  marginBottom: currentImage.description ? "8px" : 0,
+                }}
+              >
+                {currentImage.title}
+              </h4>
+            )}
+            {currentImage.description && (
+              <p
+                style={{
+                  fontSize: "15px",
+                  color: "#495057",
+                  lineHeight: 1.5,
+                  margin: 0,
+                }}
+              >
+                {currentImage.description}
+              </p>
+            )}
+          </div>
+        )}
+
         {/* Dots indicator */}
         <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginTop: "16px" }}>
-          {galleryImages.map((_, idx) => (
+          {normalizedImages.map((_, idx) => (
             <button
               key={idx}
               onClick={() => emblaApi?.scrollTo(idx)}
@@ -430,7 +474,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages }: M
           fontSize: "14px", 
           color: "#666" 
         }}>
-          {selectedIndex + 1} / {galleryImages.length}
+          {selectedIndex + 1} / {normalizedImages.length}
         </div>
       </div>
     );

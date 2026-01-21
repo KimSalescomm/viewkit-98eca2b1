@@ -7,6 +7,12 @@ export interface ProductComparisonTable {
   }[];
 }
 
+export interface GalleryImage {
+  url: string;
+  title?: string;
+  description?: string;
+}
+
 export interface Feature {
   id: string;
   title: string;
@@ -17,7 +23,7 @@ export interface Feature {
   description: string;
   highlights: string[];
   tableData?: ProductComparisonTable[];
-  galleryImages?: string[];
+  galleryImages?: (string | GalleryImage)[];
 }
 
 export const featuresMap: Record<string, Feature[]> = {
@@ -159,14 +165,20 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "STEM 환경별 설치가이드",
       subtitle: "수도관을 연결해야하는 STEM, 환경에 따라 다른 설치방식을 확인하세요",
       icon: "Sparkles",
-      mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/stem_install.webm",
+      mediaType: "gallery",
+      mediaUrl: "",
       description: "수도관 매립 여부, 냉장고와 싱크대의 거리 등 환경에 따라 STEM 설치는 달라집니다.",
       highlights: [
         "냉장고 장 위치에 수도관 매립○",
         "수도관 매립X, 냉장고와 싱크대가 붙어있는 경우",
         "수도관 매립 X, 타공 불가인 경우",
         "수도관 매립X, 냉장고와 싱크대가 먼 경우",
+      ],
+      galleryImages: [
+        { url: "/images/installation-step1.jpeg", title: "STEP 1", description: "콘센트 및 수도관 위치 확인" },
+        { url: "/images/installation-step2.jpeg", title: "STEP 2", description: "바닥 배관 연결" },
+        { url: "/images/installation-step3.jpeg", title: "STEP 3", description: "냉장고 수평 맞추기" },
+        { url: "/images/installation-step4.jpeg", title: "STEP 4", description: "설치 완료 모습" },
       ],
     },
     {
