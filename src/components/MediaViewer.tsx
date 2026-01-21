@@ -310,16 +310,16 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
                       style={{
                         borderTop: "1px dotted #ccc",
                         borderBottom: rowIdx === specLabels.length - 1 ? "2px solid #333" : "none",
-                        background: isCellHighlighted ? "#F3E8FF" : "transparent",
+                        background: isCellHighlighted ? "#eff6ff" : "transparent",
                       }}
                     >
                       <div
                         style={{
                           padding: "8px 12px",
-                          background: isCellHighlighted ? "#E9D5FF" : "#f9f9f9",
+                          background: isCellHighlighted ? "#dbeafe" : "#f9f9f9",
                           fontWeight: 500,
                           fontSize: "12px",
-                          color: isCellHighlighted ? "#7C3AED" : "#666",
+                          color: isCellHighlighted ? "#2563eb" : "#666",
                           height: "32px",
                           display: "flex",
                           alignItems: "center",
