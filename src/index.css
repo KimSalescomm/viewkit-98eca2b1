@@ -97,6 +97,11 @@ All colors MUST be HSL.
 @layer base {
   * {
     @apply border-border;
+    /* 한국어 단어 단위 줄바꿈 전역 적용 */
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    line-break: auto;
   }
 
   body {
