@@ -257,11 +257,6 @@ export const featuresMap: Record<string, Feature[]> = {
           title: "Fit & Max 냉장고 + 컨버터블 (냉장/냉동/김치)",
           description: "내 주방에 딱 맞는 Fit & Max에 내 라이프스타일에 맞는 컨버터블 모델을 하나 더 추가해 보세요.",
         },
-        {
-          url: "https://www.lge.co.kr/kr/images/refrigerators/md10207839/pdp-re-slide1.jpg",
-          title: "다양한 컬러 조합",
-          description: "주방 분위기에 맞춰 다양한 컬러 조합으로 나만의 스타일을 완성하세요.",
-        },
       ],
       description:
         "다양한 Fit & Max 라인업, STEM 냉장고, 김치, 냉장,냉동 전용 컨버터블을 내 생활에 맞게 조합해 보세요. 공간은 아름다워지고, 생활은 더 풍요로워집니다.",
