@@ -76,44 +76,47 @@ const Home = () => {
 
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "32px" }}>
-          <h1
+          {/* VIEW KIT - Subtle branding */}
+          <p
             style={{
-              fontSize: "48px",
-              fontWeight: 900,
-              letterSpacing: "0.05em",
+              fontSize: "14px",
+              fontWeight: 500,
+              letterSpacing: "0.1em",
               textTransform: "uppercase",
-              color: "#1f2937",
-              marginBottom: "24px"
+              color: "#9ca3af",
+              marginBottom: "16px"
             }}
           >
             VIEW KIT
-          </h1>
+          </p>
 
-          {/* Product Badge */}
+          {/* Category Chip - Subtle style */}
           <div
             style={{
               display: "inline-block",
-              background: "linear-gradient(to right, #2563eb, #9333ea)",
-              padding: "12px 32px",
+              backgroundColor: "#faf5ff",
+              border: "1px solid #e9d5ff",
+              padding: "8px 20px",
               borderRadius: "50px",
-              marginBottom: "24px"
+              marginBottom: "20px"
             }}
           >
-            <span style={{ fontSize: "36px", fontWeight: "bold", color: "#ffffff" }}>
-              {product.name}
+            <span style={{ fontSize: "16px", fontWeight: 600, color: "#9333ea" }}>
+              냉장고
             </span>
           </div>
 
-          <h2
+          {/* Main Title */}
+          <h1
             style={{
               fontSize: "28px",
               fontWeight: 700,
               color: "#111827",
-              marginBottom: "8px"
+              marginBottom: "12px"
             }}
           >
-            {product.title}
-          </h2>
+            LG DIOS 오브제컬렉션
+          </h1>
           <p style={{ fontSize: "18px", color: "#4b5563" }}>
             {product.description}
           </p>
