@@ -239,6 +239,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Puzzle",
       tag: "Fit & Max 세트",
       mediaType: "gallery",
+      mediaUrl: "",
       galleryImages: [
         {
           url: "https://www.lge.co.kr/kr/images/refrigerators/interior/I5.jpg",
