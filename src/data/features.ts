@@ -1,4 +1,4 @@
-<b></b>export interface ProductComparisonTable {
+export interface ProductComparisonTable {
   name: string;
   imageUrl: string;
   specs: {
