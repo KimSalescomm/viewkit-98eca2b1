@@ -171,6 +171,7 @@ const Home = () => {
               subtitle={feature.subtitle}
               icon={feature.icon}
               productId={productId || ""}
+              tag={feature.tag}
             />
           ))}
         </div>
