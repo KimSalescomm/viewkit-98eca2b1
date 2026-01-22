@@ -18,7 +18,7 @@ export const products: Product[] = [
   },
   {
     id: "refrigerator",
-    name: "DIOS 냉장고",
+    name: "냉장고",
     title: "DIOS 냉장고",
     description: "fresh sySTEM으로 완성되는 직수형 냉장고 STEM",
     keyVisualImage: "https://www.lge.co.kr/kr/story/buying-guide/img/lg-refrigerator-guide/keyvisual_02.jpg",
@@ -26,8 +26,8 @@ export const products: Product[] = [
   },
   {
     id: "styler",
-    name: "스타일러",
-    title: "EVERYDAY EVERYWEAR",
+    name: "의류관리기",
+    title: "스타일러",
     description: "스타일링, 건조, 제습을 ALL NEW 스타일러 하나로",
     keyVisualImage: "https://www.lge.co.kr/kr/images/lg-styler/md10544833/gallery/medium-interior01.jpg",
     icon: "Shirt",
