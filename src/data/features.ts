@@ -247,14 +247,15 @@ export const featuresMap: Record<string, Feature[]> = {
             "노크온이 있는 Fit & Max 냉장고와 든든한 480L 용량의 4도어 김치냉장고, 가족이 많거나 미식을 즐기는 분을 위한 조합",
         },
         {
-          url: "https://www.lge.co.kr/kr/images/refrigerators/interior/i6.jpg",
-          title: "컨버터블 냉동고 조합",
-          description: "냉장/냉동 전환이 가능한 컨버터블을 추가하여 계절과 상황에 맞게 활용하세요.",
+          url: "https://www.lge.co.kr/kr/images/refrigerators/interior/i2.jpg",
+          title: "Fit & Max 냉장고 + 3도어 김치냉장고 조합",
+          description:
+            "깔끔하게 밀착 설치한 Fit & Max 냉장고에 3도어 김치냉장고를 더하면 디자인도 용량도 부족하지 않은 최상의 조합이 되죠.",
         },
         {
-          url: "https://www.lge.co.kr/kr/images/refrigerators/interior/i2.jpg",
-          title: "빌트인 스타일 연출",
-          description: "Fit & Max의 밀착 설치로 빌트인 못지않은 깔끔한 주방 인테리어를 연출합니다.",
+          url: "https://www.lge.co.kr/kr/images/convertible-refrigerators/md10574832/XYZ324_fitmax_01.jpg",
+          title: "Fit & Max 냉장고 + 컨버터블 (냉장/냉동/김치)",
+          description: "내 주방에 딱 맞는 Fit & Max에 내 라이프스타일에 맞는 컨버터블 모델을 하나 더 추가해 보세요.",
         },
         {
           url: "https://www.lge.co.kr/kr/images/refrigerators/md10207839/pdp-re-slide1.jpg",
