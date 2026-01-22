@@ -177,7 +177,7 @@ const FeatureDetail = () => {
               marginBottom: "16px"
             }}
           >
-            상세 설명
+            설명 더 보기
           </h2>
           <p
             style={{
@@ -208,7 +208,7 @@ const FeatureDetail = () => {
               marginBottom: "16px"
             }}
           >
-            핵심 기능
+            핵심만 쏙
           </h2>
           <div
             style={{
