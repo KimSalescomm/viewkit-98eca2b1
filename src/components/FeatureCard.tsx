@@ -7,9 +7,10 @@ interface FeatureCardProps {
   subtitle: string;
   icon: string;
   productId: string;
+  tag?: string;
 }
 
-const FeatureCard = ({ id, title, subtitle, icon, productId }: FeatureCardProps) => {
+const FeatureCard = ({ id, title, subtitle, icon, productId, tag }: FeatureCardProps) => {
   const emoji = featureIconMap[icon] || "✨";
 
   return (
@@ -49,6 +50,22 @@ const FeatureCard = ({ id, title, subtitle, icon, productId }: FeatureCardProps)
       >
         <span style={{ fontSize: "32px" }}>{emoji}</span>
       </div>
+      {tag && (
+        <span
+          style={{
+            display: "inline-block",
+            backgroundColor: "#EFF6FF",
+            color: "#2563EB",
+            fontSize: "13px",
+            fontWeight: 600,
+            padding: "4px 10px",
+            borderRadius: "12px",
+            marginBottom: "12px"
+          }}
+        >
+          {tag}
+        </span>
+      )}
       <h3
         style={{
           fontSize: "20px",
