@@ -222,7 +222,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "11",
-      title: "튀어나옴 없이 딱 맞는 주방, 원하시나요?",
+      title: "가전이야 가구야? 빌트인 감성의 주방을 원한다면?",
       subtitle: "주방이 훨씬 넓고 깔끔해 보이는\n'Fit & Max' 냉장고를 확인해보세요.",
       icon: "Ruler",
       tag: "Fit & Max란?",
