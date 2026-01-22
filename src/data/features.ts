@@ -229,7 +229,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "image",
       mediaUrl: "https://open.lge.co.kr/link/2025/usp/39_OBJET/03_TOP/M626_022/usp_05_gif.gif",
       description:
-        "<b>도어 걸림을 없앤 제로 클리어런스 힌지가 만드는 단 4mm 간격의 완벽에 가까운 밀착!</b><b>인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아듭니다.</b>",
+        "도어 걸림을 없앤 제로 클리어런스 힌지가 만드는 단 4mm 간격의 완벽에 가까운 밀착! 인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아듭니다.",
       highlights: ["제로 클리어런스 힌지", "인테리어 냉장고", "다양한 라인업", "냉툭튀가 싫다면 Fit & Max로"],
     },
     {
