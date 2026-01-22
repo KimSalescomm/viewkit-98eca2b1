@@ -176,26 +176,35 @@ export const featuresMap: Record<string, Feature[]> = {
         "수도관 매립 여부, 냉장고와 싱크대의 거리 등 환경에 따라 STEM 설치는 달라집니다. 가구색과 유사한 몰딩을 이용해 수도관이 드러나지 않도록 깔끔하게 마감합니다.",
       highlights: ["수도관 매립 여부 확인", "싱크대 타공 가능한지 확인", "몰딩 처리 확인"],
       galleryImages: [
-        { url: "/images/installation-step1.jpeg", title: "1.냉장고장에 수도관이 매립되어 있나요?", description: "냉장고 장에 수도관이 있다면 STEM을 설치하기 가장 좋은 환경이에요! 깔끔하게 수도관을 연결할 수 있어요." },
+        {
+          url: "/images/installation-step1.jpeg",
+          title: "1.냉장고장에 수도관이 매립되어 있나요?",
+          description:
+            "냉장고 장에 수도관이 있다면 STEM을 설치하기 가장 좋은 환경이에요! 깔끔하게 수도관을 연결할 수 있어요.",
+        },
         {
           url: "/images/installation-step2.jpeg",
           title: "2.싱크대 거리가 가깝고, 싱크대 타공이 가능한가요?",
-          description: "매립된 수도관이 없다면, 싱크대 옆면에 수도관을 꺼낼만큼 구멍을 내어 수도관이 밖으로 드러나지 않게 설치할 수 있어요.",
+          description:
+            "매립된 수도관이 없다면, 싱크대 옆면에 수도관을 꺼낼만큼 구멍을 내어 수도관이 밖으로 드러나지 않게 설치할 수 있어요.",
         },
         {
           url: "/images/installation-step3.jpeg",
           title: "3.싱크대 거리가 가깝지만, 싱크대 타공을 할 수 없다면?",
-          description: "싱크대 아래 걸레받이 틈으로 수도관을 꺼내 연결할 수 있어요. 가구색과 가장 유사항 몰딩으로 깔끔하게 마무리 해드립니다.",
+          description:
+            "싱크대 아래 걸레받이 틈으로 수도관을 꺼내 연결할 수 있어요. 가구색과 가장 유사항 몰딩으로 깔끔하게 마무리 해드립니다.",
         },
         {
           url: "/images/installation-step4.jpeg",
           title: "4.싱크대가 냉장고를 놓을 위치와 다소 떨어져 있나요?",
-          description: "싱크대와 냉장고 사이를 잇는 수도관을 벽면에 가깝게 붙여 설치합니다. 가구색과 가장 유사한 몰딩으로 깔끔하게 마무리 해드립니다",
+          description:
+            "싱크대와 냉장고 사이를 잇는 수도관을 벽면에 가깝게 붙여 설치합니다. 가구색과 가장 유사한 몰딩으로 깔끔하게 마무리 해드립니다",
         },
         {
           url: "/images/installation-step5.jpeg",
           title: "인테리어에 맞춘 몰딩 부자재",
-          description: "Case3,4처럼 수도관이 밖으로 이어지는 경우에는 주방 가구 컬러에 맞춘 몰딩 부자재로 숨김 처리를 해드립니다.",
+          description:
+            "Case3,4처럼 수도관이 밖으로 이어지는 경우에는 주방 가구 컬러에 맞춘 몰딩 부자재로 숨김 처리를 해드립니다.",
         },
       ],
     },
@@ -229,13 +238,14 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "함께하면 더 좋은 Fit & Max 어떤 세트가 있나요?",
       subtitle: "인테리어는 Fit 용량은 Max\n주방이 돋보이는 조합을 모아봤어요.",
       icon: "Puzzle",
-      tag: "Fit & Max",
+      tag: "Fit & Max 세트",
       mediaType: "gallery",
       galleryImages: [
         {
           url: "https://www.lge.co.kr/kr/images/refrigerators/interior/I5.jpg",
           title: "Fit & Max 냉장고 + 4도어 김치냉장고 조합",
-          description: "노크온이 있는 Fit & Max 냉장고와 든든한 480L 용량의 4도어 김치냉장고, 가족이 많거나 미식을 즐기는 분을 위한 조합",
+          description:
+            "노크온이 있는 Fit & Max 냉장고와 든든한 480L 용량의 4도어 김치냉장고, 가족이 많거나 미식을 즐기는 분을 위한 조합",
         },
         {
           url: "https://www.lge.co.kr/kr/images/refrigerators/interior/i6.jpg",
