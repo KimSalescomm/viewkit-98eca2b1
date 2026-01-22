@@ -118,8 +118,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "8",
-      title: "STEM 냉장고 라인업 비교",
-      subtitle: "한눈에 보는 LG 디오스 STEM 냉장고,\n라인업별로 어떤 차이가 있는지 알려드릴게요",
+      title: "나에겐 어떤 모델이 딱 맞을까요?",
+      subtitle: "다양한 종류의 직수형 냉장고 STEM\n모델별 차이를 확인해 보세요.",
       icon: "Search",
       mediaType: "table",
       mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/product_img01.png",
@@ -163,9 +163,9 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "9",
-      title: "STEM 환경별 설치가이드",
-      subtitle: "수도관을 연결해야하는 STEM, 환경에 따라 다른 설치방식을 확인하세요",
-      icon: "Sparkles",
+      title: "수도 연결… 우리 집은 가능할까요?",
+      subtitle: "수도관 연결 어떻게 될지 고민되시죠?\n깔끔한 마무리까지 확인해보세요.",
+      icon: "Ruler",
       mediaType: "gallery",
       mediaUrl: "",
       description:
@@ -197,9 +197,9 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "10",
-      title: "STEM 구독 전문케어",
-      subtitle: "물이 흐르는 STEM, 전문가 케어 서비스를 눈으로 확인해 보세요",
-      icon: "Sparkles",
+      title: "보이지 않는 물길 속, 관리는 누가 할까요?",
+      subtitle: "필터부터 청소까지, 전문가가 알아서\n챙겨주는 전문 케어를 보여드려요.",
+      icon: "Wrench",
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM?si=j4iIwotCwLBvji5k",
       description:
@@ -208,9 +208,9 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "11",
-      title: "Fit & Max",
-      subtitle: "냉장고 장과의 간격을 최소화한 밀착설치로 인테리어를 업그레이드 해 보세요.",
-      icon: "Maximize2",
+      title: "튀어나옴 없이 딱 맞는 주방, 원하시나요?",
+      subtitle: "주방이 훨씬 넓고 깔끔해 보이는\n'Fit & Max' 냉장고를 확인해보세요.",
+      icon: "Ruler",
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/E19Smv1V-tk?autoplay=1&vq=hd720",
       isShorts: true,
@@ -220,9 +220,9 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "12",
-      title: "함께하면 더 좋은 Fit & Max 조합",
-      subtitle: "인테리어는 Fit, 활용은 Max",
-      icon: "ImageIcon",
+      title: "함께하면 더 좋은 Fit & Max 어떤 세트가 있나요?",
+      subtitle: "인테리어는 Fit 용량은 Max\n주방이 돋보이는 조합을 모아봤어요.",
+      icon: "Puzzle",
       mediaType: "gallery",
       galleryImages: [
         {
@@ -402,6 +402,9 @@ export const featureIconMap: Record<string, string> = {
   Search: "🔍",
   Cleaning: "🧹",
   ImageIcon: "🖼️",
+  Ruler: "📐",
+  Wrench: "🧰",
+  Puzzle: "🧩",
 };
 
 export const getFeaturesByProductId = (productId: string): Feature[] => {
