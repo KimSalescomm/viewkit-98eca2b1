@@ -263,7 +263,6 @@ export const featuresMap: Record<string, Feature[]> = {
           description: "주방 분위기에 맞춰 다양한 컬러 조합으로 나만의 스타일을 완성하세요.",
         },
       ],
-      mediaUrl: "",
       description:
         "다양한 Fit & Max 라인업, STEM 냉장고, 김치, 냉장,냉동 전용 컨버터블을 내 생활에 맞게 조합해 보세요. 공간은 아름다워지고, 생활은 더 풍요로워집니다.",
       highlights: ["다양한 인테리어 연출", "조합으로 더 넉넉해지는 용량", "Fit & Max로 트렌디한 인테리어"],
