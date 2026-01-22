@@ -18,6 +18,7 @@ export interface Feature {
   title: string;
   subtitle: string;
   icon: string;
+  tag?: string;
   mediaType: "video" | "image" | "table" | "gallery" | "youtube";
   mediaUrl: string;
   description: string;
@@ -104,9 +105,10 @@ export const featuresMap: Record<string, Feature[]> = {
   refrigerator: [
     {
       id: "7",
-      title: "STEM이란?",
-      subtitle: "냉장고를 넘어선 Fresh SYSTEM 직수형 SYSTEM 냉장고",
+      title: "매번 물 채우기, 번거롭지 않나요?",
+      subtitle: "물통 없이 스스로 채우는 직수형\n편리한 냉장고 STEM을 확인해보세요.",
       icon: "Seedling",
+      tag: "STEM이란?",
       mediaType: "image",
       mediaUrl: "http://open.lge.co.kr/link/2024/usp/39_OBJET/01_WATER/W825_482/usp_06_gif.gif",
       description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
@@ -121,6 +123,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "나에겐 어떤 모델이 딱 맞을까요?",
       subtitle: "다양한 종류의 직수형 냉장고 STEM\n모델별 차이를 확인해 보세요.",
       icon: "Search",
+      tag: "STEM 제품 비교",
       mediaType: "table",
       mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/product_img01.png",
       description: "STEM 얼음정수 냉장고와 STEM 베이직 냉장고의 주요 사양을 비교해보세요.",
@@ -166,6 +169,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "수도 연결… 우리 집은 가능할까요?",
       subtitle: "수도관 연결 어떻게 될지 고민되시죠?\n깔끔한 마무리까지 확인해보세요.",
       icon: "Ruler",
+      tag: "설치 체크",
       mediaType: "gallery",
       mediaUrl: "",
       description:
@@ -200,6 +204,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "보이지 않는 물길 속, 관리는 누가 할까요?",
       subtitle: "필터부터 청소까지, 전문가가 알아서\n챙겨주는 전문 케어를 보여드려요.",
       icon: "Wrench",
+      tag: "구독 전문케어",
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM?si=j4iIwotCwLBvji5k",
       description:
@@ -211,6 +216,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "튀어나옴 없이 딱 맞는 주방, 원하시나요?",
       subtitle: "주방이 훨씬 넓고 깔끔해 보이는\n'Fit & Max' 냉장고를 확인해보세요.",
       icon: "Ruler",
+      tag: "Fit & Max",
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/E19Smv1V-tk?autoplay=1&vq=hd720",
       isShorts: true,
@@ -223,6 +229,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "함께하면 더 좋은 Fit & Max 어떤 세트가 있나요?",
       subtitle: "인테리어는 Fit 용량은 Max\n주방이 돋보이는 조합을 모아봤어요.",
       icon: "Puzzle",
+      tag: "Fit & Max",
       mediaType: "gallery",
       galleryImages: [
         {
