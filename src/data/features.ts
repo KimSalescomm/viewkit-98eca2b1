@@ -225,7 +225,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "튀어나옴 없이 딱 맞는 주방, 원하시나요?",
       subtitle: "주방이 훨씬 넓고 깔끔해 보이는\n'Fit & Max' 냉장고를 확인해보세요.",
       icon: "Ruler",
-      tag: "Fit & Max",
+      tag: "Fit & Max란?",
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/E19Smv1V-tk?autoplay=1&vq=hd720",
       isShorts: true,
