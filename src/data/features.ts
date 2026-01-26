@@ -110,9 +110,8 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "물통 없이 스스로 채우는 직수형\n편리한 냉장고 STEM을 확인해보세요.",
       icon: "Seedling",
       tag: "STEM이란?",
-      mediaType: "youtube",
-      isShorts: true,
-      mediaUrl: "https://youtube.com/shorts/FGGHv2VUb9I",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
       description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
       highlights: [
         "흐르는 물로 얼음을 만드는 제빙 시스템",
@@ -228,8 +227,8 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "주방이 훨씬 넓고 깔끔해 보이는\n'Fit & Max' 냉장고를 확인해보세요.",
       icon: "Ruler",
       tag: "Fit & Max란?",
-      mediaType: "image",
-      mediaUrl: "https://open.lge.co.kr/link/2025/usp/39_OBJET/03_TOP/M626_022/usp_05_gif.gif",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10516831/M626_hinge_pc.mp4",
       description:
         "도어 걸림을 없앤 제로 클리어런스 힌지가 만드는 단 4mm 간격의 완벽에 가까운 밀착! 인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아듭니다.",
       highlights: ["제로 클리어런스 힌지", "인테리어 냉장고", "다양한 라인업", "냉툭튀가 싫다면 Fit & Max로"],
