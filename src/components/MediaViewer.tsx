@@ -39,13 +39,13 @@ const VideoPlayer = ({ mediaUrl }: { mediaUrl: string }) => {
     video.addEventListener("canplay", handleCanPlay);
     video.addEventListener("error", handleError);
 
-    // Timeout fallback - if video doesn't load in 15 seconds, show error
+    // Timeout fallback - if video doesn't load in 5 seconds, show error
     const timeout = setTimeout(() => {
       if (isLoading) {
         setHasError(true);
         setIsLoading(false);
       }
-    }, 15000);
+    }, 5000);
 
     return () => {
       video.removeEventListener("canplay", handleCanPlay);
