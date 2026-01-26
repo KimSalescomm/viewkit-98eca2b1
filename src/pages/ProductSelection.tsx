@@ -49,97 +49,139 @@ const ProductSelection = () => {
             gap: "16px"
           }}
         >
-          {products.map((product) => (
-            <Link
-              key={product.id}
-              to={`/product/${product.id}`}
-              style={{
-                display: "block",
-                background: "#ffffff",
-                borderRadius: "16px",
-                overflow: "hidden",
-                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-                transition: "all 0.3s ease",
-                textDecoration: "none"
-              }}
-              onMouseEnter={(e) => {
+        {products.map((product) => {
+            const isEnabled = product.id === "refrigerator";
+
+            const cardStyle: React.CSSProperties = {
+              display: "block",
+              background: "#ffffff",
+              borderRadius: "16px",
+              overflow: "hidden",
+              boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+              transition: "all 0.3s ease",
+              textDecoration: "none",
+              cursor: isEnabled ? "pointer" : "not-allowed",
+              opacity: isEnabled ? 1 : 0.7
+            };
+
+            const handleMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
+              if (isEnabled) {
                 e.currentTarget.style.transform = "scale(1.03)";
                 e.currentTarget.style.boxShadow = "0 20px 25px -5px rgba(0, 0, 0, 0.15)";
-              }}
-              onMouseLeave={(e) => {
+              }
+            };
+
+            const handleMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
+              if (isEnabled) {
                 e.currentTarget.style.transform = "scale(1)";
                 e.currentTarget.style.boxShadow = "0 10px 15px -3px rgba(0, 0, 0, 0.1)";
-              }}
-            >
-              {/* Product Image */}
-              <div
-                style={{
-                  height: "192px",
-                  overflow: "hidden",
-                  background: "#f9fafb"
-                }}
-              >
-                <SafeImage
-                  src={product.keyVisualImage}
-                  alt={product.name}
-                  loading="lazy"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "top",
-                    transition: "transform 0.3s ease"
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "scale(1.1)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "scale(1)";
-                  }}
-                />
-              </div>
+              }
+            };
 
-              {/* Product Info */}
-              <div style={{ padding: "20px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "8px" }}>
-                  <div
+            const cardContent = (
+              <>
+                {/* Product Image */}
+                <div
+                  style={{
+                    height: "192px",
+                    overflow: "hidden",
+                    background: "#f9fafb"
+                  }}
+                >
+                  <SafeImage
+                    src={product.keyVisualImage}
+                    alt={product.name}
+                    loading="lazy"
                     style={{
-                      width: "48px",
-                      height: "48px",
-                      borderRadius: "12px",
-                      background: "linear-gradient(135deg, #2563eb, #9333ea)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center"
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "top",
+                      transition: "transform 0.3s ease",
+                      filter: isEnabled ? "none" : "grayscale(100%)"
                     }}
-                  >
-                    <span style={{ fontSize: "24px" }}>{iconMap[product.icon]}</span>
-                  </div>
-                  <div>
-                    <h3
+                    onMouseEnter={(e) => {
+                      if (isEnabled) {
+                        e.currentTarget.style.transform = "scale(1.1)";
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (isEnabled) {
+                        e.currentTarget.style.transform = "scale(1)";
+                      }
+                    }}
+                  />
+                </div>
+
+                {/* Product Info */}
+                <div style={{ padding: "20px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "8px" }}>
+                    <div
                       style={{
-                        fontSize: "20px",
-                        fontWeight: "bold",
-                        color: "#111827",
-                        margin: 0
+                        width: "48px",
+                        height: "48px",
+                        borderRadius: "12px",
+                        background: isEnabled
+                          ? "linear-gradient(135deg, #2563eb, #9333ea)"
+                          : "linear-gradient(135deg, #9ca3af, #6b7280)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
                       }}
                     >
-                      {product.name}
-                    </h3>
-                    <p
-                      style={{
-                        fontSize: "14px",
-                        color: "#6b7280",
-                        margin: 0
-                      }}
-                    >
-                      {product.description}
-                    </p>
+                      <span style={{ fontSize: "24px", filter: isEnabled ? "none" : "grayscale(100%)" }}>
+                        {iconMap[product.icon]}
+                      </span>
+                    </div>
+                    <div>
+                      <h3
+                        style={{
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                          color: isEnabled ? "#111827" : "#9ca3af",
+                          margin: 0
+                        }}
+                      >
+                        {product.name}
+                      </h3>
+                      <p
+                        style={{
+                          fontSize: "14px",
+                          color: isEnabled ? "#6b7280" : "#9ca3af",
+                          margin: 0
+                        }}
+                      >
+                        {product.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
+              </>
+            );
+
+            if (isEnabled) {
+              return (
+                <Link
+                  key={product.id}
+                  to={`/product/${product.id}`}
+                  style={cardStyle}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {cardContent}
+                </Link>
+              );
+            }
+
+            return (
+              <div
+                key={product.id}
+                style={cardStyle}
+              >
+                {cardContent}
               </div>
-            </Link>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
