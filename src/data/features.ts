@@ -110,6 +110,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Seedling",
       tag: "STEM이란?",
       mediaType: "youtube",
+      isShorts: true,
       mediaUrl: "https://youtube.com/shorts/FGGHv2VUb9I",
       description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
       highlights: [
