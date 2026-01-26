@@ -31,7 +31,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
    * LG 서버의 일부 영상은 .mp4 확장자를 사용하지만 실제 콘텐츠는 WebM
    */
   const KNOWN_WEBM_URLS = [
-    "lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
+    "lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/ice_maker.mp4",
     "lge.co.kr/kr/images/refrigerators/md10516831/M626_hinge_pc.mp4",
   ];
 
