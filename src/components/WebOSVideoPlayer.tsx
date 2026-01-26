@@ -292,6 +292,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
         width: "100%",
         display: "flex",
         justifyContent: "center",
+        alignItems: "center",
         borderRadius: "16px",
         overflow: "hidden",
         background: "#000",
@@ -345,7 +346,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
         </div>
       )}
 
-      {/* 비디오 요소 - webOS 최적화 속성 */}
+      {/* 비디오 요소 - webOS 최적화 속성, 원본 비율 유지 */}
       <video
         ref={videoRef}
         key={currentUrl} // 소스 변경 시 재마운트
@@ -356,9 +357,11 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
         preload="auto" // 미리 로드
         poster={poster}
         style={{
-          maxWidth: "100%",
+          width: "100%",
+          height: "auto",
           maxHeight: "80vh",
           objectFit: "contain",
+          display: "block",
           opacity: isLoading ? 0 : 1,
           transition: "opacity 0.3s",
         }}
