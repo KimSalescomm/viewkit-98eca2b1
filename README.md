@@ -71,3 +71,47 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+---
+
+## VIEW KIT 운영 매뉴얼
+
+### 제품 활성화/비활성화 관리
+
+현재 냉장고만 활성화되어 있고, 나머지 제품은 비활성화(흑백 처리, 클릭 불가) 상태입니다.
+
+#### 모든 제품 활성화하기
+
+`src/pages/ProductSelection.tsx` 파일에서 다음 코드를 수정합니다:
+
+**현재 코드 (냉장고만 활성화):**
+```tsx
+const isEnabled = product.id === "refrigerator";
+```
+
+**모든 제품 활성화:**
+```tsx
+const isEnabled = true;
+```
+
+#### 특정 제품만 활성화하기
+
+여러 제품을 활성화하려면 배열을 사용합니다:
+
+```tsx
+const enabledProducts = ["refrigerator", "tv", "styler"];
+const isEnabled = enabledProducts.includes(product.id);
+```
+
+#### 사용 가능한 제품 ID 목록
+
+| 제품 | ID |
+|------|-----|
+| TV | `tv` |
+| 냉장고 | `refrigerator` |
+| 의류관리기 | `styler` |
+| 워시타워 | `washer` |
+| 청소기 | `vacuum` |
+| 휘센 에어컨 | `airconditioner` |
+| PC | `pc` |
+| 식기세척기 | `cooking` |
