@@ -4,11 +4,12 @@ export interface VideoInfo {
 }
 
 export const convertToEmbedUrl = (url: string): VideoInfo => {
-  // YouTube URL patterns
+  // YouTube URL patterns (including shorts)
   const youtubePatterns = [
     /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)(?:&t=(\d+))?/,
     /(?:https?:\/\/)?(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]+)(?:\?t=(\d+))?/,
-    /(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([a-zA-Z0-9_-]+)/
+    /(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([a-zA-Z0-9_-]+)/,
+    /(?:https?:\/\/)?(?:www\.)?youtube\.com\/shorts\/([a-zA-Z0-9_-]+)/
   ];
 
   for (const pattern of youtubePatterns) {

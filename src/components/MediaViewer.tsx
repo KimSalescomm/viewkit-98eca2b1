@@ -516,6 +516,8 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
 
   // YouTube 전용 렌더링 (isShorts 지원)
   if (mediaType === "youtube") {
+    // URL을 embed 형식으로 변환
+    const { embedUrl } = convertToEmbedUrl(mediaUrl);
     // Shorts는 9:16 세로 비율, 일반은 16:9 가로 비율
     const aspectRatio = isShorts ? "177.78%" : "56.25%"; // 9:16 = 177.78%, 16:9 = 56.25%
     
@@ -539,7 +541,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
           }}
         >
           <iframe
-            src={mediaUrl}
+            src={embedUrl}
             title={title}
             style={{
               position: isShorts ? "relative" : "absolute",
