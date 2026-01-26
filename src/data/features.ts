@@ -109,8 +109,8 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "물통 없이 스스로 채우는 직수형\n편리한 냉장고 STEM을 확인해보세요.",
       icon: "Seedling",
       tag: "STEM이란?",
-      mediaType: "image",
-      mediaUrl: "http://open.lge.co.kr/link/2024/usp/39_OBJET/01_WATER/W825_482/usp_06_gif.gif",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
       description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
       highlights: [
         "흐르는 물로 얼음을 만드는 제빙 시스템",
