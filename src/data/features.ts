@@ -21,6 +21,7 @@ export interface Feature {
   tag?: string;
   mediaType: "video" | "image" | "table" | "gallery" | "youtube";
   mediaUrl: string;
+  fallbackUrl?: string; // MP4 fallback URL for webOS compatibility
   description: string;
   highlights: string[];
   tableData?: ProductComparisonTable[];

@@ -156,6 +156,7 @@ const FeatureDetail = () => {
             tableData={feature.tableData}
             galleryImages={feature.galleryImages}
             isShorts={feature.isShorts}
+            fallbackUrl={feature.fallbackUrl}
           />
         </div>
 
