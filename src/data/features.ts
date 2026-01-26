@@ -111,6 +111,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "STEM이란?",
       mediaType: "youtube",
       mediaUrl: "https://youtube.com/shorts/FGGHv2VUb9I",
+      isShorts: true,
       description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
       highlights: [
         "흐르는 물로 얼음을 만드는 제빙 시스템",
