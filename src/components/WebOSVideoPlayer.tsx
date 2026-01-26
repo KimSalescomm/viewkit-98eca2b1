@@ -27,16 +27,44 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   /**
+   * 확장자가 mp4이지만 실제로 WebM인 것으로 알려진 URL 목록
+   * LG 서버의 일부 영상은 .mp4 확장자를 사용하지만 실제 콘텐츠는 WebM
+   */
+  const KNOWN_WEBM_URLS = [
+    "lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
+    "lge.co.kr/kr/images/refrigerators/md10516831/M626_hinge_pc.mp4",
+  ];
+
+  /**
+   * URL이 WebM으로 알려진 특수 케이스인지 확인
+   */
+  const isKnownWebMUrl = useCallback((url: string): boolean => {
+    return KNOWN_WEBM_URLS.some(pattern => url.includes(pattern));
+  }, []);
+
+  /**
    * URL에서 Content-Type 헤더를 가져와 실제 비디오 포맷을 감지
    * HEAD 요청으로 빠르게 확인
    */
   const detectVideoFormat = useCallback(async (url: string): Promise<VideoFormat> => {
+    // 먼저 알려진 WebM URL인지 확인 (HEAD 요청 없이 바로 반환)
+    if (isKnownWebMUrl(url)) {
+      console.log("알려진 WebM URL 감지 (확장자 무시):", url);
+      return "video/webm";
+    }
+
     try {
       // HEAD 요청으로 Content-Type만 확인 (본문 다운로드 없음)
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5초 타임아웃
+      
       const response = await fetch(url, { 
         method: "HEAD",
         mode: "cors",
+        signal: controller.signal,
       });
+      
+      clearTimeout(timeoutId);
       
       const contentType = response.headers.get("Content-Type") || "";
       
@@ -58,15 +86,23 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
       
       return "unknown";
     } catch (error) {
-      // CORS 에러 등으로 HEAD 요청 실패 시 확장자로 추측
-      console.warn("Content-Type 감지 실패, 확장자로 추측:", error);
+      // CORS 에러 또는 타임아웃 시 - WebM을 기본으로 시도 (LG URL 특성상)
+      console.warn("Content-Type 감지 실패:", error);
+      
+      // LG 도메인의 경우 WebM일 가능성이 높음
+      if (url.includes("lge.co.kr")) {
+        console.log("LG 도메인 감지 - WebM으로 가정");
+        return "video/webm";
+      }
+      
+      // 그 외의 경우 확장자로 추측
       const extension = url.split(".").pop()?.toLowerCase().split("?")[0];
       if (extension === "mp4") return "video/mp4";
       if (extension === "webm") return "video/webm";
       if (extension === "ogg" || extension === "ogv") return "video/ogg";
       return "unknown";
     }
-  }, []);
+  }, [isKnownWebMUrl]);
 
   /**
    * webOS 브라우저 감지
