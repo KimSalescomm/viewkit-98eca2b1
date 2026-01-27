@@ -1,5 +1,8 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { PlayCircle, AlertCircle } from "lucide-react";
+import { useLocation, useParams } from "react-router-dom";
+import VideoDebugOverlay from "@/components/VideoDebugOverlay";
+import { useVideoDebug } from "@/hooks/useVideoDebug";
 
 interface WebOSVideoPlayerProps {
   mediaUrl: string;
@@ -20,11 +23,100 @@ type VideoFormat = "video/mp4" | "video/webm" | "video/ogg" | "unknown";
  */
 const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const location = useLocation();
+  const { productId, id } = useParams<{ productId?: string; id?: string }>();
+
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [detectedFormat, setDetectedFormat] = useState<VideoFormat>("unknown");
   const [currentSource, setCurrentSource] = useState<"primary" | "fallback">("primary");
   const [errorMessage, setErrorMessage] = useState<string>("");
+
+  const currentUrl = currentSource === "primary" ? mediaUrl : fallbackUrl;
+
+  const {
+    enabled: videoDebugEnabled,
+    items: videoDebugItems,
+    clear: clearVideoDebug,
+    log: logVideoDebug,
+    isInGestureContext,
+  } = useVideoDebug({
+    videoRef,
+    pageId: id || undefined,
+    extra: {
+      productId,
+      featureId: id,
+      detectedFormat,
+      currentSource,
+      currentUrl,
+    },
+  });
+
+  const tryPlay = useCallback(
+    async (reason: string) => {
+      const video = videoRef.current;
+      const domContains = typeof document !== "undefined" && !!video ? document.contains(video) : false;
+      const inGesture = isInGestureContext();
+
+      logVideoDebug("play() call", {
+        reason,
+        inGesture,
+        domContains,
+        pathKey: location.key,
+      });
+
+      if (!video) return;
+
+      try {
+        const p = video.play();
+        if (p && typeof (p as Promise<void>).then === "function") {
+          await p;
+          logVideoDebug("play() resolved", { reason });
+        } else {
+          logVideoDebug("play() returned non-promise", { reason });
+        }
+      } catch (e) {
+        logVideoDebug("play() rejected", {
+          reason,
+          message: e instanceof Error ? e.message : String(e),
+          name: e instanceof Error ? e.name : undefined,
+        });
+      }
+    },
+    [isInGestureContext, location.key, logVideoDebug]
+  );
+
+  // (4) 페이지 진입/소스 변경 시 초기 상태를 통일
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    try {
+      video.pause();
+      video.currentTime = 0;
+      video.load();
+      logVideoDebug("init: pause+reset+load", { reason: "source-change" });
+    } catch (e) {
+      logVideoDebug("init failed", {
+        message: e instanceof Error ? e.message : String(e),
+      });
+    }
+  }, [currentUrl, location.key, logVideoDebug]);
+
+  // (5) 렌더 직후 강제 play 시도 (300ms)
+  useEffect(() => {
+    if (!currentUrl) return;
+    const t = window.setTimeout(() => {
+      const video = videoRef.current;
+      if (!video) return;
+      try {
+        video.muted = true;
+      } catch {
+        // ignore
+      }
+      void tryPlay("post-render-timeout-300ms");
+    }, 300);
+    return () => window.clearTimeout(t);
+  }, [currentUrl, tryPlay]);
 
   /**
    * 확장자가 mp4이지만 실제로 WebM인 것으로 알려진 URL 목록
@@ -172,13 +264,18 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
     const video = videoRef.current;
     if (!video) return;
 
+    // (1)(2) Requested events logging
+    const onLoadedMetadata = () => logVideoDebug("event:loadedmetadata");
+    const onCanPlayDebug = () => logVideoDebug("event:canplay");
+    const onPlay = () => logVideoDebug("event:play");
+    const onPause = () => logVideoDebug("event:pause");
+    const onErrorDebug = () => logVideoDebug("event:error");
+    const onStalledDebug = () => logVideoDebug("event:stalled");
+
     const handleCanPlay = () => {
       setIsLoading(false);
       // webOS 자동재생 정책: muted 상태에서만 autoplay 허용
-      video.play().catch((err) => {
-        console.warn("자동재생 실패:", err);
-        // 자동재생 실패해도 에러로 처리하지 않음 (사용자 상호작용 필요할 수 있음)
-      });
+      void tryPlay("canplay");
     };
 
     const handlePlaying = () => {
@@ -238,6 +335,13 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
     video.addEventListener("stalled", handleStalled);
     video.addEventListener("waiting", handleWaiting);
 
+    video.addEventListener("loadedmetadata", onLoadedMetadata);
+    video.addEventListener("canplay", onCanPlayDebug);
+    video.addEventListener("play", onPlay);
+    video.addEventListener("pause", onPause);
+    video.addEventListener("error", onErrorDebug);
+    video.addEventListener("stalled", onStalledDebug);
+
     // webOS 긴 타임아웃 (로딩이 오래 걸릴 수 있음)
     const timeout = setTimeout(() => {
       if (isLoading && !hasError) {
@@ -252,9 +356,17 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
       video.removeEventListener("error", handleError);
       video.removeEventListener("stalled", handleStalled);
       video.removeEventListener("waiting", handleWaiting);
+
+      video.removeEventListener("loadedmetadata", onLoadedMetadata);
+      video.removeEventListener("canplay", onCanPlayDebug);
+      video.removeEventListener("play", onPlay);
+      video.removeEventListener("pause", onPause);
+      video.removeEventListener("error", onErrorDebug);
+      video.removeEventListener("stalled", onStalledDebug);
+
       clearTimeout(timeout);
     };
-  }, [currentSource, detectedFormat, isLoading, hasError, switchToFallback]);
+  }, [currentSource, detectedFormat, hasError, isLoading, logVideoDebug, switchToFallback, tryPlay]);
 
   // 에러 UI
   if (hasError) {
@@ -318,7 +430,6 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
     );
   }
 
-  const currentUrl = currentSource === "primary" ? mediaUrl : fallbackUrl;
   // type 속성은 실제 감지된 포맷 사용 (unknown이면 생략)
   const typeAttribute = detectedFormat !== "unknown" ? detectedFormat : undefined;
 
@@ -335,6 +446,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
         position: "relative",
       }}
     >
+      <VideoDebugOverlay enabled={videoDebugEnabled} items={videoDebugItems} onClear={clearVideoDebug} />
       {/* 로딩 인디케이터 */}
       {isLoading && (
         <div
