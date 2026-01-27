@@ -111,7 +111,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Seedling",
       tag: "STEM이란?",
       mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
+      mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10516831/M626_hinge_pc.mp4",
       description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
       highlights: [
         "흐르는 물로 얼음을 만드는 제빙 시스템",

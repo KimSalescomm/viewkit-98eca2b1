@@ -126,7 +126,6 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
   const KNOWN_WEBM_URLS = [
     "lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/ice_maker.mp4",
     "lge.co.kr/kr/images/refrigerators/md10516831/M626_hinge_pc.mp4",
-    "lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/3steps_filter.mp4",
   ];
 
   const isKnownWebMUrl = useCallback(
