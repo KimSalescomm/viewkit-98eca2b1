@@ -14,6 +14,22 @@ type VideoStyleSnapshot = {
   position: string;
 };
 
+/**
+ * 타이밍 측정용 타입
+ */
+export type VideoTimingInfo = {
+  srcSetTs: number;       // source 설정 시점
+  loadedmetadataTs?: number;
+  canplayTs?: number;
+  playingTs?: number;
+  errorTs?: number;
+  // elapsed times (in ms)
+  toLoadedmetadata?: number;
+  toCanplay?: number;
+  toPlaying?: number;
+  toError?: number;
+};
+
 export type VideoDebugSnapshot = {
   path: string;
   locationKey?: string;
@@ -39,6 +55,8 @@ export type VideoDebugSnapshot = {
   // Up to 6 ancestors + video element
   ancestorStyles?: VideoStyleSnapshot[];
   extra?: Record<string, unknown>;
+  // Timing info
+  timing?: VideoTimingInfo;
 };
 
 const pickStyle = (el: Element | null | undefined): VideoStyleSnapshot | null => {
@@ -108,6 +126,60 @@ const isEnabledFromStorage = (): boolean => {
   }
 };
 
+/**
+ * 타이밍 측정 훅
+ */
+export function useVideoTiming() {
+  const timingRef = useRef<VideoTimingInfo | null>(null);
+
+  const startTiming = useCallback(() => {
+    timingRef.current = { srcSetTs: Date.now() };
+    // eslint-disable-next-line no-console
+    console.log("[VideoDebugTiming] source set", { srcSetTs: timingRef.current.srcSetTs });
+  }, []);
+
+  const markEvent = useCallback((eventName: "loadedmetadata" | "canplay" | "playing" | "error") => {
+    if (!timingRef.current) return;
+    const now = Date.now();
+    const t = timingRef.current;
+    
+    switch (eventName) {
+      case "loadedmetadata":
+        t.loadedmetadataTs = now;
+        t.toLoadedmetadata = now - t.srcSetTs;
+        break;
+      case "canplay":
+        t.canplayTs = now;
+        t.toCanplay = now - t.srcSetTs;
+        break;
+      case "playing":
+        t.playingTs = now;
+        t.toPlaying = now - t.srcSetTs;
+        break;
+      case "error":
+        t.errorTs = now;
+        t.toError = now - t.srcSetTs;
+        break;
+    }
+    
+    // eslint-disable-next-line no-console
+    console.log("[VideoDebugTiming]", eventName, {
+      elapsed: now - t.srcSetTs,
+      timing: { ...t },
+    });
+  }, []);
+
+  const getTiming = useCallback(() => {
+    return timingRef.current ? { ...timingRef.current } : null;
+  }, []);
+
+  const resetTiming = useCallback(() => {
+    timingRef.current = null;
+  }, []);
+
+  return { startTiming, markEvent, getTiming, resetTiming };
+}
+
 export function useVideoDebug(params: {
   videoRef: React.RefObject<HTMLVideoElement>;
   pageId?: string;
@@ -117,6 +189,7 @@ export function useVideoDebug(params: {
   const lastGestureTsRef = useRef<number>(0);
   const [items, setItems] = useState<VideoDebugSnapshot[]>([]);
   const canPlayTypeCapturedRef = useRef(false);
+  const timing = useVideoTiming();
 
   const enabled = useMemo(() => {
     return isEnabledFromSearch(location.search) || isEnabledFromStorage();
@@ -161,9 +234,10 @@ export function useVideoDebug(params: {
         boundingRect: captureBoundingRect(video),
         ancestorStyles: captureAncestorStyles(video),
         extra: { ...(params.extra ?? {}), ...(extra ?? {}) },
+        timing: timing.getTiming() ?? undefined,
       };
     },
-    [location.pathname, location.key, params.pageId, params.extra, params.videoRef]
+    [location.pathname, location.key, params.pageId, params.extra, params.videoRef, timing]
   );
 
   const log = useCallback(
@@ -194,7 +268,10 @@ export function useVideoDebug(params: {
     log("canPlayType", results);
   }, [enabled, log, params.videoRef]);
 
-  const clear = useCallback(() => setItems([]), []);
+  const clear = useCallback(() => {
+    setItems([]);
+    timing.resetTiming();
+  }, [timing]);
 
   return {
     enabled,
@@ -204,5 +281,6 @@ export function useVideoDebug(params: {
     snapshot,
     isInGestureContext,
     logCanPlayTypes,
+    timing,
   };
 }
