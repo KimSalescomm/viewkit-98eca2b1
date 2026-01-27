@@ -1,17 +1,23 @@
-import { VideoDebugSnapshot } from "@/hooks/useVideoDebug";
+import { VideoDebugSnapshot, VideoTimingInfo } from "@/hooks/useVideoDebug";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { PlayCircle } from "lucide-react";
 
-export default function VideoDebugOverlay(props: {
+interface VideoDebugOverlayProps {
   enabled: boolean;
   items: VideoDebugSnapshot[];
   onClear: () => void;
-}) {
+  onManualPlay?: () => void;
+  timing?: VideoTimingInfo | null;
+}
+
+export default function VideoDebugOverlay(props: VideoDebugOverlayProps) {
   const [collapsed, setCollapsed] = useState(false);
 
   if (!props.enabled) return null;
 
   const latest = props.items[0];
+  const timing = props.timing || latest?.timing;
 
   if (collapsed) {
     return (
@@ -34,6 +40,17 @@ export default function VideoDebugOverlay(props: {
         <div className="mb-2 flex items-center justify-between gap-2">
           <div className="text-sm font-semibold">Video Debug</div>
           <div className="flex gap-1">
+            {props.onManualPlay && (
+              <Button
+                variant="default"
+                size="sm"
+                onClick={props.onManualPlay}
+                className="flex items-center gap-1"
+              >
+                <PlayCircle size={14} />
+                Play
+              </Button>
+            )}
             <Button variant="ghost" size="sm" onClick={() => setCollapsed(true)}>
               ▲
             </Button>
@@ -42,6 +59,30 @@ export default function VideoDebugOverlay(props: {
             </Button>
           </div>
         </div>
+
+        {/* Timing Info */}
+        {timing && (
+          <div className="mb-2 rounded-md bg-blue-500/10 p-2 text-[11px] leading-5 border border-blue-500/30">
+            <div className="font-semibold text-blue-400 mb-1">⏱ Timing (ms from src set)</div>
+            <div className="flex flex-wrap gap-x-3 gap-y-0.5">
+              {timing.toLoadedmetadata !== undefined && (
+                <span><span className="font-medium">loadedmeta</span>: {timing.toLoadedmetadata}ms</span>
+              )}
+              {timing.toCanplay !== undefined && (
+                <span><span className="font-medium">canplay</span>: {timing.toCanplay}ms</span>
+              )}
+              {timing.toPlaying !== undefined && (
+                <span className="text-green-400"><span className="font-medium">playing</span>: {timing.toPlaying}ms</span>
+              )}
+              {timing.toError !== undefined && (
+                <span className="text-red-400"><span className="font-medium">error</span>: {timing.toError}ms</span>
+              )}
+              {!timing.toLoadedmetadata && !timing.toCanplay && !timing.toPlaying && !timing.toError && (
+                <span className="text-muted-foreground">waiting for events...</span>
+              )}
+            </div>
+          </div>
+        )}
 
         {latest && (
           <div className="mb-2 rounded-md bg-muted/50 p-2 text-[11px] leading-5">
@@ -114,6 +155,14 @@ export default function VideoDebugOverlay(props: {
                   <span className="font-medium">{it.event}</span>
                   <span className="text-muted-foreground">{new Date(it.ts).toLocaleTimeString()}</span>
                 </div>
+                {it.timing && (it.timing.toLoadedmetadata || it.timing.toCanplay || it.timing.toPlaying || it.timing.toError) && (
+                  <div className="text-[10px] text-blue-400">
+                    {it.timing.toLoadedmetadata && `meta:${it.timing.toLoadedmetadata}ms `}
+                    {it.timing.toCanplay && `can:${it.timing.toCanplay}ms `}
+                    {it.timing.toPlaying && `play:${it.timing.toPlaying}ms`}
+                    {it.timing.toError && `err:${it.timing.toError}ms`}
+                  </div>
+                )}
                 {it.errorCode !== undefined && (
                   <div className="text-red-400">err: {it.errorCode}</div>
                 )}

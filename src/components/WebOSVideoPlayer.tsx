@@ -41,6 +41,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
     log: logVideoDebug,
     isInGestureContext,
     logCanPlayTypes,
+    timing: videoTiming,
   } = useVideoDebug({
     videoRef,
     pageId: id || undefined,
@@ -89,9 +90,13 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
   );
 
   // (수정 3) 페이지 진입/소스 변경 시 초기화: pause + load only, currentTime은 loadedmetadata 후에
+  // + 타이밍 측정 시작
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
+    // 타이밍 측정 시작
+    videoTiming.startTiming();
 
     try {
       video.pause();
@@ -102,7 +107,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
         message: e instanceof Error ? e.message : String(e),
       });
     }
-  }, [currentUrl, location.key, logVideoDebug]);
+  }, [currentUrl, location.key, logVideoDebug, videoTiming]);
 
   // (5) 렌더 직후 강제 play 시도 (300ms)
   useEffect(() => {
@@ -253,10 +258,11 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
     // Log canPlayType once on mount
     logCanPlayTypes();
 
-    // ---------- STABLE HANDLERS ----------
+    // ---------- STABLE HANDLERS with TIMING ----------
 
-    // (수정 3) loadedmetadata 후 currentTime reset
+    // (수정 3) loadedmetadata 후 currentTime reset + 타이밍
     const handleLoadedMetadata = () => {
+      videoTiming.markEvent("loadedmetadata");
       logVideoDebug("event:loadedmetadata");
       try {
         video.currentTime = 0;
@@ -269,6 +275,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
     };
 
     const handleCanPlay = () => {
+      videoTiming.markEvent("canplay");
       logVideoDebug("event:canplay");
       setIsLoading(false);
       void tryPlay("canplay");
@@ -283,11 +290,14 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
     };
 
     const handlePlaying = () => {
+      videoTiming.markEvent("playing");
+      logVideoDebug("event:playing");
       setIsLoading(false);
     };
 
-    // (수정 2) error 핸들러 - MediaError 상세 로그
+    // (수정 2) error 핸들러 - MediaError 상세 로그 + 타이밍
     const handleError = () => {
+      videoTiming.markEvent("error");
       const error = video.error;
       logVideoDebug("event:error", {
         errorCode: error?.code,
@@ -335,7 +345,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
     };
 
     const handleWaiting = () => {
-      // 버퍼링 중
+      logVideoDebug("event:waiting");
     };
 
     // ---------- ADD LISTENERS ----------
@@ -376,7 +386,13 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
     logCanPlayTypes,
     switchToFallback,
     tryPlay,
+    videoTiming,
   ]);
+
+  // 수동 재생 핸들러 (디버그 모드 전용)
+  const handleManualPlay = useCallback(() => {
+    void tryPlay("user-click");
+  }, [tryPlay]);
 
   // 에러 UI
   if (hasError) {
@@ -464,8 +480,14 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
         position: "relative",
       }}
     >
-      {/* (수정 5) 오버레이 - pointer-events:none, 우상단, 높은 z-index */}
-      <VideoDebugOverlay enabled={videoDebugEnabled} items={videoDebugItems} onClear={clearVideoDebug} />
+      {/* (수정 5) 오버레이 - pointer-events:none, 우상단, 높은 z-index, 수동 재생 버튼 */}
+      <VideoDebugOverlay
+        enabled={videoDebugEnabled}
+        items={videoDebugItems}
+        onClear={clearVideoDebug}
+        onManualPlay={handleManualPlay}
+        timing={videoTiming.getTiming()}
+      />
 
       {/* 로딩 인디케이터 */}
       {isLoading && (
