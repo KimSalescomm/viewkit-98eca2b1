@@ -102,7 +102,7 @@ const Home = () => {
             }}
           >
             <span style={{ fontSize: "16px", fontWeight: 600, color: "#9333ea" }}>
-              냉장고
+              {product.name}
             </span>
           </div>
 
@@ -115,7 +115,7 @@ const Home = () => {
               marginBottom: "12px"
             }}
           >
-            LG DIOS 오브제컬렉션
+            {product.title}
           </h1>
           <p style={{ fontSize: "18px", color: "#4b5563" }}>
             {product.description}
