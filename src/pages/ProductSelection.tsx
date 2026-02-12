@@ -50,7 +50,7 @@ const ProductSelection = () => {
           }}
         >
         {products.map((product) => {
-            const isEnabled = product.id === "refrigerator";
+            const isEnabled = ["refrigerator", "styler"].includes(product.id);
 
             const cardStyle: React.CSSProperties = {
               display: "block",
