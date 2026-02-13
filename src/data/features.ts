@@ -45,13 +45,14 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "다이내믹 무빙행어의 움직임",
+      title: "미세먼지가 극심한 날, 돌아오면 바로 스타일러하세요!",
       subtitle: "좌우에서 트위스트 회전으로!\n분당 최대 350회 회전해 미세먼지를 99%까지 제거해요.",
       icon: "dress",
       tag: "다이내믹 무빙행어",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/_2023_styler/1.0/tech/movinghanger_pc.mp4",
-      description: "옷에 묻은 오염물질 바람으로 불어내는 것과 탁탁 털어내는 것 중 뭐가 더 잘 제거될까요?\n분당 최대 350회 회전하는 강력한 다이내믹 무빙행어로 밖에서 온 먼지, 세균 털어내세요!",
+      description:
+        "옷에 묻은 오염물질 바람으로 불어내는 것과 탁탁 털어내는 것 중 뭐가 더 잘 제거될까요?\n분당 최대 350회 회전하는 강력한 다이내믹 무빙행어로 밖에서 온 먼지, 세균 털어내세요!",
       highlights: ["다이내믹 무빙행어", "분당 최대 350회", "다양한 무빙모션", "미세먼지 코스"],
     },
     {
@@ -72,7 +73,8 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Palette",
       tag: "모델별 스펙비교",
       mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/common/pdp_lineup_compare/images/lg-styler/styler_line_up_pc.jpg?w=1200&h=1096&fit=crop",
+      mediaUrl:
+        "https://www.lge.co.kr/kr/images/common/pdp_lineup_compare/images/lg-styler/styler_line_up_pc.jpg?w=1200&h=1096&fit=crop",
       description: "색상과 한번에 걸 수 있는 의류의 수, 핵심 기능 차이가 있으니 꼼꼼히 비교해보세요.",
       highlights: ["자동 환기", "바지 관리기", "다이내믹 무빙행어"],
     },
