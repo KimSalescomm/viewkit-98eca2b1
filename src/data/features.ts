@@ -34,7 +34,7 @@ export const featuresMap: Record<string, Feature[]> = {
   styler: [
     {
       id: "1",
-      title: "?",
+      title: "매번 드라이 맡기기, 번거롭지 않으세요?",
       subtitle: "집에서 매일 새 옷처럼.\n미세먼지부터 냄새까지 관리하는 스타일러의 핵심 원리를 확인해보세요.",
       icon: "Wind",
       tag: "듀얼 히팅 스팀",
