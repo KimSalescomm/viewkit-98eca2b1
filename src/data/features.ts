@@ -34,14 +34,15 @@ export const featuresMap: Record<string, Feature[]> = {
   styler: [
     {
       id: "1",
-      title: "매번 드라이 맡기기, 번거롭지 않으세요?",
-      subtitle: "집에서 매일 새 옷처럼.\n미세먼지부터 냄새까지 관리하는 스타일러의 핵심 원리를 확인해보세요.",
+      title: "옷에 남은 냄새, 은근 신경쓰이죠?",
+      subtitle: "섬세한 듀얼 스팀이 옷 속 깊은 곳의 냄새까지 없애줘요.",
       icon: "Wind",
-      tag: "스타일링 원리 보기",
+      tag: "듀얼히팅 트루스팀",
       mediaType: "video",
-      mediaUrl: "",
-      description: "드라이 없이도 매일 산뜻하게. 옷 속 미세먼지와 냄새를 줄여주는 스타일링 케어.",
-      highlights: ["옷 속 미세먼지·냄새 케어", "매일 입는 옷도 산뜻하게", "집에서 간편하게 관리"],
+      mediaUrl: "https://www.lge.co.kr/kr/images/lg-styler/md10747827/usp/SC5GMR80S_12_true_steam_Detail_01.mp4",
+      description:
+        "옷 속 바이러스, 세균을 없애 위생을 챙기는 건 물론, 옷에 남은 냄새까지 탈취하는 트루스팀! NEW 스타일러는 두개의 히터를 따로따로 제어해 스팀 양을 섬세하게 조절 가능합니다.",
+      highlights: ["옷 속 미세먼지·냄새 케어", "트루스팀", "듀얼히팅 트루스팀"],
     },
     {
       id: "2",
@@ -81,7 +82,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "3",
       title: "우리 집엔 어떤 스타일러가 딱 맞을까요?",
-      subtitle: "공간, 사용량, 라이프스타일에 맞춰\n나에게 꼭 맞는 모델을 비교해보세요.",
+      subtitle: "공간, 사용량, 라이프스타일에 맞춰\n내게 꼭 맞는 모델을 비교해보세요.",
       icon: "Palette",
       tag: "모델 비교하기",
       mediaType: "gallery",
@@ -99,7 +100,52 @@ export const featuresMap: Record<string, Feature[]> = {
           title: "2. 하루에 옷을 몇 벌 정도 관리하나요?",
           description: "사용량이 많을수록 용량/구성 선택이 중요해요. 자주 쓰는 옷 기준으로 떠올려보세요.",
         },
+        {
+          url: "/images/styler-model-step3.jpeg",
+          title: "3. 가장 기대하는 효과는 무엇인가요?",
+          description: "미세먼지, 냄새, 구김 등 우선순위를 정하면 내게 맞는 모델/코스가 더 명확해져요.",
+        },
       ],
+    },
+    {
+      id: "4",
+      title: "우리 집 공간에 잘 들어갈까요?",
+      subtitle: "설치 공간, 문 열림 반경, 전원 조건까지\n미리 확인해보세요.",
+      icon: "Ruler",
+      tag: "설치 가이드",
+      mediaType: "gallery",
+      mediaUrl: "",
+      description:
+        "설치 위치의 치수와 동선, 콘센트 위치에 따라 설치 방식이 달라질 수 있어요. 미리 체크하면 설치가 더 깔끔해집니다.",
+      highlights: ["설치 치수 확인", "문 열림 반경 확인", "전원/콘센트 위치 확인"],
+      galleryImages: [
+        {
+          url: "/images/styler-install-step1.jpeg",
+          title: "1. 설치 위치 치수를 확인했나요?",
+          description: "폭·높이·깊이를 확인해요. 벽과의 간격도 확보하면 더 안정적으로 설치할 수 있어요.",
+        },
+        {
+          url: "/images/styler-install-step2.jpeg",
+          title: "2. 문이 충분히 열릴 공간이 있나요?",
+          description: "도어가 완전히 열려야 옷을 넣고 빼기 편해요. 동선 간섭이 없는지도 함께 확인해요.",
+        },
+        {
+          url: "/images/styler-install-step3.jpeg",
+          title: "3. 전원 조건은 문제 없나요?",
+          description: "콘센트 위치와 전원 사용 환경을 확인해요. 멀티탭 사용이 필요한지도 미리 체크해요.",
+        },
+      ],
+    },
+    {
+      id: "5",
+      title: "필터 관리, 누가 챙겨주죠?",
+      subtitle: "정기 점검부터 소모품 교체까지\n전문 케어 서비스를 확인해보세요.",
+      icon: "Wrench",
+      tag: "케어 서비스",
+      mediaType: "youtube",
+      mediaUrl: "",
+      description: "사용 중 생기는 관리 포인트를 전문가 케어로 더 편하게. 점검/소모품/관리 팁까지 한 번에 확인해요.",
+      highlights: ["정기 점검", "소모품/필터 관리", "관리 방법 안내", "사용 환경 점검"],
     },
   ],
   // TV 특장점
