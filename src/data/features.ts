@@ -57,7 +57,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "눈에 보이지 않는 먼지, 정말 없어졌을까요?",
+      title: "눈에 보이지 않는 세균, 정말 없어졌을까요?",
       subtitle: "옷에도 세균, 먼지가 묻어와요!\n스타일링 후 오염도 대폭 감소",
       icon: "Cpu",
       tag: "세균 수 감소",
