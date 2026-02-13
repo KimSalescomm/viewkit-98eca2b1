@@ -55,8 +55,6 @@ export const featuresMap: Record<string, Feature[]> = {
         "바깥에서 오염된 옷, 스타일러 후에는 오염도가 어떻게 바뀌었을까요? 확인해 보세요",
       highlights: ["스타일링 코스", "스팀 탈취", "유튜브 리뷰"],
     },
-      ],
-    },
     {
       id: "3",
       title: "우리 집엔 어떤 스타일러가 딱 맞을까요?",
