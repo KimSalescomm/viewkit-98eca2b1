@@ -58,25 +58,12 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "3",
       title: "우리 집엔 어떤 스타일러가 딱 맞을까요?",
-      subtitle: "공간, 사용량, 라이프스타일에 맞춰\n나에게 꼭 맞는 모델을 비교해보세요.",
+      subtitle: "몇 벌을 동시에 케어하는지, 스티머가 있는지 다양한 차이를 비교해보세요.",
       icon: "Palette",
-      tag: "모델 비교하기",
-      mediaType: "gallery",
-      mediaUrl: "",
-      description: "사용 인원과 공간에 따라 라인업 선택이 달라집니다. 핵심 포인트만 빠르게 비교해보세요.",
-      highlights: ["설치 공간", "사용량", "관리 목적(먼지/냄새/구김)", "라인업 비교"],
-      galleryImages: [
-        {
-          url: "/images/styler-model-step1.jpeg",
-          title: "1. 우리 집 설치 공간은 충분한가요?",
-          description: "설치 위치의 폭·높이·깊이를 먼저 확인해요. 문 여닫이 공간도 함께 체크하면 더 좋아요.",
-        },
-        {
-          url: "/images/styler-model-step2.jpeg",
-          title: "2. 하루에 옷을 몇 벌 정도 관리하나요?",
-          description: "사용량이 많을수록 용량/구성 선택이 중요해요. 자주 쓰는 옷 기준으로 떠올려보세요.",
-        },
-      ],
+      mediaType: "image",
+      mediaUrl: "https://www.lge.co.kr/kr/images/common/pdp_lineup_compare/images/lg-styler/styler_line_up_pc.jpg?w=1200&h=1096&fit=crop",
+      description: "색상과 한번에 걸 수 있는 의류의 수, 핵심 기능 차이가 있으니 꼼꼼히 비교해보세요.",
+      highlights: ["자동 환기", "바지 관리기", "다이내믹 무빙행어"],
     },
   ],
   // TV 특장점
