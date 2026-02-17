@@ -134,6 +134,18 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
     },
     {
+      id: "10",
+      title: "보이지 않는 물길 속, 관리는 누가 할까요?",
+      subtitle: "필터부터 청소까지, 전문가가 알아서\n챙겨주는 전문 케어를 보여드려요.",
+      icon: "Wrench",
+      tag: "구독 전문케어",
+      mediaType: "youtube",
+      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM?si=j4iIwotCwLBvji5k",
+      description:
+        "물이 흐르는 길을 세척, 청소하기 힘든 기계실 세척, 이사 후 재설치까지 다양한 케어서비스 혜택이 있습니다.",
+      highlights: ["유로 세척 케어", "기계실 세척(프리미엄)", "고무패킹 케어", "소모품 교체"],
+    },
+    {
       id: "8",
       title: "나에겐 어떤 모델이 딱 맞을까요?",
       subtitle: "다양한 종류의 직수형 냉장고 STEM\n모델별 차이를 확인해 보세요.",
@@ -222,18 +234,6 @@ export const featuresMap: Record<string, Feature[]> = {
             "Case3,4처럼 수도관이 밖으로 이어지는 경우에는 주방 가구 컬러에 맞춘 몰딩 부자재로 숨김 처리를 해드립니다.",
         },
       ],
-    },
-    {
-      id: "10",
-      title: "보이지 않는 물길 속, 관리는 누가 할까요?",
-      subtitle: "필터부터 청소까지, 전문가가 알아서\n챙겨주는 전문 케어를 보여드려요.",
-      icon: "Wrench",
-      tag: "구독 전문케어",
-      mediaType: "youtube",
-      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM?si=j4iIwotCwLBvji5k",
-      description:
-        "물이 흐르는 길을 세척, 청소하기 힘든 기계실 세척, 이사 후 재설치까지 다양한 케어서비스 혜택이 있습니다.",
-      highlights: ["유로 세척 케어", "기계실 세척(프리미엄)", "고무패킹 케어", "소모품 교체"],
     },
     {
       id: "11",
