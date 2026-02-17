@@ -46,7 +46,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "2",
       title: "보이지 않는 먼지, 제대로 털리고 있나요?",
-      subtitle: "옷을 흔들어 털어내듯 움직여, 먼지와 잔여물을 효과적으로 관리해드려요. 작동 방식을 살펴보세요.",
+      subtitle: "옷을 흔들어 털어내듯 움직여, 먼지와 잔여물을 효과적으로 관리해드려요.\n작동 방식을 살펴보세요.",
       icon: "dress",
       tag: "다이내믹 무빙 행어",
       mediaType: "video",
