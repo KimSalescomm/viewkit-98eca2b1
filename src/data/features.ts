@@ -35,7 +35,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "1",
       title: "아끼는 옷, 스타일러 괜찮을까 걱정되신다면?",
-      subtitle: "두 개의 히터가 스팀을 정교하게 조절해 섬세한 옷감도 부담 없이 관리해드려요. 케어 방식을 확인해보세요.",
+      subtitle: "두 개의 히터가 스팀을 정교하게 조절해\n섬세한 옷감도 부담 없이 관리해드려요.",
       icon: "Wind",
       tag: "듀얼 히팅 스팀",
       mediaType: "video",
