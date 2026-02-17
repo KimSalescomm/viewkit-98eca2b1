@@ -46,7 +46,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "2",
       title: "보이지 않는 먼지, 제대로 털리고 있나요?",
-      subtitle: "옷을 흔들어 털어내듯 움직여, 먼지와 잔여물을 효과적으로 관리해드려요.\n작동 방식을 살펴보세요.",
+      subtitle: "옷을 흔들어 털어내듯 움직여,\n먼지와 잔여물을 효과적으로 관리해드려요.",
       icon: "dress",
       tag: "다이내믹 무빙 행어",
       mediaType: "video",
@@ -58,7 +58,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "3",
       title: "눈에 보이지 않는 세균, 정말 없어졌을까요?",
-      subtitle: "옷에도 세균, 먼지가 묻어와요!\n스타일링 후 오염도 대폭 감소",
+      subtitle: "옷에도 세균, 먼지가 묻어와요!\n스타일링 후 세균 수가 줄어드는지 직접 측정해봤습니다.",
       icon: "Cpu",
       tag: "세균 수 감소",
       mediaType: "video",
@@ -69,7 +69,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "4",
       title: "우리 집엔 어떤 스타일러가 딱 맞을까요?",
-      subtitle: "몇 벌을 동시에 케어하는지, 스티머가 있는지 다양한 차이를 비교해보세요.",
+      subtitle: "몇 벌을 동시에 케어하는지,\n스티머가 있는지 다양한 차이를 비교해보세요.",
       icon: "Palette",
       tag: "모델별 스펙비교",
       mediaType: "image",
