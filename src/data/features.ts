@@ -34,8 +34,8 @@ export const featuresMap: Record<string, Feature[]> = {
   styler: [
     {
       id: "1",
-      title: "매번 드라이 맡기기, 번거롭지 않으세요?",
-      subtitle: "집에서 매일 새 옷처럼.\n미세먼지부터 냄새까지 관리하는 스타일러의 핵심 원리를 확인해보세요.",
+      title: "아끼는 옷, 스타일러 괜찮을까 걱정되신다면?",
+      subtitle: "두 개의 히터가 스팀을 정교하게 조절해 섬세한 옷감도 부담 없이 관리해드려요. 케어 방식을 확인해보세요.",
       icon: "Wind",
       tag: "듀얼 히팅 스팀",
       mediaType: "video",
@@ -45,10 +45,10 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "미세먼지가 극심한 날, 돌아오면 바로 스타일러하세요!",
-      subtitle: "좌우에서 트위스트 회전으로!\n분당 최대 350회 회전해 미세먼지를 99%까지 제거해요.",
+      title: "보이지 않는 먼지, 제대로 털리고 있나요?",
+      subtitle: "옷을 흔들어 털어내듯 움직여, 먼지와 잔여물을 효과적으로 관리해드려요. 작동 방식을 살펴보세요.",
       icon: "dress",
-      tag: "다이내믹 무빙행어",
+      tag: "다이내믹 무빙 행어",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/_2023_styler/1.0/tech/movinghanger_pc.mp4",
       description:
