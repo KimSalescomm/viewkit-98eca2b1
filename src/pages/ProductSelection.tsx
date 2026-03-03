@@ -4,152 +4,70 @@ import SafeImage from "@/components/SafeImage";
 
 const ProductSelection = () => {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "linear-gradient(to bottom right, #f9fafb, #dbeafe, #fae8ff)",
-        padding: "32px 24px"
-      }}
-    >
-      <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 px-4 py-8 sm:px-6 sm:py-8">
+      <div className="max-w-xl mx-auto sm:max-w-4xl">
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "40px", marginTop: "120px" }}>
-          <h1
-            style={{
-              fontSize: "48px",
-              fontWeight: 900,
-              letterSpacing: "0.05em",
-              textTransform: "uppercase",
-              color: "#1f2937",
-              marginBottom: "16px"
-            }}
-          >
+        <div className="text-center mb-8 mt-16 sm:mt-28 sm:mb-10">
+          <h1 className="text-3xl sm:text-5xl font-black tracking-wider uppercase text-gray-800 mb-3">
             VIEW KIT
           </h1>
-          <h2
-            style={{
-              fontSize: "24px",
-              fontWeight: 600,
-              color: "#374151",
-              marginBottom: "8px"
-            }}
-          >
+          <h2 className="text-lg sm:text-2xl font-semibold text-gray-700 mb-1">
             제품을 선택해주세요
           </h2>
-          <p style={{ fontSize: "16px", color: "#6b7280" }}>
+          <p className="text-sm sm:text-base text-gray-500">
             제품별 특장점을 확인하실 수 있습니다
           </p>
         </div>
 
         {/* Product Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: "16px"
-          }}
-        >
-        {products.map((product) => {
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          {products.map((product) => {
             const isEnabled = ["refrigerator", "styler"].includes(product.id);
 
-            const cardStyle: React.CSSProperties = {
-              display: "block",
-              background: "#ffffff",
-              borderRadius: "16px",
-              overflow: "hidden",
-              boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-              transition: "all 0.3s ease",
-              textDecoration: "none",
-              cursor: isEnabled ? "pointer" : "not-allowed",
-              opacity: isEnabled ? 1 : 0.7
-            };
-
-            const handleMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
-              if (isEnabled) {
-                e.currentTarget.style.transform = "scale(1.03)";
-                e.currentTarget.style.boxShadow = "0 20px 25px -5px rgba(0, 0, 0, 0.15)";
-              }
-            };
-
-            const handleMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
-              if (isEnabled) {
-                e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.boxShadow = "0 10px 15px -3px rgba(0, 0, 0, 0.1)";
-              }
-            };
+            const cardClasses = `block bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 ${
+              isEnabled ? "cursor-pointer hover:scale-[1.03] hover:shadow-xl" : "cursor-not-allowed opacity-70"
+            }`;
 
             const cardContent = (
               <>
                 {/* Product Image */}
-                <div
-                  style={{
-                    height: "192px",
-                    overflow: "hidden",
-                    background: "#f9fafb"
-                  }}
-                >
+                <div className="h-28 sm:h-48 overflow-hidden bg-gray-50">
                   <SafeImage
                     src={product.keyVisualImage}
                     alt={product.name}
                     loading="lazy"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: "top",
-                      transition: "transform 0.3s ease",
-                      filter: isEnabled ? "none" : "grayscale(100%)"
-                    }}
-                    onMouseEnter={(e) => {
-                      if (isEnabled) {
-                        e.currentTarget.style.transform = "scale(1.1)";
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (isEnabled) {
-                        e.currentTarget.style.transform = "scale(1)";
-                      }
-                    }}
+                    className={`w-full h-full object-cover object-top transition-transform duration-300 ${
+                      isEnabled ? "hover:scale-110" : "grayscale"
+                    }`}
                   />
                 </div>
 
                 {/* Product Info */}
-                <div style={{ padding: "20px" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "8px" }}>
+                <div className="p-3 sm:p-5">
+                  <div className="flex items-start gap-2 sm:gap-3">
                     <div
-                      style={{
-                        width: "48px",
-                        height: "48px",
-                        borderRadius: "12px",
-                        background: isEnabled
-                          ? "linear-gradient(135deg, #2563eb, #9333ea)"
-                          : "linear-gradient(135deg, #9ca3af, #6b7280)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center"
-                      }}
+                      className={`w-9 h-9 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                        isEnabled
+                          ? "bg-gradient-to-br from-blue-600 to-purple-600"
+                          : "bg-gradient-to-br from-gray-400 to-gray-500"
+                      }`}
                     >
-                      <span style={{ fontSize: "24px", filter: isEnabled ? "none" : "grayscale(100%)" }}>
+                      <span className={`text-lg sm:text-2xl ${isEnabled ? "" : "grayscale"}`}>
                         {iconMap[product.icon]}
                       </span>
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h3
-                        style={{
-                          fontSize: "20px",
-                          fontWeight: "bold",
-                          color: isEnabled ? "#111827" : "#9ca3af",
-                          margin: 0
-                        }}
+                        className={`text-base sm:text-xl font-bold leading-tight ${
+                          isEnabled ? "text-gray-900" : "text-gray-400"
+                        }`}
                       >
                         {product.name}
                       </h3>
                       <p
-                        style={{
-                          fontSize: "14px",
-                          color: isEnabled ? "#6b7280" : "#9ca3af",
-                          margin: 0
-                        }}
+                        className={`text-xs sm:text-sm mt-0.5 leading-snug ${
+                          isEnabled ? "text-gray-500" : "text-gray-400"
+                        }`}
                       >
                         {product.description}
                       </p>
@@ -161,23 +79,14 @@ const ProductSelection = () => {
 
             if (isEnabled) {
               return (
-                <Link
-                  key={product.id}
-                  to={`/product/${product.id}`}
-                  style={cardStyle}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
+                <Link key={product.id} to={`/product/${product.id}`} className={cardClasses}>
                   {cardContent}
                 </Link>
               );
             }
 
             return (
-              <div
-                key={product.id}
-                style={cardStyle}
-              >
+              <div key={product.id} className={cardClasses}>
                 {cardContent}
               </div>
             );
