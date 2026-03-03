@@ -89,15 +89,15 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
     
     return (
       <div style={{ 
-        width: "100%", 
-        display: "flex", 
-        justifyContent: "center" 
-      }}>
+          width: "100%", 
+          overflowX: "auto",
+          WebkitOverflowScrolling: "touch",
+        }}>
         <div style={{ 
           display: "flex", 
           gap: "16px", 
           justifyContent: "center",
-          flexWrap: "wrap",
+          minWidth: "fit-content",
         }}>
           {tableData.map((product, idx) => (
             <div
