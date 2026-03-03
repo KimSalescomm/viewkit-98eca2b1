@@ -16,74 +16,20 @@ const FeatureCard = ({ id, title, subtitle, icon, productId, tag }: FeatureCardP
   return (
     <Link
       to={`/product/${productId}/feature/${id}`}
-      style={{
-        display: "block",
-        background: "#ffffff",
-        borderRadius: "16px",
-        padding: "24px",
-        border: "1px solid #f3f4f6",
-        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-        transition: "all 0.3s ease",
-        textDecoration: "none",
-        textAlign: "center"
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "scale(1.03)";
-        e.currentTarget.style.boxShadow = "0 20px 25px -5px rgba(0, 0, 0, 0.15)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "scale(1)";
-        e.currentTarget.style.boxShadow = "0 4px 6px -1px rgba(0, 0, 0, 0.1)";
-      }}
+      className="block bg-white rounded-2xl p-4 sm:p-6 border border-gray-100 shadow-md hover:scale-[1.03] hover:shadow-xl transition-all duration-300 text-center"
     >
-      <div
-        style={{
-          width: "64px",
-          height: "64px",
-          borderRadius: "16px",
-          background: "linear-gradient(135deg, #2563eb, #9333ea)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: "0 auto 16px auto"
-        }}
-      >
-        <span style={{ fontSize: "32px" }}>{emoji}</span>
+      <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mx-auto mb-3 sm:mb-4">
+        <span className="text-2xl sm:text-3xl">{emoji}</span>
       </div>
       {tag && (
-        <span
-          style={{
-            display: "inline-block",
-            backgroundColor: "#EFF6FF",
-            color: "#2563EB",
-            fontSize: "13px",
-            fontWeight: 600,
-            padding: "4px 10px",
-            borderRadius: "12px",
-            marginBottom: "12px"
-          }}
-        >
+        <span className="inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-2.5 py-1 rounded-lg mb-2 sm:mb-3">
           {tag}
         </span>
       )}
-      <h3
-        style={{
-          fontSize: "20px",
-          fontWeight: "bold",
-          color: "#111827",
-          marginBottom: "8px"
-        }}
-      >
+      <h3 className="text-base sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
         {title}
       </h3>
-      <p
-        style={{
-          fontSize: "14px",
-          color: "#6b7280",
-          whiteSpace: "pre-line",
-          lineHeight: "1.5"
-        }}
-      >
+      <p className="text-xs sm:text-sm text-gray-500 whitespace-pre-line leading-relaxed">
         {subtitle}
       </p>
     </Link>

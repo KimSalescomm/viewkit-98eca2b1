@@ -11,27 +11,10 @@ const FeatureDetail = () => {
 
   if (!feature || !product) {
     return (
-      <div
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "linear-gradient(to bottom right, #f9fafb, #dbeafe, #fae8ff)"
-        }}
-      >
-        <div style={{ textAlign: "center" }}>
-          <h1 style={{ fontSize: "24px", color: "#111827", marginBottom: "16px" }}>
-            특장점을 찾을 수 없습니다
-          </h1>
-          <Link
-            to={`/product/${productId}`}
-            style={{
-              color: "#2563eb",
-              textDecoration: "none",
-              fontWeight: 500
-            }}
-          >
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
+        <div className="text-center">
+          <h1 className="text-xl text-gray-900 mb-4">특장점을 찾을 수 없습니다</h1>
+          <Link to={`/product/${productId}`} className="text-blue-600 font-medium">
             ← 특장점 목록으로 돌아가기
           </Link>
         </div>
@@ -42,56 +25,19 @@ const FeatureDetail = () => {
   const emoji = featureIconMap[feature.icon] || "✨";
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "linear-gradient(to bottom right, #f9fafb, #dbeafe, #fae8ff)"
-      }}
-    >
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
       {/* Sticky Header */}
-      <div
-        style={{
-          position: "sticky",
-          top: 0,
-          background: "rgba(255, 255, 255, 0.9)",
-          backdropFilter: "blur(8px)",
-          borderBottom: "1px solid #e5e7eb",
-          padding: "16px 24px",
-          zIndex: 100
-        }}
-      >
-        <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+      <div className="sticky top-0 bg-white/90 backdrop-blur-md border-b border-gray-200 px-4 py-3 sm:px-6 sm:py-4 z-50">
+        <div className="max-w-xl mx-auto sm:max-w-4xl">
           <Link
             to={`/product/${productId}`}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              color: "#4b5563",
-              textDecoration: "none",
-              fontSize: "14px",
-              transition: "color 0.2s"
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "#111827";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "#4b5563";
-            }}
+            className="inline-flex items-center gap-1.5 text-gray-600 hover:text-gray-900 text-xs sm:text-sm transition-colors"
           >
             <span>←</span>
             <span>{product.name} 특장점으로 돌아가기</span>
           </Link>
-          <div style={{ textAlign: "center", marginTop: "8px" }}>
-            <span
-              style={{
-                fontSize: "24px",
-                fontWeight: 900,
-                letterSpacing: "0.05em",
-                textTransform: "uppercase",
-                color: "#1f2937"
-              }}
-            >
+          <div className="text-center mt-1 sm:mt-2">
+            <span className="text-lg sm:text-2xl font-black tracking-wider uppercase text-gray-800">
               VIEW KIT
             </span>
           </div>
@@ -99,56 +45,24 @@ const FeatureDetail = () => {
       </div>
 
       {/* Content */}
-      <div style={{ padding: "32px 24px", maxWidth: "1080px", margin: "0 auto" }}>
+      <div className="px-4 py-6 sm:px-6 sm:py-8 max-w-xl mx-auto sm:max-w-4xl">
         {/* Feature Header */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "24px",
-            marginBottom: "32px"
-          }}
-        >
-          <div
-            style={{
-              width: "96px",
-              height: "96px",
-              borderRadius: "24px",
-              background: "linear-gradient(135deg, #2563eb, #9333ea)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0
-            }}
-          >
-            <span style={{ fontSize: "48px" }}>{emoji}</span>
+        <div className="flex items-start gap-3 sm:gap-6 mb-6 sm:mb-8">
+          <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center flex-shrink-0">
+            <span className="text-3xl sm:text-5xl">{emoji}</span>
           </div>
-          <div>
-            <h1
-              style={{
-                fontSize: "32px",
-                fontWeight: "bold",
-                color: "#111827",
-                marginBottom: "8px"
-              }}
-            >
+          <div className="min-w-0">
+            <h1 className="text-xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">
               {feature.title}
             </h1>
-            <p
-              style={{
-                fontSize: "18px",
-                color: "#6b7280",
-                whiteSpace: "pre-line",
-                lineHeight: "1.5"
-              }}
-            >
+            <p className="text-sm sm:text-lg text-gray-500 whitespace-pre-line leading-relaxed">
               {feature.subtitle}
             </p>
           </div>
         </div>
 
         {/* Media */}
-        <div style={{ marginBottom: "32px" }}>
+        <div className="mb-6 sm:mb-8">
           <MediaViewer
             mediaType={feature.mediaType}
             mediaUrl={feature.mediaUrl}
@@ -161,126 +75,34 @@ const FeatureDetail = () => {
         </div>
 
         {/* Description Card */}
-        <div
-          style={{
-            background: "#ffffff",
-            borderRadius: "16px",
-            padding: "24px",
-            marginBottom: "24px",
-            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "20px",
-              fontWeight: "bold",
-              color: "#111827",
-              marginBottom: "16px"
-            }}
-          >
-            설명 더 보기
-          </h2>
-          <p
-            style={{
-              fontSize: "16px",
-              color: "#4b5563",
-              lineHeight: "1.8"
-            }}
-          >
+        <div className="bg-white rounded-2xl p-5 sm:p-6 mb-4 sm:mb-6 shadow-md">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">설명 더 보기</h2>
+          <p className="text-sm sm:text-base text-gray-600 leading-relaxed sm:leading-loose">
             {feature.description}
           </p>
         </div>
 
         {/* Highlights Card */}
-        <div
-          style={{
-            background: "#ffffff",
-            borderRadius: "16px",
-            padding: "24px",
-            marginBottom: "48px",
-            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "20px",
-              fontWeight: "bold",
-              color: "#111827",
-              marginBottom: "16px"
-            }}
-          >
-            핵심만 쏙
-          </h2>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-              gap: "12px"
-            }}
-          >
+        <div className="bg-white rounded-2xl p-5 sm:p-6 mb-10 sm:mb-12 shadow-md">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">핵심만 쏙</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
             {feature.highlights.map((highlight, index) => (
               <div
                 key={index}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  padding: "16px",
-                  background: "#eff6ff",
-                  borderRadius: "12px"
-                }}
+                className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 bg-blue-50 rounded-xl"
               >
-                <span
-                  style={{
-                    fontSize: "20px",
-                    color: "#2563eb",
-                    fontWeight: "bold"
-                  }}
-                >
-                  ✓
-                </span>
-                <span
-                  style={{
-                    fontSize: "16px",
-                    color: "#1f2937",
-                    fontWeight: 500
-                  }}
-                >
-                  {highlight}
-                </span>
+                <span className="text-blue-600 font-bold text-base sm:text-lg">✓</span>
+                <span className="text-sm sm:text-base text-gray-800 font-medium">{highlight}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Back Button */}
-        <div style={{ textAlign: "center" }}>
+        <div className="text-center">
           <Link
             to={`/product/${productId}`}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              background: "linear-gradient(to right, #2563eb, #9333ea)",
-              color: "#ffffff",
-              padding: "16px 32px",
-              borderRadius: "12px",
-              textDecoration: "none",
-              fontSize: "18px",
-              fontWeight: 600,
-              boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-              transition: "all 0.3s ease"
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "linear-gradient(to right, #1d4ed8, #7e22ce)";
-              e.currentTarget.style.boxShadow = "0 20px 25px -5px rgba(0, 0, 0, 0.15)";
-              e.currentTarget.style.transform = "translateY(-2px)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "linear-gradient(to right, #2563eb, #9333ea)";
-              e.currentTarget.style.boxShadow = "0 10px 15px -3px rgba(0, 0, 0, 0.1)";
-              e.currentTarget.style.transform = "translateY(0)";
-            }}
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
           >
             <span>←</span>
             <span>전체 특장점으로 돌아가기</span>

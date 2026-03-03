@@ -13,27 +13,10 @@ const Home = () => {
 
   if (!product) {
     return (
-      <div
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "linear-gradient(to bottom right, #f9fafb, #dbeafe, #fae8ff)"
-        }}
-      >
-        <div style={{ textAlign: "center" }}>
-          <h1 style={{ fontSize: "24px", color: "#111827", marginBottom: "16px" }}>
-            제품을 찾을 수 없습니다
-          </h1>
-          <Link
-            to="/"
-            style={{
-              color: "#2563eb",
-              textDecoration: "none",
-              fontWeight: 500
-            }}
-          >
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
+        <div className="text-center">
+          <h1 className="text-xl text-gray-900 mb-4">제품을 찾을 수 없습니다</h1>
+          <Link to="/" className="text-blue-600 font-medium">
             ← 제품 선택으로 돌아가기
           </Link>
         </div>
@@ -42,130 +25,50 @@ const Home = () => {
   }
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "linear-gradient(to bottom right, #f9fafb, #dbeafe, #fae8ff)",
-        padding: "24px"
-      }}
-    >
-      <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 px-4 py-6 sm:px-6 sm:py-6">
+      <div className="max-w-xl mx-auto sm:max-w-4xl">
         {/* Back Button */}
         <Link
           to="/"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            color: "#4b5563",
-            textDecoration: "none",
-            fontSize: "16px",
-            marginBottom: "24px",
-            transition: "color 0.2s"
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "#111827";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "#4b5563";
-          }}
+          className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 text-sm sm:text-base mb-4 sm:mb-6 transition-colors"
         >
-          <span style={{ fontSize: "20px" }}>←</span>
+          <span className="text-lg">←</span>
           <span>제품 선택으로 돌아가기</span>
         </Link>
 
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "32px" }}>
-          {/* VIEW KIT - Subtle branding */}
-          <p
-            style={{
-              fontSize: "14px",
-              fontWeight: 500,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "#9ca3af",
-              marginBottom: "16px"
-            }}
-          >
+        <div className="text-center mb-6 sm:mb-8">
+          <p className="text-xs sm:text-sm font-medium tracking-widest uppercase text-gray-400 mb-3 sm:mb-4">
             VIEW KIT
           </p>
-
-          {/* Category Chip - Subtle style */}
-          <div
-            style={{
-              display: "inline-block",
-              backgroundColor: "#faf5ff",
-              border: "1px solid #e9d5ff",
-              padding: "8px 20px",
-              borderRadius: "50px",
-              marginBottom: "20px"
-            }}
-          >
-            <span style={{ fontSize: "16px", fontWeight: 600, color: "#9333ea" }}>
-              {product.name}
-            </span>
+          <div className="inline-block bg-purple-50 border border-purple-200 px-4 py-1.5 sm:px-5 sm:py-2 rounded-full mb-4 sm:mb-5">
+            <span className="text-sm sm:text-base font-semibold text-purple-600">{product.name}</span>
           </div>
-
-          {/* Main Title */}
-          <h1
-            style={{
-              fontSize: "28px",
-              fontWeight: 700,
-              color: "#111827",
-              marginBottom: "12px"
-            }}
-          >
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
             {product.title}
           </h1>
-          <p style={{ fontSize: "18px", color: "#4b5563" }}>
-            {product.description}
-          </p>
+          <p className="text-base sm:text-lg text-gray-600">{product.description}</p>
         </div>
 
         {/* Key Visual */}
-        <div
-          style={{
-            borderRadius: "20px",
-            overflow: "hidden",
-            marginBottom: "40px",
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)"
-          }}
-        >
+        <div className="rounded-2xl overflow-hidden mb-8 sm:mb-10 shadow-2xl">
           <SafeImage
             src={product.keyVisualImage}
             alt={product.name}
             loading="lazy"
-            style={{
-              width: "100%",
-              height: "500px",
-              objectFit: "cover",
-              objectPosition: productId === "airconditioner" ? "top" : "center"
-            }}
+            className={`w-full h-48 sm:h-[500px] object-cover ${
+              productId === "airconditioner" ? "object-top" : "object-center"
+            }`}
           />
         </div>
 
         {/* Features Section Title */}
-        <div style={{ textAlign: "center", marginBottom: "24px" }}>
-          <h3
-            style={{
-              fontSize: "24px",
-              fontWeight: 700,
-              color: "#111827"
-            }}
-          >
-            주요 특장점
-          </h3>
+        <div className="text-center mb-5 sm:mb-6">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">주요 특장점</h3>
         </div>
 
         {/* Features Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: "16px",
-            marginBottom: "48px"
-          }}
-        >
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-10 sm:mb-12">
           {features.map((feature) => (
             <FeatureCard
               key={feature.id}
@@ -180,31 +83,10 @@ const Home = () => {
         </div>
 
         {/* Other Products Button */}
-        <div style={{ textAlign: "center" }}>
+        <div className="text-center">
           <button
             onClick={() => navigate("/")}
-            style={{
-              background: "linear-gradient(to right, #2563eb, #9333ea)",
-              color: "#ffffff",
-              padding: "16px 48px",
-              borderRadius: "12px",
-              border: "none",
-              fontSize: "18px",
-              fontWeight: 600,
-              cursor: "pointer",
-              boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-              transition: "all 0.3s ease"
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "linear-gradient(to right, #1d4ed8, #7e22ce)";
-              e.currentTarget.style.boxShadow = "0 20px 25px -5px rgba(0, 0, 0, 0.15)";
-              e.currentTarget.style.transform = "translateY(-2px)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "linear-gradient(to right, #2563eb, #9333ea)";
-              e.currentTarget.style.boxShadow = "0 10px 15px -3px rgba(0, 0, 0, 0.1)";
-              e.currentTarget.style.transform = "translateY(0)";
-            }}
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 sm:px-12 sm:py-4 rounded-xl text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
           >
             다른 제품 보기
           </button>
