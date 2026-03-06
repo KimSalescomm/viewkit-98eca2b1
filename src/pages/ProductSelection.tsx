@@ -22,7 +22,7 @@ const ProductSelection = () => {
         {/* Product Grid */}
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {products.map((product) => {
-            const isEnabled = ["refrigerator", "styler"].includes(product.id);
+            const isEnabled = ["refrigerator", "styler", "tv"].includes(product.id);
 
             const cardClasses = `block bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 ${
               isEnabled ? "cursor-pointer hover:scale-[1.03] hover:shadow-xl" : "cursor-not-allowed opacity-70"
