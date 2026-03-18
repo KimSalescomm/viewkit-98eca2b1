@@ -41,15 +41,15 @@ const ProductSelection = () => {
             const cardContent = (
               <div
                 className={`
-                  group relative rounded-3xl overflow-hidden transition-all duration-300
+                  group relative rounded-3xl overflow-hidden transition-all duration-300 h-full flex flex-col
                   ${isEnabled
-                    ? "bg-white border-2 border-[#3A57FF] shadow-[0_4px_24px_rgba(58,87,255,0.12)] hover:shadow-[0_8px_32px_rgba(58,87,255,0.18)]"
-                    : "bg-white/70 border border-gray-200/60 hover:bg-white hover:border-gray-300 hover:shadow-md"
+                    ? "bg-white shadow-[0_2px_16px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
+                    : "bg-white/70 shadow-sm hover:shadow-md"
                   }
                 `}
               >
                 {/* Thumbnail */}
-                <div className="relative h-32 sm:h-48 overflow-hidden">
+                <div className="relative h-36 sm:h-48 overflow-hidden flex-shrink-0">
                   <SafeImage
                     src={product.keyVisualImage}
                     alt={product.name}
@@ -57,7 +57,7 @@ const ProductSelection = () => {
                     className={`w-full h-full object-cover object-top transition-all duration-500
                       ${isEnabled
                         ? "group-hover:scale-105"
-                        : "saturate-[0.6] opacity-80 group-hover:saturate-100 group-hover:opacity-100"
+                        : "grayscale opacity-70 group-hover:grayscale-[50%] group-hover:opacity-90"
                       }
                     `}
                   />
@@ -66,7 +66,7 @@ const ProductSelection = () => {
                 </div>
 
                 {/* Card Body */}
-                <div className={`p-3.5 sm:p-5 ${isEnabled ? "bg-[#F3F7FF]" : ""}`}>
+                <div className={`p-3.5 sm:p-5 flex-1 ${isEnabled ? "bg-[#F3F7FF]" : ""}`}>
                   <div className="flex items-start gap-2.5 sm:gap-3.5">
                     {/* Icon Badge */}
                     <div
@@ -74,11 +74,11 @@ const ProductSelection = () => {
                         w-10 h-10 sm:w-13 sm:h-13 rounded-2xl flex items-center justify-center flex-shrink-0 text-xl sm:text-2xl
                         ${isEnabled
                           ? "bg-gradient-to-br from-[#3A57FF] to-[#6B7FFF] shadow-[0_2px_8px_rgba(58,87,255,0.3)]"
-                          : "bg-gray-200/80 group-hover:bg-gray-300/80"
+                          : "bg-gray-300 group-hover:bg-gray-400"
                         }
                       `}
                     >
-                      <span className={`${isEnabled ? "" : "grayscale-[40%] group-hover:grayscale-0 transition-all duration-300"}`}>
+                      <span className={`${isEnabled ? "" : "grayscale transition-all duration-300 group-hover:grayscale-[50%]"}`}>
                         {iconMap[product.icon]}
                       </span>
                     </div>
@@ -89,7 +89,7 @@ const ProductSelection = () => {
                         className={`text-base sm:text-lg leading-tight transition-colors duration-300
                           ${isEnabled
                             ? "font-extrabold text-gray-900"
-                            : "font-bold text-gray-900/70 group-hover:text-gray-900"
+                            : "font-bold text-gray-400 group-hover:text-gray-600"
                           }
                         `}
                       >
@@ -99,7 +99,7 @@ const ProductSelection = () => {
                         className={`text-xs sm:text-sm mt-0.5 leading-snug transition-colors duration-300
                           ${isEnabled
                             ? "text-gray-600 font-medium"
-                            : "text-gray-400 group-hover:text-gray-500"
+                            : "text-gray-300 group-hover:text-gray-400"
                           }
                         `}
                       >
