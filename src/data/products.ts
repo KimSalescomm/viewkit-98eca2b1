@@ -11,9 +11,9 @@ export const products: Product[] = [
   {
     id: "tv",
     name: "TV",
-    title: "The next 올레드",
-    description: "지금까지 보지 못한 빛과 색을 깨운 올레드의 탄생",
-    keyVisualImage: "https://static-stg.lge.co.kr/kr/images/tvs/md10770829/gallery/medium-interior01.jpg",
+    title: "OLED TV",
+    description: "완벽한 블랙, 무한한 컬러",
+    keyVisualImage: "https://www.lge.co.kr/kr/story/buying-guide/img/lg-tv-guide/keyvisual_01.jpg",
     icon: "Tv",
   },
   {
