@@ -13,7 +13,7 @@ export const products: Product[] = [
     name: "TV",
     title: "OLED TV",
     description: "완벽한 블랙, 무한한 컬러",
-    keyVisualImage: "https://www.lge.co.kr/kr/story/buying-guide/img/lg-tv-guide/keyvisual_01.jpg",
+    keyVisualImage: "https://static-stg.lge.co.kr/kr/images/tvs/md10770829/gallery/medium-interior01.jpg",
     icon: "Tv",
   },
   {
