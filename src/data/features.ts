@@ -84,14 +84,14 @@ export const featuresMap: Record<string, Feature[]> = {
   tv: [
     {
       id: "1",
-      title: "낮에 봐도 선명하고, 밤에 보면 더 화사한\n역대급 밝기의 최신 올레드",
-      subtitle: "2세대 마이크로 렌즈 어레이로\n밝기와 색 표현력이 한 단계 업그레이드",
+      title: "햇살의 반짝임까지 선명하게 보고싶다면?",
+      subtitle: "낮에봐도 선명하고, 밤에보면 더 화사한\n역대급 밝기의 최신 올레드",
       icon: "Sparkles",
       tag: "하이퍼 브라이트 부스터",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_01_pc.mp4",
       description:
-        "2세대 마이크로 렌즈 어레이(MLA) 기술로 빛의 효율을 극대화하여, 이전 세대보다 훨씬 밝고 선명한 화면을 구현합니다. 밝은 환경에서도 또렷한 HDR 콘텐츠를 즐길 수 있습니다.",
+        "낮에봐도 선명하고, 밤에보면 더 화사한 역대급 밝기의 최신 올레드. 2세대 마이크로 렌즈 어레이(MLA) 기술로 빛의 효율을 극대화하여, 이전 세대보다 훨씬 밝고 선명한 화면을 구현합니다. 밝은 환경에서도 또렷한 HDR 콘텐츠를 즐길 수 있습니다.",
       highlights: ["2세대 MLA 기술", "역대 최고 밝기", "완벽한 블랙 표현", "Dolby Vision 지원"],
       disclaimers: [
         "소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
