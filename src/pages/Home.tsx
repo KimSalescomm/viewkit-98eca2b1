@@ -57,7 +57,7 @@ const Home = () => {
             alt={product.name}
             loading="lazy"
             className={`w-full h-48 sm:h-[500px] object-cover ${
-              productId === "tv" ? "scale-[1.15] object-[65%_55%] -translate-y-[60px]" :
+              productId === "tv" ? "scale-[1.15] object-[65%_55%] -translate-y-[40px]" :
               productId === "airconditioner" ? "object-top" : "object-center"
             }`}
           />
