@@ -87,8 +87,8 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "2세대 마이크로 렌즈 어레이로\n밝기와 색 표현력이 한 단계 업그레이드",
       icon: "Sparkles",
       tag: "MLA 2.0",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium01.jpg",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_01_pc.mp4",
       description:
         "2세대 마이크로 렌즈 어레이(MLA) 기술로 빛의 효율을 극대화하여, 이전 세대보다 훨씬 밝고 선명한 화면을 구현합니다. 밝은 환경에서도 또렷한 HDR 콘텐츠를 즐길 수 있습니다.",
       highlights: ["2세대 MLA 기술", "역대 최고 밝기", "완벽한 블랙 표현", "Dolby Vision 지원"],
