@@ -110,7 +110,6 @@ const FeatureDetail = () => {
             </ul>
           </div>
         )}
-        </div>
 
         {/* Back Button */}
         <div className="text-center">
