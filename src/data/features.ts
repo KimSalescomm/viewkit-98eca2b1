@@ -84,10 +84,10 @@ export const featuresMap: Record<string, Feature[]> = {
   tv: [
     {
       id: "1",
-      title: "역대 가장 밝은 올레드, 뭐가 다를까?",
+      title: "낮에 봐도 선명하고, 밤에 보면 더 화사한\n역대급 밝기의 최신 올레드",
       subtitle: "2세대 마이크로 렌즈 어레이로\n밝기와 색 표현력이 한 단계 업그레이드",
       icon: "Sparkles",
-      tag: "MLA 2.0",
+      tag: "하이퍼 브라이트 부스터",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_01_pc.mp4",
       description:
