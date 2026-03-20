@@ -27,6 +27,7 @@ export interface Feature {
   tableData?: ProductComparisonTable[];
   galleryImages?: (string | GalleryImage)[];
   isShorts?: boolean;
+  disclaimers?: string[];
 }
 
 export const featuresMap: Record<string, Feature[]> = {
