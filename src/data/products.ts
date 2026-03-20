@@ -13,8 +13,7 @@ export const products: Product[] = [
     name: "TV",
     title: "The Next 올레드",
     description: "지금까지 보지 못한 빛과 색을 깨운 올레드의 탄생",
-    keyVisualImage: "",
-    keyVisualImport: true,
+    keyVisualImage: "https://static.lge.co.kr/kr/upload/admin/eventPlan/kv_pc_20260316_094128.png",
     icon: "Tv",
   },
   {
