@@ -92,11 +92,24 @@ const FeatureDetail = () => {
                 className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 bg-blue-50 rounded-xl"
               >
                 <span className="text-blue-600 font-bold text-base sm:text-lg">✓</span>
-                <span className="text-sm sm:text-base text-gray-800 font-medium">{highlight}</span>
+              <span className="text-sm sm:text-base text-gray-800 font-medium">{highlight}</span>
               </div>
             ))}
           </div>
         </div>
+
+        {/* Disclaimers */}
+        {feature.disclaimers && feature.disclaimers.length > 0 && (
+          <div className="mb-10 sm:mb-12 px-1">
+            <ul className="space-y-1">
+              {feature.disclaimers.map((text, index) => (
+                <li key={index} className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                  * {text}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {/* Back Button */}
         <div className="text-center">

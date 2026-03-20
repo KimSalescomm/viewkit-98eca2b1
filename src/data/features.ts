@@ -27,6 +27,7 @@ export interface Feature {
   tableData?: ProductComparisonTable[];
   galleryImages?: (string | GalleryImage)[];
   isShorts?: boolean;
+  disclaimers?: string[];
 }
 
 export const featuresMap: Record<string, Feature[]> = {
@@ -92,6 +93,12 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "2세대 마이크로 렌즈 어레이(MLA) 기술로 빛의 효율을 극대화하여, 이전 세대보다 훨씬 밝고 선명한 화면을 구현합니다. 밝은 환경에서도 또렷한 HDR 콘텐츠를 즐길 수 있습니다.",
       highlights: ["2세대 MLA 기술", "역대 최고 밝기", "완벽한 블랙 표현", "Dolby Vision 지원"],
+      disclaimers: [
+        "소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
+        "하이퍼 브라이트 부스터: B 시리즈 대비 최대 390% 밝기 향상",
+        "최대 3.9배 밝아진 올레드: APL 3% 기준 '25년 B 시리즈 대비 '26년 G 시리즈 최대 3.9배 밝기 향상(97형 제외)",
+        "가장 빛나는 올레드: 자사 출시 제품 기준",
+      ],
     },
     {
       id: "2",
