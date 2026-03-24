@@ -2,6 +2,12 @@ import { Link, useParams } from "react-router-dom";
 import { getFeatureById, featureIconMap } from "@/data/features";
 import { getProductById } from "@/data/products";
 import MediaViewer from "@/components/MediaViewer";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const FeatureDetail = () => {
   const { productId, id } = useParams<{ productId: string; id: string }>();
@@ -100,7 +106,7 @@ const FeatureDetail = () => {
 
         {/* Disclaimers */}
         {feature.disclaimers && feature.disclaimers.length > 0 && (
-          <div className="mb-10 sm:mb-12 px-1">
+          <div className="mb-4 sm:mb-6 px-1">
             <ul className="space-y-1">
               {feature.disclaimers.map((text, index) => (
                 <li key={index} className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
@@ -108,6 +114,30 @@ const FeatureDetail = () => {
                 </li>
               ))}
             </ul>
+          </div>
+        )}
+
+        {/* Collapsible Disclaimers */}
+        {feature.collapsibleDisclaimers && feature.collapsibleDisclaimers.length > 0 && (
+          <div className="mb-10 sm:mb-12 px-1">
+            <Accordion type="multiple" className="w-full">
+              {feature.collapsibleDisclaimers.map((item, index) => (
+                <AccordionItem key={index} value={`disclaimer-${index}`} className="border-b border-gray-200">
+                  <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground hover:no-underline py-2.5">
+                    {item.title}
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <ol className="space-y-1 list-none">
+                      {item.items.map((text, i) => (
+                        <li key={i} className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                          {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
+                        </li>
+                      ))}
+                    </ol>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         )}
 
