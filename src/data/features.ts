@@ -13,6 +13,11 @@ export interface GalleryImage {
   description?: string;
 }
 
+export interface CollapsibleDisclaimer {
+  title: string;
+  items: string[];
+}
+
 export interface Feature {
   id: string;
   title: string;
@@ -28,6 +33,7 @@ export interface Feature {
   galleryImages?: (string | GalleryImage)[];
   isShorts?: boolean;
   disclaimers?: string[];
+  collapsibleDisclaimers?: CollapsibleDisclaimer[];
 }
 
 export const featuresMap: Record<string, Feature[]> = {
