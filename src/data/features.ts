@@ -102,10 +102,10 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "AI가 알아서 화면을 최적화해준다고?",
-      subtitle: "α11 AI 프로세서 4K가\n콘텐츠에 맞춰 화질·음질을 자동 조절",
+      title: "눈으로 보는 그 색 그대로 느끼고 싶다면?",
+      subtitle: "빛의 삼원색인 R,G,B를 온전히 그려내는\nTHE NEXT 올레드의 순도 높은 컬러 표현",
       icon: "Cpu",
-      tag: "α11 AI 프로세서",
+      tag: "하이퍼 올레드 컬러",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
       description:
