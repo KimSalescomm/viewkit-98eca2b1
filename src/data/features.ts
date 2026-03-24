@@ -109,7 +109,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
       description:
-        "α11 AI 프로세서 4K가 시청 중인 콘텐츠의 장르와 장면을 실시간 분석하여, 화질과 음질을 자동으로 최적화합니다. 영화, 스포츠, 게임 등 어떤 콘텐츠든 최상의 몰입감을 제공합니다.",
+        "실제 눈으로 보는 듯 정확한 컬러를 표현하기 위해서는 빛의 삼원색인 레드, 그린, 블루가 각각 빛나는 구조가 필요해요.\n파장을 조절해 컬러를 인위적으로 만들어내는 과정없이, R(레드), G(그린), B(블루) 광원이 각각 빛을 내는 방식이 적용돼 순수하고 정확한 컬러를 표현할 수 있어요.",
       highlights: ["AI 화질 엔진", "AI 사운드 프로", "130여 가지 장르 자동 인식", "노이즈 제거 기술"],
     },
     {
