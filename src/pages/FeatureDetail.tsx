@@ -2,6 +2,12 @@ import { Link, useParams } from "react-router-dom";
 import { getFeatureById, featureIconMap } from "@/data/features";
 import { getProductById } from "@/data/products";
 import MediaViewer from "@/components/MediaViewer";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const FeatureDetail = () => {
   const { productId, id } = useParams<{ productId: string; id: string }>();
