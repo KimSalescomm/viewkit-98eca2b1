@@ -165,7 +165,6 @@ const SetupSection = () => (
             <p className="text-xs text-muted-foreground leading-relaxed mb-4">
               설정 메뉴에서 '홈 화면에 바로가기 추가'를 선택하면, 다음부턴 URL 입력이 필요 없어요!
             </p>
-            </p>
             <div className="flex items-center gap-4">
               <img src={standbymeScreen2} alt="홈 화면 바로가기 추가 화면" className="w-[140px] rounded-xl shrink-0" />
               <div className="flex flex-col gap-3 items-center flex-1">
