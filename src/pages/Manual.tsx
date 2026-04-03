@@ -64,12 +64,13 @@ const HeroSection = () => (
     </div>
     <p className="text-sm leading-relaxed opacity-90 mb-8">
       가전 상담은 수많은 제품과 정보 속에서 고객에게 꼭 맞는 선택을 제안하는 일입니다.
+      <br />
       세일즈 앱을 통해 <strong className="font-bold">숨은 니즈를 빠르게 파악</strong>하고,{" "}
       <strong className="font-bold">화면 기반으로 쉽고 명확하게 상담</strong>해 보세요!
     </p>
     <div className="flex flex-col gap-3">
-      <AppCard title="가전 밸런스 게임" tag="# 니즈파악" description="생활 밀착형 질문으로 고객 취향을 빠르게 파악" />
-      <AppCard title="뷰킷 업" tag="# 증거제시" description="작동 원리·비교·설치까지 보면서 쉽게 설명" />
+      <AppCard title="가전 밸런스 게임" tag="# 니즈파악" description="생활 밀착형 질문으로 고객 취향을 빠르게 파악" href="https://refbalancegame.lovable.app/refrigerator" />
+      <AppCard title="뷰킷 업" tag="# 증거제시" description="작동 원리·비교·설치까지 보면서 쉽게 설명" href="https://viewkit.lovable.app/product/refrigerator" />
     </div>
   </section>
 );
