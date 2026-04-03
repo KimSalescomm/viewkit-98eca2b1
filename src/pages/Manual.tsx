@@ -139,15 +139,17 @@ const SetupSection = () => (
           <div className="flex-1 min-w-0">
             <h3 className="text-sm font-bold text-foreground mb-1.5">'인터넷' 앱에서 URL 입력</h3>
             <p className="text-xs text-muted-foreground leading-relaxed mb-3">인터넷 앱을 실행한 뒤 아래 주소를 직접 입력하세요.</p>
-            <img src={standbymeScreen1} alt="스탠바이미 인터넷 앱 실행 화면" className="w-full max-w-[180px] mx-auto rounded-xl mb-3" />
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5 shrink-0">밸런스 게임</span>
-                <span className="text-xs text-muted-foreground font-mono truncate">refbalancegame.lovable.app</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5 shrink-0">뷰킷</span>
-                <span className="text-xs text-muted-foreground font-mono truncate">viewkit.lovable.app</span>
+            <div className="flex items-center gap-4">
+              <img src={internetIcon} alt="인터넷 앱 아이콘" className="w-16 h-16 rounded-xl shrink-0" />
+              <div className="flex flex-col gap-2 flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5 shrink-0">밸런스 게임</span>
+                  <span className="text-xs text-muted-foreground font-mono truncate">refbalancegame.lovable.app</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5 shrink-0">뷰킷</span>
+                  <span className="text-xs text-muted-foreground font-mono truncate">viewkit.lovable.app</span>
+                </div>
               </div>
             </div>
           </div>
