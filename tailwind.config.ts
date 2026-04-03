@@ -57,6 +57,15 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        "manual-indigo": {
+          DEFAULT: "hsl(var(--manual-indigo))",
+          light: "hsl(var(--manual-indigo-light))",
+          dark: "hsl(var(--manual-indigo-dark))",
+        },
+        "manual-tag": {
+          bg: "hsl(var(--manual-tag-bg))",
+          text: "hsl(var(--manual-tag-text))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
