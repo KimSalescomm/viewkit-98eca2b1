@@ -38,6 +38,13 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
+    /* Manual page tokens */
+    --manual-indigo: 240 60% 62%;
+    --manual-indigo-light: 240 60% 92%;
+    --manual-indigo-dark: 240 60% 45%;
+    --manual-tag-bg: 240 50% 95%;
+    --manual-tag-text: 240 60% 50%;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -107,6 +114,18 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-family: 'Noto Sans KR', sans-serif;
+  }
+}
+
+@layer utilities {
+  .manual-gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--manual-indigo)) 0%, hsl(240 70% 72%) 100%);
+  }
+  .manual-gradient-section {
+    background: linear-gradient(180deg, hsl(var(--manual-indigo-light)) 0%, hsl(0 0% 100%) 100%);
+  }
+  .manual-shadow-card {
+    box-shadow: 0 2px 16px -2px hsl(var(--manual-indigo) / 0.10), 0 1px 4px -1px hsl(var(--manual-indigo) / 0.06);
   }
 }
 
