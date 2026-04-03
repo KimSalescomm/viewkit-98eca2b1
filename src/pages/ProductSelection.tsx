@@ -13,10 +13,10 @@ const ProductSelection = () => {
         {/* Help Icon */}
         <Link
           to="/product/tv/manual"
-          className="absolute top-0 right-0 text-gray-400 hover:text-purple-600 transition-colors"
+          className="absolute -top-4 sm:-top-6 right-0 text-sky-400 hover:text-sky-500 transition-colors"
           title="운영 매뉴얼"
         >
-          <HelpCircle className="w-5 h-5 sm:w-6 sm:h-6" />
+          <HelpCircle className="w-7 h-7 sm:w-8 sm:h-8" />
         </Link>
 
         {/* Header Section */}
