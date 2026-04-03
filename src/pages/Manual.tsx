@@ -31,18 +31,24 @@ const PainCard = ({ image, text }: { image: string; text: string }) => (
   </div>
 );
 
-const AppCard = ({ title, tag, description }: { title: string; tag: string; description: string }) => (
-  <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-4 flex items-center gap-3">
-    <div className="flex-1 min-w-0">
-      <div className="flex items-center gap-2 mb-1">
-        <span className="font-bold text-sm">{title}</span>
-        <span className="text-xs bg-white/20 rounded-full px-2 py-0.5">{tag}</span>
+const AppCard = ({ title, tag, description, href }: { title: string; tag: string; description: string; href?: string }) => {
+  const content = (
+    <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-4 flex items-center gap-3 hover:bg-white/25 transition-colors">
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="font-bold text-sm">{title}</span>
+          <span className="text-xs bg-white/20 rounded-full px-2 py-0.5">{tag}</span>
+        </div>
+        <p className="text-xs opacity-80 leading-relaxed">{description}</p>
       </div>
-      <p className="text-xs opacity-80 leading-relaxed">{description}</p>
+      <ChevronRight className="w-4 h-4 opacity-60 shrink-0" />
     </div>
-    <ChevronRight className="w-4 h-4 opacity-60 shrink-0" />
-  </div>
-);
+  );
+  if (href) {
+    return <a href={href} target="_blank" rel="noopener noreferrer">{content}</a>;
+  }
+  return content;
+};
 
 /* ── Sections ── */
 
@@ -58,12 +64,13 @@ const HeroSection = () => (
     </div>
     <p className="text-sm leading-relaxed opacity-90 mb-8">
       가전 상담은 수많은 제품과 정보 속에서 고객에게 꼭 맞는 선택을 제안하는 일입니다.
+      <br />
       세일즈 앱을 통해 <strong className="font-bold">숨은 니즈를 빠르게 파악</strong>하고,{" "}
       <strong className="font-bold">화면 기반으로 쉽고 명확하게 상담</strong>해 보세요!
     </p>
     <div className="flex flex-col gap-3">
-      <AppCard title="가전 밸런스 게임" tag="# 니즈파악" description="생활 밀착형 질문으로 고객 취향을 빠르게 파악" />
-      <AppCard title="뷰킷 업" tag="# 증거제시" description="작동 원리·비교·설치까지 보면서 쉽게 설명" />
+      <AppCard title="가전 밸런스 게임" tag="# 니즈파악" description="생활 밀착형 질문으로 고객 취향을 빠르게 파악" href="https://refbalancegame.lovable.app/refrigerator" />
+      <AppCard title="뷰킷 업" tag="# 증거제시" description="작동 원리·비교·설치까지 보면서 쉽게 설명" href="https://viewkit.lovable.app/product/refrigerator" />
     </div>
   </section>
 );
@@ -151,7 +158,8 @@ const SetupSection = () => (
           <div className="flex-1 min-w-0">
             <h3 className="text-sm font-bold text-foreground mb-1.5">홈 화면에 바로가기 추가</h3>
             <p className="text-xs text-muted-foreground leading-relaxed mb-3">
-              설정 메뉴에서 '홈 화면에 바로가기 추가'를 선택하면, 다음부턴 URL 입력이 필요 없어요!
+              설정 메뉴에서 '홈 화면에 바로가기 추가'를 선택하면,
+              <br />다음부턴 URL 입력이 필요 없어요!
             </p>
             <img src={standbymeScreen2} alt="홈 화면 바로가기 추가 화면" className="w-full max-w-[180px] mx-auto rounded-xl" />
           </div>
@@ -217,6 +225,7 @@ const BalanceGameSection = () => (
         <p className="text-xs font-bold text-foreground mb-1">상담 TIP</p>
         <p className="text-[11px] text-muted-foreground leading-relaxed">
           "잠깐 재미있는 게임 하나 해볼까요?" 라고 가볍게 권유하면 고객 참여율이 높아집니다.
+          <br />
           결과가 나오면 "역시 OO 타입이시네요!" 라며 자연스럽게 제품 추천으로 연결하세요.
         </p>
       </div>
@@ -257,6 +266,7 @@ const ViewKitSection = () => (
       </div>
       <p className="text-xs text-muted-foreground leading-relaxed">
         카드 상단의 파란색 박스를 보면 어떤 특장점을 다루는지 빠르게 파악할 수 있습니다.
+        <br />
         카드를 터치하면 영상·이미지가 포함된 상세 설명으로 이동합니다.
       </p>
     </div>
