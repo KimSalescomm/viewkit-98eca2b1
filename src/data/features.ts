@@ -262,18 +262,6 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
     },
     {
-      id: "10",
-      title: "보이지 않는 물길 속, 관리는 누가 할까요?",
-      subtitle: "필터부터 청소까지, 전문가가 알아서\n챙겨주는 전문 케어를 보여드려요.",
-      icon: "Wrench",
-      tag: "구독 전문케어",
-      mediaType: "youtube",
-      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM?si=j4iIwotCwLBvji5k",
-      description:
-        "물이 흐르는 길을 세척, 청소하기 힘든 기계실 세척, 이사 후 재설치까지 다양한 케어서비스 혜택이 있습니다.",
-      highlights: ["유로 세척 케어", "기계실 세척(프리미엄)", "고무패킹 케어", "소모품 교체"],
-    },
-    {
       id: "8",
       title: "나에겐 어떤 모델이 딱 맞을까요?",
       subtitle: "다양한 종류의 직수형 냉장고 STEM\n모델별 차이를 확인해 보세요.",
@@ -318,6 +306,30 @@ export const featuresMap: Record<string, Feature[]> = {
           ],
         },
       ],
+    },
+    {
+      id: "10",
+      title: "보이지 않는 물길 속, 관리는 누가 할까요?",
+      subtitle: "필터부터 청소까지, 전문가가 알아서\n챙겨주는 전문 케어를 보여드려요.",
+      icon: "Wrench",
+      tag: "구독 전문케어",
+      mediaType: "youtube",
+      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM?si=j4iIwotCwLBvji5k",
+      description:
+        "물이 흐르는 길을 세척, 청소하기 힘든 기계실 세척, 이사 후 재설치까지 다양한 케어서비스 혜택이 있습니다.",
+      highlights: ["유로 세척 케어", "기계실 세척(프리미엄)", "고무패킹 케어", "소모품 교체"],
+    },
+    {
+      id: "13",
+      title: "들어내서 뒷편까지 전문장비로 케어",
+      subtitle: "조용히 쌓이는 냉장고 뒷편에 가득한 먼지와 세균\n안전과 성능을 위해 전문가가 관리합니다.",
+      icon: "Cleaning",
+      tag: "기계실 세척",
+      mediaType: "youtube",
+      mediaUrl: "https://www.youtube.com/embed/ym2jxU6lzNw?si=d6qAuVkfwCzUyGVS",
+      description:
+        "조용히 쌓이는 냉장고 뒷편에 가득한 먼지와 세균, 안전과 성능을 위해 전문가가 관리합니다.",
+      highlights: ["기계실 먼지 제거", "전문 장비 케어", "안전·성능 관리", "프리미엄 케어"],
     },
     {
       id: "11",
