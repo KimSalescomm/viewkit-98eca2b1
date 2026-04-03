@@ -141,7 +141,7 @@ const SetupSection = () => (
             <p className="text-xs text-muted-foreground leading-relaxed mb-3">인터넷 앱을 실행한 뒤 아래 주소를 직접 입력하세요.</p>
             <div className="flex items-center gap-5 mt-2">
               <img src={internetIcon} alt="인터넷 앱 아이콘" className="w-[115px] h-[115px] object-contain rounded-2xl shrink-0 relative left-[80px]" />
-              <div className="flex flex-col gap-3 flex-1 min-w-0">
+              <div className="gap-3 flex-1 min-w-0 flex flex-col">
                 <div className="flex items-center gap-2">
                   <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5 shrink-0">밸런스 게임</span>
                   <span className="text-xs text-muted-foreground font-mono truncate">refbalancegame.lovable.app</span>
