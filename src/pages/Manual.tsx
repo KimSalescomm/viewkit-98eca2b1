@@ -9,6 +9,7 @@ import balanceQ3 from "@/assets/manual/balance-q3.jpg";
 import balanceResult from "@/assets/manual/balance-result.jpg";
 import emojiSilent from "@/assets/manual/emoji-silent.jpg";
 import standbymeScreen1 from "@/assets/manual/standbyme-screen1.jpg";
+import internetIcon from "@/assets/manual/internet-icon.png";
 import standbymeScreen2 from "@/assets/manual/standbyme-screen2.jpg";
 import viewkitList from "@/assets/manual/viewkit-list.jpg";
 import viewkitDetail from "@/assets/manual/viewkit-detail.jpg";
