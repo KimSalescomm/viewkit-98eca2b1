@@ -28,14 +28,23 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 px-4 py-6 sm:px-6 sm:py-6">
       <div className="max-w-xl mx-auto sm:max-w-4xl">
-        {/* Back Button */}
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 text-sm sm:text-base mb-4 sm:mb-6 transition-colors"
-        >
-          <span className="text-lg">←</span>
-          <span>제품 선택으로 돌아가기</span>
-        </Link>
+        {/* Top Bar */}
+        <div className="flex items-center justify-between mb-4 sm:mb-6">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 text-sm sm:text-base transition-colors"
+          >
+            <span className="text-lg">←</span>
+            <span>제품 선택으로 돌아가기</span>
+          </Link>
+          <Link
+            to={`/product/${productId}/manual`}
+            className="inline-flex items-center gap-1.5 text-gray-400 hover:text-purple-600 transition-colors"
+            title="운영 매뉴얼"
+          >
+            <HelpCircle className="w-5 h-5 sm:w-6 sm:h-6" />
+          </Link>
+        </div>
 
         {/* Header */}
         <div className="text-center mb-6 sm:mb-8">
