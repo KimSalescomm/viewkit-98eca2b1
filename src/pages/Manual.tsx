@@ -4,6 +4,8 @@ import { Smartphone, ChevronRight, Gamepad2, Search, Info, CheckCircle2, ArrowLe
 
 // Manual assets
 import balanceQ1 from "@/assets/manual/balance-q1.jpg";
+import iconViewkit from "@/assets/manual/icon-viewkit.png";
+import iconBalance from "@/assets/manual/icon-balance.png";
 import balanceQ2 from "@/assets/manual/balance-q2.jpg";
 import balanceQ3 from "@/assets/manual/balance-q3.jpg";
 import balanceResult from "@/assets/manual/balance-result.jpg";
