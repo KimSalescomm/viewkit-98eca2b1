@@ -31,18 +31,24 @@ const PainCard = ({ image, text }: { image: string; text: string }) => (
   </div>
 );
 
-const AppCard = ({ title, tag, description }: { title: string; tag: string; description: string }) => (
-  <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-4 flex items-center gap-3">
-    <div className="flex-1 min-w-0">
-      <div className="flex items-center gap-2 mb-1">
-        <span className="font-bold text-sm">{title}</span>
-        <span className="text-xs bg-white/20 rounded-full px-2 py-0.5">{tag}</span>
+const AppCard = ({ title, tag, description, href }: { title: string; tag: string; description: string; href?: string }) => {
+  const content = (
+    <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-4 flex items-center gap-3 hover:bg-white/25 transition-colors">
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="font-bold text-sm">{title}</span>
+          <span className="text-xs bg-white/20 rounded-full px-2 py-0.5">{tag}</span>
+        </div>
+        <p className="text-xs opacity-80 leading-relaxed">{description}</p>
       </div>
-      <p className="text-xs opacity-80 leading-relaxed">{description}</p>
+      <ChevronRight className="w-4 h-4 opacity-60 shrink-0" />
     </div>
-    <ChevronRight className="w-4 h-4 opacity-60 shrink-0" />
-  </div>
-);
+  );
+  if (href) {
+    return <a href={href} target="_blank" rel="noopener noreferrer">{content}</a>;
+  }
+  return content;
+};
 
 /* ── Sections ── */
 
