@@ -342,7 +342,7 @@ const Manual = () => {
   const backPath = productId ? `/product/${productId}` : "/";
 
   return (
-    <div className="max-w-xl mx-auto sm:max-w-4xl min-h-screen bg-background">
+    <div className="max-w-xl mx-auto sm:max-w-4xl min-h-screen bg-background text-center">
       <ManualStickyNav onBack={backPath} />
       <div id="manual-hero"><HeroSection /></div>
       <div id="manual-when"><WhenToUseSection /></div>
