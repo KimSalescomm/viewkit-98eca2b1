@@ -162,11 +162,23 @@ const SetupSection = () => (
           <div className="w-6 h-6 rounded-full bg-manual-indigo text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">3</div>
           <div className="flex-1 min-w-0">
             <h3 className="text-sm font-bold text-foreground mb-1.5">홈 화면에 바로가기 추가</h3>
-            <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+            <p className="text-xs text-muted-foreground leading-relaxed mb-4">
               설정 메뉴에서 '홈 화면에 바로가기 추가'를 선택하면,
               <br />다음부턴 URL 입력이 필요 없어요!
             </p>
-            <img src={standbymeScreen2} alt="홈 화면 바로가기 추가 화면" className="w-full max-w-[180px] mx-auto rounded-xl" />
+            <div className="flex items-center gap-4">
+              <img src={standbymeScreen2} alt="홈 화면 바로가기 추가 화면" className="w-[140px] rounded-xl shrink-0" />
+              <div className="flex flex-col gap-3 items-center flex-1">
+                <div className="flex flex-col items-center gap-1">
+                  <img src={iconViewkit} alt="뷰킷업 아이콘" className="w-14 h-14 rounded-xl" loading="lazy" />
+                  <span className="text-[10px] font-semibold text-foreground">뷰킷업</span>
+                </div>
+                <div className="flex flex-col items-center gap-1">
+                  <img src={iconBalance} alt="가전 밸런스 게임 아이콘" className="w-14 h-14 rounded-xl" loading="lazy" />
+                  <span className="text-[10px] font-semibold text-foreground">가전 밸런스 게임</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
