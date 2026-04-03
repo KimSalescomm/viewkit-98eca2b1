@@ -1,13 +1,23 @@
 import { Link } from "react-router-dom";
 import { products, iconMap } from "@/data/products";
 import SafeImage from "@/components/SafeImage";
+import { HelpCircle } from "lucide-react";
 
 const ProductSelection = () => {
   const enabledIds = ["refrigerator", "styler", "tv"];
 
   return (
     <div className="min-h-screen bg-[hsl(220,20%,97%)] px-5 py-10 sm:px-8 sm:py-14">
-      <div className="max-w-xl mx-auto sm:max-w-3xl">
+      <div className="max-w-xl mx-auto sm:max-w-3xl relative">
+
+        {/* Help Icon */}
+        <Link
+          to="/product/tv/manual"
+          className="absolute top-0 right-0 text-gray-400 hover:text-purple-600 transition-colors"
+          title="운영 매뉴얼"
+        >
+          <HelpCircle className="w-5 h-5 sm:w-6 sm:h-6" />
+        </Link>
 
         {/* Header Section */}
         <div className="text-center mt-12 sm:mt-20 mb-12 sm:mb-16">
