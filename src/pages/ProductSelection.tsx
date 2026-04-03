@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { products, iconMap } from "@/data/products";
 import SafeImage from "@/components/SafeImage";
+import { HelpCircle } from "lucide-react";
 
 const ProductSelection = () => {
   const enabledIds = ["refrigerator", "styler", "tv"];
