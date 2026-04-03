@@ -7,6 +7,7 @@ import ProductSelection from "./pages/ProductSelection";
 import Home from "./pages/Home";
 import FeatureDetail from "./pages/FeatureDetail";
 import NotFound from "./pages/NotFound";
+import Manual from "./pages/Manual";
 import AnalyticsProvider from "./components/AnalyticsProvider";
 
 const queryClient = new QueryClient();
