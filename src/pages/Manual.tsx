@@ -142,7 +142,7 @@ const SetupSection = () => (
             <h3 className="text-sm font-bold text-foreground mb-1.5">'인터넷' 앱에서 URL 입력</h3>
             <p className="text-xs text-muted-foreground leading-relaxed mb-3">인터넷 앱을 실행한 뒤 아래 주소를 직접 입력하세요.</p>
             <div className="flex items-center gap-5 mt-2">
-              <img src={internetIcon} alt="인터넷 앱 아이콘" className="w-[115px] h-[115px] object-contain rounded-2xl shrink-0 relative left-[80px]" />
+              <img src={internetIcon} alt="인터넷 앱 아이콘" className="w-[115px] h-[115px] object-contain rounded-2xl shrink-0 relative left-[130px]" />
               <div className="gap-3 flex-1 min-w-0 flex flex-col">
                 <div className="flex items-center gap-2">
                   <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5 shrink-0">밸런스 게임</span>
