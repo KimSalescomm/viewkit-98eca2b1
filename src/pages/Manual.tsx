@@ -266,6 +266,7 @@ const ViewKitSection = () => (
       </div>
       <p className="text-xs text-muted-foreground leading-relaxed">
         카드 상단의 파란색 박스를 보면 어떤 특장점을 다루는지 빠르게 파악할 수 있습니다.
+        <br />
         카드를 터치하면 영상·이미지가 포함된 상세 설명으로 이동합니다.
       </p>
     </div>
