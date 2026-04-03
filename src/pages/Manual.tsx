@@ -158,7 +158,8 @@ const SetupSection = () => (
           <div className="flex-1 min-w-0">
             <h3 className="text-sm font-bold text-foreground mb-1.5">홈 화면에 바로가기 추가</h3>
             <p className="text-xs text-muted-foreground leading-relaxed mb-3">
-              설정 메뉴에서 '홈 화면에 바로가기 추가'를 선택하면, 다음부턴 URL 입력이 필요 없어요!
+              설정 메뉴에서 '홈 화면에 바로가기 추가'를 선택하면,
+              <br />다음부턴 URL 입력이 필요 없어요!
             </p>
             <img src={standbymeScreen2} alt="홈 화면 바로가기 추가 화면" className="w-full max-w-[180px] mx-auto rounded-xl" />
           </div>
