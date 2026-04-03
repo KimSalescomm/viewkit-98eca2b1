@@ -133,7 +133,7 @@ const SetupSection = () => (
           </div>
         </div>
       </div>
-      <div className="bg-card rounded-2xl p-5 manual-shadow-card">
+      <div className="bg-card rounded-2xl p-5 pb-7 manual-shadow-card">
         <div className="flex items-start gap-3">
           <div className="w-6 h-6 rounded-full bg-manual-indigo text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">2</div>
           <div className="flex-1 min-w-0">
