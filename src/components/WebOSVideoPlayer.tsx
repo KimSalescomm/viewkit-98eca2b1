@@ -247,9 +247,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
         else setDetectedFormat("unknown");
       }
 
-      console.log(`비디오 포맷 감지: ${format} (URL: ${url})`);
-
-      if (isWebOS() && format === "video/webm" && !canPlayWebM() && fallbackUrl) {
+      if (isWebOS() && detectedFormat === "video/webm" && !canPlayWebM() && fallbackUrl) {
         console.log("webOS: WebM 미지원, MP4 fallback으로 전환");
         switchToFallback();
         return;
