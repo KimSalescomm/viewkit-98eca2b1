@@ -342,6 +342,7 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "주방이 훨씬 넓고 깔끔해 보이는\n'Fit & Max' 냉장고를 확인해보세요.",
       icon: "Ruler",
       tag: "Fit & Max란?",
+      group: "Fit & Max",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10516831/M626_hinge_pc.mp4",
       description:
