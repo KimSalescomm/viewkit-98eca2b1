@@ -530,9 +530,6 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
           <p style={{ color: "rgba(255,255,255,0.8)", marginTop: "16px", fontSize: "14px" }}>
             로딩중...
           </p>
-          <p style={{ color: "rgba(255,255,255,0.5)", marginTop: "8px", fontSize: "12px" }}>
-            {detectedFormat !== "unknown" ? `포맷: ${detectedFormat}` : "포맷 감지 중..."}
-          </p>
         </div>
       )}
 
