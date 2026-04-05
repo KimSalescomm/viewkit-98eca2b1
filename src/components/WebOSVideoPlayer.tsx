@@ -231,12 +231,21 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
       const url = currentSource === "primary" ? mediaUrl : fallbackUrl;
       if (!url) return;
 
-      if (isWebOS() && !canPlayWebM()) {
-        console.warn("webOS: WebM 지원 안됨, fallback 필요");
+      // Only run WebM detection logic on webOS devices
+      if (isWebOS()) {
+        if (!canPlayWebM()) {
+          console.warn("webOS: WebM 지원 안됨, fallback 필요");
+        }
+        const format = await detectVideoFormat(url);
+        setDetectedFormat(format);
+      } else {
+        // On non-webOS (iOS, desktop, etc.), use extension-based detection only
+        // Don't force video/webm which breaks iOS playback
+        const extension = url.split(".").pop()?.toLowerCase().split("?")[0];
+        if (extension === "mp4") setDetectedFormat("video/mp4");
+        else if (extension === "webm") setDetectedFormat("video/webm");
+        else setDetectedFormat("unknown");
       }
-
-      const format = await detectVideoFormat(url);
-      setDetectedFormat(format);
 
       console.log(`비디오 포맷 감지: ${format} (URL: ${url})`);
 
