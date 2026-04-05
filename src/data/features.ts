@@ -254,7 +254,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "STEM이란?",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10559842/J816_172_step3filter_detail_01.mp4",
-      description: "정수기처럼 정수 필터가 있는 STEM은 물이 흐르는 길을 세척하고, 교체 주기에 맞춰 새 필터를 교체해 드려요. 전문가의 정품케어가 필요한 깨끗한 물, 깨끗한 STEM 냉장고",
+      description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
       highlights: [
         "흐르는 물로 얼음을 만드는 제빙 시스템",
         "전문가가 꼼꼼하게 관리하는 케어 시스템",
