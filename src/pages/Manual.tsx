@@ -233,17 +233,6 @@ const BalanceGameSection = () => (
         ))}
       </div>
     </div>
-    <div className="bg-manual-tag-bg rounded-2xl p-4 flex items-start gap-3">
-      <CheckCircle2 className="w-5 h-5 text-manual-indigo shrink-0 mt-0.5" />
-      <div>
-        <p className="text-xs font-bold text-foreground mb-1">상담 TIP</p>
-        <p className="text-[11px] text-muted-foreground leading-relaxed">
-          "잠깐 재미있는 게임 하나 해볼까요?" 라고 가볍게 권유하면 고객 참여율이 높아집니다.
-          <br />
-          결과가 나오면 "역시 OO 타입이시네요!" 라며 자연스럽게 제품 추천으로 연결하세요.
-        </p>
-      </div>
-    </div>
   </section>
 );
 
