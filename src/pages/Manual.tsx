@@ -329,7 +329,7 @@ const ManualStickyNav = ({ onBack }: { onBack: string }) => {
         </div>
         <Link
           to={onBack}
-          className="inline-flex items-center gap-1.5 text-sky-400 hover:text-sky-600 transition-colors px-3 py-3 shrink-0"
+          className="inline-flex items-center gap-1.5 text-manual-indigo hover:text-manual-indigo/70 transition-colors px-3 py-3 shrink-0"
           title="돌아가기"
         >
           <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
