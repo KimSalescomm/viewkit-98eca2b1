@@ -163,15 +163,15 @@ const SetupSection = () => (
             다음부턴 URL 입력이 필요 없어요!
           </p>
         </div>
-        <div className="flex items-center gap-4 justify-center">
-          <img src={standbymeScreen2} alt="홈 화면 바로가기 추가 화면" className="w-[140px] rounded-xl shrink-0" />
-          <div className="flex flex-col gap-3 items-center">
+        <div className="flex items-center gap-4 mx-auto w-fit">
+          <img src={standbymeScreen2} alt="홈 화면 바로가기 추가 화면" className="w-[120px] rounded-xl shrink-0" />
+          <div className="flex flex-col gap-3 items-center shrink-0">
             <div className="flex flex-col items-center gap-1">
-              <img src={iconViewkit} alt="뷰킷업 아이콘" className="w-14 h-14 rounded-xl" loading="lazy" />
+              <img src={iconViewkit} alt="뷰킷업 아이콘" className="w-[52px] h-[52px] rounded-xl" loading="lazy" />
               <span className="text-[10px] font-semibold text-foreground">뷰킷업</span>
             </div>
             <div className="flex flex-col items-center gap-1">
-              <img src={iconBalance} alt="가전 밸런스 게임 아이콘" className="w-14 h-14 rounded-xl" loading="lazy" />
+              <img src={iconBalance} alt="가전 밸런스 게임 아이콘" className="w-[52px] h-[52px] rounded-xl" loading="lazy" />
               <span className="text-[10px] font-semibold text-foreground">가전 밸런스 게임</span>
             </div>
           </div>
