@@ -322,7 +322,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "13",
       title: "기계실 청소가 필요하다는 거 아셨나요?",
-      subtitle: "조용히 쌓이는 냉장고 뒷편의 먼지와 세균,\n안전과 성능을 위해 전문가가 관리합니다.",
+      subtitle: "있는지도 몰랐던 기계실, 청소도 필요하다면?\n눈에 안 보이는 곳일수록, 전문가가 필요합니다.",
       icon: "Cleaning",
       tag: "기계실 세척",
       mediaType: "youtube",
