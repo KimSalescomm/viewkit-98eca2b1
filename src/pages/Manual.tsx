@@ -146,7 +146,7 @@ const SetupSection = () => (
               <div className="flex flex-col gap-2.5 flex-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5 shrink-0">밸런스 게임</span>
-                  <span className="text-[10px] text-muted-foreground font-mono whitespace-nowrap">refbalancegame.lovable.app</span>
+                  <span className="text-[9px] sm:text-[10px] text-muted-foreground font-mono whitespace-nowrap">refbalancegame.lovable.app</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5 shrink-0">뷰킷</span>
