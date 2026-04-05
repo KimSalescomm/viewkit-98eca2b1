@@ -16,7 +16,7 @@ const FeatureCard = ({ id, title, subtitle, icon, productId, tag }: FeatureCardP
   return (
     <Link
       to={`/product/${productId}/feature/${id}`}
-      className="block bg-white rounded-2xl p-4 sm:p-6 border border-gray-100 shadow-md hover:scale-[1.03] hover:shadow-xl transition-all duration-300 text-center"
+      className="block bg-[#F7F8FA] rounded-2xl p-4 sm:p-6 border border-gray-100 shadow-md hover:scale-[1.03] hover:shadow-xl transition-all duration-300 text-center"
     >
       <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mx-auto mb-3 sm:mb-4">
         <span className="text-2xl sm:text-3xl">{emoji}</span>
