@@ -269,6 +269,7 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "다양한 종류의 직수형 냉장고 STEM\n모델별 차이를 확인해 보세요.",
       icon: "Search",
       tag: "STEM 제품 비교",
+      group: "STEM",
       mediaType: "table",
       mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/product_img01.png",
       description: "STEM 얼음정수 냉장고와 STEM 베이직 냉장고의 주요 사양을 비교해보세요.",
