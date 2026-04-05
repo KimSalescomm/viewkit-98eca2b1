@@ -316,6 +316,7 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "필터부터 청소까지, 전문가가 알아서\n챙겨주는 전문 케어를 보여드려요.",
       icon: "Wrench",
       tag: "구독 전문케어",
+      group: "STEM",
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM?si=j4iIwotCwLBvji5k",
       description:
