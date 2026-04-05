@@ -321,8 +321,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "13",
-      title: "들어내서 뒷편까지 전문장비로 케어",
-      subtitle: "조용히 쌓이는 냉장고 뒷편에 가득한 먼지와 세균\n안전과 성능을 위해 전문가가 관리합니다.",
+      title: "기계실 청소가 필요하다는 거 아셨나요?",
+      subtitle: "조용히 쌓이는 냉장고 뒷편의 먼지와 세균,\n안전과 성능을 위해 전문가가 관리합니다.",
       icon: "Cleaning",
       tag: "기계실 세척",
       mediaType: "youtube",
