@@ -355,6 +355,7 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "인테리어는 Fit 용량은 Max\n주방이 돋보이는 조합을 모아봤어요.",
       icon: "Puzzle",
       tag: "Fit & Max 세트",
+      group: "Fit & Max",
       mediaType: "gallery",
       mediaUrl: "",
       galleryImages: [
