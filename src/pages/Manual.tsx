@@ -313,10 +313,7 @@ const ManualStickyNav = ({ onBack }: { onBack: string }) => {
 
   return (
     <nav className="sticky top-0 z-50 bg-card/90 backdrop-blur-md border-b border-border">
-      <div className="flex items-center">
-        <Link to={onBack} className="px-3 py-3 text-muted-foreground hover:text-foreground transition-colors">
-          <ArrowLeft className="w-4 h-4" />
-        </Link>
+      <div className="flex items-center justify-between">
         <div className="flex overflow-x-auto no-scrollbar">
           {sections.map((s) => (
             <button
@@ -330,6 +327,13 @@ const ManualStickyNav = ({ onBack }: { onBack: string }) => {
             </button>
           ))}
         </div>
+        <Link
+          to={onBack}
+          className="inline-flex items-center gap-1.5 text-sky-400 hover:text-sky-600 transition-colors px-3 py-3 shrink-0"
+          title="돌아가기"
+        >
+          <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+        </Link>
       </div>
     </nav>
   );
