@@ -309,7 +309,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "10",
-      title: "보이지 않는 물길 속, 관리는 누가 할까요?",
+      title: "보이지 않는 물길 속,\n관리는 누가 할까요?",
       subtitle: "필터부터 청소까지, 전문가가 알아서\n챙겨주는 전문 케어를 보여드려요.",
       icon: "Wrench",
       tag: "구독 전문케어",
@@ -345,7 +345,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "12",
-      title: "함께하면 더 좋은 Fit & Max 어떤 세트가 있나요?",
+      title: "함께하면 더 좋은 Fit & Max\n어떤 세트가 있나요?",
       subtitle: "인테리어는 Fit 용량은 Max\n주방이 돋보이는 조합을 모아봤어요.",
       icon: "Puzzle",
       tag: "Fit & Max 세트",
