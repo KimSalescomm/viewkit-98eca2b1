@@ -177,6 +177,13 @@ const SetupSection = () => (
           </div>
         </div>
       </div>
+      <div className="bg-amber-50 border border-amber-200 rounded-xl p-3.5 flex items-start gap-2.5 mt-1">
+        <span className="text-sm shrink-0 mt-0.5">⚠️</span>
+        <p className="text-[11px] text-amber-800 leading-relaxed">
+          단, 바로가기로 접속하면 최신 업데이트가 반영되지 않을 수 있으니
+          URL 입력창에서 <strong className="font-bold">새로고침 버튼</strong>을 눌러주세요.
+        </p>
+      </div>
     </div>
   </section>
 );
