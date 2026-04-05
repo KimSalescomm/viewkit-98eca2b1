@@ -26,7 +26,7 @@ const Home = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 px-4 py-6 sm:px-6 sm:py-6">
+    <div className="min-h-screen bg-white px-4 py-6 sm:px-6 sm:py-6">
       <div className="max-w-xl mx-auto sm:max-w-4xl">
         {/* Top Bar */}
         <div className="flex items-center justify-between mb-4 sm:mb-6">
