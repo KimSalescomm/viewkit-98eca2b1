@@ -351,6 +351,7 @@ const Manual = () => {
       <div id="manual-viewkit"><ViewKitSection /></div>
       <footer className="px-5 py-6 text-center">
         <p className="text-[11px] text-muted-foreground">© 2026 세일즈 앱 가이드 · 내부 교육용</p>
+        <a href="mailto:eugene00.lee@lge.com" className="text-[11px] text-manual-indigo mt-1 inline-block">eugene00.lee@lge.com</a>
       </footer>
     </div>
   );
