@@ -329,6 +329,7 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "있는지도 몰랐던 기계실, 청소도 필요하다면?\n눈에 안 보이는 곳일수록, 전문가가 필요합니다.",
       icon: "Cleaning",
       tag: "기계실 세척",
+      group: "STEM",
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/ym2jxU6lzNw?si=d6qAuVkfwCzUyGVS",
       description:
