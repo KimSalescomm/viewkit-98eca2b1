@@ -451,16 +451,6 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
             외부 링크에서 보기
           </a>
         </div>
-        <p
-          style={{
-            color: "rgba(255,255,255,0.4)",
-            fontSize: "12px",
-            marginTop: "16px",
-            textAlign: "center",
-          }}
-        >
-          감지된 포맷: {detectedFormat} | 소스: {currentSource}
-        </p>
       </div>
     );
   }
