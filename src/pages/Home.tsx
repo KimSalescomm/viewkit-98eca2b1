@@ -26,7 +26,7 @@ const Home = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 px-4 py-6 sm:px-6 sm:py-6">
+    <div className="min-h-screen bg-white px-4 py-6 sm:px-6 sm:py-6">
       <div className="max-w-xl mx-auto sm:max-w-4xl">
         {/* Top Bar */}
         <div className="flex items-center justify-between mb-4 sm:mb-6">
@@ -66,7 +66,7 @@ const Home = () => {
             src={product.keyVisualImage}
             alt={product.name}
             loading="lazy"
-            className={`w-full h-48 sm:h-[500px] object-cover ${
+            className={`w-full h-[134px] sm:h-[350px] object-cover ${
               productId === "tv" ? "scale-[1.15] object-[65%_55%] -translate-y-[20px]" :
               productId === "airconditioner" ? "object-top" : "object-center"
             }`}
