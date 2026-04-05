@@ -26,7 +26,7 @@ const FeatureCard = ({ id, title, subtitle, icon, productId, tag }: FeatureCardP
           {tag}
         </span>
       )}
-      <h3 className="text-base sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
+      <h3 className="text-base sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2 whitespace-pre-line">
         {title}
       </h3>
       <p className="text-xs sm:text-sm text-gray-500 whitespace-pre-line leading-relaxed">
