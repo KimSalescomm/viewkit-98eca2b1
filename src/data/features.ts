@@ -24,6 +24,7 @@ export interface Feature {
   subtitle: string;
   icon: string;
   tag?: string;
+  group?: string;
   mediaType: "video" | "image" | "table" | "gallery" | "youtube";
   mediaUrl: string;
   fallbackUrl?: string; // MP4 fallback URL for webOS compatibility
