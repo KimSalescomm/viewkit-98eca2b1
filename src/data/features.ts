@@ -387,6 +387,7 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "수도관 연결 어떻게 될지 고민되시죠?\n깔끔한 마무리까지 확인해보세요.",
       icon: "Ruler",
       tag: "설치 체크",
+      group: "STEM",
       mediaType: "gallery",
       mediaUrl: "",
       description:
