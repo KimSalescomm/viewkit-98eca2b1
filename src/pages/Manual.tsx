@@ -189,11 +189,9 @@ const BalanceGameSection = () => (
   <section className="px-5 py-8">
     <SectionHeader number={4} title="'밸런스 게임' 사용법" />
     <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-      어떤 질문에도 시큰둥하거나, 애매한 답을 해 고객 취향을 알기가 어려울 때가 있죠?{" "}
-      <strong className="text-foreground font-semibold">가전 밸런스 게임</strong>을 권해보세요.
-      <br />
-      고객이 직접 답을 고르는 과정은 본인의 선택인 듯 여겨져,{" "}
-      <strong className="text-foreground font-semibold">이후 제품 추천이 더 수월해지고 고객 취향도 단번에 파악</strong>할 수 있습니다.
+      말 없는 고객의 취향, 밸런스 게임으로 단번에 파악하세요.{" "}
+      직접 선택하는 과정에서 취향이 자연스럽게 드러나,{" "}
+      <strong className="text-foreground font-semibold">제품 추천이 훨씬 수월해집니다.</strong>
     </p>
     <div className="bg-card rounded-2xl p-4 manual-shadow-card mb-4">
       <h3 className="text-sm font-bold text-foreground mb-3">앱 화면 미리보기</h3>
