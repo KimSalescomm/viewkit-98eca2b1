@@ -227,7 +227,7 @@ const ViewKitSection = () => (
   <section className="px-5 py-8 manual-gradient-section">
     <SectionHeader number={5} title="'뷰킷' 앱 사용법" />
     <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-      영상이나 이미지를 보여주면 더 이해가 쉬운 특장점들을 모았습니다.{" "}
+      영상과 이미지로 더 쉽게 이해되는 특장점들을 모았어요.{" "}
       <strong className="text-foreground font-semibold">특장점 카드를 누르면 상세 화면으로 이동</strong>해요.
       <br />
       참고로 <strong className="text-manual-indigo font-semibold">파란 박스</strong>를 보면 어떤 특장점을 다루는지 간단하게 파악할 수 있어요.
