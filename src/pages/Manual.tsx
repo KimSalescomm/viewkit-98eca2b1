@@ -126,57 +126,53 @@ const SetupSection = () => (
   <section className="px-5 py-8 manual-gradient-section">
     <SectionHeader number={3} title="사용 환경 세팅하기" />
     <div className="flex flex-col gap-4">
-      <div className="bg-card rounded-2xl p-5 manual-shadow-card">
-        <div className="flex items-start gap-3">
-          <div className="w-6 h-6 rounded-full bg-manual-indigo text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">1</div>
-          <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-bold text-foreground mb-1.5">시연용 '스탠바이미' 준비</h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">제품 진열 존에 시연용 스탠바이미를 설치해 주세요.</p>
-          </div>
+      <div className="relative bg-card rounded-2xl p-5 pt-8 manual-shadow-card">
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-manual-indigo text-white text-xs font-bold flex items-center justify-center z-10">1</div>
+        <div className="text-center">
+          <h3 className="text-sm font-bold text-foreground mb-1.5">시연용 '스탠바이미' 준비</h3>
+          <p className="text-xs text-muted-foreground leading-relaxed">제품 진열 존에 시연용 스탠바이미를 설치해 주세요.</p>
         </div>
       </div>
-      <div className="bg-card rounded-2xl p-5 pb-7 manual-shadow-card">
-        <div className="flex items-start gap-3">
-          <div className="w-6 h-6 rounded-full bg-manual-indigo text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">2</div>
-          <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-bold text-foreground mb-1.5">'인터넷' 앱에서 URL 입력</h3>
-            <p className="text-xs text-muted-foreground leading-relaxed mb-3">인터넷 앱을 실행한 뒤 아래 주소를 직접 입력하세요.</p>
-            <div className="flex flex-nowrap items-center gap-3 mt-2">
-              <img src={internetIcon} alt="인터넷 앱 아이콘" className="w-20 h-20 object-contain rounded-2xl shrink-0" />
-              <div className="flex flex-col gap-2.5 flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5 shrink-0">밸런스 게임</span>
-                  <span className="text-[9px] sm:text-[10px] text-muted-foreground font-mono whitespace-nowrap">refbalancegame.lovable.app</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5 shrink-0">뷰킷</span>
-                  <span className="text-[9px] sm:text-[10px] text-muted-foreground font-mono whitespace-nowrap">viewkit.lovable.app</span>
-                </div>
-              </div>
+      <div className="relative bg-card rounded-2xl p-5 pt-8 pb-7 manual-shadow-card">
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-manual-indigo text-white text-xs font-bold flex items-center justify-center z-10">2</div>
+        <div className="text-center">
+          <h3 className="text-sm font-bold text-foreground mb-1.5">'인터넷' 앱에서 URL 입력</h3>
+          <p className="text-xs text-muted-foreground leading-relaxed mb-3">인터넷 앱을 실행한 뒤 아래 주소를 직접 입력하세요.</p>
+        </div>
+        <div className="flex flex-nowrap items-center gap-3 mt-2 justify-center">
+          <img src={internetIcon} alt="인터넷 앱 아이콘" className="w-20 h-20 object-contain rounded-2xl shrink-0" />
+          <div className="flex flex-col gap-2.5 min-w-0">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5 shrink-0">밸런스 게임</span>
+              <span className="text-[9px] sm:text-[10px] text-muted-foreground font-mono whitespace-nowrap">refbalancegame.lovable.app</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5 shrink-0">뷰킷</span>
+              <span className="text-[9px] sm:text-[10px] text-muted-foreground font-mono whitespace-nowrap">viewkit.lovable.app</span>
             </div>
           </div>
         </div>
       </div>
-      <div className="bg-card rounded-2xl p-5 manual-shadow-card">
-        <div className="flex items-start gap-3">
-          <div className="w-6 h-6 rounded-full bg-manual-indigo text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">3</div>
-          <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-bold text-foreground mb-1.5">홈 화면에 바로가기 추가</h3>
-            <p className="text-xs text-muted-foreground leading-relaxed mb-4">
-              설정 메뉴에서 '홈 화면에 바로가기 추가'를 선택하면, 다음부턴 URL 입력이 필요 없어요!
-            </p>
-            <div className="flex items-center gap-4">
-              <img src={standbymeScreen2} alt="홈 화면 바로가기 추가 화면" className="w-[140px] rounded-xl shrink-0" />
-              <div className="flex flex-col gap-3 items-center flex-1">
-                <div className="flex flex-col items-center gap-1">
-                  <img src={iconViewkit} alt="뷰킷업 아이콘" className="w-14 h-14 rounded-xl" loading="lazy" />
-                  <span className="text-[10px] font-semibold text-foreground">뷰킷업</span>
-                </div>
-                <div className="flex flex-col items-center gap-1">
-                  <img src={iconBalance} alt="가전 밸런스 게임 아이콘" className="w-14 h-14 rounded-xl" loading="lazy" />
-                  <span className="text-[10px] font-semibold text-foreground">가전 밸런스 게임</span>
-                </div>
-              </div>
+      <div className="relative bg-card rounded-2xl p-5 pt-8 manual-shadow-card">
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-manual-indigo text-white text-xs font-bold flex items-center justify-center z-10">3</div>
+        <div className="text-center">
+          <h3 className="text-sm font-bold text-foreground mb-1.5">홈 화면에 바로가기 추가</h3>
+          <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+            설정 메뉴에서 '홈 화면에 바로가기 추가'를 선택하면,
+            <br />
+            다음부턴 URL 입력이 필요 없어요!
+          </p>
+        </div>
+        <div className="flex items-center gap-4 justify-center">
+          <img src={standbymeScreen2} alt="홈 화면 바로가기 추가 화면" className="w-[140px] rounded-xl shrink-0" />
+          <div className="flex flex-col gap-3 items-center">
+            <div className="flex flex-col items-center gap-1">
+              <img src={iconViewkit} alt="뷰킷업 아이콘" className="w-14 h-14 rounded-xl" loading="lazy" />
+              <span className="text-[10px] font-semibold text-foreground">뷰킷업</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <img src={iconBalance} alt="가전 밸런스 게임 아이콘" className="w-14 h-14 rounded-xl" loading="lazy" />
+              <span className="text-[10px] font-semibold text-foreground">가전 밸런스 게임</span>
             </div>
           </div>
         </div>
