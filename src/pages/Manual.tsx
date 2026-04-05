@@ -195,24 +195,6 @@ const BalanceGameSection = () => (
       <br />
       <strong className="text-foreground font-semibold">제품 추천이 훨씬 수월해집니다.</strong>
     </p>
-    <div className="bg-card rounded-2xl p-4 manual-shadow-card mb-4">
-      <h3 className="text-sm font-bold text-foreground mb-3">앱 화면 미리보기</h3>
-      <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory">
-        {[
-          { src: balanceQ1, label: "질문 1: 마트 장 볼 때 나는?" },
-          { src: balanceQ2, label: "질문 2: 주방 인테리어에서 가장 중요한 건?" },
-          { src: balanceQ3, label: "질문 3: 좋아하는 음료 스타일은?" },
-          { src: balanceResult, label: "결과: 맞춤 제품 추천" },
-        ].map((item, i) => (
-          <div key={i} className="shrink-0 w-[55%] snap-center">
-            <div className="rounded-xl overflow-hidden border border-border shadow-sm">
-              <img src={item.src} alt={item.label} className="w-full h-auto" />
-            </div>
-            <p className="text-[10px] text-muted-foreground text-center mt-1.5 leading-tight">{item.label}</p>
-          </div>
-        ))}
-      </div>
-    </div>
     <div className="bg-card rounded-2xl p-5 manual-shadow-card mb-4">
       <h3 className="text-sm font-bold text-foreground mb-4">사용 흐름</h3>
       <div className="flex flex-col gap-0">
