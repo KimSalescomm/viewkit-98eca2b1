@@ -205,14 +205,14 @@ const BalanceGameSection = () => (
       <h3 className="text-sm font-bold text-foreground mb-3">앱 화면 미리보기</h3>
       <div className="flex gap-3">
         <div className="flex-1">
-          <div className="rounded-xl overflow-hidden border border-border shadow-sm">
-            <SafeImage src={balanceScreen1} alt="밸런스 게임 질문 화면" className="w-full h-auto" />
+          <div className="rounded-xl overflow-hidden border border-border shadow-sm aspect-[9/16]">
+            <SafeImage src={balanceScreen1} alt="밸런스 게임 질문 화면" className="w-full h-full object-cover object-top" />
           </div>
           <p className="text-[10px] text-muted-foreground text-center mt-1.5">질문 선택 화면</p>
         </div>
         <div className="flex-1">
-          <div className="rounded-xl overflow-hidden border border-border shadow-sm">
-            <SafeImage src={balanceScreen2} alt="밸런스 게임 결과 화면" className="w-full h-auto" />
+          <div className="rounded-xl overflow-hidden border border-border shadow-sm aspect-[9/16]">
+            <SafeImage src={balanceScreen2} alt="밸런스 게임 결과 화면" className="w-full h-full object-cover object-top" />
           </div>
           <p className="text-[10px] text-muted-foreground text-center mt-1.5">취향 분석 결과</p>
         </div>
@@ -256,14 +256,14 @@ const ViewKitSection = () => (
       <h3 className="text-sm font-bold text-foreground mb-3">앱 화면 미리보기</h3>
       <div className="flex gap-3">
         <div className="flex-1">
-          <div className="rounded-xl overflow-hidden border border-border shadow-sm">
-            <SafeImage src={viewkitList} alt="뷰킷 제품 목록 화면" className="w-full h-auto" />
+          <div className="rounded-xl overflow-hidden border border-border shadow-sm aspect-[9/16]">
+            <SafeImage src={viewkitList} alt="뷰킷 제품 목록 화면" className="w-full h-full object-cover object-top" />
           </div>
           <p className="text-[10px] text-muted-foreground text-center mt-1.5">제품별 특장점 카드</p>
         </div>
         <div className="flex-1">
-          <div className="rounded-xl overflow-hidden border border-border shadow-sm">
-            <SafeImage src={viewkitDetail} alt="뷰킷 상세 화면" className="w-full h-auto" />
+          <div className="rounded-xl overflow-hidden border border-border shadow-sm aspect-[9/16]">
+            <SafeImage src={viewkitDetail} alt="뷰킷 상세 화면" className="w-full h-full object-cover object-top" />
           </div>
           <p className="text-[10px] text-muted-foreground text-center mt-1.5">상세 설명 화면</p>
         </div>
