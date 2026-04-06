@@ -4,8 +4,6 @@ import { getFeaturesByProductId } from "@/data/features";
 import FeatureCard from "@/components/FeatureCard";
 import SafeImage from "@/components/SafeImage";
 import { HelpCircle } from "lucide-react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { useMemo } from "react";
 
 const Home = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -13,31 +11,6 @@ const Home = () => {
   
   const product = getProductById(productId || "");
   const features = getFeaturesByProductId(productId || "");
-
-  // Group features by their group field
-  const featureGroups = useMemo(() => {
-    const groups = new Map<string, typeof features>();
-    let hasGroups = false;
-    
-    features.forEach((feature) => {
-      if (feature.group) {
-        hasGroups = true;
-        const existing = groups.get(feature.group) || [];
-        existing.push(feature);
-        groups.set(feature.group, existing);
-      }
-    });
-
-    if (!hasGroups) return null;
-
-    // Add ungrouped features to a default group if any
-    const ungrouped = features.filter((f) => !f.group);
-    if (ungrouped.length > 0) {
-      groups.set("기타", ungrouped);
-    }
-
-    return groups;
-  }, [features]);
 
   if (!product) {
     return (
@@ -51,8 +24,6 @@ const Home = () => {
       </div>
     );
   }
-
-  const groupKeys = featureGroups ? Array.from(featureGroups.keys()) : [];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 px-4 py-6 sm:px-6 sm:py-6">
@@ -102,61 +73,25 @@ const Home = () => {
           />
         </div>
 
-        {/* Features Section */}
-        {featureGroups ? (
-          <Tabs defaultValue={groupKeys[0]} className="mb-10 sm:mb-12">
-            <div className="text-center mb-5 sm:mb-6">
-              <TabsList className="bg-gray-100/80 p-1 rounded-xl">
-                {groupKeys.map((group) => (
-                  <TabsTrigger
-                    key={group}
-                    value={group}
-                    className="px-4 py-2 sm:px-6 sm:py-2.5 rounded-lg text-sm sm:text-base font-semibold data-[state=active]:bg-white data-[state=active]:text-purple-700 data-[state=active]:shadow-md transition-all"
-                  >
-                    {group} 주요 특장점
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </div>
+        {/* Features Section Title */}
+        <div className="text-center mb-5 sm:mb-6">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">주요 특장점</h3>
+        </div>
 
-            {groupKeys.map((group) => (
-              <TabsContent key={group} value={group}>
-                <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                  {featureGroups.get(group)!.map((feature) => (
-                    <FeatureCard
-                      key={feature.id}
-                      id={feature.id}
-                      title={feature.title}
-                      subtitle={feature.subtitle}
-                      icon={feature.icon}
-                      productId={productId || ""}
-                      tag={feature.tag}
-                    />
-                  ))}
-                </div>
-              </TabsContent>
-            ))}
-          </Tabs>
-        ) : (
-          <>
-            <div className="text-center mb-5 sm:mb-6">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">주요 특장점</h3>
-            </div>
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-10 sm:mb-12">
-              {features.map((feature) => (
-                <FeatureCard
-                  key={feature.id}
-                  id={feature.id}
-                  title={feature.title}
-                  subtitle={feature.subtitle}
-                  icon={feature.icon}
-                  productId={productId || ""}
-                  tag={feature.tag}
-                />
-              ))}
-            </div>
-          </>
-        )}
+        {/* Features Grid */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-10 sm:mb-12">
+          {features.map((feature) => (
+            <FeatureCard
+              key={feature.id}
+              id={feature.id}
+              title={feature.title}
+              subtitle={feature.subtitle}
+              icon={feature.icon}
+              productId={productId || ""}
+              tag={feature.tag}
+            />
+          ))}
+        </div>
 
         {/* Other Products Button */}
         <div className="text-center">

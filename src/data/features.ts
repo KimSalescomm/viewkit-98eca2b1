@@ -24,7 +24,6 @@ export interface Feature {
   subtitle: string;
   icon: string;
   tag?: string;
-  group?: string;
   mediaType: "video" | "image" | "table" | "gallery" | "youtube";
   mediaUrl: string;
   fallbackUrl?: string; // MP4 fallback URL for webOS compatibility
@@ -253,7 +252,6 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "물통 없이 스스로 채우는 직수형\n편리한 냉장고 STEM을 확인해보세요.",
       icon: "Seedling",
       tag: "STEM이란?",
-      group: "STEM",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10559842/J816_172_step3filter_detail_01.mp4",
       description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
@@ -269,7 +267,6 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "다양한 종류의 직수형 냉장고 STEM\n모델별 차이를 확인해 보세요.",
       icon: "Search",
       tag: "STEM 제품 비교",
-      group: "STEM",
       mediaType: "table",
       mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/product_img01.png",
       description: "STEM 얼음정수 냉장고와 STEM 베이직 냉장고의 주요 사양을 비교해보세요.",
@@ -316,7 +313,6 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "필터부터 청소까지, 전문가가 알아서\n챙겨주는 전문 케어를 보여드려요.",
       icon: "Wrench",
       tag: "구독 전문케어",
-      group: "STEM",
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM?si=j4iIwotCwLBvji5k",
       description:
@@ -329,7 +325,6 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "있는지도 몰랐던 기계실, 청소도 필요하다면?\n눈에 안 보이는 곳일수록, 전문가가 필요합니다.",
       icon: "Cleaning",
       tag: "기계실 세척",
-      group: "STEM",
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/ym2jxU6lzNw?si=d6qAuVkfwCzUyGVS",
       description:
@@ -342,7 +337,6 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "주방이 훨씬 넓고 깔끔해 보이는\n'Fit & Max' 냉장고를 확인해보세요.",
       icon: "Ruler",
       tag: "Fit & Max란?",
-      group: "Fit & Max",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10516831/M626_hinge_pc.mp4",
       description:
@@ -355,7 +349,6 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "인테리어는 Fit 용량은 Max\n주방이 돋보이는 조합을 모아봤어요.",
       icon: "Puzzle",
       tag: "Fit & Max 세트",
-      group: "Fit & Max",
       mediaType: "gallery",
       mediaUrl: "",
       galleryImages: [
@@ -387,7 +380,6 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "수도관 연결 어떻게 될지 고민되시죠?\n깔끔한 마무리까지 확인해보세요.",
       icon: "Ruler",
       tag: "설치 체크",
-      group: "STEM",
       mediaType: "gallery",
       mediaUrl: "",
       description:
