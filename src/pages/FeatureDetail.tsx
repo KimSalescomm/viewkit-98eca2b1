@@ -1,8 +1,8 @@
 import { Link, useParams } from "react-router-dom";
-import { getFeatureById, featureIconMap } from "@/data/features";
+import { getFeatureById } from "@/data/features";
 import { getProductById } from "@/data/products";
 import MediaViewer from "@/components/MediaViewer";
-import {
+import FeatureIcon from "@/components/FeatureIcon";
   Accordion,
   AccordionContent,
   AccordionItem,
