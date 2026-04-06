@@ -28,7 +28,7 @@ const FeatureDetail = () => {
     );
   }
 
-  const emoji = featureIconMap[feature.icon] || "✨";
+  // Icon is now rendered via FeatureIcon component
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
