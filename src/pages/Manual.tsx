@@ -146,7 +146,7 @@ const SetupSection = () => (
           <SafeImage src={internetIcon} alt="인터넷 앱 아이콘" className="w-[72px] h-[72px] object-contain rounded-2xl shrink-0" />
           <div className="flex flex-col gap-2 shrink-0">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5">밸런스 게임</span>
+              <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5">가전 밸런스 게임</span>
               <span className="text-[9px] text-muted-foreground font-mono whitespace-nowrap">refbalancegame.lovable.app</span>
             </div>
             <div className="flex items-center gap-2">
