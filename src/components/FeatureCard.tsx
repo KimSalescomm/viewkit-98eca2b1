@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import FeatureIcon from "@/components/FeatureIcon";
 
 const cardColors = [
-  { gradient: "from-blue-500 to-cyan-400", bg: "bg-blue-50", border: "border-blue-100", tagBg: "bg-blue-100 text-blue-800" },
-  { gradient: "from-purple-500 to-pink-400", bg: "bg-purple-50", border: "border-purple-100", tagBg: "bg-purple-100 text-purple-800" },
-  { gradient: "from-emerald-500 to-teal-400", bg: "bg-emerald-50", border: "border-emerald-100", tagBg: "bg-emerald-100 text-emerald-800" },
-  { gradient: "from-orange-500 to-amber-400", bg: "bg-orange-50", border: "border-orange-100", tagBg: "bg-orange-100 text-orange-800" },
-  { gradient: "from-rose-500 to-red-400", bg: "bg-rose-50", border: "border-rose-100", tagBg: "bg-rose-100 text-rose-800" },
-  { gradient: "from-indigo-500 to-violet-400", bg: "bg-indigo-50", border: "border-indigo-100", tagBg: "bg-indigo-100 text-indigo-800" },
-  { gradient: "from-sky-500 to-blue-400", bg: "bg-sky-50", border: "border-sky-100", tagBg: "bg-sky-100 text-sky-800" },
-  { gradient: "from-fuchsia-500 to-purple-400", bg: "bg-fuchsia-50", border: "border-fuchsia-100", tagBg: "bg-fuchsia-100 text-fuchsia-800" },
+  { gradient: "from-blue-500 to-cyan-400", tagBg: "bg-blue-100 text-blue-800" },
+  { gradient: "from-purple-500 to-pink-400", tagBg: "bg-purple-100 text-purple-800" },
+  { gradient: "from-emerald-500 to-teal-400", tagBg: "bg-emerald-100 text-emerald-800" },
+  { gradient: "from-orange-500 to-amber-400", tagBg: "bg-orange-100 text-orange-800" },
+  { gradient: "from-rose-500 to-red-400", tagBg: "bg-rose-100 text-rose-800" },
+  { gradient: "from-indigo-500 to-violet-400", tagBg: "bg-indigo-100 text-indigo-800" },
+  { gradient: "from-sky-500 to-blue-400", tagBg: "bg-sky-100 text-sky-800" },
+  { gradient: "from-fuchsia-500 to-purple-400", tagBg: "bg-fuchsia-100 text-fuchsia-800" },
 ];
 
 interface FeatureCardProps {
