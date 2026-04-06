@@ -102,7 +102,7 @@ const WhenToUseSection = () => (
       <div className="flex justify-between relative">
         {[
           { label: "고객맞이", active: false },
-          { label: "니즈파악", active: true, app: "밸런스 게임", icon: <Gamepad2 className="w-3.5 h-3.5" /> },
+          { label: "니즈파악", active: true, app: "가전 밸런스 게임", icon: <Gamepad2 className="w-3.5 h-3.5" /> },
           { label: "제품/구독 상담", active: true, app: "뷰킷 업", icon: <Search className="w-3.5 h-3.5" /> },
           { label: "가격 상담", active: false },
           { label: "마무리", active: false },
