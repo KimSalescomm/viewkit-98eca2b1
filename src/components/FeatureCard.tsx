@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
 import FeatureIcon from "@/components/FeatureIcon";
 
+const cardColors = [
+  { gradient: "from-blue-500 to-cyan-400", bg: "bg-blue-50", border: "border-blue-100", tagBg: "bg-blue-100 text-blue-800" },
+  { gradient: "from-purple-500 to-pink-400", bg: "bg-purple-50", border: "border-purple-100", tagBg: "bg-purple-100 text-purple-800" },
+  { gradient: "from-emerald-500 to-teal-400", bg: "bg-emerald-50", border: "border-emerald-100", tagBg: "bg-emerald-100 text-emerald-800" },
+  { gradient: "from-orange-500 to-amber-400", bg: "bg-orange-50", border: "border-orange-100", tagBg: "bg-orange-100 text-orange-800" },
+  { gradient: "from-rose-500 to-red-400", bg: "bg-rose-50", border: "border-rose-100", tagBg: "bg-rose-100 text-rose-800" },
+  { gradient: "from-indigo-500 to-violet-400", bg: "bg-indigo-50", border: "border-indigo-100", tagBg: "bg-indigo-100 text-indigo-800" },
+  { gradient: "from-sky-500 to-blue-400", bg: "bg-sky-50", border: "border-sky-100", tagBg: "bg-sky-100 text-sky-800" },
+  { gradient: "from-fuchsia-500 to-purple-400", bg: "bg-fuchsia-50", border: "border-fuchsia-100", tagBg: "bg-fuchsia-100 text-fuchsia-800" },
+];
+
 interface FeatureCardProps {
   id: string;
   title: string;
@@ -8,15 +19,18 @@ interface FeatureCardProps {
   icon: string;
   productId: string;
   tag?: string;
+  colorIndex?: number;
 }
 
-const FeatureCard = ({ id, title, subtitle, icon, productId, tag }: FeatureCardProps) => {
+const FeatureCard = ({ id, title, subtitle, icon, productId, tag, colorIndex = 0 }: FeatureCardProps) => {
+  const color = cardColors[colorIndex % cardColors.length];
+
   return (
     <Link
       to={`/product/${productId}/feature/${id}`}
-      className="block bg-[#F7F8FA] rounded-2xl p-4 sm:p-6 border border-gray-100 shadow-md hover:scale-[1.03] hover:shadow-xl transition-all duration-300 text-center"
+      className={`block ${color.bg} rounded-2xl p-4 sm:p-6 border ${color.border} shadow-md hover:scale-[1.03] hover:shadow-xl transition-all duration-300 text-center`}
     >
-      <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mx-auto mb-3 sm:mb-4">
+      <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br ${color.gradient} flex items-center justify-center mx-auto mb-3 sm:mb-4`}>
         <FeatureIcon iconKey={icon} className="text-white w-6 h-6 sm:w-8 sm:h-8" />
       </div>
       {tag && (
