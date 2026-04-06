@@ -332,49 +332,6 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["기계실 먼지 제거", "전문 장비 케어", "안전·성능 관리", "프리미엄 케어"],
     },
     {
-      id: "11",
-      title: "빌트인 감성의 주방을 원한다면?",
-      subtitle: "주방이 훨씬 넓고 깔끔해 보이는\n'Fit & Max' 냉장고를 확인해보세요.",
-      icon: "Ruler",
-      tag: "Fit & Max란?",
-      mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10516831/M626_hinge_pc.mp4",
-      description:
-        "도어 걸림을 없앤 제로 클리어런스 힌지가 만드는 단 4mm 간격의 완벽에 가까운 밀착! 인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아듭니다.",
-      highlights: ["제로 클리어런스 힌지", "인테리어 냉장고", "다양한 라인업", "냉툭튀가 싫다면 Fit & Max로"],
-    },
-    {
-      id: "12",
-      title: "함께하면 더 좋은 Fit & Max\n어떤 세트가 있나요?",
-      subtitle: "인테리어는 Fit 용량은 Max\n주방이 돋보이는 조합을 모아봤어요.",
-      icon: "Puzzle",
-      tag: "Fit & Max 세트",
-      mediaType: "gallery",
-      mediaUrl: "",
-      galleryImages: [
-        {
-          url: "https://www.lge.co.kr/kr/images/refrigerators/interior/I5.jpg",
-          title: "Fit & Max 냉장고 + 4도어 김치냉장고 조합",
-          description:
-            "노크온이 있는 Fit & Max 냉장고와 든든한 480L 용량의 4도어 김치냉장고, 가족이 많거나 미식을 즐기는 분을 위한 조합",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/images/refrigerators/interior/i2.jpg",
-          title: "Fit & Max 냉장고 + 3도어 김치냉장고 조합",
-          description:
-            "깔끔하게 밀착 설치한 Fit & Max 냉장고에 3도어 김치냉장고를 더하면 디자인도 용량도 부족하지 않은 최상의 조합이 되죠.",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/images/convertible-refrigerators/md10574832/XYZ324_fitmax_01.jpg",
-          title: "Fit & Max 냉장고 + 컨버터블 (냉장/냉동/김치)",
-          description: "내 주방에 딱 맞는 Fit & Max에 내 라이프스타일에 맞는 컨버터블 모델을 하나 더 추가해 보세요.",
-        },
-      ],
-      description:
-        "다양한 Fit & Max 라인업, STEM 냉장고, 김치, 냉장,냉동 전용 컨버터블을 내 생활에 맞게 조합해 보세요. 공간은 아름다워지고, 생활은 더 풍요로워집니다.",
-      highlights: ["다양한 인테리어 연출", "조합으로 더 넉넉해지는 용량", "Fit & Max로 트렌디한 인테리어"],
-    },
-    {
       id: "9",
       title: "STEM 냉장고, 우리 집에 어떻게 설치하죠?",
       subtitle: "수도관 연결 어떻게 될지 고민되시죠?\n깔끔한 마무리까지 확인해보세요.",
@@ -417,6 +374,49 @@ export const featuresMap: Record<string, Feature[]> = {
             "Case3,4처럼 수도관이 밖으로 이어지는 경우에는 주방 가구 컬러에 맞춘 몰딩 부자재로 숨김 처리를 해드립니다.",
         },
       ],
+    },
+    {
+      id: "11",
+      title: "빌트인 감성의 주방을 원한다면?",
+      subtitle: "주방이 훨씬 넓고 깔끔해 보이는\n'Fit & Max' 냉장고를 확인해보세요.",
+      icon: "Ruler",
+      tag: "Fit & Max란?",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10516831/M626_hinge_pc.mp4",
+      description:
+        "도어 걸림을 없앤 제로 클리어런스 힌지가 만드는 단 4mm 간격의 완벽에 가까운 밀착! 인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아듭니다.",
+      highlights: ["제로 클리어런스 힌지", "인테리어 냉장고", "다양한 라인업", "냉툭튀가 싫다면 Fit & Max로"],
+    },
+    {
+      id: "12",
+      title: "함께하면 더 좋은 Fit & Max\n어떤 세트가 있나요?",
+      subtitle: "인테리어는 Fit 용량은 Max\n주방이 돋보이는 조합을 모아봤어요.",
+      icon: "Puzzle",
+      tag: "Fit & Max 세트",
+      mediaType: "gallery",
+      mediaUrl: "",
+      galleryImages: [
+        {
+          url: "https://www.lge.co.kr/kr/images/refrigerators/interior/I5.jpg",
+          title: "Fit & Max 냉장고 + 4도어 김치냉장고 조합",
+          description:
+            "노크온이 있는 Fit & Max 냉장고와 든든한 480L 용량의 4도어 김치냉장고, 가족이 많거나 미식을 즐기는 분을 위한 조합",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/images/refrigerators/interior/i2.jpg",
+          title: "Fit & Max 냉장고 + 3도어 김치냉장고 조합",
+          description:
+            "깔끔하게 밀착 설치한 Fit & Max 냉장고에 3도어 김치냉장고를 더하면 디자인도 용량도 부족하지 않은 최상의 조합이 되죠.",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/images/convertible-refrigerators/md10574832/XYZ324_fitmax_01.jpg",
+          title: "Fit & Max 냉장고 + 컨버터블 (냉장/냉동/김치)",
+          description: "내 주방에 딱 맞는 Fit & Max에 내 라이프스타일에 맞는 컨버터블 모델을 하나 더 추가해 보세요.",
+        },
+      ],
+      description:
+        "다양한 Fit & Max 라인업, STEM 냉장고, 김치, 냉장,냉동 전용 컨버터블을 내 생활에 맞게 조합해 보세요. 공간은 아름다워지고, 생활은 더 풍요로워집니다.",
+      highlights: ["다양한 인테리어 연출", "조합으로 더 넉넉해지는 용량", "Fit & Max로 트렌디한 인테리어"],
     },
   ],
 
