@@ -80,18 +80,26 @@ const Home = () => {
 
         {/* Features Grid */}
         <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-10 sm:mb-12">
-          {features.map((feature, index) => (
-            <FeatureCard
-              key={feature.id}
-              id={feature.id}
-              title={feature.title}
-              subtitle={feature.subtitle}
-              icon={feature.icon}
-              productId={productId || ""}
-              tag={feature.tag}
-              colorIndex={index}
-            />
-          ))}
+          {features.map((feature, index) => {
+            const items = [];
+            // 냉장고: 5번째 카드(설치체크) 뒤에 빈 슬롯 삽입 → Fit&Max가 7,8번 위치로
+            if (productId === "refrigerator" && index === 5) {
+              items.push(<div key="empty-slot" className="hidden sm:block" />);
+            }
+            items.push(
+              <FeatureCard
+                key={feature.id}
+                id={feature.id}
+                title={feature.title}
+                subtitle={feature.subtitle}
+                icon={feature.icon}
+                productId={productId || ""}
+                tag={feature.tag}
+                colorIndex={index}
+              />
+            );
+            return items;
+          })}
         </div>
 
         {/* Other Products Button */}
