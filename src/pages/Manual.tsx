@@ -16,6 +16,8 @@ import internetIcon from "@/assets/manual/internet-icon.png";
 import standbymeScreen2 from "@/assets/manual/standbyme-screen2.jpg";
 import viewkitList from "@/assets/manual/viewkit-list.jpg";
 import viewkitDetail from "@/assets/manual/viewkit-detail.jpg";
+import balanceScreen1 from "@/assets/manual/balance-screen1.png";
+import balanceScreen2 from "@/assets/manual/balance-screen2.png";
 
 /* ── Shared sub-components ── */
 
