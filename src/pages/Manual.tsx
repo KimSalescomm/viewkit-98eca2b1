@@ -193,14 +193,31 @@ const SetupSection = () => (
 
 const BalanceGameSection = () => (
   <section className="px-5 py-8">
-    <SectionHeader number={4} title="'밸런스 게임' 사용법" />
+    <SectionHeader number={4} title="'가전 밸런스 게임' 사용법" />
     <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-      말 없는 고객의 취향, 밸런스 게임으로 단번에 파악하세요.
+      말 없는 고객의 취향, 가전 밸런스 게임으로 단번에 파악하세요.
       <br />
       직접 선택하는 과정에서 취향이 자연스럽게 드러나,
       <br />
       <strong className="text-foreground font-semibold">제품 추천이 훨씬 수월해집니다.</strong>
     </p>
+    <div className="bg-card rounded-2xl p-4 manual-shadow-card mb-4">
+      <h3 className="text-sm font-bold text-foreground mb-3">앱 화면 미리보기</h3>
+      <div className="flex gap-3">
+        <div className="flex-1">
+          <div className="rounded-xl overflow-hidden border border-border shadow-sm">
+            <SafeImage src={balanceScreen1} alt="밸런스 게임 질문 화면" className="w-full h-auto" />
+          </div>
+          <p className="text-[10px] text-muted-foreground text-center mt-1.5">질문 선택 화면</p>
+        </div>
+        <div className="flex-1">
+          <div className="rounded-xl overflow-hidden border border-border shadow-sm">
+            <SafeImage src={balanceScreen2} alt="밸런스 게임 결과 화면" className="w-full h-auto" />
+          </div>
+          <p className="text-[10px] text-muted-foreground text-center mt-1.5">취향 분석 결과</p>
+        </div>
+      </div>
+    </div>
     <div className="bg-card rounded-2xl p-5 manual-shadow-card mb-4">
       <h3 className="text-sm font-bold text-foreground mb-4">사용 흐름</h3>
       <div className="flex flex-col gap-0">
