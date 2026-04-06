@@ -34,7 +34,7 @@ const FeatureCard = ({ id, title, subtitle, icon, productId, tag, colorIndex = 0
         <FeatureIcon iconKey={icon} className="text-white w-6 h-6 sm:w-8 sm:h-8" />
       </div>
       {tag && (
-        <span className="inline-block bg-blue-100 text-blue-800 text-sm font-bold px-2.5 py-1 rounded-lg mb-2 sm:mb-3">
+        <span className={`inline-block ${color.tagBg} text-sm font-bold px-2.5 py-1 rounded-lg mb-2 sm:mb-3`}>
           {tag}
         </span>
       )}
