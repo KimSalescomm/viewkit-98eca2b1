@@ -16,6 +16,8 @@ import internetIcon from "@/assets/manual/internet-icon.png";
 import standbymeScreen2 from "@/assets/manual/standbyme-screen2.jpg";
 import viewkitList from "@/assets/manual/viewkit-list.jpg";
 import viewkitDetail from "@/assets/manual/viewkit-detail.jpg";
+import balanceScreen1 from "@/assets/manual/balance-screen1.png";
+import balanceScreen2 from "@/assets/manual/balance-screen2.png";
 
 /* ── Shared sub-components ── */
 
@@ -100,7 +102,7 @@ const WhenToUseSection = () => (
       <div className="flex justify-between relative">
         {[
           { label: "고객맞이", active: false },
-          { label: "니즈파악", active: true, app: "밸런스 게임", icon: <Gamepad2 className="w-3.5 h-3.5" /> },
+          { label: "니즈파악", active: true, app: "가전 밸런스 게임", icon: <Gamepad2 className="w-3.5 h-3.5" /> },
           { label: "제품/구독 상담", active: true, app: "뷰킷 업", icon: <Search className="w-3.5 h-3.5" /> },
           { label: "가격 상담", active: false },
           { label: "마무리", active: false },
@@ -144,7 +146,7 @@ const SetupSection = () => (
           <SafeImage src={internetIcon} alt="인터넷 앱 아이콘" className="w-[72px] h-[72px] object-contain rounded-2xl shrink-0" />
           <div className="flex flex-col gap-2 shrink-0">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5">밸런스 게임</span>
+              <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5">가전 밸런스 게임</span>
               <span className="text-[9px] text-muted-foreground font-mono whitespace-nowrap">refbalancegame.lovable.app</span>
             </div>
             <div className="flex items-center gap-2">
@@ -191,14 +193,31 @@ const SetupSection = () => (
 
 const BalanceGameSection = () => (
   <section className="px-5 py-8">
-    <SectionHeader number={4} title="'밸런스 게임' 사용법" />
+    <SectionHeader number={4} title="'가전 밸런스 게임' 사용법" />
     <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-      말 없는 고객의 취향, 밸런스 게임으로 단번에 파악하세요.
+      말 없는 고객의 취향, 가전 밸런스 게임으로 단번에 파악하세요.
       <br />
       직접 선택하는 과정에서 취향이 자연스럽게 드러나,
       <br />
       <strong className="text-foreground font-semibold">제품 추천이 훨씬 수월해집니다.</strong>
     </p>
+    <div className="bg-card rounded-2xl p-4 manual-shadow-card mb-4">
+      <h3 className="text-sm font-bold text-foreground mb-3">앱 화면 미리보기</h3>
+      <div className="flex gap-3">
+        <div className="flex-1">
+          <div className="rounded-xl overflow-hidden border border-border shadow-sm">
+            <SafeImage src={balanceScreen1} alt="밸런스 게임 질문 화면" className="w-full h-auto" />
+          </div>
+          <p className="text-[10px] text-muted-foreground text-center mt-1.5">질문 선택 화면</p>
+        </div>
+        <div className="flex-1">
+          <div className="rounded-xl overflow-hidden border border-border shadow-sm">
+            <SafeImage src={balanceScreen2} alt="밸런스 게임 결과 화면" className="w-full h-auto" />
+          </div>
+          <p className="text-[10px] text-muted-foreground text-center mt-1.5">취향 분석 결과</p>
+        </div>
+      </div>
+    </div>
     <div className="bg-card rounded-2xl p-5 manual-shadow-card mb-4">
       <h3 className="text-sm font-bold text-foreground mb-4">사용 흐름</h3>
       <div className="flex flex-col gap-0">
