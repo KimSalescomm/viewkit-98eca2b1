@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import FeatureIcon from "@/components/FeatureIcon";
 
 const cardColors = [
-  { gradient: "from-blue-500 to-cyan-400", tagBg: "bg-blue-100 text-blue-800" },
-  { gradient: "from-purple-500 to-pink-400", tagBg: "bg-purple-100 text-purple-800" },
-  { gradient: "from-emerald-500 to-teal-400", tagBg: "bg-emerald-100 text-emerald-800" },
-  { gradient: "from-orange-500 to-amber-400", tagBg: "bg-orange-100 text-orange-800" },
-  { gradient: "from-rose-500 to-red-400", tagBg: "bg-rose-100 text-rose-800" },
-  { gradient: "from-indigo-500 to-violet-400", tagBg: "bg-indigo-100 text-indigo-800" },
-  { gradient: "from-sky-500 to-blue-400", tagBg: "bg-sky-100 text-sky-800" },
-  { gradient: "from-fuchsia-500 to-purple-400", tagBg: "bg-fuchsia-100 text-fuchsia-800" },
+  { gradient: "from-blue-500 to-cyan-400" },
+  { gradient: "from-purple-500 to-pink-400" },
+  { gradient: "from-emerald-500 to-teal-400" },
+  { gradient: "from-orange-500 to-amber-400" },
+  { gradient: "from-rose-500 to-red-400" },
+  { gradient: "from-indigo-500 to-violet-400" },
+  { gradient: "from-sky-500 to-blue-400" },
+  { gradient: "from-fuchsia-500 to-purple-400" },
 ];
 
 interface FeatureCardProps {
@@ -34,7 +34,7 @@ const FeatureCard = ({ id, title, subtitle, icon, productId, tag, colorIndex = 0
         <FeatureIcon iconKey={icon} className="text-white w-6 h-6 sm:w-8 sm:h-8" />
       </div>
       {tag && (
-        <span className={`inline-block ${color.tagBg} text-sm font-bold px-2.5 py-1 rounded-lg mb-2 sm:mb-3`}>
+        <span className="inline-block bg-purple-50 border border-purple-200 text-purple-600 text-sm font-bold px-2.5 py-1 rounded-lg mb-2 sm:mb-3">
           {tag}
         </span>
       )}
