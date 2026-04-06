@@ -3,6 +3,7 @@ import { getFeatureById } from "@/data/features";
 import { getProductById } from "@/data/products";
 import MediaViewer from "@/components/MediaViewer";
 import FeatureIcon from "@/components/FeatureIcon";
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
