@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { featureIconMap } from "@/data/features";
+import FeatureIcon from "@/components/FeatureIcon";
 
 interface FeatureCardProps {
   id: string;
@@ -11,15 +11,13 @@ interface FeatureCardProps {
 }
 
 const FeatureCard = ({ id, title, subtitle, icon, productId, tag }: FeatureCardProps) => {
-  const emoji = featureIconMap[icon] || "✨";
-
   return (
     <Link
       to={`/product/${productId}/feature/${id}`}
       className="block bg-[#F7F8FA] rounded-2xl p-4 sm:p-6 border border-gray-100 shadow-md hover:scale-[1.03] hover:shadow-xl transition-all duration-300 text-center"
     >
       <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mx-auto mb-3 sm:mb-4">
-        <span className="text-2xl sm:text-3xl">{emoji}</span>
+        <FeatureIcon iconKey={icon} className="text-white w-6 h-6 sm:w-8 sm:h-8" />
       </div>
       {tag && (
         <span className="inline-block bg-blue-100 text-blue-800 text-sm font-bold px-2.5 py-1 rounded-lg mb-2 sm:mb-3">

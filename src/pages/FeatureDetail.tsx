@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
-import { getFeatureById, featureIconMap } from "@/data/features";
+import { getFeatureById } from "@/data/features";
 import { getProductById } from "@/data/products";
 import MediaViewer from "@/components/MediaViewer";
+import FeatureIcon from "@/components/FeatureIcon";
 import {
   Accordion,
   AccordionContent,
@@ -28,7 +29,7 @@ const FeatureDetail = () => {
     );
   }
 
-  const emoji = featureIconMap[feature.icon] || "✨";
+  // Icon is now rendered via FeatureIcon component
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
@@ -55,7 +56,7 @@ const FeatureDetail = () => {
         {/* Feature Header */}
         <div className="flex items-start gap-3 sm:gap-6 mb-6 sm:mb-8">
           <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center flex-shrink-0">
-            <span className="text-3xl sm:text-5xl">{emoji}</span>
+            <FeatureIcon iconKey={feature.icon} className="text-white w-8 h-8 sm:w-12 sm:h-12" />
           </div>
           <div className="min-w-0">
             <h1 className="text-xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">

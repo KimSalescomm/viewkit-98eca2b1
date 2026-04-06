@@ -551,28 +551,33 @@ export const featuresMap: Record<string, Feature[]> = {
   ],
 };
 
-export const featureIconMap: Record<string, string> = {
-  Monitor: "🖥️",
-  Cpu: "🧠",
-  Palette: "🎨",
-  Volume2: "🔊",
-  Tv: "📺",
-  Gamepad2: "🎮",
-  Maximize2: "📐",
-  Zap: "⚡",
-  Shirt: "👔",
-  Wind: "💨",
-  Sparkles: "✨",
-  UtensilsCrossed: "🍽️",
-  dress: "👗",
-  Seedling: "🌱",
-  Search: "🔍",
-  Cleaning: "🧹",
-  ImageIcon: "🖼️",
-  Ruler: "📐",
-  Wrench: "🧰",
-  Puzzle: "🧩",
+// Lucide icon name map – used by FeatureCard and FeatureDetail to render SVG icons
+// Keys must match the `icon` field in each Feature object
+export const featureIconNames: Record<string, string> = {
+  Monitor: "Monitor",
+  Cpu: "Cpu",
+  Palette: "Palette",
+  Volume2: "Volume2",
+  Tv: "Tv",
+  Gamepad2: "Gamepad2",
+  Maximize2: "Maximize2",
+  Zap: "Zap",
+  Shirt: "Shirt",
+  Wind: "Wind",
+  Sparkles: "Sparkles",
+  UtensilsCrossed: "UtensilsCrossed",
+  dress: "Shirt",
+  Seedling: "Sprout",
+  Search: "Search",
+  Cleaning: "Brush",
+  ImageIcon: "Image",
+  Ruler: "Ruler",
+  Wrench: "Wrench",
+  Puzzle: "Puzzle",
 };
+
+// Keep legacy export for backwards compat (unused but safe)
+export const featureIconMap = featureIconNames;
 
 export const getFeaturesByProductId = (productId: string): Feature[] => {
   return featuresMap[productId] || [];
