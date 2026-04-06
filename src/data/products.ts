@@ -9,14 +9,6 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    id: "tv",
-    name: "TV",
-    title: "The Next 올레드",
-    description: "지금까지 보지 못한 빛과 색을 깨운 올레드의 탄생",
-    keyVisualImage: "https://static.lge.co.kr/kr/upload/admin/eventPlan/kv_pc_20260316_094128.png",
-    icon: "Tv",
-  },
-  {
     id: "refrigerator",
     name: "냉장고",
     title: "DIOS 냉장고",
@@ -31,6 +23,14 @@ export const products: Product[] = [
     description: "스타일링, 건조, 제습을 ALL NEW 스타일러 하나로",
     keyVisualImage: "https://www.lge.co.kr/kr/images/lg-styler/md10544833/gallery/medium-interior01.jpg",
     icon: "Shirt",
+  },
+  {
+    id: "tv",
+    name: "TV",
+    title: "The Next 올레드",
+    description: "지금까지 보지 못한 빛과 색을 깨운 올레드의 탄생",
+    keyVisualImage: "https://static.lge.co.kr/kr/upload/admin/eventPlan/kv_pc_20260316_094128.png",
+    icon: "Tv",
   },
   {
     id: "washer",

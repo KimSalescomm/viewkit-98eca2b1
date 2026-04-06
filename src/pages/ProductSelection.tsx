@@ -4,7 +4,7 @@ import SafeImage from "@/components/SafeImage";
 import { HelpCircle } from "lucide-react";
 
 const ProductSelection = () => {
-  const enabledIds = ["refrigerator", "styler", "tv"];
+  const enabledIds = ["refrigerator", "styler"];
 
   return (
     <div className="min-h-screen bg-[hsl(220,20%,97%)] px-5 py-10 sm:px-8 sm:py-14">
