@@ -45,7 +45,7 @@ const ProductSelection = () => {
 
         {/* Card Grid */}
         <div className="grid grid-cols-2 gap-4 sm:gap-5">
-          {products.map((product) => {
+          {products.map((product, index) => {
             const isEnabled = enabledIds.includes(product.id);
 
             const cardContent = (
@@ -60,19 +60,25 @@ const ProductSelection = () => {
               >
                 {/* Thumbnail */}
                 <div className="relative h-36 sm:h-48 overflow-hidden flex-shrink-0">
-                  <SafeImage
-                    src={product.keyVisualImage}
-                    alt={product.name}
-                    loading="lazy"
-                    className={`w-full h-full object-cover object-top transition-all duration-500
-                      ${isEnabled
-                        ? "group-hover:scale-105"
-                        : "grayscale opacity-70 group-hover:grayscale-[50%] group-hover:opacity-90"
-                      }
-                    `}
-                  />
-                  {/* Light overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/10 to-transparent pointer-events-none" />
+                  {isEnabled ? (
+                    <>
+                      <SafeImage
+                        src={product.keyVisualImage}
+                        alt={product.name}
+                        loading={index < 2 ? "eager" : "lazy"}
+                        fetchPriority={index < 2 ? "high" : undefined}
+                        decoding="async"
+                        className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/10 to-transparent pointer-events-none" />
+                    </>
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-muted">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-3xl border border-border bg-card shadow-sm">
+                        <span className="text-4xl grayscale opacity-60">{iconMap[product.icon]}</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Card Body */}

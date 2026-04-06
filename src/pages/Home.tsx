@@ -65,7 +65,9 @@ const Home = () => {
           <SafeImage
             src={product.keyVisualImage}
             alt={product.name}
-            loading="lazy"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className={`w-full h-[134px] sm:h-[350px] object-cover ${
               productId === "tv" ? "scale-[1.15] object-[65%_55%] -translate-y-[20px]" :
               productId === "airconditioner" ? "object-top" : "object-center"
