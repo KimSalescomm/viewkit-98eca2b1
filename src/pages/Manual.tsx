@@ -211,8 +211,8 @@ const BalanceGameSection = () => (
           <p className="text-[10px] text-muted-foreground text-center mt-1.5">질문 선택 화면</p>
         </div>
         <div className="flex-1">
-          <div className="rounded-xl overflow-hidden border border-border shadow-sm">
-            <SafeImage src={balanceScreen2} alt="밸런스 게임 결과 화면" className="w-full h-auto" />
+          <div className="rounded-xl overflow-hidden border border-border shadow-sm aspect-[9/16]">
+            <SafeImage src={balanceScreen2} alt="밸런스 게임 결과 화면" className="w-full h-full object-cover object-top" />
           </div>
           <p className="text-[10px] text-muted-foreground text-center mt-1.5">취향 분석 결과</p>
         </div>
