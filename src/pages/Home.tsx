@@ -80,7 +80,7 @@ const Home = () => {
 
         {/* Features Grid */}
         <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-10 sm:mb-12">
-          {features.map((feature) => (
+          {features.map((feature, index) => (
             <FeatureCard
               key={feature.id}
               id={feature.id}
@@ -89,6 +89,7 @@ const Home = () => {
               icon={feature.icon}
               productId={productId || ""}
               tag={feature.tag}
+              colorIndex={index}
             />
           ))}
         </div>
