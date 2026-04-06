@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Smartphone, ChevronRight, Gamepad2, Search, Info, CheckCircle2, ArrowLeft } from "lucide-react";
+import SafeImage from "@/components/SafeImage";
 
 // Manual assets
 import balanceQ1 from "@/assets/manual/balance-q1.jpg";
