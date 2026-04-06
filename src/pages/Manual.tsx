@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Smartphone, ChevronRight, Gamepad2, Search, Info, CheckCircle2, ArrowLeft } from "lucide-react";
+import SafeImage from "@/components/SafeImage";
 
 // Manual assets
 import balanceQ1 from "@/assets/manual/balance-q1.jpg";
@@ -29,7 +30,7 @@ const SectionHeader = ({ number, title }: { number: number; title: string }) => 
 
 const PainCard = ({ image, text }: { image: string; text: string }) => (
   <div className="bg-card rounded-2xl p-3.5 manual-shadow-card flex flex-col items-center text-center">
-    <img src={image} alt="" className="w-10 h-10 rounded-full mb-2" />
+    <SafeImage src={image} alt="" className="w-10 h-10 rounded-full mb-2" />
     <p className="text-xs text-foreground leading-relaxed font-medium">{text}</p>
   </div>
 );
@@ -140,7 +141,7 @@ const SetupSection = () => (
           <p className="text-xs text-muted-foreground leading-relaxed mb-3">인터넷 앱을 실행한 뒤 아래 주소를 직접 입력하세요.</p>
         </div>
         <div className="flex flex-nowrap items-center gap-3 mt-2 mx-auto w-fit">
-          <img src={internetIcon} alt="인터넷 앱 아이콘" className="w-[72px] h-[72px] object-contain rounded-2xl shrink-0" />
+          <SafeImage src={internetIcon} alt="인터넷 앱 아이콘" className="w-[72px] h-[72px] object-contain rounded-2xl shrink-0" />
           <div className="flex flex-col gap-2 shrink-0">
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-semibold text-manual-indigo bg-manual-tag-bg rounded px-1.5 py-0.5">밸런스 게임</span>
@@ -164,14 +165,14 @@ const SetupSection = () => (
           </p>
         </div>
         <div className="flex items-center gap-4 mx-auto w-fit">
-          <img src={standbymeScreen2} alt="홈 화면 바로가기 추가 화면" className="w-[120px] rounded-xl shrink-0" />
+          <SafeImage src={standbymeScreen2} alt="홈 화면 바로가기 추가 화면" className="w-[120px] rounded-xl shrink-0" />
           <div className="flex flex-col gap-3 items-center shrink-0">
             <div className="flex flex-col items-center gap-1">
-              <img src={iconViewkit} alt="뷰킷업 아이콘" className="w-[52px] h-[52px] rounded-xl" loading="lazy" />
+              <SafeImage src={iconViewkit} alt="뷰킷업 아이콘" className="w-[52px] h-[52px] rounded-xl" loading="lazy" />
               <span className="text-[10px] font-semibold text-foreground">뷰킷업</span>
             </div>
             <div className="flex flex-col items-center gap-1">
-              <img src={iconBalance} alt="가전 밸런스 게임 아이콘" className="w-[52px] h-[52px] rounded-xl" loading="lazy" />
+              <SafeImage src={iconBalance} alt="가전 밸런스 게임 아이콘" className="w-[52px] h-[52px] rounded-xl" loading="lazy" />
               <span className="text-[10px] font-semibold text-foreground">가전 밸런스 게임</span>
             </div>
           </div>
@@ -237,13 +238,13 @@ const ViewKitSection = () => (
       <div className="flex gap-3">
         <div className="flex-1">
           <div className="rounded-xl overflow-hidden border border-border shadow-sm">
-            <img src={viewkitList} alt="뷰킷 제품 목록 화면" className="w-full h-auto" />
+            <SafeImage src={viewkitList} alt="뷰킷 제품 목록 화면" className="w-full h-auto" />
           </div>
           <p className="text-[10px] text-muted-foreground text-center mt-1.5">제품별 특장점 카드</p>
         </div>
         <div className="flex-1">
           <div className="rounded-xl overflow-hidden border border-border shadow-sm">
-            <img src={viewkitDetail} alt="뷰킷 상세 화면" className="w-full h-auto" />
+            <SafeImage src={viewkitDetail} alt="뷰킷 상세 화면" className="w-full h-auto" />
           </div>
           <p className="text-[10px] text-muted-foreground text-center mt-1.5">상세 설명 화면</p>
         </div>
