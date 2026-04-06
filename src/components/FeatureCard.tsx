@@ -25,7 +25,7 @@ interface FeatureCardProps {
 
 const FeatureCard = ({ id, title, subtitle, icon, productId, tag, colorIndex = 0, variant = "white" }: FeatureCardProps) => {
   const color = cardColors[colorIndex % cardColors.length];
-  const bgClass = variant === "gray" ? "bg-gray-50 border-gray-200" : "bg-white border-gray-100";
+  const bgClass = variant === "gray" ? "bg-gray-100 border-gray-200" : "bg-white border-gray-100";
 
   return (
     <Link
