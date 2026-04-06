@@ -86,6 +86,7 @@ const Home = () => {
             if (productId === "refrigerator" && index === 5) {
               items.push(<div key="empty-slot" />);
             }
+            const isFitMax = productId === "refrigerator" && (feature.id === "11" || feature.id === "12");
             items.push(
               <FeatureCard
                 key={feature.id}
@@ -96,6 +97,7 @@ const Home = () => {
                 productId={productId || ""}
                 tag={feature.tag}
                 colorIndex={index}
+                variant={isFitMax ? "gray" : "white"}
               />
             );
             return items;
