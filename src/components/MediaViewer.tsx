@@ -20,7 +20,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     align: "start",
     containScroll: "trimSnaps",
-    dragFree: true,
+    dragFree: false,
   });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
