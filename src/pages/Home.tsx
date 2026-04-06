@@ -84,7 +84,7 @@ const Home = () => {
             const items = [];
             // 냉장고: 5번째 카드(설치체크) 뒤에 빈 슬롯 삽입 → Fit&Max가 7,8번 위치로
             if (productId === "refrigerator" && index === 5) {
-              items.push(<div key="empty-slot" className="hidden sm:block" />);
+              items.push(<div key="empty-slot" />);
             }
             items.push(
               <FeatureCard
