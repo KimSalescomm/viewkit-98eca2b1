@@ -25,6 +25,14 @@ export const products: Product[] = [
     icon: "Shirt",
   },
   {
+    id: "tv",
+    name: "TV",
+    title: "The Next 올레드",
+    description: "지금까지 보지 못한 빛과 색을 깨운 올레드의 탄생",
+    keyVisualImage: "https://static.lge.co.kr/kr/upload/admin/eventPlan/kv_pc_20260316_094128.png",
+    icon: "Tv",
+  },
+  {
     id: "washer",
     name: "워시타워",
     title: "워시타워",
