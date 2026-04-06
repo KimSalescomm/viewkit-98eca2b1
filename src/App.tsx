@@ -5,8 +5,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AnalyticsProvider from "./components/AnalyticsProvider";
+import ProductSelection from "./pages/ProductSelection";
 
-const ProductSelection = lazy(() => import("./pages/ProductSelection"));
 const Home = lazy(() => import("./pages/Home"));
 const FeatureDetail = lazy(() => import("./pages/FeatureDetail"));
 const Manual = lazy(() => import("./pages/Manual"));

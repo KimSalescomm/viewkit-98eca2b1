@@ -7,12 +7,15 @@ export type SafeImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
 const DEFAULT_FALLBACK = "/placeholder.svg";
 
 const SafeImage = React.forwardRef<HTMLImageElement, SafeImageProps>(
-  ({ fallbackSrc = DEFAULT_FALLBACK, onError, ...props }, ref) => {
+  ({ fallbackSrc = DEFAULT_FALLBACK, decoding = "async", loading = "lazy", onError, src, ...props }, ref) => {
     const hasFailedRef = React.useRef(false);
 
     return (
       <img
         ref={ref}
+        src={src}
+        loading={loading}
+        decoding={decoding}
         {...props}
         onError={(e) => {
           if (!hasFailedRef.current) {
