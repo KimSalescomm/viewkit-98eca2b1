@@ -363,7 +363,7 @@ const ManualStickyNav = ({ onBack }: { onBack: string }) => {
 
 const Manual = () => {
   const { productId } = useParams<{ productId: string }>();
-  const backPath = productId ? `/product/${productId}` : "/";
+  const backPath = "/";
 
   return (
     <div className="max-w-xl mx-auto sm:max-w-4xl min-h-screen bg-background text-center">
