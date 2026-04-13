@@ -379,6 +379,9 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
   if (mediaType === "youtube") {
     // URL을 embed 형식으로 변환
     const { embedUrl } = convertToEmbedUrl(mediaUrl);
+    // autoplay, mute, loop 파라미터 추가
+    const separator = embedUrl.includes('?') ? '&' : '?';
+    const autoplayUrl = `${embedUrl}${separator}autoplay=1&mute=1&loop=1&playlist=${embedUrl.split('/embed/')[1]?.split('?')[0] || ''}`;
     // Shorts는 9:16 세로 비율, 일반은 16:9 가로 비율
     const aspectRatio = isShorts ? "177.78%" : "56.25%"; // 9:16 = 177.78%, 16:9 = 56.25%
     
