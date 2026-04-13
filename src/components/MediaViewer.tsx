@@ -405,7 +405,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
           }}
         >
           <iframe
-            src={embedUrl}
+            src={autoplayUrl}
             title={title}
             style={{
               position: isShorts ? "relative" : "absolute",
