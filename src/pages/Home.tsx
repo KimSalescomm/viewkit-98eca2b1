@@ -84,10 +84,6 @@ const Home = () => {
         <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-10 sm:mb-12">
           {features.map((feature, index) => {
             const items = [];
-            // 냉장고: 5번째 카드(설치체크) 뒤에 빈 슬롯 삽입 → Fit&Max가 7,8번 위치로
-            if (productId === "refrigerator" && index === 5) {
-              items.push(<div key="empty-slot" />);
-            }
             const isFitMax = productId === "refrigerator" && (feature.id === "11" || feature.id === "12");
             items.push(
               <FeatureCard
