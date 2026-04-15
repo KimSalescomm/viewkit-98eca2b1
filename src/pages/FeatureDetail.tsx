@@ -1,8 +1,10 @@
 import { Link, useParams } from "react-router-dom";
+import { useEffect } from "react";
 import { getFeatureById } from "@/data/features";
 import { getProductById } from "@/data/products";
 import MediaViewer from "@/components/MediaViewer";
 import FeatureIcon from "@/components/FeatureIcon";
+import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import {
   Accordion,
   AccordionContent,
@@ -12,9 +14,24 @@ import {
 
 const FeatureDetail = () => {
   const { productId, id } = useParams<{ productId: string; id: string }>();
+  const { trackDetailView, trackVideoClick } = useAnalyticsContext();
   
   const feature = getFeatureById(productId || "", id || "");
   const product = getProductById(productId || "");
+
+  // detail_view 이벤트
+  useEffect(() => {
+    if (product) {
+      trackDetailView(product.name);
+    }
+  }, [productId, id]);
+
+  // 비디오/유튜브 클릭 감지
+  const handleVideoClick = () => {
+    if (product) {
+      trackVideoClick(product.name);
+    }
+  };
 
   if (!feature || !product) {
     return (
@@ -28,8 +45,6 @@ const FeatureDetail = () => {
       </div>
     );
   }
-
-  // Icon is now rendered via FeatureIcon component
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
@@ -68,8 +83,8 @@ const FeatureDetail = () => {
           </div>
         </div>
 
-        {/* Media */}
-        <div className="mb-6 sm:mb-8">
+        {/* Media - video_click 이벤트용 래퍼 */}
+        <div className="mb-6 sm:mb-8" onClick={handleVideoClick}>
           <MediaViewer
             mediaType={feature.mediaType}
             mediaUrl={feature.mediaUrl}

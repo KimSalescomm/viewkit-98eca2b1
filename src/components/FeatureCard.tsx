@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import FeatureIcon from "@/components/FeatureIcon";
+import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 
 const cardColors = [
   { gradient: "from-blue-500 to-cyan-400" },
@@ -18,19 +19,22 @@ interface FeatureCardProps {
   subtitle: string;
   icon: string;
   productId: string;
+  productName?: string;
   tag?: string;
   colorIndex?: number;
   variant?: "white" | "gray";
 }
 
-const FeatureCard = ({ id, title, subtitle, icon, productId, tag, colorIndex = 0, variant = "white" }: FeatureCardProps) => {
+const FeatureCard = ({ id, title, subtitle, icon, productId, productName, tag, colorIndex = 0, variant = "white" }: FeatureCardProps) => {
   const color = cardColors[colorIndex % cardColors.length];
   const bgClass = variant === "gray" ? "bg-gray-50 border-gray-200" : "bg-white border-gray-100";
+  const { trackFeatureClick } = useAnalyticsContext();
 
   return (
     <Link
       to={`/product/${productId}/feature/${id}`}
       className={`block ${bgClass} rounded-2xl p-4 sm:p-6 border shadow-md hover:scale-[1.03] hover:shadow-xl transition-all duration-300 text-center`}
+      onClick={() => trackFeatureClick(productName || productId, title)}
     >
       <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br ${color.gradient} flex items-center justify-center mx-auto mb-3 sm:mb-4`}>
         <FeatureIcon iconKey={icon} className="text-white w-6 h-6 sm:w-8 sm:h-8" />
