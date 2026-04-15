@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-const GA_MEASUREMENT_ID = 'G-HP0RSWYB40';
+const GA_MEASUREMENT_IDS = ['G-HP0RSWYB40', 'G-B3XVTW4JX7'];
 
 // GA4 이벤트 전송 헬퍼
 const sendGAEvent = (eventName: string, params: Record<string, unknown>) => {
@@ -17,12 +17,14 @@ const sendGAEvent = (eventName: string, params: Record<string, unknown>) => {
   }
 };
 
-// 페이지뷰 전송
+// 페이지뷰 전송 (모든 계정에)
 const sendPageView = (path: string, title?: string) => {
   if (typeof window.gtag === 'function') {
-    window.gtag('config', GA_MEASUREMENT_ID, {
-      page_path: path,
-      page_title: title || document.title,
+    GA_MEASUREMENT_IDS.forEach(id => {
+      window.gtag('config', id, {
+        page_path: path,
+        page_title: title || document.title,
+      });
     });
   }
 };
