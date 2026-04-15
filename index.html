@@ -8,8 +8,13 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+      // 계정 1: 기존
       gtag('config', 'G-HP0RSWYB40', {
-        send_page_view: false // React에서 수동으로 페이지뷰 전송
+        send_page_view: false
+      });
+      // 계정 2: 신규
+      gtag('config', 'G-B3XVTW4JX7', {
+        send_page_view: false
       });
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
