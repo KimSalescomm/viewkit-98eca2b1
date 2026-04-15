@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import { products, iconMap } from "@/data/products";
 import SafeImage from "@/components/SafeImage";
 import { HelpCircle } from "lucide-react";
+import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 
 const ProductSelection = () => {
   const enabledIds = ["refrigerator", "styler"];
+  const { trackProductClick } = useAnalyticsContext();
 
   return (
     <div className="min-h-screen bg-[hsl(220,20%,97%)] px-5 py-10 sm:px-8 sm:py-14">
@@ -21,20 +23,15 @@ const ProductSelection = () => {
 
         {/* Header Section */}
         <div className="text-center mt-12 sm:mt-20 mb-12 sm:mb-16">
-          {/* Brand Label */}
           <p
             className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase mb-4"
             style={{ color: "rgba(0,0,0,0.45)" }}
           >
             VIEW KIT
           </p>
-
-          {/* Main CTA Headline */}
           <h1 className="text-[28px] sm:text-[32px] font-bold text-gray-900 leading-tight mb-3">
             어떤 제품부터 보시겠어요?
           </h1>
-
-          {/* Subtext */}
           <p
             className="text-[15px] sm:text-[17px] font-normal leading-relaxed"
             style={{ color: "rgba(0,0,0,0.55)" }}
@@ -84,7 +81,6 @@ const ProductSelection = () => {
                 {/* Card Body */}
                 <div className={`p-3.5 sm:p-5 flex-1 ${isEnabled ? "bg-[#F3F7FF]" : ""}`}>
                   <div className="flex items-start gap-2.5 sm:gap-3.5">
-                    {/* Icon Badge */}
                     <div
                       className={`
                         w-10 h-10 sm:w-13 sm:h-13 rounded-2xl flex items-center justify-center flex-shrink-0 text-xl sm:text-2xl
@@ -98,8 +94,6 @@ const ProductSelection = () => {
                         {iconMap[product.icon]}
                       </span>
                     </div>
-
-                    {/* Text */}
                     <div className="min-w-0 pt-0.5">
                       <h3
                         className={`text-base sm:text-lg leading-tight transition-colors duration-300
@@ -129,7 +123,12 @@ const ProductSelection = () => {
 
             if (isEnabled) {
               return (
-                <Link key={product.id} to={`/product/${product.id}`} className="block transition-transform duration-300 hover:scale-[1.02]">
+                <Link
+                  key={product.id}
+                  to={`/product/${product.id}`}
+                  className="block transition-transform duration-300 hover:scale-[1.02]"
+                  onClick={() => trackProductClick(product.name)}
+                >
                   {cardContent}
                 </Link>
               );

@@ -93,6 +93,7 @@ const Home = () => {
                 subtitle={feature.subtitle}
                 icon={feature.icon}
                 productId={productId || ""}
+                productName={product.name}
                 tag={feature.tag}
                 colorIndex={index}
                 variant={isFitMax ? "gray" : "white"}
