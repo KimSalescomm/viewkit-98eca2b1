@@ -10,18 +10,23 @@
       gtag('js', new Date());
       // 계정 1: 기존
       gtag('config', 'G-HP0RSWYB40', {
-        send_page_view: false
+        send_page_view: false,
+        cookie_flags: 'SameSite=None;Secure',
+        cookie_domain: 'auto',
+        cookie_expires: 63072000
       });
       // 계정 2: 신규
       gtag('config', 'G-B3XVTW4JX7', {
-        send_page_view: false
+        send_page_view: false,
+        cookie_flags: 'SameSite=None;Secure',
+        cookie_domain: 'auto',
+        cookie_expires: 63072000
       });
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- TODO: Set the document title to the name of your application -->
     <title>View Kit</title>
     <meta name="description" content="View Kit - 제품 특장점 비교 뷰어" />
     <meta name="author" content="View Kit" />

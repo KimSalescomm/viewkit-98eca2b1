@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
 declare global {
@@ -10,23 +10,48 @@ declare global {
 
 const GA_MEASUREMENT_IDS = ['G-HP0RSWYB40', 'G-B3XVTW4JX7'];
 
-// GA4 이벤트 전송 헬퍼
+// URL에서 store_id 추출 (한번 읽으면 세션 동안 유지)
+const getStoreId = (): string => {
+  const params = new URLSearchParams(window.location.search);
+  const fromUrl = params.get('store_id');
+  if (fromUrl) {
+    sessionStorage.setItem('viewkit_store_id', fromUrl);
+    return fromUrl;
+  }
+  return sessionStorage.getItem('viewkit_store_id') || 'unknown';
+};
+
+// GA4 이벤트 전송 헬퍼 (traffic_type 전송하지 않음)
 const sendGAEvent = (eventName: string, params: Record<string, unknown>) => {
   if (typeof window.gtag === 'function') {
-    window.gtag('event', eventName, params);
+    // traffic_type 제거 보장
+    const { traffic_type, ...cleanParams } = params;
+    window.gtag('event', eventName, {
+      ...cleanParams,
+      store_id: cleanParams.store_id || getStoreId(),
+    });
   }
 };
 
-// 페이지뷰 전송 (모든 계정에)
+// 페이지뷰 전송 (모든 계정에, 중복 방지)
 const sendPageView = (path: string, title?: string) => {
   if (typeof window.gtag === 'function') {
     GA_MEASUREMENT_IDS.forEach(id => {
       window.gtag('config', id, {
         page_path: path,
         page_title: title || document.title,
+        store_id: getStoreId(),
       });
     });
   }
+};
+
+// 라우트에서 step 판별
+const getStepFromPath = (pathname: string): string | null => {
+  if (pathname === '/') return 'step_1_view';
+  if (/^\/product\/[^/]+$/.test(pathname)) return 'step_2_view';
+  if (/^\/product\/[^/]+\/feature\/[^/]+$/.test(pathname)) return 'step_3_view';
+  return null;
 };
 
 export const useAnalytics = () => {
@@ -34,6 +59,7 @@ export const useAnalytics = () => {
   const pageEntryTime = useRef<number>(Date.now());
   const scrollMilestones = useRef<Set<number>>(new Set());
   const lastPath = useRef<string>('');
+  const storeId = useMemo(() => getStoreId(), []);
 
   // 체류 시간 전송
   const sendDwellTime = useCallback(() => {
@@ -43,45 +69,58 @@ export const useAnalytics = () => {
         page_path: lastPath.current,
         dwell_time_seconds: dwellTime,
         engagement_time_msec: dwellTime * 1000,
+        store_id: storeId,
       });
     }
-  }, []);
+  }, [storeId]);
 
   // 스크롤 깊이 측정
   const measureScrollDepth = useCallback(() => {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    
     if (docHeight <= 0) return;
-    
     const scrollPercent = Math.round((scrollTop / docHeight) * 100);
     const milestones = [25, 50, 75, 90, 100];
-    
     milestones.forEach((milestone) => {
       if (scrollPercent >= milestone && !scrollMilestones.current.has(milestone)) {
         scrollMilestones.current.add(milestone);
         sendGAEvent('scroll_depth', {
           page_path: location.pathname,
           scroll_percentage: milestone,
+          store_id: storeId,
         });
       }
     });
-  }, [location.pathname]);
+  }, [location.pathname, storeId]);
 
   // 페이지 변경 시 처리
   useEffect(() => {
+    const currentPath = location.pathname + location.search;
+
+    // 동일 경로 중복 방지
+    if (lastPath.current === currentPath) return;
+
     // 이전 페이지 체류 시간 전송
-    if (lastPath.current && lastPath.current !== location.pathname) {
+    if (lastPath.current) {
       sendDwellTime();
     }
 
     // 새 페이지 설정
-    lastPath.current = location.pathname;
+    lastPath.current = currentPath;
     pageEntryTime.current = Date.now();
     scrollMilestones.current.clear();
 
-    // 페이지뷰 전송
-    sendPageView(location.pathname + location.search);
+    // 페이지뷰 전송 (1회만)
+    sendPageView(currentPath);
+
+    // step 이벤트 전송
+    const step = getStepFromPath(location.pathname);
+    if (step) {
+      sendGAEvent(step, {
+        page_path: location.pathname,
+        store_id: storeId,
+      });
+    }
 
     // 스크롤 이벤트 리스너
     const handleScroll = () => measureScrollDepth();
@@ -91,32 +130,42 @@ export const useAnalytics = () => {
     const handleBeforeUnload = () => sendDwellTime();
     window.addEventListener('beforeunload', handleBeforeUnload);
 
-    // 초기 스크롤 측정
     measureScrollDepth();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
-  }, [location.pathname, location.search, measureScrollDepth, sendDwellTime]);
+  }, [location.pathname, location.search, measureScrollDepth, sendDwellTime, storeId]);
 
-  // 커스텀 이벤트 전송 함수들 반환
   return {
+    storeId,
     trackEvent: (eventName: string, params?: Record<string, unknown>) => {
-      sendGAEvent(eventName, params || {});
+      sendGAEvent(eventName, { ...params, store_id: storeId });
     },
-    trackClick: (elementName: string, additionalParams?: Record<string, unknown>) => {
-      sendGAEvent('click', {
-        element_name: elementName,
-        page_path: location.pathname,
-        ...additionalParams,
+    trackProductClick: (productName: string) => {
+      sendGAEvent('product_click', {
+        product_name: productName,
+        store_id: storeId,
       });
     },
-    trackFeatureView: (featureId: string, featureName: string) => {
-      sendGAEvent('view_item', {
-        item_id: featureId,
-        item_name: featureName,
-        page_path: location.pathname,
+    trackFeatureClick: (productName: string, featureName: string) => {
+      sendGAEvent('feature_click', {
+        product_name: productName,
+        feature_name: featureName,
+        store_id: storeId,
+      });
+    },
+    trackDetailView: (productName: string) => {
+      sendGAEvent('detail_view', {
+        product_name: productName,
+        store_id: storeId,
+      });
+    },
+    trackVideoClick: (productName: string) => {
+      sendGAEvent('video_click', {
+        product_name: productName,
+        store_id: storeId,
       });
     },
   };
