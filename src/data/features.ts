@@ -92,6 +92,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Trophy",
       tag: "글로벌 200만대",
       mediaType: "gallery",
+      mediaUrl: "",
       galleryImages: [
         {
           url: "/src/assets/styler-news-200million.png",
