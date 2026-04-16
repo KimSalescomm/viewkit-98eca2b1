@@ -94,7 +94,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "gallery",
       galleryImages: [
         {
-          imageUrl: "/src/assets/styler-news-200million.png",
+          url: "/src/assets/styler-news-200million.png",
           title: "중앙일보 보도",
           description: "LG 스타일러 200만대 찍었다… 글로벌 의류관리 가전 안착"
         }
