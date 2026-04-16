@@ -87,10 +87,10 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "5",
-      title: "전 세계가 선택한 의류관리 가전, 200만대 돌파",
+      title: "전 세계가 선택한\n의류관리가전, 스타일러!",
       subtitle: "2011년 출시 이후 글로벌 누적 판매 200만대!\n27개국에서 사랑받는 의류관리의 기준.",
       icon: "Trophy",
-      tag: "글로벌 200만대",
+      tag: "스타일러 인기",
       mediaType: "gallery",
       mediaUrl: "",
       galleryImages: [
