@@ -478,7 +478,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "4",
-      title: "보이지 않는 곳까지 꼼꼼하게\n통살균 케어로 청결 한 번에",
+      title: "매번 쓰는 세탁기·건조기 속,\n얼마나 깨끗한지 궁금하지 않으세요?",
       subtitle: "세탁통부터 건조기 내부까지 최대 12포인트를\n살균해 유해 세균을 99.9% 제거해드려요.",
       icon: "ShieldCheck",
       tag: "통살균 케어",
