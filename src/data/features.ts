@@ -442,7 +442,7 @@ export const featuresMap: Record<string, Feature[]> = {
   washer: [
     {
       id: "1",
-      title: "옷감과 오염도를 인식하는\n딥러닝 AI와 6모션으로 최적의 세탁",
+      title: "아끼는 옷, 세탁기에 넣을 때마다\n옷감 상할까 망설여지셨죠?",
       subtitle: "세탁물 무게와 부드러운 정도를 감지해\n6모션 중 최적의 모션으로 맞춤 세탁해드려요.",
       icon: "Waves",
       tag: "6모션 세탁",
@@ -454,7 +454,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "옷감을 인식하는\n딥러닝 AI와 6모션으로 최적의 건조",
+      title: "건조기 돌리고 나면 옷이 줄거나\n뻣뻣해진 적, 한 번쯤 있으셨죠?",
       subtitle: "세탁물 무게, 재질, 습도를 감지해\n6모션으로 보송하게 건조해드려요.",
       icon: "Wind",
       tag: "6모션 건조",
@@ -478,7 +478,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "4",
-      title: "보이지 않는 곳까지 꼼꼼하게\n통살균 케어로 청결 한 번에",
+      title: "매번 쓰는 세탁기·건조기 속,\n얼마나 깨끗한지 궁금하지 않으세요?",
       subtitle: "세탁통부터 건조기 내부까지 최대 12포인트를\n살균해 유해 세균을 99.9% 제거해드려요.",
       icon: "ShieldCheck",
       tag: "통살균 케어",
