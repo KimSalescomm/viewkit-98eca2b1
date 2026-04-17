@@ -442,7 +442,7 @@ export const featuresMap: Record<string, Feature[]> = {
   washer: [
     {
       id: "1",
-      title: "옷감과 오염도를 인식하는\n딥러닝 AI와 6모션으로 최적의 세탁",
+      title: "아끼는 옷, 세탁기에 넣을 때마다\n옷감 상할까 망설여지셨죠?",
       subtitle: "세탁물 무게와 부드러운 정도를 감지해\n6모션 중 최적의 모션으로 맞춤 세탁해드려요.",
       icon: "Waves",
       tag: "6모션 세탁",
