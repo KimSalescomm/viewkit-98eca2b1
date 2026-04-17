@@ -454,7 +454,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "옷감을 인식하는\n딥러닝 AI와 6모션으로 최적의 건조",
+      title: "건조기 돌리고 나면 옷이 줄거나\n뻣뻣해진 적, 한 번쯤 있으셨죠?",
       subtitle: "세탁물 무게, 재질, 습도를 감지해\n6모션으로 보송하게 건조해드려요.",
       icon: "Wind",
       tag: "6모션 건조",
