@@ -466,30 +466,18 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "아끼는 옷, 세탁기에 넣을 때마다\n옷감 상할까 망설여지셨죠?",
-      subtitle: "세탁물 무게와 부드러운 정도를 감지해\n6모션 중 최적의 모션으로 맞춤 세탁해드려요.",
+      title: "아끼는 옷, 더 섬세하게\n세탁·건조하고 싶지 않으세요?",
+      subtitle: "AI를 만나 더 섬세하게 세탁, 건조해요.\n아끼는 옷은 6모션이 필요해요.",
       icon: "Waves",
-      tag: "6모션 세탁",
+      tag: "AI DD x 6모션",
       mediaType: "video",
-      mediaUrl: "https://static.lge.co.kr/kr/images/washing-machines/md09082831/usp/img_scene02_mo.mp4",
+      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10575829/usp/WA2525EGZF_ai_dd_Cover_pc.mp4",
       description:
-        "딥러닝 AI가 옷감과 오염도를 인식해 세탁시간, 세제량, 헹굼 횟수를 자동으로 조절합니다.\n\n손빨래 동작을 본뜬 6가지 모션(두드리기, 주무르기, 비비기, 꼭꼭짜기, 흔들기, 풀어주기)으로 옷감 손상을 줄이면서 깨끗하게 세탁해드려요.",
-      highlights: ["딥러닝 AI 옷감 인식", "6모션 맞춤 세탁", "오염도 감지", "옷감 손상 최소화"],
+        "AI DD 모터가 세탁물의 무게와 옷감의 부드러운 정도를 스스로 감지해, 손빨래 동작을 본뜬 6가지 모션으로 옷감 손상은 줄이고 세탁력은 높여줍니다.\n\n건조 시에도 무게와 습도를 인식해 6모션으로 보송하게 마무리해주니, 아끼는 옷도 안심하고 맡기실 수 있어요.",
+      highlights: ["AI DD 모터", "6모션 맞춤 세탁·건조", "옷감 손상 최소화", "섬세한 케어"],
     },
     {
       id: "4",
-      title: "건조기 돌리고 나면 옷이 줄거나\n뻣뻣해진 적, 한 번쯤 있으셨죠?",
-      subtitle: "세탁물 무게, 재질, 습도를 감지해\n6모션으로 보송하게 건조해드려요.",
-      icon: "Wind",
-      tag: "6모션 건조",
-      mediaType: "video",
-      mediaUrl: "https://static.lge.co.kr/kr/images/washing-machines/md09082831/usp/img_scene02_mo.mp4",
-      description:
-        "딥러닝 AI가 세탁물의 무게, 재질, 습도를 감지해 건조 시간과 온도를 자동으로 맞춰줍니다.\n\n손동작과 자연 바람을 본뜬 6가지 모션(털기, 펴주기, 널기, 휘날리기, 살랑이기, 뒤집기)으로 옷감을 보호하며 보송하게 건조해드려요.",
-      highlights: ["딥러닝 AI 옷감 인식", "6모션 맞춤 건조", "습도·재질 감지", "자연 건조 효과"],
-    },
-    {
-      id: "5",
       title: "우리 아이 옷, 장난감\n세균 걱정없이 깨끗하게 세탁하고 싶으시죠?",
       subtitle: "100℃ 고온 스팀이 옷감 깊숙이 침투해\n알레르기 유발 물질까지 케어해드려요.",
       icon: "Sparkles",
@@ -501,7 +489,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["100℃ 고온 스팀", "알레르기 케어 99.9%", "옷감 손상 최소화", "구김·냄새 완화"],
     },
     {
-      id: "6",
+      id: "5",
       title: "보이지 않는 속까지\n알아서 깨끗하게 관리하고 싶으시죠?",
       subtitle: "콘덴서를 알아서 세척해주니\n손이 많이 가지 않아요.",
       icon: "Sparkles",
@@ -513,7 +501,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["콘덴서 자동 물 세척", "보풀·먼지 케어", "건조 효율 유지", "관리 부담 최소화"],
     },
     {
-      id: "7",
+      id: "6",
       title: "세탁이 끝나기 전 건조를 준비하면,\n집안일도 빨리 끝나겠죠?",
       subtitle: "세탁이 끝나기 전 건조기를 미리 데워\n바로 이어서 보송하게 건조해드려요.",
       icon: "Timer",
@@ -525,7 +513,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["건조기 사전 예열", "세탁→건조 끊김 없이", "시간 절약", "효율적인 가사 동선"],
     },
     {
-      id: "8",
+      id: "7",
       title: "매번 쓰는 세탁기·건조기 속,\n얼마나 깨끗한지 궁금하지 않으세요?",
       subtitle: "세탁통부터 건조기 내부까지 최대 12포인트를\n살균해 유해 세균을 99.9% 제거해드려요.",
       icon: "ShieldCheck",
