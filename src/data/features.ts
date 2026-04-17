@@ -438,29 +438,31 @@ export const featuresMap: Record<string, Feature[]> = {
     },
   ],
 
-  // 세탁기 특장점
+  // 워시타워 특장점
   washer: [
     {
-      id: "13",
-      title: "AI DD 세탁",
-      subtitle: "옷감을 인식하여 최적의 세탁 패턴 제공",
-      icon: "Cpu",
+      id: "1",
+      title: "옷감과 오염도를 인식하는\n딥러닝 AI와 6모션으로 최적의 세탁",
+      subtitle: "세탁물 무게와 부드러운 정도를 감지해\n6모션 중 최적의 모션으로 맞춤 세탁해드려요.",
+      icon: "Waves",
+      tag: "6모션 세탁",
       mediaType: "video",
-      mediaUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      mediaUrl: "https://static.lge.co.kr/kr/images/washing-machines/md09082831/usp/img_scene02_mo.mp4",
       description:
-        "AI 기술이 옷감의 종류와 무게를 자동으로 감지하여 최적의 세탁 모션을 제공합니다. 섬세한 옷감부터 두꺼운 이불까지 완벽하게 세탁합니다.",
-      highlights: ["18가지 세탁 패턴", "옷감 손상 최소화", "세제 자동 투입", "AI 학습 기능"],
+        "딥러닝 AI가 옷감과 오염도를 인식해 세탁시간, 세제량, 헹굼 횟수를 자동으로 조절합니다.\n\n손빨래 동작을 본뜬 6가지 모션(두드리기, 주무르기, 비비기, 꼭꼭짜기, 흔들기, 풀어주기)으로 옷감 손상을 줄이면서 깨끗하게 세탁해드려요.",
+      highlights: ["딥러닝 AI 옷감 인식", "6모션 맞춤 세탁", "오염도 감지", "옷감 손상 최소화"],
     },
     {
-      id: "14",
-      title: "스팀 살균",
-      subtitle: "99.9% 세균 제거",
-      icon: "Zap",
-      mediaType: "image",
-      mediaUrl: "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=1200&h=800&fit=crop",
+      id: "2",
+      title: "옷감을 인식하는\n딥러닝 AI와 6모션으로 최적의 건조",
+      subtitle: "세탁물 무게, 재질, 습도를 감지해\n6모션으로 보송하게 건조해드려요.",
+      icon: "Wind",
+      tag: "6모션 건조",
+      mediaType: "video",
+      mediaUrl: "https://static.lge.co.kr/kr/images/washing-machines/md09082831/usp/img_scene02_mo.mp4",
       description:
-        "고온 스팀으로 세탁물의 세균과 알레르기 유발물질을 효과적으로 제거합니다. 아기 옷이나 알레르기가 있는 가족의 의류도 안심하고 세탁할 수 있습니다.",
-      highlights: ["60도 고온 스팀", "알레르기 케어", "진드기 제거", "무세제 살균 가능"],
+        "딥러닝 AI가 세탁물의 무게, 재질, 습도를 감지해 건조 시간과 온도를 자동으로 맞춰줍니다.\n\n손동작과 자연 바람을 본뜬 6가지 모션(털기, 펴주기, 널기, 휘날리기, 살랑이기, 뒤집기)으로 옷감을 보호하며 보송하게 건조해드려요.",
+      highlights: ["딥러닝 AI 옷감 인식", "6모션 맞춤 건조", "습도·재질 감지", "자연 건조 효과"],
     },
   ],
 
