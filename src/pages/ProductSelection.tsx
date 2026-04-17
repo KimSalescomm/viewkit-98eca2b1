@@ -5,7 +5,7 @@ import { HelpCircle } from "lucide-react";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 
 const ProductSelection = () => {
-  const enabledIds = ["refrigerator", "styler"];
+  const enabledIds = ["refrigerator", "styler", "washer"];
   const { trackProductClick } = useAnalyticsContext();
 
   return (
