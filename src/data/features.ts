@@ -466,7 +466,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "보이지 않는 유해 세균까지\n트루스팀으로 확실하게",
+      title: "우리 아이 옷, 장난감\n세균 걱정없이 깨끗하게 세탁하고 싶으시죠?",
       subtitle: "100℃ 고온 스팀이 옷감 깊숙이 침투해\n알레르기 유발 물질까지 케어해드려요.",
       icon: "Sparkles",
       tag: "트루스팀",
