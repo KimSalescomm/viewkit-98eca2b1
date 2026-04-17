@@ -477,7 +477,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["AI DD 모터", "6모션 맞춤 세탁·건조", "옷감 손상 최소화", "섬세한 케어"],
     },
     {
-      id: "5",
+      id: "4",
       title: "우리 아이 옷, 장난감\n세균 걱정없이 깨끗하게 세탁하고 싶으시죠?",
       subtitle: "100℃ 고온 스팀이 옷감 깊숙이 침투해\n알레르기 유발 물질까지 케어해드려요.",
       icon: "Sparkles",
