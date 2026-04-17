@@ -512,6 +512,18 @@ export const featuresMap: Record<string, Feature[]> = {
         "세탁이 끝나기 전, 건조기를 미리 예열해두는 똑똑한 기능이에요.\n\n세탁 완료 후 바로 건조가 시작되니 옷을 옮기고 기다리는 번거로움 없이, 집안일을 더 빠르고 효율적으로 마치실 수 있어요.",
       highlights: ["건조기 사전 예열", "세탁→건조 끊김 없이", "시간 절약", "효율적인 가사 동선"],
     },
+    {
+      id: "7",
+      title: "보이지 않는 속까지\n알아서 깨끗하게 관리하고 싶으시죠?",
+      subtitle: "콘덴서를 알아서 세척해주니\n손이 많이 가지 않아요.",
+      icon: "Sparkles",
+      tag: "콘덴서 자동세척",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10575829/usp/WA2525EGZF_ai_cleancare_pc_01-1.mp4",
+      description:
+        "건조 성능을 좌우하는 콘덴서를 물로 자동 세척해 보풀과 먼지가 쌓이지 않도록 관리해줍니다.\n\n사용자가 직접 분리·청소할 필요 없이 늘 깨끗한 상태를 유지해, 건조 효율과 위생을 오래도록 지켜드려요.",
+      highlights: ["콘덴서 자동 물 세척", "보풀·먼지 케어", "건조 효율 유지", "관리 부담 최소화"],
+    },
   ],
 
   // 에어컨 특장점
