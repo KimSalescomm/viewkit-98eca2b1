@@ -454,6 +454,18 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
+      title: "구독하면 세탁기 속까지\n관리할 수 있다는 사실, 아셨나요?",
+      subtitle: "워시타워 구독으로 제품은 물론\n속까지 케어 받으며 사용해 보세요.",
+      icon: "ShieldCheck",
+      tag: "워시타워 구독",
+      mediaType: "youtube",
+      mediaUrl: "https://youtu.be/cb4gJ6vvqGk?si=7tTFaV8oX0Hlpyil",
+      description:
+        "워시타워를 구독하면 제품 사용은 물론, 정기적인 세탁통 클리닝과 케어 서비스까지 함께 누리실 수 있어요.\n\n초기 비용 부담은 줄이고, 전문가의 손길로 보이지 않는 속까지 깨끗하게 관리받으며 오래도록 새것처럼 사용해 보세요.",
+      highlights: ["정기 케어 서비스", "세탁통 클리닝 포함", "초기 비용 부담 ↓", "전문가 관리"],
+    },
+    {
+      id: "3",
       title: "아끼는 옷, 세탁기에 넣을 때마다\n옷감 상할까 망설여지셨죠?",
       subtitle: "세탁물 무게와 부드러운 정도를 감지해\n6모션 중 최적의 모션으로 맞춤 세탁해드려요.",
       icon: "Waves",
@@ -465,7 +477,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["딥러닝 AI 옷감 인식", "6모션 맞춤 세탁", "오염도 감지", "옷감 손상 최소화"],
     },
     {
-      id: "3",
+      id: "4",
       title: "건조기 돌리고 나면 옷이 줄거나\n뻣뻣해진 적, 한 번쯤 있으셨죠?",
       subtitle: "세탁물 무게, 재질, 습도를 감지해\n6모션으로 보송하게 건조해드려요.",
       icon: "Wind",
@@ -477,7 +489,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["딥러닝 AI 옷감 인식", "6모션 맞춤 건조", "습도·재질 감지", "자연 건조 효과"],
     },
     {
-      id: "4",
+      id: "5",
       title: "우리 아이 옷, 장난감\n세균 걱정없이 깨끗하게 세탁하고 싶으시죠?",
       subtitle: "100℃ 고온 스팀이 옷감 깊숙이 침투해\n알레르기 유발 물질까지 케어해드려요.",
       icon: "Sparkles",
@@ -489,7 +501,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["100℃ 고온 스팀", "알레르기 케어 99.9%", "옷감 손상 최소화", "구김·냄새 완화"],
     },
     {
-      id: "5",
+      id: "6",
       title: "매번 쓰는 세탁기·건조기 속,\n얼마나 깨끗한지 궁금하지 않으세요?",
       subtitle: "세탁통부터 건조기 내부까지 최대 12포인트를\n살균해 유해 세균을 99.9% 제거해드려요.",
       icon: "ShieldCheck",
@@ -501,7 +513,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["최대 12포인트 살균", "유해 세균 4종 99.9% 제거", "세탁통·건조기 동시 케어", "위생 걱정 끝"],
     },
     {
-      id: "6",
+      id: "7",
       title: "세탁이 끝나기 전 건조를 준비하면,\n집안일도 빨리 끝나겠죠?",
       subtitle: "세탁이 끝나기 전 건조기를 미리 데워\n바로 이어서 보송하게 건조해드려요.",
       icon: "Timer",
@@ -513,7 +525,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["건조기 사전 예열", "세탁→건조 끊김 없이", "시간 절약", "효율적인 가사 동선"],
     },
     {
-      id: "7",
+      id: "8",
       title: "보이지 않는 속까지\n알아서 깨끗하게 관리하고 싶으시죠?",
       subtitle: "콘덴서를 알아서 세척해주니\n손이 많이 가지 않아요.",
       icon: "Sparkles",
@@ -523,18 +535,6 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "건조 성능을 좌우하는 콘덴서를 물로 자동 세척해 보풀과 먼지가 쌓이지 않도록 관리해줍니다.\n\n사용자가 직접 분리·청소할 필요 없이 늘 깨끗한 상태를 유지해, 건조 효율과 위생을 오래도록 지켜드려요.",
       highlights: ["콘덴서 자동 물 세척", "보풀·먼지 케어", "건조 효율 유지", "관리 부담 최소화"],
-    },
-    {
-      id: "8",
-      title: "구독하면 세탁기 속까지\n관리할 수 있다는 사실, 아셨나요?",
-      subtitle: "워시타워 구독으로 제품은 물론\n속까지 케어 받으며 사용해 보세요.",
-      icon: "ShieldCheck",
-      tag: "워시타워 구독",
-      mediaType: "youtube",
-      mediaUrl: "https://youtu.be/cb4gJ6vvqGk?si=7tTFaV8oX0Hlpyil",
-      description:
-        "워시타워를 구독하면 제품 사용은 물론, 정기적인 세탁통 클리닝과 케어 서비스까지 함께 누리실 수 있어요.\n\n초기 비용 부담은 줄이고, 전문가의 손길로 보이지 않는 속까지 깨끗하게 관리받으며 오래도록 새것처럼 사용해 보세요.",
-      highlights: ["정기 케어 서비스", "세탁통 클리닝 포함", "초기 비용 부담 ↓", "전문가 관리"],
     },
   ],
 
