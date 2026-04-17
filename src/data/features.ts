@@ -442,6 +442,18 @@ export const featuresMap: Record<string, Feature[]> = {
   washer: [
     {
       id: "1",
+      title: "AI가 세탁까지 업그레이드 한다니\n믿어지세요?",
+      subtitle: "세탁부터 건조까지 모든 과정을\nAI로 더욱 똑똑하게 관리해드려요.",
+      icon: "Cpu",
+      tag: "트롬 AI 세탁건조",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10575829/usp/WA2323/WA2323EGZN_ai_laundry_pc.mp4",
+      description:
+        "AI DD 모터가 세탁물의 무게와 옷감의 부드러운 정도를 스스로 감지해 최적의 세탁 모션을 골라줍니다.\n\n세탁이 더 편해지고, 꼼꼼해져요. 세탁부터 건조까지 전 과정을 AI가 알아서 관리해주니, 복잡한 설정 없이 버튼 하나로 똑똑한 케어를 경험하실 수 있어요.",
+      highlights: ["AI DD 모터", "옷감·무게 자동 감지", "세탁부터 건조까지 자동", "맞춤형 코스 추천"],
+    },
+    {
+      id: "2",
       title: "아끼는 옷, 세탁기에 넣을 때마다\n옷감 상할까 망설여지셨죠?",
       subtitle: "세탁물 무게와 부드러운 정도를 감지해\n6모션 중 최적의 모션으로 맞춤 세탁해드려요.",
       icon: "Waves",
@@ -453,7 +465,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["딥러닝 AI 옷감 인식", "6모션 맞춤 세탁", "오염도 감지", "옷감 손상 최소화"],
     },
     {
-      id: "2",
+      id: "3",
       title: "건조기 돌리고 나면 옷이 줄거나\n뻣뻣해진 적, 한 번쯤 있으셨죠?",
       subtitle: "세탁물 무게, 재질, 습도를 감지해\n6모션으로 보송하게 건조해드려요.",
       icon: "Wind",
@@ -465,7 +477,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["딥러닝 AI 옷감 인식", "6모션 맞춤 건조", "습도·재질 감지", "자연 건조 효과"],
     },
     {
-      id: "3",
+      id: "4",
       title: "우리 아이 옷, 장난감\n세균 걱정없이 깨끗하게 세탁하고 싶으시죠?",
       subtitle: "100℃ 고온 스팀이 옷감 깊숙이 침투해\n알레르기 유발 물질까지 케어해드려요.",
       icon: "Sparkles",
@@ -477,7 +489,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["100℃ 고온 스팀", "알레르기 케어 99.9%", "옷감 손상 최소화", "구김·냄새 완화"],
     },
     {
-      id: "4",
+      id: "5",
       title: "매번 쓰는 세탁기·건조기 속,\n얼마나 깨끗한지 궁금하지 않으세요?",
       subtitle: "세탁통부터 건조기 내부까지 최대 12포인트를\n살균해 유해 세균을 99.9% 제거해드려요.",
       icon: "ShieldCheck",
