@@ -387,8 +387,20 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
   }
 
   // Shared fullscreen overlay (mobile only). Tap to exit.
-  const renderFullscreenOverlay = (content: React.ReactNode) =>
-    isVideoFullscreen ? (
+  // When `isHorizontal` is true, the content is rotated 90deg to fill a
+  // portrait viewport with a landscape video.
+  const renderFullscreenOverlay = (
+    content: React.ReactNode,
+    opts?: { isHorizontal?: boolean }
+  ) => {
+    if (!isVideoFullscreen) return null;
+    const isHorizontal = opts?.isHorizontal ?? false;
+    const vw = typeof window !== "undefined" ? window.innerWidth : 0;
+    const vh = typeof window !== "undefined" ? window.innerHeight : 0;
+    const isPortrait = vh >= vw;
+    const shouldRotate = isHorizontal && isPortrait;
+
+    return (
       <div
         onClick={() => setIsVideoFullscreen(false)}
         className="sm:hidden"
@@ -400,6 +412,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          overflow: "hidden",
         }}
       >
         <button
@@ -427,18 +440,31 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
         </button>
         <div
           onClick={(e) => e.stopPropagation()}
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+          style={
+            shouldRotate
+              ? {
+                  width: `${vh}px`,
+                  height: `${vw}px`,
+                  transform: "rotate(90deg)",
+                  transformOrigin: "center center",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }
+              : {
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }
+          }
         >
           {content}
         </div>
       </div>
-    ) : null;
+    );
+  };
 
   // YouTube 전용 렌더링 (isShorts 지원)
   if (mediaType === "youtube") {
