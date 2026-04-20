@@ -25,6 +25,17 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isVideoFullscreen, setIsVideoFullscreen] = useState(false);
+
+  // Lock body scroll while in video fullscreen
+  useEffect(() => {
+    if (!isVideoFullscreen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isVideoFullscreen]);
 
   // Prevent out-of-range access when switching between galleries of different sizes
   const galleryLength = galleryImages?.length ?? 0;
