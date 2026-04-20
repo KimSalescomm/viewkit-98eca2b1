@@ -4,6 +4,17 @@ import SafeImage from "@/components/SafeImage";
 import { HelpCircle } from "lucide-react";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 
+const productAccents: Record<string, string> = {
+  refrigerator: "from-sky-400 to-blue-500",
+  washer: "from-emerald-400 to-teal-500",
+  styler: "from-violet-400 to-purple-500",
+  tv: "from-slate-700 to-slate-900",
+  vacuum: "from-amber-400 to-orange-500",
+  airconditioner: "from-cyan-400 to-sky-500",
+  pc: "from-rose-400 to-pink-500",
+  cooking: "from-lime-400 to-green-500",
+};
+
 const ProductSelection = () => {
   const enabledIds = ["refrigerator", "styler", "washer"];
   const { trackProductClick } = useAnalyticsContext();
