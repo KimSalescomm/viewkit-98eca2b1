@@ -4,6 +4,17 @@ import SafeImage from "@/components/SafeImage";
 import { HelpCircle } from "lucide-react";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 
+const productAccents: Record<string, string> = {
+  refrigerator: "from-sky-400 to-blue-500",
+  washer: "from-emerald-400 to-teal-500",
+  styler: "from-violet-400 to-purple-500",
+  tv: "from-slate-700 to-slate-900",
+  vacuum: "from-amber-400 to-orange-500",
+  airconditioner: "from-cyan-400 to-sky-500",
+  pc: "from-rose-400 to-pink-500",
+  cooking: "from-lime-400 to-green-500",
+};
+
 const ProductSelection = () => {
   const enabledIds = ["refrigerator", "styler", "washer"];
   const { trackProductClick } = useAnalyticsContext();
@@ -45,6 +56,8 @@ const ProductSelection = () => {
           {products.map((product, index) => {
             const isEnabled = enabledIds.includes(product.id);
 
+            const accent = productAccents[product.id] || "from-gray-300 to-gray-400";
+
             const cardContent = (
               <div
                 className={`
@@ -56,6 +69,13 @@ const ProductSelection = () => {
                   }
                 `}
               >
+                {/* Accent bar — left on mobile, top on desktop */}
+                <div
+                  className={`absolute z-10 bg-gradient-to-b sm:bg-gradient-to-r ${accent}
+                    left-0 top-0 bottom-0 w-1.5
+                    sm:bottom-auto sm:right-0 sm:w-full sm:h-1.5
+                    ${isEnabled ? "" : "opacity-30"}`}
+                />
                 {/* Thumbnail */}
                 <div className="relative overflow-hidden flex-shrink-0 w-32 sm:w-full h-auto sm:h-48">
                   {isEnabled ? (
