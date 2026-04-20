@@ -568,13 +568,13 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
               title={title}
               style={{
                 width: "100%",
-                aspectRatio: "16 / 9",
-                maxHeight: "100%",
+                height: "100%",
                 border: "none",
               }}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-            />
+            />,
+            { isHorizontal: true }
           )}
         </>
       );
