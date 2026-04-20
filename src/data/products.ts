@@ -20,6 +20,14 @@ export const products: Product[] = [
     icon: "Box",
   },
   {
+    id: "washer",
+    name: "워시타워",
+    title: "워시타워",
+    description: "세상에 없던 6모션 세탁 건조의 시작",
+    keyVisualImage: washerKeyVisual,
+    icon: "Waves",
+  },
+  {
     id: "styler",
     name: "의류관리기",
     title: "스타일러",
@@ -34,14 +42,6 @@ export const products: Product[] = [
     description: "지금까지 보지 못한 빛과 색을 깨운 올레드의 탄생",
     keyVisualImage: "https://static.lge.co.kr/kr/upload/admin/eventPlan/kv_pc_20260316_094128.png",
     icon: "Tv",
-  },
-  {
-    id: "washer",
-    name: "워시타워",
-    title: "워시타워",
-    description: "세상에 없던 6모션 세탁 건조의 시작",
-    keyVisualImage: washerKeyVisual,
-    icon: "Waves",
   },
   {
     id: "vacuum",
