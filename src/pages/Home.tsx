@@ -82,11 +82,21 @@ const Home = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-10 sm:mb-12">
           {features.map((feature, index) => {
-            const items = [];
             const isFitMax = productId === "refrigerator" && (feature.id === "11" || feature.id === "12");
-            items.push(
+
+            // Derive a banner image for the mobile layout
+            let bannerImage: string | undefined;
+            if (feature.mediaType === "image" || feature.mediaType === "table") {
+              bannerImage = feature.mediaUrl;
+            } else if (feature.mediaType === "gallery" && feature.galleryImages?.length) {
+              const first = feature.galleryImages[0];
+              bannerImage = typeof first === "string" ? first : first.url;
+            }
+            if (!bannerImage) bannerImage = product.keyVisualImage;
+
+            return (
               <FeatureCard
                 key={feature.id}
                 id={feature.id}
@@ -98,9 +108,9 @@ const Home = () => {
                 tag={feature.tag}
                 colorIndex={index}
                 variant={isFitMax ? "gray" : "white"}
+                bannerImage={bannerImage}
               />
             );
-            return items;
           })}
         </div>
 
