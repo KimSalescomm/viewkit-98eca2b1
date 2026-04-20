@@ -56,6 +56,8 @@ const ProductSelection = () => {
           {products.map((product, index) => {
             const isEnabled = enabledIds.includes(product.id);
 
+            const accent = productAccents[product.id] || "from-gray-300 to-gray-400";
+
             const cardContent = (
               <div
                 className={`
@@ -67,6 +69,13 @@ const ProductSelection = () => {
                   }
                 `}
               >
+                {/* Accent bar — left on mobile, top on desktop */}
+                <div
+                  className={`absolute z-10 bg-gradient-to-b sm:bg-gradient-to-r ${accent}
+                    left-0 top-0 bottom-0 w-1.5
+                    sm:bottom-auto sm:right-0 sm:w-full sm:h-1.5
+                    ${isEnabled ? "" : "opacity-30"}`}
+                />
                 {/* Thumbnail */}
                 <div className="relative overflow-hidden flex-shrink-0 w-32 sm:w-full h-auto sm:h-48">
                   {isEnabled ? (
