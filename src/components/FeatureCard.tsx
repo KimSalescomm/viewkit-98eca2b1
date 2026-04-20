@@ -39,35 +39,27 @@ const FeatureCard = ({ id, title, subtitle, icon, productId, productName, tag, c
       className={`block ${bgClass} border shadow-md hover:shadow-xl transition-all duration-300
         rounded-2xl
         sm:p-6 sm:text-center sm:hover:scale-[1.03]
-        max-sm:p-0 max-sm:overflow-hidden max-sm:relative max-sm:h-32 max-sm:active:scale-[0.99]`}
+        max-sm:px-4 max-sm:py-3.5 max-sm:active:scale-[0.99]`}
     >
-      {/* Mobile: banner background image with text overlay */}
-      {bannerImage && (
-        <div className="sm:hidden absolute inset-0">
-          <SafeImage
-            src={bannerImage}
-            alt={title}
-            loading="lazy"
-            decoding="async"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-black/20" />
+      {/* Mobile layout: horizontal list with icon */}
+      <div className="sm:hidden flex items-center gap-3.5">
+        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${color.gradient} flex items-center justify-center flex-shrink-0 shadow-sm`}>
+          <FeatureIcon iconKey={icon} className="text-white w-6 h-6" />
         </div>
-      )}
-
-      {/* Mobile layout: horizontal banner */}
-      <div className="sm:hidden relative h-full flex flex-col justify-center px-4 py-3">
-        {tag && (
-          <span className="inline-block self-start bg-white/95 backdrop-blur text-blue-600 text-[11px] font-bold px-2 py-0.5 rounded-md mb-1.5">
-            {tag}
-          </span>
-        )}
-        <h3 className="text-[15px] font-bold text-white leading-snug whitespace-pre-line line-clamp-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
-          {title}
-        </h3>
-        <p className="text-[12px] text-white/85 leading-snug whitespace-pre-line line-clamp-2 mt-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
-          {subtitle}
-        </p>
+        <div className="flex-1 min-w-0">
+          {tag && (
+            <span className="inline-block bg-blue-50 border border-blue-200 text-blue-600 text-[10px] font-bold px-1.5 py-0.5 rounded-md mb-1">
+              {tag}
+            </span>
+          )}
+          <h3 className="text-[15px] font-bold text-gray-900 leading-snug whitespace-pre-line line-clamp-2">
+            {title}
+          </h3>
+          <p className="text-[12px] text-gray-500 leading-snug whitespace-pre-line line-clamp-2 mt-0.5">
+            {subtitle}
+          </p>
+        </div>
+        <span className="text-gray-300 text-xl flex-shrink-0">›</span>
       </div>
 
       {/* Desktop / tablet layout: original square card */}
