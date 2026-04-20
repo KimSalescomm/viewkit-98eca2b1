@@ -37,7 +37,7 @@ export const products: Product[] = [
     name: "워시타워",
     title: "워시타워",
     description: "세상에 없던 6모션 세탁 건조의 시작",
-    keyVisualImage: "https://static.lge.co.kr/kr/images/wash-tower/md09155834/gallery/medium-interior01.jpg",
+    keyVisualImage: "/src/assets/washer-keyvisual.png",
     icon: "Waves",
   },
   {
