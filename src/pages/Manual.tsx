@@ -4,20 +4,20 @@ import { Smartphone, ChevronRight, Gamepad2, Search, Info, CheckCircle2, ArrowLe
 import SafeImage from "@/components/SafeImage";
 
 // Manual assets
-import balanceQ1 from "@/assets/manual/balance-q1.jpg";
-import iconViewkit from "@/assets/manual/icon-viewkit.png";
-import iconBalance from "@/assets/manual/icon-balance.png";
-import balanceQ2 from "@/assets/manual/balance-q2.jpg";
-import balanceQ3 from "@/assets/manual/balance-q3.jpg";
-import balanceResult from "@/assets/manual/balance-result.jpg";
+import balanceQ1 from "@/assets/manual/balance-q1.webp";
+import iconViewkit from "@/assets/manual/icon-viewkit.webp";
+import iconBalance from "@/assets/manual/icon-balance.webp";
+import balanceQ2 from "@/assets/manual/balance-q2.webp";
+import balanceQ3 from "@/assets/manual/balance-q3.webp";
+import balanceResult from "@/assets/manual/balance-result.webp";
 import emojiSilent from "@/assets/manual/emoji-silent.jpg";
 import standbymeScreen1 from "@/assets/manual/standbyme-screen1.jpg";
-import internetIcon from "@/assets/manual/internet-icon.png";
-import standbymeScreen2 from "@/assets/manual/standbyme-screen2.jpg";
-import viewkitList from "@/assets/manual/viewkit-list.jpg";
-import viewkitDetail from "@/assets/manual/viewkit-detail.jpg";
-import balanceScreen1 from "@/assets/manual/balance-screen1.png";
-import balanceScreen2 from "@/assets/manual/balance-screen2.png";
+import internetIcon from "@/assets/manual/internet-icon.webp";
+import standbymeScreen2 from "@/assets/manual/standbyme-screen2.webp";
+import viewkitList from "@/assets/manual/viewkit-list.webp";
+import viewkitDetail from "@/assets/manual/viewkit-detail.webp";
+import balanceScreen1 from "@/assets/manual/balance-screen1.webp";
+import balanceScreen2 from "@/assets/manual/balance-screen2.webp";
 
 /* ── Shared sub-components ── */
 
