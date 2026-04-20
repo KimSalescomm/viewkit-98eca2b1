@@ -1,4 +1,5 @@
 import washerKeyVisual from "@/assets/washer-keyvisual.png";
+import stylerKeyVisual from "@/assets/styler-keyvisual.png";
 
 export interface Product {
   id: string;
@@ -23,7 +24,7 @@ export const products: Product[] = [
     name: "의류관리기",
     title: "스타일러",
     description: "스타일링, 건조, 제습을 ALL NEW 스타일러 하나로",
-    keyVisualImage: "https://www.lge.co.kr/kr/images/lg-styler/md10544833/gallery/medium-interior01.jpg",
+    keyVisualImage: stylerKeyVisual,
     icon: "Shirt",
   },
   {
