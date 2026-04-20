@@ -516,15 +516,14 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
             src={autoplayUrl}
             title={title}
             style={{
-              width: isShorts ? "min(100%, 100vw)" : "100%",
-              height: isShorts ? "100%" : "auto",
-              aspectRatio: isShorts ? "9 / 16" : "16 / 9",
-              maxHeight: "100%",
+              width: "100%",
+              height: "100%",
               border: "none",
             }}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-          />
+          />,
+          { isHorizontal: !isShorts }
         )}
       </>
     );
