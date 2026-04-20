@@ -41,14 +41,15 @@ const ProductSelection = () => {
         </div>
 
         {/* Card Grid */}
-        <div className="grid grid-cols-2 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5">
           {products.map((product, index) => {
             const isEnabled = enabledIds.includes(product.id);
 
             const cardContent = (
               <div
                 className={`
-                  group relative rounded-3xl overflow-hidden transition-all duration-300 h-full flex flex-col
+                  group relative rounded-3xl overflow-hidden transition-all duration-300
+                  flex flex-row sm:flex-col h-full
                   ${isEnabled
                     ? "bg-white shadow-[0_2px_16px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
                     : "bg-white/70 shadow-sm hover:shadow-md"
@@ -56,7 +57,7 @@ const ProductSelection = () => {
                 `}
               >
                 {/* Thumbnail */}
-                <div className="relative h-36 sm:h-48 overflow-hidden flex-shrink-0">
+                <div className="relative overflow-hidden flex-shrink-0 w-32 sm:w-full h-auto sm:h-48">
                   {isEnabled ? (
                     <>
                       <SafeImage
@@ -71,19 +72,19 @@ const ProductSelection = () => {
                     </>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-muted">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-3xl border border-border bg-card shadow-sm">
-                        <span className="text-4xl grayscale opacity-60">{iconMap[product.icon]}</span>
+                      <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-3xl border border-border bg-card shadow-sm">
+                        <span className="text-3xl sm:text-4xl grayscale opacity-60">{iconMap[product.icon]}</span>
                       </div>
                     </div>
                   )}
                 </div>
 
                 {/* Card Body */}
-                <div className={`p-3.5 sm:p-5 flex-1 ${isEnabled ? "bg-[#F3F7FF]" : ""}`}>
-                  <div className="flex items-start gap-2.5 sm:gap-3.5">
+                <div className={`p-4 sm:p-5 flex-1 flex items-center sm:block ${isEnabled ? "bg-[#F3F7FF]" : ""}`}>
+                  <div className="flex items-start gap-3 sm:gap-3.5 w-full">
                     <div
                       className={`
-                        w-10 h-10 sm:w-13 sm:h-13 rounded-2xl flex items-center justify-center flex-shrink-0 text-xl sm:text-2xl
+                        hidden sm:flex w-10 h-10 sm:w-13 sm:h-13 rounded-2xl items-center justify-center flex-shrink-0 text-xl sm:text-2xl
                         ${isEnabled
                           ? "bg-gradient-to-br from-[#3A57FF] to-[#6B7FFF] shadow-[0_2px_8px_rgba(58,87,255,0.3)]"
                           : "bg-gray-300 group-hover:bg-gray-400"
@@ -94,7 +95,7 @@ const ProductSelection = () => {
                         {iconMap[product.icon]}
                       </span>
                     </div>
-                    <div className="min-w-0 pt-0.5">
+                    <div className="min-w-0 pt-0.5 flex-1">
                       <h3
                         className={`text-base sm:text-lg leading-tight transition-colors duration-300
                           ${isEnabled
@@ -106,7 +107,7 @@ const ProductSelection = () => {
                         {product.name}
                       </h3>
                       <p
-                        className={`text-xs sm:text-sm mt-0.5 leading-snug transition-colors duration-300
+                        className={`text-xs sm:text-sm mt-1 leading-snug transition-colors duration-300
                           ${isEnabled
                             ? "text-gray-600 font-medium"
                             : "text-gray-300 group-hover:text-gray-400"
@@ -116,6 +117,9 @@ const ProductSelection = () => {
                         {product.description}
                       </p>
                     </div>
+                    {isEnabled && (
+                      <span className="sm:hidden text-gray-300 text-xl flex-shrink-0 self-center">›</span>
+                    )}
                   </div>
                 </div>
               </div>
