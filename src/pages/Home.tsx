@@ -68,10 +68,13 @@ const Home = () => {
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className={`w-full h-[134px] sm:h-[350px] object-cover ${
+            className={`w-full ${
+              productId === "styler" ? "h-[220px] sm:h-[480px]" : "h-[134px] sm:h-[350px]"
+            } object-cover ${
               productId === "tv" ? "scale-[1.15] object-[65%_55%] -translate-y-[20px]" :
               productId === "airconditioner" ? "object-top" :
-              productId === "washer" ? "object-[55%_center]" : "object-center"
+              productId === "washer" ? "object-[55%_center]" :
+              productId === "styler" ? "object-center" : "object-center"
             }`}
           />
         </div>
