@@ -386,51 +386,121 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
     );
   }
 
-  // YouTube 전용 렌더링 (isShorts 지원)
-  if (mediaType === "youtube") {
-    // URL을 embed 형식으로 변환
-    const { embedUrl } = convertToEmbedUrl(mediaUrl);
-    // autoplay, mute, loop 파라미터 추가
-    const separator = embedUrl.includes('?') ? '&' : '?';
-    const autoplayUrl = `${embedUrl}${separator}autoplay=1&mute=1&loop=1&playlist=${embedUrl.split('/embed/')[1]?.split('?')[0] || ''}`;
-    // Shorts는 9:16 세로 비율, 일반은 16:9 가로 비율
-    const aspectRatio = isShorts ? "177.78%" : "56.25%"; // 9:16 = 177.78%, 16:9 = 56.25%
-    
-    return (
+  // Shared fullscreen overlay (mobile only). Tap to exit.
+  const renderFullscreenOverlay = (content: React.ReactNode) =>
+    isVideoFullscreen ? (
       <div
+        onClick={() => setIsVideoFullscreen(false)}
+        className="sm:hidden"
         style={{
-          width: "100%",
+          position: "fixed",
+          inset: 0,
+          zIndex: 9999,
+          background: "#000",
           display: "flex",
+          alignItems: "center",
           justifyContent: "center",
         }}
       >
-        <div
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsVideoFullscreen(false);
+          }}
+          aria-label="닫기"
           style={{
-            position: "relative",
-            width: isShorts ? "min(100%, 400px)" : "100%",
-            paddingBottom: isShorts ? "0" : aspectRatio,
-            height: isShorts ? "min(80vh, 711px)" : "auto", // 400 * 16/9 = 711
-            borderRadius: "16px",
-            overflow: "hidden",
-            background: "#000"
+            position: "absolute",
+            top: "max(env(safe-area-inset-top), 16px)",
+            right: "16px",
+            zIndex: 2,
+            width: "44px",
+            height: "44px",
+            borderRadius: "9999px",
+            background: "rgba(0,0,0,0.6)",
+            border: "1px solid rgba(255,255,255,0.2)",
+            color: "#fff",
+            fontSize: "22px",
+            cursor: "pointer",
           }}
         >
+          ✕
+        </button>
+        <div
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {content}
+        </div>
+      </div>
+    ) : null;
+
+  // YouTube 전용 렌더링 (isShorts 지원)
+  if (mediaType === "youtube") {
+    const { embedUrl } = convertToEmbedUrl(mediaUrl);
+    const separator = embedUrl.includes('?') ? '&' : '?';
+    const autoplayUrl = `${embedUrl}${separator}autoplay=1&mute=1&loop=1&playlist=${embedUrl.split('/embed/')[1]?.split('?')[0] || ''}`;
+    const aspectRatio = isShorts ? "177.78%" : "56.25%";
+
+    const iframeEl = (
+      <iframe
+        src={autoplayUrl}
+        title={title}
+        style={{
+          position: isShorts ? "relative" : "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          border: "none",
+        }}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    );
+
+    return (
+      <>
+        <div
+          onClick={() => setIsVideoFullscreen(true)}
+          className="sm:cursor-default cursor-zoom-in"
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        >
+          <div
+            style={{
+              position: "relative",
+              width: isShorts ? "min(100%, 400px)" : "100%",
+              paddingBottom: isShorts ? "0" : aspectRatio,
+              height: isShorts ? "min(80vh, 711px)" : "auto",
+              borderRadius: "16px",
+              overflow: "hidden",
+              background: "#000",
+            }}
+          >
+            {iframeEl}
+          </div>
+        </div>
+        {renderFullscreenOverlay(
           <iframe
             src={autoplayUrl}
             title={title}
             style={{
-              position: isShorts ? "relative" : "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              border: "none"
+              width: isShorts ? "min(100%, 100vw)" : "100%",
+              height: isShorts ? "100%" : "auto",
+              aspectRatio: isShorts ? "9 / 16" : "16 / 9",
+              maxHeight: "100%",
+              border: "none",
             }}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
-        </div>
-      </div>
+        )}
+      </>
     );
   }
 
@@ -439,36 +509,66 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
 
     if (isYoutube) {
       return (
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            paddingBottom: "56.25%",
-            borderRadius: "16px",
-            overflow: "hidden",
-            background: "#000"
-          }}
-        >
-          <iframe
-            src={embedUrl}
-            title={title}
+        <>
+          <div
+            onClick={() => setIsVideoFullscreen(true)}
+            className="sm:cursor-default cursor-zoom-in"
             style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
+              position: "relative",
               width: "100%",
-              height: "100%",
-              border: "none"
+              paddingBottom: "56.25%",
+              borderRadius: "16px",
+              overflow: "hidden",
+              background: "#000",
             }}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
+          >
+            <iframe
+              src={embedUrl}
+              title={title}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                border: "none",
+              }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          {renderFullscreenOverlay(
+            <iframe
+              src={embedUrl}
+              title={title}
+              style={{
+                width: "100%",
+                aspectRatio: "16 / 9",
+                maxHeight: "100%",
+                border: "none",
+              }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          )}
+        </>
       );
     }
 
     return (
-      <WebOSVideoPlayer mediaUrl={mediaUrl} fallbackUrl={fallbackUrl} />
+      <>
+        <div
+          onClick={() => setIsVideoFullscreen(true)}
+          className="sm:cursor-default cursor-zoom-in"
+        >
+          <WebOSVideoPlayer mediaUrl={mediaUrl} fallbackUrl={fallbackUrl} />
+        </div>
+        {renderFullscreenOverlay(
+          <div style={{ width: "100%", height: "100%" }}>
+            <WebOSVideoPlayer mediaUrl={mediaUrl} fallbackUrl={fallbackUrl} />
+          </div>
+        )}
+      </>
     );
   }
 
