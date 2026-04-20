@@ -1,5 +1,5 @@
-import washerKeyVisual from "@/assets/washer-keyvisual.webp";
-import stylerKeyVisual from "@/assets/styler-keyvisual.webp";
+import washerKeyVisual from "@/assets/washer-keyvisual.png";
+import stylerKeyVisual from "@/assets/styler-keyvisual.png";
 
 export interface Product {
   id: string;

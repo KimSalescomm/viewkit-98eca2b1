@@ -25,17 +25,6 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [isVideoFullscreen, setIsVideoFullscreen] = useState(false);
-
-  // Lock body scroll while in video fullscreen
-  useEffect(() => {
-    if (!isVideoFullscreen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [isVideoFullscreen]);
 
   // Prevent out-of-range access when switching between galleries of different sizes
   const galleryLength = galleryImages?.length ?? 0;
@@ -386,143 +375,51 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
     );
   }
 
-  // Shared fullscreen overlay (mobile only). Tap to exit.
-  // For horizontal (16:9) content in portrait viewport, sizes the video to
-  // full screen width with 16:9 height, centered vertically. For vertical
-  // (Shorts / portrait) content, fills the entire viewport.
-  const renderFullscreenOverlay = (
-    content: React.ReactNode,
-    opts?: { isHorizontal?: boolean }
-  ) => {
-    if (!isVideoFullscreen) return null;
-    const isHorizontal = opts?.isHorizontal ?? false;
-
-    return (
-      <div
-        onClick={() => setIsVideoFullscreen(false)}
-        className="sm:hidden"
-        style={{
-          position: "fixed",
-          inset: 0,
-          zIndex: 9999,
-          background: "#000",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "hidden",
-        }}
-      >
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            setIsVideoFullscreen(false);
-          }}
-          aria-label="닫기"
-          style={{
-            position: "absolute",
-            top: "max(env(safe-area-inset-top), 16px)",
-            right: "16px",
-            zIndex: 2,
-            width: "44px",
-            height: "44px",
-            borderRadius: "9999px",
-            background: "rgba(0,0,0,0.6)",
-            border: "1px solid rgba(255,255,255,0.2)",
-            color: "#fff",
-            fontSize: "22px",
-            cursor: "pointer",
-          }}
-        >
-          ✕
-        </button>
-        <div
-          onClick={(e) => e.stopPropagation()}
-          style={
-            isHorizontal
-              ? {
-                  // 가로 영상: 화면 너비를 가득 채우고 16:9 높이로 중앙 정렬
-                  width: "100vw",
-                  height: "calc(100vw * 9 / 16)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }
-              : {
-                  // 세로 영상(Shorts 등): 뷰포트 전체 채움
-                  width: "100vw",
-                  height: "100vh",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }
-          }
-        >
-          {content}
-        </div>
-      </div>
-    );
-  };
-
   // YouTube 전용 렌더링 (isShorts 지원)
   if (mediaType === "youtube") {
+    // URL을 embed 형식으로 변환
     const { embedUrl } = convertToEmbedUrl(mediaUrl);
+    // autoplay, mute, loop 파라미터 추가
     const separator = embedUrl.includes('?') ? '&' : '?';
     const autoplayUrl = `${embedUrl}${separator}autoplay=1&mute=1&loop=1&playlist=${embedUrl.split('/embed/')[1]?.split('?')[0] || ''}`;
-    const aspectRatio = isShorts ? "177.78%" : "56.25%";
-
-    const iframeEl = (
-      <iframe
-        src={autoplayUrl}
-        title={title}
-        style={{
-          position: isShorts ? "relative" : "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          border: "none",
-        }}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
-    );
-
+    // Shorts는 9:16 세로 비율, 일반은 16:9 가로 비율
+    const aspectRatio = isShorts ? "177.78%" : "56.25%"; // 9:16 = 177.78%, 16:9 = 56.25%
+    
     return (
-      <>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <div
-          onClick={() => setIsVideoFullscreen(true)}
-          className="sm:cursor-default cursor-zoom-in"
-          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+          style={{
+            position: "relative",
+            width: isShorts ? "min(100%, 400px)" : "100%",
+            paddingBottom: isShorts ? "0" : aspectRatio,
+            height: isShorts ? "min(80vh, 711px)" : "auto", // 400 * 16/9 = 711
+            borderRadius: "16px",
+            overflow: "hidden",
+            background: "#000"
+          }}
         >
-          <div
-            style={{
-              position: "relative",
-              width: isShorts ? "min(100%, 400px)" : "100%",
-              paddingBottom: isShorts ? "0" : aspectRatio,
-              height: isShorts ? "min(80vh, 711px)" : "auto",
-              borderRadius: "16px",
-              overflow: "hidden",
-              background: "#000",
-            }}
-          >
-            {iframeEl}
-          </div>
-        </div>
-        {renderFullscreenOverlay(
           <iframe
             src={autoplayUrl}
             title={title}
             style={{
+              position: isShorts ? "relative" : "absolute",
+              top: 0,
+              left: 0,
               width: "100%",
               height: "100%",
-              border: "none",
+              border: "none"
             }}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-          />,
-          { isHorizontal: !isShorts }
-        )}
-      </>
+          />
+        </div>
+      </div>
     );
   }
 
@@ -531,67 +428,36 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
 
     if (isYoutube) {
       return (
-        <>
-          <div
-            onClick={() => setIsVideoFullscreen(true)}
-            className="sm:cursor-default cursor-zoom-in"
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            paddingBottom: "56.25%",
+            borderRadius: "16px",
+            overflow: "hidden",
+            background: "#000"
+          }}
+        >
+          <iframe
+            src={embedUrl}
+            title={title}
             style={{
-              position: "relative",
+              position: "absolute",
+              top: 0,
+              left: 0,
               width: "100%",
-              paddingBottom: "56.25%",
-              borderRadius: "16px",
-              overflow: "hidden",
-              background: "#000",
+              height: "100%",
+              border: "none"
             }}
-          >
-            <iframe
-              src={embedUrl}
-              title={title}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                border: "none",
-              }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-          {renderFullscreenOverlay(
-            <iframe
-              src={embedUrl}
-              title={title}
-              style={{
-                width: "100%",
-                height: "100%",
-                border: "none",
-              }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />,
-            { isHorizontal: true }
-          )}
-        </>
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
       );
     }
 
     return (
-      <>
-        <div
-          onClick={() => setIsVideoFullscreen(true)}
-          className="sm:cursor-default cursor-zoom-in"
-        >
-          <WebOSVideoPlayer mediaUrl={mediaUrl} fallbackUrl={fallbackUrl} />
-        </div>
-        {renderFullscreenOverlay(
-          <div style={{ width: "100%", height: "100%" }}>
-            <WebOSVideoPlayer mediaUrl={mediaUrl} fallbackUrl={fallbackUrl} />
-          </div>,
-          { isHorizontal: true }
-        )}
-      </>
+      <WebOSVideoPlayer mediaUrl={mediaUrl} fallbackUrl={fallbackUrl} />
     );
   }
 
