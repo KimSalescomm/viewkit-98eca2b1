@@ -591,7 +591,8 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
         {renderFullscreenOverlay(
           <div style={{ width: "100%", height: "100%" }}>
             <WebOSVideoPlayer mediaUrl={mediaUrl} fallbackUrl={fallbackUrl} />
-          </div>
+          </div>,
+          { isHorizontal: true }
         )}
       </>
     );
