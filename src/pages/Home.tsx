@@ -92,7 +92,7 @@ const Home = () => {
               bannerImage = feature.mediaUrl;
             } else if (feature.mediaType === "gallery" && feature.galleryImages?.length) {
               const first = feature.galleryImages[0];
-              bannerImage = typeof first === "string" ? first : first.src;
+              bannerImage = typeof first === "string" ? first : first.url;
             }
             if (!bannerImage) bannerImage = product.keyVisualImage;
 
