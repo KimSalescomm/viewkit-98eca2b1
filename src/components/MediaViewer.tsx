@@ -387,18 +387,15 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
   }
 
   // Shared fullscreen overlay (mobile only). Tap to exit.
-  // When `isHorizontal` is true, the content is rotated 90deg to fill a
-  // portrait viewport with a landscape video.
+  // For horizontal (16:9) content in portrait viewport, sizes the video to
+  // full screen width with 16:9 height, centered vertically. For vertical
+  // (Shorts / portrait) content, fills the entire viewport.
   const renderFullscreenOverlay = (
     content: React.ReactNode,
     opts?: { isHorizontal?: boolean }
   ) => {
     if (!isVideoFullscreen) return null;
     const isHorizontal = opts?.isHorizontal ?? false;
-    const vw = typeof window !== "undefined" ? window.innerWidth : 0;
-    const vh = typeof window !== "undefined" ? window.innerHeight : 0;
-    const isPortrait = vh >= vw;
-    const shouldRotate = isHorizontal && isPortrait;
 
     return (
       <div
@@ -441,19 +438,19 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
         <div
           onClick={(e) => e.stopPropagation()}
           style={
-            shouldRotate
+            isHorizontal
               ? {
-                  width: `${vh}px`,
-                  height: `${vw}px`,
-                  transform: "rotate(90deg)",
-                  transformOrigin: "center center",
+                  // 가로 영상: 화면 너비를 가득 채우고 16:9 높이로 중앙 정렬
+                  width: "100vw",
+                  height: "calc(100vw * 9 / 16)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                 }
               : {
-                  width: "100%",
-                  height: "100%",
+                  // 세로 영상(Shorts 등): 뷰포트 전체 채움
+                  width: "100vw",
+                  height: "100vh",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
