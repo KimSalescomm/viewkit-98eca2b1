@@ -56,7 +56,7 @@ const productAccents: Record<string, { gradient: string; tint: string; chip: str
 };
 
 const ProductSelection = () => {
-  const enabledIds = ["refrigerator", "styler", "washer"];
+  const enabledIds = ["refrigerator", "styler", "washer", "airconditioner"];
   const visibleProducts = products.filter((product) => product.id !== "pc");
   const { trackProductClick } = useAnalyticsContext();
 
