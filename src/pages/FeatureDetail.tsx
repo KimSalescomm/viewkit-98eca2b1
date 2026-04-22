@@ -133,27 +133,23 @@ const FeatureDetail = () => {
           </div>
         )}
 
-        {/* Collapsible Disclaimers */}
+        {/* Disclaimers (always open) */}
         {feature.collapsibleDisclaimers && feature.collapsibleDisclaimers.length > 0 && (
-          <div className="mb-10 sm:mb-12 px-1">
-            <Accordion type="multiple" className="w-full">
-              {feature.collapsibleDisclaimers.map((item, index) => (
-                <AccordionItem key={index} value={`disclaimer-${index}`} className="border-b border-gray-200">
-                  <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground hover:no-underline py-2.5">
-                    {item.title}
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <ol className="space-y-1 list-none">
-                      {item.items.map((text, i) => (
-                        <li key={i} className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
-                          {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
-                        </li>
-                      ))}
-                    </ol>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+          <div className="mb-10 sm:mb-12 px-1 space-y-4">
+            {feature.collapsibleDisclaimers.map((item, index) => (
+              <div key={index} className="border-b border-gray-200 pb-3">
+                <div className="text-[11px] sm:text-xs text-muted-foreground font-medium py-2.5">
+                  {item.title}
+                </div>
+                <ol className="space-y-1 list-none">
+                  {item.items.map((text, i) => (
+                    <li key={i} className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                      {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))}
           </div>
         )}
 
