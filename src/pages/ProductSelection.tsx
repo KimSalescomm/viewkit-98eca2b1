@@ -96,7 +96,12 @@ const ProductSelection = () => {
           {products.map((product, index) => {
             const isEnabled = enabledIds.includes(product.id);
 
-            const accent = productAccents[product.id] || "from-gray-300 to-gray-400";
+            const accent = productAccents[product.id] || {
+              gradient: "from-gray-300 to-gray-400",
+              tint: "from-gray-50 via-white to-white",
+              chip: "bg-gray-50 text-gray-500 border-gray-200",
+              keywords: [],
+            };
 
             const cardContent = (
               <div
@@ -111,9 +116,9 @@ const ProductSelection = () => {
               >
                 {/* Accent bar — left on mobile, top on desktop */}
                 <div
-                  className={`absolute z-10 bg-gradient-to-b sm:bg-gradient-to-r ${accent}
-                    left-0 top-0 bottom-0 w-1.5
-                    sm:bottom-auto sm:right-0 sm:w-full sm:h-1.5
+                  className={`absolute z-10 bg-gradient-to-b sm:bg-gradient-to-r ${accent.gradient}
+                    left-0 top-0 bottom-0 w-2
+                    sm:bottom-auto sm:right-0 sm:w-full sm:h-2
                     ${isEnabled ? "" : "opacity-30"}`}
                 />
                 {/* Thumbnail */}
@@ -129,6 +134,12 @@ const ProductSelection = () => {
                         className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/10 to-transparent pointer-events-none" />
+                      {/* Mobile: small icon chip on thumbnail */}
+                      <div className="sm:hidden absolute top-2 left-3.5">
+                        <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${accent.gradient} flex items-center justify-center text-sm shadow-md ring-2 ring-white/80`}>
+                          <span>{iconMap[product.icon]}</span>
+                        </div>
+                      </div>
                     </>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-muted">
@@ -140,13 +151,17 @@ const ProductSelection = () => {
                 </div>
 
                 {/* Card Body */}
-                <div className={`p-4 sm:p-5 flex-1 flex items-center sm:block ${isEnabled ? "bg-[#F3F7FF]" : ""}`}>
-                  <div className="flex items-start gap-3 sm:gap-3.5 w-full">
+                <div className={`relative p-4 sm:p-5 flex-1 flex items-center sm:block overflow-hidden ${isEnabled ? `bg-gradient-to-br ${accent.tint}` : ""}`}>
+                  {/* Decorative tinted blob (mobile) */}
+                  {isEnabled && (
+                    <div className={`sm:hidden pointer-events-none absolute -right-8 -bottom-8 w-28 h-28 rounded-full bg-gradient-to-br ${accent.gradient} opacity-10 blur-xl`} />
+                  )}
+                  <div className="relative flex items-start gap-3 sm:gap-3.5 w-full">
                     <div
                       className={`
                         hidden sm:flex w-10 h-10 sm:w-13 sm:h-13 rounded-2xl items-center justify-center flex-shrink-0 text-xl sm:text-2xl
                         ${isEnabled
-                          ? "bg-gradient-to-br from-[#3A57FF] to-[#6B7FFF] shadow-[0_2px_8px_rgba(58,87,255,0.3)]"
+                          ? `bg-gradient-to-br ${accent.gradient} shadow-md`
                           : "bg-gray-300 group-hover:bg-gray-400"
                         }
                       `}
@@ -176,6 +191,19 @@ const ProductSelection = () => {
                       >
                         {product.description}
                       </p>
+                      {/* Keyword chips */}
+                      {isEnabled && accent.keywords.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mt-2">
+                          {accent.keywords.map((kw) => (
+                            <span
+                              key={kw}
+                              className={`inline-block text-[10px] sm:text-[11px] font-semibold px-2 py-0.5 rounded-md border ${accent.chip}`}
+                            >
+                              {kw}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                     {isEnabled && (
                       <span className="sm:hidden text-gray-300 text-xl flex-shrink-0 self-center">›</span>
