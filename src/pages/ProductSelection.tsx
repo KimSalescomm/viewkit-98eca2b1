@@ -57,6 +57,7 @@ const productAccents: Record<string, { gradient: string; tint: string; chip: str
 
 const ProductSelection = () => {
   const enabledIds = ["refrigerator", "styler", "washer"];
+  const visibleProducts = products.filter((product) => product.id !== "pc");
   const { trackProductClick } = useAnalyticsContext();
 
   return (
@@ -93,7 +94,7 @@ const ProductSelection = () => {
 
         {/* Card Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5">
-          {products.map((product, index) => {
+          {visibleProducts.map((product, index) => {
             const isEnabled = enabledIds.includes(product.id);
 
             const accent = productAccents[product.id] || {
