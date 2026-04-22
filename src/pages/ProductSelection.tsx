@@ -191,19 +191,6 @@ const ProductSelection = () => {
                       >
                         {product.description}
                       </p>
-                      {/* Keyword chips */}
-                      {isEnabled && accent.keywords.length > 0 && (
-                        <div className="flex flex-wrap gap-1 mt-2">
-                          {accent.keywords.map((kw) => (
-                            <span
-                              key={kw}
-                              className={`inline-block text-[10px] sm:text-[11px] font-semibold px-2 py-0.5 rounded-md border ${accent.chip}`}
-                            >
-                              {kw}
-                            </span>
-                          ))}
-                        </div>
-                      )}
                     </div>
                     {isEnabled && (
                       <span className="sm:hidden text-gray-300 text-xl flex-shrink-0 self-center">›</span>
