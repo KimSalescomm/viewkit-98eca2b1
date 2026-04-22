@@ -4,15 +4,55 @@ import SafeImage from "@/components/SafeImage";
 import { HelpCircle } from "lucide-react";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 
-const productAccents: Record<string, string> = {
-  refrigerator: "from-sky-400 to-blue-500",
-  washer: "from-emerald-400 to-teal-500",
-  styler: "from-violet-400 to-purple-500",
-  tv: "from-slate-700 to-slate-900",
-  vacuum: "from-amber-400 to-orange-500",
-  airconditioner: "from-cyan-400 to-sky-500",
-  pc: "from-rose-400 to-pink-500",
-  cooking: "from-lime-400 to-green-500",
+const productAccents: Record<string, { gradient: string; tint: string; chip: string; keywords: string[] }> = {
+  refrigerator: {
+    gradient: "from-sky-400 to-blue-500",
+    tint: "from-sky-50 via-white to-white",
+    chip: "bg-sky-50 text-sky-600 border-sky-100",
+    keywords: ["Direct Feed", "fresh sySTEM", "STEM"],
+  },
+  washer: {
+    gradient: "from-emerald-400 to-teal-500",
+    tint: "from-emerald-50 via-white to-white",
+    chip: "bg-emerald-50 text-emerald-600 border-emerald-100",
+    keywords: ["6모션", "세탁+건조", "트루스팀"],
+  },
+  styler: {
+    gradient: "from-violet-400 to-purple-500",
+    tint: "from-violet-50 via-white to-white",
+    chip: "bg-violet-50 text-violet-600 border-violet-100",
+    keywords: ["스타일링", "건조", "제습"],
+  },
+  tv: {
+    gradient: "from-slate-700 to-slate-900",
+    tint: "from-slate-50 via-white to-white",
+    chip: "bg-slate-100 text-slate-600 border-slate-200",
+    keywords: ["올레드", "AI 화질", "초대형"],
+  },
+  vacuum: {
+    gradient: "from-amber-400 to-orange-500",
+    tint: "from-amber-50 via-white to-white",
+    chip: "bg-amber-50 text-amber-600 border-amber-100",
+    keywords: ["무선", "강력 흡입"],
+  },
+  airconditioner: {
+    gradient: "from-cyan-400 to-sky-500",
+    tint: "from-cyan-50 via-white to-white",
+    chip: "bg-cyan-50 text-cyan-600 border-cyan-100",
+    keywords: ["공기 관리", "절전"],
+  },
+  pc: {
+    gradient: "from-rose-400 to-pink-500",
+    tint: "from-rose-50 via-white to-white",
+    chip: "bg-rose-50 text-rose-600 border-rose-100",
+    keywords: ["고성능", "게이밍"],
+  },
+  cooking: {
+    gradient: "from-lime-400 to-green-500",
+    tint: "from-lime-50 via-white to-white",
+    chip: "bg-lime-50 text-lime-600 border-lime-100",
+    keywords: ["편리함", "위생"],
+  },
 };
 
 const ProductSelection = () => {
