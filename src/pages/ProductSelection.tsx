@@ -4,15 +4,55 @@ import SafeImage from "@/components/SafeImage";
 import { HelpCircle } from "lucide-react";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 
-const productAccents: Record<string, string> = {
-  refrigerator: "from-sky-400 to-blue-500",
-  washer: "from-emerald-400 to-teal-500",
-  styler: "from-violet-400 to-purple-500",
-  tv: "from-slate-700 to-slate-900",
-  vacuum: "from-amber-400 to-orange-500",
-  airconditioner: "from-cyan-400 to-sky-500",
-  pc: "from-rose-400 to-pink-500",
-  cooking: "from-lime-400 to-green-500",
+const productAccents: Record<string, { gradient: string; tint: string; chip: string; keywords: string[] }> = {
+  refrigerator: {
+    gradient: "from-sky-400 to-blue-500",
+    tint: "from-sky-50 via-white to-white",
+    chip: "bg-sky-50 text-sky-600 border-sky-100",
+    keywords: ["Direct Feed", "fresh sySTEM", "STEM"],
+  },
+  washer: {
+    gradient: "from-emerald-400 to-teal-500",
+    tint: "from-emerald-50 via-white to-white",
+    chip: "bg-emerald-50 text-emerald-600 border-emerald-100",
+    keywords: ["6모션", "세탁+건조", "트루스팀"],
+  },
+  styler: {
+    gradient: "from-violet-400 to-purple-500",
+    tint: "from-violet-50 via-white to-white",
+    chip: "bg-violet-50 text-violet-600 border-violet-100",
+    keywords: ["스타일링", "건조", "제습"],
+  },
+  tv: {
+    gradient: "from-slate-700 to-slate-900",
+    tint: "from-slate-50 via-white to-white",
+    chip: "bg-slate-100 text-slate-600 border-slate-200",
+    keywords: ["올레드", "AI 화질", "초대형"],
+  },
+  vacuum: {
+    gradient: "from-amber-400 to-orange-500",
+    tint: "from-amber-50 via-white to-white",
+    chip: "bg-amber-50 text-amber-600 border-amber-100",
+    keywords: ["무선", "강력 흡입"],
+  },
+  airconditioner: {
+    gradient: "from-cyan-400 to-sky-500",
+    tint: "from-cyan-50 via-white to-white",
+    chip: "bg-cyan-50 text-cyan-600 border-cyan-100",
+    keywords: ["공기 관리", "절전"],
+  },
+  pc: {
+    gradient: "from-rose-400 to-pink-500",
+    tint: "from-rose-50 via-white to-white",
+    chip: "bg-rose-50 text-rose-600 border-rose-100",
+    keywords: ["고성능", "게이밍"],
+  },
+  cooking: {
+    gradient: "from-lime-400 to-green-500",
+    tint: "from-lime-50 via-white to-white",
+    chip: "bg-lime-50 text-lime-600 border-lime-100",
+    keywords: ["편리함", "위생"],
+  },
 };
 
 const ProductSelection = () => {
@@ -56,7 +96,12 @@ const ProductSelection = () => {
           {products.map((product, index) => {
             const isEnabled = enabledIds.includes(product.id);
 
-            const accent = productAccents[product.id] || "from-gray-300 to-gray-400";
+            const accent = productAccents[product.id] || {
+              gradient: "from-gray-300 to-gray-400",
+              tint: "from-gray-50 via-white to-white",
+              chip: "bg-gray-50 text-gray-500 border-gray-200",
+              keywords: [],
+            };
 
             const cardContent = (
               <div
@@ -71,9 +116,9 @@ const ProductSelection = () => {
               >
                 {/* Accent bar — left on mobile, top on desktop */}
                 <div
-                  className={`absolute z-10 bg-gradient-to-b sm:bg-gradient-to-r ${accent}
-                    left-0 top-0 bottom-0 w-1.5
-                    sm:bottom-auto sm:right-0 sm:w-full sm:h-1.5
+                  className={`absolute z-10 bg-gradient-to-b sm:bg-gradient-to-r ${accent.gradient}
+                    left-0 top-0 bottom-0 w-2
+                    sm:bottom-auto sm:right-0 sm:w-full sm:h-2
                     ${isEnabled ? "" : "opacity-30"}`}
                 />
                 {/* Thumbnail */}
@@ -89,6 +134,12 @@ const ProductSelection = () => {
                         className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/10 to-transparent pointer-events-none" />
+                      {/* Mobile: small icon chip on thumbnail */}
+                      <div className="sm:hidden absolute top-2 left-3.5">
+                        <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${accent.gradient} flex items-center justify-center text-sm shadow-md ring-2 ring-white/80`}>
+                          <span>{iconMap[product.icon]}</span>
+                        </div>
+                      </div>
                     </>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-muted">
@@ -100,13 +151,17 @@ const ProductSelection = () => {
                 </div>
 
                 {/* Card Body */}
-                <div className={`p-4 sm:p-5 flex-1 flex items-center sm:block ${isEnabled ? "bg-[#F3F7FF]" : ""}`}>
-                  <div className="flex items-start gap-3 sm:gap-3.5 w-full">
+                <div className={`relative p-4 sm:p-5 flex-1 flex items-center sm:block overflow-hidden ${isEnabled ? `bg-gradient-to-br ${accent.tint}` : ""}`}>
+                  {/* Decorative tinted blob (mobile) */}
+                  {isEnabled && (
+                    <div className={`sm:hidden pointer-events-none absolute -right-8 -bottom-8 w-28 h-28 rounded-full bg-gradient-to-br ${accent.gradient} opacity-10 blur-xl`} />
+                  )}
+                  <div className="relative flex items-start gap-3 sm:gap-3.5 w-full">
                     <div
                       className={`
                         hidden sm:flex w-10 h-10 sm:w-13 sm:h-13 rounded-2xl items-center justify-center flex-shrink-0 text-xl sm:text-2xl
                         ${isEnabled
-                          ? "bg-gradient-to-br from-[#3A57FF] to-[#6B7FFF] shadow-[0_2px_8px_rgba(58,87,255,0.3)]"
+                          ? `bg-gradient-to-br ${accent.gradient} shadow-md`
                           : "bg-gray-300 group-hover:bg-gray-400"
                         }
                       `}
@@ -136,6 +191,19 @@ const ProductSelection = () => {
                       >
                         {product.description}
                       </p>
+                      {/* Keyword chips */}
+                      {isEnabled && accent.keywords.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mt-2">
+                          {accent.keywords.map((kw) => (
+                            <span
+                              key={kw}
+                              className={`inline-block text-[10px] sm:text-[11px] font-semibold px-2 py-0.5 rounded-md border ${accent.chip}`}
+                            >
+                              {kw}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                     {isEnabled && (
                       <span className="sm:hidden text-gray-300 text-xl flex-shrink-0 self-center">›</span>
