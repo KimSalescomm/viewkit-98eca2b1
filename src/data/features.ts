@@ -578,13 +578,14 @@ export const featuresMap: Record<string, Feature[]> = {
   airconditioner: [
     {
       id: "15",
-      title: "듀얼 인버터",
-      subtitle: "빠른 냉방, 조용한 운전",
+      title: "꿉꿉함도 추위도 없이 쾌적함만 남는 정온 제습 기술",
+      subtitle: "실내 온도는 그대로 유지하면서\n습도만 쏙 잡아주는 쾌적한 제습",
       icon: "Wind",
+      tag: "AI 콜드프리",
       mediaType: "video",
-      mediaUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+      mediaUrl: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AI_coldfree_detail_01.mp4",
       description:
-        "듀얼 인버터 컴프레서로 일반 에어컨보다 70% 빠르게 냉방하고, 소음은 절반으로 줄였습니다. 빠르고 조용한 쾌적함을 경험하세요.",
+        "실내 온도는 그대로 유지하면서 습도만 쏙 잡아주는 정온 제습 기능으로, 피부에 닿는 바람이 차갑거나 꿉꿉하지 않아 한여름에도 쾌적한 실내 공기를 누릴 수 있습니다.",
       highlights: ["70% 빠른 냉방", "50% 소음 감소", "10년 무상 보증", "에너지 효율 1등급"],
     },
     {
