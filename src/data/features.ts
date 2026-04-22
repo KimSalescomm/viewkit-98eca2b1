@@ -483,7 +483,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "https://youtu.be/cb4gJ6vvqGk?si=7tTFaV8oX0Hlpyil",
       description:
         "워시타워를 구독하면 제품 사용은 물론, 정기적인 세탁통 클리닝과 케어 서비스까지 함께 누리실 수 있어요.\n\n초기 비용 부담은 줄이고, 전문가의 손길로 보이지 않는 속까지 깨끗하게 관리받으며 오래도록 새것처럼 사용해 보세요.",
-      highlights: ["정기 케어 서비스", "세탁통 클리닝 포함", "초기 비용 부담 ↓", "전문가 관리"],
+      highlights: ["드럼 케어, 스팀 케어", "고무패킹 세척/습도센서 점검", "무상 재설치(계약기간 내 1회)", "무상 A/S"],
     },
     {
       id: "3",
