@@ -538,18 +538,6 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "4",
-      title: "우리 아이 옷, 장난감\n세균 걱정없이 깨끗하게 세탁하고 싶으시죠?",
-      subtitle: "100℃ 고온 스팀이 옷감 깊숙이 침투해\n알레르기 유발 물질까지 케어해드려요.",
-      icon: "Sparkles",
-      tag: "트루스팀",
-      mediaType: "video",
-      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md09942859/usp/1018_03_LG_Tromm_B_02_pc.mp4",
-      description:
-        "물을 100℃로 끓여 만든 순수한 트루스팀이 옷감 깊숙이 스며들어 집먼지 진드기, 꽃가루 등 알레르기 유발 물질을 99.9% 줄여줍니다.\n\n세제 없이도 스팀만으로 살균 케어가 가능해, 아이 옷이나 속옷처럼 민감한 의류도 안심하고 맡기실 수 있어요.",
-      highlights: ["100℃ 고온 스팀", "알레르기 케어 99.9%", "옷감 손상 최소화", "구김·냄새 완화"],
-    },
-    {
-      id: "5",
       title: "보이지 않는 속까지\n알아서 깨끗하게 관리하고 싶으시죠?",
       subtitle: "콘덴서를 알아서 세척해주니\n손이 많이 가지 않아요.",
       icon: "Sparkles",
@@ -561,7 +549,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["콘덴서 자동 물 세척", "보풀·먼지 케어", "건조 효율 유지", "관리 부담 최소화"],
     },
     {
-      id: "6",
+      id: "5",
       title: "세탁이 끝나기 전 건조를 준비하면,\n집안일도 빨리 끝나겠죠?",
       subtitle: "세탁이 끝나기 전 건조기를 미리 데워\n바로 이어서 보송하게 건조해드려요.",
       icon: "Timer",
@@ -573,7 +561,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["건조기 사전 예열", "세탁→건조 끊김 없이", "시간 절약", "효율적인 가사 동선"],
     },
     {
-      id: "7",
+      id: "6",
       title: "매번 쓰는 세탁기·건조기 속,\n얼마나 깨끗한지 궁금하지 않으세요?",
       subtitle: "세탁통부터 건조기 내부까지 최대 12포인트를\n살균해 유해 세균을 99.9% 제거해드려요.",
       icon: "ShieldCheck",
