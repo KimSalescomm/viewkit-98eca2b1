@@ -449,7 +449,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10575829/usp/WA2323/WA2323EGZN_ai_laundry_pc.mp4",
       description:
-        "[바로 알려주는 세탁건조 예상시간]\n세탁물의 무게를 감지하여 3초만에 코스별 예상 종료 시간을 알려줍니다.\nAI 타임 센싱\n\n[더욱 정교화된 예상 건조시간]\n사용하면 사용할 수록 정확도 높은 건조 완료 시간을 알려줍니다.\nAI 시간 안내",
+        "AI가 세탁의 시작부터, 건조가 끝나는 과정까지 함께합니다. 특히, 세탁물의 무게를 감지하여 3초만에 코스별 예상 종료시간을 알 수 있고, 사용하면 할수록 더 정확하게 건조 완료 시간을 알려줍니다.",
       highlights: ["AI DD 모터", "옷감·무게 자동 감지", "세탁부터 건조까지 자동", "맞춤형 코스 추천"],
       disclaimers: [
         "소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
