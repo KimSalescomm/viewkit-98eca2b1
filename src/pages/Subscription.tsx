@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Check, ArrowLeft, Sparkles } from "lucide-react";
+import { Check, ArrowLeft, Sparkles, ImageIcon, X } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
 import washerBefore from "@/assets/washer-before.png";
 import washerAfter from "@/assets/washer-after.png";
+
+interface CareStep {
+  label: string;
+  image?: string;
+}
 
 interface SubscriptionProduct {
   id: string;
   name: string;
   beforeImage: string;
   afterImage: string;
-  careSteps: string[];
+  careSteps: CareStep[];
 }
 
 const subscriptionProducts: SubscriptionProduct[] = [
@@ -20,14 +25,14 @@ const subscriptionProducts: SubscriptionProduct[] = [
     beforeImage: washerBefore,
     afterImage: washerAfter,
     careSteps: [
-      "분해세척",
-      "세탁조 스팀 & UV 관리",
-      "고무패킹 교체",
-      "급/배수 필터 세척",
-      "배수 필터 교체",
-      "세탁조 클리너 제공",
-      "제품 성능 점검",
-      "토탈 클리닝",
+      { label: "분해세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_01.jpg" },
+      { label: "세탁조 스팀 & UV 관리", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_02.jpg" },
+      { label: "고무패킹 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_03.jpg" },
+      { label: "급/배수 필터 세척" },
+      { label: "배수 필터 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_04.jpg" },
+      { label: "세탁조 클리너 제공" },
+      { label: "제품 성능 점검" },
+      { label: "토탈 클리닝", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_06.jpg" },
     ],
   },
   {
@@ -36,13 +41,13 @@ const subscriptionProducts: SubscriptionProduct[] = [
     beforeImage: "https://picsum.photos/seed/washcombo-before/800/600",
     afterImage: "https://picsum.photos/seed/washcombo-after/800/600",
     careSteps: [
-      "드럼케어",
-      "고무패킹 클리닝",
-      "스팀케어",
-      "건조필터 추가 제공",
-      "배수 필터 거름망 클리닝 & 교체",
-      "외관 클리닝",
-      "무상 A/S",
+      { label: "드럼케어" },
+      { label: "고무패킹 클리닝" },
+      { label: "스팀케어" },
+      { label: "건조필터 추가 제공" },
+      { label: "배수 필터 거름망 클리닝 & 교체" },
+      { label: "외관 클리닝" },
+      { label: "무상 A/S" },
     ],
   },
   {
@@ -50,7 +55,12 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "냉장고",
     beforeImage: "https://picsum.photos/seed/fridge-before/800/600",
     afterImage: "https://picsum.photos/seed/fridge-after/800/600",
-    careSteps: ["기계실 세척", "토탈 클리닝", "제품 성능 점검", "무상 A/S"],
+    careSteps: [
+      { label: "기계실 세척" },
+      { label: "토탈 클리닝" },
+      { label: "제품 성능 점검" },
+      { label: "무상 A/S" },
+    ],
   },
   {
     id: "airconditioner",
@@ -58,11 +68,11 @@ const subscriptionProducts: SubscriptionProduct[] = [
     beforeImage: "https://picsum.photos/seed/aircon-before/800/600",
     afterImage: "https://picsum.photos/seed/aircon-after/800/600",
     careSteps: [
-      "분해세척",
-      "위생케어 (피톤치드, UV케어)",
-      "필터 세척 & 교체",
-      "제품 성능 점검",
-      "무상 A/S",
+      { label: "분해세척" },
+      { label: "위생케어 (피톤치드, UV케어)" },
+      { label: "필터 세척 & 교체" },
+      { label: "제품 성능 점검" },
+      { label: "무상 A/S" },
     ],
   },
   {
@@ -71,12 +81,12 @@ const subscriptionProducts: SubscriptionProduct[] = [
     beforeImage: "https://picsum.photos/seed/airpurifier-before/800/600",
     afterImage: "https://picsum.photos/seed/airpurifier-after/800/600",
     careSteps: [
-      "필터 교체 & 필터 클리닝",
-      "클린부스터 클리닝",
-      "토탈 클리닝",
-      "UV 살균",
-      "모듈 점검",
-      "무상 A/S",
+      { label: "필터 교체 & 필터 클리닝" },
+      { label: "클린부스터 클리닝" },
+      { label: "토탈 클리닝" },
+      { label: "UV 살균" },
+      { label: "모듈 점검" },
+      { label: "무상 A/S" },
     ],
   },
   {
@@ -85,11 +95,11 @@ const subscriptionProducts: SubscriptionProduct[] = [
     beforeImage: "https://picsum.photos/seed/cooktop-before/800/600",
     afterImage: "https://picsum.photos/seed/cooktop-after/800/600",
     careSteps: [
-      "코팅 및 광택 서비스",
-      "토탈 클리닝",
-      "상판 교체",
-      "무상 재설치",
-      "무상 A/S",
+      { label: "코팅 및 광택 서비스" },
+      { label: "토탈 클리닝" },
+      { label: "상판 교체" },
+      { label: "무상 재설치" },
+      { label: "무상 A/S" },
     ],
   },
   {
@@ -97,7 +107,12 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "광파오븐",
     beforeImage: "https://picsum.photos/seed/oven-before/800/600",
     afterImage: "https://picsum.photos/seed/oven-after/800/600",
-    careSteps: ["소모품 교체", "토탈 클리닝", "내부 클리닝", "무상 A/S"],
+    careSteps: [
+      { label: "소모품 교체" },
+      { label: "토탈 클리닝" },
+      { label: "내부 클리닝" },
+      { label: "무상 A/S" },
+    ],
   },
 ];
 
