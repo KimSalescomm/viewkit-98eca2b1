@@ -48,7 +48,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
       { label: "배수 필터 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_04.jpg" },
       { label: "세탁조 클리너 제공" },
       { label: "제품 성능 점검" },
-      { label: "토탈 클리닝", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_06.jpg" },
+      { label: "토탈 클리닝" },
     ],
   },
   {
