@@ -223,7 +223,7 @@ const ProductSelection = () => {
               return (
                 <Link
                   key={product.id}
-                  to={`/product/${product.id}`}
+                  to={product.id === "subscription" ? "/subscription" : `/product/${product.id}`}
                   className="block transition-transform duration-300 hover:scale-[1.02]"
                   onClick={() => trackProductClick(product.name)}
                 >
