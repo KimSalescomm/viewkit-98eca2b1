@@ -55,6 +55,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "워시콤보",
     beforeImage: washcomboBefore,
     afterImage: washcomboAfter,
+    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/wash_tower_250804.mp4",
     careSteps: [
       { label: "드럼케어" },
       { label: "고무패킹 클리닝" },
@@ -70,6 +71,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "냉장고",
     beforeImage: refrigeratorBefore,
     afterImage: refrigeratorAfter,
+    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/refrigerators_regular_250804.mp4",
     careSteps: [
       { label: "기계실 세척" },
       { label: "토탈 클리닝" },
@@ -82,6 +84,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "에어컨",
     beforeImage: airconBefore,
     afterImage: airconAfter,
+    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/air_conditioners_stand_250804.mp4",
     careSteps: [
       { label: "분해세척" },
       { label: "위생케어 (피톤치드, UV케어)" },
@@ -95,6 +98,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "공기청정기",
     beforeImage: airpurifierBefore,
     afterImage: airpurifierAfter,
+    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/air_purifiers_250804.mp4",
     careSteps: [
       { label: "필터 교체 & 필터 클리닝" },
       { label: "클린부스터 클리닝" },
@@ -109,6 +113,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "전기레인지",
     beforeImage: inductionBefore,
     afterImage: inductionAfter,
+    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/electric_stoves_250819.mp4",
     careSteps: [
       { label: "코팅 및 광택 서비스" },
       { label: "토탈 클리닝" },
@@ -122,6 +127,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "광파오븐",
     beforeImage: ovenBefore,
     afterImage: ovenAfter,
+    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/electric_stoves_250819.mp4",
     careSteps: [
       { label: "소모품 교체" },
       { label: "토탈 클리닝" },
