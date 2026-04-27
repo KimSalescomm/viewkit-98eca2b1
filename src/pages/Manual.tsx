@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Smartphone, ChevronRight, Gamepad2, Search, Info, CheckCircle2, ArrowLeft } from "lucide-react";
 import SafeImage from "@/components/SafeImage";
+import OrientationToggle from "@/components/OrientationToggle";
 
 // Manual assets
 import balanceQ1 from "@/assets/manual/balance-q1.jpg";
@@ -347,13 +348,16 @@ const ManualStickyNav = ({ onBack }: { onBack: string }) => {
             </button>
           ))}
         </div>
-        <Link
-          to={onBack}
-          className="inline-flex items-center gap-1.5 text-manual-indigo hover:text-manual-indigo/70 transition-colors px-3 py-3 shrink-0"
-          title="돌아가기"
-        >
-          <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-        </Link>
+        <div className="flex items-center gap-1 shrink-0 pr-2">
+          <OrientationToggle />
+          <Link
+            to={onBack}
+            className="inline-flex items-center gap-1.5 text-manual-indigo hover:text-manual-indigo/70 transition-colors px-3 py-3"
+            title="돌아가기"
+          >
+            <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+          </Link>
+        </div>
       </div>
     </nav>
   );
