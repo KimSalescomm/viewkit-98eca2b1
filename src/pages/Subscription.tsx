@@ -313,6 +313,11 @@ const Subscription = () => {
                 <span className="text-sm font-bold text-gray-700">열교환기 세척 전</span>
               </div>
             )}
+            {selected.id === "airpurifier" && (
+              <div className="px-5 py-3 border-t border-gray-50 text-center">
+                <span className="text-sm font-bold text-gray-700">필터 교체 & 클리닝 전</span>
+              </div>
+            )}
           </div>
 
           {/* After + Care Steps */}
