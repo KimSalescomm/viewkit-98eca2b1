@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Check, ArrowLeft, Sparkles, ImageIcon, X } from "lucide-react";
+import { Check, ArrowLeft, Sparkles, ImageIcon, X, Play } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
 import washerBefore from "@/assets/washer-before.png";
 import washerAfter from "@/assets/washer-after.png";
@@ -15,6 +15,7 @@ interface SubscriptionProduct {
   name: string;
   beforeImage: string;
   afterImage: string;
+  careVideo?: string;
   careSteps: CareStep[];
 }
 
@@ -24,6 +25,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "세탁기",
     beforeImage: washerBefore,
     afterImage: washerAfter,
+    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/washing_machines_250826.mp4",
     careSteps: [
       { label: "분해세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_01.jpg" },
       { label: "세탁조 스팀 & UV 관리", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_02.jpg" },
