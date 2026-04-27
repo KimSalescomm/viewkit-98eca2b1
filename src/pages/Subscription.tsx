@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Check, ArrowLeft, Sparkles, ImageIcon, X, Play } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
-import washerBefore from "@/assets/washer-before.png";
-import washerAfter from "@/assets/washer-after.png";
+import washcomboBefore from "@/assets/washcombo-before.png";
+import washcomboAfter from "@/assets/washcombo-after.png";
 import refrigeratorBefore from "@/assets/refrigerator-before.png";
 import refrigeratorAfter from "@/assets/refrigerator-after.png";
 
@@ -26,8 +26,8 @@ const subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "washer",
     name: "세탁기",
-    beforeImage: washerBefore,
-    afterImage: washerAfter,
+    beforeImage: "https://picsum.photos/seed/washer-before/800/600",
+    afterImage: "https://picsum.photos/seed/washer-after/800/600",
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/washing_machines_250826.mp4",
     careSteps: [
       { label: "분해세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_01.jpg", disclaimer: "프리미엄, 48개월 차에 1회 서비스" },
@@ -43,8 +43,8 @@ const subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "washcombo",
     name: "워시콤보",
-    beforeImage: "https://picsum.photos/seed/washcombo-before/800/600",
-    afterImage: "https://picsum.photos/seed/washcombo-after/800/600",
+    beforeImage: washcomboBefore,
+    afterImage: washcomboAfter,
     careSteps: [
       { label: "드럼케어" },
       { label: "고무패킹 클리닝" },
