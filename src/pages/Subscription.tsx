@@ -10,6 +10,8 @@ import refrigeratorBefore from "@/assets/refrigerator-before.png";
 import refrigeratorAfter from "@/assets/refrigerator-after.png";
 import airconBefore from "@/assets/airconB.png";
 import airconAfter from "@/assets/airconA.png";
+import airpurifierBefore from "@/assets/aircB.png";
+import airpurifierAfter from "@/assets/airA.png";
 
 interface CareStep {
   label: string;
@@ -87,8 +89,8 @@ const subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "airpurifier",
     name: "공기청정기",
-    beforeImage: "https://picsum.photos/seed/airpurifier-before/800/600",
-    afterImage: "https://picsum.photos/seed/airpurifier-after/800/600",
+    beforeImage: airpurifierBefore,
+    afterImage: airpurifierAfter,
     careSteps: [
       { label: "필터 교체 & 필터 클리닝" },
       { label: "클린부스터 클리닝" },
