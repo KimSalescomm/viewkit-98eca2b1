@@ -121,6 +121,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
 const Subscription = () => {
   const [selectedId, setSelectedId] = useState<string>("washer");
   const [previewStep, setPreviewStep] = useState<CareStep | null>(null);
+  const [videoOpen, setVideoOpen] = useState(false);
   const selected = subscriptionProducts.find((p) => p.id === selectedId)!;
   const hasAnyImage = selected.careSteps.some((s) => s.image);
 
