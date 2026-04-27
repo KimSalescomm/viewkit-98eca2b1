@@ -118,7 +118,9 @@ const subscriptionProducts: SubscriptionProduct[] = [
 
 const Subscription = () => {
   const [selectedId, setSelectedId] = useState<string>("washer");
+  const [previewStep, setPreviewStep] = useState<CareStep | null>(null);
   const selected = subscriptionProducts.find((p) => p.id === selectedId)!;
+  const hasAnyImage = selected.careSteps.some((s) => s.image);
 
   return (
     <div className="min-h-screen bg-[hsl(220,20%,97%)]">
@@ -246,27 +248,115 @@ const Subscription = () => {
 
             {/* Care Process */}
             <div className="px-5 py-5 border-t border-gray-50">
-              <h3 className="text-sm font-bold text-gray-900 mb-3 flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4" style={{ color: "#A50034" }} />
-                {selected.name} 케어 과정
-              </h3>
-              <ul className="space-y-2.5">
-                {selected.careSteps.map((step, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-2.5 leading-relaxed"
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
+                  <Sparkles className="w-4 h-4" style={{ color: "#A50034" }} />
+                  {selected.name} 케어 과정
+                </h3>
+                {hasAnyImage && (
+                  <span
+                    className="text-[11px] font-semibold inline-flex items-center gap-1 px-2 py-0.5 rounded-full"
+                    style={{ color: "#A50034", backgroundColor: "#FBE8EE" }}
                   >
-                    <span
-                      className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center"
-                      style={{ backgroundColor: "#FBE8EE", color: "#A50034" }}
-                    >
-                      <Check className="w-3 h-3" strokeWidth={3} />
-                    </span>
-                    <span className="text-[15px] text-gray-700">{step}</span>
-                  </li>
-                ))}
+                    <ImageIcon className="w-3 h-3" />
+                    이미지 클릭
+                  </span>
+                )}
+              </div>
+              <ul className="space-y-2">
+                {selected.careSteps.map((step, i) => {
+                  const clickable = !!step.image;
+                  return (
+                    <li key={i}>
+                      {clickable ? (
+                        <button
+                          type="button"
+                          onClick={() => setPreviewStep(step)}
+                          className="group w-full text-left flex items-center gap-2.5 leading-relaxed rounded-lg px-2.5 py-2 -mx-2.5 border transition-all duration-200 hover:-translate-y-px"
+                          style={{
+                            backgroundColor: "#FFF5F8",
+                            borderColor: "#F5C9D5",
+                          }}
+                        >
+                          <span
+                            className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
+                            style={{ backgroundColor: "#A50034", color: "#fff" }}
+                          >
+                            <Check className="w-3 h-3" strokeWidth={3} />
+                          </span>
+                          <span
+                            className="text-[15px] font-semibold flex-1"
+                            style={{ color: "#7A0026" }}
+                          >
+                            {step.label}
+                          </span>
+                          <span
+                            className="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full transition-colors group-hover:brightness-110"
+                            style={{ backgroundColor: "#A50034", color: "#fff" }}
+                          >
+                            <ImageIcon className="w-3 h-3" />
+                            보기
+                          </span>
+                        </button>
+                      ) : (
+                        <div className="flex items-center gap-2.5 leading-relaxed px-2.5 py-1.5 -mx-2.5">
+                          <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-gray-100 text-gray-400">
+                            <Check className="w-3 h-3" strokeWidth={3} />
+                          </span>
+                          <span className="text-[15px] text-gray-500">
+                            {step.label}
+                          </span>
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
+          </div>
+        </div>
+      </main>
+
+      {/* Lightbox modal */}
+      {previewStep?.image && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/70 backdrop-blur-sm animate-in fade-in"
+          onClick={() => setPreviewStep(null)}
+        >
+          <div
+            className="relative max-w-3xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100">
+              <div className="flex items-center gap-2">
+                <span
+                  className="w-6 h-6 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: "#A50034", color: "#fff" }}
+                >
+                  <Check className="w-3.5 h-3.5" strokeWidth={3} />
+                </span>
+                <h4 className="text-base font-bold text-gray-900">
+                  {previewStep.label}
+                </h4>
+              </div>
+              <button
+                onClick={() => setPreviewStep(null)}
+                className="p-1.5 rounded-full hover:bg-gray-100 transition-colors"
+                aria-label="닫기"
+              >
+                <X className="w-5 h-5 text-gray-500" />
+              </button>
+            </div>
+            <div className="bg-gray-50">
+              <img
+                src={previewStep.image}
+                alt={previewStep.label}
+                className="w-full h-auto max-h-[75vh] object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      )}
           </div>
         </div>
       </main>
