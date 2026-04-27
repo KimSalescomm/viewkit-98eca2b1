@@ -117,7 +117,10 @@ const Subscription = () => {
               <span className="font-medium">VIEW KIT</span>
             </Link>
             <nav className="flex items-center gap-1">
-              <span className="px-3 py-1.5 text-sm font-bold text-sky-600 bg-sky-50 rounded-full border border-sky-100 inline-flex items-center gap-1">
+              <span
+                className="px-3 py-1.5 text-sm font-bold rounded-full border inline-flex items-center gap-1"
+                style={{ color: "#A50034", backgroundColor: "#FBE8EE", borderColor: "#F5C9D5" }}
+              >
                 <Sparkles className="w-3.5 h-3.5" />
                 구독
               </span>
@@ -130,7 +133,7 @@ const Subscription = () => {
       <main className="max-w-6xl mx-auto px-5 sm:px-8 py-8 sm:py-12">
         {/* Title */}
         <div className="mb-6 sm:mb-8">
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-sky-600 mb-2">
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-2" style={{ color: "#A50034" }}>
             CARE SERVICE
           </p>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight">
@@ -152,9 +155,30 @@ const Subscription = () => {
                   onClick={() => setSelectedId(p.id)}
                   className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${
                     active
-                      ? "bg-sky-500 text-white border-sky-500 shadow-md shadow-sky-500/20"
-                      : "bg-white text-gray-600 border-gray-200 hover:border-sky-300 hover:text-sky-600"
+                      ? "text-white shadow-md"
+                      : "bg-white text-gray-600 border-gray-200"
                   }`}
+                  style={
+                    active
+                      ? {
+                          backgroundColor: "#A50034",
+                          borderColor: "#A50034",
+                          boxShadow: "0 6px 16px -4px rgba(165,0,52,0.35)",
+                        }
+                      : undefined
+                  }
+                  onMouseEnter={(e) => {
+                    if (!active) {
+                      e.currentTarget.style.borderColor = "#A50034";
+                      e.currentTarget.style.color = "#A50034";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!active) {
+                      e.currentTarget.style.borderColor = "";
+                      e.currentTarget.style.color = "";
+                    }
+                  }}
                 >
                   {p.name}
                 </button>
@@ -189,10 +213,10 @@ const Subscription = () => {
           {/* After + Care Steps */}
           <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
             <div className="px-5 pt-4 pb-3 flex items-center justify-between">
-              <span className="text-xs font-bold tracking-wider uppercase text-sky-600">
+              <span className="text-xs font-bold tracking-wider uppercase" style={{ color: "#A50034" }}>
                 After
               </span>
-              <span className="text-xs font-medium text-sky-600">케어 후</span>
+              <span className="text-xs font-medium" style={{ color: "#A50034" }}>케어 후</span>
             </div>
             <div className="relative overflow-hidden aspect-[4/3] bg-gray-100">
               <img
@@ -200,13 +224,13 @@ const Subscription = () => {
                 alt={`${selected.name} 케어 후`}
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-sky-500/10 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-transparent to-transparent pointer-events-none" style={{ backgroundImage: "linear-gradient(to top, rgba(165,0,52,0.12), transparent)" }} />
             </div>
 
             {/* Care Process */}
             <div className="px-5 py-5 border-t border-gray-50">
               <h3 className="text-sm font-bold text-gray-900 mb-3 flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-sky-500" />
+                <Sparkles className="w-4 h-4" style={{ color: "#A50034" }} />
                 {selected.name} 케어 과정
               </h3>
               <ul className="space-y-2.5">
@@ -215,7 +239,10 @@ const Subscription = () => {
                     key={i}
                     className="flex items-start gap-2.5 leading-relaxed"
                   >
-                    <span className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-sky-50 text-sky-600 flex items-center justify-center">
+                    <span
+                      className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center"
+                      style={{ backgroundColor: "#FBE8EE", color: "#A50034" }}
+                    >
                       <Check className="w-3 h-3" strokeWidth={3} />
                     </span>
                     <span className="text-[15px] text-gray-700">{step}</span>
