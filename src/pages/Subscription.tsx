@@ -57,13 +57,14 @@ const subscriptionProducts: SubscriptionProduct[] = [
     afterImage: washcomboAfter,
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/wash_tower_250804.mp4",
     careSteps: [
-      { label: "드럼케어" },
+      { label: "드럼케어", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo01.jpg" },
       { label: "고무패킹 클리닝" },
-      { label: "스팀케어" },
-      { label: "건조필터 추가 제공" },
+      { label: "스팀케어", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo03.jpg" },
+      { label: "2중 안심필터 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_washtower05.jpg" },
       { label: "배수 필터 거름망 클리닝 & 교체" },
       { label: "외관 클리닝" },
       { label: "무상 A/S" },
+      { label: "무상 철거 및 재설치", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_washtower05.jpg" },
     ],
   },
   {
