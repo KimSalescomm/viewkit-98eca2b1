@@ -21,6 +21,7 @@ interface CareStep {
   label: string;
   image?: string;
   disclaimer?: string;
+  notes?: string[];
 }
 
 interface SubscriptionProduct {
@@ -64,7 +65,17 @@ const subscriptionProducts: SubscriptionProduct[] = [
       { label: "배수 필터 거름망 클리닝 & 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_washtower02.jpg" },
       { label: "외관 클리닝" },
       { label: "무상 A/S" },
-      { label: "무상 철거 및 재설치", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_washtower05.jpg" },
+      {
+        label: "무상 철거 및 재설치",
+        image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/new_img_washtower.jpg",
+        notes: [
+          "워시타워는 무상 철거 및 재설치 서비스 이용할 수 있음",
+          "가전 구독 고객에 한하여 계약기간 내 1회 해당",
+          "운송비는 유상이며, 거리에 따라 비용이 다름",
+          "제품 설치 환경에 따라 추가 비용이 발생할 수 있음",
+          "추가 비용 관련 자세한 사항은 LG전자 고객센터(1544-7777)에서 안내받을 수 있음",
+        ],
+      },
     ],
   },
   {
@@ -440,6 +451,15 @@ const Subscription = () => {
                 className="w-full h-auto max-h-[75vh] object-contain"
               />
             </div>
+            {previewStep.notes && previewStep.notes.length > 0 && (
+              <div className="px-5 py-4 border-t border-gray-100 bg-white">
+                <ul className="space-y-1.5 text-[12px] leading-relaxed text-gray-500">
+                  {previewStep.notes.map((n, i) => (
+                    <li key={i}>* {n}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       )}
