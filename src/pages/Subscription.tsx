@@ -119,7 +119,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
           "사용 장비는 이미지와 다를 수 있음",
         ],
       },
-      { label: "필터 세척 & 교체" },
+      { label: "필터 세척 & 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_air-conditioners_stand_251126_04.jpg", notes: ["12개월마다 1회 교체하며, 공기청정 모델에 한함"] },
       { label: "제품 성능 점검" },
       { label: "무상 A/S" },
     ],
