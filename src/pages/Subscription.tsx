@@ -395,6 +395,47 @@ const Subscription = () => {
           </div>
         </div>
       )}
+
+      {/* Care video modal */}
+      {videoOpen && selected.careVideo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/85 backdrop-blur-sm animate-in fade-in"
+          onClick={() => setVideoOpen(false)}
+        >
+          <div
+            className="relative max-w-5xl w-full bg-black rounded-2xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 py-3 bg-gray-900/80">
+              <div className="flex items-center gap-2">
+                <span
+                  className="w-6 h-6 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: "#A50034", color: "#fff" }}
+                >
+                  <Play className="w-3 h-3" fill="white" />
+                </span>
+                <h4 className="text-sm font-bold text-white">
+                  {selected.name} 케어 영상
+                </h4>
+              </div>
+              <button
+                onClick={() => setVideoOpen(false)}
+                className="p-1.5 rounded-full hover:bg-white/10 transition-colors"
+                aria-label="닫기"
+              >
+                <X className="w-5 h-5 text-white" />
+              </button>
+            </div>
+            <video
+              src={selected.careVideo}
+              className="w-full h-auto max-h-[80vh] bg-black"
+              controls
+              autoPlay
+              playsInline
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
