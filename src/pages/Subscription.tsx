@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Check, ArrowLeft, Sparkles, ImageIcon, X, Play } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
@@ -138,6 +138,16 @@ const Subscription = () => {
   const selected = subscriptionProducts.find((p) => p.id === selectedId)!;
   const hasAnyImage = selected.careSteps.some((s) => s.image);
 
+  // Preload all before/after images on mount so tab switching is instant
+  useEffect(() => {
+    subscriptionProducts.forEach((p) => {
+      [p.beforeImage, p.afterImage].forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-[hsl(220,20%,97%)]">
       {/* GNB */}
@@ -235,8 +245,12 @@ const Subscription = () => {
             </div>
             <div className="relative overflow-hidden aspect-[4/3] bg-gray-100">
               <img
+                key={`before-${selected.id}`}
                 src={selected.beforeImage}
                 alt={`${selected.name} 케어 전`}
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent pointer-events-none" />
@@ -263,8 +277,12 @@ const Subscription = () => {
                   aria-label={`${selected.name} 케어 영상 재생`}
                 >
                   <img
+                    key={`after-${selected.id}`}
                     src={selected.afterImage}
                     alt={`${selected.name} 케어 후`}
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div
@@ -281,8 +299,12 @@ const Subscription = () => {
               ) : (
                 <div className="overflow-hidden w-full h-full">
                   <img
+                    key={`after-${selected.id}`}
                     src={selected.afterImage}
                     alt={`${selected.name} 케어 후`}
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />
                   <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "linear-gradient(to top, rgba(165,0,52,0.12), transparent)" }} />
