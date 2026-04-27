@@ -12,6 +12,8 @@ import airconBefore from "@/assets/airconB.png";
 import airconAfter from "@/assets/airconA.png";
 import airpurifierBefore from "@/assets/aircB.png";
 import airpurifierAfter from "@/assets/airA.png";
+import inductionBefore from "@/assets/inductionB.png";
+import inductionAfter from "@/assets/inductionA.png";
 
 interface CareStep {
   label: string;
@@ -103,8 +105,8 @@ const subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "cooktop",
     name: "전기레인지",
-    beforeImage: "https://picsum.photos/seed/cooktop-before/800/600",
-    afterImage: "https://picsum.photos/seed/cooktop-after/800/600",
+    beforeImage: inductionBefore,
+    afterImage: inductionAfter,
     careSteps: [
       { label: "코팅 및 광택 서비스" },
       { label: "토탈 클리닝" },
