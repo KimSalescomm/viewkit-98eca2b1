@@ -69,7 +69,7 @@ const ProductSelection = () => {
     name: "구독",
     title: "구독 케어",
     description: "케어 전·후 비교로 한눈에 보는 케어 서비스",
-    keyVisualImage: "https://picsum.photos/seed/subscription-care/800/600",
+    keyVisualImage: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_stove_03_250804.jpg",
     icon: "Sparkles",
   } as (typeof products)[number];
   const visibleProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")];
