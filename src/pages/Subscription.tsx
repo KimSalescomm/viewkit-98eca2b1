@@ -293,41 +293,24 @@ const Subscription = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent pointer-events-none" />
             </div>
-            {selected.id === "washer" && (
-              <div className="px-5 py-3 border-t border-gray-50 text-center">
-                <span className="text-sm font-bold text-gray-700">세탁기 분해세척 전</span>
-              </div>
-            )}
-            {selected.id === "refrigerator" && (
-              <div className="px-5 py-3 border-t border-gray-50 text-center">
-                <span className="text-sm font-bold text-gray-700">기계실 세척 전</span>
-              </div>
-            )}
-            {selected.id === "washcombo" && (
-              <div className="px-5 py-3 border-t border-gray-50 text-center">
-                <span className="text-sm font-bold text-gray-700">드럼케어 전</span>
-              </div>
-            )}
-            {selected.id === "airconditioner" && (
-              <div className="px-5 py-3 border-t border-gray-50 text-center">
-                <span className="text-sm font-bold text-gray-700">열교환기 세척 전</span>
-              </div>
-            )}
-            {selected.id === "airpurifier" && (
-              <div className="px-5 py-3 border-t border-gray-50 text-center">
-                <span className="text-sm font-bold text-gray-700">필터 교체 & 클리닝 전</span>
-              </div>
-            )}
-            {selected.id === "cooktop" && (
-              <div className="px-5 py-3 border-t border-gray-50 text-center">
-                <span className="text-sm font-bold text-gray-700">코팅 및 광택 서비스 전</span>
-              </div>
-            )}
-            {selected.id === "oven" && (
-              <div className="px-5 py-3 border-t border-gray-50 text-center">
-                <span className="text-sm font-bold text-gray-700">내부 클리닝 전</span>
-              </div>
-            )}
+            {(() => {
+              const beforeLabels: Record<string, string> = {
+                washer: "세탁기 분해세척 전",
+                refrigerator: "기계실 세척 전",
+                washcombo: "드럼케어 전",
+                airconditioner: "열교환기 세척 전",
+                airpurifier: "필터 교체 & 클리닝 전",
+                cooktop: "코팅 및 광택 서비스 전",
+                oven: "내부 클리닝 전",
+              };
+              const label = beforeLabels[selected.id];
+              if (!label) return null;
+              return (
+                <div className="bg-white border-t border-gray-50 min-h-[56px] flex items-center justify-center px-5">
+                  <span className="text-sm font-bold text-gray-700 text-center">{label}</span>
+                </div>
+              );
+            })()}
           </div>
 
           {/* After + Care Steps */}
