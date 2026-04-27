@@ -6,6 +6,12 @@ import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import OrientationToggle from "@/components/OrientationToggle";
 
 const productAccents: Record<string, { gradient: string; tint: string; chip: string; keywords: string[] }> = {
+  subscription: {
+    gradient: "from-sky-500 to-indigo-500",
+    tint: "from-sky-50 via-white to-white",
+    chip: "bg-sky-50 text-sky-600 border-sky-100",
+    keywords: ["케어 서비스", "Before / After"],
+  },
   refrigerator: {
     gradient: "from-sky-400 to-blue-500",
     tint: "from-sky-50 via-white to-white",
@@ -57,8 +63,16 @@ const productAccents: Record<string, { gradient: string; tint: string; chip: str
 };
 
 const ProductSelection = () => {
-  const enabledIds = ["refrigerator", "styler", "washer", "airconditioner"];
-  const visibleProducts = products.filter((product) => product.id !== "pc");
+  const enabledIds = ["subscription", "refrigerator", "styler", "washer", "airconditioner"];
+  const subscriptionCard = {
+    id: "subscription",
+    name: "구독",
+    title: "구독 케어",
+    description: "케어 전·후 비교로 한눈에 보는 케어 서비스",
+    keyVisualImage: "https://picsum.photos/seed/subscription-care/800/600",
+    icon: "Sparkles",
+  } as (typeof products)[number];
+  const visibleProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")];
   const { trackProductClick } = useAnalyticsContext();
 
   return (
@@ -209,7 +223,7 @@ const ProductSelection = () => {
               return (
                 <Link
                   key={product.id}
-                  to={`/product/${product.id}`}
+                  to={product.id === "subscription" ? "/subscription" : `/product/${product.id}`}
                   className="block transition-transform duration-300 hover:scale-[1.02]"
                   onClick={() => trackProductClick(product.name)}
                 >

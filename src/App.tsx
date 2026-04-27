@@ -9,6 +9,7 @@ import { OrientationProvider } from "./hooks/useOrientation";
 import ProductSelection from "./pages/ProductSelection";
 
 const Home = lazy(() => import("./pages/Home"));
+const Subscription = lazy(() => import("./pages/Subscription"));
 const FeatureDetail = lazy(() => import("./pages/FeatureDetail"));
 const Manual = lazy(() => import("./pages/Manual"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -35,6 +36,7 @@ const App = () => (
             <Suspense fallback={<PageLoader />}>
               <Routes>
                 <Route path="/" element={<ProductSelection />} />
+                <Route path="/subscription" element={<Subscription />} />
                 <Route path="/product/:productId" element={<Home />} />
                 <Route path="/product/:productId/feature/:id" element={<FeatureDetail />} />
                 <Route path="/product/:productId/manual" element={<Manual />} />
