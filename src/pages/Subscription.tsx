@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Check, ArrowLeft, Sparkles, ImageIcon, X } from "lucide-react";
+import { Check, ArrowLeft, Sparkles, ImageIcon, X, Play } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
 import washerBefore from "@/assets/washer-before.png";
 import washerAfter from "@/assets/washer-after.png";
@@ -15,6 +15,7 @@ interface SubscriptionProduct {
   name: string;
   beforeImage: string;
   afterImage: string;
+  careVideo?: string;
   careSteps: CareStep[];
 }
 
@@ -24,6 +25,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "세탁기",
     beforeImage: washerBefore,
     afterImage: washerAfter,
+    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/washing_machines_250826.mp4",
     careSteps: [
       { label: "분해세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_01.jpg" },
       { label: "세탁조 스팀 & UV 관리", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_02.jpg" },
@@ -119,6 +121,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
 const Subscription = () => {
   const [selectedId, setSelectedId] = useState<string>("washer");
   const [previewStep, setPreviewStep] = useState<CareStep | null>(null);
+  const [videoOpen, setVideoOpen] = useState(false);
   const selected = subscriptionProducts.find((p) => p.id === selectedId)!;
   const hasAnyImage = selected.careSteps.some((s) => s.image);
 
@@ -237,13 +240,48 @@ const Subscription = () => {
               </span>
               <span className="text-xs font-medium" style={{ color: "#A50034" }}>케어 후</span>
             </div>
-            <div className="relative overflow-hidden aspect-[4/3] bg-gray-100">
-              <img
-                src={selected.afterImage}
-                alt={`${selected.name} 케어 후`}
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-transparent to-transparent pointer-events-none" style={{ backgroundImage: "linear-gradient(to top, rgba(165,0,52,0.12), transparent)" }} />
+            <div className="relative aspect-[4/3] bg-gray-100">
+              {selected.careVideo ? (
+                <button
+                  type="button"
+                  onClick={() => setVideoOpen(true)}
+                  className="group block w-full h-full overflow-hidden relative"
+                  aria-label={`${selected.name} 케어 영상 재생`}
+                >
+                  <img
+                    src={selected.afterImage}
+                    alt={`${selected.name} 케어 후`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05) 45%, transparent)" }}
+                  />
+                  {/* Play button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center shadow-2xl ring-4 ring-white/30 transition-transform duration-300 group-hover:scale-110"
+                      style={{ backgroundColor: "#A50034" }}
+                    >
+                      <Play className="w-7 h-7 sm:w-8 sm:h-8 text-white ml-1" fill="white" />
+                    </div>
+                  </div>
+                  {/* Hint chip */}
+                  <div className="absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-white/95 shadow-md" style={{ color: "#A50034" }}>
+                    <Play className="w-3 h-3" fill="currentColor" />
+                    케어 영상 보기
+                  </div>
+                </button>
+              ) : (
+                <div className="overflow-hidden w-full h-full">
+                  <img
+                    src={selected.afterImage}
+                    alt={`${selected.name} 케어 후`}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "linear-gradient(to top, rgba(165,0,52,0.12), transparent)" }} />
+                </div>
+              )}
             </div>
 
             {/* Care Process */}
@@ -354,6 +392,47 @@ const Subscription = () => {
                 className="w-full h-auto max-h-[75vh] object-contain"
               />
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Care video modal */}
+      {videoOpen && selected.careVideo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/85 backdrop-blur-sm animate-in fade-in"
+          onClick={() => setVideoOpen(false)}
+        >
+          <div
+            className="relative max-w-5xl w-full bg-black rounded-2xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 py-3 bg-gray-900/80">
+              <div className="flex items-center gap-2">
+                <span
+                  className="w-6 h-6 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: "#A50034", color: "#fff" }}
+                >
+                  <Play className="w-3 h-3" fill="white" />
+                </span>
+                <h4 className="text-sm font-bold text-white">
+                  {selected.name} 케어 영상
+                </h4>
+              </div>
+              <button
+                onClick={() => setVideoOpen(false)}
+                className="p-1.5 rounded-full hover:bg-white/10 transition-colors"
+                aria-label="닫기"
+              >
+                <X className="w-5 h-5 text-white" />
+              </button>
+            </div>
+            <video
+              src={selected.careVideo}
+              className="w-full h-auto max-h-[80vh] bg-black"
+              controls
+              autoPlay
+              playsInline
+            />
           </div>
         </div>
       )}
