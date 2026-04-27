@@ -134,3 +134,45 @@ All colors MUST be HSL.
     transform: rotate(360deg);
   }
 }
+
+/* ============================================================
+   Landscape Mode (스탠바이미 가로 1920x1080)
+   - 사용자가 우측 상단 토글로 전환 시 <html data-orientation="landscape">
+   - 모바일(<768px)에는 영향 없음. sm: 이상에서만 가로 레이아웃 강화.
+   ============================================================ */
+@media (min-width: 768px) {
+  html[data-orientation="landscape"] body {
+    /* 가로 모드 전반에 통일된 max width 가이드 */
+    --vk-container-max: 1600px;
+  }
+
+  /* 컨테이너 폭을 1920 화면에 맞춰 확장 */
+  html[data-orientation="landscape"] .max-w-xl,
+  html[data-orientation="landscape"] .sm\:max-w-3xl,
+  html[data-orientation="landscape"] .sm\:max-w-4xl {
+    max-width: 1600px;
+  }
+
+  /* 제품 선택 그리드: 2열 → 4열 */
+  html[data-orientation="landscape"] .grid.grid-cols-1.sm\:grid-cols-2 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  /* 키 비주얼 높이 축소(가로 화면이 짧음) */
+  html[data-orientation="landscape"] .sm\:h-\[480px\] {
+    height: 360px;
+  }
+
+  /* FeatureDetail: 헤더+미디어 좌우 배치를 위한 여유 확보 */
+  html[data-orientation="landscape"] .px-4.py-6.sm\:px-6.sm\:py-8 {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  /* 본문 폰트를 가로 화면에서 약간 키워 가독성 보강 */
+  html[data-orientation="landscape"] h1 {
+    font-size: 2.25rem;
+  }
+}
+
