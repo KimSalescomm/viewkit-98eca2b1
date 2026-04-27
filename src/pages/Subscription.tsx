@@ -8,6 +8,8 @@ import washerBefore from "@/assets/washercare-b.png";
 import washerAfter from "@/assets/washercare-a.png";
 import refrigeratorBefore from "@/assets/refrigerator-before.png";
 import refrigeratorAfter from "@/assets/refrigerator-after.png";
+import airconBefore from "@/assets/airconB.png";
+import airconAfter from "@/assets/airconA.png";
 
 interface CareStep {
   label: string;
@@ -72,8 +74,8 @@ const subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "airconditioner",
     name: "에어컨",
-    beforeImage: "https://picsum.photos/seed/aircon-before/800/600",
-    afterImage: "https://picsum.photos/seed/aircon-after/800/600",
+    beforeImage: airconBefore,
+    afterImage: airconAfter,
     careSteps: [
       { label: "분해세척" },
       { label: "위생케어 (피톤치드, UV케어)" },
