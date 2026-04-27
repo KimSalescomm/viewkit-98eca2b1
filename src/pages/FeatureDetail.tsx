@@ -4,6 +4,7 @@ import { getFeatureById } from "@/data/features";
 import { getProductById } from "@/data/products";
 import MediaViewer from "@/components/MediaViewer";
 import FeatureIcon from "@/components/FeatureIcon";
+import OrientationToggle from "@/components/OrientationToggle";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import {
   Accordion,
@@ -51,13 +52,16 @@ const FeatureDetail = () => {
       {/* Sticky Header */}
       <div className="sticky top-0 bg-white/90 backdrop-blur-md border-b border-gray-200 px-4 py-3 sm:px-6 sm:py-4 z-50">
         <div className="max-w-xl mx-auto sm:max-w-4xl">
-          <Link
-            to={`/product/${productId}`}
-            className="inline-flex items-center gap-1.5 text-gray-600 hover:text-gray-900 text-xs sm:text-sm transition-colors"
-          >
-            <span>←</span>
-            <span>{product.name} 특장점으로 돌아가기</span>
-          </Link>
+          <div className="flex items-center justify-between">
+            <Link
+              to={`/product/${productId}`}
+              className="inline-flex items-center gap-1.5 text-gray-600 hover:text-gray-900 text-xs sm:text-sm transition-colors"
+            >
+              <span>←</span>
+              <span>{product.name} 특장점으로 돌아가기</span>
+            </Link>
+            <OrientationToggle />
+          </div>
           <div className="text-center mt-1 sm:mt-2">
             <span className="text-lg sm:text-2xl font-black tracking-wider uppercase text-gray-800">
               VIEW KIT

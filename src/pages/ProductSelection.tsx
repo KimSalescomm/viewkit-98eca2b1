@@ -3,6 +3,7 @@ import { products, iconMap } from "@/data/products";
 import SafeImage from "@/components/SafeImage";
 import { HelpCircle } from "lucide-react";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
+import OrientationToggle from "@/components/OrientationToggle";
 
 const productAccents: Record<string, { gradient: string; tint: string; chip: string; keywords: string[] }> = {
   refrigerator: {
@@ -64,14 +65,17 @@ const ProductSelection = () => {
     <div className="min-h-screen bg-[hsl(220,20%,97%)] px-5 py-10 sm:px-8 sm:py-14">
       <div className="max-w-xl mx-auto sm:max-w-3xl relative">
 
-        {/* Help Icon */}
-        <Link
-          to="/product/tv/manual"
-          className="absolute -top-4 sm:-top-6 right-0 text-sky-400 hover:text-sky-500 transition-colors"
-          title="운영 매뉴얼"
-        >
-          <HelpCircle className="w-7 h-7 sm:w-8 sm:h-8" />
-        </Link>
+        {/* Top-right controls */}
+        <div className="absolute -top-4 sm:-top-6 right-0 flex items-center gap-2">
+          <OrientationToggle />
+          <Link
+            to="/product/tv/manual"
+            className="text-sky-400 hover:text-sky-500 transition-colors"
+            title="운영 매뉴얼"
+          >
+            <HelpCircle className="w-7 h-7 sm:w-8 sm:h-8" />
+          </Link>
+        </div>
 
         {/* Header Section */}
         <div className="text-center mt-12 sm:mt-20 mb-12 sm:mb-16">

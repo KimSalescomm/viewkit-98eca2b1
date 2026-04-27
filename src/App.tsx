@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AnalyticsProvider from "./components/AnalyticsProvider";
+import { OrientationProvider } from "./hooks/useOrientation";
 import ProductSelection from "./pages/ProductSelection";
 
 const Home = lazy(() => import("./pages/Home"));
@@ -29,18 +30,20 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <AnalyticsProvider>
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/" element={<ProductSelection />} />
-              <Route path="/product/:productId" element={<Home />} />
-              <Route path="/product/:productId/feature/:id" element={<FeatureDetail />} />
-              <Route path="/product/:productId/manual" element={<Manual />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </AnalyticsProvider>
+        <OrientationProvider>
+          <AnalyticsProvider>
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="/" element={<ProductSelection />} />
+                <Route path="/product/:productId" element={<Home />} />
+                <Route path="/product/:productId/feature/:id" element={<FeatureDetail />} />
+                <Route path="/product/:productId/manual" element={<Manual />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </AnalyticsProvider>
+        </OrientationProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
