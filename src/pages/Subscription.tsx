@@ -293,9 +293,6 @@ const Subscription = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent pointer-events-none" />
             </div>
-            <div className="px-5 py-4 text-sm text-gray-500 border-t border-gray-50">
-              일상 사용 후 누적된 오염 · 마모 상태
-            </div>
           </div>
 
           {/* After + Care Steps */}
