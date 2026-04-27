@@ -4,6 +4,8 @@ import { Check, ArrowLeft, Sparkles, ImageIcon, X, Play } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
 import washerBefore from "@/assets/washer-before.png";
 import washerAfter from "@/assets/washer-after.png";
+import refrigeratorBefore from "@/assets/refrigerator-before.png";
+import refrigeratorAfter from "@/assets/refrigerator-after.png";
 
 interface CareStep {
   label: string;
@@ -56,8 +58,8 @@ const subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "refrigerator",
     name: "냉장고",
-    beforeImage: "https://picsum.photos/seed/fridge-before/800/600",
-    afterImage: "https://picsum.photos/seed/fridge-after/800/600",
+    beforeImage: refrigeratorBefore,
+    afterImage: refrigeratorAfter,
     careSteps: [
       { label: "기계실 세척" },
       { label: "토탈 클리닝" },
