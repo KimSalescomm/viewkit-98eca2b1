@@ -57,8 +57,16 @@ const productAccents: Record<string, { gradient: string; tint: string; chip: str
 };
 
 const ProductSelection = () => {
-  const enabledIds = ["refrigerator", "styler", "washer", "airconditioner"];
-  const visibleProducts = products.filter((product) => product.id !== "pc");
+  const enabledIds = ["subscription", "refrigerator", "styler", "washer", "airconditioner"];
+  const subscriptionCard = {
+    id: "subscription",
+    name: "구독",
+    title: "구독 케어",
+    description: "케어 전·후 비교로 한눈에 보는 케어 서비스",
+    keyVisualImage: "https://picsum.photos/seed/subscription-care/800/600",
+    icon: "Sparkles",
+  } as (typeof products)[number];
+  const visibleProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")];
   const { trackProductClick } = useAnalyticsContext();
 
   return (
