@@ -43,8 +43,8 @@ const subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "washcombo",
     name: "워시콤보",
-    beforeImage: "https://picsum.photos/seed/washcombo-before/800/600",
-    afterImage: "https://picsum.photos/seed/washcombo-after/800/600",
+    beforeImage: washcomboBefore,
+    afterImage: washcomboAfter,
     careSteps: [
       { label: "드럼케어" },
       { label: "고무패킹 클리닝" },
