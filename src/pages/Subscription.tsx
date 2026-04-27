@@ -132,7 +132,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/air_purifiers_250804.mp4",
     careSteps: [
       { label: "필터 교체 & 필터 클리닝" },
-      { label: "클린부스터 클리닝" },
+      { label: "클린부스터 클리닝", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_airpurifier02.jpg", notes: ["6개월마다 점검 (단, 360° 공기청정기 알파UP, UV살균 모델은 방문 시마다 점검)"] },
       { label: "토탈 클리닝" },
       { label: "UV 살균" },
       { label: "모듈 점검" },
