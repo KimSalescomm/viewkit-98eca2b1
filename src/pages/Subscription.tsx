@@ -146,8 +146,8 @@ const subscriptionProducts: SubscriptionProduct[] = [
     afterImage: inductionAfter,
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/electric_stoves_250819.mp4",
     careSteps: [
-      { label: "코팅 및 광택 서비스", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_stove_02_250804.jpg", notes: ["코팅/광택 서비스는 계약 시 선택한 방문 주기에 맞춰 서비스 이용", "무방문 선택 고객은 해당없음"] },
-      { label: "토탈 클리닝" },
+      { label: "코팅 및 광택 서비스", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_stove_02_250804.jpg", notes: ["코팅/광택 서비스는 계약 시 선택한 방문 주기에 맞춰 받을 수 있음 (무방문 선택 고객은 해당 없음)"] },
+      { label: "토탈 클리닝", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_stove03.jpg", notes: ["클리닝은 계약 시 선택한 방문 주기에 맞춰 받을 수 있음 (무방문 선택 고객은 해당 없음)"] },
       { label: "상판 교체" },
       { label: "무상 재설치" },
       { label: "무상 A/S" },
