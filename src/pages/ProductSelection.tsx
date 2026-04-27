@@ -7,9 +7,9 @@ import OrientationToggle from "@/components/OrientationToggle";
 
 const productAccents: Record<string, { gradient: string; tint: string; chip: string; keywords: string[] }> = {
   subscription: {
-    gradient: "from-sky-500 to-indigo-500",
-    tint: "from-sky-50 via-white to-white",
-    chip: "bg-sky-50 text-sky-600 border-sky-100",
+    gradient: "from-[#A50034] to-[#7A0026]",
+    tint: "from-[#FFF5F8] via-white to-white",
+    chip: "bg-[#FBE8EE] text-[#A50034] border-[#F5C9D5]",
     keywords: ["케어 서비스", "Before / After"],
   },
   refrigerator: {
