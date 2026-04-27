@@ -293,6 +293,11 @@ const Subscription = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent pointer-events-none" />
             </div>
+            {selected.id === "washer" && (
+              <div className="px-5 py-3 border-t border-gray-50 text-center">
+                <span className="text-sm font-bold text-gray-700">세탁기 분해세척 전</span>
+              </div>
+            )}
           </div>
 
           {/* After + Care Steps */}
