@@ -4,6 +4,7 @@ import { getFeaturesByProductId } from "@/data/features";
 import FeatureCard from "@/components/FeatureCard";
 import SafeImage from "@/components/SafeImage";
 import { HelpCircle } from "lucide-react";
+import OrientationToggle from "@/components/OrientationToggle";
 
 const Home = () => {
   const { productId } = useParams<{ productId: string }>();
