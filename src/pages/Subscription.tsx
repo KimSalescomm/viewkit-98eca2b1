@@ -31,6 +31,7 @@ interface SubscriptionProduct {
   afterImage: string;
   careVideo?: string;
   careSteps: CareStep[];
+  disabled?: boolean;
 }
 
 const subscriptionProducts: SubscriptionProduct[] = [
@@ -97,6 +98,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "airconditioner",
     name: "스탠드 에어컨",
+    disabled: true,
     beforeImage: airconBefore,
     afterImage: airconAfter,
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/air_conditioners_stand_250804.mp4",
@@ -230,7 +232,7 @@ const Subscription = () => {
         {/* Category buttons */}
         <div className="-mx-5 sm:mx-0 mb-8">
           <div className="flex sm:flex-wrap gap-2 overflow-x-auto px-5 sm:px-0 pb-2 scrollbar-hide">
-            {subscriptionProducts.map((p) => {
+            {subscriptionProducts.filter((p) => !p.disabled).map((p) => {
               const active = p.id === selectedId;
               return (
                 <button
