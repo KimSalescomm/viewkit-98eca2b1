@@ -6,6 +6,12 @@ import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import OrientationToggle from "@/components/OrientationToggle";
 
 const productAccents: Record<string, { gradient: string; tint: string; chip: string; keywords: string[] }> = {
+  subscription: {
+    gradient: "from-sky-500 to-indigo-500",
+    tint: "from-sky-50 via-white to-white",
+    chip: "bg-sky-50 text-sky-600 border-sky-100",
+    keywords: ["케어 서비스", "Before / After"],
+  },
   refrigerator: {
     gradient: "from-sky-400 to-blue-500",
     tint: "from-sky-50 via-white to-white",
