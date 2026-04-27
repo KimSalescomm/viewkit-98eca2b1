@@ -85,7 +85,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     afterImage: refrigeratorAfter,
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/refrigerators_regular_250804.mp4",
     careSteps: [
-      { label: "기계실 세척" },
+      { label: "기계실 세척", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator01.jpg" },
       { label: "토탈 클리닝" },
       { label: "제품 성능 점검" },
       { label: "무상 A/S" },
