@@ -101,7 +101,15 @@ const subscriptionProducts: SubscriptionProduct[] = [
     afterImage: airconAfter,
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/air_conditioners_stand_250804.mp4",
     careSteps: [
-      { label: "분해세척" },
+      {
+        label: "분해세척",
+        image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_air-conditioner01.jpg",
+        notes: [
+          "프리미엄 구독 고객이 이용할 수 있으며, 분해 세척은 36/72개월 차에 진행됩니다.",
+          "1~3월 구독 계약 시, 다음 해 3월 방문 / 4~6월 구독 계약 시, 다음 해 4월 방문 / 7~8월 구독 계약 시, 다음 해 5월 방문 / 9월 구독 계약 시, 다음 해 9월 방문 / 10월 구독 계약 시, 다음 해 10월 방문 / 11~12월 구독 계약 시, 다음 해 11월 방문합니다.",
+          "방문 일정은 상황에 따라 변경될 수 있으며 방문 전 케어서비스 매니저가 사전 연락을 드립니다.",
+        ],
+      },
       { label: "위생케어 (피톤치드, UV케어)" },
       { label: "필터 세척 & 교체" },
       { label: "제품 성능 점검" },
