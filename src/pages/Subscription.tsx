@@ -4,6 +4,8 @@ import { Check, ArrowLeft, Sparkles, ImageIcon, X, Play } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
 import washerBefore from "@/assets/washer-before.png";
 import washerAfter from "@/assets/washer-after.png";
+import washcomboBefore from "@/assets/washcombo-before.png";
+import washcomboAfter from "@/assets/washcombo-after.png";
 
 interface CareStep {
   label: string;
