@@ -190,6 +190,7 @@ const Subscription = () => {
                       ? {
                           backgroundColor: "#A50034",
                           borderColor: "#A50034",
+                          color: "#ffffff",
                           boxShadow: "0 6px 16px -4px rgba(165,0,52,0.35)",
                         }
                       : undefined
