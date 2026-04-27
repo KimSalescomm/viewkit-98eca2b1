@@ -58,11 +58,11 @@ const subscriptionProducts: SubscriptionProduct[] = [
     afterImage: washcomboAfter,
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/wash_tower_250804.mp4",
     careSteps: [
-      { label: "드럼케어", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo01.jpg" },
+      { label: "드럼케어", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo01.jpg", notes: ["드럼/스팀케어는 25년 4월 이후 구독 고객부터 이용할 수 있음"] },
       { label: "고무패킹 클리닝" },
-      { label: "스팀케어", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo03.jpg" },
-      { label: "2중 안심필터 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_washtower05.jpg" },
-      { label: "배수 필터 거름망 클리닝 & 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_washtower02.jpg" },
+      { label: "스팀케어", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo03.jpg", notes: ["드럼/스팀케어는 25년 4월 이후 구독 고객부터 이용할 수 있음"] },
+      { label: "2중 안심필터 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_washtower05.jpg", notes: ["2중 안심필터는 첫 방문시 1회 증정"] },
+      { label: "배수 필터 거름망 클리닝 & 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_washtower02.jpg", notes: ["배수필터는 24개월마다 교체"] },
       { label: "외관 클리닝" },
       { label: "무상 A/S" },
       {
