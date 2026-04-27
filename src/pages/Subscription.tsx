@@ -8,6 +8,7 @@ import washerAfter from "@/assets/washer-after.png";
 interface CareStep {
   label: string;
   image?: string;
+  disclaimer?: string;
 }
 
 interface SubscriptionProduct {
@@ -27,7 +28,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     afterImage: washerAfter,
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/washing_machines_250826.mp4",
     careSteps: [
-      { label: "분해세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_01.jpg" },
+      { label: "분해세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_01.jpg", disclaimer: "프리미엄, 48개월 차에 1회 서비스" },
       { label: "세탁조 스팀 & UV 관리", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_02.jpg" },
       { label: "고무패킹 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_03.jpg" },
       { label: "급/배수 필터 세척" },
