@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Check, ArrowLeft, Sparkles } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
+import washerBefore from "@/assets/washer-before.png";
+import washerAfter from "@/assets/washer-after.png";
 
 interface SubscriptionProduct {
   id: string;
@@ -15,8 +17,8 @@ const subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "washer",
     name: "세탁기",
-    beforeImage: "https://picsum.photos/seed/washer-before/800/600",
-    afterImage: "https://picsum.photos/seed/washer-after/800/600",
+    beforeImage: washerBefore,
+    afterImage: washerAfter,
     careSteps: [
       "분해세척",
       "세탁조 스팀 & UV 관리",
