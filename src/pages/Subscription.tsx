@@ -366,8 +366,13 @@ const Subscription = () => {
                 >
                   <Check className="w-3.5 h-3.5" strokeWidth={3} />
                 </span>
-                <h4 className="text-base font-bold text-gray-900">
-                  {previewStep.label}
+                <h4 className="text-base font-bold text-gray-900 flex items-baseline gap-2 flex-wrap">
+                  <span>{previewStep.label}</span>
+                  {previewStep.disclaimer && (
+                    <span className="text-[70%] font-normal text-gray-400">
+                      ({previewStep.disclaimer})
+                    </span>
+                  )}
                 </h4>
               </div>
               <button
