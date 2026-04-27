@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Check, ArrowLeft, Sparkles } from "lucide-react";
+import { Check, ArrowLeft, Sparkles, ImageIcon, X } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
 import washerBefore from "@/assets/washer-before.png";
 import washerAfter from "@/assets/washer-after.png";
+
+interface CareStep {
+  label: string;
+  image?: string;
+}
 
 interface SubscriptionProduct {
   id: string;
   name: string;
   beforeImage: string;
   afterImage: string;
-  careSteps: string[];
+  careSteps: CareStep[];
 }
 
 const subscriptionProducts: SubscriptionProduct[] = [
@@ -20,14 +25,14 @@ const subscriptionProducts: SubscriptionProduct[] = [
     beforeImage: washerBefore,
     afterImage: washerAfter,
     careSteps: [
-      "분해세척",
-      "세탁조 스팀 & UV 관리",
-      "고무패킹 교체",
-      "급/배수 필터 세척",
-      "배수 필터 교체",
-      "세탁조 클리너 제공",
-      "제품 성능 점검",
-      "토탈 클리닝",
+      { label: "분해세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_01.jpg" },
+      { label: "세탁조 스팀 & UV 관리", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_02.jpg" },
+      { label: "고무패킹 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_03.jpg" },
+      { label: "급/배수 필터 세척" },
+      { label: "배수 필터 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_04.jpg" },
+      { label: "세탁조 클리너 제공" },
+      { label: "제품 성능 점검" },
+      { label: "토탈 클리닝", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_06.jpg" },
     ],
   },
   {
@@ -36,13 +41,13 @@ const subscriptionProducts: SubscriptionProduct[] = [
     beforeImage: "https://picsum.photos/seed/washcombo-before/800/600",
     afterImage: "https://picsum.photos/seed/washcombo-after/800/600",
     careSteps: [
-      "드럼케어",
-      "고무패킹 클리닝",
-      "스팀케어",
-      "건조필터 추가 제공",
-      "배수 필터 거름망 클리닝 & 교체",
-      "외관 클리닝",
-      "무상 A/S",
+      { label: "드럼케어" },
+      { label: "고무패킹 클리닝" },
+      { label: "스팀케어" },
+      { label: "건조필터 추가 제공" },
+      { label: "배수 필터 거름망 클리닝 & 교체" },
+      { label: "외관 클리닝" },
+      { label: "무상 A/S" },
     ],
   },
   {
@@ -50,7 +55,12 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "냉장고",
     beforeImage: "https://picsum.photos/seed/fridge-before/800/600",
     afterImage: "https://picsum.photos/seed/fridge-after/800/600",
-    careSteps: ["기계실 세척", "토탈 클리닝", "제품 성능 점검", "무상 A/S"],
+    careSteps: [
+      { label: "기계실 세척" },
+      { label: "토탈 클리닝" },
+      { label: "제품 성능 점검" },
+      { label: "무상 A/S" },
+    ],
   },
   {
     id: "airconditioner",
@@ -58,11 +68,11 @@ const subscriptionProducts: SubscriptionProduct[] = [
     beforeImage: "https://picsum.photos/seed/aircon-before/800/600",
     afterImage: "https://picsum.photos/seed/aircon-after/800/600",
     careSteps: [
-      "분해세척",
-      "위생케어 (피톤치드, UV케어)",
-      "필터 세척 & 교체",
-      "제품 성능 점검",
-      "무상 A/S",
+      { label: "분해세척" },
+      { label: "위생케어 (피톤치드, UV케어)" },
+      { label: "필터 세척 & 교체" },
+      { label: "제품 성능 점검" },
+      { label: "무상 A/S" },
     ],
   },
   {
@@ -71,12 +81,12 @@ const subscriptionProducts: SubscriptionProduct[] = [
     beforeImage: "https://picsum.photos/seed/airpurifier-before/800/600",
     afterImage: "https://picsum.photos/seed/airpurifier-after/800/600",
     careSteps: [
-      "필터 교체 & 필터 클리닝",
-      "클린부스터 클리닝",
-      "토탈 클리닝",
-      "UV 살균",
-      "모듈 점검",
-      "무상 A/S",
+      { label: "필터 교체 & 필터 클리닝" },
+      { label: "클린부스터 클리닝" },
+      { label: "토탈 클리닝" },
+      { label: "UV 살균" },
+      { label: "모듈 점검" },
+      { label: "무상 A/S" },
     ],
   },
   {
@@ -85,11 +95,11 @@ const subscriptionProducts: SubscriptionProduct[] = [
     beforeImage: "https://picsum.photos/seed/cooktop-before/800/600",
     afterImage: "https://picsum.photos/seed/cooktop-after/800/600",
     careSteps: [
-      "코팅 및 광택 서비스",
-      "토탈 클리닝",
-      "상판 교체",
-      "무상 재설치",
-      "무상 A/S",
+      { label: "코팅 및 광택 서비스" },
+      { label: "토탈 클리닝" },
+      { label: "상판 교체" },
+      { label: "무상 재설치" },
+      { label: "무상 A/S" },
     ],
   },
   {
@@ -97,13 +107,20 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "광파오븐",
     beforeImage: "https://picsum.photos/seed/oven-before/800/600",
     afterImage: "https://picsum.photos/seed/oven-after/800/600",
-    careSteps: ["소모품 교체", "토탈 클리닝", "내부 클리닝", "무상 A/S"],
+    careSteps: [
+      { label: "소모품 교체" },
+      { label: "토탈 클리닝" },
+      { label: "내부 클리닝" },
+      { label: "무상 A/S" },
+    ],
   },
 ];
 
 const Subscription = () => {
   const [selectedId, setSelectedId] = useState<string>("washer");
+  const [previewStep, setPreviewStep] = useState<CareStep | null>(null);
   const selected = subscriptionProducts.find((p) => p.id === selectedId)!;
+  const hasAnyImage = selected.careSteps.some((s) => s.image);
 
   return (
     <div className="min-h-screen bg-[hsl(220,20%,97%)]">
@@ -231,30 +248,115 @@ const Subscription = () => {
 
             {/* Care Process */}
             <div className="px-5 py-5 border-t border-gray-50">
-              <h3 className="text-sm font-bold text-gray-900 mb-3 flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4" style={{ color: "#A50034" }} />
-                {selected.name} 케어 과정
-              </h3>
-              <ul className="space-y-2.5">
-                {selected.careSteps.map((step, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-2.5 leading-relaxed"
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
+                  <Sparkles className="w-4 h-4" style={{ color: "#A50034" }} />
+                  {selected.name} 케어 과정
+                </h3>
+                {hasAnyImage && (
+                  <span
+                    className="text-[11px] font-semibold inline-flex items-center gap-1 px-2 py-0.5 rounded-full"
+                    style={{ color: "#A50034", backgroundColor: "#FBE8EE" }}
                   >
-                    <span
-                      className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center"
-                      style={{ backgroundColor: "#FBE8EE", color: "#A50034" }}
-                    >
-                      <Check className="w-3 h-3" strokeWidth={3} />
-                    </span>
-                    <span className="text-[15px] text-gray-700">{step}</span>
-                  </li>
-                ))}
+                    <ImageIcon className="w-3 h-3" />
+                    이미지 클릭
+                  </span>
+                )}
+              </div>
+              <ul className="space-y-2">
+                {selected.careSteps.map((step, i) => {
+                  const clickable = !!step.image;
+                  return (
+                    <li key={i}>
+                      {clickable ? (
+                        <button
+                          type="button"
+                          onClick={() => setPreviewStep(step)}
+                          className="group w-full text-left flex items-center gap-2.5 leading-relaxed rounded-lg px-2.5 py-2 -mx-2.5 border transition-all duration-200 hover:-translate-y-px"
+                          style={{
+                            backgroundColor: "#FFF5F8",
+                            borderColor: "#F5C9D5",
+                          }}
+                        >
+                          <span
+                            className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
+                            style={{ backgroundColor: "#A50034", color: "#fff" }}
+                          >
+                            <Check className="w-3 h-3" strokeWidth={3} />
+                          </span>
+                          <span
+                            className="text-[15px] font-semibold flex-1"
+                            style={{ color: "#7A0026" }}
+                          >
+                            {step.label}
+                          </span>
+                          <span
+                            className="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full transition-colors group-hover:brightness-110"
+                            style={{ backgroundColor: "#A50034", color: "#fff" }}
+                          >
+                            <ImageIcon className="w-3 h-3" />
+                            보기
+                          </span>
+                        </button>
+                      ) : (
+                        <div className="flex items-center gap-2.5 leading-relaxed px-2.5 py-1.5 -mx-2.5">
+                          <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-gray-100 text-gray-400">
+                            <Check className="w-3 h-3" strokeWidth={3} />
+                          </span>
+                          <span className="text-[15px] text-gray-500">
+                            {step.label}
+                          </span>
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
         </div>
       </main>
+
+      {/* Lightbox modal */}
+      {previewStep?.image && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/70 backdrop-blur-sm animate-in fade-in"
+          onClick={() => setPreviewStep(null)}
+        >
+          <div
+            className="relative max-w-3xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100">
+              <div className="flex items-center gap-2">
+                <span
+                  className="w-6 h-6 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: "#A50034", color: "#fff" }}
+                >
+                  <Check className="w-3.5 h-3.5" strokeWidth={3} />
+                </span>
+                <h4 className="text-base font-bold text-gray-900">
+                  {previewStep.label}
+                </h4>
+              </div>
+              <button
+                onClick={() => setPreviewStep(null)}
+                className="p-1.5 rounded-full hover:bg-gray-100 transition-colors"
+                aria-label="닫기"
+              >
+                <X className="w-5 h-5 text-gray-500" />
+              </button>
+            </div>
+            <div className="bg-gray-50">
+              <img
+                src={previewStep.image}
+                alt={previewStep.label}
+                className="w-full h-auto max-h-[75vh] object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
