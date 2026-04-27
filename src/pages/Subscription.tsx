@@ -257,15 +257,7 @@ const Subscription = () => {
                     className="absolute inset-0 pointer-events-none"
                     style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05) 45%, transparent)" }}
                   />
-                  {/* Play button */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div
-                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center shadow-2xl ring-4 ring-white/30 transition-transform duration-300 group-hover:scale-110"
-                      style={{ backgroundColor: "#A50034" }}
-                    >
-                      <Play className="w-7 h-7 sm:w-8 sm:h-8 text-white ml-1" fill="white" />
-                    </div>
-                  </div>
+                  {/* (Center play button removed — image-first display) */}
                   {/* Hint chip */}
                   <div className="absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-white/95 shadow-md" style={{ color: "#A50034" }}>
                     <Play className="w-3 h-3" fill="currentColor" />
