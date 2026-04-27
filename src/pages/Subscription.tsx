@@ -96,7 +96,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
   },
   {
     id: "airconditioner",
-    name: "에어컨",
+    name: "스탠드 에어컨",
     beforeImage: airconBefore,
     afterImage: airconAfter,
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/air_conditioners_stand_250804.mp4",
@@ -110,7 +110,15 @@ const subscriptionProducts: SubscriptionProduct[] = [
           "방문 일정은 상황에 따라 변경될 수 있으며 방문 전 케어서비스 매니저가 사전 연락을 드립니다.",
         ],
       },
-      { label: "위생케어 (피톤치드, UV케어)" },
+      {
+        label: "위생케어 (피톤치드, UV케어)",
+        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_air-conditioners_stand_251126_03.jpg",
+        notes: [
+          "스팀케어는 프리미엄과 라이트 플러스 모두 36개월마다 서비스",
+          "UV와 피톤치드 케어는 프리미엄은 36개월마다 라이트플러스는 12개월마다 서비스",
+          "사용 장비는 이미지와 다를 수 있음",
+        ],
+      },
       { label: "필터 세척 & 교체" },
       { label: "제품 성능 점검" },
       { label: "무상 A/S" },
