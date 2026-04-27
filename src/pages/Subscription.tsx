@@ -274,7 +274,7 @@ const Subscription = () => {
         {/* Before / After */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {/* Before */}
-          <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
+          <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)] flex flex-col h-full">
             <div className="px-5 pt-4 pb-3 flex items-center justify-between">
               <span className="text-xs font-bold tracking-wider uppercase text-gray-400">
                 Before
@@ -306,7 +306,7 @@ const Subscription = () => {
               const label = beforeLabels[selected.id];
               if (!label) return null;
               return (
-                <div className="bg-white border-t border-gray-50 min-h-[56px] flex items-center justify-center px-5">
+                <div className="bg-white border-t border-gray-50 flex-1 flex items-center justify-center px-5 py-6 min-h-[56px]">
                   <span className="text-sm font-bold text-gray-700 text-center">{label}</span>
                 </div>
               );
