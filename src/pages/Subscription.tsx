@@ -14,6 +14,8 @@ import airpurifierBefore from "@/assets/aircB.png";
 import airpurifierAfter from "@/assets/airA.png";
 import inductionBefore from "@/assets/inductionB.png";
 import inductionAfter from "@/assets/inductionA.png";
+import ovenBefore from "@/assets/ovenB.png";
+import ovenAfter from "@/assets/ovenA.png";
 
 interface CareStep {
   label: string;
@@ -118,8 +120,8 @@ const subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "oven",
     name: "광파오븐",
-    beforeImage: "https://picsum.photos/seed/oven-before/800/600",
-    afterImage: "https://picsum.photos/seed/oven-after/800/600",
+    beforeImage: ovenBefore,
+    afterImage: ovenAfter,
     careSteps: [
       { label: "소모품 교체" },
       { label: "토탈 클리닝" },
