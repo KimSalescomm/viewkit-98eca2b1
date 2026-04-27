@@ -88,6 +88,8 @@ const subscriptionProducts: SubscriptionProduct[] = [
       { label: "기계실 세척", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator01.jpg" },
       { label: "퓨어프레시 필터 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator06.png", notes: ["필터 교체 주기(12개월)에 맞춰 교체하며, 해당 필터를 적용한 모델에 한함"] },
       { label: "토탈 클리닝" },
+      { label: "고무패킹 케어", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator10.png" },
+      { label: "얼음저장통 세척", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator-basic02.jpg" },
       { label: "제품 성능 점검" },
       { label: "무상 A/S" },
     ],
