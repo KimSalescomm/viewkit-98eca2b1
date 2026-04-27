@@ -31,6 +31,7 @@ interface SubscriptionProduct {
   afterImage: string;
   careVideo?: string;
   careSteps: CareStep[];
+  disabled?: boolean;
 }
 
 const subscriptionProducts: SubscriptionProduct[] = [
@@ -97,6 +98,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "airconditioner",
     name: "스탠드 에어컨",
+    disabled: true,
     beforeImage: airconBefore,
     afterImage: airconAfter,
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/air_conditioners_stand_250804.mp4",
