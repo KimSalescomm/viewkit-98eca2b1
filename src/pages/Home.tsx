@@ -38,13 +38,16 @@ const Home = () => {
             <span className="text-lg">←</span>
             <span>제품 선택으로 돌아가기</span>
           </Link>
-          <Link
-            to={`/product/${productId}/manual`}
-            className="inline-flex items-center gap-1.5 text-gray-400 hover:text-purple-600 transition-colors"
-            title="운영 매뉴얼"
-          >
-            <HelpCircle className="w-5 h-5 sm:w-6 sm:h-6" />
-          </Link>
+          <div className="flex items-center gap-2">
+            <OrientationToggle />
+            <Link
+              to={`/product/${productId}/manual`}
+              className="inline-flex items-center gap-1.5 text-gray-400 hover:text-purple-600 transition-colors"
+              title="운영 매뉴얼"
+            >
+              <HelpCircle className="w-5 h-5 sm:w-6 sm:h-6" />
+            </Link>
+          </div>
         </div>
 
         {/* Header */}
