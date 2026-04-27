@@ -8,6 +8,7 @@ import washerAfter from "@/assets/washer-after.png";
 interface CareStep {
   label: string;
   image?: string;
+  disclaimer?: string;
 }
 
 interface SubscriptionProduct {
@@ -27,7 +28,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     afterImage: washerAfter,
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/washing_machines_250826.mp4",
     careSteps: [
-      { label: "분해세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_01.jpg" },
+      { label: "분해세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_01.jpg", disclaimer: "프리미엄, 48개월 차에 1회 서비스" },
       { label: "세탁조 스팀 & UV 관리", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_02.jpg" },
       { label: "고무패킹 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_03.jpg" },
       { label: "급/배수 필터 세척" },
@@ -257,15 +258,7 @@ const Subscription = () => {
                     className="absolute inset-0 pointer-events-none"
                     style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05) 45%, transparent)" }}
                   />
-                  {/* Play button */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div
-                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center shadow-2xl ring-4 ring-white/30 transition-transform duration-300 group-hover:scale-110"
-                      style={{ backgroundColor: "#A50034" }}
-                    >
-                      <Play className="w-7 h-7 sm:w-8 sm:h-8 text-white ml-1" fill="white" />
-                    </div>
-                  </div>
+                  {/* (Center play button removed — image-first display) */}
                   {/* Hint chip */}
                   <div className="absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-white/95 shadow-md" style={{ color: "#A50034" }}>
                     <Play className="w-3 h-3" fill="currentColor" />
@@ -373,8 +366,13 @@ const Subscription = () => {
                 >
                   <Check className="w-3.5 h-3.5" strokeWidth={3} />
                 </span>
-                <h4 className="text-base font-bold text-gray-900">
-                  {previewStep.label}
+                <h4 className="text-base font-bold text-gray-900 flex items-baseline gap-2 flex-wrap">
+                  <span>{previewStep.label}</span>
+                  {previewStep.disclaimer && (
+                    <span className="text-[70%] font-normal text-gray-400">
+                      ({previewStep.disclaimer})
+                    </span>
+                  )}
                 </h4>
               </div>
               <button
