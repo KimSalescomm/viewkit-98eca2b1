@@ -532,7 +532,7 @@ const Subscription = () => {
                 </span>
                 <h4 className="text-base font-bold text-gray-900 flex items-baseline gap-2 flex-wrap">
                   <span>{previewStep.label}</span>
-                  {previewStep.disclaimer && (
+                  {previewStep.disclaimer?.startsWith("프리미엄") && (
                     <span className="text-[70%] font-normal text-gray-400">
                       ({previewStep.disclaimer})
                     </span>
