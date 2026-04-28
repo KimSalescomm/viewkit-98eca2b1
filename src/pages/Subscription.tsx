@@ -293,7 +293,7 @@ const Subscription = () => {
             washcombo: "워시타워 케어서비스 (드럼케어)",
             refrigerator: "냉장고 케어서비스 (기계실 세척)",
             airconditioner: "스탠드 에어컨 케어서비스 (분해세척)",
-            airpurifier: "공기청정기 케어서비스 (분해세척)",
+            airpurifier: "공기청정기 케어서비스 (필터 교체 & 필터 클리닝)",
             cooktop: "전기레인지 케어서비스 (코팅 및 광택)",
             dishwasher: "식기세척기 케어서비스 (내부 세척)",
             oven: "광파오븐 케어서비스 (내부 클리닝)",
