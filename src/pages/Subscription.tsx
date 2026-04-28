@@ -161,6 +161,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "식기세척기",
     beforeImage: dishBefore,
     afterImage: dishAfter,
+    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/dishwashers_250804.mp4",
     careSteps: [
       { label: "음식물거름망 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher01.jpg" },
       { label: "연수장치 점검", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher02.jpg" },
