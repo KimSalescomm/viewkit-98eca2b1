@@ -16,6 +16,8 @@ import inductionBefore from "@/assets/inductionB.png";
 import inductionAfter from "@/assets/inductionA.png";
 import ovenBefore from "@/assets/ovenB.png";
 import ovenAfter from "@/assets/ovenA.png";
+import dishBefore from "@/assets/dishB.png";
+import dishAfter from "@/assets/dishA.png";
 
 interface CareStep {
   label: string;
@@ -151,6 +153,19 @@ const subscriptionProducts: SubscriptionProduct[] = [
       { label: "상판 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_stove01.jpg", notes: ["36개월 차 이후 최대 48개월차까지 고객이 원하는 시점에 1회 교체 받을 수 있으며, 오브제컬렉션 컬러 모델은 조작부 컬러도 변경 가능함", "고객 직접 교체는 불가, LG전자 공식 서비스 이용, 계약 만료 및 해지 시 상판 교체 대상에서 제외되며 기존 상판은 회수 원칙"] },
       { label: "틈새 세척", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_stove_03_250804.jpg", notes: ["인덕션 빌트인 모델 전용 – 프리스탠딩 모델, 하이브리드 모델 적용 불가", "가전 구독 가입 시 12개월 방문 케어서비스를 선택한 고객에 한함"] },
       { label: "무상 재설치" },
+      { label: "무상 A/S" },
+    ],
+  },
+  {
+    id: "dishwasher",
+    name: "식기세척기",
+    beforeImage: dishBefore,
+    afterImage: dishAfter,
+    careSteps: [
+      { label: "필터 클리닝" },
+      { label: "내부 세척" },
+      { label: "고무패킹 케어" },
+      { label: "제품 성능 점검" },
       { label: "무상 A/S" },
     ],
   },
@@ -302,6 +317,7 @@ const Subscription = () => {
                 airpurifier: "필터 교체 & 클리닝 전",
                 cooktop: "코팅 및 광택 서비스 전",
                 oven: "내부 클리닝 전",
+                dishwasher: "필터 클리닝 전",
               };
               const label = beforeLabels[selected.id];
               if (!label) return null;
