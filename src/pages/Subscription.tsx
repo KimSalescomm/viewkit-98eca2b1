@@ -244,7 +244,7 @@ const Subscription = () => {
 
         {/* Category buttons */}
         <div className="-mx-5 sm:mx-0 mb-8">
-          <div className="flex sm:flex-wrap gap-2 overflow-x-auto px-5 sm:px-0 pb-2 scrollbar-hide">
+          <div className="flex sm:flex-wrap sm:justify-center gap-2 overflow-x-auto px-5 sm:px-0 pb-2 scrollbar-hide">
             {subscriptionProducts.map((p) => {
               const active = p.id === selectedId;
               return (
