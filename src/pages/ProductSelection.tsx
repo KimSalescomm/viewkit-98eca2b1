@@ -1,9 +1,38 @@
 import { Link } from "react-router-dom";
 import { products, iconMap } from "@/data/products";
 import SafeImage from "@/components/SafeImage";
-import { HelpCircle } from "lucide-react";
+import {
+  HelpCircle,
+  Tv,
+  Box,
+  Shirt,
+  Waves,
+  Sparkles,
+  Wind,
+  Monitor,
+  UtensilsCrossed,
+  type LucideIcon,
+} from "lucide-react";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import OrientationToggle from "@/components/OrientationToggle";
+
+// webOS(StandByMe) 등 컬러 이모지 폰트가 없는 환경에서 아이콘이 검정으로 보이는 이슈 방지
+// → 모든 카드 아이콘을 Lucide SVG 컴포넌트로 렌더링
+const lucideIconMap: Record<string, LucideIcon> = {
+  Tv,
+  Box,
+  Shirt,
+  Waves,
+  Sparkles,
+  Wind,
+  Monitor,
+  UtensilsCrossed,
+};
+
+const ProductLucideIcon = ({ name, className }: { name: string; className?: string }) => {
+  const Icon = lucideIconMap[name] || Sparkles;
+  return <Icon className={className} strokeWidth={2.2} />;
+};
 
 const productAccents: Record<string, { gradient: string; tint: string; chip: string; keywords: string[] }> = {
   subscription: {
