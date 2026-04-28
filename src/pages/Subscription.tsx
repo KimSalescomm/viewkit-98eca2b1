@@ -553,9 +553,9 @@ const Subscription = () => {
               />
               {previewStep.disclaimer?.startsWith("프리미엄") && (
                 <span
-                  className="absolute top-4 left-4 sm:top-6 sm:left-6 px-[18px] py-[7px] sm:px-[22px] sm:py-[9px] rounded-sm text-[16px] sm:text-[22px] font-extrabold tracking-tight shadow-md"
+                  className="absolute top-3 left-3 sm:top-4 sm:left-4 px-[6px] py-[2px] sm:px-[8px] sm:py-[3px] rounded-sm text-[6px] sm:text-[9px] font-extrabold tracking-tight shadow-sm"
                   style={{
-                    backgroundColor: "#D9C9B0",
+                    backgroundColor: "#695F55",
                     color: "#FFFFFF",
                     fontFamily: "'Noto Sans KR', sans-serif",
                   }}
