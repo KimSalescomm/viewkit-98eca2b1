@@ -230,7 +230,7 @@ const Subscription = () => {
 
       <main className="max-w-6xl mx-auto px-5 sm:px-8 py-8 sm:py-12">
         {/* Title */}
-        <div className="mb-6 sm:mb-8">
+        <div className="mb-6 sm:mb-8 text-center">
           <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-2" style={{ color: "#A50034" }}>
             CARE SERVICE
           </p>
@@ -301,7 +301,7 @@ const Subscription = () => {
           const title = sectionTitles[selected.id];
           if (!title) return null;
           return (
-            <div className="mb-4 sm:mb-5 text-center">
+            <div className="mb-4 sm:mb-5">
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-tight">
                 {title}
               </h2>
