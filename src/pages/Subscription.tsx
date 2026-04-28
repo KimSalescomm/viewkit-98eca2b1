@@ -310,6 +310,11 @@ const Subscription = () => {
                 />
                 {title}
               </h2>
+              {selected.id === "washcombo" && (
+                <p className="mt-2 text-[60%] text-gray-500 leading-relaxed">
+                  (드럼 케어는 분해 없이 진행하는 세척 서비스로, 세척 효과를 비교하기 위한 참고 이미지입니다.)
+                </p>
+              )}
             </div>
           );
         })()}
