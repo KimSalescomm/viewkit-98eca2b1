@@ -340,6 +340,11 @@ const Subscription = () => {
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent pointer-events-none" />
+              {["washer", "airconditioner", "airpurifier"].includes(selected.id) && (
+                <div className="absolute top-3 left-3 px-3 py-1.5 rounded-md text-white text-xs sm:text-sm font-medium tracking-wide shadow-md" style={{ backgroundColor: "rgba(168, 152, 136, 0.92)" }}>
+                  프리미엄
+                </div>
+              )}
             </div>
             {(() => {
               const beforeLabels: Record<string, string> = {
