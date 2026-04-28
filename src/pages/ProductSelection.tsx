@@ -184,15 +184,15 @@ const ProductSelection = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/10 to-transparent pointer-events-none" />
                       {/* Mobile: small icon chip on thumbnail */}
                       <div className="sm:hidden absolute top-2 left-3.5">
-                        <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${accent.gradient} flex items-center justify-center text-sm shadow-md ring-2 ring-white/80`}>
-                          <span>{iconMap[product.icon]}</span>
+                      <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${accent.gradient} flex items-center justify-center shadow-md ring-2 ring-white/80`}>
+                          <ProductLucideIcon name={product.icon} className="w-4 h-4 text-white" />
                         </div>
                       </div>
                     </>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-muted">
                       <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-3xl border border-border bg-card shadow-sm">
-                        <span className="text-3xl sm:text-4xl grayscale opacity-60">{iconMap[product.icon]}</span>
+                        <ProductLucideIcon name={product.icon} className="w-7 h-7 sm:w-8 sm:h-8 text-gray-400" />
                       </div>
                     </div>
                   )}
