@@ -532,7 +532,7 @@ const Subscription = () => {
                 </span>
                 <h4 className="text-base font-bold text-gray-900 flex items-baseline gap-2 flex-wrap">
                   <span>{previewStep.label}</span>
-                  {previewStep.disclaimer && (
+                  {previewStep.disclaimer?.startsWith("프리미엄") && (
                     <span className="text-[70%] font-normal text-gray-400">
                       ({previewStep.disclaimer})
                     </span>
@@ -566,6 +566,13 @@ const Subscription = () => {
                 </span>
               )}
             </div>
+            {previewStep.disclaimer && !previewStep.disclaimer.startsWith("프리미엄") && (
+              <div className="px-5 py-3 border-t border-gray-100 bg-white">
+                <p className="text-[12px] leading-relaxed text-gray-500">
+                  * {previewStep.disclaimer}
+                </p>
+              </div>
+            )}
             {previewStep.notes && previewStep.notes.length > 0 && (
               <div className="px-5 py-4 border-t border-gray-100 bg-white">
                 <ul className="space-y-1.5 text-[12px] leading-relaxed text-gray-500">
