@@ -376,6 +376,11 @@ const Subscription = () => {
               <span className="text-xs font-medium" style={{ color: "#A50034" }}>케어 후</span>
             </div>
             <div className="relative aspect-[4/3] bg-gray-100">
+              {["washer", "airconditioner", "airpurifier"].includes(selected.id) && (
+                <div className="absolute top-3 left-3 z-10 px-3 py-1.5 rounded-md text-white text-xs sm:text-sm font-medium tracking-wide shadow-md pointer-events-none" style={{ backgroundColor: "rgba(168, 152, 136, 0.92)" }}>
+                  프리미엄
+                </div>
+              )}
               {selected.careVideo ? (
                 <button
                   type="button"
