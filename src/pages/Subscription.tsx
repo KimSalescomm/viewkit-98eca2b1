@@ -302,7 +302,12 @@ const Subscription = () => {
           if (!title) return null;
           return (
             <div className="mb-4 sm:mb-5">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-tight">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-tight flex items-center gap-3">
+                <span
+                  aria-hidden="true"
+                  className="inline-block w-1 sm:w-1.5 h-5 sm:h-6 rounded-sm"
+                  style={{ backgroundColor: "#A50034" }}
+                />
                 {title}
               </h2>
             </div>
