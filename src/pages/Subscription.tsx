@@ -301,7 +301,7 @@ const Subscription = () => {
           const title = sectionTitles[selected.id];
           if (!title) return null;
           return (
-            <div className="mb-4 sm:mb-5">
+            <div className="mb-4 sm:mb-5 text-center">
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-tight">
                 {title}
               </h2>
