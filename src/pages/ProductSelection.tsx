@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { products, iconMap } from "@/data/products";
+import { products } from "@/data/products";
 import SafeImage from "@/components/SafeImage";
 import {
   HelpCircle,
