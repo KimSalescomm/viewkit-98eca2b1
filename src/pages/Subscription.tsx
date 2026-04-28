@@ -165,7 +165,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
       { label: "음식물거름망 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher01.jpg" },
       { label: "연수장치 점검", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher02.jpg" },
       { label: "수질 경도 측정" },
-      { label: "내부 세척 및 통살균 세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher04.jpg" },
+      { label: "내부 세척 및 통살균 세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher04.jpg", disclaimer: "통살균은 뜨거운 물로 제품 내부를 물리적인 방식으로 세척하기 위한 코스입니다." },
       { label: "에어필터 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher05.jpg" },
       { label: "무상 철거 및 재설치", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher06.jpg" },
       { label: "무상 A/S" },
