@@ -286,6 +286,29 @@ const Subscription = () => {
           </div>
         </div>
 
+        {/* Section title */}
+        {(() => {
+          const sectionTitles: Record<string, string> = {
+            washer: "세탁기 케어서비스 (분해세척)",
+            washcombo: "워시타워 케어서비스 (드럼케어)",
+            refrigerator: "냉장고 케어서비스 (기계실 세척)",
+            airconditioner: "스탠드 에어컨 케어서비스 (분해세척)",
+            airpurifier: "공기청정기 케어서비스 (분해세척)",
+            cooktop: "전기레인지 케어서비스 (코팅 및 광택)",
+            dishwasher: "식기세척기 케어서비스 (내부 세척)",
+            oven: "광파오븐 케어서비스 (내부 클리닝)",
+          };
+          const title = sectionTitles[selected.id];
+          if (!title) return null;
+          return (
+            <div className="mb-4 sm:mb-5">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-tight">
+                {title}
+              </h2>
+            </div>
+          );
+        })()}
+
         {/* Before / After */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {/* Before */}
