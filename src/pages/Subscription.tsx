@@ -17,7 +17,7 @@ import inductionAfter from "@/assets/inductionA.png";
 import ovenBefore from "@/assets/ovenB.png";
 import ovenAfter from "@/assets/ovenA.png";
 import dishBefore from "@/assets/dishB.png";
-import dishAfter from "@/assets/dishA.png";
+import dishAfter from "@/assets/dishA.jpg";
 
 interface CareStep {
   label: string;
