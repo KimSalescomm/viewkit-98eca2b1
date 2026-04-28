@@ -553,10 +553,10 @@ const Subscription = () => {
               />
               {previewStep.disclaimer?.startsWith("프리미엄") && (
                 <span
-                  className="absolute top-4 left-4 sm:top-6 sm:left-6 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full text-lg sm:text-2xl font-extrabold tracking-tight shadow-md"
+                  className="absolute top-4 left-4 sm:top-6 sm:left-6 px-[18px] py-[7px] sm:px-[22px] sm:py-[9px] rounded-sm text-[16px] sm:text-[22px] font-extrabold tracking-tight shadow-md"
                   style={{
                     backgroundColor: "#D9C9B0",
-                    color: "#111111",
+                    color: "#FFFFFF",
                     fontFamily: "'Noto Sans KR', sans-serif",
                   }}
                 >
