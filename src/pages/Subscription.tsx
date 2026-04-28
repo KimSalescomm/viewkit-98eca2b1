@@ -167,7 +167,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
       { label: "수질 경도 측정" },
       { label: "내부 세척 및 통살균 세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher04.jpg", disclaimer: "통살균은 뜨거운 물로 제품 내부를 물리적인 방식으로 세척하기 위한 코스입니다." },
       { label: "에어필터 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher05.jpg", notes: ["에어 필터 교체 서비스는 열풍건조 기능이 적용된 일부 제품에 한합니다. (1년에 1회 교체)", "방문 관리는 사전 안내드리고 있으며, 고객 요청에 의해 협의된 일정으로 변경하실 수 있습니다."] },
-      { label: "무상 철거 및 재설치", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher06.jpg" },
+      { label: "무상 철거 및 재설치", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher06.jpg", notes: ["식기세척기는 무상 철거 및 재설치 서비스를 제공해 드립니다.", "단, 무상 철거 및 재설치는 25년 3월 1일부터 제공됩니다.", "가전 구독 고객에 한하여 계약기간 내 1회 무상 제공(운송비 별도) 해드립니다.", "운송 서비스를 희망할 경우 유상 제공되며 비용은 고객 부담입니다.", "제품 설치 환경에 따라 추가 비용이 발생할 수 있습니다.", "추가 비용 관련 자세한 사항은 LG전자 고객센터(1544-7777)에 문의 바랍니다.", "방문 관리는 사전 안내드리고 있으며, 고객 요청에 의해 협의된 일정으로 변경하실 수 있습니다."] },
       { label: "무상 A/S" },
     ],
   },
