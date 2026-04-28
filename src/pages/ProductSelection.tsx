@@ -207,16 +207,17 @@ const ProductSelection = () => {
                   <div className="relative flex items-start gap-3 sm:gap-3.5 w-full">
                     <div
                       className={`
-                        hidden sm:flex w-10 h-10 sm:w-13 sm:h-13 rounded-2xl items-center justify-center flex-shrink-0 text-xl sm:text-2xl
+                        hidden sm:flex w-10 h-10 sm:w-13 sm:h-13 rounded-2xl items-center justify-center flex-shrink-0
                         ${isEnabled
                           ? `bg-gradient-to-br ${accent.gradient} shadow-md`
                           : "bg-gray-300 group-hover:bg-gray-400"
                         }
                       `}
                     >
-                      <span className={`${isEnabled ? "" : "grayscale transition-all duration-300 group-hover:grayscale-[50%]"}`}>
-                        {iconMap[product.icon]}
-                      </span>
+                      <ProductLucideIcon
+                        name={product.icon}
+                        className={`w-6 h-6 sm:w-7 sm:h-7 ${isEnabled ? "text-white" : "text-white/80"}`}
+                      />
                     </div>
                     <div className="min-w-0 pt-0.5 flex-1">
                       <h3
