@@ -166,7 +166,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
       { label: "연수장치 점검", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher02.jpg" },
       { label: "수질 경도 측정" },
       { label: "내부 세척 및 통살균 세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher04.jpg", disclaimer: "통살균은 뜨거운 물로 제품 내부를 물리적인 방식으로 세척하기 위한 코스입니다." },
-      { label: "에어필터 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher05.jpg" },
+      { label: "에어필터 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher05.jpg", notes: ["에어 필터 교체 서비스는 열풍건조 기능이 적용된 일부 제품에 한합니다. (1년에 1회 교체)", "방문 관리는 사전 안내드리고 있으며, 고객 요청에 의해 협의된 일정으로 변경하실 수 있습니다."] },
       { label: "무상 철거 및 재설치", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_dishwasher06.jpg" },
       { label: "무상 A/S" },
     ],
