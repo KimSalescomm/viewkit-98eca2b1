@@ -1,9 +1,38 @@
 import { Link } from "react-router-dom";
-import { products, iconMap } from "@/data/products";
+import { products } from "@/data/products";
 import SafeImage from "@/components/SafeImage";
-import { HelpCircle } from "lucide-react";
+import {
+  HelpCircle,
+  Tv,
+  Box,
+  Shirt,
+  Waves,
+  Sparkles,
+  Wind,
+  Monitor,
+  UtensilsCrossed,
+  type LucideIcon,
+} from "lucide-react";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import OrientationToggle from "@/components/OrientationToggle";
+
+// webOS(StandByMe) 등 컬러 이모지 폰트가 없는 환경에서 아이콘이 검정으로 보이는 이슈 방지
+// → 모든 카드 아이콘을 Lucide SVG 컴포넌트로 렌더링
+const lucideIconMap: Record<string, LucideIcon> = {
+  Tv,
+  Box,
+  Shirt,
+  Waves,
+  Sparkles,
+  Wind,
+  Monitor,
+  UtensilsCrossed,
+};
+
+const ProductLucideIcon = ({ name, className }: { name: string; className?: string }) => {
+  const Icon = lucideIconMap[name] || Sparkles;
+  return <Icon className={className} strokeWidth={2.2} />;
+};
 
 const productAccents: Record<string, { gradient: string; tint: string; chip: string; keywords: string[] }> = {
   subscription: {
@@ -155,15 +184,15 @@ const ProductSelection = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/10 to-transparent pointer-events-none" />
                       {/* Mobile: small icon chip on thumbnail */}
                       <div className="sm:hidden absolute top-2 left-3.5">
-                        <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${accent.gradient} flex items-center justify-center text-sm shadow-md ring-2 ring-white/80`}>
-                          <span>{iconMap[product.icon]}</span>
+                      <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${accent.gradient} flex items-center justify-center shadow-md ring-2 ring-white/80`}>
+                          <ProductLucideIcon name={product.icon} className="w-4 h-4 text-white" />
                         </div>
                       </div>
                     </>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-muted">
                       <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-3xl border border-border bg-card shadow-sm">
-                        <span className="text-3xl sm:text-4xl grayscale opacity-60">{iconMap[product.icon]}</span>
+                        <ProductLucideIcon name={product.icon} className="w-7 h-7 sm:w-8 sm:h-8 text-gray-400" />
                       </div>
                     </div>
                   )}
@@ -178,16 +207,17 @@ const ProductSelection = () => {
                   <div className="relative flex items-start gap-3 sm:gap-3.5 w-full">
                     <div
                       className={`
-                        hidden sm:flex w-10 h-10 sm:w-13 sm:h-13 rounded-2xl items-center justify-center flex-shrink-0 text-xl sm:text-2xl
+                        hidden sm:flex w-10 h-10 sm:w-13 sm:h-13 rounded-2xl items-center justify-center flex-shrink-0
                         ${isEnabled
                           ? `bg-gradient-to-br ${accent.gradient} shadow-md`
                           : "bg-gray-300 group-hover:bg-gray-400"
                         }
                       `}
                     >
-                      <span className={`${isEnabled ? "" : "grayscale transition-all duration-300 group-hover:grayscale-[50%]"}`}>
-                        {iconMap[product.icon]}
-                      </span>
+                      <ProductLucideIcon
+                        name={product.icon}
+                        className={`w-6 h-6 sm:w-7 sm:h-7 ${isEnabled ? "text-white" : "text-white/80"}`}
+                      />
                     </div>
                     <div className="min-w-0 pt-0.5 flex-1">
                       <h3
