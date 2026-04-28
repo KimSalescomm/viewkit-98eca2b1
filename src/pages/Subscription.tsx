@@ -545,12 +545,24 @@ const Subscription = () => {
                 <X className="w-5 h-5 text-gray-500" />
               </button>
             </div>
-            <div className="bg-gray-50">
+            <div className="relative bg-gray-50">
               <img
                 src={previewStep.image}
                 alt={previewStep.label}
                 className="w-full h-auto max-h-[75vh] object-contain"
               />
+              {previewStep.disclaimer?.startsWith("프리미엄") && (
+                <span
+                  className="absolute top-4 left-4 sm:top-6 sm:left-6 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full text-lg sm:text-2xl font-extrabold tracking-tight shadow-md"
+                  style={{
+                    backgroundColor: "#D9C9B0",
+                    color: "#111111",
+                    fontFamily: "'Noto Sans KR', sans-serif",
+                  }}
+                >
+                  프리미엄
+                </span>
+              )}
             </div>
             {previewStep.notes && previewStep.notes.length > 0 && (
               <div className="px-5 py-4 border-t border-gray-100 bg-white">
