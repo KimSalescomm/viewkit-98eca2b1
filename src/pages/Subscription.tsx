@@ -48,8 +48,6 @@ const subscriptionProducts: SubscriptionProduct[] = [
       { label: "고무패킹 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_03.jpg", disclaimer: "프리미엄, 48개월 차에 1회 서비스" },
       { label: "급/배수 필터 세척" },
       { label: "배수 필터 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_04.jpg" },
-      { label: "세탁조 클리너 제공" },
-      { label: "제품 성능 점검" },
       { label: "토탈 클리닝" },
     ],
   },
@@ -135,7 +133,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     careSteps: [
       { label: "필터 교체 & 필터 클리닝" },
       { label: "클린부스터 클리닝", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_airpurifier02.jpg", notes: ["6개월마다 점검 (단, 360° 공기청정기 알파UP, UV살균 모델은 방문 시마다 점검)"] },
-      { label: "분해세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_aircare01.jpg", notes: ["해당 서비스는 25년 출시 이후 제품만 해당", "프리미엄은 30/60개월 주기로 진행", "상/하단 분리는 2단 제품에 한하여 진행"] },
+      { label: "공기청정 케어서비스 (필터 교체)", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_aircare01.jpg", notes: ["해당 서비스는 25년 출시 이후 제품만 해당", "프리미엄은 30/60개월 주기로 진행", "상/하단 분리는 2단 제품에 한하여 진행"] },
       { label: "UV 살균" },
       { label: "모듈 점검" },
       { label: "무상 A/S" },
