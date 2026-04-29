@@ -499,7 +499,7 @@ const Subscription = () => {
             <Sparkles className="w-4 h-4" />
           </span>
           <p className="text-[14px] sm:text-[15px] font-semibold leading-relaxed" style={{ color: "#374151" }}>
-            제품별 구독 타입(프리미엄, 라이트, 라이트 플러스 등)에 따라 적용 서비스는 다르니, 자세한 내용은 구독 계약할 때 다시 한번 확인해 주세요.
+            제품별 구독 타입(프리미엄, 라이트, 라이트 플러스 등)에 따라 적용 서비스는 다르니, 자세한 내용은 구독 계약할 때 다시 한번 확인필요
           </p>
         </div>
 
@@ -507,7 +507,7 @@ const Subscription = () => {
         <div className="mt-10 pt-6 border-t border-gray-200">
           <ul className="space-y-1.5 text-[12px] leading-relaxed text-gray-600 whitespace-nowrap overflow-x-auto">
             <li>* 이해를 돕기 위해 연출한 광고적 이미지로, 오염 여부 및 실제 케어서비스 결과는 사용 환경에 따라 다를 수 있음</li>
-            <li>* 케어서비스 항목은 구독 모델, 시점, 요금제에 따라 다를 수 있으니, 자세한 내용은 구독 계약할 때 반드시 확인해 주세요.</li>
+            <li>* 케어서비스 항목은 구독 모델, 시점, 요금제에 따라 다를 수 있으니, 자세한 내용은 구독 계약할 때 반드시 확인필요</li>
             <li>* 고객 과실로 인한 제품 고장은 무상 A/S에서 제외되며 별도 비용 발생할 수 있음</li>
             <li>* 방문 관리는 사전 안내하며, 고객 요청 시 협의된 일정으로 변경할 수 있음</li>
           </ul>
