@@ -204,6 +204,41 @@ const Subscription = () => {
     });
   }, []);
 
+  // Auto-rotate tabs after 30s of user inactivity
+  useEffect(() => {
+    const IDLE_MS = 30000;
+    let timer: ReturnType<typeof setTimeout>;
+
+    const advance = () => {
+      setSelectedId((current) => {
+        const idx = subscriptionProducts.findIndex((p) => p.id === current);
+        const next = subscriptionProducts[(idx + 1) % subscriptionProducts.length];
+        return next.id;
+      });
+    };
+
+    const reset = () => {
+      clearTimeout(timer);
+      timer = setTimeout(advance, IDLE_MS);
+    };
+
+    const events: (keyof WindowEventMap)[] = [
+      "pointerdown",
+      "pointermove",
+      "keydown",
+      "wheel",
+      "touchstart",
+      "scroll",
+    ];
+    events.forEach((e) => window.addEventListener(e, reset, { passive: true }));
+    reset();
+
+    return () => {
+      clearTimeout(timer);
+      events.forEach((e) => window.removeEventListener(e, reset));
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[hsl(220,20%,97%)]">
       {/* GNB */}
