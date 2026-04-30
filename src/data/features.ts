@@ -267,7 +267,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "7",
       title: "매번 물 채우기, 번거롭지 않나요?",
-      subtitle: "물통 없이 스스로 채우는 직수형\n편리한 냉장고 STEM을 확인해보세요.",
+      subtitle: "신경쓰지 않아도 알아서 만들어지니까,\n필요할 때마다 바로 얼음을 꺼내 먹을 수 있는\n편리하고 즐거운 시간을 만끽하세요.",
       icon: "Seedling",
       tag: "STEM이란?",
       mediaType: "video",
