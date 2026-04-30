@@ -124,6 +124,36 @@ const subscriptionProducts: SubscriptionProduct[] = [
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/refrigerators_250804.mp4",
     careSteps: [
       {
+        label: "유로 세척 케어",
+        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator04.png",
+        description: "고온·고압 세척으로 물이 지나는 유로부터 출수구까지 위생적으로 관리합니다.",
+        notes: [
+          "유로 세척 결과는 수질 및 사용 환경에 따라 차이가 있을 수 있습니다.",
+        ],
+      },
+      {
+        label: "워터필터 교체",
+        titleSuffix: "12개월",
+        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator05.png",
+        description: "깨끗한 정수 성능 유지를 위해 교체 주기에 맞춰 워터필터를 무상으로 교체합니다.",
+        notes: [
+          "필터 교체 주기는 제품 및 사용 환경에 따라 달라질 수 있습니다.",
+          "정수 기능이 있는 모델에 한해 제공됩니다.",
+        ],
+      },
+      {
+        label: "무상 철거 및 재설치",
+        image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator08.png",
+        description: "이사 시 제품 무상 철거 및 재설치 서비스를 제공합니다.",
+        notes: [
+          "STEM 냉장고는 가전 구독 고객에 한하여 계약기간 내 1회 무상 철거 및 재설치 이용 가능 (25년 3월 1일부터 제공)",
+          "단, 무상 철거 서비스는 26년 1월 5일부터 설치된 제품 한해서 가능 (~26년 1월 4일 설치 제품 제외)",
+          "운송 서비스는 유료이며, 비용은 고객 부담",
+          "제품 설치 환경에 따라 추가 비용이 발생할 수 있음",
+          "추가 비용 관련 자세한 사항은 LG전자 고객센터(1544-7777)에 문의",
+        ],
+      },
+      {
         label: "기계실 세척",
         image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator01.jpg",
         description: "냉장고 뒷면 기계실의 냉각팬과 쿨링핀을 세척해 냉각 효율 저하를 예방합니다.",
@@ -168,36 +198,6 @@ const subscriptionProducts: SubscriptionProduct[] = [
         description: "관리가 어려운 얼음저장통과 출수구까지 분리 세척해 위생적인 사용을 돕습니다.",
         notes: [
           "얼음 기능이 있는 모델에 한해 제공됩니다.",
-        ],
-      },
-      {
-        label: "유로 세척 케어",
-        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator04.png",
-        description: "고온·고압 세척으로 물이 지나는 유로부터 출수구까지 위생적으로 관리합니다.",
-        notes: [
-          "유로 세척 결과는 수질 및 사용 환경에 따라 차이가 있을 수 있습니다.",
-        ],
-      },
-      {
-        label: "워터필터 교체",
-        titleSuffix: "12개월",
-        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator05.png",
-        description: "깨끗한 정수 성능 유지를 위해 교체 주기에 맞춰 워터필터를 무상으로 교체합니다.",
-        notes: [
-          "필터 교체 주기는 제품 및 사용 환경에 따라 달라질 수 있습니다.",
-          "정수 기능이 있는 모델에 한해 제공됩니다.",
-        ],
-      },
-      {
-        label: "무상 철거 및 재설치",
-        image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator08.png",
-        description: "이사 시 제품 무상 철거 및 재설치 서비스를 제공합니다.",
-        notes: [
-          "STEM 냉장고는 가전 구독 고객에 한하여 계약기간 내 1회 무상 철거 및 재설치 이용 가능 (25년 3월 1일부터 제공)",
-          "단, 무상 철거 서비스는 26년 1월 5일부터 설치된 제품 한해서 가능 (~26년 1월 4일 설치 제품 제외)",
-          "운송 서비스는 유료이며, 비용은 고객 부담",
-          "제품 설치 환경에 따라 추가 비용이 발생할 수 있음",
-          "추가 비용 관련 자세한 사항은 LG전자 고객센터(1544-7777)에 문의",
         ],
       },
     ],
