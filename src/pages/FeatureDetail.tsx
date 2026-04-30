@@ -16,9 +16,12 @@ import {
 const FeatureDetail = () => {
   const { productId, id } = useParams<{ productId: string; id: string }>();
   const { trackDetailView, trackVideoClick } = useAnalyticsContext();
+  const [activeTab, setActiveTab] = useState(0);
   
   const feature = getFeatureById(productId || "", id || "");
   const product = getProductById(productId || "");
+  const tabs = feature?.tabs;
+  const activeTabData = tabs?.[activeTab];
 
   // detail_view 이벤트
   useEffect(() => {
