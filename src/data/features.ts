@@ -18,6 +18,15 @@ export interface CollapsibleDisclaimer {
   items: string[];
 }
 
+export interface FeatureTab {
+  label: string;
+  description?: string;
+  mediaType: "video" | "image" | "youtube";
+  mediaUrl: string;
+  fallbackUrl?: string;
+  isShorts?: boolean;
+}
+
 export interface Feature {
   id: string;
   title: string;
@@ -34,6 +43,7 @@ export interface Feature {
   isShorts?: boolean;
   disclaimers?: string[];
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
+  tabs?: FeatureTab[];
 }
 
 export const featuresMap: Record<string, Feature[]> = {
