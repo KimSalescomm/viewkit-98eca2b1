@@ -132,14 +132,15 @@ const subscriptionProducts: SubscriptionProduct[] = [
       },
       {
         label: "유로 세척 케어",
-        image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator-basic02.jpg",
+        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator04.png",
         description: "고온·고압 세척으로 물이 지나는 유로부터 출수구까지 위생적으로 관리합니다.",
         notes: [
           "유로 세척 결과는 수질 및 사용 환경에 따라 차이가 있을 수 있습니다.",
         ],
       },
       {
-        label: "주기별 워터필터 교체",
+        label: "워터필터 교체 (12개월)",
+        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator05.png",
         description: "깨끗한 정수 성능 유지를 위해 교체 주기에 맞춰 워터필터를 무상으로 교체합니다.",
         notes: [
           "필터 교체 주기는 제품 및 사용 환경에 따라 달라질 수 있습니다.",
@@ -147,9 +148,8 @@ const subscriptionProducts: SubscriptionProduct[] = [
         ],
       },
       {
-        label: "주기별 퓨어프레시 필터 교체",
+        label: "퓨어프레시 필터 교체 (12개월)",
         image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator06.png",
-        description: "냉장고 내부 냄새 관리를 위해 탈취 필터를 주기적으로 교체합니다.",
         notes: [
           "퓨어프레시 필터 적용 모델에 한해 제공되는 서비스입니다.",
           "필터 교체 주기는 약 12개월이며 사용 환경에 따라 달라질 수 있습니다.",
@@ -157,7 +157,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
       },
       {
         label: "얼음저장통 세척",
-        image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator-basic02.jpg",
+        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator07.png",
         description: "관리가 어려운 얼음저장통과 출수구까지 분리 세척해 위생적인 사용을 돕습니다.",
         notes: [
           "얼음 기능이 있는 모델에 한해 제공됩니다.",
