@@ -116,6 +116,74 @@ const subscriptionProducts: SubscriptionProduct[] = [
     ],
   },
   {
+    id: "stem",
+    name: "STEM 냉장고",
+    beforeImage: refrigeratorBefore,
+    afterImage: refrigeratorAfter,
+    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/refrigerators_regular_250804.mp4",
+    careSteps: [
+      {
+        label: "기계실 세척",
+        image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator01.jpg",
+        description: "냉장고 뒷면 기계실의 냉각팬과 쿨링핀에 쌓인 먼지를 세척해 열 방출 효율을 유지하도록 관리합니다.",
+        notes: [
+          "연출된 이미지로, 오염 정도 및 실제 케어 결과는 사용 환경에 따라 달라질 수 있습니다.",
+          "모든 모델에 동일하게 적용되지 않을 수 있습니다.",
+        ],
+      },
+      {
+        label: "퓨어프레시 필터 교체",
+        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator06.png",
+        description: "냄새 원인 물질을 제거하는 탈취 필터를 주기적으로 교체해 냉장고 내부 공기를 쾌적하게 유지합니다.",
+        notes: [
+          "퓨어프레시 필터 적용 모델에 한해 제공되는 서비스입니다.",
+          "필터 교체 주기는 사용 환경 및 모델에 따라 달라질 수 있습니다.",
+        ],
+      },
+      {
+        label: "토탈 클리닝",
+        description: "냉장고 내부 주요 사용 구역을 중심으로 위생적으로 클리닝해 보다 쾌적한 사용 환경을 제공합니다.",
+        notes: [
+          "클리닝 범위는 제품 구조 및 상태에 따라 일부 제한될 수 있습니다.",
+          "심각한 오염이나 변색은 완전 제거가 어려울 수 있습니다.",
+        ],
+      },
+      {
+        label: "고무패킹 케어",
+        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator10.png",
+        description: "외부 환경에 쉽게 노출되는 도어 고무패킹을 클리닝하고 전용 윤활제를 도포해 밀폐력을 유지합니다.",
+        notes: [
+          "고무패킹 상태에 따라 케어 효과에는 차이가 있을 수 있습니다.",
+          "마모 또는 손상된 패킹은 교체 대상이 될 수 있습니다.",
+        ],
+      },
+      {
+        label: "얼음저장통 세척",
+        image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator-basic02.jpg",
+        description: "관리가 어려운 얼음저장통과 출수구를 분리·세척해 위생적인 얼음 사용을 돕습니다.",
+        notes: [
+          "얼음 기능이 있는 모델에 한해 제공됩니다.",
+          "위생 상태 및 사용 환경에 따라 세척 결과는 달라질 수 있습니다.",
+        ],
+      },
+      {
+        label: "제품 성능 점검",
+        description: "설치 상태, 수평, 기본 동작 여부 등을 점검해 안정적인 사용을 돕습니다.",
+        notes: [
+          "정밀 수리 또는 부품 교체가 필요한 경우 별도 A/S로 안내될 수 있습니다.",
+        ],
+      },
+      {
+        label: "무상 A/S",
+        description: "약정 기간 내 제품 고장 발생 시 무상 A/S를 제공합니다.",
+        notes: [
+          "고객 과실로 인한 고장은 무상 A/S 대상에서 제외됩니다.",
+          "약정 내용 및 제품 상태에 따라 적용 범위는 달라질 수 있습니다.",
+        ],
+      },
+    ],
+  },
+  {
     id: "washcombo",
     name: "워시타워",
     beforeImage: washcomboBefore,
