@@ -210,7 +210,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
             </div>
           ))}
         </div>
-      </div>
+      </TableScrollContainer>
     );
   }
 
