@@ -97,10 +97,11 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           url: "/styler-news-200million.png",
           title: "중앙일보 보도",
-          description: "LG 스타일러 200만대 찍었다… 글로벌 의류관리 가전 안착"
-        }
+          description: "LG 스타일러 200만대 찍었다… 글로벌 의류관리 가전 안착",
+        },
       ],
-      description: "2011년 세계 최초로 의류관리기를 선보인 LG 스타일러가 글로벌 누적 판매 200만대를 돌파했습니다.\n\n현재 27개국에서 판매되며, 트루스팀과 다이내믹 무빙행어 등 핵심 기술력으로 의류관리 가전의 글로벌 기준을 만들어가고 있습니다.",
+      description:
+        "2011년 세계 최초로 의류관리기를 선보인 LG 스타일러가 글로벌 누적 판매 200만대를 돌파했습니다.\n\n현재 27개국에서 판매되며, 트루스팀과 다이내믹 무빙행어 등 핵심 기술력으로 의류관리 가전의 글로벌 기준을 만들어가고 있습니다.",
       highlights: ["글로벌 200만대 돌파", "27개국 판매", "2026년형 AI 맞춤 관리", "스타일러도 구독으로!"],
     },
   ],
@@ -116,7 +117,11 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_01_pc.mp4",
       description:
         "장면을 분석해서 밝기를 정교하게 끌어올리는 밝기 제어 기술로 백라이트 없이도 밝은, 가장 밝은 올레드가 탄생했어요.\n\n밝기가 높아져서 태양, 폭발, 유리 반사 같은 강한 하이라이트도 선명하게 볼 수 있고, 하얗게 뭉쳐서 잘 안보이던 밝은 영역의 디테일이 살아나 더 선명하고 생생한 화면을 느낄 수 있어요.",
-      highlights: ["역대 가장 밝은 올레드", "B 시리즈 대비 3.2배(C6), 3.9배(G6) 높아진 밝기", "장면을 분석해 중간톤까지 섬세하게 조정"],
+      highlights: [
+        "역대 가장 밝은 올레드",
+        "B 시리즈 대비 3.2배(C6), 3.9배(G6) 높아진 밝기",
+        "장면을 분석해 중간톤까지 섬세하게 조정",
+      ],
       disclaimers: [
         "소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
         "하이퍼 브라이트 부스터: B 시리즈 대비 최대 390% 밝기 향상",
@@ -134,11 +139,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
       description:
         "실제 눈으로 보는 듯 정확한 컬러를 표현하기 위해서는 빛의 삼원색인 레드, 그린, 블루가 각각 빛나는 구조가 필요해요.\n파장을 조절해 컬러를 인위적으로 만들어내는 과정없이, R(레드), G(그린), B(블루) 광원이 각각 빛을 내는 방식이 적용돼 순수하고 정확한 컬러를 표현할 수 있어요.",
-      highlights: [
-        "R,G,B 컬러층을 분리해 각각의 순도 높은 컬러 표현",
-        "100% 컬러볼륨",
-        "100% 색 정확도",
-      ],
+      highlights: ["R,G,B 컬러층을 분리해 각각의 순도 높은 컬러 표현", "100% 컬러볼륨", "100% 색 정확도"],
       disclaimers: [
         "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
         "100% 컬러 볼륨 인증 / 100% 색 정확도 인증",
@@ -225,7 +226,8 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "사이즈 가이드",
       mediaType: "table",
       mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
-      description: "시청 거리와 공간 크기에 따라 최적의 TV 사이즈가 달라집니다. G6 시리즈는 55인치(138cm)부터 97인치(245cm)까지 다양한 라인업을 갖추고 있습니다.",
+      description:
+        "시청 거리와 공간 크기에 따라 최적의 TV 사이즈가 달라집니다. G6 시리즈는 55인치(138cm)부터 97인치(245cm)까지 다양한 라인업을 갖추고 있습니다.",
       highlights: ["138cm (55인치)", "163cm (65인치)", "194cm (77인치)", "245cm (97인치)"],
       tableData: [
         {
@@ -267,7 +269,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "7",
       title: "매번 물 채우기, 번거롭지 않나요?",
-      subtitle: "신경쓰지 않아도 알아서 만들어지니까,\n필요할 때마다 바로 얼음을 꺼내 먹을 수 있는\n편리하고 즐거운 시간을 만끽하세요.",
+      subtitle: "물통 없이 스스로 채우는 직수형\n편리한 냉장고 STEM을 확인해보세요.",
       icon: "Seedling",
       tag: "STEM이란?",
       mediaType: "video",
@@ -345,8 +347,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "기계실 세척",
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/ym2jxU6lzNw?si=d6qAuVkfwCzUyGVS",
-      description:
-        "조용히 쌓이는 냉장고 뒷편에 가득한 먼지와 세균, 안전과 성능을 위해 전문가가 관리합니다.",
+      description: "조용히 쌓이는 냉장고 뒷편에 가득한 먼지와 세균, 안전과 성능을 위해 전문가가 관리합니다.",
       highlights: ["기계실 먼지 제거", "전문 장비 케어", "안전·성능 관리", "프리미엄 케어"],
     },
     {
@@ -451,9 +452,7 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "AI가 세탁의 시작부터, 건조가 끝나는 과정까지 함께합니다. 세탁물의 무게를 감지하여 3초만에 코스별 예상 종료시간을 알 수 있고, AI 맞춤 세탁은 의류의 무게와 재질, 오염도에 맞춰 최적의 코스를 추천합니다. 건조가 끝날무렵 건조기를 예열해두고, 사용하면 할수록 더 정확하게 건조 완료 시간을 알려줍니다.",
       highlights: ["AI 타임센싱", "AI 맞춤 세탁, 탈수", "AI 시간 안내", "AI 세탁•건조 리포트"],
-      disclaimers: [
-        "소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
-      ],
+      disclaimers: ["소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
       collapsibleDisclaimers: [
         {
           title: "AI 타임 센싱",
@@ -515,9 +514,7 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "AI DD 모터가 세탁물의 무게와 옷감의 부드러움을 스스로 감지해, 손빨래 동작을 본뜬 6가지 모션으로 옷감 손상은 줄이고 세탁 성능은 높여줍니다. 건조할 때도 무게와 습도를 인식해 6모션으로 보송하게 마무리해주니, 아끼는 옷도 안심하고 맡기실 수 있어요.",
       highlights: ["AI DD 모터", "6모션 맞춤 세탁·건조", "옷감 손상 최소화", "섬세한 케어"],
-      disclaimers: [
-        "소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
-      ],
+      disclaimers: ["소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
       collapsibleDisclaimers: [
         {
           title: "AI 세탁",
@@ -583,7 +580,8 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Wind",
       tag: "AI 콜드프리",
       mediaType: "video",
-      mediaUrl: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AI_coldfree_detail_01.mp4",
+      mediaUrl:
+        "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AI_coldfree_detail_01.mp4",
       description:
         "실내 온도는 그대로 유지하면서 습도만 쏙 잡아주는 정온 제습 기능으로, 피부에 닿는 바람이 차갑거나 꿉꿉하지 않아 한여름에도 쾌적한 실내 공기를 누릴 수 있습니다.",
       highlights: ["70% 빠른 냉방", "50% 소음 감소", "10년 무상 보증", "에너지 효율 1등급"],
