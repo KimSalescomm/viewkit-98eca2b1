@@ -399,6 +399,7 @@ const Subscription = () => {
             washer: "세탁기 케어서비스 (분해세척)",
             washcombo: "워시타워 케어서비스 (스팀케어)",
             refrigerator: "냉장고 케어서비스 (기계실 세척)",
+            stem: "STEM 냉장고 케어서비스 (기계실 세척)",
             airconditioner: "스탠드 에어컨 케어서비스 (분해세척)",
             airpurifier: "공기청정기 케어서비스 (필터 교체 & 필터 클리닝)",
             cooktop: "전기레인지 케어서비스 (코팅 및 광택)",
