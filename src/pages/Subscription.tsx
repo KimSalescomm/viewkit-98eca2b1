@@ -669,6 +669,13 @@ const Subscription = () => {
                 </span>
               )}
             </div>
+            {previewStep.description && (
+              <div className="px-5 py-4 border-t border-gray-100 bg-white">
+                <p className="text-[13px] leading-relaxed text-gray-700">
+                  {previewStep.description}
+                </p>
+              </div>
+            )}
             {previewStep.disclaimer && !previewStep.disclaimer.startsWith("프리미엄") && (
               <div className="px-5 py-3 border-t border-gray-100 bg-white">
                 <p className="text-[12px] leading-relaxed text-gray-500">
