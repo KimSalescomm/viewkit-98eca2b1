@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getFeatureById } from "@/data/features";
 import { getProductById } from "@/data/products";
 import MediaViewer from "@/components/MediaViewer";
