@@ -359,17 +359,6 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
     },
     {
-      id: "13",
-      title: "기계실 청소가 필요하다는 거 아셨나요?",
-      subtitle: "있는지도 몰랐던 기계실, 청소도 필요하다면?\n눈에 안 보이는 곳일수록, 전문가가 필요합니다.",
-      icon: "Cleaning",
-      tag: "기계실 세척",
-      mediaType: "youtube",
-      mediaUrl: "https://www.youtube.com/embed/ym2jxU6lzNw?si=d6qAuVkfwCzUyGVS",
-      description: "조용히 쌓이는 냉장고 뒷편에 가득한 먼지와 세균, 안전과 성능을 위해 전문가가 관리합니다.",
-      highlights: ["기계실 먼지 제거", "전문 장비 케어", "안전·성능 관리", "프리미엄 케어"],
-    },
-    {
       id: "9",
       title: "STEM 냉장고, 우리 집에 어떻게 설치하죠?",
       subtitle: "수도관 연결 어떻게 될지 고민되시죠?\n깔끔한 마무리까지 확인해보세요.",
