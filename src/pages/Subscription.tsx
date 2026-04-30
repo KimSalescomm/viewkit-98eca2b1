@@ -132,21 +132,25 @@ const subscriptionProducts: SubscriptionProduct[] = [
         ],
       },
       {
-        label: "유로 세척 케어",
-        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator04.png",
-        description: "고온·고압 세척으로 물이 지나는 유로부터 출수구까지 위생적으로 관리합니다.",
+        label: "제품 성능 점검",
+        description: "설치 상태, 수평, 기본 작동 여부를 점검해 안정적인 사용을 지원합니다.",
         notes: [
-          "유로 세척 결과는 수질 및 사용 환경에 따라 차이가 있을 수 있습니다.",
+          "정밀 수리 또는 부품 교체가 필요한 경우 별도 A/S로 안내될 수 있습니다.",
         ],
       },
       {
-        label: "워터필터 교체",
-        titleSuffix: "12개월",
-        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator05.png",
-        description: "깨끗한 정수 성능 유지를 위해 교체 주기에 맞춰 워터필터를 무상으로 교체합니다.",
+        label: "무상 A/S",
+        description: "약정 기간 내 제품 고장 발생 시 무상 A/S를 제공합니다.",
         notes: [
-          "필터 교체 주기는 제품 및 사용 환경에 따라 달라질 수 있습니다.",
-          "정수 기능이 있는 모델에 한해 제공됩니다.",
+          "고객 과실로 인한 고장은 무상 A/S 대상에서 제외됩니다.",
+        ],
+      },
+      {
+        label: "고무패킹 케어",
+        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator10.png",
+        description: "도어 고무패킹을 클리닝하고 전용 윤활제를 도포해 밀폐력 유지에 도움을 줍니다.",
+        notes: [
+          "고무패킹의 마모·손상 상태에 따라 케어 효과는 달라질 수 있습니다.",
         ],
       },
       {
@@ -167,18 +171,21 @@ const subscriptionProducts: SubscriptionProduct[] = [
         ],
       },
       {
-        label: "고무패킹 케어",
-        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator10.png",
-        description: "도어 고무패킹을 클리닝하고 전용 윤활제를 도포해 밀폐력 유지에 도움을 줍니다.",
+        label: "유로 세척 케어",
+        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator04.png",
+        description: "고온·고압 세척으로 물이 지나는 유로부터 출수구까지 위생적으로 관리합니다.",
         notes: [
-          "고무패킹의 마모·손상 상태에 따라 케어 효과는 달라질 수 있습니다.",
+          "유로 세척 결과는 수질 및 사용 환경에 따라 차이가 있을 수 있습니다.",
         ],
       },
       {
-        label: "제품 성능 점검",
-        description: "설치 상태, 수평, 기본 작동 여부를 점검해 안정적인 사용을 지원합니다.",
+        label: "워터필터 교체",
+        titleSuffix: "12개월",
+        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator05.png",
+        description: "깨끗한 정수 성능 유지를 위해 교체 주기에 맞춰 워터필터를 무상으로 교체합니다.",
         notes: [
-          "정밀 수리 또는 부품 교체가 필요한 경우 별도 A/S로 안내될 수 있습니다.",
+          "필터 교체 주기는 제품 및 사용 환경에 따라 달라질 수 있습니다.",
+          "정수 기능이 있는 모델에 한해 제공됩니다.",
         ],
       },
       {
@@ -191,13 +198,6 @@ const subscriptionProducts: SubscriptionProduct[] = [
           "운송 서비스는 유료이며, 비용은 고객 부담",
           "제품 설치 환경에 따라 추가 비용이 발생할 수 있음",
           "추가 비용 관련 자세한 사항은 LG전자 고객센터(1544-7777)에 문의",
-        ],
-      },
-      {
-        label: "무상 A/S",
-        description: "약정 기간 내 제품 고장 발생 시 무상 A/S를 제공합니다.",
-        notes: [
-          "고객 과실로 인한 고장은 무상 A/S 대상에서 제외됩니다.",
         ],
       },
     ],
