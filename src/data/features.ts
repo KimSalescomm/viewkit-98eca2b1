@@ -274,7 +274,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "STEM이란?",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10559842/J816_172_step3filter_detail_01.mp4",
-      description: "음식 보관을 넘어, 흐르는 물로 깨끗한 물과 얼음을 만드는 직수형 냉장고",
+      description: "STEM 냉장고는 고여 있는 물이 아닌, 흐르는 물로 얼음을 만드는 위생적인 제빙시스템을 갖추고 있어요. 게다가 매번 물을 채워 넣을 필요 없이 알아서 얼음이 만들어져 더 편리하게 시원한 시간을 누릴 수 있어요.",
       highlights: [
         "흐르는 물로 얼음을 만드는 제빙 시스템",
         "전문가가 꼼꼼하게 관리하는 케어 시스템",
