@@ -480,43 +480,40 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
   );
 };
 
-// 콘텐츠가 컨테이너 안에 다 들어오면 가로 스크롤바를 숨김
+// 모바일(<768px): 가로 스크롤로 표 노출
+// 그 외(태블릿/데스크탑/스탠바이미): 스크롤 없이 카드가 컨테이너에 맞춰 균등 분할
 const TableScrollContainer = ({ children }: { children: React.ReactNode }) => {
-  const outerRef = useRef<HTMLDivElement>(null);
-  const innerRef = useRef<HTMLDivElement>(null);
-  const [needsScroll, setNeedsScroll] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const check = () => {
-      const outer = outerRef.current;
-      const inner = innerRef.current;
-      if (!outer || !inner) return;
-      // 1px 여유로 부동소수 오차 흡수
-      setNeedsScroll(inner.scrollWidth > outer.clientWidth + 1);
-    };
-    check();
-    const ro = new ResizeObserver(check);
-    if (outerRef.current) ro.observe(outerRef.current);
-    if (innerRef.current) ro.observe(innerRef.current);
-    window.addEventListener("resize", check);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", check);
-    };
-  }, [children]);
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
-  return (
-    <div
-      ref={outerRef}
-      style={{
-        width: "100%",
-        overflowX: needsScroll ? "auto" : "hidden",
-        WebkitOverflowScrolling: "touch",
-      }}
-    >
-      <div ref={innerRef} style={{ display: "inline-block", minWidth: "100%" }}>
+  if (isMobile) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          overflowX: "auto",
+          WebkitOverflowScrolling: "touch",
+        }}
+      >
         {children}
       </div>
+    );
+  }
+
+  // 데스크탑/스탠바이미: 스크롤 없이 전체 노출 (자식 카드 너비 제약 해제)
+  return (
+    <div
+      style={{ width: "100%", overflowX: "hidden" }}
+      className="[&_>div]:!min-w-0 [&_>div>div]:!flex-1 [&_>div>div]:!min-w-0 [&_>div>div]:!max-w-none"
+    >
+      {children}
     </div>
   );
 };
