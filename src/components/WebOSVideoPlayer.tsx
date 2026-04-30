@@ -541,10 +541,10 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
         preload="auto"
         poster={poster}
         style={{
-          width: "100%",
+          width: "auto",
           height: "auto",
+          maxWidth: "100%",
           maxHeight: "80vh",
-          objectFit: "contain",
           display: "block",
           opacity: isLoading ? 0 : 1,
           transition: "opacity 0.3s",
