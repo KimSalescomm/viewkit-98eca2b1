@@ -468,13 +468,11 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
     <div
       style={{
         width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         borderRadius: "16px",
         overflow: "hidden",
         background: "#000",
         position: "relative",
+        lineHeight: 0,
       }}
     >
       {/* (수정 5) 오버레이 - pointer-events:none, 우상단, 높은 z-index, 수동 재생 버튼 */}
@@ -541,11 +539,11 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
         preload="auto"
         poster={poster}
         style={{
-          width: "auto",
+          width: "100%",
           height: "auto",
-          maxWidth: "100%",
           maxHeight: "80vh",
           display: "block",
+          margin: "0 auto",
           opacity: isLoading ? 0 : 1,
           transition: "opacity 0.3s",
         }}
