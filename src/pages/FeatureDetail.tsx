@@ -112,6 +112,13 @@ const FeatureDetail = () => {
           </div>
         )}
 
+        {/* Tab description (between tabs and media) */}
+        {activeTabData?.description && (
+          <p className="mb-4 sm:mb-5 text-sm sm:text-base text-gray-600 text-center whitespace-pre-line leading-relaxed">
+            {activeTabData.description}
+          </p>
+        )}
+
         {/* Media - video_click 이벤트용 래퍼 */}
         <div className="mb-6 sm:mb-8" onClick={handleVideoClick}>
           <MediaViewer
@@ -124,11 +131,6 @@ const FeatureDetail = () => {
             isShorts={activeTabData?.isShorts ?? feature.isShorts}
             fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
           />
-          {activeTabData?.description && (
-            <p className="mt-3 text-sm sm:text-base text-gray-600 text-center whitespace-pre-line leading-relaxed">
-              {activeTabData.description}
-            </p>
-          )}
         </div>
 
         {/* Description Card */}
