@@ -461,6 +461,18 @@ export const featuresMap: Record<string, Feature[]> = {
         "다양한 Fit & Max 라인업, STEM 냉장고, 김치, 냉장,냉동 전용 컨버터블을 내 생활에 맞게 조합해 보세요. 공간은 아름다워지고, 생활은 더 풍요로워집니다.",
       highlights: ["다양한 인테리어 연출", "조합으로 더 넉넉해지는 용량", "Fit & Max로 트렌디한 인테리어"],
     },
+    {
+      id: "13",
+      title: "더 좋은 프리미엄 기능들이\n궁금하다면?",
+      subtitle: "신선한 보관은 기본, 사용하면서 느끼는\n편리함까지 생각한 프리미엄 기능을 확인해보세요.",
+      icon: "Sparkles",
+      tag: "26년 STEM Fit&Max",
+      mediaType: "image",
+      mediaUrl: "",
+      description:
+        "신선한 보관은 기본, 사용하면서 느끼는 편리함까지 생각한 26년형 STEM Fit & Max의 프리미엄 기능을 확인해보세요.",
+      highlights: ["프리미엄 보관 성능", "사용 편의성 강화", "26년 신모델", "STEM Fit & Max"],
+    },
   ],
 
   // 워시타워 특장점
