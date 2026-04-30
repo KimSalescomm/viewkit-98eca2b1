@@ -25,6 +25,7 @@ interface CareStep {
   disclaimer?: string;
   description?: string;
   notes?: string[];
+  titleSuffix?: string;
 }
 
 interface SubscriptionProduct {
