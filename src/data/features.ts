@@ -482,6 +482,26 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "신선한 보관은 기본, 사용하면서 느끼는 편리함까지 생각한 26년형 STEM Fit & Max의 프리미엄 기능을 확인해보세요.",
       highlights: ["프리미엄 보관 성능", "사용 편의성 강화", "26년 신모델", "STEM Fit & Max"],
+      tabs: [
+        {
+          label: "프리미엄 기능 1",
+          description: "기능 1에 대한 설명을 입력해주세요.",
+          mediaType: "image",
+          mediaUrl: "",
+        },
+        {
+          label: "프리미엄 기능 2",
+          description: "기능 2에 대한 설명을 입력해주세요.",
+          mediaType: "image",
+          mediaUrl: "",
+        },
+        {
+          label: "프리미엄 기능 3",
+          description: "기능 3에 대한 설명을 입력해주세요.",
+          mediaType: "image",
+          mediaUrl: "",
+        },
+      ],
     },
   ],
 
