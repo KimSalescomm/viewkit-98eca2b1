@@ -434,7 +434,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "다양한 조합",
           description:
-            "Fit & Max 냉장고와 김치냉장고, 컨버터블까지\n다양한 라인업을 조합해 주방에 꼭 맞는\n나만의 인테리어를 완성해보세요.",
+            "Fit & Max 라인업은 가구장 간격을\n4mm로 최소화한 밀착 설계를 적용했습니다.\n우리 집 구조에 딱 맞는 조합을 선택해보세요.",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10780841/FitNMax_1380x670.mp4",
         },
