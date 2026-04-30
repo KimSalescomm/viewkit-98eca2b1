@@ -125,7 +125,7 @@ const FeatureDetail = () => {
             fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
           />
           {activeTabData?.description && (
-            <div className="pointer-events-none absolute inset-x-0 top-0 z-10 px-4 py-4 sm:px-6 sm:py-5 bg-slate-900 rounded-t-2xl">
+            <div className="pointer-events-none absolute inset-x-0 top-0 z-10 px-4 py-4 sm:px-6 sm:py-5 rounded-t-2xl" style={{ backgroundColor: "#F1F7FF" }}>
               <p className="text-sm sm:text-base text-white text-center whitespace-pre-line leading-relaxed font-medium">
                 {activeTabData.description}
               </p>
