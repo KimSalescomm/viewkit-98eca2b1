@@ -148,7 +148,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
         ],
       },
       {
-        label: "퓨어프레시 필터 교체 (12개월)",
+        label: "퓨어프레시 필터 교체",
         image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator06.png",
         notes: [
           "퓨어프레시 필터 적용 모델에 한해 제공되는 서비스입니다.",
