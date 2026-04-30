@@ -23,6 +23,7 @@ interface CareStep {
   label: string;
   image?: string;
   disclaimer?: string;
+  description?: string;
   notes?: string[];
 }
 
