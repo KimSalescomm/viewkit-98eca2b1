@@ -129,7 +129,7 @@ const FeatureDetail = () => {
           <div className="mb-4 sm:mb-6 px-1">
             <ul className="space-y-1">
               {feature.disclaimers.map((text, index) => (
-                <li key={index} className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                <li key={index} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed">
                   * {text}
                 </li>
               ))}
@@ -142,12 +142,12 @@ const FeatureDetail = () => {
           <div className="mb-10 sm:mb-12 px-1 space-y-4">
             {feature.collapsibleDisclaimers.map((item, index) => (
               <div key={index} className="border-b border-gray-200 pb-3">
-                <div className="text-[11px] sm:text-xs text-muted-foreground font-medium py-2.5">
+                <div className="text-[10px] sm:text-[11px] text-muted-foreground font-medium py-2.5">
                   {item.title}
                 </div>
                 <ol className="space-y-1 list-none">
                   {item.items.map((text, i) => (
-                    <li key={i} className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                    <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed">
                       {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
                     </li>
                   ))}
