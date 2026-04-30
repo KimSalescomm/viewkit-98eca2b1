@@ -3,7 +3,7 @@ import SafeImage from "@/components/SafeImage";
 import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
 import { ProductComparisonTable, GalleryImage } from "@/data/features";
 import useEmblaCarousel from "embla-carousel-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface MediaViewerProps {
@@ -88,11 +88,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
     };
     
     return (
-      <div style={{ 
-          width: "100%", 
-          overflowX: "auto",
-          WebkitOverflowScrolling: "touch",
-        }}>
+      <TableScrollContainer>
         <div style={{ 
           display: "flex", 
           gap: "16px", 
@@ -214,7 +210,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
             </div>
           ))}
         </div>
-      </div>
+      </TableScrollContainer>
     );
   }
 
@@ -484,4 +480,46 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
   );
 };
 
+// 콘텐츠가 컨테이너 안에 다 들어오면 가로 스크롤바를 숨김
+const TableScrollContainer = ({ children }: { children: React.ReactNode }) => {
+  const outerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
+  const [needsScroll, setNeedsScroll] = useState(false);
+
+  useEffect(() => {
+    const check = () => {
+      const outer = outerRef.current;
+      const inner = innerRef.current;
+      if (!outer || !inner) return;
+      // 1px 여유로 부동소수 오차 흡수
+      setNeedsScroll(inner.scrollWidth > outer.clientWidth + 1);
+    };
+    check();
+    const ro = new ResizeObserver(check);
+    if (outerRef.current) ro.observe(outerRef.current);
+    if (innerRef.current) ro.observe(innerRef.current);
+    window.addEventListener("resize", check);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", check);
+    };
+  }, [children]);
+
+  return (
+    <div
+      ref={outerRef}
+      style={{
+        width: "100%",
+        overflowX: needsScroll ? "auto" : "hidden",
+        WebkitOverflowScrolling: "touch",
+      }}
+    >
+      <div ref={innerRef} style={{ display: "inline-block", minWidth: "100%" }}>
+        {children}
+      </div>
+    </div>
+  );
+};
+
 export default MediaViewer;
+
