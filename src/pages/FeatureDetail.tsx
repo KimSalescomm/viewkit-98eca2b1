@@ -90,17 +90,45 @@ const FeatureDetail = () => {
           </div>
         </div>
 
+        {/* Tabs (only when feature.tabs exists) */}
+        {tabs && tabs.length > 0 && (
+          <div className="mb-4 sm:mb-5 flex flex-wrap gap-2 justify-center">
+            {tabs.map((tab, idx) => {
+              const isActive = idx === activeTab;
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setActiveTab(idx)}
+                  className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-sm sm:text-base font-semibold transition-all ${
+                    isActive
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "bg-white text-gray-700 border border-gray-200 hover:border-blue-400 hover:text-blue-600"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
         {/* Media - video_click 이벤트용 래퍼 */}
         <div className="mb-6 sm:mb-8" onClick={handleVideoClick}>
           <MediaViewer
-            mediaType={feature.mediaType}
-            mediaUrl={feature.mediaUrl}
+            key={tabs ? `tab-${activeTab}` : "main"}
+            mediaType={activeTabData?.mediaType ?? feature.mediaType}
+            mediaUrl={activeTabData?.mediaUrl ?? feature.mediaUrl}
             title={feature.title}
             tableData={feature.tableData}
             galleryImages={feature.galleryImages}
-            isShorts={feature.isShorts}
-            fallbackUrl={feature.fallbackUrl}
+            isShorts={activeTabData?.isShorts ?? feature.isShorts}
+            fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
           />
+          {activeTabData?.description && (
+            <p className="mt-3 text-sm sm:text-base text-gray-600 text-center whitespace-pre-line leading-relaxed">
+              {activeTabData.description}
+            </p>
+          )}
         </div>
 
         {/* Description Card */}
