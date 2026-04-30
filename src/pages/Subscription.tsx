@@ -139,7 +139,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
         ],
       },
       {
-        label: "워터필터 교체 (12개월)",
+        label: "워터필터 교체",
         image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator05.png",
         description: "깨끗한 정수 성능 유지를 위해 교체 주기에 맞춰 워터필터를 무상으로 교체합니다.",
         notes: [
@@ -148,7 +148,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
         ],
       },
       {
-        label: "퓨어프레시 필터 교체 (12개월)",
+        label: "퓨어프레시 필터 교체",
         image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator06.png",
         notes: [
           "퓨어프레시 필터 적용 모델에 한해 제공되는 서비스입니다.",
