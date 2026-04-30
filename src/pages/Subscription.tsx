@@ -25,6 +25,7 @@ interface CareStep {
   disclaimer?: string;
   description?: string;
   notes?: string[];
+  titleSuffix?: string;
 }
 
 interface SubscriptionProduct {
@@ -140,6 +141,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
       },
       {
         label: "워터필터 교체",
+        titleSuffix: "12개월",
         image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator05.png",
         description: "깨끗한 정수 성능 유지를 위해 교체 주기에 맞춰 워터필터를 무상으로 교체합니다.",
         notes: [
@@ -149,6 +151,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
       },
       {
         label: "퓨어프레시 필터 교체",
+        titleSuffix: "12개월",
         image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator06.png",
         notes: [
           "퓨어프레시 필터 적용 모델에 한해 제공되는 서비스입니다.",
@@ -650,7 +653,7 @@ const Subscription = () => {
                   <Check className="w-3.5 h-3.5" strokeWidth={3} />
                 </span>
                 <h4 className="text-base font-bold text-gray-900 flex items-baseline gap-2 flex-wrap">
-                  <span>{previewStep.label}</span>
+                  <span>{previewStep.label}{previewStep.titleSuffix ? ` (${previewStep.titleSuffix})` : ""}</span>
                   {previewStep.disclaimer?.startsWith("프리미엄") && (
                     <span className="text-[70%] font-normal text-gray-400">
                       ({previewStep.disclaimer})
