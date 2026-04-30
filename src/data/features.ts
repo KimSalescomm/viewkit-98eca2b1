@@ -423,6 +423,22 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "도어 걸림을 없앤 제로 클리어런스 힌지가 만드는 단 4mm 간격의 완벽에 가까운 밀착! 인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아듭니다.",
       highlights: ["제로 클리어런스 힌지", "인테리어 냉장고", "다양한 라인업", "냉툭튀가 싫다면 Fit & Max로"],
+      tabs: [
+        {
+          label: "제로 클리어런스 힌지",
+          description:
+            "도어가 안쪽으로 회전하는 제로 클리어런스 힌지로\n냉장고 장과의 간격을 최소화해 더 완성도 높은\n주방 인테리어를 완성할 수 있습니다.",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10780841/ZEROHINGE_SWING.mp4",
+        },
+        {
+          label: "다양한 조합",
+          description:
+            "Fit & Max 냉장고와 김치냉장고, 컨버터블까지\n다양한 라인업을 조합해 주방에 꼭 맞는\n나만의 인테리어를 완성해보세요.",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10780841/FitNMax_1380x670.mp4",
+        },
+      ],
       disclaimers: [
         "본 페이지의 영상 및 이미지는 소비자의 이해를 돕기 위해 연출된 자료임.",
         "제품의 색상, 외관, 구성 및 사양은 모델에 따라 다를 수 있으며, 제품 개선을 위해 예고 없이 변경될 수 있음.",
