@@ -88,11 +88,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
     };
     
     return (
-      <div style={{ 
-          width: "100%", 
-          overflowX: "auto",
-          WebkitOverflowScrolling: "touch",
-        }}>
+      <TableScrollContainer>
         <div style={{ 
           display: "flex", 
           gap: "16px", 
