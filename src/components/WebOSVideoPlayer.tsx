@@ -468,13 +468,11 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
     <div
       style={{
         width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         borderRadius: "16px",
         overflow: "hidden",
         background: "#000",
         position: "relative",
+        lineHeight: 0,
       }}
     >
       {/* (수정 5) 오버레이 - pointer-events:none, 우상단, 높은 z-index, 수동 재생 버튼 */}
