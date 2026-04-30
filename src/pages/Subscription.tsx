@@ -121,7 +121,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "STEM 냉장고",
     beforeImage: refrigeratorBefore,
     afterImage: refrigeratorAfter,
-    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/refrigerators_regular_250804.mp4",
+    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/refrigerators_250804.mp4",
     careSteps: [
       {
         label: "기계실 세척",
