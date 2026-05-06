@@ -112,6 +112,18 @@ const FeatureDetail = () => {
           </div>
         )}
 
+        {/* Tab Copy (above media) */}
+        {activeTabData?.description && (
+          <div className="mb-4 sm:mb-5 px-1">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
+              {activeTabData.label}
+            </h2>
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed sm:leading-loose whitespace-pre-line">
+              {activeTabData.description}
+            </p>
+          </div>
+        )}
+
         {/* Media - video_click 이벤트용 래퍼 */}
         <div className="mb-6 sm:mb-8 relative" onClick={handleVideoClick}>
           <MediaViewer
@@ -126,13 +138,16 @@ const FeatureDetail = () => {
           />
         </div>
 
-        {/* Description Card */}
-        <div className="bg-white rounded-2xl p-5 sm:p-6 mb-4 sm:mb-6 shadow-md">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">설명 더 보기</h2>
-          <p className="text-sm sm:text-base text-gray-600 leading-relaxed sm:leading-loose">
-            {feature.description}
-          </p>
-        </div>
+        {/* Description Card (hidden when tab has its own copy) */}
+        {!activeTabData?.description && (
+          <div className="bg-white rounded-2xl p-5 sm:p-6 mb-4 sm:mb-6 shadow-md">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">설명 더 보기</h2>
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed sm:leading-loose">
+              {feature.description}
+            </p>
+          </div>
+        )}
+
 
         {/* Highlights Card */}
         <div className="bg-white rounded-2xl p-5 sm:p-6 mb-10 sm:mb-12 shadow-md">
