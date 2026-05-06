@@ -114,11 +114,8 @@ const FeatureDetail = () => {
 
         {/* Tab Copy (above media) */}
         {activeTabData?.description && (
-          <div className="mb-4 sm:mb-5 px-1">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
-              {activeTabData.label}
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600 leading-relaxed sm:leading-loose whitespace-pre-line">
+          <div className="mb-4 sm:mb-5 px-1 text-center">
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed sm:leading-loose whitespace-pre-line">
               {activeTabData.description}
             </p>
           </div>
