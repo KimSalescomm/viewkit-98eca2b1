@@ -505,12 +505,6 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
       tabs: [
         {
-          label: "라이트 갤러리",
-          description: "은은한 조명으로 내부를 밝혀, 보관 중인 식재료를 한눈에 확인할 수 있어요.",
-          mediaType: "video",
-          mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10780841/PREMIUMDETAILS_SWING.mp4",
-        },
-        {
           label: "AI 신선케어",
           description: "AI가 사용 패턴을 학습해 식재료를 더 오래 신선하게 보관해드려요.",
           mediaType: "video",
@@ -521,6 +515,12 @@ export const featuresMap: Record<string, Feature[]> = {
           description: "강력한 탈취 성능으로 냉장고 속 냄새 걱정을 줄여드려요.",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10780841/DEODORIZING_1380x670.mp4",
+        },
+        {
+          label: "라이트 갤러리",
+          description: "은은한 조명으로 내부를 밝혀, 보관 중인 식재료를 한눈에 확인할 수 있어요.",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10780841/PREMIUMDETAILS_SWING.mp4",
         },
       ],
       collapsibleDisclaimers: [
