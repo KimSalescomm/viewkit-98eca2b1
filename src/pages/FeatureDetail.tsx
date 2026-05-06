@@ -112,17 +112,15 @@ const FeatureDetail = () => {
           </div>
         )}
 
-        {/* Tab Copy (above media) */}
-        {activeTabData?.description && (
-          <div className="mb-4 sm:mb-5 px-1 text-center">
-            <p className="text-sm sm:text-base text-gray-700 leading-relaxed sm:leading-loose whitespace-pre-line">
-              {activeTabData.description}
-            </p>
-          </div>
-        )}
-
         {/* Media - video_click 이벤트용 래퍼 */}
         <div className="mb-6 sm:mb-8 relative" onClick={handleVideoClick}>
+          {activeTabData?.description && (
+            <div className="absolute top-3 sm:top-5 left-1/2 -translate-x-1/2 z-10 px-4 w-full max-w-[90%] text-center pointer-events-none">
+              <p className="text-sm sm:text-base text-gray-900 leading-relaxed sm:leading-loose whitespace-pre-line drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]">
+                {activeTabData.description}
+              </p>
+            </div>
+          )}
           <MediaViewer
             key={tabs ? `tab-${activeTab}` : "main"}
             mediaType={activeTabData?.mediaType ?? feature.mediaType}
