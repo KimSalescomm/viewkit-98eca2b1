@@ -115,8 +115,8 @@ const FeatureDetail = () => {
         {/* Media - video_click 이벤트용 래퍼 */}
         <div className="mb-6 sm:mb-8 relative" onClick={handleVideoClick}>
           {activeTabData?.description && (
-            <div className="absolute top-3 sm:top-5 left-1/2 -translate-x-1/2 z-10 px-4 w-full max-w-[90%] text-center pointer-events-none">
-              <p className="text-sm sm:text-base text-gray-900 leading-relaxed sm:leading-loose whitespace-pre-line drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]">
+            <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 px-4 py-4 sm:py-6 text-center pointer-events-none">
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed sm:leading-loose whitespace-pre-line">
                 {activeTabData.description}
               </p>
             </div>
