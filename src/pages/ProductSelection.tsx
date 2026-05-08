@@ -99,7 +99,7 @@ const ProductSelection = () => {
     title: "구독 케어",
     description: "케어 전·후 비교로 한눈에 보는 케어 서비스",
     keyVisualImage: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_stove_03_250804.jpg",
-    icon: "Sparkles",
+    icon: "Waves",
   } as (typeof products)[number];
   const visibleProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")];
   const { trackProductClick } = useAnalyticsContext();
@@ -179,7 +179,7 @@ const ProductSelection = () => {
                         loading={index < 2 ? "eager" : "lazy"}
                         fetchPriority={index < 2 ? "high" : undefined}
                         decoding="async"
-                        className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105 rounded-2xl"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/10 to-transparent pointer-events-none" />
                       {/* Mobile: small icon chip on thumbnail */}
@@ -216,7 +216,7 @@ const ProductSelection = () => {
                     >
                       <ProductLucideIcon
                         name={product.icon}
-                        className={`w-6 h-6 sm:w-7 sm:h-7 ${isEnabled ? "text-white" : "text-white/80"}`}
+                        className={`w-6 h-6 sm:w-7 sm:h-7 ${isEnabled ? "text-slate-50" : "text-white/80"}`}
                       />
                     </div>
                     <div className="min-w-0 pt-0.5 flex-1">
