@@ -142,6 +142,7 @@ const ProductSelection = () => {
         </div>
 
         {/* Card Grid */}
+        <h2 className="sr-only">제품 선택</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5">
           {visibleProducts.map((product, index) => {
             const isEnabled = enabledIds.includes(product.id);
@@ -177,7 +178,7 @@ const ProductSelection = () => {
                     <>
                       <SafeImage
                         src={product.keyVisualImage}
-                        alt={product.name}
+                        alt={`LG ${product.name} 대표 이미지`}
                         loading={index < 2 ? "eager" : "lazy"}
                         fetchPriority={index < 2 ? "high" : undefined}
                         decoding="async"
@@ -272,7 +273,7 @@ const ProductSelection = () => {
           })}
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
