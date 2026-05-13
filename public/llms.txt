@@ -1,0 +1,12 @@
+# View Kit
+
+> LG 가전 제품(냉장고, 워시타워, 스타일러, TV 등)의 특장점과 비교 정보를 매장 키오스크 환경에서 한눈에 보여주는 제품 뷰어 웹앱.
+
+## Pages
+
+- [홈 / 제품 선택](/): 제품 카테고리를 선택해 특장점 페이지로 이동.
+- [구독 케어](/subscription): LG 구독 케어 서비스 Before/After 비교.
+- [냉장고](/product/refrigerator): DIOS 냉장고 특장점.
+- [워시타워](/product/washer): 워시타워 6모션 세탁/건조 특장점.
+- [스타일러](/product/styler): ALL NEW 스타일러 특장점.
+- [운영 매뉴얼](/product/tv/manual): 매장 운영자용 키오스크 사용 가이드.
