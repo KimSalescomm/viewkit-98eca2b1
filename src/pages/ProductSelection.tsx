@@ -105,7 +105,7 @@ const ProductSelection = () => {
   const { trackProductClick } = useAnalyticsContext();
 
   return (
-    <div className="min-h-screen bg-[hsl(220,20%,97%)] px-5 py-10 sm:px-8 sm:py-14">
+    <main className="min-h-screen bg-[hsl(220,20%,97%)] px-5 py-10 sm:px-8 sm:py-14">
       <div className="max-w-xl mx-auto sm:max-w-3xl relative">
 
         {/* Top-right controls */}
@@ -115,8 +115,10 @@ const ProductSelection = () => {
             to="/product/tv/manual"
             className="text-sky-400 hover:text-sky-500 transition-colors"
             title="운영 매뉴얼"
+            aria-label="운영 매뉴얼 열기"
           >
-            <HelpCircle className="w-7 h-7 sm:w-8 sm:h-8" />
+            <HelpCircle className="w-7 h-7 sm:w-8 sm:h-8" aria-hidden="true" />
+            <span className="sr-only">운영 매뉴얼</span>
           </Link>
         </div>
 
