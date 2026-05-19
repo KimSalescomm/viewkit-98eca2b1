@@ -45,8 +45,8 @@ export const products: Product[] = [
   },
   {
     id: "vacuum",
-    name: "로봇청소기",
-    title: "로봇청소기",
+    name: "LG HOM-BOT RONi",
+    title: "LG HOM-BOT RONi",
     description: "강력한 흡입력, 자유로운 청소",
     keyVisualImage: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
     icon: "Sparkles",
