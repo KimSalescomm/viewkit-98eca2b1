@@ -122,9 +122,9 @@ const ProductSelection = () => {
     // 1) URL 코드가 최우선 — 어느 기기든 같은 코드면 동일 매장으로 인식
     if (urlStore) {
       const registry = getRegistry();
-      // 등록부에서 해당 슬러그의 매장명을 역조회 (없으면 코드 자체를 이름으로 사용)
       const matchedName = Object.entries(registry).find(([, s]) => s === urlStore)?.[0];
-      const name = matchedName || saved?.name && saved.slug === urlStore ? saved!.name : (matchedName || urlStore);
+      const savedNameForSlug = saved && saved.slug === urlStore ? saved.name : undefined;
+      const name = matchedName || savedNameForSlug || urlStore;
       registerStore(name, urlStore);
       setCurrentStore({ name, slug: urlStore });
       return;
