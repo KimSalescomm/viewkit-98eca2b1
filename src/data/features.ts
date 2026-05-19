@@ -757,15 +757,15 @@ export const featuresMap: Record<string, Feature[]> = {
   vacuum: [
     {
       id: "1",
-      title: "AI가 알아서 척척, 손이 자유로워지는 청소",
-      subtitle: "사물·공간을 인식해 가장 효율적인 동선으로\n알아서 청소를 마무리해드려요.",
+      title: "마른 얼룩, AI가 알아서 닦아줄 순 없을까?",
+      subtitle: "마른 얼룩 발견! 스팀 청소 시작!\n이게 바로 AI죠!",
       icon: "Sparkles",
-      tag: "AI 자율주행",
+      tag: "AI맞춤 청소 모드",
       mediaType: "video",
       mediaUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
       description:
-        "AI 카메라가 가구·전선·반려동물 배변물 등을 인식해 피해 다니고,\n방 구조를 학습해 빠진 곳 없이 청소를 마무리합니다.",
-      highlights: ["사물 인식 회피", "맵 러닝", "반려동물 모드", "음성 안내"],
+        "마른 얼룩을 발견하면 100℃ 스팀을 바로 만들어\n강력하게 얼룩에 분사, 최대 2회까지 쓱싹 닦아냅니다.",
+      highlights: ["마른 얼룩 자동 감지", "100℃ 고온 스팀 분사", "최대 2회 집중 케어", "AI맞춤 청소 모드"],
     },
     {
       id: "2",
