@@ -760,7 +760,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "마른 얼룩, AI가 알아서 닦아줄 순 없을까?",
       subtitle: "마른 얼룩 발견! 스팀 청소 시작!\n이게 바로 AI죠!",
       icon: "Sparkles",
-      tag: "AI맞춤 청소 모드",
+      tag: "100℃ 무빙스팀",
       mediaType: "video",
       mediaUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
       description:
