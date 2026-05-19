@@ -764,7 +764,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
       description:
-        "마른 얼룩을 발견하면 100℃ 스팀을 바로 만들어\n강력하게 얼룩에 분사, 최대 2회까지 쓱싹 닦아냅니다.",
+        "AI 카메라가 바닥을 실시간으로 스캔해 물기 없이 굳어버린 마른 얼룩을 정확히 찾아냅니다.\n얼룩이 감지되면 도크에서 즉시 100℃ 고온 스팀을 생성해 물걸레에 공급하고,\n해당 지점만 집중적으로 왕복하며 최대 2회까지 강력하게 분사·문질러 닦아냅니다.\n커피, 음료 자국, 음식물 흔적처럼 일반 물걸레로는 잘 지워지지 않는 묵은 얼룩도\n별도 조작 없이 AI가 알아서 판단하고 살균까지 한 번에 마무리합니다.",
       highlights: ["마른 얼룩 자동 감지", "100℃ 고온 스팀 분사", "최대 2회 집중 케어", "AI맞춤 청소 모드"],
     },
     {
