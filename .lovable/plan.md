@@ -1,14 +1,9 @@
-## 변경 내용
+## 작업
 
-**`src/data/products.ts`** — `vacuum` 항목 텍스트만 수정
-- `name`: `"로봇청소기"` → `"LG HOM-BOT RONi"`
-- `title`: `"로봇청소기"` → `"LG HOM-BOT RONi"`
-- `description`은 그대로 유지
+`/product/vacuum/feature/2`의 "설명 더 보기" 카피를 아래로 교체합니다.
 
-## 영향 범위
+> RGB 카메라와 센서로 다양한 상황과 장애물을 섬세하게 인식해 최적의 경로로 이동합니다. 만약 헤매거나 바퀴가 걸려 멈췄던 공간이 있다면 '고립 위험 영역'으로 기억하고, 다음 청소부터는 알아서 우회합니다. 이후에 장애물이 사라진 것이 확인되면 해당 공간까지 다시 청소해, 쓸수록 진화하는 청소 경로를 완성합니다.
 
-- `/` 제품 선택 카드 라벨
-- `/product/vacuum` 헤더의 칩(name), 타이틀(title)
-- 기타 `getProductById("vacuum").name/title`을 사용하는 모든 화면(FeatureCard, Manual 등)에 자동 반영
+## 변경 파일
 
-표기 대소문자/하이픈/공백(`LG HOM-BOT RONi`) 그대로 정확히 반영합니다.
+- `src/data/features.ts` — vacuum 제품의 id `2` 항목 `description` 필드만 수정

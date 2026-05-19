@@ -776,7 +776,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM",
       description:
-        "고성능 BLDC 모터와 멀티 사이클론 구조로 카펫 깊숙한 먼지·머리카락까지 강력하게 흡입합니다.",
+        "RGB 카메라와 센서로 다양한 상황과 장애물을 섬세하게 인식해 최적의 경로로 이동합니다. 만약 헤매거나 바퀴가 걸려 멈췄던 공간이 있다면 '고립 위험 영역'으로 기억하고, 다음 청소부터는 알아서 우회합니다. 이후에 장애물이 사라진 것이 확인되면 해당 공간까지 다시 청소해, 쓸수록 진화하는 청소 경로를 완성합니다.",
       highlights: ["파워풀 모터", "5단계 흡입 조절", "헤파 필터", "카펫 부스트"],
     },
     {
