@@ -769,15 +769,15 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "강력한 흡입력, 카펫 속 먼지까지",
-      subtitle: "고성능 모터와 사이클론 시스템으로\n눈에 보이지 않는 미세먼지까지 빨아들여요.",
+      title: "쓸수록 진화하는 AlphaUP Drive 주행",
+      subtitle: "장애물을 피하는 것은 물론, 장애물을 치우고 나면\n청소가 안된 구역인 걸 기억하고, 다시 청소를 재개하는 한층 더 진화한 주행.",
       icon: "Zap",
-      tag: "파워풀 석션",
-      mediaType: "youtube",
-      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM",
+      tag: "AlphaUP Drive",
+      mediaType: "video",
+      mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_03_sensing_ai_driving_pc.mp4",
       description:
         "RGB 카메라와 센서로 다양한 상황과 장애물을 섬세하게 인식해 최적의 경로로 이동합니다. 만약 헤매거나 바퀴가 걸려 멈췄던 공간이 있다면 '고립 위험 영역'으로 기억하고, 다음 청소부터는 알아서 우회합니다. 이후에 장애물이 사라진 것이 확인되면 해당 공간까지 다시 청소해, 쓸수록 진화하는 청소 경로를 완성합니다.",
-      highlights: ["파워풀 모터", "5단계 흡입 조절", "헤파 필터", "카펫 부스트"],
+      highlights: ["RGB 카메라 + 센서 인식", "고립 위험 영역 기억", "자동 우회 경로", "재청소 자동 재개"],
     },
     {
       id: "3",
