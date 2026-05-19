@@ -92,7 +92,7 @@ const productAccents: Record<string, { gradient: string; tint: string; chip: str
 };
 
 const ProductSelection = () => {
-  const enabledIds = ["subscription", "refrigerator", "styler", "washer"];
+  const enabledIds = ["subscription", "refrigerator", "styler", "washer", "vacuum"];
   const subscriptionCard = {
     id: "subscription",
     name: "구독",
