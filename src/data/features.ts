@@ -756,28 +756,136 @@ export const featuresMap: Record<string, Feature[]> = {
   // 청소기 특장점
   vacuum: [
     {
-      id: "17",
-      title: "강력한 흡입력",
-      subtitle: "200W 파워풀 모터",
-      icon: "Zap",
+      id: "1",
+      title: "AI가 알아서 척척, 손이 자유로워지는 청소",
+      subtitle: "사물·공간을 인식해 가장 효율적인 동선으로\n알아서 청소를 마무리해드려요.",
+      icon: "Sparkles",
+      tag: "AI 자율주행",
       mediaType: "video",
       mediaUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
       description:
-        "200W 고성능 모터로 카펫 깊숙은 곳의 먼지부터 미세먼지까지 강력하게 흡입합니다. 한 번의 청소로 집안 구석구석 깨끗하게 관리할 수 있습니다.",
-      highlights: ["200W 모터", "5단계 흡입력 조절", "사이클론 시스템", "HEPA 필터"],
+        "AI 카메라가 가구·전선·반려동물 배변물 등을 인식해 피해 다니고,\n방 구조를 학습해 빠진 곳 없이 청소를 마무리합니다.",
+      highlights: ["사물 인식 회피", "맵 러닝", "반려동물 모드", "음성 안내"],
     },
     {
-      id: "18",
-      title: "무선 자유로움",
-      subtitle: "60분 장시간 사용",
-      icon: "Sparkles",
-      mediaType: "image",
-      mediaUrl: "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=1200&h=800&fit=crop",
+      id: "2",
+      title: "강력한 흡입력, 카펫 속 먼지까지",
+      subtitle: "고성능 모터와 사이클론 시스템으로\n눈에 보이지 않는 미세먼지까지 빨아들여요.",
+      icon: "Zap",
+      tag: "파워풀 석션",
+      mediaType: "youtube",
+      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM",
       description:
-        "대용량 배터리로 최대 60분간 연속 사용이 가능합니다. 충전 중에도 스탠드에 보관하여 공간을 절약하고 언제든 꺼내 쓸 수 있습니다.",
-      highlights: ["60분 연속 사용", "착탈식 배터리", "급속 충전", "스탠드 거치대"],
+        "고성능 BLDC 모터와 멀티 사이클론 구조로 카펫 깊숙한 먼지·머리카락까지 강력하게 흡입합니다.",
+      highlights: ["파워풀 모터", "5단계 흡입 조절", "헤파 필터", "카펫 부스트"],
+    },
+    {
+      id: "3",
+      title: "물걸레까지 한 번에, 스팀 살균 케어",
+      subtitle: "고온 스팀 물걸레가 바닥을 닦고\n자동 세척·건조까지 알아서 처리해요.",
+      icon: "Droplets",
+      tag: "스팀 물걸레",
+      mediaType: "youtube",
+      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM",
+      isShorts: true,
+      description:
+        "흡입과 물걸레 청소를 한 번에 끝내고, 도크가 걸레를 세척·건조해 위생적으로 관리합니다.",
+      highlights: ["고온 스팀", "자동 세척·건조", "얼룩 집중 케어"],
+    },
+    {
+      id: "4",
+      title: "한눈에 보는 디자인 갤러리",
+      subtitle: "공간 어디에 두어도 어울리는\n미니멀한 디자인의 도크와 본체.",
+      icon: "ImageIcon",
+      tag: "디자인 라인업",
+      mediaType: "gallery",
+      mediaUrl: "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=1200&h=800&fit=crop",
+      galleryImages: [
+        {
+          url: "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=1200&h=800&fit=crop",
+          title: "올인원 도크",
+          description: "먼지통 비움·물 보충·걸레 세척까지 한 번에 관리하는 멀티 스테이션.",
+        },
+        {
+          url: "https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=1200&h=800&fit=crop",
+          title: "슬림 본체",
+          description: "낮은 높이로 소파·침대 밑까지 들어가 사각지대 없이 청소합니다.",
+        },
+        {
+          url: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&h=800&fit=crop",
+          title: "공간 인테리어",
+          description: "어떤 거실에도 어울리는 모던한 컬러와 마감.",
+        },
+      ],
+      description: "도크와 본체의 디자인 포인트를 갤러리로 확인해보세요.",
+      highlights: ["올인원 도크", "슬림 바디", "모던 컬러"],
+    },
+    {
+      id: "5",
+      title: "모델별 스펙 한눈에 비교",
+      subtitle: "흡입력·주행 시간·도크 기능까지\n원하는 조건으로 비교해보세요.",
+      icon: "Ruler",
+      tag: "모델 비교",
+      mediaType: "table",
+      mediaUrl: "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=1200&h=800&fit=crop",
+      description: "주요 모델의 흡입력과 도크 기능, 사용 시간을 비교해 우리 집에 맞는 모델을 선택해보세요.",
+      highlights: ["흡입력 비교", "도크 기능", "주행 시간"],
+      tableData: [
+        {
+          name: "프리미엄",
+          imageUrl: "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=600&h=600&fit=crop",
+          specs: [
+            { label: "흡입력", values: ["10,000 Pa"] },
+            { label: "주행 시간", values: ["180분"] },
+            { label: "도크 기능", values: ["먼지 비움 · 물 보충 · 걸레 세척·건조"] },
+            { label: "물걸레", values: ["스팀 물걸레"] },
+          ],
+        },
+        {
+          name: "스탠다드",
+          imageUrl: "https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=600&h=600&fit=crop",
+          specs: [
+            { label: "흡입력", values: ["7,000 Pa"] },
+            { label: "주행 시간", values: ["150분"] },
+            { label: "도크 기능", values: ["먼지 비움 · 걸레 세척"] },
+            { label: "물걸레", values: ["진동 물걸레"] },
+          ],
+        },
+        {
+          name: "에센셜",
+          imageUrl: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=600&fit=crop",
+          specs: [
+            { label: "흡입력", values: ["5,000 Pa"] },
+            { label: "주행 시간", values: ["120분"] },
+            { label: "도크 기능", values: ["먼지 비움"] },
+            { label: "물걸레", values: ["일반 물걸레"] },
+          ],
+        },
+      ],
+    },
+    {
+      id: "6",
+      title: "더 자세한 제품 정보는 LG.com에서",
+      subtitle: "모델별 상세 스펙·구매 혜택·구독 옵션을\n공식 사이트에서 한 번에 확인하세요.",
+      icon: "Search",
+      tag: "공식 페이지",
+      mediaType: "image",
+      mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
+      description:
+        "최신 모델 라인업과 가격, 케어 서비스, 구독 혜택까지 LG전자 공식 페이지에서 자세히 확인할 수 있습니다.\n\n바로가기: https://www.lge.co.kr/vacuum-cleaners",
+      highlights: ["공식 스펙 확인", "구독·케어 혜택", "최신 모델 라인업"],
+      collapsibleDisclaimers: [
+        {
+          title: "구매·구독 안내",
+          items: [
+            "모델별 사양과 색상, 가격은 LG전자 공식 사이트에서 확인하실 수 있습니다.",
+            "구독 상품은 약정 기간·관리 주기에 따라 월 요금이 달라질 수 있습니다.",
+          ],
+        },
+      ],
     },
   ],
+
 
   // PC 특장점
   pc: [
