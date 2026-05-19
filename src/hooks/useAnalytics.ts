@@ -10,15 +10,27 @@ declare global {
 
 const GA_MEASUREMENT_IDS = ['G-HP0RSWYB40', 'G-B3XVTW4JX7'];
 
-// URL에서 store_id 추출 (한번 읽으면 세션 동안 유지)
+// store_id 추출 우선순위: URL > sessionStorage > localStorage (영구 저장) > 'unknown'
 const getStoreId = (): string => {
   const params = new URLSearchParams(window.location.search);
   const fromUrl = params.get('store_id');
   if (fromUrl) {
-    sessionStorage.setItem('viewkit_store_id', fromUrl);
+    try {
+      sessionStorage.setItem('viewkit_store_id', fromUrl);
+      localStorage.setItem('viewkit_store_id', fromUrl);
+    } catch { /* noop */ }
     return fromUrl;
   }
-  return sessionStorage.getItem('viewkit_store_id') || 'unknown';
+  try {
+    const fromSession = sessionStorage.getItem('viewkit_store_id');
+    if (fromSession) return fromSession;
+    const fromLocal = localStorage.getItem('viewkit_store_id');
+    if (fromLocal) {
+      sessionStorage.setItem('viewkit_store_id', fromLocal);
+      return fromLocal;
+    }
+  } catch { /* noop */ }
+  return 'unknown';
 };
 
 // GA4 이벤트 전송 헬퍼 (traffic_type 전송하지 않음)

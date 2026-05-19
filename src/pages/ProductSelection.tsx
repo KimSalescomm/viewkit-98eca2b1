@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { products } from "@/data/products";
 import SafeImage from "@/components/SafeImage";
 import {
   HelpCircle,
+  Store,
   Tv,
   Box,
   Shirt,
@@ -15,6 +17,8 @@ import {
 } from "lucide-react";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import OrientationToggle from "@/components/OrientationToggle";
+import StoreSetupModal from "@/components/StoreSetupModal";
+import { getCurrentStore } from "@/utils/storeId";
 
 // webOS(StandByMe) 등 컬러 이모지 폰트가 없는 환경에서 아이콘이 검정으로 보이는 이슈 방지
 // → 모든 카드 아이콘을 Lucide SVG 컴포넌트로 렌더링
@@ -103,13 +107,66 @@ const ProductSelection = () => {
   } as (typeof products)[number];
   const visibleProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")];
   const { trackProductClick } = useAnalyticsContext();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [currentStore, setCurrentStore] = useState<{ name: string; slug: string } | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalDismissible, setModalDismissible] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const urlStore = params.get("store_id");
+    const saved = getCurrentStore();
+    if (saved) {
+      setCurrentStore(saved);
+      // URL이 비어있으면 저장된 슬러그를 URL에 반영 (분석 일관성)
+      if (!urlStore) {
+        params.set("store_id", saved.slug);
+        navigate({ pathname: location.pathname, search: `?${params.toString()}` }, { replace: true });
+      }
+    } else if (!urlStore) {
+      // 최초 진입: 지점 입력 강제
+      setModalDismissible(false);
+      setModalOpen(true);
+    }
+  }, [location.pathname, location.search, navigate]);
+
+  const handleStoreSaved = (info: { name: string; slug: string }) => {
+    setCurrentStore(info);
+    setModalOpen(false);
+    const params = new URLSearchParams(location.search);
+    params.set("store_id", info.slug);
+    navigate({ pathname: location.pathname, search: `?${params.toString()}` }, { replace: true });
+  };
 
   return (
     <main className="min-h-screen bg-[hsl(220,20%,97%)] px-5 py-10 sm:px-8 sm:py-14">
+      <StoreSetupModal
+        open={modalOpen}
+        initialName={currentStore?.name}
+        onSaved={handleStoreSaved}
+        onClose={() => setModalOpen(false)}
+        dismissible={modalDismissible}
+      />
       <div className="max-w-xl mx-auto sm:max-w-3xl relative">
 
         {/* Top-right controls */}
         <div className="absolute -top-4 sm:-top-6 right-0 flex items-center gap-2">
+          {currentStore && (
+            <button
+              type="button"
+              onClick={() => {
+                setModalDismissible(true);
+                setModalOpen(true);
+              }}
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-gray-200 text-xs font-medium text-gray-700 hover:border-[#A50034] hover:text-[#A50034] transition-colors shadow-sm"
+              title="지점 변경"
+            >
+              <Store className="w-3.5 h-3.5" />
+              <span>{currentStore.slug}</span>
+            </button>
+          )}
           <OrientationToggle />
           <Link
             to="/product/tv/manual"
@@ -121,6 +178,7 @@ const ProductSelection = () => {
             <span className="sr-only">운영 매뉴얼</span>
           </Link>
         </div>
+
 
         {/* Header Section */}
         <div className="text-center mt-12 sm:mt-20 mb-12 sm:mb-16">
