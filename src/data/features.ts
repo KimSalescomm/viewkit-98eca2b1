@@ -758,7 +758,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "1",
       title: "마른 얼룩, AI가 알아서 닦아줄 순 없을까?",
-      subtitle: "AI 맞춤 청소 모드는 마른 얼룩을 발견하면 100℃ 스팀을 바로 만들어\n얼룩에 집중적으로 뿌려, 최대 2회까지 강력하게 닦아내요.",
+      subtitle: "오염에 맞춰 빠르게 움직이는 100℃ 무빙 스팀!\n마른 얼룩을 발견하면 바로 만든 스팀으로 얼룩을 닦아요.",
       icon: "Sparkles",
       tag: "100℃ 무빙스팀",
       mediaType: "video",
