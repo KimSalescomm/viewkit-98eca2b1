@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { products } from "@/data/products";
 import SafeImage from "@/components/SafeImage";
 import {
   HelpCircle,
+  Store,
   Tv,
   Box,
   Shirt,
@@ -15,6 +17,8 @@ import {
 } from "lucide-react";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import OrientationToggle from "@/components/OrientationToggle";
+import StoreSetupModal from "@/components/StoreSetupModal";
+import { getCurrentStore } from "@/utils/storeId";
 
 // webOS(StandByMe) 등 컬러 이모지 폰트가 없는 환경에서 아이콘이 검정으로 보이는 이슈 방지
 // → 모든 카드 아이콘을 Lucide SVG 컴포넌트로 렌더링
