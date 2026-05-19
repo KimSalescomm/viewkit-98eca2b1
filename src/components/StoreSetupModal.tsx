@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Store } from "lucide-react";
+import { Store, Copy } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
 import { registerStore, slugifyStoreName, getRegistry } from "@/utils/storeId";
 
 interface StoreSetupModalProps {
@@ -88,10 +89,35 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
               onChange={(e) => setCodeOverride(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""))}
               placeholder={autoSlug || "AUTO"}
             />
-            {name && (
-              <p className="text-xs text-gray-500 mt-1.5">
-                저장될 URL 파라미터: <span className="font-mono text-[#A50034]">?store_id={finalSlug}</span>
-              </p>
+            {finalSlug && (
+              <div className="mt-2 rounded-lg border border-gray-200 bg-gray-50 p-2.5 space-y-2">
+                <p className="text-xs text-gray-600">
+                  공유 URL{" "}
+                  <span className="text-[11px] text-gray-400">· 다른 기기(웹·모바일·스탠바이미)에서 동일 매장으로 집계</span>
+                </p>
+                <div className="flex items-center gap-2">
+                  <code className="flex-1 text-[11px] font-mono text-gray-700 bg-white border border-gray-200 rounded px-2 py-1.5 truncate">
+                    {typeof window !== "undefined" ? `${window.location.origin}/?store_id=${finalSlug}` : `/?store_id=${finalSlug}`}
+                  </code>
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="outline"
+                    onClick={async () => {
+                      const url = `${window.location.origin}/?store_id=${finalSlug}`;
+                      try {
+                        await navigator.clipboard.writeText(url);
+                        toast({ title: "복사 완료", description: url });
+                      } catch {
+                        toast({ title: "복사 실패", description: "URL을 직접 선택해 복사해 주세요." });
+                      }
+                    }}
+                    className="h-8 px-2.5 text-xs"
+                  >
+                    <Copy className="w-3.5 h-3.5 mr-1" /> 복사
+                  </Button>
+                </div>
+              </div>
             )}
           </div>
 

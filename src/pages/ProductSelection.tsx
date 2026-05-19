@@ -18,7 +18,7 @@ import {
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import OrientationToggle from "@/components/OrientationToggle";
 import StoreSetupModal from "@/components/StoreSetupModal";
-import { getCurrentStore } from "@/utils/storeId";
+import { getCurrentStore, registerStore, getRegistry } from "@/utils/storeId";
 
 // webOS(StandByMe) 등 컬러 이모지 폰트가 없는 환경에서 아이콘이 검정으로 보이는 이슈 방지
 // → 모든 카드 아이콘을 Lucide SVG 컴포넌트로 렌더링
@@ -116,20 +116,31 @@ const ProductSelection = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const urlStore = params.get("store_id");
+    const urlStore = params.get("store_id")?.toUpperCase().trim();
     const saved = getCurrentStore();
+
+    // 1) URL 코드가 최우선 — 어느 기기든 같은 코드면 동일 매장으로 인식
+    if (urlStore) {
+      const registry = getRegistry();
+      const matchedName = Object.entries(registry).find(([, s]) => s === urlStore)?.[0];
+      const savedNameForSlug = saved && saved.slug === urlStore ? saved.name : undefined;
+      const name = matchedName || savedNameForSlug || urlStore;
+      registerStore(name, urlStore);
+      setCurrentStore({ name, slug: urlStore });
+      return;
+    }
+
+    // 2) URL 없음 + 로컬 저장 있음 → 저장값을 URL에 반영
     if (saved) {
       setCurrentStore(saved);
-      // URL이 비어있으면 저장된 슬러그를 URL에 반영 (분석 일관성)
-      if (!urlStore) {
-        params.set("store_id", saved.slug);
-        navigate({ pathname: location.pathname, search: `?${params.toString()}` }, { replace: true });
-      }
-    } else if (!urlStore) {
-      // 최초 진입: 지점 입력 강제
-      setModalDismissible(false);
-      setModalOpen(true);
+      params.set("store_id", saved.slug);
+      navigate({ pathname: location.pathname, search: `?${params.toString()}` }, { replace: true });
+      return;
     }
+
+    // 3) 둘 다 없음 → 최초 진입, 입력 강제
+    setModalDismissible(false);
+    setModalOpen(true);
   }, [location.pathname, location.search, navigate]);
 
   const handleStoreSaved = (info: { name: string; slug: string }) => {
