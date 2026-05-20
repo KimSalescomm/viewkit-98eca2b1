@@ -47,7 +47,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
   return (
     <Dialog open={open} onOpenChange={(v) => !v && dismissible && onClose?.()}>
       <DialogContent
-        className="sm:max-w-md w-[calc(100vw-2rem)] overflow-hidden"
+        className="w-[calc(100vw-2rem)] max-w-md overflow-hidden p-5 sm:p-6"
         onInteractOutside={(e) => {
           if (!dismissible) e.preventDefault();
         }}
@@ -55,21 +55,21 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
           if (!dismissible) e.preventDefault();
         }}
       >
-        <DialogHeader>
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-[#FBE8EE] flex items-center justify-center">
+        <DialogHeader className="min-w-0 pr-8">
+          <div className="flex min-w-0 items-center gap-2">
+            <div className="w-9 h-9 shrink-0 rounded-xl bg-[#FBE8EE] flex items-center justify-center">
               <Store className="w-5 h-5 text-[#A50034]" />
             </div>
             <DialogTitle>지점 설정</DialogTitle>
           </div>
-          <DialogDescription>
+          <DialogDescription className="break-keep leading-relaxed">
             매장 분석을 위해 지점명을 입력해 주세요. 입력하신 지점명은 영문 코드로 자동 변환되며,
             이 기기에 저장되어 다음부터는 다시 묻지 않습니다.
           </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-4 mt-2">
-          <div>
+        <div className="min-w-0 space-y-4 mt-2">
+          <div className="min-w-0">
             <label className="text-sm font-medium text-gray-700 block mb-1.5">지점명</label>
             <Input
               value={name}
@@ -79,7 +79,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
             />
           </div>
 
-          <div>
+          <div className="min-w-0">
             <label className="text-sm font-medium text-gray-700 block mb-1.5">
               영문 코드{" "}
               <span className="text-xs font-normal text-gray-400">(자동 생성 · 필요 시 수정)</span>
@@ -90,13 +90,13 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
               placeholder={autoSlug || "AUTO"}
             />
             {finalSlug && (
-              <div className="mt-2 rounded-lg border border-gray-200 bg-gray-50 p-2.5 space-y-2">
-                <p className="text-xs text-gray-600">
-                  공유 URL{" "}
-                  <span className="text-[11px] text-gray-400">· 다른 기기(웹·모바일·스탠바이미)에서 동일 매장으로 집계</span>
+              <div className="mt-2 min-w-0 overflow-hidden rounded-lg border border-gray-200 bg-gray-50 p-2.5 space-y-2">
+                <p className="flex min-w-0 flex-col gap-0.5 text-xs text-gray-600 sm:flex-row sm:flex-wrap">
+                  <span>공유 URL</span>
+                  <span className="text-[11px] text-gray-400">다른 기기에서 동일 매장으로 집계</span>
                 </p>
-                <div className="flex items-center gap-2 min-w-0">
-                  <code className="flex-1 min-w-0 text-[11px] font-mono text-gray-700 bg-white border border-gray-200 rounded px-2 py-1.5 truncate">
+                <div className="grid min-w-0 gap-2">
+                  <code className="block w-full min-w-0 overflow-hidden text-ellipsis whitespace-nowrap rounded border border-gray-200 bg-white px-2 py-1.5 font-mono text-[11px] text-gray-700">
                     {typeof window !== "undefined" ? `${window.location.origin}/?store_id=${finalSlug}` : `/?store_id=${finalSlug}`}
                   </code>
                   <Button
@@ -112,7 +112,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                         toast({ title: "복사 실패", description: "URL을 직접 선택해 복사해 주세요." });
                       }
                     }}
-                    className="h-8 px-2.5 text-xs shrink-0"
+                    className="h-8 w-full px-2.5 text-xs sm:w-auto sm:justify-self-end"
                   >
                     <Copy className="w-3.5 h-3.5 mr-1" /> 복사
                   </Button>
