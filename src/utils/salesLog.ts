@@ -1,77 +1,69 @@
-// 판매 인증 기록 저장소
-// - 1차: Lovable Cloud DB (sales_certifications) — 영구 저장 + 매장 간 공유
-// - 2차: localStorage — 네트워크 실패 시 오프라인 폴백
-
+// 판매 인증 기록 저장소 (Lovable Cloud DB: sales_certifications)
 import { supabase } from "@/integrations/supabase/client";
 
-const KEY = "viewkit_sales_log";
-
 export interface SaleRecord {
+  id?: string;
   branch: string;
   product: string;
   sold_at: string; // yyyy-MM-dd
   created_at: string; // ISO
 }
 
-const getLocal = (): SaleRecord[] => {
-  try {
-    const raw = localStorage.getItem(KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
+export const getSales = async (): Promise<SaleRecord[]> => {
+  const { data, error } = await supabase
+    .from("sales_certifications")
+    .select("id, branch, product, sold_at, created_at")
+    .order("created_at", { ascending: true })
+    .limit(5000);
+  if (error) {
+    console.warn("[salesLog] fetch failed", error);
     return [];
   }
-};
-
-const setLocal = (rows: SaleRecord[]) => {
-  try {
-    localStorage.setItem(KEY, JSON.stringify(rows));
-  } catch {
-    /* noop */
-  }
-};
-
-export const getSales = async (): Promise<SaleRecord[]> => {
-  try {
-    const { data, error } = await supabase
-      .from("sales_certifications")
-      .select("branch, product, sold_at, created_at")
-      .order("created_at", { ascending: true })
-      .limit(5000);
-    if (error) throw error;
-    return (data ?? []) as SaleRecord[];
-  } catch (e) {
-    console.warn("[salesLog] cloud fetch failed, falling back to local", e);
-    return getLocal();
-  }
+  return (data ?? []) as SaleRecord[];
 };
 
 export const appendSale = async (
-  input: Omit<SaleRecord, "created_at">,
-): Promise<SaleRecord> => {
-  const nowIso = new Date().toISOString();
-  const rec: SaleRecord = { ...input, created_at: nowIso };
-  try {
-    const { error } = await supabase.from("sales_certifications").insert({
-      branch: input.branch,
-      product: input.product,
-      sold_at: input.sold_at,
-    });
-    if (error) throw error;
-  } catch (e) {
-    console.warn("[salesLog] cloud insert failed, saving locally", e);
-    setLocal([...getLocal(), rec]);
-  }
-  return rec;
+  input: Omit<SaleRecord, "created_at" | "id">,
+): Promise<void> => {
+  const { error } = await supabase.from("sales_certifications").insert({
+    branch: input.branch,
+    product: input.product,
+    sold_at: input.sold_at,
+  });
+  if (error) console.warn("[salesLog] insert failed", error);
 };
 
-export const clearSales = async () => {
-  try {
-    // 모든 행 삭제 (RLS DELETE 정책이 없으므로 서버에선 무시될 수 있음).
-    // 우선 로컬 폴백 캐시를 정리하고, 서버 데이터는 관리자가 별도 절차로 정리합니다.
-    localStorage.removeItem(KEY);
-  } catch {
-    /* noop */
+export const deleteSale = async (id: string): Promise<boolean> => {
+  const { error } = await supabase.from("sales_certifications").delete().eq("id", id);
+  if (error) {
+    console.warn("[salesLog] delete failed", error);
+    return false;
   }
+  return true;
 };
+
+export const deleteSalesByIds = async (ids: string[]): Promise<boolean> => {
+  if (ids.length === 0) return true;
+  const { error } = await supabase.from("sales_certifications").delete().in("id", ids);
+  if (error) {
+    console.warn("[salesLog] bulk delete failed", error);
+    return false;
+  }
+  return true;
+};
+
+export const clearAllSales = async (): Promise<boolean> => {
+  // 모든 행 삭제 (id IS NOT NULL 조건으로 전체 매칭)
+  const { error } = await supabase
+    .from("sales_certifications")
+    .delete()
+    .not("id", "is", null);
+  if (error) {
+    console.warn("[salesLog] clear all failed", error);
+    return false;
+  }
+  return true;
+};
+
+// 하위 호환
+export const clearSales = clearAllSales;
