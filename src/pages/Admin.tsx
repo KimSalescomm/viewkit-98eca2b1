@@ -120,7 +120,16 @@ const toCsv = (rows: SaleRecord[]) => {
 
 const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   const [version, setVersion] = useState(0);
-  const sales = useMemo(() => getSales(), [version]);
+  const [sales, setSales] = useState<SaleRecord[]>([]);
+  useEffect(() => {
+    let cancelled = false;
+    getSales().then((rows) => {
+      if (!cancelled) setSales(rows);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [version]);
 
   const [branchFilter, setBranchFilter] = useState<string>("all");
   const [productFilter, setProductFilter] = useState<string>("all");
