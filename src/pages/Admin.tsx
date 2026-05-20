@@ -357,30 +357,92 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
             </div>
 
             <div className="rounded-2xl border border-slate-200 bg-white p-5">
-              <h2 className="text-sm font-semibold text-slate-900 mb-4">전체 기록 ({recent.length}건)</h2>
+              <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
+                <h2 className="text-sm font-semibold text-slate-900">전체 기록 ({recent.length}건)</h2>
+                {selected.size > 0 && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-slate-500">{selected.size}건 선택됨</span>
+                    <button
+                      type="button"
+                      onClick={clearSelection}
+                      className="h-8 px-2.5 rounded-lg text-xs text-slate-500 hover:bg-slate-100 transition-colors"
+                    >
+                      선택 해제
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleDeleteSelected}
+                      className="h-8 px-3 inline-flex items-center gap-1.5 rounded-lg bg-rose-500 text-white text-xs font-semibold hover:bg-rose-600 transition-colors"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" /> 선택 삭제
+                    </button>
+                  </div>
+                )}
+              </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="text-left text-[11px] uppercase tracking-wider text-slate-400 border-b border-slate-100">
+                      <th className="py-2 pr-3 font-medium w-8">
+                        <input
+                          type="checkbox"
+                          aria-label="전체 선택"
+                          checked={recent.length > 0 && selected.size === recent.length}
+                          onChange={toggleSelectAll}
+                          className="w-3.5 h-3.5 rounded border-slate-300 text-[#3182CE] focus:ring-[#3182CE]/30"
+                        />
+                      </th>
                       <th className="py-2 pr-4 font-medium">#</th>
                       <th className="py-2 pr-4 font-medium">지점</th>
                       <th className="py-2 pr-4 font-medium">제품</th>
                       <th className="py-2 pr-4 font-medium">판매일</th>
                       <th className="py-2 pr-4 font-medium">기록 시각</th>
+                      <th className="py-2 pr-2 font-medium w-12"></th>
                     </tr>
                   </thead>
                   <tbody>
-                    {recent.map((r, i) => (
-                      <tr key={i} className="border-b border-slate-50 last:border-0">
-                        <td className="py-2.5 pr-4 text-slate-400 tabular-nums">{recent.length - i}</td>
-                        <td className="py-2.5 pr-4 text-slate-800 font-medium">{r.branch}</td>
-                        <td className="py-2.5 pr-4 text-slate-600">{r.product}</td>
-                        <td className="py-2.5 pr-4 text-slate-600 tabular-nums">{r.sold_at}</td>
-                        <td className="py-2.5 pr-4 text-slate-400 tabular-nums text-xs">
-                          {format(new Date(r.created_at), "yyyy.MM.dd HH:mm", { locale: ko })}
-                        </td>
-                      </tr>
-                    ))}
+                    {recent.map((r, i) => {
+                      const id = r.id ?? "";
+                      const isChecked = id ? selected.has(id) : false;
+                      return (
+                        <tr
+                          key={id || i}
+                          className={cn(
+                            "border-b border-slate-50 last:border-0 transition-colors",
+                            isChecked ? "bg-rose-50/40" : "hover:bg-slate-50/60",
+                          )}
+                        >
+                          <td className="py-2.5 pr-3">
+                            <input
+                              type="checkbox"
+                              aria-label="행 선택"
+                              checked={isChecked}
+                              disabled={!id}
+                              onChange={() => id && toggleSelect(id)}
+                              className="w-3.5 h-3.5 rounded border-slate-300 text-[#3182CE] focus:ring-[#3182CE]/30"
+                            />
+                          </td>
+                          <td className="py-2.5 pr-4 text-slate-400 tabular-nums">{recent.length - i}</td>
+                          <td className="py-2.5 pr-4 text-slate-800 font-medium">{r.branch}</td>
+                          <td className="py-2.5 pr-4 text-slate-600">{r.product}</td>
+                          <td className="py-2.5 pr-4 text-slate-600 tabular-nums">{r.sold_at}</td>
+                          <td className="py-2.5 pr-4 text-slate-400 tabular-nums text-xs">
+                            {format(new Date(r.created_at), "yyyy.MM.dd HH:mm", { locale: ko })}
+                          </td>
+                          <td className="py-2.5 pr-2 text-right">
+                            <button
+                              type="button"
+                              onClick={() => handleDeleteOne(id)}
+                              disabled={!id}
+                              aria-label="삭제"
+                              className="inline-flex items-center justify-center w-7 h-7 rounded-md text-slate-300 hover:text-rose-500 hover:bg-rose-50 transition-colors disabled:opacity-30"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
