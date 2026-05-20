@@ -47,7 +47,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
   return (
     <Dialog open={open} onOpenChange={(v) => !v && dismissible && onClose?.()}>
       <DialogContent
-        className="sm:max-w-md"
+        className="sm:max-w-md w-[calc(100vw-2rem)] overflow-hidden"
         onInteractOutside={(e) => {
           if (!dismissible) e.preventDefault();
         }}
@@ -95,8 +95,8 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                   공유 URL{" "}
                   <span className="text-[11px] text-gray-400">· 다른 기기(웹·모바일·스탠바이미)에서 동일 매장으로 집계</span>
                 </p>
-                <div className="flex items-center gap-2">
-                  <code className="flex-1 text-[11px] font-mono text-gray-700 bg-white border border-gray-200 rounded px-2 py-1.5 truncate">
+                <div className="flex items-center gap-2 min-w-0">
+                  <code className="flex-1 min-w-0 text-[11px] font-mono text-gray-700 bg-white border border-gray-200 rounded px-2 py-1.5 truncate">
                     {typeof window !== "undefined" ? `${window.location.origin}/?store_id=${finalSlug}` : `/?store_id=${finalSlug}`}
                   </code>
                   <Button
@@ -112,7 +112,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                         toast({ title: "복사 실패", description: "URL을 직접 선택해 복사해 주세요." });
                       }
                     }}
-                    className="h-8 px-2.5 text-xs"
+                    className="h-8 px-2.5 text-xs shrink-0"
                   >
                     <Copy className="w-3.5 h-3.5 mr-1" /> 복사
                   </Button>
