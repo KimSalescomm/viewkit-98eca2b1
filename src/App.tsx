@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AnalyticsProvider from "./components/AnalyticsProvider";
 import { OrientationProvider } from "./hooks/useOrientation";
 import ProductSelection from "./pages/ProductSelection";
+import SalesCertBadge from "./components/SalesCertBadge";
 
 const Home = lazy(() => import("./pages/Home"));
 const Subscription = lazy(() => import("./pages/Subscription"));
@@ -44,6 +45,7 @@ const App = () => (
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
+            <SalesCertBadge />
           </AnalyticsProvider>
         </OrientationProvider>
       </BrowserRouter>
