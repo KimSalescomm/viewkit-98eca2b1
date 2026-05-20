@@ -25,8 +25,8 @@ import { products } from "@/data/products";
 import { appendSale } from "@/utils/salesLog";
 
 const STORES = ["강남본점", "서초점", "잠실점"];
-// 뷰킷에서 활성화된 제품 카드와 동일 (ProductSelection: pc 제외)
-const PRODUCT_OPTIONS = products.filter((p) => p.id !== "pc").map((p) => p.name);
+// 뷰킷에서 활성화된 제품 카드 + 구독
+const PRODUCT_OPTIONS = [...products.filter((p) => p.id !== "pc").map((p) => p.name), "구독"];
 
 const SalesCertBadge = () => {
   const navigate = useNavigate();
