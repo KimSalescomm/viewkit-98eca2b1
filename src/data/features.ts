@@ -864,6 +864,24 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
     },
     {
+      id: "7",
+      title: "보이지 않는 청소로봇 속,\n관리는 누가 할까요?",
+      subtitle: "필터부터 브러시·물걸레까지, 전문가가\n알아서 챙겨주는 전문 케어를 보여드려요.",
+      icon: "Wrench",
+      tag: "구독 전문케어",
+      mediaType: "youtube",
+      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM?si=j4iIwotCwLBvji5k",
+      description:
+        "먼지통·필터 세척부터 브러시·물걸레 패드 교체, 도크 케어까지 청소로봇을 늘 최상의 상태로 유지할 수 있도록 다양한 케어 서비스 혜택을 제공합니다.",
+      highlights: ["먼지통·필터 케어", "브러시 교체", "물걸레 패드 교체", "도크 세척"],
+      disclaimers: [
+        "[필터 케어] 필터 교체 주기는 모델 및 사용 환경에 따라 달라질 수 있습니다.",
+        "[물걸레 패드] 패드 교체는 구독 유형(프리미엄/라이트 등)에 따라 제공 횟수가 다를 수 있습니다.",
+        "[방문 관리] 방문 관리는 사전 안내드리고 있으며, 고객 요청에 의해 협의된 일정으로 변경하실 수 있습니다.",
+      ],
+    },
+    {
+
       id: "6",
       title: "더 자세한 제품 정보는 LG.com에서",
       subtitle: "모델별 상세 스펙·구매 혜택·구독 옵션을\n공식 사이트에서 한 번에 확인하세요.",
