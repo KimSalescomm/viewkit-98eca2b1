@@ -15,6 +15,7 @@ const FeatureDetail = lazy(() => import("./pages/FeatureDetail"));
 const Manual = lazy(() => import("./pages/Manual"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Ranking = lazy(() => import("./pages/Ranking"));
+const Admin = lazy(() => import("./pages/Admin"));
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ const App = () => (
                 <Route path="/product/:productId/feature/:id" element={<FeatureDetail />} />
                 <Route path="/product/:productId/manual" element={<Manual />} />
                 <Route path="/ranking" element={<Ranking />} />
+                <Route path="/admin" element={<Admin />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
