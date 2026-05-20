@@ -38,6 +38,23 @@ const SalesCertBadge = () => {
   const [submitted, setSubmitted] = useState(false);
   const { trackEvent } = useAnalytics();
 
+  // 숨겨진 관리자 진입: 배지를 1.2초 이상 길게 누르면 /admin 으로 이동
+  const longPressTimer = useRef<number | null>(null);
+  const longPressFired = useRef(false);
+  const startLongPress = () => {
+    longPressFired.current = false;
+    longPressTimer.current = window.setTimeout(() => {
+      longPressFired.current = true;
+      navigate("/admin");
+    }, 1200);
+  };
+  const cancelLongPress = () => {
+    if (longPressTimer.current) {
+      window.clearTimeout(longPressTimer.current);
+      longPressTimer.current = null;
+    }
+  };
+
   const resetForm = () => {
     setStore("");
     setProduct("");
