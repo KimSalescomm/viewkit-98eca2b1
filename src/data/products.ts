@@ -1,5 +1,6 @@
 import washerKeyVisual from "@/assets/washer-keyvisual.png";
 import stylerKeyVisual from "@/assets/styler-keyvisual.png";
+import vacuumKeyVisual from "@/assets/vacuum-keyvisual.png";
 
 export interface Product {
   id: string;
