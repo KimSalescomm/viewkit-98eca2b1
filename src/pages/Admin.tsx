@@ -120,7 +120,16 @@ const toCsv = (rows: SaleRecord[]) => {
 
 const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   const [version, setVersion] = useState(0);
-  const sales = useMemo(() => getSales(), [version]);
+  const [sales, setSales] = useState<SaleRecord[]>([]);
+  useEffect(() => {
+    let cancelled = false;
+    getSales().then((rows) => {
+      if (!cancelled) setSales(rows);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [version]);
 
   const [branchFilter, setBranchFilter] = useState<string>("all");
   const [productFilter, setProductFilter] = useState<string>("all");
@@ -335,7 +344,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
         )}
 
         <p className="text-[11px] text-slate-400 mt-6 text-center">
-          ※ 현재 데이터는 이 기기 브라우저에만 저장됩니다 (Lovable Cloud 연동 시 매장 전체 합산 가능)
+          ※ 데이터는 Lovable Cloud에 영구 저장되며 모든 매장에서 공유됩니다
         </p>
       </div>
     </div>

@@ -1,13 +1,22 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Trophy, ArrowLeft, Trash2, Medal } from "lucide-react";
-import { getSales, clearSales } from "@/utils/salesLog";
+import { getSales, clearSales, SaleRecord } from "@/utils/salesLog";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 
 const Ranking = () => {
   const [version, setVersion] = useState(0);
-  const sales = useMemo(() => getSales(), [version]);
+  const [sales, setSales] = useState<SaleRecord[]>([]);
+  useEffect(() => {
+    let cancelled = false;
+    getSales().then((rows) => {
+      if (!cancelled) setSales(rows);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [version]);
 
   const byBranch = useMemo(() => {
     const map = new Map<string, number>();
