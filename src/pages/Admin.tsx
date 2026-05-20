@@ -163,9 +163,54 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
 
   const recent = useMemo(() => [...filtered].reverse(), [filtered]);
 
-  const handleClear = () => {
+  // 선택 삭제 상태
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const toggleSelect = (id: string) => {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+  const toggleSelectAll = () => {
+    const ids = recent.map((r) => r.id).filter(Boolean) as string[];
+    setSelected((prev) => (prev.size === ids.length ? new Set() : new Set(ids)));
+  };
+  const clearSelection = () => setSelected(new Set());
+
+  const handleDeleteOne = async (id?: string) => {
+    if (!id) return;
+    if (!confirm("이 판매 기록 1건을 삭제하시겠어요?")) return;
+    const ok = await deleteSale(id);
+    if (!ok) {
+      alert("삭제에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+      return;
+    }
+    clearSelection();
+    setVersion((v) => v + 1);
+  };
+
+  const handleDeleteSelected = async () => {
+    if (selected.size === 0) return;
+    if (!confirm(`선택한 ${selected.size}건을 삭제하시겠어요? 되돌릴 수 없습니다.`)) return;
+    const ok = await deleteSalesByIds([...selected]);
+    if (!ok) {
+      alert("선택 삭제에 실패했습니다.");
+      return;
+    }
+    clearSelection();
+    setVersion((v) => v + 1);
+  };
+
+  const handleClear = async () => {
     if (!confirm("저장된 모든 판매 기록을 삭제하시겠어요? 되돌릴 수 없습니다.")) return;
-    clearSales();
+    const ok = await clearAllSales();
+    if (!ok) {
+      alert("전체 초기화에 실패했습니다.");
+      return;
+    }
+    clearSelection();
     setVersion((v) => v + 1);
   };
 
