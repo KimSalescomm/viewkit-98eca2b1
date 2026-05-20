@@ -93,7 +93,15 @@ const SalesCertBadge = () => {
       <button
         type="button"
         aria-label="판매 인증"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          if (longPressFired.current) return;
+          setOpen(true);
+        }}
+        onPointerDown={startLongPress}
+        onPointerUp={cancelLongPress}
+        onPointerLeave={cancelLongPress}
+        onPointerCancel={cancelLongPress}
+        onContextMenu={(e) => e.preventDefault()}
         className={cn(
           "fixed bottom-4 right-4 z-40",
           "inline-flex items-center gap-1.5",
