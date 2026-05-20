@@ -1,0 +1,354 @@
+import { useMemo, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import {
+  Shield,
+  ArrowLeft,
+  Trash2,
+  Download,
+  Trophy,
+  Medal,
+  LogOut,
+  Lock,
+} from "lucide-react";
+import { getSales, clearSales, SaleRecord } from "@/utils/salesLog";
+import { format } from "date-fns";
+import { ko } from "date-fns/locale";
+import { cn } from "@/lib/utils";
+
+// 데모용 단순 패스코드. (Lovable Cloud 도입 시 서버 검증으로 교체)
+const ADMIN_PASSCODE = "0314";
+const AUTH_KEY = "viewkit_admin_auth";
+
+const useAuth = () => {
+  const [authed, setAuthed] = useState<boolean>(() => {
+    try {
+      return sessionStorage.getItem(AUTH_KEY) === "1";
+    } catch {
+      return false;
+    }
+  });
+  const login = (code: string) => {
+    if (code.trim() === ADMIN_PASSCODE) {
+      try {
+        sessionStorage.setItem(AUTH_KEY, "1");
+      } catch {
+        /* noop */
+      }
+      setAuthed(true);
+      return true;
+    }
+    return false;
+  };
+  const logout = () => {
+    try {
+      sessionStorage.removeItem(AUTH_KEY);
+    } catch {
+      /* noop */
+    }
+    setAuthed(false);
+  };
+  return { authed, login, logout };
+};
+
+const Gate = ({ onPass }: { onPass: (code: string) => boolean }) => {
+  const [code, setCode] = useState("");
+  const [err, setErr] = useState(false);
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white flex items-center justify-center px-4">
+      <div className="w-full max-w-sm rounded-2xl border border-slate-200 bg-white p-8 shadow-[0_20px_60px_-15px_rgba(15,23,42,0.18)]">
+        <div className="mx-auto w-12 h-12 rounded-xl bg-[#3182CE]/10 text-[#3182CE] flex items-center justify-center mb-4">
+          <Lock className="w-6 h-6" strokeWidth={2.2} />
+        </div>
+        <h1 className="text-lg font-semibold text-slate-900 text-center mb-1">관리자 모드</h1>
+        <p className="text-xs text-slate-500 text-center mb-6">
+          판매 인증 대시보드 접근을 위한 패스코드를 입력해 주세요
+        </p>
+        <input
+          type="password"
+          inputMode="numeric"
+          autoFocus
+          value={code}
+          onChange={(e) => {
+            setCode(e.target.value);
+            setErr(false);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              if (!onPass(code)) setErr(true);
+            }
+          }}
+          placeholder="패스코드"
+          className={cn(
+            "w-full h-11 px-3.5 rounded-xl border bg-white text-slate-800 text-sm tracking-widest text-center",
+            "focus:outline-none focus:ring-2 focus:ring-offset-0",
+            err
+              ? "border-rose-300 focus:border-rose-400 focus:ring-rose-200"
+              : "border-slate-200 focus:border-[#3182CE] focus:ring-[#3182CE]/15",
+          )}
+        />
+        {err && <p className="text-xs text-rose-500 mt-2 text-center">패스코드가 올바르지 않습니다</p>}
+        <button
+          type="button"
+          onClick={() => {
+            if (!onPass(code)) setErr(true);
+          }}
+          className="mt-4 w-full h-11 rounded-xl bg-[#3182CE] text-white text-sm font-semibold hover:bg-[#2c74b8] transition-colors"
+        >
+          입장
+        </button>
+        <Link
+          to="/"
+          className="mt-3 block text-center text-xs text-slate-400 hover:text-slate-600 transition-colors"
+        >
+          제품 페이지로 돌아가기
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const medalColor = (i: number) =>
+  i === 0 ? "text-yellow-500" : i === 1 ? "text-slate-400" : i === 2 ? "text-amber-700" : "text-slate-300";
+
+const toCsv = (rows: SaleRecord[]) => {
+  const header = ["branch", "product", "sold_at", "created_at"];
+  const body = rows.map((r) =>
+    [r.branch, r.product, r.sold_at, r.created_at].map((v) => `"${String(v).replace(/"/g, '""')}"`).join(","),
+  );
+  return [header.join(","), ...body].join("\n");
+};
+
+const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
+  const [version, setVersion] = useState(0);
+  const sales = useMemo(() => getSales(), [version]);
+
+  const [branchFilter, setBranchFilter] = useState<string>("all");
+  const [productFilter, setProductFilter] = useState<string>("all");
+  const [from, setFrom] = useState<string>("");
+  const [to, setTo] = useState<string>("");
+
+  const branches = useMemo(() => [...new Set(sales.map((s) => s.branch))], [sales]);
+  const productList = useMemo(() => [...new Set(sales.map((s) => s.product))], [sales]);
+
+  const filtered = useMemo(() => {
+    return sales.filter((s) => {
+      if (branchFilter !== "all" && s.branch !== branchFilter) return false;
+      if (productFilter !== "all" && s.product !== productFilter) return false;
+      if (from && s.sold_at < from) return false;
+      if (to && s.sold_at > to) return false;
+      return true;
+    });
+  }, [sales, branchFilter, productFilter, from, to]);
+
+  const byBranch = useMemo(() => {
+    const m = new Map<string, number>();
+    filtered.forEach((s) => m.set(s.branch, (m.get(s.branch) ?? 0) + 1));
+    return [...m.entries()].sort((a, b) => b[1] - a[1]);
+  }, [filtered]);
+
+  const byProduct = useMemo(() => {
+    const m = new Map<string, number>();
+    filtered.forEach((s) => m.set(s.product, (m.get(s.product) ?? 0) + 1));
+    return [...m.entries()].sort((a, b) => b[1] - a[1]);
+  }, [filtered]);
+
+  const recent = useMemo(() => [...filtered].reverse(), [filtered]);
+
+  const handleClear = () => {
+    if (!confirm("저장된 모든 판매 기록을 삭제하시겠어요? 되돌릴 수 없습니다.")) return;
+    clearSales();
+    setVersion((v) => v + 1);
+  };
+
+  const handleExport = () => {
+    const csv = toCsv(filtered);
+    const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `sales_${format(new Date(), "yyyyMMdd_HHmm")}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const selectClass =
+    "h-9 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 " +
+    "focus:outline-none focus:ring-2 focus:ring-[#3182CE]/15 focus:border-[#3182CE]";
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white">
+      <div className="max-w-5xl mx-auto px-5 py-8">
+        <div className="flex items-center justify-between mb-6">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-1.5 text-sm text-slate-600 hover:text-slate-900 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" /> 제품 페이지로
+          </Link>
+          <button
+            type="button"
+            onClick={onLogout}
+            className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-700 transition-colors"
+          >
+            <LogOut className="w-3.5 h-3.5" /> 로그아웃
+          </button>
+        </div>
+
+        <div className="flex items-center gap-2.5 mb-1">
+          <div className="w-9 h-9 rounded-xl bg-[#3182CE]/10 text-[#3182CE] flex items-center justify-center">
+            <Shield className="w-5 h-5" strokeWidth={2.4} />
+          </div>
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900">관리자 대시보드</h1>
+        </div>
+        <p className="text-sm text-slate-500 mb-6">
+          전체 {sales.length}건 · 필터 결과 {filtered.length}건
+        </p>
+
+        {/* 필터 / 액션 */}
+        <div className="rounded-2xl border border-slate-200 bg-white p-4 mb-6 flex flex-wrap items-end gap-3">
+          <div className="flex flex-col gap-1">
+            <label className="text-[11px] font-medium text-slate-500">지점</label>
+            <select value={branchFilter} onChange={(e) => setBranchFilter(e.target.value)} className={selectClass}>
+              <option value="all">전체</option>
+              {branches.map((b) => (
+                <option key={b} value={b}>
+                  {b}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-[11px] font-medium text-slate-500">제품</label>
+            <select value={productFilter} onChange={(e) => setProductFilter(e.target.value)} className={selectClass}>
+              <option value="all">전체</option>
+              {productList.map((p) => (
+                <option key={p} value={p}>
+                  {p}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-[11px] font-medium text-slate-500">시작일</label>
+            <input type="date" value={from} onChange={(e) => setFrom(e.target.value)} className={selectClass} />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-[11px] font-medium text-slate-500">종료일</label>
+            <input type="date" value={to} onChange={(e) => setTo(e.target.value)} className={selectClass} />
+          </div>
+
+          <div className="flex-1" />
+
+          <button
+            type="button"
+            onClick={handleExport}
+            disabled={filtered.length === 0}
+            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg bg-[#3182CE] text-white text-xs font-semibold hover:bg-[#2c74b8] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            <Download className="w-3.5 h-3.5" /> CSV 내보내기
+          </button>
+          <button
+            type="button"
+            onClick={handleClear}
+            disabled={sales.length === 0}
+            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg border border-rose-200 text-rose-500 text-xs font-semibold hover:bg-rose-50 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            <Trash2 className="w-3.5 h-3.5" /> 전체 초기화
+          </button>
+        </div>
+
+        {filtered.length === 0 ? (
+          <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center">
+            <Trophy className="w-10 h-10 mx-auto text-slate-300 mb-3" />
+            <p className="text-sm text-slate-500">조건에 맞는 판매 기록이 없습니다</p>
+          </div>
+        ) : (
+          <>
+            <div className="grid md:grid-cols-2 gap-4 mb-6">
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                <h2 className="text-sm font-semibold text-slate-900 mb-4">지점별 순위</h2>
+                <ul className="space-y-2.5">
+                  {byBranch.map(([name, count], i) => (
+                    <li
+                      key={name}
+                      className="flex items-center justify-between rounded-xl bg-slate-50/70 px-3.5 py-2.5"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <Medal className={`w-4 h-4 ${medalColor(i)}`} strokeWidth={2.4} />
+                        <span className="text-sm text-slate-800 font-medium">{name}</span>
+                      </div>
+                      <span className="text-sm tabular-nums text-[#3182CE] font-semibold">{count}건</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                <h2 className="text-sm font-semibold text-slate-900 mb-4">제품별 순위</h2>
+                <ul className="space-y-2.5">
+                  {byProduct.map(([name, count], i) => (
+                    <li
+                      key={name}
+                      className="flex items-center justify-between rounded-xl bg-slate-50/70 px-3.5 py-2.5"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <Medal className={`w-4 h-4 ${medalColor(i)}`} strokeWidth={2.4} />
+                        <span className="text-sm text-slate-800 font-medium">{name}</span>
+                      </div>
+                      <span className="text-sm tabular-nums text-[#3182CE] font-semibold">{count}건</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-slate-200 bg-white p-5">
+              <h2 className="text-sm font-semibold text-slate-900 mb-4">전체 기록 ({recent.length}건)</h2>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="text-left text-[11px] uppercase tracking-wider text-slate-400 border-b border-slate-100">
+                      <th className="py-2 pr-4 font-medium">#</th>
+                      <th className="py-2 pr-4 font-medium">지점</th>
+                      <th className="py-2 pr-4 font-medium">제품</th>
+                      <th className="py-2 pr-4 font-medium">판매일</th>
+                      <th className="py-2 pr-4 font-medium">기록 시각</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {recent.map((r, i) => (
+                      <tr key={i} className="border-b border-slate-50 last:border-0">
+                        <td className="py-2.5 pr-4 text-slate-400 tabular-nums">{recent.length - i}</td>
+                        <td className="py-2.5 pr-4 text-slate-800 font-medium">{r.branch}</td>
+                        <td className="py-2.5 pr-4 text-slate-600">{r.product}</td>
+                        <td className="py-2.5 pr-4 text-slate-600 tabular-nums">{r.sold_at}</td>
+                        <td className="py-2.5 pr-4 text-slate-400 tabular-nums text-xs">
+                          {format(new Date(r.created_at), "yyyy.MM.dd HH:mm", { locale: ko })}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </>
+        )}
+
+        <p className="text-[11px] text-slate-400 mt-6 text-center">
+          ※ 현재 데이터는 이 기기 브라우저에만 저장됩니다 (Lovable Cloud 연동 시 매장 전체 합산 가능)
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const Admin = () => {
+  const { authed, login, logout } = useAuth();
+  useEffect(() => {
+    document.title = "관리자 대시보드 | ViewKit";
+  }, []);
+  if (!authed) return <Gate onPass={login} />;
+  return <Dashboard onLogout={logout} />;
+};
+
+export default Admin;

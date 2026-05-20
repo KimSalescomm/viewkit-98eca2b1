@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Trophy, CalendarIcon, CheckCircle2, ArrowRight, Home } from "lucide-react";
+import { Trophy, CalendarIcon, CheckCircle2, Home } from "lucide-react";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import {
@@ -56,12 +56,6 @@ const SalesCertBadge = () => {
     trackEvent("sales_certification", { branch: store, product, sold_at: soldAt });
     appendSale({ branch: store, product, sold_at: soldAt });
     setSubmitted(true);
-  };
-
-  const goRanking = () => {
-    setOpen(false);
-    setTimeout(resetForm, 200);
-    navigate("/ranking");
   };
 
   const goProducts = () => {
@@ -215,16 +209,8 @@ const SalesCertBadge = () => {
               <div className="space-y-2">
                 <button
                   type="button"
-                  onClick={goRanking}
-                  className="w-full h-11 rounded-xl bg-[#3182CE] text-white text-sm font-semibold hover:bg-[#2c74b8] shadow-[0_6px_16px_-6px_rgba(49,130,206,0.5)] transition-colors inline-flex items-center justify-center gap-1.5"
-                >
-                  실시간 순위 보러가기
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-                <button
-                  type="button"
                   onClick={goProducts}
-                  className="w-full h-11 rounded-xl border border-slate-200 text-slate-700 text-sm font-medium hover:bg-slate-50 transition-colors inline-flex items-center justify-center gap-1.5"
+                  className="w-full h-11 rounded-xl bg-[#3182CE] text-white text-sm font-semibold hover:bg-[#2c74b8] shadow-[0_6px_16px_-6px_rgba(49,130,206,0.5)] transition-colors inline-flex items-center justify-center gap-1.5"
                 >
                   <Home className="w-4 h-4" />
                   제품 페이지로 돌아가기
