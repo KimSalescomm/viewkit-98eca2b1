@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Trophy, CalendarIcon, CheckCircle2, Home } from "lucide-react";
 import { format } from "date-fns";
