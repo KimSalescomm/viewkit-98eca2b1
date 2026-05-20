@@ -10,7 +10,7 @@ import {
   LogOut,
   Lock,
 } from "lucide-react";
-import { getSales, clearSales, SaleRecord } from "@/utils/salesLog";
+import { getSales, clearAllSales, deleteSale, deleteSalesByIds, SaleRecord } from "@/utils/salesLog";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { cn } from "@/lib/utils";
