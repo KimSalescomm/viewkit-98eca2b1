@@ -92,8 +92,36 @@ export const registerStore = (name: string, slugOverride?: string): { name: stri
 export const getCurrentStore = (): { name: string; slug: string } | null => {
   try {
     const name = localStorage.getItem(CURRENT_NAME_KEY);
-    const slug = localStorage.getItem(CURRENT_ID_KEY);
-    if (name && slug) return { name, slug };
+    const slug =
+      localStorage.getItem(CURRENT_ID_KEY) ||
+      sessionStorage.getItem(CURRENT_ID_KEY);
+    if (slug) {
+      // name이 유실됐어도 슬러그가 있으면 동일 브라우저로 보고 복구
+      if (name) return { name, slug };
+      const reg = getRegistry();
+      const recoveredName = Object.entries(reg).find(([, s]) => s === slug)?.[0];
+      const finalName = recoveredName || slug;
+      try {
+        localStorage.setItem(CURRENT_NAME_KEY, finalName);
+        localStorage.setItem(CURRENT_ID_KEY, slug);
+      } catch {
+        /* noop */
+      }
+      return { name: finalName, slug };
+    }
+    // slug도 없지만 registry에 등록된 매장이 있으면 첫 항목으로 복구
+    const reg = getRegistry();
+    const first = Object.entries(reg)[0];
+    if (first) {
+      const [n, s] = first;
+      try {
+        localStorage.setItem(CURRENT_NAME_KEY, n);
+        localStorage.setItem(CURRENT_ID_KEY, s);
+      } catch {
+        /* noop */
+      }
+      return { name: n, slug: s };
+    }
   } catch {
     /* noop */
   }
