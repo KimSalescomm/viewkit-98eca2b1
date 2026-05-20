@@ -48,7 +48,7 @@ export const products: Product[] = [
     id: "vacuum",
     name: "청소로봇",
     title: "LG HOM-BOT RONi",
-    description: "세계 최초 100℃ 투웨이 스팀 청소 로봇",
+    description: "세계최초 100℃ 투웨이 스팀 청소로봇",
     keyVisualImage: vacuumKeyVisual,
     icon: "Sparkles",
   },
