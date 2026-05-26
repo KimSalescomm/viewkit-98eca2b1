@@ -124,7 +124,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Sparkles",
       tag: "하이퍼 브라이트 부스터",
       mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_01_pc.mp4",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md09942826/usp/pc_scene05_full_touch.mp4",
       description:
         "장면을 분석해서 밝기를 정교하게 끌어올리는 밝기 제어 기술로 백라이트 없이도 밝은, 가장 밝은 올레드가 탄생했어요.\n\n밝기가 높아져서 태양, 폭발, 유리 반사 같은 강한 하이라이트도 선명하게 볼 수 있고, 하얗게 뭉쳐서 잘 안보이던 밝은 영역의 디테일이 살아나 더 선명하고 생생한 화면을 느낄 수 있어요.",
       highlights: [
