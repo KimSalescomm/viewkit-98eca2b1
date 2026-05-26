@@ -830,16 +830,16 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "물걸레까지 한 번에, 스팀 살균 케어",
-      subtitle: "고온 스팀 물걸레가 바닥을 닦고\n자동 세척·건조까지 알아서 처리해요.",
+      title: "보이지 않아도 완성되고,\n보일수록 품격이 되는 공간 맞춤 솔루션",
+      subtitle: "도크부터 본체까지, 우리집 인테리어에 자연스럽게 어우러지는\n공간 맞춤 디자인을 제안합니다.",
       icon: "Droplets",
-      tag: "스팀 물걸레",
+      tag: "공간 맞춤 솔루션",
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM",
       isShorts: true,
       description:
-        "흡입과 물걸레 청소를 한 번에 끝내고, 도크가 걸레를 세척·건조해 위생적으로 관리합니다.",
-      highlights: ["고온 스팀", "자동 세척·건조", "얼룩 집중 케어"],
+        "보이지 않는 곳에서는 청소 성능을 빈틈없이 완성하고, 눈에 보이는 곳에서는 공간의 품격을 한층 끌어올리는 디자인. 미니멀한 도크와 본체가 거실·주방 어디에 두어도 인테리어처럼 어우러져요.",
+      highlights: ["인테리어 친화 디자인", "미니멀 도크 & 본체", "공간 어디든 자연스럽게", "보일수록 품격"],
     },
     {
       id: "4",
