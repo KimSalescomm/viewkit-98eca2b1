@@ -859,7 +859,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Wrench",
       tag: "LG만의 위생 & 케어 솔루션",
       mediaType: "video",
-      mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_12_mop_solution_pc.mp4",
+      mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
       tabs: [
         {
           label: "100℃ 살균 스팀",
