@@ -106,21 +106,21 @@ const SalesCertBadge = () => {
           "group fixed bottom-5 right-5 z-40 isolate",
           "inline-flex items-center gap-2",
           "h-12 pl-4 pr-4 rounded-full",
-          "text-white",
-          "bg-gradient-to-r from-[#FF4D6D] via-[#A50034] to-[#FF8A3D]",
-          "shadow-[0_10px_30px_-6px_rgba(165,0,52,0.45)]",
-          "ring-1 ring-white/40",
+          "text-[#3a2a05]",
+          "bg-gradient-to-r from-[#FFE9A0] via-[#E0B23A] to-[#B8860B]",
+          "shadow-[0_10px_30px_-6px_rgba(184,134,11,0.5)]",
+          "ring-1 ring-[#FFF4C2]/70",
           "hover:scale-105 hover:-translate-y-0.5",
           "transition-transform duration-200",
         )}
       >
         <span className="relative flex items-center justify-center">
-          <Trophy className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]" strokeWidth={2.6} />
+          <Trophy className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(120,80,0,0.35)]" strokeWidth={2.6} />
         </span>
-        <span className="text-[13px] font-extrabold tracking-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+        <span className="text-[13px] font-extrabold tracking-tight drop-shadow-[0_1px_1px_rgba(255,240,180,0.6)]">
           판매인증
         </span>
-        <span className="ml-0.5 text-[10px] px-1.5 py-0.5 rounded-full bg-white text-[#A50034] font-black tracking-widest shadow-sm">
+        <span className="ml-0.5 text-[10px] px-1.5 py-0.5 rounded-full bg-[#3a2a05] text-[#FFD96B] font-black tracking-widest shadow-sm">
           EVENT
         </span>
       </button>
