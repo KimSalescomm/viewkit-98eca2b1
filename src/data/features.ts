@@ -842,16 +842,15 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "11",
-      title: "보일수록 품격이 되는,\n오브제 스테이션",
-      subtitle: "거실 어디에 두어도 인테리어가 되는\n오브제 컬렉션 디자인 도크.",
+      title: "거실의 오브제가 되는,\n오브제 스테이션",
+      subtitle: "거실 한가운데 두어도 가구처럼 어우러지는\n오브제컬렉션 디자인 도크.",
       icon: "Sparkles",
       tag: "오브제 스테이션",
-      mediaType: "youtube",
-      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM",
-      isShorts: true,
+      mediaType: "video",
+      mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
       description:
-        "미니멀한 실루엣과 정제된 컬러로 거실의 오브제처럼 어우러지는 디자인 도크. 가전이 인테리어가 되는 LG 오브제컬렉션의 감각을 그대로 담았어요.",
-      highlights: ["오브제컬렉션 디자인", "미니멀 실루엣", "인테리어 친화 컬러", "보일수록 품격"],
+        "차분한 컬러와 정제된 실루엣으로 거실 어디에 두어도 인테리어 오브제처럼 어우러지는 디자인 도크. 소파·러그 옆에 자연스럽게 놓이며 공간의 무드를 해치지 않아요.",
+      highlights: ["오브제컬렉션 디자인", "거실 인테리어 매칭", "정제된 컬러 & 실루엣", "보일수록 품격"],
     },
     {
       id: "4",
