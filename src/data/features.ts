@@ -837,6 +837,19 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM",
       isShorts: true,
+      tabs: [
+        {
+          label: "오브제 스테이션",
+          mediaType: "youtube",
+          mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM",
+          isShorts: true,
+        },
+        {
+          label: "히든 스테이션",
+          mediaType: "video",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
+        },
+      ],
       description:
         "보이지 않는 곳에서는 청소 성능을 빈틈없이 완성하고, 눈에 보이는 곳에서는 공간의 품격을 한층 끌어올리는 디자인. 미니멀한 도크와 본체가 거실·주방 어디에 두어도 인테리어처럼 어우러져요.",
       highlights: ["인테리어 친화 디자인", "미니멀 도크 & 본체", "공간 어디든 자연스럽게", "보일수록 품격"],
