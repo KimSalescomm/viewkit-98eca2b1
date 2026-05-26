@@ -783,6 +783,18 @@ export const featuresMap: Record<string, Feature[]> = {
         "엣지 확장 브러시로 벽·모서리 청소",
         "듀얼 엉킴 방지 브러시",
       ],
+      tabs: [
+        {
+          label: "30W 강력 흡입력",
+          mediaType: "video",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
+        },
+        {
+          label: "엣지 확장 브러시",
+          mediaType: "video",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_10_edge_cleaning.mp4",
+        },
+      ],
       disclaimers: [
         "흡입력(Suction Power, W)은 공기 데이터 시험 장비로 측정한 진공도(kPa)와 유량(ℓ/s)의 곱으로 산정됩니다.",
         "최대 진공도 10,000Pa은 유량이 0 ℓ/s인 밀폐된 조건에서 측정한 흡입 모터의 값입니다.",
