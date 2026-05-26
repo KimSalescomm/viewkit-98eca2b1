@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "Anyone can delete sales certifications" ON public.sales_certifications;
