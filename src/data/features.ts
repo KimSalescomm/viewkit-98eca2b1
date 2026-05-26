@@ -868,13 +868,13 @@ export const featuresMap: Record<string, Feature[]> = {
         },
         {
           label: "스테이션 컨디셔닝",
-          mediaType: "image",
-          mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
+          mediaType: "video",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
         },
       ],
       description:
-        "사용 후 도크로 돌아온 물걸레를 100℃ 고온 스팀으로 직접 살균해, 세균·냄새 걱정 없이 매일 깨끗한 상태로 다시 사용할 수 있어요. 별도 세제 없이 스팀만으로 물걸레 깊숙한 곳까지 위생 케어합니다.",
-      highlights: ["100℃ 고온 스팀 살균", "물걸레 세균·냄새 케어", "세제 없는 스팀 위생", "사용 후 자동 살균"],
+        "100℃ 고온 스팀이 물걸레를 직접 살균하고, 스테이션 컨디셔닝이 도크 내부 환경을 자동으로 점검·관리해 곰팡이와 세균이 머무를 틈을 없애줍니다. 사용 내내 도크와 물걸레 모두 깨끗한 상태로 유지되는 LG만의 위생 솔루션이에요.",
+      highlights: ["100℃ 고온 스팀 살균", "스테이션 자동 컨디셔닝", "도크 내부 위생 관리", "곰팡이·세균 케어"],
     },
     {
       id: "5",
