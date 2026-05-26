@@ -881,6 +881,42 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
     },
     {
+      id: "8",
+      title: "30W 출력, 흡입력도 다르게 느껴질까?",
+      subtitle: "AlphaUP Drive의 30W 고출력 모터가\n카펫 깊숙한 먼지까지 단숨에 빨아들여요.",
+      icon: "Zap",
+      tag: "30W 강력 흡입력",
+      mediaType: "image",
+      mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
+      description:
+        "AlphaUP Drive에 탑재된 30W 고출력 모터는 미세먼지부터 굵은 이물질까지 한 번에 흡입합니다. 바닥재를 자동 인식해 카펫에서는 출력을 최대로 끌어올려 깊숙한 곳의 먼지도 놓치지 않아요.",
+      highlights: ["30W 고출력 모터", "카펫 자동 부스트", "미세먼지 완벽 흡입", "흡입력 자동 조절"],
+    },
+    {
+      id: "9",
+      title: "벽 모서리 먼지, 어떻게 닦을까?",
+      subtitle: "엣지 확장 브러시가 본체 밖으로 뻗어 나와\n벽면과 모서리까지 빈틈없이 청소해요.",
+      icon: "Sparkles",
+      tag: "엣지 확장 브러시",
+      mediaType: "image",
+      mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
+      description:
+        "원형 본체로는 닿기 힘든 벽 모서리, 가구 옆 틈새의 먼지를 엣지 확장 브러시가 바깥으로 펼쳐지며 쓸어 담습니다. 사각지대 없는 청소로 매번 더 깨끗한 결과를 보여드려요.",
+      highlights: ["사이드 확장 구조", "벽·모서리 집중 청소", "사각지대 제거", "자동 인식·확장"],
+    },
+    {
+      id: "10",
+      title: "머리카락 엉킴, 더 이상 없을까?",
+      subtitle: "듀얼 엉킴 방지 브러시가 머리카락과 반려동물 털을\n자동으로 분리해 흡입통으로 보내요.",
+      icon: "Cleaning",
+      tag: "듀얼 엉킴 방지 브러시",
+      mediaType: "image",
+      mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
+      description:
+        "두 개의 브러시가 반대 방향으로 회전하며 머리카락과 반려동물 털이 감기는 것을 막아줍니다. 청소 후 브러시에서 머리카락을 떼어내는 번거로운 과정 없이, 흡입통만 비우면 끝이에요.",
+      highlights: ["듀얼 회전 구조", "머리카락 자동 분리", "반려동물 털 케어", "유지 관리 간편"],
+    },
+    {
 
       id: "6",
       title: "더 자세한 제품 정보는 LG.com에서",
