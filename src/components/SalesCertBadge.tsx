@@ -116,7 +116,7 @@ const SalesCertBadge = () => {
           "transition-transform duration-200",
         )}
       >
-        <span className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[#FF4D6D]/50 blur-xl animate-pulse" />
+        <span className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[#FF4D6D]/40 blur-xl animate-[pulse_5s_ease-in-out_infinite]" />
         <span className="relative flex items-center justify-center">
           <Trophy className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]" strokeWidth={2.6} />
           <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-yellow-300 animate-ping" />
