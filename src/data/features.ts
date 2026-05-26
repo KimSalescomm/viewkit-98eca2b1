@@ -854,31 +854,15 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "4",
-      title: "한눈에 보는 디자인 갤러리",
-      subtitle: "공간 어디에 두어도 어울리는\n미니멀한 디자인의 도크와 본체.",
-      icon: "ImageIcon",
-      tag: "디자인 라인업",
-      mediaType: "gallery",
-      mediaUrl: "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=1200&h=800&fit=crop",
-      galleryImages: [
-        {
-          url: "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=1200&h=800&fit=crop",
-          title: "올인원 도크",
-          description: "먼지통 비움·물 보충·걸레 세척까지 한 번에 관리하는 멀티 스테이션.",
-        },
-        {
-          url: "https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=1200&h=800&fit=crop",
-          title: "슬림 본체",
-          description: "낮은 높이로 소파·침대 밑까지 들어가 사각지대 없이 청소합니다.",
-        },
-        {
-          url: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&h=800&fit=crop",
-          title: "공간 인테리어",
-          description: "어떤 거실에도 어울리는 모던한 컬러와 마감.",
-        },
-      ],
-      description: "도크와 본체의 디자인 포인트를 갤러리로 확인해보세요.",
-      highlights: ["올인원 도크", "슬림 바디", "모던 컬러"],
+      title: "위생부터 관리까지 믿고 맡길 수 있는,\n‘LG만의 위생 & 케어 솔루션’",
+      subtitle: "필터·브러시·물걸레 위생 관리부터 정기 케어까지\nLG가 끝까지 책임지는 통합 솔루션.",
+      icon: "Wrench",
+      tag: "LG만의 위생 & 케어 솔루션",
+      mediaType: "image",
+      mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
+      description:
+        "청소로봇은 매일 닿는 가전인 만큼 위생이 가장 중요해요. 도크의 자동 세척·살균부터 필터·브러시·물걸레의 정기 케어까지, LG만의 위생 & 케어 솔루션이 사용 내내 깨끗한 상태를 유지해줍니다.",
+      highlights: ["자동 세척·살균 도크", "필터·브러시 정기 케어", "물걸레 위생 관리", "LG 전문 케어 서비스"],
     },
     {
       id: "5",
