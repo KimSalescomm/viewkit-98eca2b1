@@ -774,7 +774,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Zap",
       tag: "AlphaUP Drive",
       mediaType: "video",
-      mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_03_sensing_ai_driving_pc.mp4",
+      mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
       description:
         "깜박 못 치운 물건 하나에 청소가 멈춰버린 적 있으시죠? AlphaUP Drive는 고립 위험 구역을 스스로 '청소 금지'로 설정해 일단 청소를 끝까지 마칩니다. 다음 청소 때 그 자리에 장애물이 사라진 게 확인되면, 빠뜨린 구역까지 다시 청소해요. 정교한 센서와 똑똑한 AI가 만나 더 꼼꼼한 자동 청소를 완성합니다.",
       highlights: ["RGB 카메라 + 센서 인식", "고립 위험 영역 기억", "자동 우회 경로", "재청소 자동 재개"],
