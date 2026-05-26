@@ -1048,6 +1048,8 @@ export const featureIconNames: Record<string, string> = {
   Move: "Move",
   Scissors: "Scissors",
   Globe: "Globe",
+  Shield: "Shield",
+  ShieldCheck: "ShieldCheck",
   Square: "EyeOff",
 };
 
