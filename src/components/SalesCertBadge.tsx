@@ -103,20 +103,30 @@ const SalesCertBadge = () => {
         onPointerCancel={cancelLongPress}
         onContextMenu={(e) => e.preventDefault()}
         className={cn(
-          "fixed bottom-4 right-4 z-40",
-          "inline-flex items-center gap-1.5",
-          "h-9 pl-3 pr-3.5 rounded-full",
-          "bg-white/90 hover:bg-white",
-          "border border-slate-200 hover:border-[#3182CE]/40",
-          "backdrop-blur-md",
-          "shadow-[0_4px_14px_-4px_rgba(15,23,42,0.12)]",
-          "text-[#3182CE]",
-          "opacity-80 hover:opacity-100",
-          "transition-all duration-200 hover:-translate-y-0.5",
+          "group fixed bottom-5 right-5 z-40 isolate",
+          "inline-flex items-center gap-2",
+          "h-12 pl-4 pr-4 rounded-full",
+          "text-white",
+          "bg-gradient-to-r from-[#FF4D6D] via-[#A50034] to-[#FF8A3D]",
+          "bg-[length:200%_200%]",
+          "shadow-[0_10px_30px_-6px_rgba(165,0,52,0.55)]",
+          "ring-2 ring-white/50",
+          "animate-sales-cert-glow",
+          "hover:scale-105 hover:-translate-y-0.5",
+          "transition-transform duration-200",
         )}
       >
-        <Trophy className="w-3.5 h-3.5" strokeWidth={2.4} />
-        <span className="text-xs font-semibold tracking-tight">판매인증</span>
+        <span className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[#FF4D6D]/50 blur-xl animate-pulse" />
+        <span className="relative flex items-center justify-center">
+          <Trophy className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]" strokeWidth={2.6} />
+          <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-yellow-300 animate-ping" />
+        </span>
+        <span className="text-[13px] font-extrabold tracking-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+          판매인증
+        </span>
+        <span className="ml-0.5 text-[10px] px-1.5 py-0.5 rounded-full bg-white text-[#A50034] font-black tracking-widest shadow-sm">
+          EVENT
+        </span>
       </button>
 
       <Dialog open={open} onOpenChange={handleOpenChange}>
