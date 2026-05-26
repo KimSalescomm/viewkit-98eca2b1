@@ -858,13 +858,13 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "필터·브러시·물걸레 위생 관리부터 정기 케어까지\nLG가 끝까지 책임지는 통합 솔루션.",
       icon: "Wrench",
       tag: "LG만의 위생 & 케어 솔루션",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
+      mediaType: "video",
+      mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_12_mop_solution_pc.mp4",
       tabs: [
         {
           label: "100℃ 살균 스팀",
-          mediaType: "image",
-          mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
+          mediaType: "video",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_12_mop_solution_pc.mp4",
         },
         {
           label: "스테이션 컨디셔닝",
@@ -873,8 +873,8 @@ export const featuresMap: Record<string, Feature[]> = {
         },
       ],
       description:
-        "100℃ 고온 스팀으로 물걸레와 도크 내부를 살균하고, 스테이션 컨디셔닝이 도크 환경을 자동 점검·관리해 사용 내내 깨끗한 상태를 유지해줍니다.",
-      highlights: ["100℃ 살균 스팀", "스테이션 컨디셔닝", "도크 자동 위생 관리", "LG 전문 케어"],
+        "사용 후 도크로 돌아온 물걸레를 100℃ 고온 스팀으로 직접 살균해, 세균·냄새 걱정 없이 매일 깨끗한 상태로 다시 사용할 수 있어요. 별도 세제 없이 스팀만으로 물걸레 깊숙한 곳까지 위생 케어합니다.",
+      highlights: ["100℃ 고온 스팀 살균", "물걸레 세균·냄새 케어", "세제 없는 스팀 위생", "사용 후 자동 살균"],
     },
     {
       id: "5",
