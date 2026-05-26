@@ -879,14 +879,31 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "5",
       title: "보안까지 빈틈없이,\n체계적인 보안 솔루션",
-      subtitle: "카메라·통신·데이터까지 다층 보안으로\n믿고 맡길 수 있는 LG 보안 시스템.",
+      subtitle: "보안 인증·개인정보 보호·물리적 보안까지\n믿고 맡길 수 있는 LG 보안 시스템.",
       icon: "Shield",
       tag: "체계적인 보안 솔루션",
       mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
+      mediaUrl: "/images/security-cert.png",
+      tabs: [
+        {
+          label: "보안 인증",
+          mediaType: "image",
+          mediaUrl: "/images/security-cert.png",
+        },
+        {
+          label: "개인정보 보호",
+          mediaType: "image",
+          mediaUrl: "/images/security-privacy.png",
+        },
+        {
+          label: "물리적 보안",
+          mediaType: "image",
+          mediaUrl: "/images/security-physical.png",
+        },
+      ],
       description:
-        "청소로봇의 카메라 영상과 사용 데이터는 모두 암호화되어 안전하게 보호됩니다. 글로벌 보안 인증을 갖춘 LG의 다층 보안 체계가 통신·저장·접근 단계별로 빈틈없이 지켜드려요.",
-      highlights: ["글로벌 보안 인증", "데이터 암호화 통신", "카메라 프라이버시 보호", "다층 보안 체계"],
+        "글로벌 보안 인증을 획득한 LG 청소로봇은 개인정보 보호와 물리적 보안 장치까지 갖춰 통신·저장·접근 전 단계에서 빈틈없이 안전을 지켜드립니다.",
+      highlights: ["글로벌 보안 인증", "개인정보 암호화 보호", "물리적 보안 장치", "다층 보안 체계"],
     },
     {
       id: "7",
