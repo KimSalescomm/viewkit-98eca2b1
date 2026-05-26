@@ -830,28 +830,28 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "보이지 않아도 완성되고,\n보일수록 품격이 되는 공간 맞춤 솔루션",
-      subtitle: "도크부터 본체까지, 우리집 인테리어에 자연스럽게 어우러지는\n공간 맞춤 디자인을 제안합니다.",
-      icon: "Droplets",
-      tag: "공간 맞춤 솔루션",
+      title: "보이지 않아도 완성되는,\n히든 스테이션",
+      subtitle: "주방·다용도실 가구에 자연스럽게 빌트인되어\n시야에서 사라지는 매립형 도크.",
+      icon: "Square",
+      tag: "히든 스테이션",
       mediaType: "video",
       mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
-      tabs: [
-        {
-          label: "히든 스테이션",
-          mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
-        },
-        {
-          label: "오브제 스테이션",
-          mediaType: "youtube",
-          mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM",
-          isShorts: true,
-        },
-      ],
       description:
-        "보이지 않는 곳에서는 청소 성능을 빈틈없이 완성하고, 눈에 보이는 곳에서는 공간의 품격을 한층 끌어올리는 디자인. 미니멀한 도크와 본체가 거실·주방 어디에 두어도 인테리어처럼 어우러져요.",
-      highlights: ["인테리어 친화 디자인", "미니멀 도크 & 본체", "공간 어디든 자연스럽게", "보일수록 품격"],
+        "도크를 가구 안에 매립해 거실·주방 어디에서도 보이지 않게 숨겨주는 공간 맞춤 솔루션. 인테리어 라인을 깨지 않으면서 청소 성능은 그대로 유지합니다.",
+      highlights: ["가구 빌트인 매립", "시야에서 사라지는 도크", "인테리어 라인 유지", "공간 활용 극대화"],
+    },
+    {
+      id: "11",
+      title: "보일수록 품격이 되는,\n오브제 스테이션",
+      subtitle: "거실 어디에 두어도 인테리어가 되는\n오브제 컬렉션 디자인 도크.",
+      icon: "Sparkles",
+      tag: "오브제 스테이션",
+      mediaType: "youtube",
+      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM",
+      isShorts: true,
+      description:
+        "미니멀한 실루엣과 정제된 컬러로 거실의 오브제처럼 어우러지는 디자인 도크. 가전이 인테리어가 되는 LG 오브제컬렉션의 감각을 그대로 담았어요.",
+      highlights: ["오브제컬렉션 디자인", "미니멀 실루엣", "인테리어 친화 컬러", "보일수록 품격"],
     },
     {
       id: "4",
