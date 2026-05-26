@@ -834,20 +834,19 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "도크부터 본체까지, 우리집 인테리어에 자연스럽게 어우러지는\n공간 맞춤 디자인을 제안합니다.",
       icon: "Droplets",
       tag: "공간 맞춤 솔루션",
-      mediaType: "youtube",
-      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM",
-      isShorts: true,
+      mediaType: "video",
+      mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
       tabs: [
+        {
+          label: "히든 스테이션",
+          mediaType: "video",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
+        },
         {
           label: "오브제 스테이션",
           mediaType: "youtube",
           mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM",
           isShorts: true,
-        },
-        {
-          label: "히든 스테이션",
-          mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
         },
       ],
       description:
