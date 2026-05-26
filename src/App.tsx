@@ -16,6 +16,7 @@ const Manual = lazy(() => import("./pages/Manual"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Ranking = lazy(() => import("./pages/Ranking"));
 const Admin = lazy(() => import("./pages/Admin"));
+const Legal = lazy(() => import("./pages/Legal"));
 
 const queryClient = new QueryClient();
 
