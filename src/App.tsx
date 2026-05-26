@@ -46,6 +46,7 @@ const App = () => (
                 <Route path="/product/:productId/manual" element={<Manual />} />
                 <Route path="/ranking" element={<Ranking />} />
                 <Route path="/admin" element={<Admin />} />
+                <Route path="/legal" element={<Legal />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
