@@ -108,18 +108,14 @@ const SalesCertBadge = () => {
           "h-12 pl-4 pr-4 rounded-full",
           "text-white",
           "bg-gradient-to-r from-[#FF4D6D] via-[#A50034] to-[#FF8A3D]",
-          "bg-[length:200%_200%]",
-          "shadow-[0_10px_30px_-6px_rgba(165,0,52,0.55)]",
-          "ring-2 ring-white/50",
-          "animate-sales-cert-glow",
+          "shadow-[0_10px_30px_-6px_rgba(165,0,52,0.45)]",
+          "ring-1 ring-white/40",
           "hover:scale-105 hover:-translate-y-0.5",
           "transition-transform duration-200",
         )}
       >
-        <span className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[#FF4D6D]/40 blur-xl animate-[pulse_5s_ease-in-out_infinite]" />
         <span className="relative flex items-center justify-center">
           <Trophy className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]" strokeWidth={2.6} />
-          <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-yellow-300 animate-ping" />
         </span>
         <span className="text-[13px] font-extrabold tracking-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
           판매인증
