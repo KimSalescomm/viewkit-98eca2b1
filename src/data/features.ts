@@ -878,46 +878,15 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "5",
-      title: "모델별 스펙 한눈에 비교",
-      subtitle: "흡입력·주행 시간·도크 기능까지\n원하는 조건으로 비교해보세요.",
-      icon: "Ruler",
-      tag: "모델 비교",
-      mediaType: "table",
-      mediaUrl: "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=1200&h=800&fit=crop",
-      description: "주요 모델의 흡입력과 도크 기능, 사용 시간을 비교해 우리 집에 맞는 모델을 선택해보세요.",
-      highlights: ["흡입력 비교", "도크 기능", "주행 시간"],
-      tableData: [
-        {
-          name: "프리미엄",
-          imageUrl: "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=600&h=600&fit=crop",
-          specs: [
-            { label: "흡입력", values: ["10,000 Pa"] },
-            { label: "주행 시간", values: ["180분"] },
-            { label: "도크 기능", values: ["먼지 비움 · 물 보충 · 걸레 세척·건조"] },
-            { label: "스테이션", values: ["히든 스테이션"] },
-          ],
-        },
-        {
-          name: "스탠다드",
-          imageUrl: "https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=600&h=600&fit=crop",
-          specs: [
-            { label: "흡입력", values: ["7,000 Pa"] },
-            { label: "주행 시간", values: ["150분"] },
-            { label: "도크 기능", values: ["먼지 비움 · 걸레 세척"] },
-            { label: "스테이션", values: ["오브제 스테이션"] },
-          ],
-        },
-        {
-          name: "에센셜",
-          imageUrl: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=600&fit=crop",
-          specs: [
-            { label: "흡입력", values: ["5,000 Pa"] },
-            { label: "주행 시간", values: ["120분"] },
-            { label: "도크 기능", values: ["먼지 비움"] },
-            { label: "스테이션", values: ["기본 스테이션"] },
-          ],
-        },
-      ],
+      title: "보안까지 빈틈없이,\n체계적인 보안 솔루션",
+      subtitle: "카메라·통신·데이터까지 다층 보안으로\n믿고 맡길 수 있는 LG 보안 시스템.",
+      icon: "Shield",
+      tag: "체계적인 보안 솔루션",
+      mediaType: "image",
+      mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
+      description:
+        "청소로봇의 카메라 영상과 사용 데이터는 모두 암호화되어 안전하게 보호됩니다. 글로벌 보안 인증을 갖춘 LG의 다층 보안 체계가 통신·저장·접근 단계별로 빈틈없이 지켜드려요.",
+      highlights: ["글로벌 보안 인증", "데이터 암호화 통신", "카메라 프라이버시 보호", "다층 보안 체계"],
     },
     {
       id: "7",
@@ -1079,6 +1048,8 @@ export const featureIconNames: Record<string, string> = {
   Move: "Move",
   Scissors: "Scissors",
   Globe: "Globe",
+  Shield: "Shield",
+  ShieldCheck: "ShieldCheck",
   Square: "EyeOff",
 };
 
