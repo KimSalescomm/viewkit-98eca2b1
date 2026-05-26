@@ -860,9 +860,21 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "LG만의 위생 & 케어 솔루션",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
+      tabs: [
+        {
+          label: "100℃ 살균 스팀",
+          mediaType: "image",
+          mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
+        },
+        {
+          label: "스테이션 컨디셔닝",
+          mediaType: "image",
+          mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
+        },
+      ],
       description:
-        "청소로봇은 매일 닿는 가전인 만큼 위생이 가장 중요해요. 도크의 자동 세척·살균부터 필터·브러시·물걸레의 정기 케어까지, LG만의 위생 & 케어 솔루션이 사용 내내 깨끗한 상태를 유지해줍니다.",
-      highlights: ["자동 세척·살균 도크", "필터·브러시 정기 케어", "물걸레 위생 관리", "LG 전문 케어 서비스"],
+        "100℃ 고온 스팀으로 물걸레와 도크 내부를 살균하고, 스테이션 컨디셔닝이 도크 환경을 자동 점검·관리해 사용 내내 깨끗한 상태를 유지해줍니다.",
+      highlights: ["100℃ 살균 스팀", "스테이션 컨디셔닝", "도크 자동 위생 관리", "LG 전문 케어"],
     },
     {
       id: "5",
