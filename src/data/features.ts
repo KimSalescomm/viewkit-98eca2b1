@@ -769,15 +769,15 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "쓸수록 진화하는 AlphaUP Drive 주행",
-      subtitle: "장애물을 피하는 것은 물론, 장애물을 치우고 나면\n청소가 안된 구역인 걸 기억하고, 다시 청소를 재개하는 한층 더 진화한 주행.",
+      title: "흡입력, 어디까지 강해질 수 있을까?",
+      subtitle: "최대 30W의 강력한 흡입력으로\n카펫 깊숙한 먼지까지 단숨에 빨아들여요.",
       icon: "Zap",
-      tag: "AlphaUP Drive",
+      tag: "최대 30W 강력 흡입력",
       mediaType: "video",
       mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
       description:
-        "깜박 못 치운 물건 하나에 청소가 멈춰버린 적 있으시죠? AlphaUP Drive는 고립 위험 구역을 스스로 '청소 금지'로 설정해 일단 청소를 끝까지 마칩니다. 다음 청소 때 그 자리에 장애물이 사라진 게 확인되면, 빠뜨린 구역까지 다시 청소해요. 정교한 센서와 똑똑한 AI가 만나 더 꼼꼼한 자동 청소를 완성합니다.",
-      highlights: ["RGB 카메라 + 센서 인식", "고립 위험 영역 기억", "자동 우회 경로", "재청소 자동 재개"],
+        "AlphaUP Drive에 탑재된 고출력 모터가 최대 30W의 강력한 흡입력을 발휘합니다. 미세먼지부터 굵은 이물질까지 한 번에 빨아들이고, 바닥재를 자동 인식해 카펫에서는 출력을 최대로 끌어올려 깊숙한 먼지까지 놓치지 않아요.",
+      highlights: ["최대 30W 고출력", "카펫 자동 부스트", "미세먼지 완벽 흡입", "바닥재 자동 인식"],
     },
     {
       id: "3",
