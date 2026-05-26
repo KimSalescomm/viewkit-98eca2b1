@@ -887,7 +887,7 @@ export const featuresMap: Record<string, Feature[]> = {
             { label: "흡입력", values: ["10,000 Pa"] },
             { label: "주행 시간", values: ["180분"] },
             { label: "도크 기능", values: ["먼지 비움 · 물 보충 · 걸레 세척·건조"] },
-            { label: "물걸레", values: ["스팀 물걸레"] },
+            { label: "스테이션", values: ["히든 스테이션"] },
           ],
         },
         {
@@ -897,7 +897,7 @@ export const featuresMap: Record<string, Feature[]> = {
             { label: "흡입력", values: ["7,000 Pa"] },
             { label: "주행 시간", values: ["150분"] },
             { label: "도크 기능", values: ["먼지 비움 · 걸레 세척"] },
-            { label: "물걸레", values: ["진동 물걸레"] },
+            { label: "스테이션", values: ["오브제 스테이션"] },
           ],
         },
         {
@@ -907,7 +907,7 @@ export const featuresMap: Record<string, Feature[]> = {
             { label: "흡입력", values: ["5,000 Pa"] },
             { label: "주행 시간", values: ["120분"] },
             { label: "도크 기능", values: ["먼지 비움"] },
-            { label: "물걸레", values: ["일반 물걸레"] },
+            { label: "스테이션", values: ["기본 스테이션"] },
           ],
         },
       ],
