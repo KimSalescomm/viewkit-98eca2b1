@@ -16,6 +16,8 @@ import {
   Ruler,
   Scissors,
   Search,
+  Shield,
+  ShieldCheck,
   Shirt,
   Sparkles,
   Sprout,
@@ -54,6 +56,8 @@ const featureIcons: Record<string, LucideIcon> = {
   Move,
   Scissors,
   Globe,
+  Shield,
+  ShieldCheck,
 };
 
 interface FeatureIconProps extends Omit<LucideProps, "ref"> {
