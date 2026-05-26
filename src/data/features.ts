@@ -830,27 +830,27 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "보이지 않아도 완성되는,\n히든 스테이션",
-      subtitle: "주방·다용도실 가구에 자연스럽게 빌트인되어\n시야에서 사라지는 매립형 도크.",
-      icon: "EyeOff",
-      tag: "히든 스테이션",
+      title: "보이지 않아도, 보일수록\n공간에 어우러지는 스테이션",
+      subtitle: "가구에 매립되는 히든 스테이션부터\n거실의 오브제가 되는 디자인 도크까지.",
+      icon: "Armchair",
+      tag: "히든 · 오브제 스테이션",
       mediaType: "video",
       mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
+      tabs: [
+        {
+          label: "히든 스테이션",
+          mediaType: "video",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
+        },
+        {
+          label: "오브제 스테이션",
+          mediaType: "video",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
+        },
+      ],
       description:
-        "도크를 가구 안에 매립해 거실·주방 어디에서도 보이지 않게 숨겨주는 공간 맞춤 솔루션. 인테리어 라인을 깨지 않으면서 청소 성능은 그대로 유지합니다.",
-      highlights: ["가구 빌트인 매립", "시야에서 사라지는 도크", "인테리어 라인 유지", "공간 활용 극대화"],
-    },
-    {
-      id: "11",
-      title: "거실의 오브제가 되는,\n오브제 스테이션",
-      subtitle: "거실 한가운데 두어도 가구처럼 어우러지는\n오브제컬렉션 디자인 도크.",
-      icon: "Armchair",
-      tag: "오브제 스테이션",
-      mediaType: "video",
-      mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
-      description:
-        "차분한 컬러와 정제된 실루엣으로 거실 어디에 두어도 인테리어 오브제처럼 어우러지는 디자인 도크. 소파·러그 옆에 자연스럽게 놓이며 공간의 무드를 해치지 않아요.",
-      highlights: ["오브제컬렉션 디자인", "거실 인테리어 매칭", "정제된 컬러 & 실루엣", "보일수록 품격"],
+        "주방·다용도실 가구에 자연스럽게 빌트인되는 히든 스테이션과, 거실 어디에 두어도 오브제처럼 어우러지는 오브제 스테이션. 공간 성격에 맞춰 두 가지 도크 디자인을 선택할 수 있어요.",
+      highlights: ["히든 스테이션 빌트인", "오브제 스테이션 디자인", "공간 맞춤 선택", "보일수록 품격"],
     },
     {
       id: "4",
