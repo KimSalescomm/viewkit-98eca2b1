@@ -796,6 +796,7 @@ export const featuresMap: Record<string, Feature[]> = {
           ],
         },
       ],
+    },
     {
       id: "3",
       title: "물걸레까지 한 번에, 스팀 살균 케어",
