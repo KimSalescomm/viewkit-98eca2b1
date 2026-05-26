@@ -794,6 +794,11 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_10_edge_cleaning.mp4",
         },
+        {
+          label: "듀얼 엉킴 방지 브러시",
+          mediaType: "video",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_11_anti_tangle.mp4",
+        },
       ],
       disclaimers: [
         "흡입력(Suction Power, W)은 공기 데이터 시험 장비로 측정한 진공도(kPa)와 유량(ℓ/s)의 곱으로 산정됩니다.",
