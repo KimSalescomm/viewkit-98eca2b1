@@ -1077,6 +1077,13 @@ export const featureIconNames: Record<string, string> = {
   Ruler: "Ruler",
   Wrench: "Wrench",
   Puzzle: "Puzzle",
+  Flame: "Flame",
+  EyeOff: "EyeOff",
+  Armchair: "Armchair",
+  Move: "Move",
+  Scissors: "Scissors",
+  Globe: "Globe",
+  Square: "EyeOff",
 };
 
 // Keep legacy export for backwards compat (unused but safe)
