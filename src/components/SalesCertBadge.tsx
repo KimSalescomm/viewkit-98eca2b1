@@ -120,8 +120,8 @@ const SalesCertBadge = () => {
         <span className="text-[13px] font-extrabold tracking-tight drop-shadow-[0_1px_1px_rgba(255,240,180,0.6)]">
           판매인증
         </span>
-        <span className="ml-0.5 text-[10px] px-1.5 py-0.5 rounded-full bg-[#3a2a05] text-[#FFD96B] font-black tracking-widest shadow-sm">
-          EVENT
+        <span className="ml-0.5 text-[10px] px-1.5 py-0.5 rounded-full bg-[#3a2a05] text-[#FFD96B] font-black tracking-wider shadow-sm">
+          매장 전용
         </span>
       </button>
 
