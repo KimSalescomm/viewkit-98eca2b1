@@ -153,7 +153,7 @@ const ProductSelection = () => {
   };
 
   return (
-    <main className="min-h-screen bg-[hsl(220,20%,97%)] px-5 py-10 sm:px-8 sm:py-14">
+    <main className="min-h-screen bg-[#F3F4F6] px-5 py-12 sm:px-8 sm:py-16">
       <StoreSetupModal
         open={modalOpen}
         initialName={currentStore?.name}
@@ -161,29 +161,31 @@ const ProductSelection = () => {
         onClose={() => setModalOpen(false)}
         dismissible={modalDismissible}
       />
-      <div className="max-w-xl mx-auto sm:max-w-3xl relative">
+      <div className="max-w-xl mx-auto sm:max-w-5xl">
 
-        {/* Top-right controls */}
-        <div className="absolute -top-4 sm:-top-6 right-0 flex items-center gap-2">
-          {currentStore && (
-            <button
-              type="button"
-              onClick={() => {
-                setModalDismissible(true);
-                setModalOpen(true);
-              }}
-              className="inline-flex h-8 items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 hover:border-[#A50034] hover:text-[#A50034] transition-colors shadow-sm"
-              title="지점 변경"
-            >
-              <Store className="w-3.5 h-3.5" />
-              <span>{currentStore.slug}</span>
-            </button>
-          )}
-          <MobileAccessQR storeSlug={currentStore?.slug} />
-          <OrientationToggle />
+        {/* Top Segmented Controls — centered */}
+        <div className="flex justify-center items-center gap-2 mb-12 sm:mb-16">
+          <div className="flex items-center bg-white/90 backdrop-blur-xl border border-white/70 rounded-full p-1.5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)]">
+            {currentStore && (
+              <button
+                type="button"
+                onClick={() => {
+                  setModalDismissible(true);
+                  setModalOpen(true);
+                }}
+                className="inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+                title="지점 변경"
+              >
+                <Store className="w-3.5 h-3.5" />
+                <span>{currentStore.slug}</span>
+              </button>
+            )}
+            <MobileAccessQR storeSlug={currentStore?.slug} variant="segment" />
+            <OrientationToggle variant="segment" />
+          </div>
           <Link
-            to="/product/tv/manual"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sky-400 hover:text-sky-500 transition-colors"
+            to="/product/refrigerator/manual"
+            className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-white border border-white/70 shadow-sm text-gray-400 hover:text-[#A50034] transition-colors"
             title="운영 매뉴얼"
             aria-label="운영 매뉴얼 열기"
           >
@@ -192,29 +194,22 @@ const ProductSelection = () => {
           </Link>
         </div>
 
-
         {/* Header Section */}
-        <div className="text-center mt-24 sm:mt-32 mb-12 sm:mb-16">
-          <p
-            className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase mb-4"
-            style={{ color: "rgba(0,0,0,0.45)" }}
-          >
+        <div className="text-center mb-12 sm:mb-16 space-y-3">
+          <p className="text-[11px] sm:text-[12px] font-black tracking-[0.3em] uppercase text-[#A50034]">
             VIEW KIT
           </p>
-          <h1 className="text-[28px] sm:text-[32px] font-bold text-gray-900 leading-tight mb-3">
+          <h1 className="text-[32px] sm:text-[44px] font-extrabold tracking-tight text-[#111111] leading-tight">
             어떤 제품부터 보시겠어요?
           </h1>
-          <p
-            className="text-[15px] sm:text-[17px] font-normal leading-relaxed"
-            style={{ color: "rgba(0,0,0,0.55)" }}
-          >
+          <p className="text-base sm:text-xl text-gray-500 font-medium">
             선택하신 제품부터 차근차근 이해하기 쉽게 설명드릴게요.
           </p>
         </div>
 
         {/* Card Grid */}
         <h2 className="sr-only">제품 선택</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
           {visibleProducts.map((product, index) => {
             const isEnabled = enabledIds.includes(product.id);
 
@@ -228,96 +223,61 @@ const ProductSelection = () => {
             const cardContent = (
               <div
                 className={`
-                  group relative rounded-3xl overflow-hidden transition-all duration-300
-                  flex flex-row sm:flex-col h-full
+                  group relative bg-white rounded-[32px] sm:rounded-[40px] overflow-hidden border border-white
+                  transition-all duration-500
                   ${isEnabled
-                    ? "bg-white shadow-[0_2px_16px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
-                    : "bg-white/70 shadow-sm hover:shadow-md"
+                    ? "shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-1.5 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)]"
+                    : "shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)] opacity-70"
                   }
                 `}
               >
-                {/* Accent bar — left on mobile, top on desktop */}
-                <div
-                  className={`absolute z-10 bg-gradient-to-b sm:bg-gradient-to-r ${accent.gradient}
-                    left-0 top-0 bottom-0 w-2
-                    sm:bottom-auto sm:right-0 sm:w-full sm:h-2
-                    ${isEnabled ? "" : "opacity-30"}`}
-                />
-                {/* Thumbnail */}
-                <div className="relative overflow-hidden flex-shrink-0 w-32 sm:w-full h-auto sm:h-48">
+                {/* Top accent bar */}
+                <div className={`h-2.5 w-full bg-gradient-to-r ${accent.gradient} ${isEnabled ? "" : "opacity-40"}`} />
+
+                {/* Image */}
+                <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
                   {isEnabled ? (
-                    <>
-                      <SafeImage
-                        src={product.keyVisualImage}
-                        alt={`LG ${product.name} 대표 이미지`}
-                        loading={index < 2 ? "eager" : "lazy"}
-                        fetchPriority={index < 2 ? "high" : undefined}
-                        decoding="async"
-                        className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105 rounded-2xl"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/10 to-transparent pointer-events-none" />
-                      {/* Mobile: small icon chip on thumbnail */}
-                      <div className="sm:hidden absolute top-2 left-3.5">
-                      <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${accent.gradient} flex items-center justify-center shadow-md ring-2 ring-white/80`}>
-                          <ProductLucideIcon name={product.icon} className="w-4 h-4 text-white" />
-                        </div>
-                      </div>
-                    </>
+                    <SafeImage
+                      src={product.keyVisualImage}
+                      alt={`LG ${product.name} 대표 이미지`}
+                      loading={index < 2 ? "eager" : "lazy"}
+                      fetchPriority={index < 2 ? "high" : undefined}
+                      decoding="async"
+                      className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${
+                        product.id === "tv" ? "object-[65%_55%]" :
+                        product.id === "airconditioner" ? "object-top" :
+                        "object-center"
+                      }`}
+                    />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-muted">
-                      <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-3xl border border-border bg-card shadow-sm">
-                        <ProductLucideIcon name={product.icon} className="w-7 h-7 sm:w-8 sm:h-8 text-gray-400" />
+                    <div className="flex h-full w-full items-center justify-center bg-gray-50">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-gray-200 bg-white shadow-sm">
+                        <ProductLucideIcon name={product.icon} className="w-7 h-7 text-gray-400" />
                       </div>
                     </div>
                   )}
                 </div>
 
-                {/* Card Body */}
-                <div className={`relative p-4 sm:p-5 flex-1 flex items-center sm:block overflow-hidden ${isEnabled ? `bg-gradient-to-br ${accent.tint}` : ""}`}>
-                  {/* Decorative tinted blob (mobile) */}
-                  {isEnabled && (
-                    <div className={`sm:hidden pointer-events-none absolute -right-8 -bottom-8 w-28 h-28 rounded-full bg-gradient-to-br ${accent.gradient} opacity-10 blur-xl`} />
-                  )}
-                  <div className="relative flex items-start gap-3 sm:gap-3.5 w-full">
-                    <div
-                      className={`
-                        hidden sm:flex w-10 h-10 sm:w-13 sm:h-13 rounded-2xl items-center justify-center flex-shrink-0
-                        ${isEnabled
-                          ? `bg-gradient-to-br ${accent.gradient} shadow-md`
-                          : "bg-gray-300 group-hover:bg-gray-400"
-                        }
-                      `}
-                    >
-                      <ProductLucideIcon
-                        name={product.icon}
-                        className={`w-6 h-6 sm:w-7 sm:h-7 ${isEnabled ? "text-slate-50" : "text-white/80"}`}
-                      />
-                    </div>
-                    <div className="min-w-0 pt-0.5 flex-1">
-                      <h3
-                        className={`text-base sm:text-lg leading-tight transition-colors duration-300
-                          ${isEnabled
-                            ? "font-extrabold text-gray-900"
-                            : "font-bold text-gray-400 group-hover:text-gray-600"
-                          }
-                        `}
-                      >
-                        {product.name}
-                      </h3>
-                      <p
-                        className={`text-xs sm:text-sm mt-1 leading-snug transition-colors duration-300
-                          ${isEnabled
-                            ? "text-gray-600 font-medium"
-                            : "text-gray-300 group-hover:text-gray-400"
-                          }
-                        `}
-                      >
-                        {product.description}
-                      </p>
-                    </div>
-                    {isEnabled && (
-                      <span className="sm:hidden text-gray-300 text-xl flex-shrink-0 self-center">›</span>
-                    )}
+                {/* Body */}
+                <div className="p-6 sm:p-8 flex items-start gap-4 sm:gap-5">
+                  <div
+                    className={`
+                      w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-2xl flex items-center justify-center
+                      ${isEnabled
+                        ? `bg-gradient-to-br ${accent.gradient} text-white shadow-lg`
+                        : "bg-gray-200 text-gray-400"
+                      }
+                    `}
+                  >
+                    <ProductLucideIcon name={product.icon} className="w-6 h-6 sm:w-7 sm:h-7" />
+                  </div>
+                  <div className="min-w-0 flex-1 space-y-1.5">
+                    <h3 className={`text-xl sm:text-2xl font-extrabold tracking-tight leading-tight ${isEnabled ? "text-gray-900" : "text-gray-400"}`}>
+                      {product.name}
+                    </h3>
+                    <p className={`text-sm sm:text-[15px] leading-relaxed font-medium ${isEnabled ? "text-gray-500" : "text-gray-300"}`}>
+                      {product.description}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -328,7 +288,7 @@ const ProductSelection = () => {
                 <Link
                   key={product.id}
                   to={product.id === "subscription" ? "/subscription" : `/product/${product.id}`}
-                  className="block transition-transform duration-300 hover:scale-[1.02]"
+                  className="block"
                   onClick={() => trackProductClick(product.name)}
                 >
                   {cardContent}
