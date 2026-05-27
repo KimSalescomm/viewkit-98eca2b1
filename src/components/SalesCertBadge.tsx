@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Trophy, CalendarIcon, CheckCircle2, Home } from "lucide-react";
+import { Trophy, CalendarIcon, CheckCircle2, Home, Search, Store, X } from "lucide-react";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import {
@@ -23,8 +23,9 @@ import { cn } from "@/lib/utils";
 import useAnalytics from "@/hooks/useAnalytics";
 import { products } from "@/data/products";
 import { appendSale } from "@/utils/salesLog";
+import { ALL_BRANCHES, getManagerByBranch, isAdminStore } from "@/data/branches";
+import { getCurrentStore } from "@/utils/storeId";
 
-const STORES = ["강남본점", "서초점", "잠실점"];
 // 구독을 맨 위로, 그 외 뷰킷 활성 제품 카드
 const PRODUCT_OPTIONS = ["구독", ...products.filter((p) => p.id !== "pc").map((p) => p.name)];
 
