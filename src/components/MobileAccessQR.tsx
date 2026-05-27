@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { QRCodeCanvas } from "qrcode.react";
 import { Smartphone, X, Copy, Check } from "lucide-react";
 
