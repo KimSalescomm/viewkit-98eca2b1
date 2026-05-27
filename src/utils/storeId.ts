@@ -6,6 +6,8 @@
 //  3) 기타 문자(공백/특수문자)는 제거
 //  4) 사용자가 등록한 매핑은 localStorage에 영구 저장 (이름 ↔ 슬러그)
 
+import { BRANCH_CODE_MAP } from "@/data/branches";
+
 const REGISTRY_KEY = "viewkit_store_registry";
 const CURRENT_NAME_KEY = "viewkit_store_name";
 const CURRENT_ID_KEY = "viewkit_store_id";
@@ -28,6 +30,10 @@ const hasHangul = (s: string) => /[\uac00-\ud7a3]/.test(s);
 export const slugifyStoreName = (raw: string): string => {
   const trimmed = (raw || "").trim();
   if (!trimmed) return "";
+
+  // 1순위: 마스터 지점 코드 매핑 (충돌 없는 고유 코드)
+  if (BRANCH_CODE_MAP[trimmed]) return BRANCH_CODE_MAP[trimmed];
+
 
   // 영문/숫자만
   if (/^[A-Za-z0-9_-]+$/.test(trimmed)) {
