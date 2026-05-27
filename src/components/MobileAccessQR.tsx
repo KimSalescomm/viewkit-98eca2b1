@@ -51,7 +51,7 @@ const MobileAccessQR = ({ storeSlug, variant = "pill" }: MobileAccessQRProps) =>
         <span>모바일 접속</span>
       </button>
 
-      {open && (
+      {open && typeof document !== "undefined" && createPortal(
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
           onClick={() => setOpen(false)}
