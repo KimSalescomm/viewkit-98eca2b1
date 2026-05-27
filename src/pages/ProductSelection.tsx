@@ -172,7 +172,7 @@ const ProductSelection = () => {
                 setModalDismissible(true);
                 setModalOpen(true);
               }}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-gray-200 text-xs font-medium text-gray-700 hover:border-[#A50034] hover:text-[#A50034] transition-colors shadow-sm"
+              className="inline-flex h-8 items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 hover:border-[#A50034] hover:text-[#A50034] transition-colors shadow-sm"
               title="지점 변경"
             >
               <Store className="w-3.5 h-3.5" />
@@ -183,18 +183,18 @@ const ProductSelection = () => {
           <OrientationToggle />
           <Link
             to="/product/tv/manual"
-            className="text-sky-400 hover:text-sky-500 transition-colors"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sky-400 hover:text-sky-500 transition-colors"
             title="운영 매뉴얼"
             aria-label="운영 매뉴얼 열기"
           >
-            <HelpCircle className="w-7 h-7 sm:w-8 sm:h-8" aria-hidden="true" />
+            <HelpCircle className="w-5 h-5" aria-hidden="true" />
             <span className="sr-only">운영 매뉴얼</span>
           </Link>
         </div>
 
 
         {/* Header Section */}
-        <div className="text-center mt-12 sm:mt-20 mb-12 sm:mb-16">
+        <div className="text-center mt-24 sm:mt-32 mb-12 sm:mb-16">
           <p
             className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase mb-4"
             style={{ color: "rgba(0,0,0,0.45)" }}
