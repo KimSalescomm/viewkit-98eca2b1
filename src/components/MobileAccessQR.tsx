@@ -38,11 +38,11 @@ const MobileAccessQR = ({ storeSlug }: MobileAccessQRProps) => {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-gray-200 text-xs font-medium text-gray-700 hover:border-[#A50034] hover:text-[#A50034] transition-colors shadow-sm"
+        className="inline-flex h-8 items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 hover:border-[#A50034] hover:text-[#A50034] transition-colors shadow-sm"
         title="모바일에서도 접속하기"
       >
         <Smartphone className="w-3.5 h-3.5" />
-        <span className="hidden sm:inline">모바일 접속</span>
+        <span>모바일 접속</span>
       </button>
 
       {open && (
