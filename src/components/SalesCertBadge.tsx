@@ -33,11 +33,22 @@ const SalesCertBadge = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [store, setStore] = useState<string>("");
+  const [editingStore, setEditingStore] = useState(false);
+  const [storeQuery, setStoreQuery] = useState("");
   const [product, setProduct] = useState<string>("");
   const [date, setDate] = useState<Date>(new Date());
   const [dateOpen, setDateOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { trackEvent } = useAnalytics();
+
+  const currentStore = getCurrentStore();
+  const isAdmin = isAdminStore(currentStore?.slug);
+  const defaultBranch = useMemo(() => {
+    const name = currentStore?.name?.trim() || "";
+    // 등록된 매장명이 마스터에 있으면 그대로 사용, 아니면 빈값
+    return ALL_BRANCHES.includes(name) ? name : "";
+  }, [currentStore?.name]);
+
 
   // 숨겨진 관리자 진입: 배지를 1.2초 이상 길게 누르면 /admin 으로 이동
   const longPressTimer = useRef<number | null>(null);
