@@ -173,7 +173,7 @@ const ProductSelection = () => {
                   setModalDismissible(true);
                   setModalOpen(true);
                 }}
-                className="inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+                className="inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-semibold bg-[#A50034] text-white hover:bg-[#8a002b] transition-colors shadow-sm"
                 title="지점 변경"
               >
                 <Store className="w-3.5 h-3.5" />
