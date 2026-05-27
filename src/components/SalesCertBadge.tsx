@@ -171,19 +171,82 @@ const SalesCertBadge = () => {
 
               <div className="p-6 space-y-5">
                 <div className="space-y-1.5">
-                  <label className="text-[11px] font-medium tracking-wide text-slate-500">지점</label>
-                  <Select value={store} onValueChange={setStore}>
-                    <SelectTrigger className={fieldClass}>
-                      <SelectValue placeholder="지점을 선택하세요" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white border border-slate-200 rounded-xl text-slate-800">
-                      {STORES.map((s) => (
-                        <SelectItem key={s} value={s} className="rounded-lg focus:bg-[#3182CE]/10 focus:text-[#3182CE]">
-                          {s}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <div className="flex items-center justify-between">
+                    <label className="text-[11px] font-medium tracking-wide text-slate-500">지점</label>
+                    {isAdmin && (
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-[#A50034]/10 text-[#A50034] font-semibold">
+                        관리자 (SC)
+                      </span>
+                    )}
+                  </div>
+                  {!editingStore && store ? (
+                    <div className={cn(fieldClass, "flex items-center justify-between")}>
+                      <div className="flex items-center gap-2 min-w-0">
+                        <Store className="w-4 h-4 text-[#3182CE] shrink-0" />
+                        <span className="font-medium text-slate-900 truncate">{store}</span>
+                        {getManagerByBranch(store) && (
+                          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 shrink-0">
+                            {getManagerByBranch(store)} 담당
+                          </span>
+                        )}
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => { setEditingStore(true); setStoreQuery(""); }}
+                        className="text-[11px] text-[#3182CE] hover:underline shrink-0"
+                      >
+                        변경
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="relative">
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                      <input
+                        autoFocus
+                        value={storeQuery}
+                        onChange={(e) => setStoreQuery(e.target.value)}
+                        placeholder="지점명을 검색하세요 (예: 강서, 대치)"
+                        className={cn(fieldClass, "pl-9 pr-9")}
+                      />
+                      {store && (
+                        <button
+                          type="button"
+                          onClick={() => { setEditingStore(false); setStoreQuery(""); }}
+                          className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600"
+                        >
+                          <X className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+                      {storeQuery.trim() && (
+                        <div className="absolute z-10 mt-1 w-full max-h-56 overflow-auto rounded-xl border border-slate-200 bg-white shadow-lg">
+                          {ALL_BRANCHES.filter((b) =>
+                            b.toLowerCase().includes(storeQuery.trim().toLowerCase()),
+                          ).slice(0, 30).map((b) => (
+                            <button
+                              key={b}
+                              type="button"
+                              onClick={() => {
+                                setStore(b);
+                                setEditingStore(false);
+                                setStoreQuery("");
+                              }}
+                              className="w-full text-left px-3.5 py-2 text-sm hover:bg-[#3182CE]/10 hover:text-[#3182CE] flex items-center justify-between"
+                            >
+                              <span>{b}</span>
+                              <span className="text-[10px] text-slate-400">
+                                {getManagerByBranch(b)}
+                              </span>
+                            </button>
+                          ))}
+                          {ALL_BRANCHES.filter((b) =>
+                            b.toLowerCase().includes(storeQuery.trim().toLowerCase()),
+                          ).length === 0 && (
+                            <div className="px-3.5 py-3 text-xs text-slate-400">검색 결과가 없습니다</div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-1.5">
