@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { QRCodeCanvas } from "qrcode.react";
-import { Smartphone, X, Copy, Check } from "lucide-react";
+import { QrCode, Smartphone, X, Copy, Check } from "lucide-react";
 
 interface MobileAccessQRProps {
   storeSlug?: string;
