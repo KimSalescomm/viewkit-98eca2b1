@@ -10,11 +10,15 @@ const MobileAccessQR = ({ storeSlug }: MobileAccessQRProps) => {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  const PUBLIC_HOST = "viewkit.lovable.app";
+
   const buildUrl = () => {
     if (typeof window === "undefined") return "";
-    const url = new URL(window.location.href);
-    if (storeSlug) url.searchParams.set("store_id", storeSlug);
-    return url.toString();
+    const current = new URL(window.location.href);
+    // 미리보기(lovableproject.com / lovable.app 서브도메인)에서도 공개 도메인으로 강제
+    const publicUrl = new URL(current.pathname + current.search + current.hash, `https://${PUBLIC_HOST}`);
+    if (storeSlug) publicUrl.searchParams.set("store_id", storeSlug);
+    return publicUrl.toString();
   };
 
   const url = buildUrl();
