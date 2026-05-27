@@ -179,6 +179,7 @@ const ProductSelection = () => {
               <span>{currentStore.slug}</span>
             </button>
           )}
+          <MobileAccessQR storeSlug={currentStore?.slug} />
           <OrientationToggle />
           <Link
             to="/product/tv/manual"
