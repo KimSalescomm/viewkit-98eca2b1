@@ -4,9 +4,10 @@ import { Smartphone, X, Copy, Check } from "lucide-react";
 
 interface MobileAccessQRProps {
   storeSlug?: string;
+  variant?: "pill" | "segment";
 }
 
-const MobileAccessQR = ({ storeSlug }: MobileAccessQRProps) => {
+const MobileAccessQR = ({ storeSlug, variant = "pill" }: MobileAccessQRProps) => {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
