@@ -23,7 +23,7 @@ import { cn } from "@/lib/utils";
 import useAnalytics from "@/hooks/useAnalytics";
 import { products } from "@/data/products";
 import { appendSale } from "@/utils/salesLog";
-import { ALL_BRANCHES, getManagerByBranch, isAdminStore } from "@/data/branches";
+import { ALL_BRANCHES, getManagerByBranch, isAdminStore, getBranchNameByCode } from "@/data/branches";
 import { getCurrentStore } from "@/utils/storeId";
 
 // 구독을 맨 위로, 그 외 뷰킷 활성 제품 카드
@@ -45,9 +45,13 @@ const SalesCertBadge = () => {
   const isAdmin = isAdminStore(currentStore?.slug);
   const defaultBranch = useMemo(() => {
     const name = currentStore?.name?.trim() || "";
-    // 등록된 매장명이 마스터에 있으면 그대로 사용, 아니면 빈값
-    return ALL_BRANCHES.includes(name) ? name : "";
-  }, [currentStore?.name]);
+    // 1순위: 등록된 매장명이 마스터에 그대로 있으면 사용
+    if (name && ALL_BRANCHES.includes(name)) return name;
+    // 2순위: slug(영문 코드)로 마스터 지점명 역조회 (예: GSB → 강서본점)
+    const fromCode = getBranchNameByCode(currentStore?.slug || "");
+    return fromCode || "";
+  }, [currentStore?.name, currentStore?.slug]);
+
 
 
   // 숨겨진 관리자 진입: 배지를 1.2초 이상 길게 누르면 /admin 으로 이동
