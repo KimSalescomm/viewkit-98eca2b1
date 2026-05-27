@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { QRCodeCanvas } from "qrcode.react";
 import { Smartphone, X, Copy, Check } from "lucide-react";
 
@@ -50,7 +51,7 @@ const MobileAccessQR = ({ storeSlug, variant = "pill" }: MobileAccessQRProps) =>
         <span>모바일 접속</span>
       </button>
 
-      {open && (
+      {open && typeof document !== "undefined" && createPortal(
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
           onClick={() => setOpen(false)}
@@ -115,7 +116,8 @@ const MobileAccessQR = ({ storeSlug, variant = "pill" }: MobileAccessQRProps) =>
               )}
             </button>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
