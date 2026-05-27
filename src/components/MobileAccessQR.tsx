@@ -116,7 +116,8 @@ const MobileAccessQR = ({ storeSlug, variant = "pill" }: MobileAccessQRProps) =>
               )}
             </button>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
