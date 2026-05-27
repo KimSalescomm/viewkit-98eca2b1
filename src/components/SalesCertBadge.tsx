@@ -68,7 +68,9 @@ const SalesCertBadge = () => {
   };
 
   const resetForm = () => {
-    setStore("");
+    setStore(defaultBranch);
+    setEditingStore(!defaultBranch && !isAdmin);
+    setStoreQuery("");
     setProduct("");
     setDate(new Date());
     setSubmitted(false);
@@ -76,7 +78,13 @@ const SalesCertBadge = () => {
 
   const handleOpenChange = (next: boolean) => {
     setOpen(next);
-    if (!next) setTimeout(resetForm, 200);
+    if (next) {
+      setStore(defaultBranch);
+      setEditingStore(isAdmin || !defaultBranch);
+      setStoreQuery("");
+    } else {
+      setTimeout(resetForm, 200);
+    }
   };
 
   const handleSubmit = () => {
