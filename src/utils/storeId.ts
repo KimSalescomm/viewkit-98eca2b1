@@ -6,6 +6,8 @@
 //  3) 기타 문자(공백/특수문자)는 제거
 //  4) 사용자가 등록한 매핑은 localStorage에 영구 저장 (이름 ↔ 슬러그)
 
+import { BRANCH_CODE_MAP } from "@/data/branches";
+
 const REGISTRY_KEY = "viewkit_store_registry";
 const CURRENT_NAME_KEY = "viewkit_store_name";
 const CURRENT_ID_KEY = "viewkit_store_id";
