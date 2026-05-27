@@ -31,6 +31,10 @@ export const slugifyStoreName = (raw: string): string => {
   const trimmed = (raw || "").trim();
   if (!trimmed) return "";
 
+  // 1순위: 마스터 지점 코드 매핑 (충돌 없는 고유 코드)
+  if (BRANCH_CODE_MAP[trimmed]) return BRANCH_CODE_MAP[trimmed];
+
+
   // 영문/숫자만
   if (/^[A-Za-z0-9_-]+$/.test(trimmed)) {
     return trimmed.toUpperCase().replace(/[_-]/g, "");
