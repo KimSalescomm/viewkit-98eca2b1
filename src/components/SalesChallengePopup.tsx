@@ -138,54 +138,54 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName }: Props) => {
 
   return (
     <div
-      className="fixed inset-0 z-[120] flex items-center justify-center bg-black/55 backdrop-blur-sm px-5 py-6 animate-in fade-in duration-200"
+      className="fixed inset-0 z-[120] flex items-center justify-center bg-black/40 backdrop-blur-sm px-5 py-6 animate-in fade-in duration-200"
       role="dialog"
       aria-modal="true"
       aria-labelledby="sales-challenge-title"
     >
-      <div className="relative w-full max-w-md bg-white rounded-[28px] overflow-hidden shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35)] animate-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-md bg-white rounded-[28px] overflow-hidden shadow-[0_30px_80px_-20px_rgba(15,23,42,0.25)] border border-gray-100 animate-in zoom-in-95 duration-200">
         {/* Close (X) */}
         <button
           type="button"
           onClick={() => setOpen(false)}
-          className="absolute top-4 right-4 z-10 w-9 h-9 inline-flex items-center justify-center rounded-full bg-white/15 hover:bg-white/25 text-white/90 transition-colors"
+          className="absolute top-4 right-4 z-10 w-9 h-9 inline-flex items-center justify-center rounded-full bg-white hover:bg-gray-100 text-gray-400 hover:text-gray-700 border border-gray-200 transition-colors"
           aria-label="닫기"
         >
           <X className="w-4 h-4" />
         </button>
 
-        {/* Top banner — warm navy + gold (편안한 무드, 위기감 X) */}
-        <div className="relative px-7 pt-10 pb-9 text-white overflow-hidden bg-[radial-gradient(ellipse_at_top,_#3B4A6B_0%,_#1E2A44_55%,_#141C30_100%)]">
+        {/* Top banner — warm cream + soft gold, 사이트 톤과 정합 */}
+        <div className="relative px-7 pt-10 pb-9 overflow-hidden bg-[radial-gradient(ellipse_at_top,_#FFFBF0_0%,_#FFF4D9_55%,_#FBE9BD_100%)]">
           {/* Soft golden glow behind trophy */}
-          <div className="absolute top-6 left-1/2 -translate-x-1/2 w-44 h-44 rounded-full bg-[radial-gradient(circle,_rgba(255,214,107,0.35)_0%,_rgba(255,214,107,0)_70%)] pointer-events-none" />
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 w-52 h-52 rounded-full bg-[radial-gradient(circle,_rgba(232,169,51,0.22)_0%,_rgba(232,169,51,0)_70%)] pointer-events-none" />
           {/* Confetti dots */}
-          <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-[#FFD66B] opacity-70" />
-          <div className="absolute top-14 right-10 w-1 h-1 rounded-full bg-white opacity-60" />
-          <div className="absolute bottom-10 left-12 w-1 h-1 rounded-full bg-[#FFD66B] opacity-60" />
-          <div className="absolute bottom-16 right-8 w-1.5 h-1.5 rounded-full bg-white opacity-50" />
+          <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-[#E8A933] opacity-60" />
+          <div className="absolute top-14 right-10 w-1 h-1 rounded-full bg-[#A50034] opacity-40" />
+          <div className="absolute bottom-10 left-12 w-1 h-1 rounded-full bg-[#E8A933] opacity-50" />
+          <div className="absolute bottom-16 right-8 w-1.5 h-1.5 rounded-full bg-[#A50034] opacity-30" />
 
           <div className="relative flex flex-col items-center text-center">
             {/* 3D Trophy */}
-            <Trophy3D className="w-24 h-28 mb-3 drop-shadow-[0_8px_18px_rgba(255,184,40,0.45)]" />
+            <Trophy3D className="w-24 h-28 mb-3 drop-shadow-[0_10px_22px_rgba(184,122,20,0.35)]" />
 
-            <p className="text-[10.5px] font-black tracking-[0.32em] uppercase text-[#FFD66B] mb-2">
+            <p className="text-[10.5px] font-black tracking-[0.32em] uppercase text-[#A50034] mb-2">
               No.1 Sales Champion
             </p>
             <h2
               id="sales-challenge-title"
-              className="text-[17px] sm:text-[18px] font-semibold text-white/85 leading-snug"
+              className="text-[16px] sm:text-[17px] font-semibold text-gray-700 leading-snug"
               style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}
             >
               현재 판매인증 1위 지점은
             </h2>
 
-            {/* 지점명 — 다크 칩 + 금색 외곽 + 큰 폰트로 확실한 가독성 */}
-            <div className="mt-4 inline-flex items-center gap-2.5 bg-[#0F172A] border-2 border-[#FFD66B] px-6 py-3 rounded-2xl shadow-[0_10px_30px_-10px_rgba(255,214,107,0.55)]">
-              <span className="text-[24px] sm:text-[26px] font-extrabold tracking-tight bg-gradient-to-b from-[#FFF1B8] to-[#E8A933] bg-clip-text text-transparent">
+            {/* 지점명 — 화이트 칩 + LG 레드 외곽, 사이트 톤과 직결 */}
+            <div className="mt-4 inline-flex items-center gap-2.5 bg-white border-2 border-[#A50034] px-6 py-3 rounded-2xl shadow-[0_10px_28px_-12px_rgba(165,0,52,0.35)]">
+              <span className="text-[26px] sm:text-[28px] font-extrabold tracking-tight text-[#A50034]">
                 {leaderBranch}
               </span>
               {leaderCode && (
-                <span className="text-[10px] font-bold tracking-wider bg-[#FFD66B]/15 text-[#FFD66B] border border-[#FFD66B]/40 px-2 py-0.5 rounded-md">
+                <span className="text-[10px] font-bold tracking-wider bg-[#FBE8EE] text-[#A50034] border border-[#F5C9D5] px-2 py-0.5 rounded-md">
                   {leaderCode}
                 </span>
               )}
@@ -228,7 +228,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName }: Props) => {
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="w-full h-12 rounded-2xl bg-gradient-to-b from-[#2C3A5A] to-[#1E2A44] hover:from-[#34466A] hover:to-[#22304F] text-white text-[15px] font-bold tracking-tight transition-colors shadow-[0_10px_24px_-10px_rgba(30,42,68,0.7)] border border-white/10"
+            className="w-full h-12 rounded-2xl bg-[#A50034] hover:bg-[#8a002b] text-white text-[15px] font-bold tracking-tight transition-colors shadow-[0_10px_24px_-10px_rgba(165,0,52,0.55)]"
           >
             확인
           </button>
