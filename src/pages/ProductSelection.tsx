@@ -189,6 +189,16 @@ const ProductSelection = () => {
                 <span>{currentStore.slug}</span>
               </button>
             )}
+            {currentStore && (
+              <button
+                type="button"
+                onClick={() => setSalesPopupOpen(true)}
+                className="inline-flex h-9 items-center gap-1.5 rounded-full px-3 text-[12px] font-semibold text-gray-600 hover:text-[#A50034] transition-colors"
+                title="판매 순위 팝업 실행"
+              >
+                🏆 순위
+              </button>
+            )}
             <MobileAccessQR storeSlug={currentStore?.slug} variant="segment" />
             <OrientationToggle variant="segment" />
           </div>
