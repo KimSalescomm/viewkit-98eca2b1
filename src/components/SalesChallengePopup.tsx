@@ -88,6 +88,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName }: Props) => {
 
   const [open, setOpen] = useState(false);
   const [leaderBranch, setLeaderBranch] = useState<string | null>(null);
+  const [leaderCount, setLeaderCount] = useState<number>(0);
 
   useEffect(() => {
     // 지점 미설정 / 관리자(SC)는 표시하지 않음
