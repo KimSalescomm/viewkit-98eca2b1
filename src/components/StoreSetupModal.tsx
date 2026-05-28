@@ -5,8 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Store, Copy, Search, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { registerStore, slugifyStoreName, getRegistry } from "@/utils/storeId";
-import { ALL_BRANCHES, getManagerByBranch, BRANCH_CODE_MAP } from "@/data/branches";
+import { ALL_BRANCHES, getManagerByBranch, BRANCH_CODE_MAP, ADMIN_STORE_CODE } from "@/data/branches";
 import { cn } from "@/lib/utils";
+
+const ADMIN_ENTRY = { name: "관리자", slug: ADMIN_STORE_CODE };
+const isAdminQuery = (q: string) => {
+  const s = q.trim().toLowerCase();
+  if (!s) return false;
+  return "sc".startsWith(s) || s.startsWith("sc") || "관리자".includes(s) || "admin".startsWith(s);
+};
 
 interface StoreSetupModalProps {
   open: boolean;
