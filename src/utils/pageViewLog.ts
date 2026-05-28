@@ -36,9 +36,11 @@ export const logPageView = async (path: string) => {
   if (!store?.slug) return;
 
   const slug = store.slug.toUpperCase();
-  const name = isAdminStore(slug)
-    ? "관리자"
-    : store.name || getBranchNameByCode(slug) || slug;
+  // 관리자(SC) 계정은 집계에서 제외
+  if (isAdminStore(slug)) return;
+
+  const name = store.name || getBranchNameByCode(slug) || slug;
+
 
   try {
     await supabase.from("page_views").insert({
