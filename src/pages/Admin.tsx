@@ -11,6 +11,7 @@ import {
   Lock,
 } from "lucide-react";
 import { getSales, clearAllSales, deleteSale, deleteSalesByIds, SaleRecord } from "@/utils/salesLog";
+import StoreVisitStats from "@/components/StoreVisitStats";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { cn } from "@/lib/utils";
