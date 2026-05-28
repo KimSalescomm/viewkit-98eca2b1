@@ -423,6 +423,9 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
     const { embedUrl, isYoutube } = convertToEmbedUrl(mediaUrl);
 
     if (isYoutube) {
+      const videoId = embedUrl.split('/embed/')[1]?.split('?')[0] || '';
+      const separator = embedUrl.includes('?') ? '&' : '?';
+      const autoplayUrl = `${embedUrl}${separator}autoplay=1&mute=1&loop=1&playsinline=1&playlist=${videoId}`;
       return (
         <div
           style={{
@@ -435,7 +438,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
           }}
         >
           <iframe
-            src={embedUrl}
+            src={autoplayUrl}
             title={title}
             style={{
               position: "absolute",
