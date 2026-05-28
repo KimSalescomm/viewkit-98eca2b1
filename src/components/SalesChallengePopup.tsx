@@ -117,6 +117,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName }: Props) => {
       } catch { /* noop */ }
 
       setLeaderBranch(topBranch);
+      setLeaderCount(topCount || 0);
       setOpen(true);
     })();
 
