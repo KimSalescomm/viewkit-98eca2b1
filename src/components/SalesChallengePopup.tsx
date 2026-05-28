@@ -228,7 +228,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName }: Props) => {
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="w-full h-12 rounded-2xl bg-[#A50034] hover:bg-[#8a002b] text-white text-[15px] font-bold tracking-tight transition-colors shadow-[0_8px_20px_-8px_rgba(165,0,52,0.6)]"
+            className="w-full h-12 rounded-2xl bg-gradient-to-b from-[#2C3A5A] to-[#1E2A44] hover:from-[#34466A] hover:to-[#22304F] text-white text-[15px] font-bold tracking-tight transition-colors shadow-[0_10px_24px_-10px_rgba(30,42,68,0.7)] border border-white/10"
           >
             확인
           </button>
