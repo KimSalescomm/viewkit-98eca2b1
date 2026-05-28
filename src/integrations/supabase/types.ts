@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      page_views: {
+        Row: {
+          created_at: string
+          id: string
+          path: string
+          session_id: string
+          store_id: string
+          store_name: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          path: string
+          session_id: string
+          store_id: string
+          store_name?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          path?: string
+          session_id?: string
+          store_id?: string
+          store_name?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       sales_certifications: {
         Row: {
           branch: string
