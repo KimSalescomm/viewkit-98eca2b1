@@ -110,7 +110,11 @@ export const useAnalytics = () => {
   useEffect(() => {
     const currentPath = location.pathname + location.search;
 
-    // 동일 경로 중복 방지
+    // 자체 집계 (Supabase) - 동일 경로 가드 전에 호출하여 재방문/모달 이후도 포착
+    // logPageView 내부에 1초 디바운스가 있어 중복 INSERT는 자동 방지됨
+    logPageView(location.pathname);
+
+    // 동일 경로 GA4 중복 방지
     if (lastPath.current === currentPath) return;
 
     // 이전 페이지 체류 시간 전송
@@ -125,8 +129,7 @@ export const useAnalytics = () => {
 
     // 페이지뷰 전송 (1회만)
     sendPageView(currentPath);
-    // 자체 집계 (Supabase)
-    logPageView(location.pathname);
+
 
     // step 이벤트 전송
     const step = getStepFromPath(location.pathname);
