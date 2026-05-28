@@ -156,7 +156,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Pr
         {/* Close (X) */}
         <button
           type="button"
-          onClick={() => setOpen(false)}
+          onClick={handleClose}
           className="absolute top-4 right-4 z-10 w-9 h-9 inline-flex items-center justify-center rounded-full bg-white hover:bg-gray-100 text-gray-400 hover:text-gray-700 border border-gray-200 transition-colors"
           aria-label="닫기"
         >
