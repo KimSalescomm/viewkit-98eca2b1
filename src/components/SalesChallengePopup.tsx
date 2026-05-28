@@ -136,7 +136,6 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName }: Props) => {
   if (!open || !leaderBranch) return null;
 
   const isLeader = currentStoreName === leaderBranch;
-  const leaderCode = getBranchCode(leaderBranch);
 
   return (
     <div
