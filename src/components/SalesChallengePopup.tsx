@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Trophy, X, Sparkles } from "lucide-react";
+import { X } from "lucide-react";
 import { getSales } from "@/utils/salesLog";
 import { getBranchCode, isAdminStore } from "@/data/branches";
 
@@ -10,7 +10,82 @@ interface Props {
 
 const DISMISS_KEY = "viewkit_sales_challenge_dismissed_leader";
 
+// 입체적인 3D 황금 트로피 (인라인 SVG · 그라데이션 · 하이라이트 · 그림자)
+const Trophy3D = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 120 140" className={className} aria-hidden="true">
+    <defs>
+      <linearGradient id="cupGold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="#FFF1B8" />
+        <stop offset="35%" stopColor="#FFD66B" />
+        <stop offset="65%" stopColor="#E8A933" />
+        <stop offset="100%" stopColor="#8B5A12" />
+      </linearGradient>
+      <linearGradient id="cupHighlight" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.85" />
+        <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+      </linearGradient>
+      <linearGradient id="baseGold" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#FFE08A" />
+        <stop offset="50%" stopColor="#E8A933" />
+        <stop offset="100%" stopColor="#7A4B0E" />
+      </linearGradient>
+      <radialGradient id="cupShine" cx="0.35" cy="0.25" r="0.55">
+        <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.9" />
+        <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+      </radialGradient>
+      <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="2.5" />
+        <feOffset dy="3" result="off" />
+        <feComponentTransfer><feFuncA type="linear" slope="0.35" /></feComponentTransfer>
+        <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+      </filter>
+    </defs>
+
+    {/* Ground shadow */}
+    <ellipse cx="60" cy="132" rx="34" ry="4" fill="#000" opacity="0.18" />
+
+    {/* Base column */}
+    <rect x="50" y="110" width="20" height="14" rx="2" fill="url(#baseGold)" />
+    {/* Base plate */}
+    <rect x="36" y="122" width="48" height="10" rx="3" fill="url(#baseGold)" filter="url(#softShadow)" />
+    <rect x="36" y="122" width="48" height="3" rx="2" fill="#FFF1B8" opacity="0.6" />
+
+    {/* Side handles */}
+    <path d="M28 40 Q14 50 18 70 Q22 86 38 86" fill="none" stroke="url(#cupGold)" strokeWidth="7" strokeLinecap="round" />
+    <path d="M92 40 Q106 50 102 70 Q98 86 82 86" fill="none" stroke="url(#cupGold)" strokeWidth="7" strokeLinecap="round" />
+
+    {/* Cup body */}
+    <path
+      d="M30 26 L90 26 Q92 70 78 96 Q70 108 60 108 Q50 108 42 96 Q28 70 30 26 Z"
+      fill="url(#cupGold)"
+      filter="url(#softShadow)"
+    />
+    {/* Cup rim band */}
+    <rect x="28" y="24" width="64" height="8" rx="2" fill="url(#baseGold)" />
+    <rect x="28" y="24" width="64" height="2.5" rx="1.5" fill="#FFF6D0" opacity="0.9" />
+
+    {/* Highlight gloss */}
+    <path
+      d="M38 32 Q34 60 46 96"
+      stroke="url(#cupHighlight)"
+      strokeWidth="6"
+      strokeLinecap="round"
+      fill="none"
+      opacity="0.7"
+    />
+    <ellipse cx="50" cy="48" rx="14" ry="22" fill="url(#cupShine)" />
+
+    {/* Star emblem */}
+    <path
+      d="M60 56 L63.2 64.5 L72 65 L65 70.5 L67.5 79 L60 74 L52.5 79 L55 70.5 L48 65 L56.8 64.5 Z"
+      fill="#FFFFFF"
+      opacity="0.85"
+    />
+  </svg>
+);
+
 const SalesChallengePopup = ({ currentStoreSlug, currentStoreName }: Props) => {
+
   const [open, setOpen] = useState(false);
   const [leaderBranch, setLeaderBranch] = useState<string | null>(null);
   const [leaderCount, setLeaderCount] = useState(0);
