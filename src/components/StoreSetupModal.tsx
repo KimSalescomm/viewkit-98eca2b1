@@ -5,8 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Store, Copy, Search, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { registerStore, slugifyStoreName, getRegistry } from "@/utils/storeId";
-import { ALL_BRANCHES, getManagerByBranch, BRANCH_CODE_MAP } from "@/data/branches";
+import { ALL_BRANCHES, getManagerByBranch, BRANCH_CODE_MAP, ADMIN_STORE_CODE } from "@/data/branches";
 import { cn } from "@/lib/utils";
+
+const ADMIN_ENTRY = { name: "관리자", slug: ADMIN_STORE_CODE };
+const isAdminQuery = (q: string) => {
+  const s = q.trim().toLowerCase();
+  if (!s) return false;
+  return "sc".startsWith(s) || s.startsWith("sc") || "관리자".includes(s) || "admin".startsWith(s);
+};
 
 interface StoreSetupModalProps {
   open: boolean;
@@ -50,8 +57,9 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
     return ALL_BRANCHES.filter((b) => b.toLowerCase().includes(q)).slice(0, 30);
   }, [query]);
 
+  const isAdmin = name.trim().toUpperCase() === ADMIN_STORE_CODE || finalSlug === ADMIN_STORE_CODE;
   const isMasterBranch = !!BRANCH_CODE_MAP[name.trim()];
-  const manager = getManagerByBranch(name.trim());
+  const manager = isAdmin ? "관리자 계정" : getManagerByBranch(name.trim());
 
   const canSave = name.trim().length > 0 && finalSlug.length > 0;
 
@@ -139,6 +147,24 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                 )}
                 {query.trim() && (
                   <div className="absolute z-10 mt-1 w-full max-h-56 overflow-auto rounded-xl border border-slate-200 bg-white shadow-lg">
+                    {isAdminQuery(query) && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setName(ADMIN_ENTRY.name);
+                          setCodeOverride(ADMIN_ENTRY.slug);
+                          setEditing(false);
+                          setQuery("");
+                        }}
+                        className="w-full text-left px-3.5 py-2 text-sm hover:bg-[#A50034]/10 hover:text-[#A50034] flex items-center justify-between border-b border-slate-100"
+                      >
+                        <span className="flex items-center gap-1.5">
+                          <span className="font-medium">관리자 계정</span>
+                          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-[#A50034]/10 text-[#A50034] font-semibold">SC</span>
+                        </span>
+                        <span className="text-[10px] text-slate-400">전 매장 집계</span>
+                      </button>
+                    )}
                     {filteredBranches.map((b) => (
                       <button
                         key={b}
@@ -152,7 +178,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                         </span>
                       </button>
                     ))}
-                    {filteredBranches.length === 0 && (
+                    {filteredBranches.length === 0 && !isAdminQuery(query) && (
                       <div className="px-3.5 py-3 text-xs text-slate-400">검색 결과가 없습니다</div>
                     )}
                   </div>
