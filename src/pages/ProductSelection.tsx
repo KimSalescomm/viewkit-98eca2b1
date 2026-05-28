@@ -163,10 +163,11 @@ const ProductSelection = () => {
         onClose={() => setModalOpen(false)}
         dismissible={modalDismissible}
       />
-      {!modalOpen && (
+      {!modalOpen && salesPopupOpen && (
         <SalesChallengePopup
           currentStoreSlug={currentStore?.slug}
           currentStoreName={currentStore?.name}
+          onClose={() => setSalesPopupOpen(false)}
         />
       )}
       <div className="max-w-xl mx-auto sm:max-w-5xl">
