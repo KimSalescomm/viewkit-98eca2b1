@@ -237,7 +237,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Pr
         <div className="px-7 pb-7 flex flex-col gap-2.5">
           <button
             type="button"
-            onClick={() => setOpen(false)}
+            onClick={handleClose}
             className="w-full h-12 rounded-2xl bg-[#A50034] hover:bg-[#8a002b] text-white text-[15px] font-bold tracking-tight transition-colors shadow-[0_10px_24px_-10px_rgba(165,0,52,0.55)]"
           >
             확인
