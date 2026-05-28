@@ -85,7 +85,7 @@ const Trophy3D = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-const SalesChallengePopup = ({ currentStoreSlug, currentStoreName }: Props) => {
+const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Props) => {
 
   const [open, setOpen] = useState(false);
   const [leaderBranch, setLeaderBranch] = useState<string | null>(null);
