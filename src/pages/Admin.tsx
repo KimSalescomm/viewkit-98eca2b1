@@ -11,6 +11,7 @@ import {
   Lock,
 } from "lucide-react";
 import { getSales, clearAllSales, deleteSale, deleteSalesByIds, SaleRecord } from "@/utils/salesLog";
+import StoreVisitStats from "@/components/StoreVisitStats";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { cn } from "@/lib/utils";
@@ -257,6 +258,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
         <p className="text-sm text-slate-500 mb-6">
           전체 {sales.length}건 · 필터 결과 {filtered.length}건
         </p>
+        <StoreVisitStats />
 
         {/* 필터 / 액션 */}
         <div className="rounded-2xl border border-slate-200 bg-white p-4 mb-6 flex flex-wrap items-end gap-3">

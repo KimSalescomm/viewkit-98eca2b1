@@ -1,5 +1,6 @@
 import { useEffect, useRef, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
+import { logPageView } from '@/utils/pageViewLog';
 
 declare global {
   interface Window {
@@ -124,6 +125,8 @@ export const useAnalytics = () => {
 
     // 페이지뷰 전송 (1회만)
     sendPageView(currentPath);
+    // 자체 집계 (Supabase)
+    logPageView(location.pathname);
 
     // step 이벤트 전송
     const step = getStepFromPath(location.pathname);

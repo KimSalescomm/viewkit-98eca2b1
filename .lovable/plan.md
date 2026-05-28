@@ -1,34 +1,35 @@
-# 인증 완료 후 액션 + 제품 목록 동기화
+# Store ID별 접속 통계 (자체 집계)
 
-## 1. 제품 옵션을 뷰킷 활성 카드와 동기화
-- `src/components/SalesCertBadge.tsx`에서 하드코딩된 `PRODUCTS` 배열을 제거하고 `src/data/products.ts`의 `products`를 import
-- `ProductSelection`과 동일한 기준으로 `pc` 제외 후 `name`만 추출 → 옵션: 냉장고, 워시타워, 의류관리기, TV, 청소로봇, 휘센, 쿠킹
-- ※ 구독 카드는 실제 제품이 아니므로 옵션에서 제외
+GA4와 별개로 Supabase에 페이지뷰를 기록하고 `/admin` 페이지에서 지점별 접속 수를 확인할 수 있게 합니다.
 
-## 2. 인증 완료 후 화면 전환 (모달 내부)
-- `submitted` state 추가. "인증 완료" 클릭 시:
-  1) GA4 `sales_certification` 이벤트 전송 (기존 유지)
-  2) localStorage `viewkit_sales_log`에 기록 추가 (`/ranking` 집계용)
-  3) 토스트 대신 모달 내부를 **성공 화면**으로 교체
-- 성공 화면 구성:
-  - 체크 아이콘 + "실적이 기록되었습니다"
-  - 방금 입력한 지점·제품·날짜 요약
-  - 액션 버튼 2개
-    - **실시간 순위 보러가기** (블루 솔리드) → `/ranking` 이동
-    - **제품 페이지로 돌아가기** (아웃라인) → `/` 이동
-- 모달 닫히면 폼/submitted state 초기화
+## 구현 내용
 
-## 3. 실시간 순위 페이지 신설 — `/ranking`
-- 새 라우트 `src/pages/Ranking.tsx`, `App.tsx` lazy 라우트 등록
-- 데이터 소스: `src/utils/salesLog.ts` (localStorage 래퍼)
-  - `getSales()`, `appendSale()`, `clearSales()`
-  - 레코드: `{ branch, product, sold_at, created_at }`
-- 페이지 UI (라이트 톤, 뷰킷과 통일):
-  - 상단: ← 제품 페이지로 / 트로피 헤더 / 총 N건 / 기록 초기화
-  - 카드 2개: 지점별 순위, 제품별 순위 (메달 아이콘 + 건수)
-  - 최근 기록 20건 리스트 (시간 표시)
-  - 빈 상태 메시지
-  - 하단 안내: "현재 데이터는 이 기기 브라우저에만 저장됩니다 (Lovable Cloud 연동 시 매장 전체 합산 가능)"
+### 1. 데이터베이스
+신규 테이블 `page_views`:
+- `store_id` (text) — 지점 슬러그 (GSB, DCB, SC 등)
+- `store_name` (text) — 화면 표시용 지점명
+- `path` (text) — 방문 경로 (/product/refrigerator 등)
+- `session_id` (text) — 세션 식별 (방문 수 중복 제거용)
+- `user_agent` (text, nullable)
+- `created_at` (timestamptz)
 
-## 한계 / 다음 단계
-- localStorage 기반이라 **기기별로 데이터가 분리**됩니다. 여러 매장 합산 순위가 필요하면 다음 단계로 Lovable Cloud DB(`sales_certifications` 테이블)로 마이그레이션 권장.
+인덱스: `store_id`, `created_at`, `session_id`
+RLS: 누구나 INSERT/SELECT 가능 (관리자 계정 없이 운영 중인 현 구조와 동일, `sales_certifications`와 동일 패턴)
+
+### 2. 페이지뷰 기록 로직
+`src/hooks/useAnalytics.ts`에 Supabase 기록 추가:
+- 경로가 바뀔 때마다 `page_views`에 1행 INSERT
+- `session_id`는 `sessionStorage`에 1회 생성 (방문 vs 페이지뷰 구분용)
+- 기존 GA4 전송과 병행, 실패해도 무시
+
+### 3. /admin 페이지 통계 패널
+`src/pages/Admin.tsx`에 신규 섹션:
+- 기간 선택 (오늘 / 7일 / 30일 / 전체)
+- **지점별 접속 수 표** : 지점명, store_id, 총 페이지뷰, 고유 방문(session_id), 최근 접속 시각
+- 합계 카드 (총 페이지뷰, 총 방문, 활성 지점 수)
+- 정렬: 페이지뷰 내림차순
+
+## 기술 메모
+- 무한 새로고침/봇 트래픽 방지를 위해 동일 path 연속 기록은 클라이언트 측에서 1초 디바운스
+- 기존 `sales_certifications` 패턴 그대로 따름 (public RLS, 인증 없음)
+- Hard Budget 정책 준수 — 단순 INSERT만, 별도 함수/스토리지 사용 없음
