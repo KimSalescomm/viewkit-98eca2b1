@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { getSales } from "@/utils/salesLog";
-import { getBranchCode, isAdminStore } from "@/data/branches";
+import { isAdminStore } from "@/data/branches";
 
 interface Props {
   currentStoreSlug?: string | null;
