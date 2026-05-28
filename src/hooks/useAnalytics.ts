@@ -1,5 +1,6 @@
 import { useEffect, useRef, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
+import { logPageView } from '@/utils/pageViewLog';
 
 declare global {
   interface Window {
