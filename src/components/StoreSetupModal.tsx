@@ -57,8 +57,9 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
     return ALL_BRANCHES.filter((b) => b.toLowerCase().includes(q)).slice(0, 30);
   }, [query]);
 
+  const isAdmin = name.trim().toUpperCase() === ADMIN_STORE_CODE || finalSlug === ADMIN_STORE_CODE;
   const isMasterBranch = !!BRANCH_CODE_MAP[name.trim()];
-  const manager = getManagerByBranch(name.trim());
+  const manager = isAdmin ? "관리자 계정" : getManagerByBranch(name.trim());
 
   const canSave = name.trim().length > 0 && finalSlug.length > 0;
 
