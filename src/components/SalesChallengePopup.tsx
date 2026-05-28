@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { getSales } from "@/utils/salesLog";
-import { getBranchCode, isAdminStore } from "@/data/branches";
+import { isAdminStore } from "@/data/branches";
 
 interface Props {
   currentStoreSlug?: string | null;
@@ -88,6 +88,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName }: Props) => {
 
   const [open, setOpen] = useState(false);
   const [leaderBranch, setLeaderBranch] = useState<string | null>(null);
+  const [leaderCount, setLeaderCount] = useState<number>(0);
 
   useEffect(() => {
     // 지점 미설정 / 관리자(SC)는 표시하지 않음
@@ -106,7 +107,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName }: Props) => {
         counts.set(s.branch, (counts.get(s.branch) || 0) + 1);
       });
       const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
-      const [topBranch] = sorted[0] || [];
+      const [topBranch, topCount] = sorted[0] || [];
       if (!topBranch) return;
 
       // "다음에 보지 않기" — 같은 1위에 한해 영구 숨김
@@ -116,6 +117,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName }: Props) => {
       } catch { /* noop */ }
 
       setLeaderBranch(topBranch);
+      setLeaderCount(topCount || 0);
       setOpen(true);
     })();
 
@@ -134,7 +136,6 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName }: Props) => {
   if (!open || !leaderBranch) return null;
 
   const isLeader = currentStoreName === leaderBranch;
-  const leaderCode = getBranchCode(leaderBranch);
 
   return (
     <div
@@ -180,16 +181,17 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName }: Props) => {
             </h2>
 
             {/* 지점명 — 화이트 칩 + LG 레드 외곽, 사이트 톤과 직결 */}
-            <div className="mt-4 inline-flex items-center gap-2.5 bg-white border-2 border-[#A50034] px-6 py-3 rounded-2xl shadow-[0_10px_28px_-12px_rgba(165,0,52,0.35)]">
+            <div className="mt-4 inline-flex items-center bg-white border-2 border-[#A50034] px-6 py-3 rounded-2xl shadow-[0_10px_28px_-12px_rgba(165,0,52,0.35)]">
               <span className="text-[26px] sm:text-[28px] font-extrabold tracking-tight text-[#A50034]">
                 {leaderBranch}
               </span>
-              {leaderCode && (
-                <span className="text-[10px] font-bold tracking-wider bg-[#FBE8EE] text-[#A50034] border border-[#F5C9D5] px-2 py-0.5 rounded-md">
-                  {leaderCode}
-                </span>
-              )}
             </div>
+
+            {/* 누적 판매인증 건수 */}
+            <p className="mt-3 text-[13px] font-semibold text-gray-600">
+              누적 판매인증{" "}
+              <span className="text-[#A50034] font-extrabold">{leaderCount.toLocaleString()}건</span>
+            </p>
           </div>
         </div>
 
