@@ -111,11 +111,13 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Pr
       const [topBranch, topCount] = sorted[0] || [];
       if (!topBranch) return;
 
-      // "다음에 보지 않기" — 같은 1위에 한해 영구 숨김
-      try {
-        const dismissed = localStorage.getItem(DISMISS_KEY);
-        if (dismissed === topBranch) return;
-      } catch { /* noop */ }
+      // "다음에 보지 않기" — 같은 1위에 한해 영구 숨김 (수동 실행 시에는 무시)
+      if (!onClose) {
+        try {
+          const dismissed = localStorage.getItem(DISMISS_KEY);
+          if (dismissed === topBranch) return;
+        } catch { /* noop */ }
+      }
 
       setLeaderBranch(topBranch);
       setLeaderCount(topCount || 0);
