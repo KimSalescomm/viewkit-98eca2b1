@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Store, Copy, Search, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { registerStore, slugifyStoreName, getRegistry } from "@/utils/storeId";
+import { logPageView } from "@/utils/pageViewLog";
 import { ALL_BRANCHES, getManagerByBranch, BRANCH_CODE_MAP, ADMIN_STORE_CODE } from "@/data/branches";
 import { cn } from "@/lib/utils";
 
@@ -73,6 +74,8 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
   const handleSave = () => {
     if (!canSave) return;
     const info = registerStore(name.trim(), finalSlug);
+    // 매장 등록 직후 현재 페이지를 새 매장 ID로 즉시 기록 (모달 닫힘 시점)
+    try { logPageView(window.location.pathname); } catch { /* noop */ }
     onSaved(info);
   };
 
