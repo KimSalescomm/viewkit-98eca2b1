@@ -6,6 +6,7 @@ import { isAdminStore } from "@/data/branches";
 interface Props {
   currentStoreSlug?: string | null;
   currentStoreName?: string | null;
+  onClose?: () => void;
 }
 
 const DISMISS_KEY = "viewkit_sales_challenge_dismissed_leader";
