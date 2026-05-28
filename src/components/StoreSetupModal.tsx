@@ -2,9 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Store, Copy } from "lucide-react";
+import { Store, Copy, Search, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { registerStore, slugifyStoreName, getRegistry } from "@/utils/storeId";
+import { ALL_BRANCHES, getManagerByBranch, BRANCH_CODE_MAP } from "@/data/branches";
+import { cn } from "@/lib/utils";
 
 interface StoreSetupModalProps {
   open: boolean;
@@ -22,12 +24,18 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
   dismissible = false,
 }) => {
   const [name, setName] = useState(initialName);
+  const [editing, setEditing] = useState(true);
+  const [query, setQuery] = useState("");
   const [codeOverride, setCodeOverride] = useState("");
+  const [showAdvanced, setShowAdvanced] = useState(false);
 
   useEffect(() => {
     if (open) {
       setName(initialName);
+      setEditing(!initialName);
+      setQuery("");
       setCodeOverride("");
+      setShowAdvanced(false);
     }
   }, [open, initialName]);
 
@@ -36,13 +44,34 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
   const registry = useMemo(() => (open ? getRegistry() : {}), [open]);
   const existingEntries = Object.entries(registry);
 
+  const filteredBranches = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return [] as string[];
+    return ALL_BRANCHES.filter((b) => b.toLowerCase().includes(q)).slice(0, 30);
+  }, [query]);
+
+  const isMasterBranch = !!BRANCH_CODE_MAP[name.trim()];
+  const manager = getManagerByBranch(name.trim());
+
   const canSave = name.trim().length > 0 && finalSlug.length > 0;
+
+  const handlePickBranch = (branch: string) => {
+    setName(branch);
+    setCodeOverride("");
+    setEditing(false);
+    setQuery("");
+  };
 
   const handleSave = () => {
     if (!canSave) return;
     const info = registerStore(name.trim(), finalSlug);
     onSaved(info);
   };
+
+  const fieldClass =
+    "w-full bg-white border border-slate-200 rounded-xl text-slate-800 " +
+    "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 " +
+    "h-11 px-3.5 text-sm transition-colors";
 
   return (
     <Dialog open={open} onOpenChange={(v) => !v && dismissible && onClose?.()}>
@@ -63,67 +92,134 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
             <DialogTitle>지점 설정</DialogTitle>
           </div>
           <DialogDescription className="break-keep leading-relaxed">
-            매장 분석을 위해 지점명을 입력해 주세요. 입력하신 지점명은 영문 코드로 자동 변환되며,
-            이 기기에 저장되어 다음부터는 다시 묻지 않습니다.
+            매장 분석을 위해 지점을 선택해 주세요. 선택한 지점은 이 기기에 저장되어 다음부터는 다시 묻지 않습니다.
           </DialogDescription>
         </DialogHeader>
 
         <div className="min-w-0 space-y-4 mt-2">
-          <div className="min-w-0">
-            <label className="text-sm font-medium text-gray-700 block mb-1.5">지점명</label>
-            <Input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="예: 강서본점, 대치본점, D5"
-              autoFocus
-            />
-          </div>
-
-          <div className="min-w-0">
-            <label className="text-sm font-medium text-gray-700 block mb-1.5">
-              영문 코드{" "}
-              <span className="text-xs font-normal text-gray-400">(자동 생성 · 필요 시 수정)</span>
-            </label>
-            <Input
-              value={codeOverride}
-              onChange={(e) => setCodeOverride(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""))}
-              placeholder={autoSlug || "AUTO"}
-            />
-            {finalSlug && (
-              <div className="mt-2 min-w-0 overflow-hidden rounded-lg border border-gray-200 bg-gray-50 p-2.5 space-y-2">
-                <p className="flex min-w-0 flex-col gap-0.5 text-xs text-gray-600 sm:flex-row sm:flex-wrap">
-                  <span>공유 URL</span>
-                  <span className="text-[11px] text-gray-400">다른 기기에서 동일 매장으로 집계</span>
-                </p>
-                <div className="grid min-w-0 gap-2">
-                  <code className="block w-full min-w-0 overflow-hidden text-ellipsis whitespace-nowrap rounded border border-gray-200 bg-white px-2 py-1.5 font-mono text-[11px] text-gray-700">
-                    {typeof window !== "undefined" ? `${window.location.origin}/?store_id=${finalSlug}` : `/?store_id=${finalSlug}`}
-                  </code>
-                  <Button
-                    type="button"
-                    size="sm"
-                    variant="outline"
-                    onClick={async () => {
-                      const url = `${window.location.origin}/?store_id=${finalSlug}`;
-                      try {
-                        await navigator.clipboard.writeText(url);
-                        toast({ title: "복사 완료", description: url });
-                      } catch {
-                        toast({ title: "복사 실패", description: "URL을 직접 선택해 복사해 주세요." });
-                      }
-                    }}
-                    className="h-8 w-full px-2.5 text-xs sm:w-auto sm:justify-self-end"
-                  >
-                    <Copy className="w-3.5 h-3.5 mr-1" /> 복사
-                  </Button>
+          <div className="min-w-0 space-y-1.5">
+            <label className="text-[11px] font-medium tracking-wide text-slate-500">지점</label>
+            {!editing && name ? (
+              <div className={cn(fieldClass, "flex items-center justify-between")}>
+                <div className="flex items-center gap-2 min-w-0">
+                  <Store className="w-4 h-4 text-[#A50034] shrink-0" />
+                  <span className="font-medium text-slate-900 truncate">{name}</span>
+                  {manager && (
+                    <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 shrink-0">
+                      {manager} 담당
+                    </span>
+                  )}
                 </div>
+                <button
+                  type="button"
+                  onClick={() => { setEditing(true); setQuery(""); }}
+                  className="text-[11px] text-[#A50034] hover:underline shrink-0"
+                >
+                  변경
+                </button>
+              </div>
+            ) : (
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                <input
+                  autoFocus
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="지점명을 검색하세요 (예: 강서, 대치)"
+                  className={cn(fieldClass, "pl-9 pr-9")}
+                />
+                {name && (
+                  <button
+                    type="button"
+                    onClick={() => { setEditing(false); setQuery(""); }}
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                )}
+                {query.trim() && (
+                  <div className="absolute z-10 mt-1 w-full max-h-56 overflow-auto rounded-xl border border-slate-200 bg-white shadow-lg">
+                    {filteredBranches.map((b) => (
+                      <button
+                        key={b}
+                        type="button"
+                        onClick={() => handlePickBranch(b)}
+                        className="w-full text-left px-3.5 py-2 text-sm hover:bg-[#A50034]/10 hover:text-[#A50034] flex items-center justify-between"
+                      >
+                        <span>{b}</span>
+                        <span className="text-[10px] text-slate-400">
+                          {getManagerByBranch(b)}
+                        </span>
+                      </button>
+                    ))}
+                    {filteredBranches.length === 0 && (
+                      <div className="px-3.5 py-3 text-xs text-slate-400">검색 결과가 없습니다</div>
+                    )}
+                  </div>
+                )}
               </div>
             )}
           </div>
 
+          {/* 고급: 영문 코드 직접 지정 (마스터에 없는 매장 / 관리자 SC 코드용) */}
+          <div className="min-w-0">
+            <button
+              type="button"
+              onClick={() => setShowAdvanced((v) => !v)}
+              className="text-[11px] text-slate-400 hover:text-slate-600"
+            >
+              {showAdvanced ? "고급 설정 닫기" : "마스터에 없는 매장인가요? 직접 입력"}
+            </button>
+            {showAdvanced && (
+              <div className="mt-2 space-y-2">
+                <Input
+                  value={name}
+                  onChange={(e) => { setName(e.target.value); setEditing(false); }}
+                  placeholder="지점명 직접 입력 (예: D5, 신규지점)"
+                />
+                <Input
+                  value={codeOverride}
+                  onChange={(e) => setCodeOverride(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""))}
+                  placeholder={autoSlug || "영문 코드 (자동 생성)"}
+                />
+              </div>
+            )}
+          </div>
+
+          {finalSlug && name && (
+            <div className="min-w-0 overflow-hidden rounded-lg border border-gray-200 bg-gray-50 p-2.5 space-y-2">
+              <p className="flex min-w-0 flex-col gap-0.5 text-xs text-gray-600 sm:flex-row sm:flex-wrap">
+                <span>공유 URL <span className="font-mono text-[10px] text-[#A50034]">· {finalSlug}{isMasterBranch ? "" : " (자동)"}</span></span>
+                <span className="text-[11px] text-gray-400">다른 기기에서 동일 매장으로 집계</span>
+              </p>
+              <div className="grid min-w-0 gap-2">
+                <code className="block w-full min-w-0 overflow-hidden text-ellipsis whitespace-nowrap rounded border border-gray-200 bg-white px-2 py-1.5 font-mono text-[11px] text-gray-700">
+                  {typeof window !== "undefined" ? `${window.location.origin}/?store_id=${finalSlug}` : `/?store_id=${finalSlug}`}
+                </code>
+                <Button
+                  type="button"
+                  size="sm"
+                  variant="outline"
+                  onClick={async () => {
+                    const url = `${window.location.origin}/?store_id=${finalSlug}`;
+                    try {
+                      await navigator.clipboard.writeText(url);
+                      toast({ title: "복사 완료", description: url });
+                    } catch {
+                      toast({ title: "복사 실패", description: "URL을 직접 선택해 복사해 주세요." });
+                    }
+                  }}
+                  className="h-8 w-full px-2.5 text-xs sm:w-auto sm:justify-self-end"
+                >
+                  <Copy className="w-3.5 h-3.5 mr-1" /> 복사
+                </Button>
+              </div>
+            </div>
+          )}
+
           {existingEntries.length > 0 && (
             <div className="rounded-lg bg-gray-50 border border-gray-100 p-3">
-              <p className="text-xs font-semibold text-gray-500 mb-2">등록된 지점</p>
+              <p className="text-xs font-semibold text-gray-500 mb-2">최근 등록된 지점</p>
               <div className="flex flex-wrap gap-1.5">
                 {existingEntries.map(([n, s]) => (
                   <button
@@ -132,6 +228,8 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                     onClick={() => {
                       setName(n);
                       setCodeOverride(s);
+                      setEditing(false);
+                      setQuery("");
                     }}
                     className="text-xs px-2 py-1 rounded-md bg-white border border-gray-200 hover:border-[#A50034] hover:text-[#A50034] transition-colors"
                   >
