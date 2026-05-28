@@ -107,7 +107,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName }: Props) => {
         counts.set(s.branch, (counts.get(s.branch) || 0) + 1);
       });
       const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
-      const [topBranch] = sorted[0] || [];
+      const [topBranch, topCount] = sorted[0] || [];
       if (!topBranch) return;
 
       // "다음에 보지 않기" — 같은 1위에 한해 영구 숨김
