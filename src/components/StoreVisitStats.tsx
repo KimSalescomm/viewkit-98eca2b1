@@ -4,6 +4,12 @@ import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { cn } from "@/lib/utils";
+import { BRANCH_CODE_MAP } from "@/data/branches";
+
+// 코드(store_id) → 정식 지점명 역매핑 (DB에 잘못 저장된 store_name 보정용)
+const CODE_TO_NAME: Record<string, string> = Object.fromEntries(
+  Object.entries(BRANCH_CODE_MAP).map(([name, code]) => [code, name]),
+);
 
 type Row = {
   id: string;
@@ -67,16 +73,18 @@ const StoreVisitStats = () => {
     >();
     rows.forEach((r) => {
       const key = r.store_id;
+      // 정식 명칭은 코드 매핑이 우선 (DB의 store_name 불일치 보정)
+      const canonicalName = CODE_TO_NAME[r.store_id] || r.store_name || r.store_id;
       const cur = map.get(key);
       if (cur) {
         cur.views += 1;
         cur.sessions.add(r.session_id);
         if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
-        if (!cur.store_name && r.store_name) cur.store_name = r.store_name;
+        cur.store_name = canonicalName;
       } else {
         map.set(key, {
           store_id: r.store_id,
-          store_name: r.store_name || r.store_id,
+          store_name: canonicalName,
           views: 1,
           sessions: new Set([r.session_id]),
           lastAt: r.created_at,
