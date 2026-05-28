@@ -129,11 +129,16 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Pr
     };
   }, [currentStoreSlug]);
 
+  const handleClose = () => {
+    setOpen(false);
+    onClose?.();
+  };
+
   const handleDismissForever = () => {
     try {
       if (leaderBranch) localStorage.setItem(DISMISS_KEY, leaderBranch);
     } catch { /* noop */ }
-    setOpen(false);
+    handleClose();
   };
 
   if (!open || !leaderBranch) return null;
