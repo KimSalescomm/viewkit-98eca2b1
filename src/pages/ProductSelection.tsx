@@ -115,6 +115,7 @@ const ProductSelection = () => {
   const [currentStore, setCurrentStore] = useState<{ name: string; slug: string } | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalDismissible, setModalDismissible] = useState(false);
+  const [salesPopupOpen, setSalesPopupOpen] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
