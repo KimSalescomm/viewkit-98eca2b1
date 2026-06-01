@@ -22,7 +22,6 @@ export type Database = {
           session_id: string
           store_id: string
           store_name: string | null
-          user_agent: string | null
         }
         Insert: {
           created_at?: string
@@ -31,7 +30,6 @@ export type Database = {
           session_id: string
           store_id: string
           store_name?: string | null
-          user_agent?: string | null
         }
         Update: {
           created_at?: string
@@ -40,7 +38,6 @@ export type Database = {
           session_id?: string
           store_id?: string
           store_name?: string | null
-          user_agent?: string | null
         }
         Relationships: []
       }
