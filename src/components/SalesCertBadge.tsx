@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { Trophy, CalendarIcon, CheckCircle2, Home, Search, Store, X } from "lucide-react";
 import { format } from "date-fns";
@@ -80,13 +81,18 @@ const SalesCertBadge = () => {
     setSubmitted(false);
   };
 
+  // 다이얼로그가 열릴 때마다 현재 매장 정보로 자동 초기화
+  // (onClick 으로 직접 setOpen(true) 호출 시 Radix onOpenChange 가 발화하지 않아 필요)
+  useEffect(() => {
+    if (!open) return;
+    setStore(defaultBranch);
+    setEditingStore(isAdmin || !defaultBranch);
+    setStoreQuery("");
+  }, [open, defaultBranch, isAdmin]);
+
   const handleOpenChange = (next: boolean) => {
     setOpen(next);
-    if (next) {
-      setStore(defaultBranch);
-      setEditingStore(isAdmin || !defaultBranch);
-      setStoreQuery("");
-    } else {
+    if (!next) {
       setTimeout(resetForm, 200);
     }
   };
