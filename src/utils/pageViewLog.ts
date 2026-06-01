@@ -48,7 +48,6 @@ export const logPageView = async (path: string) => {
       store_name: name,
       path: cleanPath,
       session_id: ensureSessionId(),
-      user_agent: typeof navigator !== "undefined" ? navigator.userAgent.slice(0, 300) : null,
     });
   } catch {
     /* noop - 분석은 실패해도 앱 동작에 영향 없음 */
