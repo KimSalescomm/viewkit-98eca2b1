@@ -12,12 +12,12 @@ import {
 } from "lucide-react";
 import { getSales, clearAllSales, deleteSale, deleteSalesByIds, SaleRecord } from "@/utils/salesLog";
 import StoreVisitStats from "@/components/StoreVisitStats";
+import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { cn } from "@/lib/utils";
 
-// 데모용 단순 패스코드. (Lovable Cloud 도입 시 서버 검증으로 교체)
-const ADMIN_PASSCODE = "0314";
+// 패스코드는 서버(Edge Function: admin-login)에서 검증합니다.
 const AUTH_KEY = "viewkit_admin_auth";
 
 const useAuth = () => {
@@ -28,8 +28,14 @@ const useAuth = () => {
       return false;
     }
   });
-  const login = (code: string) => {
-    if (code.trim() === ADMIN_PASSCODE) {
+  const login = async (code: string): Promise<boolean> => {
+    const trimmed = code.trim();
+    if (!trimmed) return false;
+    try {
+      const { data, error } = await supabase.functions.invoke("admin-login", {
+        body: { code: trimmed },
+      });
+      if (error || !data?.ok) return false;
       try {
         sessionStorage.setItem(AUTH_KEY, "1");
       } catch {
@@ -37,8 +43,9 @@ const useAuth = () => {
       }
       setAuthed(true);
       return true;
+    } catch {
+      return false;
     }
-    return false;
   };
   const logout = () => {
     try {
@@ -51,9 +58,17 @@ const useAuth = () => {
   return { authed, login, logout };
 };
 
-const Gate = ({ onPass }: { onPass: (code: string) => boolean }) => {
+const Gate = ({ onPass }: { onPass: (code: string) => Promise<boolean> }) => {
   const [code, setCode] = useState("");
   const [err, setErr] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const submit = async () => {
+    if (busy) return;
+    setBusy(true);
+    const ok = await onPass(code);
+    setBusy(false);
+    if (!ok) setErr(true);
+  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white flex items-center justify-center px-4">
       <div className="w-full max-w-sm rounded-2xl border border-slate-200 bg-white p-8 shadow-[0_20px_60px_-15px_rgba(15,23,42,0.18)]">
@@ -69,14 +84,13 @@ const Gate = ({ onPass }: { onPass: (code: string) => boolean }) => {
           inputMode="numeric"
           autoFocus
           value={code}
+          disabled={busy}
           onChange={(e) => {
             setCode(e.target.value);
             setErr(false);
           }}
           onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              if (!onPass(code)) setErr(true);
-            }
+            if (e.key === "Enter") void submit();
           }}
           placeholder="패스코드"
           className={cn(
@@ -90,12 +104,11 @@ const Gate = ({ onPass }: { onPass: (code: string) => boolean }) => {
         {err && <p className="text-xs text-rose-500 mt-2 text-center">패스코드가 올바르지 않습니다</p>}
         <button
           type="button"
-          onClick={() => {
-            if (!onPass(code)) setErr(true);
-          }}
-          className="mt-4 w-full h-11 rounded-xl bg-[#3182CE] text-white text-sm font-semibold hover:bg-[#2c74b8] transition-colors"
+          disabled={busy}
+          onClick={() => void submit()}
+          className="mt-4 w-full h-11 rounded-xl bg-[#3182CE] text-white text-sm font-semibold hover:bg-[#2c74b8] transition-colors disabled:opacity-60"
         >
-          입장
+          {busy ? "확인 중..." : "입장"}
         </button>
         <Link
           to="/"
@@ -107,6 +120,7 @@ const Gate = ({ onPass }: { onPass: (code: string) => boolean }) => {
     </div>
   );
 };
+
 
 const medalColor = (i: number) =>
   i === 0 ? "text-yellow-500" : i === 1 ? "text-slate-400" : i === 2 ? "text-amber-700" : "text-slate-300";
