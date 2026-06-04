@@ -182,6 +182,24 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                         <span className="text-[10px] text-slate-400">전 매장 집계</span>
                       </button>
                     )}
+                    {isKorQuery(query) && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setName(KOR_ENTRY.name);
+                          setCodeOverride(KOR_ENTRY.slug);
+                          setEditing(false);
+                          setQuery("");
+                        }}
+                        className="w-full text-left px-3.5 py-2 text-sm hover:bg-[#A50034]/10 hover:text-[#A50034] flex items-center justify-between border-b border-slate-100"
+                      >
+                        <span className="flex items-center gap-1.5">
+                          <span className="font-medium">유관부서</span>
+                          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-[#A50034]/10 text-[#A50034] font-semibold">KOR</span>
+                        </span>
+                        <span className="text-[10px] text-slate-400">한영본부 등</span>
+                      </button>
+                    )}
                     {filteredBranches.map((b) => (
                       <button
                         key={b}
@@ -195,7 +213,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                         </span>
                       </button>
                     ))}
-                    {filteredBranches.length === 0 && !isAdminQuery(query) && (
+                    {filteredBranches.length === 0 && !isAdminQuery(query) && !isKorQuery(query) && (
                       <div className="px-3.5 py-3 text-xs text-slate-400">검색 결과가 없습니다</div>
                     )}
                   </div>
