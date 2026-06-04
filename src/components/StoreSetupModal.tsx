@@ -16,6 +16,20 @@ const isAdminQuery = (q: string) => {
   return "sc".startsWith(s) || s.startsWith("sc") || "관리자".includes(s) || "admin".startsWith(s);
 };
 
+const KOR_ENTRY = { name: "유관부서", slug: "KOR" };
+const isKorQuery = (q: string) => {
+  const s = q.trim().toLowerCase();
+  if (!s) return false;
+  return (
+    "kor".startsWith(s) ||
+    s.startsWith("kor") ||
+    "유관부서".includes(s) ||
+    "한영본부".includes(s) ||
+    "한영본".includes(s) ||
+    s.includes("한영")
+  );
+};
+
 interface StoreSetupModalProps {
   open: boolean;
   initialName?: string;
