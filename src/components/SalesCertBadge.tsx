@@ -148,7 +148,7 @@ const SalesCertBadge = () => {
           <Trophy className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]" strokeWidth={2.6} />
         </span>
         <span className="text-[13px] font-extrabold tracking-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
-          판매인증
+          판매 인증
         </span>
         <span className="ml-0.5 text-[10px] px-1.5 py-0.5 rounded-full bg-white text-[#A50034] font-black tracking-wider shadow-sm">
           매장 전용
