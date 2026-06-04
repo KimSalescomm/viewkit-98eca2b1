@@ -131,7 +131,7 @@ const Ranking = () => {
           <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center">
             <Trophy className="w-10 h-10 mx-auto text-slate-300 mb-3" />
             <p className="text-sm text-slate-500">아직 기록된 판매가 없습니다</p>
-            <p className="text-xs text-slate-400 mt-1">우측 하단 '판매인증' 버튼으로 첫 실적을 등록해 보세요</p>
+            <p className="text-xs text-slate-400 mt-1">우측 하단 '판매 인증' 버튼으로 첫 실적을 등록해 보세요</p>
           </div>
         ) : (
           <div className="grid md:grid-cols-2 gap-4 mb-6">

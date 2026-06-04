@@ -185,7 +185,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Pr
               className="text-[16px] sm:text-[17px] font-semibold text-gray-700 leading-snug"
               style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}
             >
-              현재 판매인증 1위 지점은
+              현재 판매 인증 1위 지점은
             </h2>
 
             {/* 지점명 — 화이트 칩 + LG 레드 외곽, 사이트 톤과 직결 */}
@@ -195,9 +195,9 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Pr
               </span>
             </div>
 
-            {/* 누적 판매인증 건수 */}
+            {/* 누적 판매 인증 건수 */}
             <p className="mt-3 text-[13px] font-semibold text-gray-600">
-              누적 판매인증{" "}
+              누적 판매 인증{" "}
               <span className="text-[#A50034] font-extrabold">{leaderCount.toLocaleString()}건</span>
             </p>
           </div>
@@ -215,7 +215,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Pr
                 🏆 우리 매장이 1위예요!
               </p>
               <p className="mt-2 text-sm text-gray-500 font-medium leading-relaxed">
-                계속해서 판매인증을 이어가 1위 자리를 지켜주세요.
+                계속해서 판매 인증을 이어가 1위 자리를 지켜주세요.
               </p>
             </>
           ) : (
@@ -224,7 +224,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Pr
                 className="text-[18px] sm:text-xl font-extrabold text-gray-900 leading-snug"
                 style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}
               >
-                판매인증에 도전해 보세요!
+                판매 인증에 도전해 보세요!
               </p>
               <p className="mt-2 text-sm text-gray-500 font-medium leading-relaxed">
                 지금 우리 매장도 도전하면 1위가 될 수 있어요.
