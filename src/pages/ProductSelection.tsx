@@ -163,7 +163,8 @@ const ProductSelection = () => {
         onClose={() => setModalOpen(false)}
         dismissible={modalDismissible}
       />
-      {!modalOpen && salesPopupOpen && (
+      {/* 판매 인증 이벤트 팝업 — 이벤트 시작일까지 숨김 처리 */}
+      {false && !modalOpen && salesPopupOpen && (
         <SalesChallengePopup
           currentStoreSlug={currentStore?.slug}
           currentStoreName={currentStore?.name}
@@ -189,7 +190,7 @@ const ProductSelection = () => {
                 <span>{currentStore.slug}</span>
               </button>
             )}
-            {currentStore && (
+            {false && currentStore && (
               <button
                 type="button"
                 onClick={() => setSalesPopupOpen(true)}
