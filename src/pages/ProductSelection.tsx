@@ -190,7 +190,7 @@ const ProductSelection = () => {
                 <span>{currentStore.slug}</span>
               </button>
             )}
-            {currentStore && (
+            {false && currentStore && (
               <button
                 type="button"
                 onClick={() => setSalesPopupOpen(true)}
