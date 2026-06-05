@@ -136,7 +136,7 @@ const FeatureDetail = () => {
         {/* Description Card (hidden when tab has its own copy) */}
         {!activeTabData?.description && (
           <div className="bg-white rounded-2xl p-5 sm:p-6 mb-4 sm:mb-6 shadow-md">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">설명 더 보기</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">에어컨 청소 지옥에서 탈출하는 가장 쉬운 방법은?</h2>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed sm:leading-loose">
               {feature.description}
             </p>
