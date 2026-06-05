@@ -750,8 +750,21 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "열교환기를 자동으로 세척하고 건조하여 곰팡이와 세균 번식을 방지합니다. 별도의 청소 없이도 항상 깨끗한 공기를 유지합니다.",
       highlights: ["자동 열교환기 세척", "건조 기능", "필터 알림", "항균 코팅"],
+    {
+      id: "17",
+      title: "에어컨 청소 지옥에서 탈출하는 가장 쉬운 방법은?",
+      subtitle: "복잡한 분해 없이도\n에어컨 속까지 깨끗하게",
+      icon: "Sparkles",
+      tag: "엘숏츠",
+      mediaType: "youtube",
+      mediaUrl: "https://youtu.be/GtQeFMgoRAg",
+      isShorts: true,
+      description:
+        "에어컨 청소, 더 이상 미루지 마세요.\n\nLG 휘센의 자동 케어 기술로 손쉽게 에어컨 속까지 청결하게 관리할 수 있는 방법을 영상으로 확인해 보세요.",
+      highlights: ["복잡한 분해 청소 불필요", "자동 케어로 손쉬운 관리", "에어컨 속까지 청결 유지", "엘숏츠로 한눈에 확인"],
     },
   ],
+
 
   // 청소기 특장점
   vacuum: [
