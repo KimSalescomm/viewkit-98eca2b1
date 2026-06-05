@@ -769,6 +769,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "youtube",
       mediaUrl: "https://youtu.be/GtQeFMgoRAg",
       isShorts: true,
+      descriptionTitle: "에어컨 청소 지옥에서 탈출하는 가장 쉬운 방법은?",
       description:
         "매년 여름 반복되는 에어컨 청소고민 구독으로 시원하게 해결",
       highlights: ["복잡한 분해 청소 불필요", "자동 케어로 손쉬운 관리", "에어컨 속까지 청결 유지", "엘숏츠로 한눈에 확인"],
