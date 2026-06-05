@@ -37,6 +37,7 @@ export interface Feature {
   mediaUrl: string;
   fallbackUrl?: string; // MP4 fallback URL for webOS compatibility
   description: string;
+  descriptionTitle?: string;
   highlights: string[];
   tableData?: ProductComparisonTable[];
   galleryImages?: (string | GalleryImage)[];
@@ -736,9 +737,28 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl:
         "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AI_coldfree_detail_01.mp4",
+      descriptionTitle: "원하는 온도는 기본, 원하는 습도까지",
       description:
-        "AI콜드프리는 원하는 온도와 습도를 동시에 설정할 수 있어, 장시간 운전에도 춥지도 꿉꿉하지도 않은 쾌적한 환경을 유지해줘요.",
-      highlights: ["70% 빠른 냉방", "50% 소음 감소", "10년 무상 보증", "에너지 효율 1등급"],
+        "냉방을 틀면 꿉꿉하고, 제습을 틀면 추우셨나요?\nAI콜드프리는 원하는 온도와 습도를 동시에 설정할 수 있어,\n장시간 운전에도 춥지도 꿉꿉하지도 않은 쾌적한 환경을 유지해줘요.",
+      highlights: [],
+      disclaimers: [
+        "AI콜드프리 피부온도 측정 시험",
+        "소비자의 이해를 돕기 위해 LG 휘센 타워I 9시리즈 모델을 활용해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
+      ],
+      collapsibleDisclaimers: [
+        {
+          title: "AI콜드프리 피부온도 측정 시험 자세히 보기",
+          items: [
+            "시험 일시: 2025.11",
+            "시험 기관: 자사 에어컨 주택환경 시험실(44.4㎡ 주거환경 모사, 천고 높이 2.4m)",
+            "시험 모델: FQ25GN9BEN(26년 휘센타워)",
+            "시험 조건: KS C 9306(에어컨디셔너 이슬맺힘 조건)\n- 실내외 DB(27 ± 1.0)℃, WB(24 ± 0.5)℃ RH(78 ± 2.0)%\n- 설정온도 26℃\n- 제품으로부터 좌·우측 1.7m 거리에서 피험자 2명, 앉은 자세로 측정",
+            "시험 방법:\n- 제안된 시험 조건에서 스탠드 자사 제습 모드 및 AI콜드프리(설정습도 40%) 모드 운전\n- 1시간 동안의 피험자 2명의 평균 피부온도 측정 비교하였습니다.",
+            "시험 결과:\n- AI콜드프리 모드 운전 시 평균 피부 온도 0.1℃ 감소\n- 제습 모드 운전 시 평균 피부 온도 0.7℃ 감소",
+            "시험실 측정 결과 기준이며 실사용 조건에서는 제품 성능에 차이가 있을 수 있습니다.",
+          ],
+        },
+      ],
     },
     {
       id: "17",
@@ -749,6 +769,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "youtube",
       mediaUrl: "https://youtu.be/GtQeFMgoRAg",
       isShorts: true,
+      descriptionTitle: "에어컨 청소 지옥에서 탈출하는 가장 쉬운 방법은?",
       description:
         "매년 여름 반복되는 에어컨 청소고민 구독으로 시원하게 해결",
       highlights: ["복잡한 분해 청소 불필요", "자동 케어로 손쉬운 관리", "에어컨 속까지 청결 유지", "엘숏츠로 한눈에 확인"],
