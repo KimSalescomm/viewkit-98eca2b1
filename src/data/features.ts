@@ -729,15 +729,15 @@ export const featuresMap: Record<string, Feature[]> = {
   airconditioner: [
     {
       id: "15",
-      title: "꿉꿉함도 추위도 없이 쾌적함만 남는 정온 제습 기술",
-      subtitle: "실내 온도는 그대로 유지하면서\n습도만 쏙 잡아주는 쾌적한 제습",
+      title: "냉방을 틀면 꿉꿉하고,\n제습을 틀면 추우셨나요?",
+      subtitle: "원하는 온도와 습도를 동시에 설정\n춥지도 꿉꿉하지도 않은 쾌적함",
       icon: "Wind",
       tag: "AI 콜드프리",
       mediaType: "video",
       mediaUrl:
         "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AI_coldfree_detail_01.mp4",
       description:
-        "실내 온도는 그대로 유지하면서 습도만 쏙 잡아주는 정온 제습 기능으로, 피부에 닿는 바람이 차갑거나 꿉꿉하지 않아 한여름에도 쾌적한 실내 공기를 누릴 수 있습니다.",
+        "AI콜드프리는 원하는 온도와 습도를 동시에 설정할 수 있어, 장시간 운전에도 춥지도 꿉꿉하지도 않은 쾌적한 환경을 유지해줘요.",
       highlights: ["70% 빠른 냉방", "50% 소음 감소", "10년 무상 보증", "에너지 효율 1등급"],
     },
     {

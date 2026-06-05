@@ -74,10 +74,12 @@ const Home = () => {
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className={`w-full h-[220px] sm:h-[480px] object-cover ${
+            className={`w-full ${
+              productId === "airconditioner" ? "h-auto object-contain" : "h-[220px] sm:h-[480px] object-cover"
+            } ${
               productId === "tv" ? "scale-[1.15] object-[65%_55%] -translate-y-[20px]" :
-              productId === "airconditioner" ? "object-top" :
               productId === "washer" ? "object-[55%_center]" :
+              productId === "airconditioner" ? "" :
               "object-center"
             }`}
           />
