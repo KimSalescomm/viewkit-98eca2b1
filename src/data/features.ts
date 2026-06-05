@@ -37,6 +37,7 @@ export interface Feature {
   mediaUrl: string;
   fallbackUrl?: string; // MP4 fallback URL for webOS compatibility
   description: string;
+  descriptionTitle?: string;
   highlights: string[];
   tableData?: ProductComparisonTable[];
   galleryImages?: (string | GalleryImage)[];
