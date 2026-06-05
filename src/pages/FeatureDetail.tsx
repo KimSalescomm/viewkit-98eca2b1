@@ -136,8 +136,8 @@ const FeatureDetail = () => {
         {/* Description Card (hidden when tab has its own copy) */}
         {!activeTabData?.description && (
           <div className="bg-white rounded-2xl p-5 sm:p-6 mb-4 sm:mb-6 shadow-md">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">에어컨 청소 지옥에서 탈출하는 가장 쉬운 방법은?</h2>
-            <p className="text-sm sm:text-base text-gray-600 leading-relaxed sm:leading-loose">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{feature.descriptionTitle || "설명 더 보기"}</h2>
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed sm:leading-loose whitespace-pre-line">
               {feature.description}
             </p>
           </div>
@@ -145,20 +145,22 @@ const FeatureDetail = () => {
 
 
         {/* Highlights Card */}
-        <div className="bg-white rounded-2xl p-5 sm:p-6 mb-10 sm:mb-12 shadow-md">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">핵심만 쏙</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-            {feature.highlights.map((highlight, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 bg-blue-50 rounded-xl"
-              >
-                <span className="text-blue-600 font-bold text-base sm:text-lg">✓</span>
-              <span className="text-sm sm:text-base text-gray-800 font-medium">{highlight}</span>
-              </div>
-            ))}
+        {feature.highlights && feature.highlights.length > 0 && (
+          <div className="bg-white rounded-2xl p-5 sm:p-6 mb-10 sm:mb-12 shadow-md">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">핵심만 쏙</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+              {feature.highlights.map((highlight, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 bg-blue-50 rounded-xl"
+                >
+                  <span className="text-blue-600 font-bold text-base sm:text-lg">✓</span>
+                <span className="text-sm sm:text-base text-gray-800 font-medium">{highlight}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Disclaimers */}
         {feature.disclaimers && feature.disclaimers.length > 0 && (
