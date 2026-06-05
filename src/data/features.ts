@@ -763,7 +763,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "17",
       title: "에어컨 청소 지옥에서 탈출하는\n가장 쉬운 방법은?",
-      subtitle: "매년 여름 반복되는 에어컨 청소고민 구독으로 시원하게 해결",
+      subtitle: "\n사설 업체를 부를까?\n내가 직접 뜯어서 닦을까? 매년 여름 반복되는 리얼한 에어컨 청소 고민! LG전자 에어컨 구독의 전문 케어 서비스(분해세척/UV&피톤치드 케어)로 시원하게 해결해드립니다.",
       icon: "Sparkles",
       tag: "엘숏츠",
       mediaType: "youtube",
