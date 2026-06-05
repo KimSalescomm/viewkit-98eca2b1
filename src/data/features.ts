@@ -741,18 +741,6 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["70% 빠른 냉방", "50% 소음 감소", "10년 무상 보증", "에너지 효율 1등급"],
     },
     {
-      id: "16",
-      title: "자동 청소 기능",
-      subtitle: "언제나 깨끗한 공기",
-      icon: "Sparkles",
-      mediaType: "image",
-      mediaUrl: "https://images.unsplash.com/photo-1631545806609-c9ba0e07de00?w=1200&h=800&fit=crop",
-      description:
-        "열교환기를 자동으로 세척하고 건조하여 곰팡이와 세균 번식을 방지합니다. 별도의 청소 없이도 항상 깨끗한 공기를 유지합니다.",
-      highlights: ["자동 열교환기 세척", "건조 기능", "필터 알림", "항균 코팅"],
-    },
-    {
-
       id: "17",
       title: "에어컨 청소 지옥에서 탈출하는\n가장 쉬운 방법은?",
       subtitle: "복잡한 분해 없이도\n에어컨 속까지 깨끗하게",
