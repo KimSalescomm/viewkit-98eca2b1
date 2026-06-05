@@ -187,7 +187,7 @@ const FeatureDetail = () => {
                   <AccordionContent>
                     <ol className="space-y-1 list-none pt-1 pb-2">
                       {item.items.map((text, i) => (
-                        <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed">
+                        <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
                           {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
                         </li>
                       ))}
