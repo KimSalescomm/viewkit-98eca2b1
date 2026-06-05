@@ -754,7 +754,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
 
       id: "17",
-      title: "에어컨 청소 지옥에서\n가장 쉬운 방법은?",
+      title: "에어컨 청소 지옥에서 탈출하는",
       subtitle: "복잡한 분해 없이도\n에어컨 속까지 깨끗하게",
       icon: "Sparkles",
       tag: "엘숏츠",
