@@ -750,7 +750,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "https://youtu.be/GtQeFMgoRAg",
       isShorts: true,
       description:
-        "에어컨 청소, 더 이상 미루지 마세요.\n\nLG 휘센의 자동 케어 기술로 손쉽게 에어컨 속까지 청결하게 관리할 수 있는 방법을 영상으로 확인해 보세요.",
+        "매년 여름 반복되는 에어컨 청소고민 구독으로 시원하게 해결",
       highlights: ["복잡한 분해 청소 불필요", "자동 케어로 손쉬운 관리", "에어컨 속까지 청결 유지", "엘숏츠로 한눈에 확인"],
     },
   ],
