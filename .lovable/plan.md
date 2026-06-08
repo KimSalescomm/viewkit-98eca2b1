@@ -1,37 +1,41 @@
-# 페이지뷰 집계 누락 수정
+## 개념
 
-## 현재 DB 상태 (확인 완료)
+- **드래프트 = 코드 파일** (`src/data/features.ts`, `src/data/products.ts`). 제가 수정하는 값.
+- **퍼블리시 = DB 스냅샷** (`content_snapshots` 테이블에 features+products 전체를 JSON으로 보관).
+- **SC 계정**: 항상 코드 그대로(드래프트) 노출.
+- **일반 지점 / KOR**: 항상 가장 최근 퍼블리시 스냅샷 노출. 아직 한 번도 퍼블리시되지 않았다면 코드(현재 상태) 폴백.
+
+## 변경 사항
+
+### 1. 백엔드
+- 새 테이블 `content_snapshots`: `payload jsonb`(featuresMap + products), `published_by`, `published_at`. anon SELECT 허용, INSERT는 엣지 함수로만.
+- 새 엣지 함수 `publish-content`: 관리자 패스코드(ADMIN_PASSCODE) 검증 후 INSERT.
+
+### 2. 프론트엔드 데이터 레이어
+- `ContentProvider` (Context) 신규 — 앱 로드 시 한 번:
+  - 현재 store slug = `SC` → 코드의 `featuresMap`/`products` 사용
+  - 그 외 → Supabase에서 latest 스냅샷 조회, 있으면 그것을, 없으면 코드 폴백
+- `useContent()` 훅에서 `featuresMap`, `products`, `getProductById`, `getFeatureById`, `getFeaturesByProductId` 노출
+- 기존 import 사용처 6곳 리팩터(`ProductSelection`, `Home`, `FeatureDetail`, `Legal`, `SalesCertBadge`는 데이터 사용. `MediaViewer`, `FeatureIcon`은 타입/상수만 → 그대로 유지)
+
+### 3. 퍼블리시 UI
+- `/admin` 페이지에 "콘텐츠 퍼블리시" 카드 추가. SC 슬러그 + 관리자 패스코드 인증된 상태에서만 표시.
+- 버튼 클릭 시 현재 코드 데이터(`featuresMap` + `products`)를 엣지 함수로 전송 → 새 스냅샷 생성 → 일반 지점 다음 로드부터 반영.
+- 최근 퍼블리시 시각 표시.
+
+## 기술 세부
+
+```text
+[코드 파일 (드래프트)] ──► SC 화면 (그대로)
+        │
+        │ SC가 /admin에서 "퍼블리시" 클릭
+        ▼
+[content_snapshots 테이블]
+        │
+        ▼
+[일반 지점/KOR 화면] (latest 스냅샷 사용)
 ```
-store_id | store_name | views | last
-GSB      | 강서본점   | 4     | 07:24
-```
-SC 등 다른 매장 기록 0건. 실제 사용량 대비 과소 집계.
 
-## 원인 2가지
-
-### 1. 매장 설정 직후 첫 페이지 누락
-`useAnalytics`의 useEffect는 페이지 진입 시 1회만 발동. 그 시점엔 아직 `getCurrentStore()`가 null이므로 `logPageView`가 조기 return. 이후 사용자가 모달에서 매장을 선택해도 URL이 안 바뀌어 useEffect가 다시 안 돈다 → 첫 화면은 영원히 기록되지 않음.
-
-### 2. 동일 경로 재방문 누락
-`useAnalytics`에 `if (lastPath.current === currentPath) return;` 가드가 있어, 한 세션에서 `/ → /product/refrigerator → /` 로 돌아오면 두 번째 `/` 는 `logPageView` 호출 자체가 안 됨. (실제로는 별개 페이지뷰여야 함.)
-
-## 수정 내용
-
-### `src/hooks/useAnalytics.ts`
-`logPageView(location.pathname)` 호출 위치를 **동일 경로 가드보다 위로** 이동. 내부에 이미 1초 디바운스가 있어 React StrictMode 더블 호출은 자동 차단됨. 결과적으로:
-- 모든 라우트 변경마다 무조건 1회 시도
-- 같은 경로 재방문도 1초 이상 지나면 새 페이지뷰로 기록
-- GA4 측 동일 경로 차단(`return`)은 그대로 유지하여 GA4는 영향 없음
-
-### `src/components/StoreSetupModal.tsx`
-매장 등록(`registerStore`) 직후 `logPageView(window.location.pathname)`를 한 번 호출. 모달 닫힘 시점의 현재 페이지를 정확히 새 매장 ID로 기록.
-
-## 검증 방법
-1. 새 브라우저(시크릿)에서 매장 설정 → 바로 DB에 1행 INSERT 확인
-2. `/ → /product/refrigerator → /` 이동 후 DB에서 `/` 가 2행으로 잡히는지 확인
-3. SC 계정으로 진입 → /admin 통계에 "관리자" 노출되는지 확인
-
-## 영향 범위
-- INSERT 빈도 소폭 증가 (재방문 추적 포함) — 100지점 기준으로도 무료 한도 내 변함없음
-- GA4 동작 변화 없음
-- 기존 데이터 손실 없음
+- 스냅샷 캐시: `localStorage`에 마지막 응답 보관 → 네트워크 실패 시 마지막 퍼블리시 유지.
+- 일반 지점은 새로고침 시점에 latest를 가져옴(실시간 푸시 없음). 매장에선 충분.
+- 타입 호환을 위해 payload는 현재 TS 인터페이스(`Feature`, `Product`)와 1:1 동일 구조.
