@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Store, Copy, Search, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
-import { registerStore, slugifyStoreName, getRegistry } from "@/utils/storeId";
+import { registerStore, slugifyStoreName, getRegistry, resolveUniqueSlug } from "@/utils/storeId";
 import { logPageView } from "@/utils/pageViewLog";
 import { ALL_BRANCHES, getManagerByBranch, BRANCH_CODE_MAP, ADMIN_STORE_CODE } from "@/data/branches";
 import { cn } from "@/lib/utils";
@@ -62,7 +62,11 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
   }, [open, initialName]);
 
   const autoSlug = useMemo(() => slugifyStoreName(name), [name]);
-  const finalSlug = (codeOverride || autoSlug).toUpperCase();
+  const baseSlug = (codeOverride || autoSlug).toUpperCase();
+  const finalSlug = useMemo(
+    () => resolveUniqueSlug(baseSlug, name.trim()),
+    [baseSlug, name]
+  );
   const registry = useMemo(() => (open ? getRegistry() : {}), [open]);
   const existingEntries = Object.entries(registry);
 
@@ -257,8 +261,8 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                 />
                 <Input
                   value={codeOverride}
-                  onChange={(e) => setCodeOverride(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""))}
-                  placeholder={autoSlug || "영문 코드 (자동 생성)"}
+                  onChange={(e) => setCodeOverride(e.target.value.toUpperCase().replace(/[^A-Z]/g, ""))}
+                  placeholder={autoSlug || "영문 대문자 코드 (2자 이상)"}
                 />
               </div>
             )}

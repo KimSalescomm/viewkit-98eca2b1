@@ -12,10 +12,16 @@ const REGISTRY_KEY = "viewkit_store_registry";
 const CURRENT_NAME_KEY = "viewkit_store_name";
 const CURRENT_ID_KEY = "viewkit_store_id";
 
-// 한글 초성 → 로마자
+// 한글 초성 → 로마자 ('' = ㅇ 무음)
 const CHOSEONG_ROMAN = [
   "G", "GG", "N", "D", "DD", "R", "M", "B", "BB",
   "S", "SS", "", "J", "JJ", "C", "K", "T", "P", "H",
+];
+
+// 한글 중성 → 로마자 (초성이 무음일 때 fallback)
+const JUNGSEONG_ROMAN = [
+  "A", "AE", "YA", "YAE", "EO", "E", "YEO", "YE", "O",
+  "WA", "WAE", "OE", "YO", "U", "WO", "WE", "WI", "YU", "EU", "YI", "I",
 ];
 
 const getChoseongRoman = (ch: string): string => {
@@ -25,7 +31,22 @@ const getChoseongRoman = (ch: string): string => {
   return CHOSEONG_ROMAN[idx] ?? "";
 };
 
+const getJungseongRoman = (ch: string): string => {
+  const code = ch.charCodeAt(0);
+  if (code < 0xac00 || code > 0xd7a3) return "";
+  const idx = Math.floor(((code - 0xac00) % 588) / 28);
+  return JUNGSEONG_ROMAN[idx] ?? "";
+};
+
 const hasHangul = (s: string) => /[\uac00-\ud7a3]/.test(s);
+
+// 한 음절 → 영문 1자 이상 (초성 무음이면 중성 첫 글자로 대체)
+const syllableRoman = (ch: string): string => {
+  const cho = getChoseongRoman(ch);
+  if (cho) return cho;
+  const jung = getJungseongRoman(ch);
+  return jung.charAt(0);
+};
 
 export const slugifyStoreName = (raw: string): string => {
   const trimmed = (raw || "").trim();
@@ -34,31 +55,62 @@ export const slugifyStoreName = (raw: string): string => {
   // 1순위: 마스터 지점 코드 매핑 (충돌 없는 고유 코드)
   if (BRANCH_CODE_MAP[trimmed]) return BRANCH_CODE_MAP[trimmed];
 
-
-  // 영문/숫자만
-  if (/^[A-Za-z0-9_-]+$/.test(trimmed)) {
-    return trimmed.toUpperCase().replace(/[_-]/g, "");
+  // 영문만 (숫자 제외 — 매장코드는 영문 대문자만)
+  if (/^[A-Za-z_-]+$/.test(trimmed)) {
+    const cleaned = trimmed.toUpperCase().replace(/[_-]/g, "");
+    return cleaned.length >= 2 ? cleaned : (cleaned + "X").slice(0, 2);
   }
 
   // 한글 처리
   if (hasHangul(trimmed)) {
-    // 끝의 '점' 제거 (본점/지점/매장점 등)
     let name = trimmed.replace(/[\s]/g, "");
     name = name.replace(/점$/u, "");
 
     let out = "";
     for (const ch of name) {
       if (/[\uac00-\ud7a3]/.test(ch)) {
-        out += getChoseongRoman(ch);
-      } else if (/[A-Za-z0-9]/.test(ch)) {
+        out += syllableRoman(ch);
+      } else if (/[A-Za-z]/.test(ch)) {
         out += ch.toUpperCase();
       }
     }
-    return out || "STORE";
+    // 최소 2글자 보장
+    while (out.length < 2) out += "X";
+    return out;
   }
 
-  // fallback: 영숫자만 추출
-  return trimmed.replace(/[^A-Za-z0-9]/g, "").toUpperCase() || "STORE";
+  // fallback: 영문만 추출
+  const cleaned = trimmed.replace(/[^A-Za-z]/g, "").toUpperCase();
+  return cleaned.length >= 2 ? cleaned : (cleaned + "XX").slice(0, 2);
+};
+
+// 매장 코드가 이미 사용 중이면 뒤에 숫자(2,3,4...)를 붙여 고유 코드 반환
+export const resolveUniqueSlug = (baseSlug: string, ownerName: string): string => {
+  const base = (baseSlug || "").toUpperCase();
+  if (!base) return base;
+  const reg = getRegistry();
+  // 본인의 기존 코드는 그대로 유지
+  if (reg[ownerName] === base) return base;
+
+  // 마스터 매핑된 매장이 본인 코드를 그대로 가져왔다면 통과
+  if (BRANCH_CODE_MAP[ownerName] === base) return base;
+  // 관리자 SC 코드 예외 (관리자/Admin/SC 명칭으로 등록 시)
+  const upperName = ownerName.toUpperCase();
+  if (base === "SC" && (upperName === "SC" || ownerName === "관리자" || upperName === "ADMIN")) return base;
+  if (base === "KOR" && (upperName === "KOR" || ownerName === "유관부서")) return base;
+
+  const used = new Set<string>([
+    "SC", "KOR",
+    ...Object.values(BRANCH_CODE_MAP),
+    ...Object.entries(reg).filter(([n]) => n !== ownerName).map(([, s]) => s),
+  ]);
+
+  if (!used.has(base)) return base;
+  for (let i = 2; i <= 99; i++) {
+    const candidate = `${base}${i}`;
+    if (!used.has(candidate)) return candidate;
+  }
+  return base;
 };
 
 export type StoreRegistry = Record<string, string>; // name → slug
@@ -81,7 +133,9 @@ export const saveRegistry = (reg: StoreRegistry) => {
 
 export const registerStore = (name: string, slugOverride?: string): { name: string; slug: string } => {
   const cleanName = (name || "").trim();
-  const slug = (slugOverride || slugifyStoreName(cleanName)).toUpperCase();
+  const base = (slugOverride || slugifyStoreName(cleanName)).toUpperCase();
+  // SC/KOR 등 예약 코드와 마스터 코드는 그대로(자기 자신이면 통과)
+  const slug = resolveUniqueSlug(base, cleanName);
   const reg = getRegistry();
   reg[cleanName] = slug;
   saveRegistry(reg);
