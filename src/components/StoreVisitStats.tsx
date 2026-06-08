@@ -58,7 +58,11 @@ const StoreVisitStats = () => {
     if (since) q = q.gte("created_at", since);
     q.then(({ data }) => {
       if (cancelled) return;
-      setRows((data as Row[]) || []);
+      const filtered = ((data as Row[]) || []).filter((r) => {
+        const sid = (r.store_id || "").toUpperCase();
+        return sid !== "SC" && sid !== "KOR";
+      });
+      setRows(filtered);
       setLoading(false);
     });
     return () => {
