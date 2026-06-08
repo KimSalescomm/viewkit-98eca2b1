@@ -71,6 +71,16 @@ export const normalizeStoreIdentity = (name: string, slug: string): { name: stri
   const masterName = getBranchNameBySlug(cleanSlug);
   if (masterName) return { name: masterName, slug: cleanSlug };
 
+  // 점 보정: 한글 매장명이 "점"으로 끝나지 않으면 붙여서 마스터 재조회, 없으면 이름만 보정
+  if (hasHangul(cleanName) && !cleanName.endsWith("점")) {
+    const withJum = cleanName + "점";
+    const masterCodeJum = BRANCH_CODE_MAP[withJum];
+    if (masterCodeJum) {
+      return { name: withJum, slug: masterCodeJum };
+    }
+    return { name: withJum, slug: cleanSlug };
+  }
+
   return { name: cleanName || cleanSlug, slug: cleanSlug };
 };
 
