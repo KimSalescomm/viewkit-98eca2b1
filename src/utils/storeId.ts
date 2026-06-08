@@ -1,6 +1,6 @@
 // 지점 식별자 유틸: 매장명 → 영문 슬러그 자동 변환 + 매핑 저장
 // 규칙:
-//  1) 영문/숫자만 → 그대로 대문자 (예: "D5" → "D5", "gn01" → "GN01")
+//  1) 영문만 → 그대로 대문자 (예: "gn" → "GN")
 //  2) 한글 포함 → 각 음절 초성을 로마자로 변환, 끝 글자 '점'은 제거
 //     (예: 강서본점 → 강·서·본 → G·S·B → "GSB", 대치본점 → "DCB")
 //  3) 기타 문자(공백/특수문자)는 제거
@@ -39,6 +39,40 @@ const getJungseongRoman = (ch: string): string => {
 };
 
 const hasHangul = (s: string) => /[\uac00-\ud7a3]/.test(s);
+
+const RESERVED_CODE_TO_NAME: Record<string, string> = {
+  SC: "관리자",
+  KOR: "유관부서",
+};
+
+const RESERVED_NAME_TO_CODE: Record<string, string> = {
+  관리자: "SC",
+  유관부서: "KOR",
+};
+
+const getBranchNameBySlug = (slug: string): string | null => {
+  const code = (slug || "").trim().toUpperCase();
+  const entry = Object.entries(BRANCH_CODE_MAP).find(([, value]) => value === code);
+  return entry?.[0] ?? null;
+};
+
+export const normalizeStoreIdentity = (name: string, slug: string): { name: string; slug: string } => {
+  const cleanName = (name || "").trim();
+  const cleanSlug = (slug || "").trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
+  const upperName = cleanName.toUpperCase();
+
+  const reservedCode = RESERVED_NAME_TO_CODE[cleanName] || (upperName === "ADMIN" ? "SC" : "");
+  if (reservedCode) return { name: RESERVED_CODE_TO_NAME[reservedCode], slug: reservedCode };
+  if (RESERVED_CODE_TO_NAME[cleanSlug]) return { name: RESERVED_CODE_TO_NAME[cleanSlug], slug: cleanSlug };
+
+  const masterCode = BRANCH_CODE_MAP[cleanName];
+  if (masterCode) return { name: cleanName, slug: masterCode };
+
+  const masterName = getBranchNameBySlug(cleanSlug);
+  if (masterName) return { name: masterName, slug: cleanSlug };
+
+  return { name: cleanName || cleanSlug, slug: cleanSlug };
+};
 
 // 한 음절 → 영문 1자 이상 (초성 무음이면 중성 첫 글자로 대체)
 const syllableRoman = (ch: string): string => {
@@ -132,10 +166,13 @@ export const saveRegistry = (reg: StoreRegistry) => {
 };
 
 export const registerStore = (name: string, slugOverride?: string): { name: string; slug: string } => {
-  const cleanName = (name || "").trim();
-  const base = (slugOverride || slugifyStoreName(cleanName)).toUpperCase();
+  const initialName = (name || "").trim();
+  const initialBase = (slugOverride || slugifyStoreName(initialName)).toUpperCase();
+  const normalized = normalizeStoreIdentity(initialName, initialBase);
+  const cleanName = normalized.name;
+  const base = normalized.slug;
   // SC/KOR 등 예약 코드와 마스터 코드는 그대로(자기 자신이면 통과)
-  const slug = resolveUniqueSlug(base, cleanName);
+  const slug = normalizeStoreIdentity(cleanName, resolveUniqueSlug(base, cleanName)).slug;
   const reg = getRegistry();
   reg[cleanName] = slug;
   saveRegistry(reg);
@@ -157,30 +194,41 @@ export const getCurrentStore = (): { name: string; slug: string } | null => {
       sessionStorage.getItem(CURRENT_ID_KEY);
     if (slug) {
       // name이 유실됐어도 슬러그가 있으면 동일 브라우저로 보고 복구
-      if (name) return { name, slug };
+      if (name) {
+        const normalized = normalizeStoreIdentity(name, slug);
+        try {
+          localStorage.setItem(CURRENT_NAME_KEY, normalized.name);
+          localStorage.setItem(CURRENT_ID_KEY, normalized.slug);
+          sessionStorage.setItem(CURRENT_ID_KEY, normalized.slug);
+        } catch {
+          /* noop */
+        }
+        return normalized;
+      }
       const reg = getRegistry();
       const recoveredName = Object.entries(reg).find(([, s]) => s === slug)?.[0];
-      const finalName = recoveredName || slug;
+      const normalized = normalizeStoreIdentity(recoveredName || slug, slug);
       try {
-        localStorage.setItem(CURRENT_NAME_KEY, finalName);
-        localStorage.setItem(CURRENT_ID_KEY, slug);
+        localStorage.setItem(CURRENT_NAME_KEY, normalized.name);
+        localStorage.setItem(CURRENT_ID_KEY, normalized.slug);
       } catch {
         /* noop */
       }
-      return { name: finalName, slug };
+      return normalized;
     }
     // slug도 없지만 registry에 등록된 매장이 있으면 첫 항목으로 복구
     const reg = getRegistry();
     const first = Object.entries(reg)[0];
     if (first) {
       const [n, s] = first;
+      const normalized = normalizeStoreIdentity(n, s);
       try {
-        localStorage.setItem(CURRENT_NAME_KEY, n);
-        localStorage.setItem(CURRENT_ID_KEY, s);
+        localStorage.setItem(CURRENT_NAME_KEY, normalized.name);
+        localStorage.setItem(CURRENT_ID_KEY, normalized.slug);
       } catch {
         /* noop */
       }
-      return { name: n, slug: s };
+      return normalized;
     }
   } catch {
     /* noop */

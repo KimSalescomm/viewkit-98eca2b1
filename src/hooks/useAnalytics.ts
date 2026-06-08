@@ -1,6 +1,7 @@
 import { useEffect, useRef, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { logPageView } from '@/utils/pageViewLog';
+import { getCurrentStore, registerStore } from '@/utils/storeId';
 
 declare global {
   interface Window {
@@ -16,11 +17,13 @@ const getStoreId = (): string => {
   const params = new URLSearchParams(window.location.search);
   const fromUrl = params.get('store_id');
   if (fromUrl) {
+    const saved = getCurrentStore();
+    const normalized = registerStore(saved?.name || fromUrl, fromUrl).slug;
     try {
-      sessionStorage.setItem('viewkit_store_id', fromUrl);
-      localStorage.setItem('viewkit_store_id', fromUrl);
+      sessionStorage.setItem('viewkit_store_id', normalized);
+      localStorage.setItem('viewkit_store_id', normalized);
     } catch { /* noop */ }
-    return fromUrl;
+    return normalized;
   }
   try {
     const fromSession = sessionStorage.getItem('viewkit_store_id');
