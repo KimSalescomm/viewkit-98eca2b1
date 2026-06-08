@@ -253,7 +253,22 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                         </span>
                       </button>
                     ))}
-                    {filteredBranches.length === 0 && !isAdminQuery(query) && !isKorQuery(query) && (
+                    {dealerMatches.map(({ dealer, branch }) => (
+                      <button
+                        key={`dealer-${dealer}`}
+                        type="button"
+                        onClick={() => handlePickBranch(branch)}
+                        className="w-full text-left px-3.5 py-2 text-sm hover:bg-[#A50034]/10 hover:text-[#A50034] flex items-center justify-between border-t border-slate-100"
+                        title={`거래선명: ${dealer}`}
+                      >
+                        <span className="flex flex-col">
+                          <span>{branch}</span>
+                          <span className="text-[10px] text-slate-400">거래선: {dealer}</span>
+                        </span>
+                        <span className="text-[10px] text-slate-400">{getManagerByBranch(branch)}</span>
+                      </button>
+                    ))}
+                    {filteredBranches.length === 0 && dealerMatches.length === 0 && !isAdminQuery(query) && !isKorQuery(query) && (
                       <div className="px-3.5 py-3 text-xs text-slate-400">검색 결과가 없습니다</div>
                     )}
                   </div>
