@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Store, Copy, Search, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
-import { registerStore, slugifyStoreName, getRegistry } from "@/utils/storeId";
+import { registerStore, slugifyStoreName, getRegistry, resolveUniqueSlug } from "@/utils/storeId";
 import { logPageView } from "@/utils/pageViewLog";
 import { ALL_BRANCHES, getManagerByBranch, BRANCH_CODE_MAP, ADMIN_STORE_CODE } from "@/data/branches";
 import { cn } from "@/lib/utils";
