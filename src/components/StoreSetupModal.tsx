@@ -87,7 +87,24 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
 
   const handleSave = () => {
     if (!canSave) return;
-    const info = registerStore(name.trim(), finalSlug);
+    const trimmedName = name.trim();
+
+    // 유효성 검사: '점' 한 글자만 입력했거나 슬러그가 STORE/너무 짧은 경우 차단
+    const isInvalidName = trimmedName === "점" || /^점+$/.test(trimmedName);
+    const isFallbackSlug = finalSlug === "STORE";
+    const isTooShortSlug = finalSlug.length < 2 && !isAdmin; // SC만 2글자 예외
+
+    if (isInvalidName || isFallbackSlug || isTooShortSlug) {
+      toast({
+        title: "지점명을 정확히 입력해 주세요",
+        description:
+          "'점'만 입력하거나 코드가 'STORE'로 만들어진 경우는 등록할 수 없습니다. 정확한 지점명(예: 강서본점, 노은점)을 입력해 주세요.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const info = registerStore(trimmedName, finalSlug);
     // 매장 등록 직후 현재 페이지를 새 매장 ID로 즉시 기록 (모달 닫힘 시점)
     try { logPageView(window.location.pathname); } catch { /* noop */ }
     onSaved(info);
