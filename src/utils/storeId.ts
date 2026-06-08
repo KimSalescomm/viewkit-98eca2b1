@@ -126,7 +126,9 @@ export const saveRegistry = (reg: StoreRegistry) => {
 
 export const registerStore = (name: string, slugOverride?: string): { name: string; slug: string } => {
   const cleanName = (name || "").trim();
-  const slug = (slugOverride || slugifyStoreName(cleanName)).toUpperCase();
+  const base = (slugOverride || slugifyStoreName(cleanName)).toUpperCase();
+  // SC/KOR 등 예약 코드와 마스터 코드는 그대로(자기 자신이면 통과)
+  const slug = resolveUniqueSlug(base, cleanName);
   const reg = getRegistry();
   reg[cleanName] = slug;
   saveRegistry(reg);
