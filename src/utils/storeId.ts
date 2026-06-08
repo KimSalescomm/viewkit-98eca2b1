@@ -92,6 +92,13 @@ export const resolveUniqueSlug = (baseSlug: string, ownerName: string): string =
   // 본인의 기존 코드는 그대로 유지
   if (reg[ownerName] === base) return base;
 
+  // 마스터 매핑된 매장이 본인 코드를 그대로 가져왔다면 통과
+  if (BRANCH_CODE_MAP[ownerName] === base) return base;
+  // 관리자 SC 코드 예외 (관리자/Admin/SC 명칭으로 등록 시)
+  const upperName = ownerName.toUpperCase();
+  if (base === "SC" && (upperName === "SC" || ownerName === "관리자" || upperName === "ADMIN")) return base;
+  if (base === "KOR" && (upperName === "KOR" || ownerName === "유관부서")) return base;
+
   const used = new Set<string>([
     "SC", "KOR",
     ...Object.values(BRANCH_CODE_MAP),
