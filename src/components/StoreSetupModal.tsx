@@ -261,8 +261,8 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                 />
                 <Input
                   value={codeOverride}
-                  onChange={(e) => setCodeOverride(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""))}
-                  placeholder={autoSlug || "영문 코드 (자동 생성)"}
+                  onChange={(e) => setCodeOverride(e.target.value.toUpperCase().replace(/[^A-Z]/g, ""))}
+                  placeholder={autoSlug || "영문 대문자 코드 (2자 이상)"}
                 />
               </div>
             )}
