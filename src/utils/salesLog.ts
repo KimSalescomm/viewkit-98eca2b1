@@ -1,6 +1,9 @@
 // 판매 인증 기록 저장소 (Lovable Cloud DB: sales_certifications)
 import { supabase } from "@/integrations/supabase/client";
 
+// 사이트 오픈일 — 이전 데이터는 허수로 간주하여 대시보드에서 제외
+export const SITE_OPEN_DATE = "2026-06-08";
+
 export interface SaleRecord {
   id?: string;
   branch: string;
@@ -13,6 +16,7 @@ export const getSales = async (): Promise<SaleRecord[]> => {
   const { data, error } = await supabase
     .from("sales_certifications")
     .select("id, branch, product, sold_at, created_at")
+    .gte("created_at", `${SITE_OPEN_DATE}T00:00:00Z`)
     .order("created_at", { ascending: true })
     .limit(5000);
   if (error) {
