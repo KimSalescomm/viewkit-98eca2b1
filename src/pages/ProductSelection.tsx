@@ -131,8 +131,12 @@ const ProductSelection = () => {
       const matchedName = Object.entries(registry).find(([, s]) => s === urlStore)?.[0];
       const savedNameForSlug = saved && saved.slug === urlStore ? saved.name : undefined;
       const name = matchedName || savedNameForSlug || urlStore;
-      registerStore(name, urlStore);
-      setCurrentStore({ name, slug: urlStore });
+      const info = registerStore(name, urlStore);
+      setCurrentStore(info);
+      if (info.slug !== urlStore) {
+        params.set("store_id", info.slug);
+        navigate({ pathname: location.pathname, search: `?${params.toString()}` }, { replace: true });
+      }
       return;
     }
 
