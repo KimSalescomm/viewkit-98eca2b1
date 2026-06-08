@@ -108,7 +108,9 @@ const ProductSelection = () => {
     keyVisualImage: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_stove_03_250804.jpg",
     icon: "Waves",
   } as (typeof products)[number];
-  const visibleProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")];
+  const desiredOrder = ["subscription", "refrigerator", "airconditioner", "washer", "styler", "vacuum", "tv", "cooking"];
+  const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")];
+  const visibleProducts = desiredOrder.map((id) => allProducts.find((p) => p.id === id)).filter(Boolean) as (typeof allProducts);
   const { trackProductClick } = useAnalyticsContext();
   const navigate = useNavigate();
   const location = useLocation();
