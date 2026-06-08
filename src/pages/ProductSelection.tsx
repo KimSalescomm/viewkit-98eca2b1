@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { products } from "@/data/products";
+import { useContent } from "@/contexts/ContentContext";
 import SafeImage from "@/components/SafeImage";
 import {
   HelpCircle,
