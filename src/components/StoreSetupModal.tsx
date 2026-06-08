@@ -6,7 +6,7 @@ import { Store, Copy, Search, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { registerStore, slugifyStoreName, getRegistry, resolveUniqueSlug, normalizeStoreIdentity } from "@/utils/storeId";
 import { logPageView } from "@/utils/pageViewLog";
-import { ALL_BRANCHES, getManagerByBranch, BRANCH_CODE_MAP, ADMIN_STORE_CODE } from "@/data/branches";
+import { ALL_BRANCHES, getManagerByBranch, BRANCH_CODE_MAP, ADMIN_STORE_CODE, DEALER_TO_BRANCH_MAP, resolveBranchByDealer } from "@/data/branches";
 import { cn } from "@/lib/utils";
 
 const ADMIN_ENTRY = { name: "관리자", slug: ADMIN_STORE_CODE };
