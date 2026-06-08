@@ -62,7 +62,11 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
   }, [open, initialName]);
 
   const autoSlug = useMemo(() => slugifyStoreName(name), [name]);
-  const finalSlug = (codeOverride || autoSlug).toUpperCase();
+  const baseSlug = (codeOverride || autoSlug).toUpperCase();
+  const finalSlug = useMemo(
+    () => resolveUniqueSlug(baseSlug, name.trim()),
+    [baseSlug, name]
+  );
   const registry = useMemo(() => (open ? getRegistry() : {}), [open]);
   const existingEntries = Object.entries(registry);
 
