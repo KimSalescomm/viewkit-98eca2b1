@@ -93,16 +93,24 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
     if (!canSave) return;
     const trimmedName = name.trim();
 
+    // 예약/마스터 매장은 검증 통과
+    const isReserved = trimmedName === "관리자" || trimmedName === "유관부서" || isAdmin;
+    const isMaster = !!BRANCH_CODE_MAP[trimmedName];
+
     // 유효성 검사: '점' 한 글자만 입력했거나 슬러그가 STORE/너무 짧은 경우 차단
     const isInvalidName = trimmedName === "점" || /^점+$/.test(trimmedName);
     const isFallbackSlug = finalSlug === "STORE";
-    const isTooShortSlug = finalSlug.length < 2 && !isAdmin; // SC만 2글자 예외
+    const isTooShortSlug = finalSlug.length < 2 && !isAdmin;
 
-    if (isInvalidName || isFallbackSlug || isTooShortSlug) {
+    // 한글 2자 이상 입력 필수 (예약/마스터 제외)
+    const koreanChars = (trimmedName.match(/[\uac00-\ud7a3]/g) || []).length;
+    const lacksKorean = !isReserved && !isMaster && koreanChars < 2;
+
+    if (isInvalidName || isFallbackSlug || isTooShortSlug || lacksKorean) {
       toast({
-        title: "지점명을 정확히 입력해 주세요",
+        title: "매장명을 정확히 입력해 주세요",
         description:
-          "'점'만 입력하거나 코드가 'STORE'로 만들어진 경우는 등록할 수 없습니다. 정확한 지점명(예: 강서본점, 노은점)을 입력해 주세요.",
+          "매장명은 한글 2자 이상으로 입력해야 합니다. (예: 강서본점, 노은점)",
         variant: "destructive",
       });
       return;
