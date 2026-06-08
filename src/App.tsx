@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AnalyticsProvider from "./components/AnalyticsProvider";
 import { OrientationProvider } from "./hooks/useOrientation";
+import { ContentProvider } from "./contexts/ContentContext";
 import ProductSelection from "./pages/ProductSelection";
 import SalesCertBadge from "./components/SalesCertBadge";
 
@@ -37,21 +38,23 @@ const App = () => (
       <BrowserRouter>
         <OrientationProvider>
           <AnalyticsProvider>
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/" element={<ProductSelection />} />
-                <Route path="/subscription" element={<Subscription />} />
-                <Route path="/product/:productId" element={<Home />} />
-                <Route path="/product/:productId/feature/:id" element={<FeatureDetail />} />
-                <Route path="/product/:productId/manual" element={<Manual />} />
-                <Route path="/ranking" element={<Ranking />} />
-                <Route path="/admin" element={<Admin />} />
-                <Route path="/legal" element={<Legal />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-            <SalesCertBadge />
+            <ContentProvider>
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
+                  <Route path="/" element={<ProductSelection />} />
+                  <Route path="/subscription" element={<Subscription />} />
+                  <Route path="/product/:productId" element={<Home />} />
+                  <Route path="/product/:productId/feature/:id" element={<FeatureDetail />} />
+                  <Route path="/product/:productId/manual" element={<Manual />} />
+                  <Route path="/ranking" element={<Ranking />} />
+                  <Route path="/admin" element={<Admin />} />
+                  <Route path="/legal" element={<Legal />} />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
+              <SalesCertBadge />
+            </ContentProvider>
           </AnalyticsProvider>
         </OrientationProvider>
       </BrowserRouter>
