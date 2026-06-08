@@ -102,16 +102,27 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
 
   const handleSave = () => {
     if (!canSave) return;
-    const trimmedName = name.trim();
+    let trimmedName = name.trim();
+
+    // 거래선명을 직접 입력한 경우, 매칭되는 매장명으로 자동 변환
+    const dealerResolved = resolveBranchByDealer(trimmedName);
+    if (dealerResolved && !BRANCH_CODE_MAP[trimmedName]) {
+      trimmedName = dealerResolved;
+    }
 
     // 예약/마스터 매장은 검증 통과
     const isReserved = trimmedName === "관리자" || trimmedName === "유관부서" || isAdmin;
     const isMaster = !!BRANCH_CODE_MAP[trimmedName];
 
+    // 거래선명 → 매장명 변환된 경우 최종 코드도 매장명 기준으로 재계산
+    const resolvedSlug = isMaster
+      ? BRANCH_CODE_MAP[trimmedName]
+      : finalSlug;
+
     // 유효성 검사: '점' 한 글자만 입력했거나 슬러그가 STORE/너무 짧은 경우 차단
     const isInvalidName = trimmedName === "점" || /^점+$/.test(trimmedName);
-    const isFallbackSlug = finalSlug === "STORE";
-    const isTooShortSlug = finalSlug.length < 2 && !isAdmin;
+    const isFallbackSlug = resolvedSlug === "STORE";
+    const isTooShortSlug = resolvedSlug.length < 2 && !isAdmin;
 
     // 한글 2자 이상 입력 필수 (예약/마스터 제외)
     const koreanChars = (trimmedName.match(/[\uac00-\ud7a3]/g) || []).length;
@@ -127,11 +138,12 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
       return;
     }
 
-    const info = registerStore(trimmedName, finalSlug);
+    const info = registerStore(trimmedName, resolvedSlug);
     // 매장 등록 직후 현재 페이지를 새 매장 ID로 즉시 기록 (모달 닫힘 시점)
     try { logPageView(window.location.pathname); } catch { /* noop */ }
     onSaved(info);
   };
+
 
   const fieldClass =
     "w-full bg-white border border-slate-200 rounded-xl text-slate-800 " +
