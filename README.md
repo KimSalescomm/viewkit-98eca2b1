@@ -136,6 +136,79 @@ const isEnabled = enabledProducts.includes(product.id);
 
 ---
 
+## 📊 관리자 대시보드 (`/admin`)
+
+대시보드는 두 가지 영역으로 구성됩니다.
+
+- **지점별 접속 통계** — `StoreVisitStats` · `page_views` 테이블
+- **판매 인증 집계** — `Admin.Dashboard` · `sales_certifications` 테이블
+
+진입은 Edge Function `admin-login` 패스코드 인증 후 `sessionStorage`에 인증 토큰을 저장하는 방식입니다.
+
+### 데이터 수집 파이프라인
+
+**페이지뷰** — `src/utils/pageViewLog.ts`
+- 라우트 변경 시 `supabase.from("page_views").insert(...)`
+- 필드: `store_id`(코드 슬러그), `store_name`, `path`, `session_id`, `created_at`
+- `session_id`는 `sessionStorage`에 발급되어 같은 세션 내에서 유지됨
+
+**판매 인증** — `src/utils/salesLog.ts`
+- 필드: `branch`, `product`, `sold_at`, `created_at`
+
+### 🛡 정확도 보증 규칙 (Hygiene)
+
+대시보드 수치는 다음 규칙으로 허수를 제거합니다.
+
+1. **사이트 오픈일 컷오프** — `SITE_OPEN_DATE = 2026-06-08`
+   - 그 이전 행은 사이트 오픈 전 테스트 허수로 간주
+   - 양쪽 쿼리에 `gte("created_at", "2026-06-08T00:00:00Z")` 강제 적용
+   - 위치: `salesLog.ts` `getSales`, `StoreVisitStats.tsx` `effectiveSince`
+2. **관리자 / 본사 제외**
+   - `store_id`가 `SC`(관리자) 또는 `KOR`(본사 유관부서)인 페이지뷰는 집계에서 제외
+   - 기록 단계(`logPageView`)와 표시 단계(`StoreVisitStats`) 양쪽에서 이중 가드
+3. **지점 미설정 상태 무기록** — `store.slug`가 비어 있으면 insert 자체를 수행하지 않음 (지점 선택 모달 노출 단계 제외)
+4. **1초 내 동일 경로 중복 방지** — `lastLogged` 메모이제이션으로 빠른 재진입/리렌더 더블 카운트 차단
+5. **쿼리 파라미터 정규화** — `path`에서 `?store_id=...` 등 쿼리 스트링을 제거한 뒤 저장
+6. **정식 매장명 보정** — `BRANCH_CODE_MAP` 역매핑(`CODE_TO_NAME`)을 표시 단계에서 우선 적용하여, DB에 섞여 들어간 표기(`"GSB"`, `"강서본점"`, 직접입력 `"강서"` 등)를 코드 기준 정식 명칭으로 통일
+
+### 집계 방식
+
+**페이지뷰** (`StoreVisitStats.stats`)
+- 그룹 키: `store_id`
+- `views` = 행 개수
+- `visits` = `session_id` distinct 수 (Set 기반)
+- `lastAt` = 그룹 내 최신 `created_at`
+- 정렬: `views` 내림차순
+
+**상단 KPI** (`StoreVisitStats.totals`)
+- `총 페이지뷰` = 필터된 rows.length
+- `총 방문(세션)` = 전체 rows에 대한 distinct `session_id` 수
+- `활성 지점` = 그룹 개수
+
+**기간 필터** — 오늘 / 7일 / 30일 / 전체
+- `전체`를 선택해도 사이트 오픈 컷오프(2026-06-08)는 **항상** 적용됨
+
+**판매 인증** (`src/pages/Admin.tsx`)
+- 지점 / 제품 / 판매일 범위(`from`, `to`) 필터를 통과한 행만 대상으로 `byBranch`, `byProduct` 카운트 집계
+- CSV 내보내기는 항상 **현재 필터 결과** 기준
+
+### ⚠️ 알려진 한계
+
+- 페이지뷰 쿼리에 `limit(5000)` — 표시 범위 내 누적이 이를 초과하면 최근 5,000건만 반영
+- 익명 INSERT 정책이므로 동일 사용자가 새 세션을 시작하면 별도 방문으로 카운트
+- 클라이언트 발급 `session_id` — 시크릿 모드 / 스토리지 초기화 시 세션이 새로 잡힘
+
+### 🧹 데이터 정정 운영
+
+- 잘못 기록된 매장명·코드는 마이그레이션으로 일괄 `UPDATE`
+- 사례
+  - `store_id IN ('N', 'STORE')` 등 비정상 코드 행 삭제
+  - 코드별 매장명을 `BRANCH_CODE_MAP` 정식 명칭으로 통일
+
+---
+
+
+
 ## 🌐 배포
 
 Lovable에서 **Share → Publish** 클릭 시 즉시 배포됩니다.
