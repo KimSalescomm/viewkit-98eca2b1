@@ -50,12 +50,15 @@ const StoreVisitStats = () => {
     let cancelled = false;
     setLoading(true);
     const since = getSince(range);
+    // 사이트 오픈일(2026-06-08) 이전 데이터는 허수로 간주하여 제외
+    const SITE_OPEN = "2026-06-08T00:00:00Z";
+    const effectiveSince = since && since > SITE_OPEN ? since : SITE_OPEN;
     let q = supabase
       .from("page_views")
       .select("id, store_id, store_name, path, session_id, created_at")
       .order("created_at", { ascending: false })
       .limit(5000);
-    if (since) q = q.gte("created_at", since);
+    q = q.gte("created_at", effectiveSince);
     q.then(({ data }) => {
       if (cancelled) return;
       const filtered = ((data as Row[]) || []).filter((r) => {
