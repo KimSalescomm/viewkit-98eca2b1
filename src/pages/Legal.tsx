@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, Printer } from "lucide-react";
-import { featuresMap } from "@/data/features";
-import { products } from "@/data/products";
+import { useContent } from "@/contexts/ContentContext";
 
 const Legal = () => {
+  const { featuresMap, products } = useContent();
   const productOrder = products.map((p) => ({ id: p.id, name: p.name }));
 
   // 모든 특장점 + 디스클레이머 수집

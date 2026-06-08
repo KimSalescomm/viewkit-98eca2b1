@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { products } from "@/data/products";
+import { useContent } from "@/contexts/ContentContext";
 import SafeImage from "@/components/SafeImage";
 import {
   HelpCircle,
@@ -98,6 +98,7 @@ const productAccents: Record<string, { gradient: string; tint: string; chip: str
 };
 
 const ProductSelection = () => {
+  const { products } = useContent();
   const baseEnabledIds = ["subscription", "refrigerator", "styler", "washer", "airconditioner"];
   const subscriptionCard = {
     id: "subscription",

@@ -1,15 +1,15 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { getProductById, iconMap } from "@/data/products";
-import { getFeaturesByProductId } from "@/data/features";
 import FeatureCard from "@/components/FeatureCard";
 import SafeImage from "@/components/SafeImage";
 import { HelpCircle } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
+import { useContent } from "@/contexts/ContentContext";
 
 const Home = () => {
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
-  
+  const { getProductById, getFeaturesByProductId } = useContent();
+
   const product = getProductById(productId || "");
   const features = getFeaturesByProductId(productId || "");
 

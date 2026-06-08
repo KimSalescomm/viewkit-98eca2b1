@@ -14,6 +14,30 @@ export type Database = {
   }
   public: {
     Tables: {
+      content_snapshots: {
+        Row: {
+          created_at: string
+          id: string
+          note: string | null
+          payload: Json
+          published_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          note?: string | null
+          payload: Json
+          published_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          note?: string | null
+          payload?: Json
+          published_by?: string | null
+        }
+        Relationships: []
+      }
       page_views: {
         Row: {
           created_at: string
