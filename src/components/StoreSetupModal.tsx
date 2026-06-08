@@ -76,6 +76,17 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
     return ALL_BRANCHES.filter((b) => b.toLowerCase().includes(q)).slice(0, 30);
   }, [query]);
 
+  // 거래선명으로 검색 시 매칭되는 매장명 후보
+  const dealerMatches = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return [] as Array<{ dealer: string; branch: string }>;
+    return Object.entries(DEALER_TO_BRANCH_MAP)
+      .filter(([dealer]) => dealer.toLowerCase().includes(q))
+      .filter(([, branch]) => !branch.toLowerCase().includes(q)) // 매장명 검색 결과와 중복 제거
+      .slice(0, 10)
+      .map(([dealer, branch]) => ({ dealer, branch }));
+  }, [query]);
+
   const isAdmin = name.trim().toUpperCase() === ADMIN_STORE_CODE || finalSlug === ADMIN_STORE_CODE;
   const isMasterBranch = !!BRANCH_CODE_MAP[name.trim()];
   const manager = isAdmin ? "관리자 계정" : getManagerByBranch(name.trim());
