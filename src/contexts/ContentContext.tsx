@@ -117,7 +117,7 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
           .maybeSingle();
         if (cancelled) return;
         if (error || !data) return;
-        const payload = data.payload as ContentPayload;
+        const payload = data.payload as unknown as ContentPayload;
         if (!payload?.featuresMap || !payload?.products) return;
         setState({
           payload,

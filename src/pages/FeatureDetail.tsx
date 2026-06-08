@@ -1,11 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getFeatureById } from "@/data/features";
-import { getProductById } from "@/data/products";
 import MediaViewer from "@/components/MediaViewer";
 import FeatureIcon from "@/components/FeatureIcon";
 import OrientationToggle from "@/components/OrientationToggle";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
+import { useContent } from "@/contexts/ContentContext";
 import {
   Accordion,
   AccordionContent,
@@ -17,7 +16,8 @@ const FeatureDetail = () => {
   const { productId, id } = useParams<{ productId: string; id: string }>();
   const { trackDetailView, trackVideoClick } = useAnalyticsContext();
   const [activeTab, setActiveTab] = useState(0);
-  
+  const { getFeatureById, getProductById } = useContent();
+
   const feature = getFeatureById(productId || "", id || "");
   const product = getProductById(productId || "");
   const tabs = feature?.tabs;
