@@ -6,7 +6,7 @@ import { Store, Copy, Search, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { registerStore, slugifyStoreName, getRegistry, resolveUniqueSlug, normalizeStoreIdentity } from "@/utils/storeId";
 import { logPageView } from "@/utils/pageViewLog";
-import { ALL_BRANCHES, getManagerByBranch, BRANCH_CODE_MAP, ADMIN_STORE_CODE } from "@/data/branches";
+import { ALL_BRANCHES, getManagerByBranch, BRANCH_CODE_MAP, ADMIN_STORE_CODE, DEALER_TO_BRANCH_MAP, resolveBranchByDealer } from "@/data/branches";
 import { cn } from "@/lib/utils";
 
 const ADMIN_ENTRY = { name: "관리자", slug: ADMIN_STORE_CODE };
@@ -76,6 +76,17 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
     return ALL_BRANCHES.filter((b) => b.toLowerCase().includes(q)).slice(0, 30);
   }, [query]);
 
+  // 거래선명으로 검색 시 매칭되는 매장명 후보
+  const dealerMatches = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return [] as Array<{ dealer: string; branch: string }>;
+    return Object.entries(DEALER_TO_BRANCH_MAP)
+      .filter(([dealer]) => dealer.toLowerCase().includes(q))
+      .filter(([, branch]) => !branch.toLowerCase().includes(q)) // 매장명 검색 결과와 중복 제거
+      .slice(0, 10)
+      .map(([dealer, branch]) => ({ dealer, branch }));
+  }, [query]);
+
   const isAdmin = name.trim().toUpperCase() === ADMIN_STORE_CODE || finalSlug === ADMIN_STORE_CODE;
   const isMasterBranch = !!BRANCH_CODE_MAP[name.trim()];
   const manager = isAdmin ? "관리자 계정" : getManagerByBranch(name.trim());
@@ -91,16 +102,27 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
 
   const handleSave = () => {
     if (!canSave) return;
-    const trimmedName = name.trim();
+    let trimmedName = name.trim();
+
+    // 거래선명을 직접 입력한 경우, 매칭되는 매장명으로 자동 변환
+    const dealerResolved = resolveBranchByDealer(trimmedName);
+    if (dealerResolved && !BRANCH_CODE_MAP[trimmedName]) {
+      trimmedName = dealerResolved;
+    }
 
     // 예약/마스터 매장은 검증 통과
     const isReserved = trimmedName === "관리자" || trimmedName === "유관부서" || isAdmin;
     const isMaster = !!BRANCH_CODE_MAP[trimmedName];
 
+    // 거래선명 → 매장명 변환된 경우 최종 코드도 매장명 기준으로 재계산
+    const resolvedSlug = isMaster
+      ? BRANCH_CODE_MAP[trimmedName]
+      : finalSlug;
+
     // 유효성 검사: '점' 한 글자만 입력했거나 슬러그가 STORE/너무 짧은 경우 차단
     const isInvalidName = trimmedName === "점" || /^점+$/.test(trimmedName);
-    const isFallbackSlug = finalSlug === "STORE";
-    const isTooShortSlug = finalSlug.length < 2 && !isAdmin;
+    const isFallbackSlug = resolvedSlug === "STORE";
+    const isTooShortSlug = resolvedSlug.length < 2 && !isAdmin;
 
     // 한글 2자 이상 입력 필수 (예약/마스터 제외)
     const koreanChars = (trimmedName.match(/[\uac00-\ud7a3]/g) || []).length;
@@ -116,11 +138,12 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
       return;
     }
 
-    const info = registerStore(trimmedName, finalSlug);
+    const info = registerStore(trimmedName, resolvedSlug);
     // 매장 등록 직후 현재 페이지를 새 매장 ID로 즉시 기록 (모달 닫힘 시점)
     try { logPageView(window.location.pathname); } catch { /* noop */ }
     onSaved(info);
   };
+
 
   const fieldClass =
     "w-full bg-white border border-slate-200 rounded-xl text-slate-800 " +
@@ -242,7 +265,22 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                         </span>
                       </button>
                     ))}
-                    {filteredBranches.length === 0 && !isAdminQuery(query) && !isKorQuery(query) && (
+                    {dealerMatches.map(({ dealer, branch }) => (
+                      <button
+                        key={`dealer-${dealer}`}
+                        type="button"
+                        onClick={() => handlePickBranch(branch)}
+                        className="w-full text-left px-3.5 py-2 text-sm hover:bg-[#A50034]/10 hover:text-[#A50034] flex items-center justify-between border-t border-slate-100"
+                        title={`거래선명: ${dealer}`}
+                      >
+                        <span className="flex flex-col">
+                          <span>{branch}</span>
+                          <span className="text-[10px] text-slate-400">거래선: {dealer}</span>
+                        </span>
+                        <span className="text-[10px] text-slate-400">{getManagerByBranch(branch)}</span>
+                      </button>
+                    ))}
+                    {filteredBranches.length === 0 && dealerMatches.length === 0 && !isAdminQuery(query) && !isKorQuery(query) && (
                       <div className="px-3.5 py-3 text-xs text-slate-400">검색 결과가 없습니다</div>
                     )}
                   </div>
