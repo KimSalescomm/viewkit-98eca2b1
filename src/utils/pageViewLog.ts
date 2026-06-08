@@ -36,8 +36,8 @@ export const logPageView = async (path: string) => {
   if (!store?.slug) return;
 
   const slug = store.slug.toUpperCase();
-  // 관리자(SC) 계정은 집계에서 제외
-  if (isAdminStore(slug)) return;
+  // 관리자(SC) / 본사(KOR) 계정은 집계에서 제외
+  if (isAdminStore(slug) || slug === "KOR") return;
 
   const name = store.name || getBranchNameByCode(slug) || slug;
 
