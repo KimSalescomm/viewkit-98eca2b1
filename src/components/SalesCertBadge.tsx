@@ -99,12 +99,21 @@ const SalesCertBadge = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!store || !product || !date) return;
     const soldAt = format(date, "yyyy-MM-dd");
     trackEvent("sales_certification", { branch: store, product, sold_at: soldAt });
-    appendSale({ branch: store, product, sold_at: soldAt });
-    setSubmitted(true);
+    try {
+      await appendSale({ branch: store, product, sold_at: soldAt });
+      setSubmitted(true);
+    } catch (err) {
+      console.warn("[SalesCertBadge] appendSale failed", err);
+      toast({
+        title: "저장 실패",
+        description: "네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.",
+        variant: "destructive",
+      });
+    }
   };
 
   const goProducts = () => {
