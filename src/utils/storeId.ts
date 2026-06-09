@@ -129,32 +129,50 @@ export const slugifyStoreName = (raw: string): string => {
 };
 
 // 매장 코드가 이미 사용 중이면 뒤에 숫자(2,3,4...)를 붙여 고유 코드 반환
-export const resolveUniqueSlug = (baseSlug: string, ownerName: string): string => {
+export const resolveUniqueSlug = (
+  baseSlug: string,
+  ownerName: string,
+): string => {
   const base = (baseSlug || "").toUpperCase();
   if (!base) return base;
+
+  // 예약 코드 예외 처리
+  const upperName = ownerName.toUpperCase();
+  if (
+    base === "SC" &&
+    (upperName === "SC" || ownerName === "관리자" || upperName === "ADMIN")
+  )
+    return base;
+  if (base === "KOR" && (upperName === "KOR" || ownerName === "유관부서"))
+    return base;
+
+  // 마스터 매핑 매장은 항상 고정 코드 반환
+  if (BRANCH_CODE_MAP[ownerName] === base) return base;
+
+  // 현재 레지스트리에서 본인이 이미 이 base를 가지고 있으면 재사용
   const reg = getRegistry();
-  // 본인의 기존 코드는 그대로 유지
   if (reg[ownerName] === base) return base;
 
-  // 마스터 매핑된 매장이 본인 코드를 그대로 가져왔다면 통과
-  if (BRANCH_CODE_MAP[ownerName] === base) return base;
-  // 관리자 SC 코드 예외 (관리자/Admin/SC 명칭으로 등록 시)
-  const upperName = ownerName.toUpperCase();
-  if (base === "SC" && (upperName === "SC" || ownerName === "관리자" || upperName === "ADMIN")) return base;
-  if (base === "KOR" && (upperName === "KOR" || ownerName === "유관부서")) return base;
-
+  // 사용 중인 코드 집합 구성
   const used = new Set<string>([
-    "SC", "KOR",
+    "SC",
+    "KOR",
     ...Object.values(BRANCH_CODE_MAP),
-    ...Object.entries(reg).filter(([n]) => n !== ownerName).map(([, s]) => s),
+    ...Object.entries(reg)
+      .filter(([n]) => n !== ownerName)
+      .map(([, s]) => s),
   ]);
 
   if (!used.has(base)) return base;
-  for (let i = 2; i <= 99; i++) {
+
+  // suffix 숫자를 붙여 고유 코드 탐색 (상한 999로 확장하고 마지막엔 timestamp fallback)
+  for (let i = 2; i <= 999; i++) {
     const candidate = `${base}${i}`;
     if (!used.has(candidate)) return candidate;
   }
-  return base;
+
+  // 극단적 fallback: timestamp 기반 고유 코드 (충돌 원천 차단)
+  return `${base}${Date.now().toString(36).toUpperCase().slice(-4)}`;
 };
 
 export type StoreRegistry = Record<string, string>; // name → slug
