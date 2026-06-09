@@ -219,4 +219,4 @@ Lovable에서 **Share → Publish** 클릭 시 즉시 배포됩니다.
 
 ## 📄 라이선스
 
-© LG Electronics — 매장 운영용 내부 프로젝트
+© 세일즈 커뮤니케이션, 유통지원실
