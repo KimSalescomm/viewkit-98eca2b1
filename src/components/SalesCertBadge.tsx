@@ -322,7 +322,7 @@ const SalesCertBadge = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={handleSubmit}
+                  onClick={() => void handleSubmit()}
                   disabled={!canSubmit}
                   className="flex-[2] h-11 rounded-xl bg-[#3182CE] text-white text-sm font-semibold hover:bg-[#2c74b8] shadow-[0_6px_16px_-6px_rgba(49,130,206,0.5)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >
