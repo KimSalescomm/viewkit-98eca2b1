@@ -26,6 +26,7 @@ import { products } from "@/data/products";
 import { appendSale } from "@/utils/salesLog";
 import { ALL_BRANCHES, getManagerByBranch, isAdminStore, getBranchNameByCode } from "@/data/branches";
 import { getCurrentStore } from "@/utils/storeId";
+import { useToast } from "@/hooks/use-toast";
 
 // 구독을 맨 위로, 그 외 뷰킷 활성 제품 카드
 const PRODUCT_OPTIONS = ["구독", ...products.filter((p) => p.id !== "pc").map((p) => p.name)];
@@ -41,6 +42,7 @@ const SalesCertBadge = () => {
   const [dateOpen, setDateOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { trackEvent } = useAnalytics();
+  const { toast } = useToast();
 
   const currentStore = getCurrentStore();
   const isAdmin = isAdminStore(currentStore?.slug);
@@ -97,12 +99,21 @@ const SalesCertBadge = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!store || !product || !date) return;
     const soldAt = format(date, "yyyy-MM-dd");
     trackEvent("sales_certification", { branch: store, product, sold_at: soldAt });
-    appendSale({ branch: store, product, sold_at: soldAt });
-    setSubmitted(true);
+    try {
+      await appendSale({ branch: store, product, sold_at: soldAt });
+      setSubmitted(true);
+    } catch (err) {
+      console.warn("[SalesCertBadge] appendSale failed", err);
+      toast({
+        title: "저장 실패",
+        description: "네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.",
+        variant: "destructive",
+      });
+    }
   };
 
   const goProducts = () => {
@@ -311,7 +322,7 @@ const SalesCertBadge = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={handleSubmit}
+                  onClick={() => void handleSubmit()}
                   disabled={!canSubmit}
                   className="flex-[2] h-11 rounded-xl bg-[#3182CE] text-white text-sm font-semibold hover:bg-[#2c74b8] shadow-[0_6px_16px_-6px_rgba(49,130,206,0.5)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >

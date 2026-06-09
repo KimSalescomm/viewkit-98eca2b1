@@ -20,27 +20,36 @@ const ensureSessionId = (): string => {
 
 let lastLogged = "";
 let lastLoggedAt = 0;
+let inflightLog = false; // 진행 중인 insert 중복 방지
 
 export const logPageView = async (path: string) => {
   // URL에서 store_id 쿼리 파라미터는 제거하고 경로 부분만 사용
   const cleanPath = path.split("?")[0] || path;
 
-  // 1초 내 동일 경로 중복 방지
+  // 3초 내 동일 경로 중복 방지 (StrictMode 이중 마운트 대응)
   const now = Date.now();
-  if (lastLogged === cleanPath && now - lastLoggedAt < 1000) return;
+  if (lastLogged === cleanPath && now - lastLoggedAt < 3000) return;
+  // 진행 중인 insert가 있으면 skip
+  if (inflightLog) return;
   lastLogged = cleanPath;
   lastLoggedAt = now;
+  inflightLog = true;
 
   const store = getCurrentStore();
   // 지점 미설정 상태에서는 기록하지 않음 (모달 노출 단계)
-  if (!store?.slug) return;
+  if (!store?.slug) {
+    inflightLog = false;
+    return;
+  }
 
   const slug = store.slug.toUpperCase();
   // 관리자(SC) / 본사(KOR) 계정은 집계에서 제외
-  if (isAdminStore(slug) || slug === "KOR") return;
+  if (isAdminStore(slug) || slug === "KOR") {
+    inflightLog = false;
+    return;
+  }
 
   const name = store.name || getBranchNameByCode(slug) || slug;
-
 
   try {
     await supabase.from("page_views").insert({
@@ -51,5 +60,7 @@ export const logPageView = async (path: string) => {
     });
   } catch {
     /* noop - 분석은 실패해도 앱 동작에 영향 없음 */
+  } finally {
+    inflightLog = false;
   }
 };

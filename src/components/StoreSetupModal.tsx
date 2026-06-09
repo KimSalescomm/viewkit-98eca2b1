@@ -317,7 +317,17 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
           {finalSlug && name && (
             <div className="min-w-0 overflow-hidden rounded-lg border border-gray-200 bg-gray-50 p-2.5 space-y-2">
               <p className="flex min-w-0 flex-col gap-0.5 text-xs text-gray-600 sm:flex-row sm:flex-wrap">
-                <span>공유 URL <span className="font-mono text-[10px] text-[#A50034]">· {finalSlug}{isMasterBranch ? "" : " (자동)"}</span></span>
+                <span>
+                  공유 URL{" "}
+                  <span className="font-mono text-[10px] text-[#A50034]">
+                    · {finalSlug}
+                    {isMasterBranch
+                      ? " (마스터 코드)"
+                      : registry[name.trim()]
+                        ? " (기존 코드 유지)"
+                        : " (자동 발급)"}
+                  </span>
+                </span>
                 <span className="text-[11px] text-gray-400">다른 기기에서 동일 매장으로 집계</span>
               </p>
               <div className="grid min-w-0 gap-2">
