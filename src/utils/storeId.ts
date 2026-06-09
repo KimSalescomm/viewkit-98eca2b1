@@ -193,17 +193,37 @@ export const saveRegistry = (reg: StoreRegistry) => {
   }
 };
 
-export const registerStore = (name: string, slugOverride?: string): { name: string; slug: string } => {
+export const registerStore = (
+  name: string,
+  slugOverride?: string,
+): { name: string; slug: string } => {
   const initialName = (name || "").trim();
-  const initialBase = (slugOverride || slugifyStoreName(initialName)).toUpperCase();
+  const initialBase = (
+    slugOverride || slugifyStoreName(initialName)
+  ).toUpperCase();
   const normalized = normalizeStoreIdentity(initialName, initialBase);
   const cleanName = normalized.name;
   const base = normalized.slug;
-  // SC/KOR 등 예약 코드와 마스터 코드는 그대로(자기 자신이면 통과)
-  const slug = normalizeStoreIdentity(cleanName, resolveUniqueSlug(base, cleanName)).slug;
+
+  // ── 핵심 수정: 등록 전에 기존 레지스트리를 먼저 읽어 동일 이름의 기존 코드를 우선 재사용 ──
   const reg = getRegistry();
+  const existingSlug = reg[cleanName]; // 이미 등록된 코드가 있으면 재사용
+
+  let slug: string;
+  if (existingSlug) {
+    // 같은 이름으로 재등록 시: 기존 코드를 그대로 유지 (suffix 재발급 방지)
+    slug = existingSlug;
+  } else {
+    // 신규 등록: 충돌 없는 고유 코드 발급
+    slug = normalizeStoreIdentity(
+      cleanName,
+      resolveUniqueSlug(base, cleanName),
+    ).slug;
+  }
+
   reg[cleanName] = slug;
   saveRegistry(reg);
+
   try {
     localStorage.setItem(CURRENT_NAME_KEY, cleanName);
     localStorage.setItem(CURRENT_ID_KEY, slug);
