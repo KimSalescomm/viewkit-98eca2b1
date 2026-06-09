@@ -118,6 +118,48 @@ const StoreVisitStats = () => {
     };
   }, [rows, stats]);
 
+  const handleExport = () => {
+    const rangeLabel = RANGES.find((r) => r.key === range)?.label || range;
+    const header = ["순위", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"];
+    const lines = stats.map((s, i) => [
+      i + 1,
+      s.store_name,
+      s.store_id,
+      s.views,
+      s.visits,
+      format(new Date(s.lastAt), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
+    ]);
+    const summary = [
+      ["기간", rangeLabel],
+      ["총 페이지뷰", totals.views],
+      ["총 방문(세션)", totals.visits],
+      ["활성 지점", totals.stores],
+      [],
+      header,
+      ...lines,
+    ];
+    const csv = summary
+      .map((row) =>
+        row
+          .map((cell) => {
+            const v = String(cell ?? "");
+            return /[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v;
+          })
+          .join(","),
+      )
+      .join("\n");
+    // BOM for Excel Korean compatibility
+    const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `store-visit-stats_${rangeLabel}_${format(new Date(), "yyyyMMdd_HHmm")}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5 mb-6">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
@@ -127,7 +169,8 @@ const StoreVisitStats = () => {
           </div>
           <h2 className="text-sm font-semibold text-slate-900">지점별 접속 통계</h2>
         </div>
-        <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5">
+        <div className="flex items-center gap-2">
+          <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5">
           {RANGES.map((r) => (
             <button
               key={r.key}
