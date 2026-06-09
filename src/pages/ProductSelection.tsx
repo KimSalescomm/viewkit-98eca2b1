@@ -12,6 +12,7 @@ import {
   Wind,
   Monitor,
   UtensilsCrossed,
+  BookOpen,
   type LucideIcon,
 } from "lucide-react";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
