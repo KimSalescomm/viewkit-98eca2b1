@@ -3,7 +3,6 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useContent } from "@/contexts/ContentContext";
 import SafeImage from "@/components/SafeImage";
 import {
-  HelpCircle,
   Store,
   Tv,
   Box,
@@ -189,15 +188,6 @@ const ProductSelection = () => {
             <MobileAccessQR storeSlug={currentStore?.slug} variant="segment" />
             <OrientationToggle variant="segment" />
           </div>
-          <Link
-            to="/product/refrigerator/manual"
-            className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-white border border-white/70 shadow-sm text-gray-400 hover:text-[#A50034] transition-colors"
-            title="운영 매뉴얼"
-            aria-label="운영 매뉴얼 열기"
-          >
-            <HelpCircle className="w-5 h-5" aria-hidden="true" />
-            <span className="sr-only">운영 매뉴얼</span>
-          </Link>
         </div>
 
         {/* Header Section */}
