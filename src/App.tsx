@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AnalyticsProvider from "./components/AnalyticsProvider";
+import Footer from "./components/Footer";
 import { OrientationProvider } from "./hooks/useOrientation";
 import { ContentProvider } from "./contexts/ContentContext";
 import ProductSelection from "./pages/ProductSelection";
