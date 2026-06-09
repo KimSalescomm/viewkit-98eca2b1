@@ -42,6 +42,7 @@ const SalesCertBadge = () => {
   const [dateOpen, setDateOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { trackEvent } = useAnalytics();
+  const { toast } = useToast();
 
   const currentStore = getCurrentStore();
   const isAdmin = isAdminStore(currentStore?.slug);
