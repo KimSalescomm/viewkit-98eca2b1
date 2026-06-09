@@ -26,6 +26,7 @@ import { products } from "@/data/products";
 import { appendSale } from "@/utils/salesLog";
 import { ALL_BRANCHES, getManagerByBranch, isAdminStore, getBranchNameByCode } from "@/data/branches";
 import { getCurrentStore } from "@/utils/storeId";
+import { useToast } from "@/hooks/use-toast";
 
 // 구독을 맨 위로, 그 외 뷰킷 활성 제품 카드
 const PRODUCT_OPTIONS = ["구독", ...products.filter((p) => p.id !== "pc").map((p) => p.name)];
