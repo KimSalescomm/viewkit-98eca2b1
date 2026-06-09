@@ -14,7 +14,7 @@ import SalesCertBadge from "./components/SalesCertBadge";
 const Home = lazy(() => import("./pages/Home"));
 const Subscription = lazy(() => import("./pages/Subscription"));
 const FeatureDetail = lazy(() => import("./pages/FeatureDetail"));
-const Manual = lazy(() => import("./pages/Manual"));
+
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Ranking = lazy(() => import("./pages/Ranking"));
 const Admin = lazy(() => import("./pages/Admin"));
@@ -47,7 +47,7 @@ const App = () => (
                   <Route path="/subscription" element={<Subscription />} />
                   <Route path="/product/:productId" element={<Home />} />
                   <Route path="/product/:productId/feature/:id" element={<FeatureDetail />} />
-                  <Route path="/product/:productId/manual" element={<Manual />} />
+                  
                   <Route path="/ranking" element={<Ranking />} />
                   <Route path="/admin" element={<Admin />} />
                   <Route path="/legal" element={<Legal />} />

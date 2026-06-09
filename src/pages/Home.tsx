@@ -1,7 +1,6 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import FeatureCard from "@/components/FeatureCard";
 import SafeImage from "@/components/SafeImage";
-import { HelpCircle } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
 import { useContent } from "@/contexts/ContentContext";
 
@@ -40,15 +39,6 @@ const Home = () => {
           </Link>
           <div className="flex items-center gap-2">
             <OrientationToggle />
-            <Link
-              to={`/product/${productId}/manual`}
-              className="inline-flex items-center gap-1.5 text-gray-400 hover:text-purple-600 transition-colors"
-              title="운영 매뉴얼"
-              aria-label="운영 매뉴얼 열기"
-            >
-              <HelpCircle className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
-              <span className="sr-only">운영 매뉴얼</span>
-            </Link>
           </div>
         </div>
 
