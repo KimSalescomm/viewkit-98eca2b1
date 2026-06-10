@@ -42,7 +42,7 @@ const EventRankingModal = ({ open, onClose }: Props) => {
 
   return (
     <div
-      className="fixed inset-0 z-[130] flex items-center justify-center bg-black/45 backdrop-blur-sm px-5 py-6 animate-in fade-in duration-200"
+      className="fixed inset-0 z-[130] flex items-center justify-center bg-slate-900/15 backdrop-blur-md px-5 py-6 animate-in fade-in duration-150"
       role="dialog"
       aria-modal="true"
     >
