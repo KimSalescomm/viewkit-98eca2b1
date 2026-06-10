@@ -174,6 +174,12 @@ export const getStoreCategoryLabel = (branch: string): string | null => {
   return isSpecialtyManager(m) ? "전문점" : `${m} 담당`;
 };
 
+/** 프론트엔드 표시용: '베스트샵' 접두어 제거 */
+export const cleanBranchName = (branch: string): string => {
+  if (!branch) return branch;
+  return branch.replace(/^베스트샵\s*/, "");
+};
+
 
 // ───────────────────────────────────────────────────────────────
 // 지점별 고유 영문 코드 (수동 매핑 · 슬러그 충돌 방지용)

@@ -3,7 +3,7 @@ import { Trophy, RefreshCw, X, Activity } from "lucide-react";
 import { useStoreRanking } from "@/hooks/useStoreRanking";
 import { RANKING_CONFIG, getCurrentMonthRange } from "@/data/event";
 import { getCurrentStore } from "@/utils/storeId";
-import { isAdminStore, getBranchNameByCode } from "@/data/branches";
+import { isAdminStore, getBranchNameByCode, cleanBranchName } from "@/data/branches";
 
 interface Props {
   open: boolean;
