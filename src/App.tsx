@@ -58,7 +58,7 @@ const App = () => (
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
-              <SalesCertBadge />
+              <EventRankingBadge />
             </ContentProvider>
           </AnalyticsProvider>
         </OrientationProvider>
