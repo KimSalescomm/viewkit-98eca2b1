@@ -338,6 +338,65 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     URL.revokeObjectURL(url);
   };
 
+  const handleExportVisits = async () => {
+    const esc = (v: unknown) => {
+      const s = String(v ?? "");
+      return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+    };
+    const toRow = (arr: unknown[]) => arr.map(esc).join(",");
+    const SITE_OPEN = "2026-06-08T00:00:00Z";
+    const { data } = await supabase
+      .from("page_views")
+      .select("store_id, store_name, session_id, created_at")
+      .gte("created_at", SITE_OPEN)
+      .order("created_at", { ascending: false })
+      .limit(10000);
+    const pvRows = (data || []).filter((r) => {
+      const sid = (r.store_id || "").toUpperCase();
+      return sid !== "SC" && sid !== "KOR";
+    });
+    const map = new Map<string, { name: string; views: number; sessions: Set<string>; lastAt: string }>();
+    pvRows.forEach((r) => {
+      const cur = map.get(r.store_id);
+      if (cur) {
+        cur.views += 1;
+        cur.sessions.add(r.session_id);
+        if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
+      } else {
+        map.set(r.store_id, {
+          name: r.store_name || r.store_id,
+          views: 1,
+          sessions: new Set([r.session_id]),
+          lastAt: r.created_at,
+        });
+      }
+    });
+    const stats = [...map.entries()]
+      .map(([code, v]) => ({ code, name: v.name, views: v.views, visits: v.sessions.size, lastAt: v.lastAt }))
+      .sort((a, b) => b.views - a.views);
+    const lines = [
+      toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"]),
+      ...stats.map((s, i) =>
+        toRow([
+          i + 1,
+          s.name,
+          s.code,
+          s.views,
+          s.visits,
+          format(new Date(s.lastAt), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
+        ]),
+      ),
+    ];
+    const csv = lines.join("\n");
+    const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `visits_${format(new Date(), "yyyyMMdd_HHmm")}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   const selectClass =
     "h-9 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 " +
     "focus:outline-none focus:ring-2 focus:ring-[#3182CE]/15 focus:border-[#3182CE]";
@@ -370,9 +429,6 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
         <p className="text-sm text-slate-500 mb-6">
           전체 {sales.length}건 · 필터 결과 {filtered.length}건
         </p>
-        <StoreVisitStats />
-
-
 
         {/* 필터 / 액션 */}
         <div className="rounded-2xl border border-slate-200 bg-white p-4 mb-6 flex flex-wrap items-end gap-3">
@@ -411,18 +467,25 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
 
           <button
             type="button"
+            onClick={() => void handleExportAll()}
+            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg bg-[#3182CE] text-white text-xs font-semibold hover:bg-[#2c74b8] transition-colors"
+          >
+            <Download className="w-3.5 h-3.5" /> 전체 대시보드 CSV
+          </button>
+          <button
+            type="button"
+            onClick={() => void handleExportVisits()}
+            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors"
+          >
+            <Download className="w-3.5 h-3.5" /> 접속기록 CSV
+          </button>
+          <button
+            type="button"
             onClick={handleExport}
             disabled={filtered.length === 0}
             className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <Download className="w-3.5 h-3.5" /> 판매기록 CSV
-          </button>
-          <button
-            type="button"
-            onClick={() => void handleExportAll()}
-            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg bg-[#3182CE] text-white text-xs font-semibold hover:bg-[#2c74b8] transition-colors"
-          >
-            <Download className="w-3.5 h-3.5" /> 전체 대시보드 CSV
           </button>
           <button
             type="button"
@@ -433,6 +496,9 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
             <Trash2 className="w-3.5 h-3.5" /> 전체 초기화
           </button>
         </div>
+
+        <StoreVisitStats />
+
 
         {filtered.length === 0 ? (
           <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center">

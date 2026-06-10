@@ -187,17 +187,9 @@ const StoreVisitStats = () => {
             </button>
           ))}
           </div>
-          <button
-            type="button"
-            onClick={handleExport}
-            disabled={stats.length === 0}
-            className="inline-flex items-center gap-1.5 h-8 px-3 rounded-lg border border-slate-200 bg-white text-xs font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-          >
-            <Download className="w-3.5 h-3.5" />
-            엑셀 내보내기
-          </button>
         </div>
       </div>
+
 
       <div className="grid grid-cols-3 gap-3 mb-4">
         <div className="rounded-xl bg-slate-50/70 px-4 py-3">
