@@ -56,18 +56,18 @@ const EventRankingModal = ({ open, onClose }: Props) => {
           <X className="w-4 h-4" />
         </button>
 
-        {/* Header — 차분한 톤, 행사/이벤트 표현 제거 */}
-        <div className="relative px-7 pt-9 pb-7 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-100 border-b border-slate-100">
+        {/* Header — 밝은 화이트 + LG 레드 액센트 */}
+        <div className="relative px-7 pt-9 pb-7 bg-white border-b border-slate-100">
           <div className="relative flex flex-col items-center text-center">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-[10.5px] font-bold tracking-[0.18em] uppercase text-emerald-600 mb-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-[10.5px] font-bold tracking-[0.18em] uppercase text-emerald-600 mb-4">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
               </span>
               LIVE
             </div>
-            <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shadow-[0_10px_24px_-10px_rgba(15,23,42,0.5)] mb-3">
-              <Activity className="w-6 h-6 text-white" strokeWidth={2.4} />
+            <div className="w-14 h-14 rounded-2xl bg-[#A50034] flex items-center justify-center shadow-[0_12px_28px_-8px_rgba(165,0,52,0.45)] mb-4">
+              <Activity className="w-7 h-7 text-white" strokeWidth={2.4} />
             </div>
             <h2
               className="text-[20px] sm:text-[22px] font-extrabold text-slate-900 leading-snug"
@@ -86,6 +86,7 @@ const EventRankingModal = ({ open, onClose }: Props) => {
             </p>
           </div>
         </div>
+
 
         {/* Ranking list */}
         <div className="px-6 pt-5 pb-2">
@@ -116,24 +117,24 @@ const EventRankingModal = ({ open, onClose }: Props) => {
                   key={r.store_id}
                   className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl border transition-colors ${
                     isMine
-                      ? "bg-[#A50034]/5 border-[#A50034]/40"
+                      ? "bg-[#A50034]/10 border-[#A50034]/40 shadow-sm shadow-[#A50034]/10"
                       : i === 0
-                        ? "bg-slate-900 border-slate-900 text-white"
+                        ? "bg-[#A50034]/5 border-[#A50034]/20 shadow-sm"
                         : "bg-slate-50 border-slate-100"
                   }`}
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <span
                       className={`w-6 text-center text-[14px] font-extrabold tabular-nums ${
-                        isMine ? "text-[#A50034]" : i === 0 ? "text-amber-300" : "text-slate-400"
+                        isMine ? "text-[#A50034]" : i === 0 ? "text-[#A50034]" : "text-slate-400"
                       }`}
                     >
                       {i + 1}
                     </span>
-                    {i === 0 && !isMine && <Trophy className="w-3.5 h-3.5 text-amber-300 shrink-0" />}
+                    {i === 0 && !isMine && <Trophy className="w-3.5 h-3.5 text-amber-500 shrink-0" />}
                     <span
                       className={`truncate text-[14px] font-semibold ${
-                        isMine ? "text-[#A50034]" : i === 0 ? "text-white" : "text-slate-900"
+                        isMine ? "text-[#A50034]" : "text-slate-900"
                       }`}
                       style={{ wordBreak: "keep-all" }}
                     >
@@ -148,16 +149,17 @@ const EventRankingModal = ({ open, onClose }: Props) => {
                   <div className="text-right shrink-0">
                     <div
                       className={`text-[13px] font-extrabold tabular-nums ${
-                        isMine ? "text-[#A50034]" : i === 0 ? "text-white" : "text-slate-900"
+                        isMine ? "text-[#A50034]" : i === 0 ? "text-[#A50034]" : "text-slate-900"
                       }`}
                     >
                       {r.sessions.toLocaleString()}
                     </div>
-                    <div className={`text-[10px] ${i === 0 && !isMine ? "text-slate-300" : "text-slate-400"}`}>
+                    <div className="text-[10px] text-slate-400">
                       접속
                     </div>
                   </div>
                 </li>
+
               );
             })}
           </ol>
@@ -197,7 +199,7 @@ const EventRankingModal = ({ open, onClose }: Props) => {
           <button
             type="button"
             onClick={onClose}
-            className="w-full h-12 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white text-[15px] font-bold tracking-tight transition-colors"
+            className="w-full h-12 rounded-2xl bg-[#A50034] hover:bg-[#800028] text-white text-[15px] font-bold tracking-tight transition-colors shadow-lg shadow-[#A50034]/25 active:scale-[0.98]"
           >
             확인
           </button>
