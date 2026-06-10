@@ -16,15 +16,37 @@ const EventRankingAutoPopup = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const store = getCurrentStore();
-    if (store && isAdminStore(store.slug)) return; // SC 제외
-
+    // 팝업 우선순위: 지점 설정(StoreSetupModal) > 접속 통계(랭킹) 팝업
+    // 지점이 아직 설정되지 않은 최초 접속의 경우, 랭킹 팝업을 띄우지 않고
+    // 지점이 등록될 때까지 대기한다. (storeId 저장 시 storage 이벤트로 재시도)
     const today = getTodayKST();
-    if (localStorage.getItem(DAILY_KEY) === today) return; // 오늘 이미 노출됨
 
-    const t = window.setTimeout(() => {
+    const tryOpen = () => {
+      const store = getCurrentStore();
+      if (!store) return false; // 지점 미설정 → 지점 설정 팝업이 먼저 처리
+      if (isAdminStore(store.slug)) return true; // SC 제외 (다시 시도 안 함)
+      if (localStorage.getItem(DAILY_KEY) === today) return true;
       localStorage.setItem(DAILY_KEY, today);
       setOpen(true);
+      return true;
+    };
+
+    const t = window.setTimeout(() => {
+      if (tryOpen()) return;
+      // 지점 설정 후 재확인 (storage 이벤트 + 폴링)
+      const onStorage = (e: StorageEvent) => {
+        if (e.key === "viewkit_current_store" && tryOpen()) {
+          window.removeEventListener("storage", onStorage);
+          window.clearInterval(poll);
+        }
+      };
+      window.addEventListener("storage", onStorage);
+      const poll = window.setInterval(() => {
+        if (tryOpen()) {
+          window.removeEventListener("storage", onStorage);
+          window.clearInterval(poll);
+        }
+      }, 800);
     }, 800);
     return () => window.clearTimeout(t);
   }, []);
