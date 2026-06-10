@@ -49,9 +49,12 @@ const buildValue = (
   featuresMap: payload.featuresMap,
   products: payload.products,
   getProductById: (id) => payload.products.find((p) => p.id === id),
-  getFeaturesByProductId: (productId) => payload.featuresMap[productId] ?? [],
+  getFeaturesByProductId: (productId) =>
+    (payload.featuresMap[productId] ?? []).filter((f) => !f.disabled),
   getFeatureById: (productId, featureId) =>
-    (payload.featuresMap[productId] ?? []).find((f) => f.id === featureId),
+    (payload.featuresMap[productId] ?? [])
+      .filter((f) => !f.disabled)
+      .find((f) => f.id === featureId),
   source,
   publishedAt,
   ready,
