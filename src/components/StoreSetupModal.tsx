@@ -183,7 +183,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                   <span className="font-medium text-slate-900 truncate">{name}</span>
                   {manager && (
                     <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 shrink-0">
-                      {manager} 담당
+                      {manager}
                     </span>
                   )}
                 </div>
