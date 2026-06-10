@@ -199,7 +199,7 @@ const EventRankingModal = ({ open, onClose }: Props) => {
           <button
             type="button"
             onClick={onClose}
-            className="w-full h-12 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white text-[15px] font-bold tracking-tight transition-colors"
+            className="w-full h-12 rounded-2xl bg-[#A50034] hover:bg-[#800028] text-white text-[15px] font-bold tracking-tight transition-colors shadow-lg shadow-[#A50034]/25 active:scale-[0.98]"
           >
             확인
           </button>
