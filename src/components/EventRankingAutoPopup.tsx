@@ -22,15 +22,17 @@ const EventRankingAutoPopup = () => {
     const today = getTodayKST();
     if (localStorage.getItem(DAILY_KEY) === today) return; // 오늘 이미 노출됨
 
-    const t = window.setTimeout(() => {
-      localStorage.setItem(DAILY_KEY, today);
-      setOpen(true);
-    }, 800);
-    return () => window.clearTimeout(t);
+    // 즉시 노출 — 어두워졌다가 다시 밝아지는 시각적 단절을 제거
+    // 노출 기록은 닫는 시점에 저장하여 새로고침 시 재표시되지 않도록 함
+    const raf = window.requestAnimationFrame(() => setOpen(true));
+    return () => window.cancelAnimationFrame(raf);
   }, []);
 
   const handleClose = () => {
     setOpen(false);
+    try {
+      localStorage.setItem(DAILY_KEY, getTodayKST());
+    } catch { /* noop */ }
     try {
       window.dispatchEvent(new Event("viewkit:ranking-popup-closed"));
     } catch { /* noop */ }
