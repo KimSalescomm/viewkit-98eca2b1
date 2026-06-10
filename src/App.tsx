@@ -9,7 +9,8 @@ import Footer from "./components/Footer";
 import { OrientationProvider } from "./hooks/useOrientation";
 import { ContentProvider } from "./contexts/ContentContext";
 import ProductSelection from "./pages/ProductSelection";
-import EventRankingBadge from "./components/EventRankingBadge";
+import SalesCertBadge from "./components/SalesCertBadge";
+import EventRankingAutoPopup from "./components/EventRankingAutoPopup";
 
 const Home = lazy(() => import("./pages/Home"));
 const Subscription = lazy(() => import("./pages/Subscription"));
@@ -58,7 +59,8 @@ const App = () => (
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
-              <EventRankingBadge />
+              <SalesCertBadge />
+              <EventRankingAutoPopup />
             </ContentProvider>
           </AnalyticsProvider>
         </OrientationProvider>
