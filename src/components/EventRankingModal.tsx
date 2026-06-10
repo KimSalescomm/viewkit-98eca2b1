@@ -56,18 +56,18 @@ const EventRankingModal = ({ open, onClose }: Props) => {
           <X className="w-4 h-4" />
         </button>
 
-        {/* Header — 차분한 톤, 행사/이벤트 표현 제거 */}
-        <div className="relative px-7 pt-9 pb-7 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-100 border-b border-slate-100">
+        {/* Header — 밝은 화이트 + LG 레드 액센트 */}
+        <div className="relative px-7 pt-9 pb-7 bg-white border-b border-slate-100">
           <div className="relative flex flex-col items-center text-center">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-[10.5px] font-bold tracking-[0.18em] uppercase text-emerald-600 mb-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-[10.5px] font-bold tracking-[0.18em] uppercase text-emerald-600 mb-4">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
               </span>
               LIVE
             </div>
-            <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center shadow-[0_10px_24px_-10px_rgba(15,23,42,0.5)] mb-3">
-              <Activity className="w-6 h-6 text-white" strokeWidth={2.4} />
+            <div className="w-14 h-14 rounded-2xl bg-[#A50034] flex items-center justify-center shadow-[0_12px_28px_-8px_rgba(165,0,52,0.45)] mb-4">
+              <Activity className="w-7 h-7 text-white" strokeWidth={2.4} />
             </div>
             <h2
               className="text-[20px] sm:text-[22px] font-extrabold text-slate-900 leading-snug"
@@ -86,6 +86,7 @@ const EventRankingModal = ({ open, onClose }: Props) => {
             </p>
           </div>
         </div>
+
 
         {/* Ranking list */}
         <div className="px-6 pt-5 pb-2">
