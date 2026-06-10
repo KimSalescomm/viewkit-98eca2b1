@@ -413,9 +413,16 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
             type="button"
             onClick={handleExport}
             disabled={filtered.length === 0}
-            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg bg-[#3182CE] text-white text-xs font-semibold hover:bg-[#2c74b8] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            <Download className="w-3.5 h-3.5" /> CSV 내보내기
+            <Download className="w-3.5 h-3.5" /> 판매기록 CSV
+          </button>
+          <button
+            type="button"
+            onClick={() => void handleExportAll()}
+            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg bg-[#3182CE] text-white text-xs font-semibold hover:bg-[#2c74b8] transition-colors"
+          >
+            <Download className="w-3.5 h-3.5" /> 전체 대시보드 CSV
           </button>
           <button
             type="button"
