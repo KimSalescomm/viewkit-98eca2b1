@@ -145,9 +145,34 @@ const ProductSelection = () => {
       return;
     }
 
-    // 3) 둘 다 없음 → 최초 진입, 입력 강제
+    // 3) 둘 다 없음 → 최초 진입
+    // 이벤트 랭킹 팝업(BEST 5)이 오늘 노출 예정이면 먼저 보여주고,
+    // 팝업이 닫힌 뒤 지점 설정 모달을 띄운다.
     setModalDismissible(false);
-    setModalOpen(true);
+    const today = (() => {
+      const d = new Date();
+      d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+      return d.toISOString().slice(0, 10);
+    })();
+    const rankingSeenToday = localStorage.getItem("viewkit_ranking_seen_date") === today;
+    if (rankingSeenToday) {
+      setModalOpen(true);
+    } else {
+      const onClosed = () => {
+        setModalOpen(true);
+        window.removeEventListener("viewkit:ranking-popup-closed", onClosed);
+      };
+      window.addEventListener("viewkit:ranking-popup-closed", onClosed);
+      // 안전장치: 팝업이 어떤 이유로든 뜨지 않으면 6초 후 모달 표시
+      const fallback = window.setTimeout(() => {
+        window.removeEventListener("viewkit:ranking-popup-closed", onClosed);
+        setModalOpen((prev) => prev || true);
+      }, 6000);
+      return () => {
+        window.removeEventListener("viewkit:ranking-popup-closed", onClosed);
+        window.clearTimeout(fallback);
+      };
+    }
   }, [location.pathname, location.search, navigate]);
 
   const handleStoreSaved = (info: { name: string; slug: string }) => {

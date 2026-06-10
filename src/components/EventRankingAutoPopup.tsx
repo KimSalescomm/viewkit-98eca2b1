@@ -29,7 +29,14 @@ const EventRankingAutoPopup = () => {
     return () => window.clearTimeout(t);
   }, []);
 
-  return <EventRankingModal open={open} onClose={() => setOpen(false)} />;
+  const handleClose = () => {
+    setOpen(false);
+    try {
+      window.dispatchEvent(new Event("viewkit:ranking-popup-closed"));
+    } catch { /* noop */ }
+  };
+
+  return <EventRankingModal open={open} onClose={handleClose} />;
 };
 
 export default EventRankingAutoPopup;
