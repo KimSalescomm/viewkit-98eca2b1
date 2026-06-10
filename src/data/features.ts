@@ -45,6 +45,7 @@ export interface Feature {
   disclaimers?: string[];
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
   tabs?: FeatureTab[];
+  disabled?: boolean;
 }
 
 export const featuresMap: Record<string, Feature[]> = {
@@ -711,6 +712,7 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "세탁이 끝나기 전, 건조기를 미리 예열해두는 똑똑한 기능이에요.\n\n세탁 완료 후 바로 건조가 시작되니 옷을 옮기고 기다리는 번거로움 없이, 집안일을 더 빠르고 효율적으로 마치실 수 있어요.",
       highlights: ["건조기 사전 예열", "세탁→건조 끊김 없이", "시간 절약", "효율적인 가사 동선"],
+      disabled: true,
     },
     {
       id: "6",
@@ -723,6 +725,7 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "통 내부는 물론 보이지 않는 건조기 내부까지 최대 12포인트를 살균해 유해 세균 4종을 99.9% 제거합니다.\n\n세탁기와 건조기를 따로 관리할 필요 없이 한 번의 케어로 위생을 지켜드려요.",
       highlights: ["최대 12포인트 살균", "유해 세균 4종 99.9% 제거", "세탁통·건조기 동시 케어", "위생 걱정 끝"],
+      disabled: true,
     },
   ],
 
