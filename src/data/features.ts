@@ -45,6 +45,7 @@ export interface Feature {
   disclaimers?: string[];
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
   tabs?: FeatureTab[];
+  disabled?: boolean;
 }
 
 export const featuresMap: Record<string, Feature[]> = {
