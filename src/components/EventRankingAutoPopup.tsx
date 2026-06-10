@@ -3,15 +3,29 @@ import EventRankingModal from "@/components/EventRankingModal";
 import { getCurrentStore } from "@/utils/storeId";
 import { isAdminStore } from "@/data/branches";
 
-// 매 세션 1회 노출 (sessionStorage). 같은 탭 새로고침에는 다시 뜨지 않음.
-const SEEN_KEY = "viewkit_ranking_seen_session";
+// 하루 1회 노출 (localStorage). 날짜가 바뀌면 다시 노출.
+const DAILY_KEY = "viewkit_ranking_seen_date";
+
+function getTodayKST(): string {
+  const now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+  return now.toISOString().slice(0, 10); // YYYY-MM-DD
+}
 
 const EventRankingAutoPopup = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    // 테스트 모드: 새로고침마다 항상 노출 (SC 포함)
-    const t = window.setTimeout(() => setOpen(true), 800);
+    const store = getCurrentStore();
+    if (store && isAdminStore(store.slug)) return; // SC 제외
+
+    const today = getTodayKST();
+    if (localStorage.getItem(DAILY_KEY) === today) return; // 오늘 이미 노출됨
+
+    const t = window.setTimeout(() => {
+      localStorage.setItem(DAILY_KEY, today);
+      setOpen(true);
+    }, 800);
     return () => window.clearTimeout(t);
   }, []);
 
