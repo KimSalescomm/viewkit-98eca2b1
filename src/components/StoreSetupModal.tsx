@@ -6,7 +6,7 @@ import { Store, Copy, Search, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { registerStore, slugifyStoreName, getRegistry, resolveUniqueSlug, normalizeStoreIdentity } from "@/utils/storeId";
 import { logPageView } from "@/utils/pageViewLog";
-import { ALL_BRANCHES, getManagerByBranch, BRANCH_CODE_MAP, ADMIN_STORE_CODE, DEALER_TO_BRANCH_MAP, resolveBranchByDealer } from "@/data/branches";
+import { ALL_BRANCHES, getManagerByBranch, getStoreCategoryLabel, BRANCH_CODE_MAP, ADMIN_STORE_CODE, DEALER_TO_BRANCH_MAP, resolveBranchByDealer } from "@/data/branches";
 import { cn } from "@/lib/utils";
 
 const ADMIN_ENTRY = { name: "관리자", slug: ADMIN_STORE_CODE };
@@ -89,7 +89,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
 
   const isAdmin = name.trim().toUpperCase() === ADMIN_STORE_CODE || finalSlug === ADMIN_STORE_CODE;
   const isMasterBranch = !!BRANCH_CODE_MAP[name.trim()];
-  const manager = isAdmin ? "관리자 계정" : getManagerByBranch(name.trim());
+  const manager = isAdmin ? "관리자 계정" : getStoreCategoryLabel(name.trim());
 
   const canSave = name.trim().length > 0 && finalSlug.length > 0;
 
@@ -183,7 +183,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                   <span className="font-medium text-slate-900 truncate">{name}</span>
                   {manager && (
                     <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 shrink-0">
-                      {manager} 담당
+                      {manager}
                     </span>
                   )}
                 </div>

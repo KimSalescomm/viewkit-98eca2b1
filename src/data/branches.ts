@@ -161,6 +161,20 @@ export const getManagerByBranch = (branch: string): string | null => {
   return null;
 };
 
+// 전문점(베스트샵 팀 / 백화점영업담당) 여부 판정
+export const isSpecialtyManager = (manager: string | null | undefined): boolean => {
+  if (!manager) return false;
+  return manager.endsWith("팀") || manager === "백화점영업담당";
+};
+
+// 현재 매장 카테고리 라벨: 전문점은 "전문점", 그 외는 담당명 그대로
+export const getStoreCategoryLabel = (branch: string): string | null => {
+  const m = getManagerByBranch(branch);
+  if (!m) return null;
+  return isSpecialtyManager(m) ? "전문점" : `${m} 담당`;
+};
+
+
 // ───────────────────────────────────────────────────────────────
 // 지점별 고유 영문 코드 (수동 매핑 · 슬러그 충돌 방지용)
 // 규칙: 3자리 대문자, 'SC' 는 관리자 코드로 예약
