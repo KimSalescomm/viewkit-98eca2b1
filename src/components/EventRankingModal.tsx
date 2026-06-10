@@ -138,7 +138,7 @@ const EventRankingModal = ({ open, onClose }: Props) => {
                       }`}
                       style={{ wordBreak: "keep-all" }}
                     >
-                      {r.store_name}
+                      {cleanBranchName(r.store_name)}
                       {isMine && (
                         <span className="ml-1.5 text-[10px] px-1.5 py-0.5 rounded-full bg-[#A50034] text-white align-middle">
                           우리 매장
@@ -172,7 +172,7 @@ const EventRankingModal = ({ open, onClose }: Props) => {
                   {myRankIndex + 1}
                 </span>
                 <span className="truncate text-[13.5px] font-semibold text-[#A50034]">
-                  {myName}
+                  {cleanBranchName(myName)}
                   <span className="ml-1.5 text-[10px] px-1.5 py-0.5 rounded-full bg-[#A50034] text-white align-middle">
                     우리 매장
                   </span>

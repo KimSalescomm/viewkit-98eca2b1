@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { getBranchNameByCode } from "@/data/branches";
+import { getBranchNameByCode, cleanBranchName } from "@/data/branches";
 import { getCurrentMonthRange } from "@/data/event";
 
 export interface RankRow {
