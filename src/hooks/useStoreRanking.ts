@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { getBranchNameByCode } from "@/data/branches";
-import { ACCESS_RANKING_EVENT } from "@/data/event";
+import { getCurrentMonthRange } from "@/data/event";
 
 export interface RankRow {
   store_id: string;
@@ -42,14 +42,12 @@ export const useStoreRanking = (autoLoad = true) => {
     }
     setLoading(true);
     try {
-      // 이벤트 기간만 집계
-      const start = `${ACCESS_RANKING_EVENT.startAt}T00:00:00+09:00`;
-      const end = `${ACCESS_RANKING_EVENT.endAt}T23:59:59+09:00`;
+      const { startISO, endISO } = getCurrentMonthRange();
       const { data, error } = await supabase
         .from("page_views")
         .select("store_id,store_name,session_id")
-        .gte("created_at", start)
-        .lte("created_at", end)
+        .gte("created_at", startISO)
+        .lte("created_at", endISO)
         .limit(20000);
       if (error) throw error;
       const agg = aggregate(data || []);
