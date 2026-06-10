@@ -204,7 +204,7 @@ const SalesCertBadge = () => {
                     <div className={cn(fieldClass, "flex items-center justify-between")}>
                       <div className="flex items-center gap-2 min-w-0">
                         <Store className="w-4 h-4 text-[#3182CE] shrink-0" />
-                        <span className="font-medium text-slate-900 truncate">{store}</span>
+                        <span className="font-medium text-slate-900 truncate">{cleanBranchName(store)}</span>
                         {getStoreCategoryLabel(store) && (
                           <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 shrink-0">
                             {getStoreCategoryLabel(store)}
@@ -253,10 +253,10 @@ const SalesCertBadge = () => {
                               }}
                               className="w-full text-left px-3.5 py-2 text-sm hover:bg-[#3182CE]/10 hover:text-[#3182CE] flex items-center justify-between"
                             >
-                              <span>{b}</span>
-                              <span className="text-[10px] text-slate-400">
-                                {getManagerByBranch(b)}
-                              </span>
+                            <span>{cleanBranchName(b)}</span>
+                            <span className="text-[10px] text-slate-400">
+                              {getManagerByBranch(b)}
+                            </span>
                             </button>
                           ))}
                           {ALL_BRANCHES.filter((b) =>

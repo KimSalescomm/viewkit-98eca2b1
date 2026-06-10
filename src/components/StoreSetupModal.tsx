@@ -274,7 +274,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                         title={`거래선명: ${dealer}`}
                       >
                         <span className="flex flex-col">
-                          <span>{branch}</span>
+                          <span>{cleanBranchName(branch)}</span>
                           <span className="text-[10px] text-slate-400">거래선: {dealer}</span>
                         </span>
                         <span className="text-[10px] text-slate-400">{getManagerByBranch(branch)}</span>
@@ -371,7 +371,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                     }}
                     className="text-xs px-2 py-1 rounded-md bg-white border border-gray-200 hover:border-[#A50034] hover:text-[#A50034] transition-colors"
                   >
-                    {n} <span className="text-gray-400">· {s}</span>
+                    {cleanBranchName(n)} <span className="text-gray-400">· {s}</span>
                   </button>
                 ))}
               </div>
