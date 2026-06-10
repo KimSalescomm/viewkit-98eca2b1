@@ -180,7 +180,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
               <div className={cn(fieldClass, "flex items-center justify-between")}>
                 <div className="flex items-center gap-2 min-w-0">
                   <Store className="w-4 h-4 text-[#A50034] shrink-0" />
-                  <span className="font-medium text-slate-900 truncate">{name}</span>
+                  <span className="font-medium text-slate-900 truncate">{cleanBranchName(name)}</span>
                   {manager && (
                     <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 shrink-0">
                       {manager}
