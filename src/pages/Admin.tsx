@@ -338,6 +338,65 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     URL.revokeObjectURL(url);
   };
 
+  const handleExportVisits = async () => {
+    const esc = (v: unknown) => {
+      const s = String(v ?? "");
+      return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+    };
+    const toRow = (arr: unknown[]) => arr.map(esc).join(",");
+    const SITE_OPEN = "2026-06-08T00:00:00Z";
+    const { data } = await supabase
+      .from("page_views")
+      .select("store_id, store_name, session_id, created_at")
+      .gte("created_at", SITE_OPEN)
+      .order("created_at", { ascending: false })
+      .limit(10000);
+    const pvRows = (data || []).filter((r) => {
+      const sid = (r.store_id || "").toUpperCase();
+      return sid !== "SC" && sid !== "KOR";
+    });
+    const map = new Map<string, { name: string; views: number; sessions: Set<string>; lastAt: string }>();
+    pvRows.forEach((r) => {
+      const cur = map.get(r.store_id);
+      if (cur) {
+        cur.views += 1;
+        cur.sessions.add(r.session_id);
+        if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
+      } else {
+        map.set(r.store_id, {
+          name: r.store_name || r.store_id,
+          views: 1,
+          sessions: new Set([r.session_id]),
+          lastAt: r.created_at,
+        });
+      }
+    });
+    const stats = [...map.entries()]
+      .map(([code, v]) => ({ code, name: v.name, views: v.views, visits: v.sessions.size, lastAt: v.lastAt }))
+      .sort((a, b) => b.views - a.views);
+    const lines = [
+      toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"]),
+      ...stats.map((s, i) =>
+        toRow([
+          i + 1,
+          s.name,
+          s.code,
+          s.views,
+          s.visits,
+          format(new Date(s.lastAt), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
+        ]),
+      ),
+    ];
+    const csv = lines.join("\n");
+    const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `visits_${format(new Date(), "yyyyMMdd_HHmm")}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   const selectClass =
     "h-9 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 " +
     "focus:outline-none focus:ring-2 focus:ring-[#3182CE]/15 focus:border-[#3182CE]";
