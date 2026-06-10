@@ -17,7 +17,7 @@ const EventRankingAutoPopup = () => {
 
   useEffect(() => {
     const store = getCurrentStore();
-    if (store && isAdminStore(store.id)) return; // SC 제외
+    if (store && isAdminStore(store.slug)) return; // SC 제외
 
     const today = getTodayKST();
     if (localStorage.getItem(DAILY_KEY) === today) return; // 오늘 이미 노출됨
