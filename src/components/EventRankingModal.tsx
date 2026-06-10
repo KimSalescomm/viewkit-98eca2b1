@@ -117,24 +117,24 @@ const EventRankingModal = ({ open, onClose }: Props) => {
                   key={r.store_id}
                   className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl border transition-colors ${
                     isMine
-                      ? "bg-[#A50034]/5 border-[#A50034]/40"
+                      ? "bg-[#A50034]/10 border-[#A50034]/40 shadow-sm shadow-[#A50034]/10"
                       : i === 0
-                        ? "bg-slate-900 border-slate-900 text-white"
+                        ? "bg-[#A50034]/5 border-[#A50034]/20 shadow-sm"
                         : "bg-slate-50 border-slate-100"
                   }`}
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <span
                       className={`w-6 text-center text-[14px] font-extrabold tabular-nums ${
-                        isMine ? "text-[#A50034]" : i === 0 ? "text-amber-300" : "text-slate-400"
+                        isMine ? "text-[#A50034]" : i === 0 ? "text-[#A50034]" : "text-slate-400"
                       }`}
                     >
                       {i + 1}
                     </span>
-                    {i === 0 && !isMine && <Trophy className="w-3.5 h-3.5 text-amber-300 shrink-0" />}
+                    {i === 0 && !isMine && <Trophy className="w-3.5 h-3.5 text-amber-500 shrink-0" />}
                     <span
                       className={`truncate text-[14px] font-semibold ${
-                        isMine ? "text-[#A50034]" : i === 0 ? "text-white" : "text-slate-900"
+                        isMine ? "text-[#A50034]" : "text-slate-900"
                       }`}
                       style={{ wordBreak: "keep-all" }}
                     >
@@ -149,16 +149,17 @@ const EventRankingModal = ({ open, onClose }: Props) => {
                   <div className="text-right shrink-0">
                     <div
                       className={`text-[13px] font-extrabold tabular-nums ${
-                        isMine ? "text-[#A50034]" : i === 0 ? "text-white" : "text-slate-900"
+                        isMine ? "text-[#A50034]" : i === 0 ? "text-[#A50034]" : "text-slate-900"
                       }`}
                     >
                       {r.sessions.toLocaleString()}
                     </div>
-                    <div className={`text-[10px] ${i === 0 && !isMine ? "text-slate-300" : "text-slate-400"}`}>
+                    <div className="text-[10px] text-slate-400">
                       접속
                     </div>
                   </div>
                 </li>
+
               );
             })}
           </ol>
