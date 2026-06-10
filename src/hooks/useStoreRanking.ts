@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { getBranchNameByCode } from "@/data/branches";
+import { getBranchNameByCode, cleanBranchName } from "@/data/branches";
 import { getCurrentMonthRange } from "@/data/event";
 
 export interface RankRow {
@@ -18,7 +18,7 @@ const aggregate = (rows: { store_id: string; store_name: string | null; session_
   for (const r of rows) {
     const id = (r.store_id || "").toUpperCase();
     if (!id || id === "SC" || id === "KOR") continue;
-    const name = r.store_name || getBranchNameByCode(id) || id;
+    const name = cleanBranchName(r.store_name || getBranchNameByCode(id) || id);
     if (!map.has(id)) map.set(id, { name, sessions: new Set(), views: 0 });
     const entry = map.get(id)!;
     entry.sessions.add(r.session_id);
