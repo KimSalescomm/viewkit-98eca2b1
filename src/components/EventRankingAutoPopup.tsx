@@ -10,16 +10,8 @@ const EventRankingAutoPopup = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const store = getCurrentStore();
-    if (!store?.slug) return;
-    if (isAdminStore(store.slug)) return;
-    try {
-      if (sessionStorage.getItem(SEEN_KEY)) return;
-    } catch { /* noop */ }
-    const t = window.setTimeout(() => {
-      setOpen(true);
-      try { sessionStorage.setItem(SEEN_KEY, "1"); } catch { /* noop */ }
-    }, 800);
+    // 테스트 모드: 새로고침마다 항상 노출 (SC 포함)
+    const t = window.setTimeout(() => setOpen(true), 800);
     return () => window.clearTimeout(t);
   }, []);
 
