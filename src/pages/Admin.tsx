@@ -240,6 +240,104 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     URL.revokeObjectURL(url);
   };
 
+  const handleExportAll = async () => {
+    const esc = (v: unknown) => {
+      const s = String(v ?? "");
+      return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+    };
+    const toRow = (arr: unknown[]) => arr.map(esc).join(",");
+
+    // 페이지뷰(지점별 접속) 데이터 조회
+    const SITE_OPEN = "2026-06-08T00:00:00Z";
+    const { data: pvData } = await supabase
+      .from("page_views")
+      .select("store_id, store_name, session_id, created_at")
+      .gte("created_at", SITE_OPEN)
+      .order("created_at", { ascending: false })
+      .limit(10000);
+    const pvRows = (pvData || []).filter((r) => {
+      const sid = (r.store_id || "").toUpperCase();
+      return sid !== "SC" && sid !== "KOR";
+    });
+    const visitMap = new Map<string, { name: string; views: number; sessions: Set<string>; lastAt: string }>();
+    pvRows.forEach((r) => {
+      const cur = visitMap.get(r.store_id);
+      if (cur) {
+        cur.views += 1;
+        cur.sessions.add(r.session_id);
+        if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
+      } else {
+        visitMap.set(r.store_id, {
+          name: r.store_name || r.store_id,
+          views: 1,
+          sessions: new Set([r.session_id]),
+          lastAt: r.created_at,
+        });
+      }
+    });
+    const visitStats = [...visitMap.entries()]
+      .map(([code, v]) => ({ code, name: v.name, views: v.views, visits: v.sessions.size, lastAt: v.lastAt }))
+      .sort((a, b) => b.views - a.views);
+
+    const sections: string[] = [];
+    const stamp = format(new Date(), "yyyy-MM-dd HH:mm", { locale: ko });
+
+    sections.push(toRow(["관리자 대시보드 내보내기"]));
+    sections.push(toRow(["생성 시각", stamp]));
+    sections.push(toRow(["판매 기록 총건수", sales.length]));
+    sections.push(toRow(["필터 결과 건수", filtered.length]));
+    sections.push("");
+
+    sections.push(toRow(["[1] 지점별 접속 통계 (사이트 오픈일 이후)"]));
+    sections.push(toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"]));
+    visitStats.forEach((s, i) =>
+      sections.push(
+        toRow([
+          i + 1,
+          s.name,
+          s.code,
+          s.views,
+          s.visits,
+          format(new Date(s.lastAt), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
+        ]),
+      ),
+    );
+    sections.push("");
+
+    sections.push(toRow([`[2] 지점별 판매 순위 (필터 적용, ${filtered.length}건 기준)`]));
+    sections.push(toRow(["순위", "지점", "판매건수"]));
+    byBranch.forEach(([name, count], i) => sections.push(toRow([i + 1, name, count])));
+    sections.push("");
+
+    sections.push(toRow(["[3] 제품별 판매 순위 (필터 적용)"]));
+    sections.push(toRow(["순위", "제품", "판매건수"]));
+    byProduct.forEach(([name, count], i) => sections.push(toRow([i + 1, name, count])));
+    sections.push("");
+
+    sections.push(toRow(["[4] 전체 판매 기록 (필터 적용)"]));
+    sections.push(toRow(["#", "지점", "제품", "판매일", "기록 시각"]));
+    recent.forEach((r, i) =>
+      sections.push(
+        toRow([
+          recent.length - i,
+          r.branch,
+          r.product,
+          r.sold_at,
+          format(new Date(r.created_at), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
+        ]),
+      ),
+    );
+
+    const csv = sections.join("\n");
+    const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `dashboard_${format(new Date(), "yyyyMMdd_HHmm")}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   const selectClass =
     "h-9 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 " +
     "focus:outline-none focus:ring-2 focus:ring-[#3182CE]/15 focus:border-[#3182CE]";
@@ -315,9 +413,16 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
             type="button"
             onClick={handleExport}
             disabled={filtered.length === 0}
-            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg bg-[#3182CE] text-white text-xs font-semibold hover:bg-[#2c74b8] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            <Download className="w-3.5 h-3.5" /> CSV 내보내기
+            <Download className="w-3.5 h-3.5" /> 판매기록 CSV
+          </button>
+          <button
+            type="button"
+            onClick={() => void handleExportAll()}
+            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg bg-[#3182CE] text-white text-xs font-semibold hover:bg-[#2c74b8] transition-colors"
+          >
+            <Download className="w-3.5 h-3.5" /> 전체 대시보드 CSV
           </button>
           <button
             type="button"
