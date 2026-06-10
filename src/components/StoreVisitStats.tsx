@@ -186,9 +186,10 @@ const StoreVisitStats = () => {
               {r.label}
             </button>
           ))}
+          </div>
         </div>
-
       </div>
+
 
       <div className="grid grid-cols-3 gap-3 mb-4">
         <div className="rounded-xl bg-slate-50/70 px-4 py-3">
