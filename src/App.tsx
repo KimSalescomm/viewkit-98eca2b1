@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import { OrientationProvider } from "./hooks/useOrientation";
 import { ContentProvider } from "./contexts/ContentContext";
 import ProductSelection from "./pages/ProductSelection";
-import SalesCertBadge from "./components/SalesCertBadge";
+import EventRankingBadge from "./components/EventRankingBadge";
 
 const Home = lazy(() => import("./pages/Home"));
 const Subscription = lazy(() => import("./pages/Subscription"));
