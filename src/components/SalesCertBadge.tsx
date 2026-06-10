@@ -205,9 +205,9 @@ const SalesCertBadge = () => {
                       <div className="flex items-center gap-2 min-w-0">
                         <Store className="w-4 h-4 text-[#3182CE] shrink-0" />
                         <span className="font-medium text-slate-900 truncate">{store}</span>
-                        {getManagerByBranch(store) && (
+                        {getStoreCategoryLabel(store) && (
                           <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 shrink-0">
-                            {getManagerByBranch(store)} 담당
+                            {getStoreCategoryLabel(store)}
                           </span>
                         )}
                       </div>
