@@ -266,7 +266,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
 
   const handleExport = () => {
     const csv = toCsv(filtered);
-    downloadCsv(csv, `sales_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
+    void downloadCsv(csv, `sales_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
   };
 
   const handleExportAll = async () => {
@@ -358,7 +358,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     );
 
     const csv = sections.join("\n");
-    downloadCsv(csv, `dashboard_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
+    void downloadCsv(csv, `dashboard_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
   };
 
   const handleExportVisits = async () => {
@@ -411,7 +411,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       ),
     ];
     const csv = lines.join("\n");
-    downloadCsv(csv, `visits_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
+    void downloadCsv(csv, `visits_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
   };
 
   const selectClass =
