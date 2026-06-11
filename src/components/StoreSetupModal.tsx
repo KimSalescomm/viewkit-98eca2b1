@@ -261,7 +261,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                       >
                         <span>{cleanBranchName(b)}</span>
                         <span className="text-[10px] text-slate-400">
-                          {getManagerByBranch(b)}
+                          {getStoreCategoryLabel(b)}
                         </span>
                       </button>
                     ))}
@@ -277,7 +277,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                           <span>{cleanBranchName(branch)}</span>
                           <span className="text-[10px] text-slate-400">거래선: {dealer}</span>
                         </span>
-                        <span className="text-[10px] text-slate-400">{getManagerByBranch(branch)}</span>
+                        <span className="text-[10px] text-slate-400">{getStoreCategoryLabel(branch)}</span>
                       </button>
                     ))}
                     {filteredBranches.length === 0 && dealerMatches.length === 0 && !isAdminQuery(query) && !isKorQuery(query) && (
