@@ -161,10 +161,10 @@ export const getManagerByBranch = (branch: string): string | null => {
   return null;
 };
 
-// 전문점(베스트샵 팀 / 백화점영업담당) 여부 판정
+// 전문점(베스트샵 팀) 여부 판정 — 백화점영업담당은 하이프라자이므로 제외
 export const isSpecialtyManager = (manager: string | null | undefined): boolean => {
   if (!manager) return false;
-  return manager.endsWith("팀") || manager === "백화점영업담당";
+  return manager.endsWith("팀");
 };
 
 // 현재 매장 카테고리 라벨: 전문점은 "전문점", 그 외는 담당명 그대로
