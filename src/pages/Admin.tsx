@@ -343,13 +343,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     );
 
     const csv = sections.join("\n");
-    const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `dashboard_${format(new Date(), "yyyyMMdd_HHmm")}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadCsv(csv, `dashboard_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
   };
 
   const handleExportVisits = async () => {
