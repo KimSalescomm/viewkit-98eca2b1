@@ -396,13 +396,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       ),
     ];
     const csv = lines.join("\n");
-    const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `visits_${format(new Date(), "yyyyMMdd_HHmm")}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadCsv(csv, `visits_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
   };
 
   const selectClass =
