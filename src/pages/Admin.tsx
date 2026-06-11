@@ -21,17 +21,32 @@ import { cn } from "@/lib/utils";
 const AUTH_KEY = "viewkit_admin_auth";
 
 // 모바일 브라우저(특히 iOS Safari)에서도 안정적으로 동작하는 CSV 다운로드 헬퍼
-const downloadCsv = (csv: string, filename: string) => {
+const downloadCsv = async (csv: string, filename: string) => {
   const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8;" });
-  const ua = navigator.userAgent;
-  const isIOS = /iPad|iPhone|iPod/.test(ua) && !(window as unknown as { MSStream?: unknown }).MSStream;
+
+  // 모바일: Web Share API로 공유시트를 띄워 "파일에 저장" 가능 (iOS/Android)
+  try {
+    const file = new File([blob], filename, { type: "text/csv" });
+    const nav = navigator as Navigator & {
+      canShare?: (data?: ShareData) => boolean;
+      share?: (data?: ShareData) => Promise<void>;
+    };
+    const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    if (isTouch && nav.canShare?.({ files: [file] }) && nav.share) {
+      await nav.share({ files: [file], title: filename });
+      return;
+    }
+  } catch (e) {
+    // 사용자가 공유를 취소한 경우 그대로 종료, 그 외에는 앵커 다운로드로 폴백
+    if ((e as Error)?.name === "AbortError") return;
+  }
+
+  // 데스크톱/폴백: 앵커 다운로드 (새 탭 없이 — 팝업 차단 회피)
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
   a.download = filename;
   a.rel = "noopener";
-  // iOS Safari는 download 속성을 무시하므로 새 탭에서 열어 사용자가 저장하도록 유도
-  if (isIOS) a.target = "_blank";
   document.body.appendChild(a);
   a.click();
   setTimeout(() => {
@@ -251,7 +266,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
 
   const handleExport = () => {
     const csv = toCsv(filtered);
-    downloadCsv(csv, `sales_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
+    void downloadCsv(csv, `sales_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
   };
 
   const handleExportAll = async () => {
@@ -343,7 +358,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     );
 
     const csv = sections.join("\n");
-    downloadCsv(csv, `dashboard_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
+    void downloadCsv(csv, `dashboard_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
   };
 
   const handleExportVisits = async () => {
@@ -396,7 +411,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       ),
     ];
     const csv = lines.join("\n");
-    downloadCsv(csv, `visits_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
+    void downloadCsv(csv, `visits_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
   };
 
   const selectClass =
