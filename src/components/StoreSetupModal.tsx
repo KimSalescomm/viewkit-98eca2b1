@@ -302,13 +302,21 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
               <div className="mt-2 space-y-2">
                 <Input
                   value={name}
-                  onChange={(e) => { setName(e.target.value); setEditing(false); }}
-                  placeholder="지점명 직접 입력 (예: D5, 신규지점)"
+                  onChange={(e) => {
+                    // 한글(완성형 및 자모)과 공백만 허용
+                    const koreanOnly = e.target.value.replace(/[^\uac00-\ud7a3\u1100-\u11ff\u3130-\u318f\s]/g, "");
+                    setName(koreanOnly);
+                    setEditing(false);
+                  }}
+                  placeholder="지점명 직접 입력 (한글로만, 예: 신규지점)"
                 />
+                <p className="text-[11px] text-slate-500 leading-relaxed break-keep">
+                  목록에 없는 매장은 <span className="font-semibold text-[#A50034]">한글로만</span> 입력해 주세요. 영문·숫자·특수문자는 자동으로 제거됩니다.
+                </p>
                 <Input
                   value={codeOverride}
                   onChange={(e) => setCodeOverride(e.target.value.toUpperCase().replace(/[^A-Z]/g, ""))}
-                  placeholder={autoSlug || "영문 대문자 코드 (2자 이상)"}
+                  placeholder={autoSlug || "영문 대문자 코드 (2자 이상, 선택)"}
                 />
               </div>
             )}
