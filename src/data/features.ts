@@ -986,18 +986,6 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
     },
     {
-      id: "8",
-      title: "30W 출력, 흡입력도 다르게 느껴질까?",
-      subtitle: "AlphaUP Drive의 30W 고출력 모터가\n카펫 깊숙한 먼지까지 단숨에 빨아들여요.",
-      icon: "Wind",
-      tag: "30W 강력 흡입력",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
-      description:
-        "AlphaUP Drive에 탑재된 30W 고출력 모터는 미세먼지부터 굵은 이물질까지 한 번에 흡입합니다. 바닥재를 자동 인식해 카펫에서는 출력을 최대로 끌어올려 깊숙한 곳의 먼지도 놓치지 않아요.",
-      highlights: ["30W 고출력 모터", "카펫 자동 부스트", "미세먼지 완벽 흡입", "흡입력 자동 조절"],
-    },
-    {
       id: "9",
       title: "벽 모서리 먼지, 어떻게 닦을까?",
       subtitle: "엣지 확장 브러시가 본체 밖으로 뻗어 나와\n벽면과 모서리까지 빈틈없이 청소해요.",
