@@ -83,6 +83,8 @@ const SalesCertBadge = () => {
     setProduct("");
     setDate(new Date());
     setSubmitted(false);
+    submitLockRef.current = false;
+    setSubmitting(false);
   };
 
   // 다이얼로그가 열릴 때마다 현재 매장 정보로 자동 초기화
