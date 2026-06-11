@@ -232,6 +232,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   const handleDeleteOne = async (id?: string) => {
     if (!id) return;
     if (!confirm("이 판매 기록 1건을 삭제하시겠어요?")) return;
+    if (!confirm("정말로 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.")) return;
     const ok = await deleteSale(id);
     if (!ok) {
       alert("삭제에 실패했습니다. 잠시 후 다시 시도해 주세요.");
@@ -243,7 +244,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
 
   const handleDeleteSelected = async () => {
     if (selected.size === 0) return;
-    if (!confirm(`선택한 ${selected.size}건을 삭제하시겠어요? 되돌릴 수 없습니다.`)) return;
+    if (!confirm(`선택한 ${selected.size}건을 삭제하시겠어요?`)) return;
+    if (!confirm(`정말로 ${selected.size}건을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.`)) return;
     const ok = await deleteSalesByIds([...selected]);
     if (!ok) {
       alert("선택 삭제에 실패했습니다.");
@@ -254,7 +256,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   };
 
   const handleClear = async () => {
-    if (!confirm("저장된 모든 판매 기록을 삭제하시겠어요? 되돌릴 수 없습니다.")) return;
+    if (!confirm("저장된 모든 판매 기록을 삭제하시겠어요?")) return;
+    if (!confirm("정말로 전체 기록을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.")) return;
     const ok = await clearAllSales();
     if (!ok) {
       alert("전체 초기화에 실패했습니다.");
