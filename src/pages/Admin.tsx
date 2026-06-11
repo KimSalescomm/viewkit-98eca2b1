@@ -251,13 +251,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
 
   const handleExport = () => {
     const csv = toCsv(filtered);
-    const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `sales_${format(new Date(), "yyyyMMdd_HHmm")}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadCsv(csv, `sales_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
   };
 
   const handleExportAll = async () => {
