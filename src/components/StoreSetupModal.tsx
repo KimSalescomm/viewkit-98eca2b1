@@ -91,7 +91,29 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
   const isMasterBranch = !!BRANCH_CODE_MAP[name.trim()];
   const manager = isAdmin ? "관리자 계정" : getStoreCategoryLabel(name.trim());
 
-  const canSave = name.trim().length > 0 && finalSlug.length > 0;
+  // 사전 유효성 검사 — 저장 버튼 활성화 및 인라인 안내에 사용
+  const validation = useMemo(() => {
+    const trimmed = name.trim();
+    if (!trimmed) return { ok: false as const, msg: "" };
+
+    const isReserved = trimmed === "관리자" || trimmed === "유관부서" || trimmed.toUpperCase() === ADMIN_STORE_CODE;
+    const isMaster = !!BRANCH_CODE_MAP[trimmed];
+    const isDealer = !!resolveBranchByDealer(trimmed);
+    if (isReserved || isMaster || isDealer) return { ok: true as const, msg: "" };
+
+    if (/^점+$/.test(trimmed)) return { ok: false as const, msg: "비정상 값입니다. 매장명을 다시 입력해 주세요." };
+    if (trimmed.length < 2) return { ok: false as const, msg: "매장명이 너무 짧습니다. 한글 2자 이상 입력해 주세요." };
+
+    const koreanChars = (trimmed.match(/[\uac00-\ud7a3]/g) || []).length;
+    if (koreanChars < 2) return { ok: false as const, msg: "한글 2자 이상으로 입력해 주세요. (예: 강서본점)" };
+
+    if (!finalSlug || finalSlug === "STORE" || finalSlug.length < 2) {
+      return { ok: false as const, msg: "매장 코드를 만들 수 없습니다. 매장명을 다시 입력해 주세요." };
+    }
+    return { ok: true as const, msg: "" };
+  }, [name, finalSlug]);
+
+  const canSave = validation.ok;
 
   const handlePickBranch = (branch: string) => {
     setName(branch);
@@ -101,30 +123,21 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
   };
 
   const handleSave = () => {
-    if (!canSave) return;
     let trimmedName = name.trim();
 
-    // 거래선명을 직접 입력한 경우, 매칭되는 매장명으로 자동 변환
     const dealerResolved = resolveBranchByDealer(trimmedName);
     if (dealerResolved && !BRANCH_CODE_MAP[trimmedName]) {
       trimmedName = dealerResolved;
     }
 
-    // 예약/마스터 매장은 검증 통과
     const isReserved = trimmedName === "관리자" || trimmedName === "유관부서" || isAdmin;
     const isMaster = !!BRANCH_CODE_MAP[trimmedName];
+    const resolvedSlug = isMaster ? BRANCH_CODE_MAP[trimmedName] : finalSlug;
 
-    // 거래선명 → 매장명 변환된 경우 최종 코드도 매장명 기준으로 재계산
-    const resolvedSlug = isMaster
-      ? BRANCH_CODE_MAP[trimmedName]
-      : finalSlug;
-
-    // 유효성 검사: '점' 한 글자만 입력했거나 슬러그가 STORE/너무 짧은 경우 차단
-    const isInvalidName = trimmedName === "점" || /^점+$/.test(trimmedName);
+    // 최종 가드 — 버튼이 활성화되어 있어도 비정상 입력은 차단
+    const isInvalidName = !trimmedName || trimmedName === "점" || /^점+$/.test(trimmedName) || trimmedName.length < 2;
     const isFallbackSlug = resolvedSlug === "STORE";
     const isTooShortSlug = resolvedSlug.length < 2 && !isAdmin;
-
-    // 한글 2자 이상 입력 필수 (예약/마스터 제외)
     const koreanChars = (trimmedName.match(/[\uac00-\ud7a3]/g) || []).length;
     const lacksKorean = !isReserved && !isMaster && koreanChars < 2;
 
@@ -132,14 +145,13 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
       toast({
         title: "매장명을 정확히 입력해 주세요",
         description:
-          "매장명은 한글 2자 이상으로 입력해야 합니다. (예: 강서본점, 노은점)",
+          "매장명은 한글 2자 이상이어야 합니다. 1글자·특수문자·비정상 값은 등록할 수 없습니다. (예: 강서본점, 노은점)",
         variant: "destructive",
       });
       return;
     }
 
     const info = registerStore(trimmedName, resolvedSlug);
-    // 매장 등록 직후 현재 페이지를 새 매장 ID로 즉시 기록 (모달 닫힘 시점)
     try { logPageView(window.location.pathname); } catch { /* noop */ }
     onSaved(info);
   };
@@ -387,19 +399,26 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
           )}
         </div>
 
-        <div className="flex justify-end gap-2 mt-2">
-          {dismissible && (
-            <Button variant="ghost" onClick={onClose}>
-              취소
-            </Button>
+        <div className="mt-2 space-y-2">
+          {!validation.ok && validation.msg && (
+            <p className="text-[11px] text-[#A50034] leading-relaxed break-keep">
+              {validation.msg}
+            </p>
           )}
-          <Button
-            onClick={handleSave}
-            disabled={!canSave}
-            className="bg-[#A50034] hover:bg-[#7A0026] text-white"
-          >
-            저장
-          </Button>
+          <div className="flex justify-end gap-2">
+            {dismissible && (
+              <Button variant="ghost" onClick={onClose}>
+                취소
+              </Button>
+            )}
+            <Button
+              onClick={handleSave}
+              disabled={!canSave}
+              className="bg-[#A50034] hover:bg-[#7A0026] text-white"
+            >
+              저장
+            </Button>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
