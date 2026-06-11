@@ -103,6 +103,9 @@ const SalesCertBadge = () => {
 
   const handleSubmit = async () => {
     if (!store || !product || !date) return;
+    if (submitLockRef.current) return;
+    submitLockRef.current = true;
+    setSubmitting(true);
     const soldAt = format(date, "yyyy-MM-dd");
     trackEvent("sales_certification", { branch: store, product, sold_at: soldAt });
     try {
@@ -115,6 +118,9 @@ const SalesCertBadge = () => {
         description: "네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.",
         variant: "destructive",
       });
+      submitLockRef.current = false;
+    } finally {
+      setSubmitting(false);
     }
   };
 
