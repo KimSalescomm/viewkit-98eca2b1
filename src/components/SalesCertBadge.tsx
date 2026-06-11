@@ -41,6 +41,8 @@ const SalesCertBadge = () => {
   const [date, setDate] = useState<Date>(new Date());
   const [dateOpen, setDateOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const submitLockRef = useRef(false);
   const { trackEvent } = useAnalytics();
   const { toast } = useToast();
 
@@ -81,6 +83,8 @@ const SalesCertBadge = () => {
     setProduct("");
     setDate(new Date());
     setSubmitted(false);
+    submitLockRef.current = false;
+    setSubmitting(false);
   };
 
   // 다이얼로그가 열릴 때마다 현재 매장 정보로 자동 초기화
@@ -101,6 +105,9 @@ const SalesCertBadge = () => {
 
   const handleSubmit = async () => {
     if (!store || !product || !date) return;
+    if (submitLockRef.current) return;
+    submitLockRef.current = true;
+    setSubmitting(true);
     const soldAt = format(date, "yyyy-MM-dd");
     trackEvent("sales_certification", { branch: store, product, sold_at: soldAt });
     try {
@@ -113,6 +120,9 @@ const SalesCertBadge = () => {
         description: "네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.",
         variant: "destructive",
       });
+      submitLockRef.current = false;
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -323,10 +333,10 @@ const SalesCertBadge = () => {
                 <button
                   type="button"
                   onClick={() => void handleSubmit()}
-                  disabled={!canSubmit}
+                  disabled={!canSubmit || submitting || submitLockRef.current}
                   className="flex-[2] h-11 rounded-xl bg-[#3182CE] text-white text-sm font-semibold hover:bg-[#2c74b8] shadow-[0_6px_16px_-6px_rgba(49,130,206,0.5)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >
-                  인증 완료
+                  {submitting ? "저장 중..." : "인증 완료"}
                 </button>
               </div>
             </>
