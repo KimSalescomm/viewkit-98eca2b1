@@ -68,6 +68,13 @@ export const normalizeStoreIdentity = (name: string, slug: string): { name: stri
   const masterCode = BRANCH_CODE_MAP[cleanName];
   if (masterCode) return { name: cleanName, slug: masterCode };
 
+  // "베스트샵 " 접두어 누락 보정 (예: "파주본점" → "베스트샵 파주본점")
+  if (hasHangul(cleanName) && !cleanName.startsWith("베스트샵")) {
+    const withPrefix = `베스트샵 ${cleanName}`;
+    const masterCodePrefix = BRANCH_CODE_MAP[withPrefix];
+    if (masterCodePrefix) return { name: withPrefix, slug: masterCodePrefix };
+  }
+
   const masterName = getBranchNameBySlug(cleanSlug);
   if (masterName) return { name: masterName, slug: cleanSlug };
 
