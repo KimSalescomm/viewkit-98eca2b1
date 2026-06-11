@@ -68,6 +68,13 @@ export const normalizeStoreIdentity = (name: string, slug: string): { name: stri
   const masterCode = BRANCH_CODE_MAP[cleanName];
   if (masterCode) return { name: cleanName, slug: masterCode };
 
+  // "베스트샵 " 접두어 누락 보정 (예: "파주본점" → "베스트샵 파주본점")
+  if (hasHangul(cleanName) && !cleanName.startsWith("베스트샵")) {
+    const withPrefix = `베스트샵 ${cleanName}`;
+    const masterCodePrefix = BRANCH_CODE_MAP[withPrefix];
+    if (masterCodePrefix) return { name: withPrefix, slug: masterCodePrefix };
+  }
+
   const masterName = getBranchNameBySlug(cleanSlug);
   if (masterName) return { name: masterName, slug: cleanSlug };
 
@@ -98,6 +105,12 @@ export const slugifyStoreName = (raw: string): string => {
 
   // 1순위: 마스터 지점 코드 매핑 (충돌 없는 고유 코드)
   if (BRANCH_CODE_MAP[trimmed]) return BRANCH_CODE_MAP[trimmed];
+
+  // "베스트샵 " 접두어 누락 보정
+  if (hasHangul(trimmed) && !trimmed.startsWith("베스트샵")) {
+    const withPrefix = `베스트샵 ${trimmed}`;
+    if (BRANCH_CODE_MAP[withPrefix]) return BRANCH_CODE_MAP[withPrefix];
+  }
 
   // 영문만 (숫자 제외 — 매장코드는 영문 대문자만)
   if (/^[A-Za-z_-]+$/.test(trimmed)) {
