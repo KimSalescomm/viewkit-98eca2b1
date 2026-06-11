@@ -41,6 +41,8 @@ const SalesCertBadge = () => {
   const [date, setDate] = useState<Date>(new Date());
   const [dateOpen, setDateOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const submitLockRef = useRef(false);
   const { trackEvent } = useAnalytics();
   const { toast } = useToast();
 
