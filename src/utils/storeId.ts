@@ -106,6 +106,12 @@ export const slugifyStoreName = (raw: string): string => {
   // 1순위: 마스터 지점 코드 매핑 (충돌 없는 고유 코드)
   if (BRANCH_CODE_MAP[trimmed]) return BRANCH_CODE_MAP[trimmed];
 
+  // "베스트샵 " 접두어 누락 보정
+  if (hasHangul(trimmed) && !trimmed.startsWith("베스트샵")) {
+    const withPrefix = `베스트샵 ${trimmed}`;
+    if (BRANCH_CODE_MAP[withPrefix]) return BRANCH_CODE_MAP[withPrefix];
+  }
+
   // 영문만 (숫자 제외 — 매장코드는 영문 대문자만)
   if (/^[A-Za-z_-]+$/.test(trimmed)) {
     const cleaned = trimmed.toUpperCase().replace(/[_-]/g, "");
