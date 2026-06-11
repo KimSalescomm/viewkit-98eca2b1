@@ -1024,21 +1024,21 @@ export const featuresMap: Record<string, Feature[]> = {
     {
 
       id: "6",
-      title: "더 자세한 제품 정보는 LG.com에서",
-      subtitle: "모델별 상세 스펙·구매 혜택·구독 옵션을\n공식 사이트에서 한 번에 확인하세요.",
+      title: "지금 사전 예약하고 혜택 받기",
+      subtitle: "정식 출시 전 가장 먼저 만나보는\n사전 예약 한정 판매 이벤트.",
       icon: "Globe",
-      tag: "공식 페이지",
+      tag: "사전 예약 판매",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
       description:
-        "최신 모델 라인업과 가격, 케어 서비스, 구독 혜택까지 LG전자 공식 페이지에서 자세히 확인할 수 있습니다.\n\n바로가기: https://www.lge.co.kr/vacuum-cleaners",
-      highlights: ["공식 스펙 확인", "구독·케어 혜택", "최신 모델 라인업"],
+        "정식 출시에 앞서 진행되는 사전 예약 한정 판매 이벤트입니다. 예약 고객 대상 특별 구성·우선 배송 등 한정 혜택이 제공됩니다.\n\n자세한 내용은 매장 직원에게 문의해 주세요.",
+      highlights: ["사전 예약 한정 혜택", "우선 배송", "한정 수량 판매"],
       collapsibleDisclaimers: [
         {
-          title: "구매·구독 안내",
+          title: "사전 예약 안내",
           items: [
-            "모델별 사양과 색상, 가격은 LG전자 공식 사이트에서 확인하실 수 있습니다.",
-            "구독 상품은 약정 기간·관리 주기에 따라 월 요금이 달라질 수 있습니다.",
+            "사전 예약 기간 및 혜택은 변경될 수 있으며, 자세한 내용은 매장에서 안내드립니다.",
+            "한정 수량으로 진행되며 조기 마감될 수 있습니다.",
           ],
         },
       ],
