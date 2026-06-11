@@ -20,6 +20,26 @@ import { cn } from "@/lib/utils";
 // 패스코드는 서버(Edge Function: admin-login)에서 검증합니다.
 const AUTH_KEY = "viewkit_admin_auth";
 
+// 모바일 브라우저(특히 iOS Safari)에서도 안정적으로 동작하는 CSV 다운로드 헬퍼
+const downloadCsv = (csv: string, filename: string) => {
+  const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8;" });
+  const ua = navigator.userAgent;
+  const isIOS = /iPad|iPhone|iPod/.test(ua) && !(window as unknown as { MSStream?: unknown }).MSStream;
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.rel = "noopener";
+  // iOS Safari는 download 속성을 무시하므로 새 탭에서 열어 사용자가 저장하도록 유도
+  if (isIOS) a.target = "_blank";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => {
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }, 1000);
+};
+
 const useAuth = () => {
   const [authed, setAuthed] = useState<boolean>(() => {
     try {
@@ -231,13 +251,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
 
   const handleExport = () => {
     const csv = toCsv(filtered);
-    const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `sales_${format(new Date(), "yyyyMMdd_HHmm")}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadCsv(csv, `sales_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
   };
 
   const handleExportAll = async () => {
@@ -329,13 +343,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     );
 
     const csv = sections.join("\n");
-    const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `dashboard_${format(new Date(), "yyyyMMdd_HHmm")}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadCsv(csv, `dashboard_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
   };
 
   const handleExportVisits = async () => {
@@ -388,13 +396,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       ),
     ];
     const csv = lines.join("\n");
-    const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `visits_${format(new Date(), "yyyyMMdd_HHmm")}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadCsv(csv, `visits_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
   };
 
   const selectClass =
