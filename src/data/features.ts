@@ -916,30 +916,6 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["히든 스테이션 빌트인", "오브제 스테이션 디자인", "공간 맞춤 선택", "보일수록 품격"],
     },
     {
-      id: "4",
-      title: "위생부터 관리까지 믿고 맡길 수 있는,\n‘LG만의 위생 & 케어 솔루션’",
-      subtitle: "필터·브러시·물걸레 위생 관리부터 정기 케어까지\nLG가 끝까지 책임지는 통합 솔루션.",
-      icon: "Wrench",
-      tag: "LG만의 위생 & 케어 솔루션",
-      mediaType: "video",
-      mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
-      tabs: [
-        {
-          label: "100℃ 살균 스팀",
-          mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_12_mop_solution_pc.mp4",
-        },
-        {
-          label: "스테이션 컨디셔닝",
-          mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
-        },
-      ],
-      description:
-        "100℃ 고온 스팀이 물걸레를 직접 살균하고, 스테이션 컨디셔닝이 도크 내부 환경을 자동으로 점검·관리해 곰팡이와 세균이 머무를 틈을 없애줍니다. 사용 내내 도크와 물걸레 모두 깨끗한 상태로 유지되는 LG만의 위생 솔루션이에요.",
-      highlights: ["100℃ 고온 스팀 살균", "스테이션 자동 컨디셔닝", "도크 내부 위생 관리", "곰팡이·세균 케어"],
-    },
-    {
       id: "5",
       title: "보안까지 빈틈없이,\n체계적인 보안 솔루션",
       subtitle: "보안 인증·개인정보 보호·물리적 보안까지\n믿고 맡길 수 있는 LG 보안 시스템.",
