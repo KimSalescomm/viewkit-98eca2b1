@@ -399,19 +399,26 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
           )}
         </div>
 
-        <div className="flex justify-end gap-2 mt-2">
-          {dismissible && (
-            <Button variant="ghost" onClick={onClose}>
-              취소
-            </Button>
+        <div className="mt-2 space-y-2">
+          {!validation.ok && validation.msg && (
+            <p className="text-[11px] text-[#A50034] leading-relaxed break-keep">
+              {validation.msg}
+            </p>
           )}
-          <Button
-            onClick={handleSave}
-            disabled={!canSave}
-            className="bg-[#A50034] hover:bg-[#7A0026] text-white"
-          >
-            저장
-          </Button>
+          <div className="flex justify-end gap-2">
+            {dismissible && (
+              <Button variant="ghost" onClick={onClose}>
+                취소
+              </Button>
+            )}
+            <Button
+              onClick={handleSave}
+              disabled={!canSave}
+              className="bg-[#A50034] hover:bg-[#7A0026] text-white"
+            >
+              저장
+            </Button>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
