@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import { OrientationProvider } from "./hooks/useOrientation";
 import { ContentProvider } from "./contexts/ContentContext";
 import ProductSelection from "./pages/ProductSelection";
+import Maintenance from "./pages/Maintenance";
 import SalesCertBadge from "./components/SalesCertBadge";
 import EventRankingAutoPopup from "./components/EventRankingAutoPopup";
 
@@ -24,6 +25,8 @@ const StoreCodes = lazy(() => import("./pages/StoreCodes"));
 const Guide = lazy(() => import("./pages/Guide"));
 
 const queryClient = new QueryClient();
+
+const MAINTENANCE_MODE = true;
 
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
@@ -45,18 +48,22 @@ const App = () => (
             <ContentProvider>
               <Suspense fallback={<PageLoader />}>
                 <Routes>
-                  <Route path="/" element={<ProductSelection />} />
-                  <Route path="/subscription" element={<Subscription />} />
-                  <Route path="/product/:productId" element={<Home />} />
-                  <Route path="/product/:productId/feature/:id" element={<FeatureDetail />} />
-                  
-                  <Route path="/ranking" element={<Ranking />} />
-                  <Route path="/admin" element={<Admin />} />
-                  <Route path="/legal" element={<Legal />} />
-                  <Route path="/store-codes" element={<StoreCodes />} />
-                  <Route path="/guide" element={<Guide />} />
-                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                  <Route path="*" element={<NotFound />} />
+                  {MAINTENANCE_MODE ? (
+                    <Route path="*" element={<Maintenance />} />
+                  ) : (
+                    <>
+                      <Route path="/" element={<ProductSelection />} />
+                      <Route path="/subscription" element={<Subscription />} />
+                      <Route path="/product/:productId" element={<Home />} />
+                      <Route path="/product/:productId/feature/:id" element={<FeatureDetail />} />
+                      <Route path="/ranking" element={<Ranking />} />
+                      <Route path="/admin" element={<Admin />} />
+                      <Route path="/legal" element={<Legal />} />
+                      <Route path="/store-codes" element={<StoreCodes />} />
+                      <Route path="/guide" element={<Guide />} />
+                      <Route path="*" element={<NotFound />} />
+                    </>
+                  )}
                 </Routes>
               </Suspense>
               <SalesCertBadge />
