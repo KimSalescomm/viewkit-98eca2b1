@@ -37,37 +37,33 @@ export const appendSale = async (
   if (error) console.warn("[salesLog] insert failed", error);
 };
 
-export const deleteSale = async (id: string): Promise<boolean> => {
-  const { error } = await supabase.from("sales_certifications").delete().eq("id", id);
-  if (error) {
-    console.warn("[salesLog] delete failed", error);
+// 삭제는 관리자 패스코드를 통해 서버(Edge Function: delete-sales)에서만 수행됩니다.
+const invokeDelete = async (
+  body: { code: string; mode: "one" | "many" | "all"; id?: string; ids?: string[] },
+): Promise<boolean> => {
+  try {
+    const { data, error } = await supabase.functions.invoke("delete-sales", { body });
+    if (error || !data?.ok) {
+      console.warn("[salesLog] delete failed", error ?? data);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.warn("[salesLog] delete invoke failed", err);
     return false;
   }
-  return true;
 };
 
-export const deleteSalesByIds = async (ids: string[]): Promise<boolean> => {
-  if (ids.length === 0) return true;
-  const { error } = await supabase.from("sales_certifications").delete().in("id", ids);
-  if (error) {
-    console.warn("[salesLog] bulk delete failed", error);
-    return false;
-  }
-  return true;
+export const deleteSale = (id: string, code: string): Promise<boolean> =>
+  invokeDelete({ code, mode: "one", id });
+
+export const deleteSalesByIds = (ids: string[], code: string): Promise<boolean> => {
+  if (ids.length === 0) return Promise.resolve(true);
+  return invokeDelete({ code, mode: "many", ids });
 };
 
-export const clearAllSales = async (): Promise<boolean> => {
-  // 모든 행 삭제 (id IS NOT NULL 조건으로 전체 매칭)
-  const { error } = await supabase
-    .from("sales_certifications")
-    .delete()
-    .not("id", "is", null);
-  if (error) {
-    console.warn("[salesLog] clear all failed", error);
-    return false;
-  }
-  return true;
-};
+export const clearAllSales = (code: string): Promise<boolean> =>
+  invokeDelete({ code, mode: "all" });
 
 // 하위 호환
 export const clearSales = clearAllSales;

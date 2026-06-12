@@ -229,13 +229,26 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   };
   const clearSelection = () => setSelected(new Set());
 
+  // 삭제 시 관리자 패스코드 재확인 (서버에서 검증)
+  const promptPasscode = (): string | null => {
+    const code = window.prompt("삭제하려면 관리자 패스코드를 다시 입력해 주세요.");
+    if (code === null) return null;
+    const trimmed = code.trim();
+    if (!trimmed) {
+      alert("패스코드가 입력되지 않았습니다.");
+      return null;
+    }
+    return trimmed;
+  };
+
   const handleDeleteOne = async (id?: string) => {
     if (!id) return;
     if (!confirm("이 판매 기록 1건을 삭제하시겠어요?")) return;
-    if (!confirm("정말로 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.")) return;
-    const ok = await deleteSale(id);
+    const code = promptPasscode();
+    if (!code) return;
+    const ok = await deleteSale(id, code);
     if (!ok) {
-      alert("삭제에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+      alert("삭제에 실패했습니다. 패스코드가 올바른지 확인해 주세요.");
       return;
     }
     clearSelection();
@@ -245,10 +258,11 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   const handleDeleteSelected = async () => {
     if (selected.size === 0) return;
     if (!confirm(`선택한 ${selected.size}건을 삭제하시겠어요?`)) return;
-    if (!confirm(`정말로 ${selected.size}건을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.`)) return;
-    const ok = await deleteSalesByIds([...selected]);
+    const code = promptPasscode();
+    if (!code) return;
+    const ok = await deleteSalesByIds([...selected], code);
     if (!ok) {
-      alert("선택 삭제에 실패했습니다.");
+      alert("선택 삭제에 실패했습니다. 패스코드가 올바른지 확인해 주세요.");
       return;
     }
     clearSelection();
@@ -258,9 +272,11 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   const handleClear = async () => {
     if (!confirm("저장된 모든 판매 기록을 삭제하시겠어요?")) return;
     if (!confirm("정말로 전체 기록을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.")) return;
-    const ok = await clearAllSales();
+    const code = promptPasscode();
+    if (!code) return;
+    const ok = await clearAllSales(code);
     if (!ok) {
-      alert("전체 초기화에 실패했습니다.");
+      alert("전체 초기화에 실패했습니다. 패스코드가 올바른지 확인해 주세요.");
       return;
     }
     clearSelection();
