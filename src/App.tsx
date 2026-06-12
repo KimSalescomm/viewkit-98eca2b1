@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import { OrientationProvider } from "./hooks/useOrientation";
 import { ContentProvider } from "./contexts/ContentContext";
 import ProductSelection from "./pages/ProductSelection";
+import Maintenance from "./pages/Maintenance";
 import SalesCertBadge from "./components/SalesCertBadge";
 import EventRankingAutoPopup from "./components/EventRankingAutoPopup";
 
