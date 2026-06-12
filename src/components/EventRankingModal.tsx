@@ -42,11 +42,12 @@ const EventRankingModal = ({ open, onClose }: Props) => {
 
   return (
     <div
-      className="fixed inset-0 z-[130] flex items-center justify-center bg-slate-900/15 backdrop-blur-md px-5 py-6 animate-in fade-in duration-150"
+      className="fixed inset-0 z-[130] overflow-y-auto overscroll-contain bg-slate-900/15 backdrop-blur-md animate-in fade-in duration-150"
       role="dialog"
       aria-modal="true"
     >
-      <div className="relative w-full max-w-md bg-white rounded-[28px] overflow-hidden shadow-[0_30px_80px_-20px_rgba(15,23,42,0.3)] border border-gray-100 animate-in zoom-in-95 duration-200">
+      <div className="min-h-full flex items-center justify-center px-5 py-6">
+        <div className="relative w-full max-w-md bg-white rounded-[28px] overflow-hidden shadow-[0_30px_80px_-20px_rgba(15,23,42,0.3)] border border-gray-100 animate-in zoom-in-95 duration-200 my-auto">
         <button
           type="button"
           onClick={onClose}
@@ -203,6 +204,7 @@ const EventRankingModal = ({ open, onClose }: Props) => {
           >
             확인
           </button>
+        </div>
         </div>
       </div>
     </div>
