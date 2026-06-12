@@ -65,7 +65,9 @@ const App = () => (
             <ContentProvider>
               <Suspense fallback={<PageLoader />}>
                 <Routes>
-                  {MAINTENANCE_MODE ? (
+                  {/* 관리자는 점검 모드에서도 항상 접근 가능 */}
+                  <Route path="/admin" element={<Admin />} />
+                  {showMaintenance ? (
                     <Route path="*" element={<Maintenance />} />
                   ) : (
                     <>
@@ -74,7 +76,6 @@ const App = () => (
                       <Route path="/product/:productId" element={<Home />} />
                       <Route path="/product/:productId/feature/:id" element={<FeatureDetail />} />
                       <Route path="/ranking" element={<Ranking />} />
-                      <Route path="/admin" element={<Admin />} />
                       <Route path="/legal" element={<Legal />} />
                       <Route path="/store-codes" element={<StoreCodes />} />
                       <Route path="/guide" element={<Guide />} />
