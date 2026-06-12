@@ -205,9 +205,11 @@ const EventRankingModal = ({ open, onClose }: Props) => {
             확인
           </button>
         </div>
+        </div>
       </div>
     </div>
   );
+};
 };
 
 export default EventRankingModal;
