@@ -26,6 +26,8 @@ const Guide = lazy(() => import("./pages/Guide"));
 
 const queryClient = new QueryClient();
 
+const MAINTENANCE_MODE = true;
+
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
     <div className="flex flex-col items-center gap-3">
