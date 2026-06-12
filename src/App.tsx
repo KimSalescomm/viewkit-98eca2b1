@@ -48,18 +48,22 @@ const App = () => (
             <ContentProvider>
               <Suspense fallback={<PageLoader />}>
                 <Routes>
-                  <Route path="/" element={<ProductSelection />} />
-                  <Route path="/subscription" element={<Subscription />} />
-                  <Route path="/product/:productId" element={<Home />} />
-                  <Route path="/product/:productId/feature/:id" element={<FeatureDetail />} />
-                  
-                  <Route path="/ranking" element={<Ranking />} />
-                  <Route path="/admin" element={<Admin />} />
-                  <Route path="/legal" element={<Legal />} />
-                  <Route path="/store-codes" element={<StoreCodes />} />
-                  <Route path="/guide" element={<Guide />} />
-                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                  <Route path="*" element={<NotFound />} />
+                  {MAINTENANCE_MODE ? (
+                    <Route path="*" element={<Maintenance />} />
+                  ) : (
+                    <>
+                      <Route path="/" element={<ProductSelection />} />
+                      <Route path="/subscription" element={<Subscription />} />
+                      <Route path="/product/:productId" element={<Home />} />
+                      <Route path="/product/:productId/feature/:id" element={<FeatureDetail />} />
+                      <Route path="/ranking" element={<Ranking />} />
+                      <Route path="/admin" element={<Admin />} />
+                      <Route path="/legal" element={<Legal />} />
+                      <Route path="/store-codes" element={<StoreCodes />} />
+                      <Route path="/guide" element={<Guide />} />
+                      <Route path="*" element={<NotFound />} />
+                    </>
+                  )}
                 </Routes>
               </Suspense>
               <SalesCertBadge />
