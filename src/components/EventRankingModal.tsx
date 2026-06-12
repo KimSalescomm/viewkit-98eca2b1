@@ -210,6 +210,5 @@ const EventRankingModal = ({ open, onClose }: Props) => {
     </div>
   );
 };
-};
 
 export default EventRankingModal;
