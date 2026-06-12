@@ -25,9 +25,7 @@ const Maintenance = () => (
           <Sparkles className="h-8 w-8 text-purple-600" />
         </div>
         <h1 className="mb-3 text-2xl font-bold text-gray-900 sm:text-3xl leading-snug">
-          뷰킷 업!
-          <br />
-          단장 후 다시 돌아오겠습니다
+          뷰킷 업, Coming Soon~!
         </h1>
         <p className="mb-2 text-base text-gray-600 leading-relaxed">
           더 나은 모습으로 찾아뵙기 위해
