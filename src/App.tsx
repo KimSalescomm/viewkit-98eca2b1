@@ -28,6 +28,23 @@ const queryClient = new QueryClient();
 
 const MAINTENANCE_MODE = true;
 
+// 관리자(세션에 인증된 사용자) 또는 ?preview=admin 쿼리가 있으면 점검 모드 우회
+const isAdminBypass = () => {
+  try {
+    if (sessionStorage.getItem("viewkit_admin_auth") === "1") return true;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("preview") === "admin") {
+      sessionStorage.setItem("viewkit_preview_bypass", "1");
+    }
+    if (sessionStorage.getItem("viewkit_preview_bypass") === "1") return true;
+  } catch {
+    /* noop */
+  }
+  return false;
+};
+
+const showMaintenance = MAINTENANCE_MODE && !isAdminBypass();
+
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
     <div className="flex flex-col items-center gap-3">
