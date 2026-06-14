@@ -325,7 +325,13 @@ const SalesCertBadge = () => {
 
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-medium tracking-wide text-slate-500">제품</label>
-                  <Select value={product} onValueChange={setProduct}>
+                  <Select
+                    value={product}
+                    onValueChange={(v) => {
+                      setProduct(v);
+                      setSubcategory("");
+                    }}
+                  >
                     <SelectTrigger className={fieldClass}>
                       <SelectValue placeholder="제품을 선택하세요" />
                     </SelectTrigger>
@@ -338,6 +344,26 @@ const SalesCertBadge = () => {
                     </SelectContent>
                   </Select>
                 </div>
+
+                {needsSubcategory && (
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-medium tracking-wide text-slate-500">
+                      세부 분류 <span className="text-[#A50034]">*</span>
+                    </label>
+                    <Select value={subcategory} onValueChange={setSubcategory}>
+                      <SelectTrigger className={fieldClass}>
+                        <SelectValue placeholder={`${product} 하위 카테고리를 선택하세요`} />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white border border-slate-200 rounded-xl text-slate-800">
+                        {subcategoryOptions!.map((s) => (
+                          <SelectItem key={s} value={s} className="rounded-lg focus:bg-[#3182CE]/10 focus:text-[#3182CE]">
+                            {s}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
 
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-medium tracking-wide text-slate-500">판매일</label>
@@ -362,6 +388,27 @@ const SalesCertBadge = () => {
                       />
                     </PopoverContent>
                   </Popover>
+                </div>
+
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <label className="text-[11px] font-medium tracking-wide text-slate-500">
+                      뷰킷 업에 한 마디!
+                    </label>
+                    <span className="text-[10px] text-slate-400">{memo.length}/200</span>
+                  </div>
+                  <textarea
+                    value={memo}
+                    onChange={(e) => setMemo(e.target.value.slice(0, 200))}
+                    placeholder={MEMO_PLACEHOLDER}
+                    rows={3}
+                    className={cn(
+                      "w-full bg-white border border-slate-200 rounded-xl text-slate-800",
+                      "hover:border-slate-300 focus:border-[#3182CE] focus:ring-2 focus:ring-[#3182CE]/15 focus:ring-offset-0 focus:outline-none",
+                      "px-3.5 py-2.5 text-sm transition-colors resize-none leading-relaxed",
+                      "placeholder:text-slate-400 placeholder:whitespace-pre-line",
+                    )}
+                  />
                 </div>
               </div>
 
