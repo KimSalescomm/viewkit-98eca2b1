@@ -180,7 +180,7 @@ const SalesCertBadge = () => {
     "hover:border-slate-300 focus:border-[#3182CE] focus:ring-2 focus:ring-[#3182CE]/15 focus:ring-offset-0 " +
     "h-11 px-3.5 text-sm transition-colors";
 
-  const canSubmit = store && product && date;
+  const canSubmit = !!(store && product && date && (!needsSubcategory || subcategory));
 
   return (
     <>
