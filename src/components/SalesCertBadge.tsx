@@ -71,8 +71,8 @@ const SalesCertBadge = () => {
   const isAdmin = isAdminStore(currentStore?.slug);
   const defaultBranch = useMemo(() => {
     const name = currentStore?.name?.trim() || "";
-    // 1순위: 등록된 매장명이 마스터에 그대로 있으면 사용
-    if (name && ALL_BRANCHES.includes(name)) return name;
+    // 1순위: 등록된 매장명
+    if (name) return name;
     // 2순위: slug(영문 코드)로 마스터 지점명 역조회 (예: GSB → 강서본점)
     const fromCode = getBranchNameByCode(currentStore?.slug || "");
     return fromCode || "";
