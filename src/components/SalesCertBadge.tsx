@@ -31,6 +31,28 @@ import { useToast } from "@/hooks/use-toast";
 // 구독을 맨 위로, 그 외 뷰킷 활성 제품 카드
 const PRODUCT_OPTIONS = ["구독", ...products.filter((p) => p.id !== "pc").map((p) => p.name)];
 
+// 1차 제품 분류 → 하위 카테고리 매핑
+const SUBCATEGORY_MAP: Record<string, string[]> = {
+  "구독": [
+    "세탁기",
+    "스탠드 에어컨",
+    "공기청정기",
+    "냉장고",
+    "STEM 냉장고",
+    "워시타워",
+    "건조기",
+    "전기레인지",
+    "식기세척기",
+    "광파오븐",
+  ],
+  "냉장고": ["STEM", "Fit&Max", "양문형 냉장고"],
+  "에어컨": ["스탠드 에어컨"],
+  "워시타워": ["워시타워", "워시타워 콤보", "세탁기", "건조기"],
+};
+
+const MEMO_PLACEHOLDER =
+  "예) 상담 중 화면을 보여줄 수 있어 좋아요.\n예) 구독 판매에 도움이 되었습니다.\n예) ○○본점 명장 홍길동 판매인증합니다";
+
 const SalesCertBadge = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
