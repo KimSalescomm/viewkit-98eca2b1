@@ -105,6 +105,8 @@ const SalesCertBadge = () => {
     setEditingStore(!defaultBranch && !isAdmin);
     setStoreQuery("");
     setProduct("");
+    setSubcategory("");
+    setMemo("");
     setDate(new Date());
     setSubmitted(false);
     submitLockRef.current = false;
@@ -127,15 +129,32 @@ const SalesCertBadge = () => {
     }
   };
 
+  const subcategoryOptions = product ? SUBCATEGORY_MAP[product] : undefined;
+  const needsSubcategory = !!subcategoryOptions && subcategoryOptions.length > 0;
+
   const handleSubmit = async () => {
     if (!store || !product || !date) return;
+    if (needsSubcategory && !subcategory) return;
     if (submitLockRef.current) return;
     submitLockRef.current = true;
     setSubmitting(true);
     const soldAt = format(date, "yyyy-MM-dd");
-    trackEvent("sales_certification", { branch: store, product, sold_at: soldAt });
+    const trimmedMemo = memo.trim();
+    trackEvent("sales_certification", {
+      branch: store,
+      product,
+      subcategory: subcategory || undefined,
+      sold_at: soldAt,
+      has_memo: trimmedMemo.length > 0,
+    });
     try {
-      await appendSale({ branch: store, product, sold_at: soldAt });
+      await appendSale({
+        branch: store,
+        product,
+        subcategory: subcategory || null,
+        memo: trimmedMemo || null,
+        sold_at: soldAt,
+      });
       setSubmitted(true);
     } catch (err) {
       console.warn("[SalesCertBadge] appendSale failed", err);
