@@ -437,8 +437,8 @@ const SalesCertBadge = () => {
               </div>
               <h3 className="text-lg font-semibold text-slate-900 mb-1.5">실적이 기록되었습니다</h3>
               <p className="text-sm text-slate-500 mb-6">
-                <span className="text-slate-700 font-medium">{cleanBranchName(store)}</span> · {product} ·{" "}
-                {format(date, "yyyy.MM.dd", { locale: ko })}
+                <span className="text-slate-700 font-medium">{cleanBranchName(store)}</span> · {product}
+                {subcategory ? ` (${subcategory})` : ""} · {format(date, "yyyy.MM.dd", { locale: ko })}
               </p>
 
               <div className="space-y-2">
