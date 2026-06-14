@@ -71,14 +71,10 @@ const SalesCertBadge = () => {
   const isAdmin = isAdminStore(currentStore?.slug);
   const defaultBranch = useMemo(() => {
     const name = currentStore?.name?.trim() || "";
-    // 1순위: 등록된 매장명
     if (name) return name;
-    // 2순위: slug(영문 코드)로 마스터 지점명 역조회 (예: GSB → 강서본점)
     const fromCode = getBranchNameByCode(currentStore?.slug || "");
     return fromCode || "";
   }, [currentStore?.name, currentStore?.slug]);
-
-
 
   // 숨겨진 관리자 진입: 배지를 1.2초 이상 길게 누르면 /admin 으로 이동
   const longPressTimer = useRef<number | null>(null);
@@ -98,9 +94,6 @@ const SalesCertBadge = () => {
   };
 
   const resetForm = () => {
-    setStore(defaultBranch);
-    setEditingStore(!defaultBranch && !isAdmin);
-    setStoreQuery("");
     setProduct("");
     setSubcategory("");
     setMemo("");
@@ -109,15 +102,6 @@ const SalesCertBadge = () => {
     submitLockRef.current = false;
     setSubmitting(false);
   };
-
-  // 다이얼로그가 열릴 때마다 현재 매장 정보로 자동 초기화
-  // (onClick 으로 직접 setOpen(true) 호출 시 Radix onOpenChange 가 발화하지 않아 필요)
-  useEffect(() => {
-    if (!open) return;
-    setStore(defaultBranch);
-    setEditingStore(isAdmin || !defaultBranch);
-    setStoreQuery("");
-  }, [open, defaultBranch, isAdmin]);
 
   const handleOpenChange = (next: boolean) => {
     setOpen(next);
@@ -130,7 +114,7 @@ const SalesCertBadge = () => {
   const needsSubcategory = !!subcategoryOptions && subcategoryOptions.length > 0;
 
   const handleSubmit = async () => {
-    if (!store || !product || !date) return;
+    if (!defaultBranch || !product || !date) return;
     if (needsSubcategory && !subcategory) return;
     if (submitLockRef.current) return;
     submitLockRef.current = true;
@@ -138,7 +122,7 @@ const SalesCertBadge = () => {
     const soldAt = format(date, "yyyy-MM-dd");
     const trimmedMemo = memo.trim();
     trackEvent("sales_certification", {
-      branch: store,
+      branch: defaultBranch,
       product,
       subcategory: subcategory || undefined,
       sold_at: soldAt,
@@ -146,7 +130,7 @@ const SalesCertBadge = () => {
     });
     try {
       await appendSale({
-        branch: store,
+        branch: defaultBranch,
         product,
         subcategory: subcategory || null,
         memo: trimmedMemo || null,
@@ -177,7 +161,7 @@ const SalesCertBadge = () => {
     "hover:border-slate-300 focus:border-[#3182CE] focus:ring-2 focus:ring-[#3182CE]/15 focus:ring-offset-0 " +
     "h-11 px-3.5 text-sm transition-colors";
 
-  const canSubmit = !!(store && product && date && (!needsSubcategory || subcategory));
+  const canSubmit = !!(defaultBranch && product && date && (!needsSubcategory || subcategory));
 
   return (
     <>
@@ -250,74 +234,17 @@ const SalesCertBadge = () => {
                       </span>
                     )}
                   </div>
-                  {!editingStore && store ? (
-                    <div className={cn(fieldClass, "flex items-center justify-between")}>
-                      <div className="flex items-center gap-2 min-w-0">
-                        <Store className="w-4 h-4 text-[#3182CE] shrink-0" />
-                        <span className="font-medium text-slate-900 truncate">{cleanBranchName(store)}</span>
-                        {getStoreCategoryLabel(store) && (
-                          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 shrink-0">
-                            {getStoreCategoryLabel(store)}
-                          </span>
-                        )}
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => { setEditingStore(true); setStoreQuery(""); }}
-                        className="text-[11px] text-[#3182CE] hover:underline shrink-0"
-                      >
-                        변경
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="relative">
-                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
-                      <input
-                        autoFocus
-                        value={storeQuery}
-                        onChange={(e) => setStoreQuery(e.target.value)}
-                        placeholder="지점명을 검색하세요 (예: 강서, 대치)"
-                        className={cn(fieldClass, "pl-9 pr-9")}
-                      />
-                      {store && (
-                        <button
-                          type="button"
-                          onClick={() => { setEditingStore(false); setStoreQuery(""); }}
-                          className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600"
-                        >
-                          <X className="w-3.5 h-3.5" />
-                        </button>
-                      )}
-                      {storeQuery.trim() && (
-                        <div className="absolute z-10 mt-1 w-full max-h-56 overflow-auto rounded-xl border border-slate-200 bg-white shadow-lg">
-                          {ALL_BRANCHES.filter((b) =>
-                            b.toLowerCase().includes(storeQuery.trim().toLowerCase()),
-                          ).slice(0, 30).map((b) => (
-                            <button
-                              key={b}
-                              type="button"
-                              onClick={() => {
-                                setStore(b);
-                                setEditingStore(false);
-                                setStoreQuery("");
-                              }}
-                              className="w-full text-left px-3.5 py-2 text-sm hover:bg-[#3182CE]/10 hover:text-[#3182CE] flex items-center justify-between"
-                            >
-                            <span>{cleanBranchName(b)}</span>
-                            <span className="text-[10px] text-slate-400">
-                              {getManagerByBranch(b)}
-                            </span>
-                            </button>
-                          ))}
-                          {ALL_BRANCHES.filter((b) =>
-                            b.toLowerCase().includes(storeQuery.trim().toLowerCase()),
-                          ).length === 0 && (
-                            <div className="px-3.5 py-3 text-xs text-slate-400">검색 결과가 없습니다</div>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  )}
+                  <div className={cn(fieldClass, "flex items-center gap-2")}>
+                    <Store className="w-4 h-4 text-[#3182CE] shrink-0" />
+                    <span className="font-medium text-slate-900 truncate">
+                      {defaultBranch ? cleanBranchName(defaultBranch) : "지점 미설정"}
+                    </span>
+                    {defaultBranch && getStoreCategoryLabel(defaultBranch) && (
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 shrink-0">
+                        {getStoreCategoryLabel(defaultBranch)}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 <div className="space-y-1.5">
@@ -434,7 +361,7 @@ const SalesCertBadge = () => {
               </div>
               <h3 className="text-lg font-semibold text-slate-900 mb-1.5">실적이 기록되었습니다</h3>
               <p className="text-sm text-slate-500 mb-6">
-                <span className="text-slate-700 font-medium">{cleanBranchName(store)}</span> · {product}
+                <span className="text-slate-700 font-medium">{cleanBranchName(defaultBranch)}</span> · {product}
                 {subcategory ? ` (${subcategory})` : ""} · {format(date, "yyyy.MM.dd", { locale: ko })}
               </p>
 
