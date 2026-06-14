@@ -70,22 +70,28 @@ export type Database = {
           branch: string
           created_at: string
           id: string
+          memo: string | null
           product: string
           sold_at: string
+          subcategory: string | null
         }
         Insert: {
           branch: string
           created_at?: string
           id?: string
+          memo?: string | null
           product: string
           sold_at: string
+          subcategory?: string | null
         }
         Update: {
           branch?: string
           created_at?: string
           id?: string
+          memo?: string | null
           product?: string
           sold_at?: string
+          subcategory?: string | null
         }
         Relationships: []
       }
