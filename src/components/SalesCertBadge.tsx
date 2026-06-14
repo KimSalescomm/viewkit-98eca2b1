@@ -31,6 +31,28 @@ import { useToast } from "@/hooks/use-toast";
 // 구독을 맨 위로, 그 외 뷰킷 활성 제품 카드
 const PRODUCT_OPTIONS = ["구독", ...products.filter((p) => p.id !== "pc").map((p) => p.name)];
 
+// 1차 제품 분류 → 하위 카테고리 매핑
+const SUBCATEGORY_MAP: Record<string, string[]> = {
+  "구독": [
+    "세탁기",
+    "스탠드 에어컨",
+    "공기청정기",
+    "냉장고",
+    "STEM 냉장고",
+    "워시타워",
+    "건조기",
+    "전기레인지",
+    "식기세척기",
+    "광파오븐",
+  ],
+  "냉장고": ["STEM", "Fit&Max", "양문형 냉장고"],
+  "에어컨": ["스탠드 에어컨"],
+  "워시타워": ["워시타워", "워시타워 콤보", "세탁기", "건조기"],
+};
+
+const MEMO_PLACEHOLDER =
+  "예) 상담 중 화면을 보여줄 수 있어 좋아요.\n예) 구독 판매에 도움이 되었습니다.\n예) ○○본점 명장 홍길동 판매인증합니다";
+
 const SalesCertBadge = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -38,6 +60,8 @@ const SalesCertBadge = () => {
   const [editingStore, setEditingStore] = useState(false);
   const [storeQuery, setStoreQuery] = useState("");
   const [product, setProduct] = useState<string>("");
+  const [subcategory, setSubcategory] = useState<string>("");
+  const [memo, setMemo] = useState<string>("");
   const [date, setDate] = useState<Date>(new Date());
   const [dateOpen, setDateOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -81,6 +105,8 @@ const SalesCertBadge = () => {
     setEditingStore(!defaultBranch && !isAdmin);
     setStoreQuery("");
     setProduct("");
+    setSubcategory("");
+    setMemo("");
     setDate(new Date());
     setSubmitted(false);
     submitLockRef.current = false;
@@ -103,15 +129,32 @@ const SalesCertBadge = () => {
     }
   };
 
+  const subcategoryOptions = product ? SUBCATEGORY_MAP[product] : undefined;
+  const needsSubcategory = !!subcategoryOptions && subcategoryOptions.length > 0;
+
   const handleSubmit = async () => {
     if (!store || !product || !date) return;
+    if (needsSubcategory && !subcategory) return;
     if (submitLockRef.current) return;
     submitLockRef.current = true;
     setSubmitting(true);
     const soldAt = format(date, "yyyy-MM-dd");
-    trackEvent("sales_certification", { branch: store, product, sold_at: soldAt });
+    const trimmedMemo = memo.trim();
+    trackEvent("sales_certification", {
+      branch: store,
+      product,
+      subcategory: subcategory || undefined,
+      sold_at: soldAt,
+      has_memo: trimmedMemo.length > 0,
+    });
     try {
-      await appendSale({ branch: store, product, sold_at: soldAt });
+      await appendSale({
+        branch: store,
+        product,
+        subcategory: subcategory || null,
+        memo: trimmedMemo || null,
+        sold_at: soldAt,
+      });
       setSubmitted(true);
     } catch (err) {
       console.warn("[SalesCertBadge] appendSale failed", err);
@@ -137,7 +180,7 @@ const SalesCertBadge = () => {
     "hover:border-slate-300 focus:border-[#3182CE] focus:ring-2 focus:ring-[#3182CE]/15 focus:ring-offset-0 " +
     "h-11 px-3.5 text-sm transition-colors";
 
-  const canSubmit = store && product && date;
+  const canSubmit = !!(store && product && date && (!needsSubcategory || subcategory));
 
   return (
     <>
@@ -194,8 +237,8 @@ const SalesCertBadge = () => {
                     </span>
                     판매 인증
                   </DialogTitle>
-                  <DialogDescription className="text-xs text-slate-500">
-                    지점·제품·판매일을 기록합니다
+                  <DialogDescription className="text-xs text-slate-500 leading-relaxed">
+                    상담 중 <span className="font-semibold text-[#A50034]">'뷰킷'</span>을 사용하여 판매에 성공한 건을 인증해 주세요!
                   </DialogDescription>
                 </DialogHeader>
               </div>
@@ -282,7 +325,13 @@ const SalesCertBadge = () => {
 
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-medium tracking-wide text-slate-500">제품</label>
-                  <Select value={product} onValueChange={setProduct}>
+                  <Select
+                    value={product}
+                    onValueChange={(v) => {
+                      setProduct(v);
+                      setSubcategory("");
+                    }}
+                  >
                     <SelectTrigger className={fieldClass}>
                       <SelectValue placeholder="제품을 선택하세요" />
                     </SelectTrigger>
@@ -295,6 +344,26 @@ const SalesCertBadge = () => {
                     </SelectContent>
                   </Select>
                 </div>
+
+                {needsSubcategory && (
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-medium tracking-wide text-slate-500">
+                      세부 분류 <span className="text-[#A50034]">*</span>
+                    </label>
+                    <Select value={subcategory} onValueChange={setSubcategory}>
+                      <SelectTrigger className={fieldClass}>
+                        <SelectValue placeholder={`${product} 하위 카테고리를 선택하세요`} />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white border border-slate-200 rounded-xl text-slate-800">
+                        {subcategoryOptions!.map((s) => (
+                          <SelectItem key={s} value={s} className="rounded-lg focus:bg-[#3182CE]/10 focus:text-[#3182CE]">
+                            {s}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
 
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-medium tracking-wide text-slate-500">판매일</label>
@@ -319,6 +388,27 @@ const SalesCertBadge = () => {
                       />
                     </PopoverContent>
                   </Popover>
+                </div>
+
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <label className="text-[11px] font-medium tracking-wide text-slate-500">
+                      뷰킷 업에 한 마디!
+                    </label>
+                    <span className="text-[10px] text-slate-400">{memo.length}/200</span>
+                  </div>
+                  <textarea
+                    value={memo}
+                    onChange={(e) => setMemo(e.target.value.slice(0, 200))}
+                    placeholder={MEMO_PLACEHOLDER}
+                    rows={3}
+                    className={cn(
+                      "w-full bg-white border border-slate-200 rounded-xl text-slate-800",
+                      "hover:border-slate-300 focus:border-[#3182CE] focus:ring-2 focus:ring-[#3182CE]/15 focus:ring-offset-0 focus:outline-none",
+                      "px-3.5 py-2.5 text-sm transition-colors resize-none leading-relaxed",
+                      "placeholder:text-slate-400 placeholder:whitespace-pre-line",
+                    )}
+                  />
                 </div>
               </div>
 
@@ -347,8 +437,8 @@ const SalesCertBadge = () => {
               </div>
               <h3 className="text-lg font-semibold text-slate-900 mb-1.5">실적이 기록되었습니다</h3>
               <p className="text-sm text-slate-500 mb-6">
-                <span className="text-slate-700 font-medium">{cleanBranchName(store)}</span> · {product} ·{" "}
-                {format(date, "yyyy.MM.dd", { locale: ko })}
+                <span className="text-slate-700 font-medium">{cleanBranchName(store)}</span> · {product}
+                {subcategory ? ` (${subcategory})` : ""} · {format(date, "yyyy.MM.dd", { locale: ko })}
               </p>
 
               <div className="space-y-2">
