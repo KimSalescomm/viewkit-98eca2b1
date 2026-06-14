@@ -237,8 +237,8 @@ const SalesCertBadge = () => {
                     </span>
                     판매 인증
                   </DialogTitle>
-                  <DialogDescription className="text-xs text-slate-500">
-                    지점·제품·판매일을 기록합니다
+                  <DialogDescription className="text-xs text-slate-500 leading-relaxed">
+                    상담 중 <span className="font-semibold text-[#A50034]">'뷰킷'</span>을 사용하여 판매에 성공한 건을 인증해 주세요!
                   </DialogDescription>
                 </DialogHeader>
               </div>
