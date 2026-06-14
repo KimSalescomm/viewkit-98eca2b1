@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils";
 import useAnalytics from "@/hooks/useAnalytics";
 import { products } from "@/data/products";
 import { appendSale } from "@/utils/salesLog";
-import { ALL_BRANCHES, getManagerByBranch, getStoreCategoryLabel, isAdminStore, getBranchNameByCode, cleanBranchName } from "@/data/branches";
+import { getStoreCategoryLabel, isAdminStore, getBranchNameByCode, cleanBranchName } from "@/data/branches";
 import { getCurrentStore } from "@/utils/storeId";
 import { useToast } from "@/hooks/use-toast";
 
