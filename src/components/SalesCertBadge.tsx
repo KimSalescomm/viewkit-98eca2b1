@@ -60,6 +60,8 @@ const SalesCertBadge = () => {
   const [editingStore, setEditingStore] = useState(false);
   const [storeQuery, setStoreQuery] = useState("");
   const [product, setProduct] = useState<string>("");
+  const [subcategory, setSubcategory] = useState<string>("");
+  const [memo, setMemo] = useState<string>("");
   const [date, setDate] = useState<Date>(new Date());
   const [dateOpen, setDateOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
