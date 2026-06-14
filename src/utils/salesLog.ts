@@ -8,6 +8,8 @@ export interface SaleRecord {
   id?: string;
   branch: string;
   product: string;
+  subcategory?: string | null;
+  memo?: string | null;
   sold_at: string; // yyyy-MM-dd
   created_at: string; // ISO
 }
@@ -15,7 +17,7 @@ export interface SaleRecord {
 export const getSales = async (): Promise<SaleRecord[]> => {
   const { data, error } = await supabase
     .from("sales_certifications")
-    .select("id, branch, product, sold_at, created_at")
+    .select("id, branch, product, subcategory, memo, sold_at, created_at")
     .gte("created_at", `${SITE_OPEN_DATE}T00:00:00Z`)
     .order("created_at", { ascending: true })
     .limit(5000);
@@ -32,6 +34,8 @@ export const appendSale = async (
   const { error } = await supabase.from("sales_certifications").insert({
     branch: input.branch,
     product: input.product,
+    subcategory: input.subcategory ?? null,
+    memo: input.memo ?? null,
     sold_at: input.sold_at,
   });
   if (error) console.warn("[salesLog] insert failed", error);
