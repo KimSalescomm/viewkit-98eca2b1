@@ -56,9 +56,6 @@ const MEMO_PLACEHOLDER =
 const SalesCertBadge = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const [store, setStore] = useState<string>("");
-  const [editingStore, setEditingStore] = useState(false);
-  const [storeQuery, setStoreQuery] = useState("");
   const [product, setProduct] = useState<string>("");
   const [subcategory, setSubcategory] = useState<string>("");
   const [memo, setMemo] = useState<string>("");
