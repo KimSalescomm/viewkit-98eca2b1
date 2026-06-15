@@ -23,6 +23,7 @@ const Admin = lazy(() => import("./pages/Admin"));
 const Legal = lazy(() => import("./pages/Legal"));
 const StoreCodes = lazy(() => import("./pages/StoreCodes"));
 const Guide = lazy(() => import("./pages/Guide"));
+const ConsultDemo = lazy(() => import("./pages/ConsultDemo"));
 
 const queryClient = new QueryClient();
 
@@ -79,6 +80,7 @@ const App = () => (
                       <Route path="/legal" element={<Legal />} />
                       <Route path="/store-codes" element={<StoreCodes />} />
                       <Route path="/guide" element={<Guide />} />
+                      <Route path="/consult-demo" element={<ConsultDemo />} />
                       <Route path="*" element={<NotFound />} />
                     </>
                   )}
