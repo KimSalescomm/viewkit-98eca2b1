@@ -316,11 +316,14 @@ const SalesCertBadge = () => {
 
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <label className="text-[11px] font-medium tracking-wide text-slate-500">
-                      뷰킷 업에 한 마디!
+                    <label className="text-[11px] font-semibold tracking-wide text-slate-700">
+                      한 마디 후기를 남겨주세요
                     </label>
                     <span className="text-[10px] text-slate-400">{memo.length}/200</span>
                   </div>
+                  <p className="text-[11px] text-slate-400 leading-relaxed -mt-0.5">
+                    동료들에게 힘이 되는 한 마디를 작성해 보세요
+                  </p>
                   <textarea
                     value={memo}
                     onChange={(e) => setMemo(e.target.value.slice(0, 200))}
@@ -330,7 +333,7 @@ const SalesCertBadge = () => {
                       "w-full bg-white border border-slate-200 rounded-xl text-slate-800",
                       "hover:border-slate-300 focus:border-[#3182CE] focus:ring-2 focus:ring-[#3182CE]/15 focus:ring-offset-0 focus:outline-none",
                       "px-3.5 py-2.5 text-sm transition-colors resize-none leading-relaxed",
-                      "placeholder:text-slate-400 placeholder:whitespace-pre-line",
+                      "placeholder:text-[11px] placeholder:text-slate-400 placeholder:whitespace-pre-line",
                     )}
                   />
                 </div>
