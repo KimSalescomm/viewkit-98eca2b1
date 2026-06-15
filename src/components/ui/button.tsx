@@ -15,12 +15,20 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        sales:
+          "bg-[hsl(var(--sales-primary))] text-[hsl(var(--sales-primary-foreground))] hover:bg-[hsl(var(--lg-red-dark))] font-semibold shadow-sm",
+        salesOutline:
+          "border border-[hsl(var(--sales-primary))] text-[hsl(var(--sales-primary))] bg-transparent hover:bg-[hsl(var(--sales-primary-soft))]",
+        consultSecondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 font-medium",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
+        touch: "h-12 px-5 text-base",
+        touchLg: "h-14 px-6 text-lg font-bold rounded-xl",
       },
     },
     defaultVariants: {
