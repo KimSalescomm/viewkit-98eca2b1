@@ -317,13 +317,10 @@ const SalesCertBadge = () => {
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
                     <label className="text-[11px] font-semibold tracking-wide text-slate-700">
-                      한 마디 후기를 남겨주세요
+                      뷰킷과 함께한 나의 성공담을 들려주세요
                     </label>
                     <span className="text-[10px] text-slate-400">{memo.length}/200</span>
                   </div>
-                  <p className="text-[11px] text-slate-400 leading-relaxed -mt-0.5">
-                    동료들에게 힘이 되는 한 마디를 작성해 보세요
-                  </p>
                   <textarea
                     value={memo}
                     onChange={(e) => setMemo(e.target.value.slice(0, 200))}
