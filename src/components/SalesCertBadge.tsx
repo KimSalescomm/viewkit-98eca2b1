@@ -117,6 +117,7 @@ const SalesCertBadge = () => {
   const handleSubmit = async () => {
     if (!defaultBranch || !product || !date) return;
     if (needsSubcategory && !subcategory) return;
+    if (!memo.trim()) return;
     if (submitLockRef.current) return;
     submitLockRef.current = true;
     setSubmitting(true);
