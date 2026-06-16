@@ -87,6 +87,7 @@ const App = () => (
               </Suspense>
               <SalesCertBadge />
               <EventRankingAutoPopup />
+              <ScreensaverOverlay />
             </ContentProvider>
           </AnalyticsProvider>
         </OrientationProvider>
