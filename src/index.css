@@ -149,6 +149,94 @@ All colors MUST be HSL.
   .manual-shadow-card {
     box-shadow: 0 2px 16px -2px hsl(var(--manual-indigo) / 0.10), 0 1px 4px -1px hsl(var(--manual-indigo) / 0.06);
   }
+
+  /* Typography */
+  .text-page-title { @apply text-3xl sm:text-4xl font-bold tracking-tight leading-tight; }
+  .text-section-title { @apply text-2xl sm:text-3xl font-bold tracking-tight leading-tight; }
+  .text-section-desc { @apply text-base sm:text-lg text-muted-foreground leading-relaxed; }
+  .text-card-title { @apply text-lg sm:text-xl font-semibold tracking-tight; }
+  .text-card-desc { @apply text-sm sm:text-base text-muted-foreground leading-relaxed; }
+  .text-caption { @apply text-xs text-muted-foreground leading-relaxed; }
+
+  /* Form helpers */
+  .form-label { @apply text-sm font-medium leading-none; }
+  .required-mark { color: hsl(var(--brand)); }
+  .form-help { @apply text-xs text-muted-foreground leading-relaxed; }
+  .form-error { @apply text-xs leading-relaxed; color: hsl(var(--destructive)); }
+  .form-success { @apply text-xs leading-relaxed; color: hsl(var(--success)); }
+
+  /* Overflow exceptions */
+  .btn-nowrap,
+  .badge,
+  .tag,
+  [role="tab"],
+  [role="menuitem"],
+  .model-code,
+  .nowrap { white-space: nowrap; }
+
+  pre, code {
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: pre;
+  }
+}
+
+@layer components {
+  .surface-card {
+    @apply rounded-2xl border bg-card p-5 sm:p-6 shadow-sm;
+  }
+  .surface-card-interactive {
+    @apply rounded-2xl border bg-card p-5 sm:p-6 shadow-sm transition-all;
+  }
+  .section-panel {
+    @apply rounded-3xl border bg-card/80 p-6 sm:p-8 shadow-sm;
+  }
+  .brand-soft-panel {
+    @apply rounded-3xl border p-6 sm:p-8;
+    background: linear-gradient(180deg, hsl(var(--card)), hsl(var(--brand-muted)));
+  }
+
+  .badge-brand {
+    @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold;
+    background: hsl(var(--brand-soft));
+    color: hsl(var(--brand));
+  }
+  .badge-neutral {
+    @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium bg-secondary text-secondary-foreground;
+  }
+  .alert-success {
+    @apply rounded-xl border p-4 text-sm leading-relaxed;
+    background: hsl(var(--success-soft));
+    color: hsl(var(--success));
+  }
+  .alert-info {
+    @apply rounded-xl border p-4 text-sm leading-relaxed;
+    background: hsl(var(--info-soft));
+    color: hsl(var(--info));
+  }
+
+  .footer {
+    @apply border-t border-border bg-background/80 text-xs text-muted-foreground backdrop-blur-sm;
+  }
+  .footer-legal {
+    @apply text-xs sm:text-sm leading-relaxed text-muted-foreground;
+  }
+}
+
+/* Hover effects scoped to devices that actually have hover (avoid touch sticky-hover on StandByMe) */
+@media (hover: hover) {
+  .btn-brand:hover { background: hsl(var(--lg-red-dark)); }
+  .btn-brand-outline:hover { background: hsl(var(--brand-soft)); }
+  .btn-soft:hover { opacity: 0.8; }
+  .btn-subtle:hover {
+    color: hsl(var(--foreground));
+    background: hsl(var(--accent));
+  }
+
+  .surface-card-interactive:hover {
+    border-color: hsl(var(--brand) / 0.35);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
 }
 
 @keyframes spin {
