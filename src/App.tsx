@@ -80,9 +80,13 @@ const App = () => (
                   )}
                 </Routes>
               </Suspense>
-              <SalesCertBadge />
-              <EventRankingAutoPopup />
-              <ScreensaverOverlay />
+              {!showMaintenance && (
+                <>
+                  <SalesCertBadge />
+                  <EventRankingAutoPopup />
+                  <ScreensaverOverlay />
+                </>
+              )}
             </ContentProvider>
           </AnalyticsProvider>
         </OrientationProvider>
