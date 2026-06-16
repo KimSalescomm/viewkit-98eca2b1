@@ -117,6 +117,7 @@ const SalesCertBadge = () => {
   const handleSubmit = async () => {
     if (!defaultBranch || !product || !date) return;
     if (needsSubcategory && !subcategory) return;
+    if (!memo.trim()) return;
     if (submitLockRef.current) return;
     submitLockRef.current = true;
     setSubmitting(true);
@@ -162,7 +163,7 @@ const SalesCertBadge = () => {
     "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 " +
     "h-11 px-3.5 text-sm transition-colors";
 
-  const canSubmit = !!(defaultBranch && product && date && (!needsSubcategory || subcategory));
+  const canSubmit = !!(defaultBranch && product && date && (!needsSubcategory || subcategory) && memo.trim().length > 0);
 
   return (
     <>
@@ -318,7 +319,7 @@ const SalesCertBadge = () => {
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
                     <label className="text-[11px] font-semibold tracking-wide text-slate-700">
-                      뷰킷과 함께한 나의 성공담을 들려주세요
+                      뷰킷과 함께한 나의 성공담을 들려주세요 <span className="text-brand">*</span>
                     </label>
                     <span className="text-[10px] text-slate-400">{memo.length}/200</span>
                   </div>
