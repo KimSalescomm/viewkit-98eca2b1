@@ -13,8 +13,65 @@ interface ScreensaverRow {
   created_at: string;
 }
 
-const detectYouTube = (url: string) =>
-  /(?:youtube\.com|youtu\.be)/i.test(url);
+const PASSCODE_KEY = "viewkit_admin_passcode";
+
+const getCachedPasscode = (): string | null => {
+  try {
+    return sessionStorage.getItem(PASSCODE_KEY);
+  } catch {
+    return null;
+  }
+};
+
+const askPasscode = (): string | null => {
+  const cached = getCachedPasscode();
+  if (cached) return cached;
+  const code = window.prompt(
+    "스크린세이버를 변경하려면 관리자 패스코드를 입력해 주세요.",
+    "",
+  );
+  if (!code) return null;
+  const trimmed = code.trim();
+  if (!trimmed) return null;
+  try {
+    sessionStorage.setItem(PASSCODE_KEY, trimmed);
+  } catch {
+    /* noop */
+  }
+  return trimmed;
+};
+
+const clearCachedPasscode = () => {
+  try {
+    sessionStorage.removeItem(PASSCODE_KEY);
+  } catch {
+    /* noop */
+  }
+};
+
+const callAdmin = async (
+  body: Record<string, unknown>,
+): Promise<{ ok: boolean; error?: string }> => {
+  const passcode = askPasscode();
+  if (!passcode) return { ok: false, error: "패스코드가 필요합니다." };
+  const { data, error } = await supabase.functions.invoke("screensaver-admin", {
+    body: { ...body, passcode },
+  });
+  if (error || !data?.ok) {
+    const message =
+      (data as { error?: string } | null)?.error ?? error?.message ?? "요청 실패";
+    if (/unauthorized/i.test(message)) {
+      clearCachedPasscode();
+      alert("패스코드가 올바르지 않습니다. 다시 시도해 주세요.");
+    } else {
+      alert(`처리 실패: ${message}`);
+    }
+    return { ok: false, error: message };
+  }
+  return { ok: true };
+};
+
+const detectYouTube = (url: string) => /(?:youtube\.com|youtu\.be)/i.test(url);
 
 const ScreensaverManager = () => {
   const [rows, setRows] = useState<ScreensaverRow[]>([]);
@@ -46,21 +103,13 @@ const ScreensaverManager = () => {
       return;
     }
     setBusy(true);
-    const maxOrder = rows.reduce((m, r) => Math.max(m, r.sort_order), -1);
-    const { error } = await (supabase as any)
-      .from("screensaver_videos")
-      .insert({
-        url: trimmed,
-        is_youtube: detectYouTube(trimmed),
-        sort_order: maxOrder + 1,
-        enabled: true,
-        label: label.trim() || null,
-      });
+    const res = await callAdmin({
+      action: "add",
+      url: trimmed,
+      label: label.trim() || null,
+    });
     setBusy(false);
-    if (error) {
-      alert("추가에 실패했습니다.");
-      return;
-    }
+    if (!res.ok) return;
     setUrl("");
     setLabel("");
     void load();
@@ -68,42 +117,31 @@ const ScreensaverManager = () => {
 
   const handleDelete = async (id: string) => {
     if (!confirm("이 영상을 목록에서 삭제하시겠어요?")) return;
-    const { error } = await (supabase as any)
-      .from("screensaver_videos")
-      .delete()
-      .eq("id", id);
-    if (error) {
-      alert("삭제에 실패했습니다.");
-      return;
-    }
-    void load();
+    const res = await callAdmin({ action: "delete", id });
+    if (res.ok) void load();
   };
 
   const handleToggle = async (row: ScreensaverRow) => {
-    const { error } = await (supabase as any)
-      .from("screensaver_videos")
-      .update({ enabled: !row.enabled })
-      .eq("id", row.id);
-    if (error) {
-      alert("변경에 실패했습니다.");
-      return;
-    }
-    void load();
+    const res = await callAdmin({
+      action: "toggle",
+      id: row.id,
+      enabled: !row.enabled,
+    });
+    if (res.ok) void load();
   };
 
   const handleMove = async (idx: number, dir: -1 | 1) => {
     const target = rows[idx];
     const swap = rows[idx + dir];
     if (!target || !swap) return;
-    await (supabase as any)
-      .from("screensaver_videos")
-      .update({ sort_order: swap.sort_order })
-      .eq("id", target.id);
-    await (supabase as any)
-      .from("screensaver_videos")
-      .update({ sort_order: target.sort_order })
-      .eq("id", swap.id);
-    void load();
+    const res = await callAdmin({
+      action: "swap_order",
+      a_id: target.id,
+      b_id: swap.id,
+      a_order: target.sort_order,
+      b_order: swap.sort_order,
+    });
+    if (res.ok) void load();
   };
 
   return (
@@ -117,7 +155,7 @@ const ScreensaverManager = () => {
         </h2>
       </div>
       <p className="text-xs text-slate-500 mb-4">
-        90초 동안 화면 조작이 없으면 등록된 영상이 전면에 순환 재생됩니다. (세로형 영상 권장 · YouTube/MP4/WebM 지원)
+        90초 동안 화면 조작이 없으면 등록된 영상이 전면에 순환 재생됩니다. (세로형 영상 권장 · YouTube/MP4/WebM 지원 · 관리자 전용)
       </p>
 
       {/* 추가 폼 */}
@@ -164,7 +202,7 @@ const ScreensaverManager = () => {
               key={row.id}
               className={cn(
                 "flex items-center gap-2 px-3 py-2.5 text-sm",
-                !row.enabled && "bg-slate-50/60 opacity-60"
+                !row.enabled && "bg-slate-50/60 opacity-60",
               )}
             >
               <div className="flex flex-col">
@@ -193,7 +231,7 @@ const ScreensaverManager = () => {
                   "px-1.5 py-0.5 rounded text-[10px] font-semibold shrink-0",
                   row.is_youtube
                     ? "bg-rose-50 text-rose-600"
-                    : "bg-sky-50 text-sky-600"
+                    : "bg-sky-50 text-sky-600",
                 )}
               >
                 {row.is_youtube ? "YT" : "MP4"}
