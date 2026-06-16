@@ -13,19 +13,11 @@ interface ScreensaverRow {
   created_at: string;
 }
 
-const PASSCODE_KEY = "viewkit_admin_passcode";
-
-const getCachedPasscode = (): string | null => {
-  try {
-    return sessionStorage.getItem(PASSCODE_KEY);
-  } catch {
-    return null;
-  }
-};
+// 패스코드는 메모리에만 보관 (sessionStorage/localStorage 금지)
+let inMemoryPasscode: string | null = null;
 
 const askPasscode = (): string | null => {
-  const cached = getCachedPasscode();
-  if (cached) return cached;
+  if (inMemoryPasscode) return inMemoryPasscode;
   const code = window.prompt(
     "스크린세이버를 변경하려면 관리자 패스코드를 입력해 주세요.",
     "",
@@ -33,20 +25,12 @@ const askPasscode = (): string | null => {
   if (!code) return null;
   const trimmed = code.trim();
   if (!trimmed) return null;
-  try {
-    sessionStorage.setItem(PASSCODE_KEY, trimmed);
-  } catch {
-    /* noop */
-  }
+  inMemoryPasscode = trimmed;
   return trimmed;
 };
 
 const clearCachedPasscode = () => {
-  try {
-    sessionStorage.removeItem(PASSCODE_KEY);
-  } catch {
-    /* noop */
-  }
+  inMemoryPasscode = null;
 };
 
 const callAdmin = async (
