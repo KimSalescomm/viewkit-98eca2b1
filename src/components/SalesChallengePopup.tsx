@@ -189,7 +189,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Pr
             </h2>
 
             {/* 지점명 — 화이트 칩 + LG 레드 외곽, 사이트 톤과 직결 */}
-            <div className="mt-4 inline-flex items-center bg-white border-2 border-brand px-6 py-3 rounded-2xl shadow-[0_10px_28px_-12px_hsl(var(--brand) / 0.35)]">
+            <div className="mt-4 inline-flex items-center bg-white border-2 border-brand px-6 py-3 rounded-2xl shadow-[0_10px_28px_-12px_hsl(var(--brand)/0.35)]">
               <span className="text-[26px] sm:text-[28px] font-extrabold tracking-tight text-brand">
                 {leaderBranch}
               </span>
@@ -238,7 +238,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Pr
           <button
             type="button"
             onClick={handleClose}
-            className="w-full h-12 rounded-2xl bg-brand hover:bg-brand-dark text-white text-[15px] font-bold tracking-tight transition-colors shadow-[0_10px_24px_-10px_hsl(var(--brand) / 0.55)]"
+            className="w-full h-12 rounded-2xl bg-brand hover:bg-brand-dark text-white text-[15px] font-bold tracking-tight transition-colors shadow-[0_10px_24px_-10px_hsl(var(--brand)/0.55)]"
           >
             확인
           </button>

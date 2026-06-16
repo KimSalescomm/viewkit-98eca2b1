@@ -388,7 +388,7 @@ const Subscription = () => {
                           backgroundColor: "hsl(var(--brand))",
                           borderColor: "hsl(var(--brand))",
                           color: "#ffffff",
-                          boxShadow: "0 6px 16px -4px hsl(var(--brand) / 0.35)",
+                          boxShadow: "0 6px 16px -4px hsl(var(--brand)/0.35)",
                         }
                       : undefined
                   }
@@ -532,7 +532,7 @@ const Subscription = () => {
                     fetchPriority="high"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />
-                  <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "linear-gradient(to top, hsl(var(--brand) / 0.12), transparent)" }} />
+                  <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "linear-gradient(to top, hsl(var(--brand)/0.12), transparent)" }} />
                 </div>
               )}
             </div>

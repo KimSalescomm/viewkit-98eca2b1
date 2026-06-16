@@ -183,7 +183,7 @@ const SalesCertBadge = () => {
           "h-12 pl-4 pr-4 rounded-full",
           "text-white",
           "bg-gradient-to-r from-[#FF4D6D] via-brand to-[#FF8A3D]",
-          "shadow-[0_10px_30px_-6px_hsl(var(--brand) / 0.45)]",
+          "shadow-[0_10px_30px_-6px_hsl(var(--brand)/0.45)]",
           "ring-1 ring-white/40",
           "hover:scale-105 hover:-translate-y-0.5",
           "transition-transform duration-200",

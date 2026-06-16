@@ -234,7 +234,7 @@ All colors MUST be HSL.
   }
 
   .surface-card-interactive:hover {
-    border-color: hsl(var(--brand) / 0.35);
+    border-color: hsl(var(--brand)/0.35);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 }

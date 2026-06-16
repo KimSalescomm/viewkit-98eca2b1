@@ -67,7 +67,7 @@ const EventRankingModal = ({ open, onClose }: Props) => {
               </span>
               LIVE
             </div>
-            <div className="w-14 h-14 rounded-2xl bg-brand flex items-center justify-center shadow-[0_12px_28px_-8px_hsl(var(--brand) / 0.45)] mb-4">
+            <div className="w-14 h-14 rounded-2xl bg-brand flex items-center justify-center shadow-[0_12px_28px_-8px_hsl(var(--brand)/0.45)] mb-4">
               <Activity className="w-7 h-7 text-white" strokeWidth={2.4} />
             </div>
             <h2
