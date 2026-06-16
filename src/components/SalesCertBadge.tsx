@@ -337,21 +337,24 @@ const SalesCertBadge = () => {
               </div>
 
               <div className="p-6 pt-2 flex gap-2">
-                <button
+                <Button
                   type="button"
+                  variant="subtle"
                   onClick={() => handleOpenChange(false)}
-                  className="flex-1 h-11 rounded-xl border border-slate-200 text-slate-600 text-sm hover:bg-slate-50 hover:text-slate-900 transition-colors"
+                  className="flex-1 h-12 rounded-xl border border-slate-200"
                 >
                   취소
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
+                  variant="brand"
+                  size="cta"
                   onClick={() => void handleSubmit()}
                   disabled={!canSubmit || submitting || submitLockRef.current}
-                  className="flex-[2] h-11 rounded-xl bg-[#3182CE] text-white text-sm font-semibold hover:bg-[#2c74b8] shadow-[0_6px_16px_-6px_rgba(49,130,206,0.5)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="flex-[2] rounded-xl shadow-[0_6px_16px_-6px_hsl(var(--brand)/0.5)] disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   {submitting ? "저장 중..." : "인증 완료"}
-                </button>
+                </Button>
               </div>
             </>
           ) : (
