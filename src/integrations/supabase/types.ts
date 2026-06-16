@@ -95,6 +95,36 @@ export type Database = {
         }
         Relationships: []
       }
+      screensaver_videos: {
+        Row: {
+          created_at: string
+          enabled: boolean
+          id: string
+          is_youtube: boolean
+          label: string | null
+          sort_order: number
+          url: string
+        }
+        Insert: {
+          created_at?: string
+          enabled?: boolean
+          id?: string
+          is_youtube?: boolean
+          label?: string | null
+          sort_order?: number
+          url: string
+        }
+        Update: {
+          created_at?: string
+          enabled?: boolean
+          id?: string
+          is_youtube?: boolean
+          label?: string | null
+          sort_order?: number
+          url?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
