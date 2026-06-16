@@ -29,15 +29,10 @@ const queryClient = new QueryClient();
 
 const MAINTENANCE_MODE = true;
 
-// 관리자(세션에 인증된 사용자) 또는 ?preview=admin 쿼리가 있으면 점검 모드 우회
+// 관리자(세션에 인증된 사용자)만 점검 모드 우회
 const isAdminBypass = () => {
   try {
     if (sessionStorage.getItem("viewkit_admin_auth") === "1") return true;
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("preview") === "admin") {
-      sessionStorage.setItem("viewkit_preview_bypass", "1");
-    }
-    if (sessionStorage.getItem("viewkit_preview_bypass") === "1") return true;
   } catch {
     /* noop */
   }
