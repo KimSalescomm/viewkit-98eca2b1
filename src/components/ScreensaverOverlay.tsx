@@ -5,20 +5,47 @@ import {
   SCREENSAVER_VIDEOS,
   type ScreensaverVideo,
 } from "@/config/screensaver";
+import { supabase } from "@/integrations/supabase/client";
 
 /**
  * ScreensaverOverlay
  * - 일정 시간 무동작 시 전면에 세로형 광고 영상을 풀스크린으로 노출
- * - 영상 목록을 순환 재생
+ * - 영상 목록을 순환 재생 (DB 우선, 비어있으면 config 폴백)
  * - 사용자가 화면을 터치/클릭/키 입력하면 즉시 해제
  */
 const ScreensaverOverlay = () => {
   const [active, setActive] = useState(false);
   const [index, setIndex] = useState(0);
+  const [videos, setVideos] = useState<ScreensaverVideo[]>(SCREENSAVER_VIDEOS);
   const idleTimerRef = useRef<number | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const videos = SCREENSAVER_VIDEOS;
+  // DB에서 플레이리스트 로드 (없으면 config 폴백)
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const { data, error } = await (supabase as any)
+          .from("screensaver_videos")
+          .select("url, is_youtube, sort_order, enabled")
+          .eq("enabled", true)
+          .order("sort_order", { ascending: true })
+          .order("created_at", { ascending: true });
+        if (cancelled) return;
+        if (error) return;
+        const rows = (data ?? []) as Array<{ url: string; is_youtube: boolean }>;
+        if (rows.length > 0) {
+          setVideos(rows.map((r) => ({ src: r.url, youtube: r.is_youtube })));
+        }
+      } catch {
+        /* keep config fallback */
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const hasVideos = videos.length > 0;
   const enabled = SCREENSAVER_ENABLED && hasVideos;
 
@@ -43,10 +70,8 @@ const ScreensaverOverlay = () => {
     scheduleIdle();
   }, [scheduleIdle]);
 
-  // 사용자 활동 감지
   useEffect(() => {
     if (!enabled) return;
-
     const events: (keyof DocumentEventMap)[] = [
       "mousemove",
       "mousedown",
@@ -55,31 +80,26 @@ const ScreensaverOverlay = () => {
       "wheel",
       "scroll",
     ];
-
     const onActivity = () => {
       if (active) return;
       scheduleIdle();
     };
-
     events.forEach((e) =>
       document.addEventListener(e, onActivity, { passive: true })
     );
     scheduleIdle();
-
     return () => {
       events.forEach((e) => document.removeEventListener(e, onActivity));
       clearIdleTimer();
     };
   }, [enabled, active, scheduleIdle]);
 
-  // 다음 영상으로 진행
   const goNext = useCallback(() => {
     setIndex((i) => (i + 1) % videos.length);
   }, [videos.length]);
 
   if (!enabled || !active) return null;
-
-  const current: ScreensaverVideo | undefined = videos[index];
+  const current = videos[index];
   if (!current) return null;
 
   return (
@@ -94,7 +114,7 @@ const ScreensaverOverlay = () => {
       {current.youtube ? (
         <iframe
           key={current.src + index}
-          src={toYouTubeEmbed(current.src, () => goNext())}
+          src={toYouTubeEmbed(current.src)}
           title="screensaver"
           className="w-full h-full pointer-events-none"
           allow="autoplay; encrypted-media; fullscreen"
@@ -114,7 +134,6 @@ const ScreensaverOverlay = () => {
           className="w-full h-full object-contain"
         />
       )}
-      {/* 안내 텍스트 */}
       <div className="absolute bottom-6 left-0 right-0 text-center text-white/70 text-sm pointer-events-none">
         화면을 터치하면 돌아갑니다
       </div>
@@ -122,7 +141,7 @@ const ScreensaverOverlay = () => {
   );
 };
 
-function toYouTubeEmbed(url: string, _onEnd?: () => void): string {
+function toYouTubeEmbed(url: string): string {
   const idMatch = url.match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/);
   const id = idMatch?.[1] ?? "";
   const params = new URLSearchParams({
