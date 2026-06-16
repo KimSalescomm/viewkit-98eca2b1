@@ -343,7 +343,7 @@ const Subscription = () => {
             <nav className="flex items-center gap-1">
               <span
                 className="px-3 py-1.5 text-sm font-bold rounded-full border inline-flex items-center gap-1"
-                style={{ color: "#A50034", backgroundColor: "#FBE8EE", borderColor: "#F5C9D5" }}
+                style={{ color: "hsl(var(--brand))", backgroundColor: "hsl(var(--brand-soft))", borderColor: "#F5C9D5" }}
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 구독
@@ -357,7 +357,7 @@ const Subscription = () => {
       <main className="max-w-6xl mx-auto px-5 sm:px-8 py-8 sm:py-12">
         {/* Title */}
         <div className="mb-6 sm:mb-8 text-center">
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-2" style={{ color: "#A50034" }}>
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-2" style={{ color: "hsl(var(--brand))" }}>
             CARE SERVICE
           </p>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight">
@@ -385,17 +385,17 @@ const Subscription = () => {
                   style={
                     active
                       ? {
-                          backgroundColor: "#A50034",
-                          borderColor: "#A50034",
+                          backgroundColor: "hsl(var(--brand))",
+                          borderColor: "hsl(var(--brand))",
                           color: "#ffffff",
-                          boxShadow: "0 6px 16px -4px rgba(165,0,52,0.35)",
+                          boxShadow: "0 6px 16px -4px hsl(var(--brand) / 0.35)",
                         }
                       : undefined
                   }
                   onMouseEnter={(e) => {
                     if (!active) {
-                      e.currentTarget.style.borderColor = "#A50034";
-                      e.currentTarget.style.color = "#A50034";
+                      e.currentTarget.style.borderColor = "hsl(var(--brand))";
+                      e.currentTarget.style.color = "hsl(var(--brand))";
                     }
                   }}
                   onMouseLeave={(e) => {
@@ -433,7 +433,7 @@ const Subscription = () => {
                 <span
                   aria-hidden="true"
                   className="inline-block w-1 sm:w-1.5 h-5 sm:h-6 rounded-sm"
-                  style={{ backgroundColor: "#A50034" }}
+                  style={{ backgroundColor: "hsl(var(--brand))" }}
                 />
                 {title}
               </h2>
@@ -488,10 +488,10 @@ const Subscription = () => {
           {/* After + Care Steps */}
           <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
             <div className="px-5 pt-4 pb-3 flex items-center justify-between">
-              <span className="text-xs font-bold tracking-wider uppercase" style={{ color: "#A50034" }}>
+              <span className="text-xs font-bold tracking-wider uppercase" style={{ color: "hsl(var(--brand))" }}>
                 After
               </span>
-              <span className="text-xs font-medium" style={{ color: "#A50034" }}>케어 후</span>
+              <span className="text-xs font-medium" style={{ color: "hsl(var(--brand))" }}>케어 후</span>
             </div>
             <div className="relative aspect-[4/3] bg-gray-100">
               {selected.careVideo ? (
@@ -516,7 +516,7 @@ const Subscription = () => {
                   />
                   {/* (Center play button removed — image-first display) */}
                   {/* Hint chip */}
-                  <div className="absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-white/95 shadow-md" style={{ color: "#A50034" }}>
+                  <div className="absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-white/95 shadow-md" style={{ color: "hsl(var(--brand))" }}>
                     <Play className="w-3 h-3" fill="currentColor" />
                     케어 영상 보기
                   </div>
@@ -532,7 +532,7 @@ const Subscription = () => {
                     fetchPriority="high"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />
-                  <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "linear-gradient(to top, rgba(165,0,52,0.12), transparent)" }} />
+                  <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "linear-gradient(to top, hsl(var(--brand) / 0.12), transparent)" }} />
                 </div>
               )}
             </div>
@@ -541,13 +541,13 @@ const Subscription = () => {
             <div className="px-5 py-5 border-t border-gray-50">
               <div className="flex items-center justify-between mb-3">
                 <h3 className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4" style={{ color: "#A50034" }} />
+                  <Sparkles className="w-4 h-4" style={{ color: "hsl(var(--brand))" }} />
                   {selected.name} 케어 과정
                 </h3>
                 {hasAnyImage && (
                   <span
                     className="text-[11px] font-semibold inline-flex items-center gap-1 px-2 py-0.5 rounded-full"
-                    style={{ color: "#A50034", backgroundColor: "#FBE8EE" }}
+                    style={{ color: "hsl(var(--brand))", backgroundColor: "hsl(var(--brand-soft))" }}
                   >
                     <ImageIcon className="w-3 h-3" />
                     이미지 클릭
@@ -571,7 +571,7 @@ const Subscription = () => {
                         >
                           <span
                             className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
-                            style={{ backgroundColor: "#A50034", color: "#fff" }}
+                            style={{ backgroundColor: "hsl(var(--brand))", color: "#fff" }}
                           >
                             <Check className="w-3 h-3" strokeWidth={3} />
                           </span>
@@ -583,7 +583,7 @@ const Subscription = () => {
                           </span>
                           <span
                             className="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full transition-colors group-hover:brightness-110"
-                            style={{ backgroundColor: "#A50034", color: "#fff" }}
+                            style={{ backgroundColor: "hsl(var(--brand))", color: "#fff" }}
                           >
                             <ImageIcon className="w-3 h-3" />
                             보기
@@ -648,7 +648,7 @@ const Subscription = () => {
               <div className="flex items-center gap-2">
                 <span
                   className="w-6 h-6 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: "#A50034", color: "#fff" }}
+                  style={{ backgroundColor: "hsl(var(--brand))", color: "#fff" }}
                 >
                   <Check className="w-3.5 h-3.5" strokeWidth={3} />
                 </span>
@@ -722,7 +722,7 @@ const Subscription = () => {
               <div className="flex items-center gap-2">
                 <span
                   className="w-6 h-6 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: "#A50034", color: "#fff" }}
+                  style={{ backgroundColor: "hsl(var(--brand))", color: "#fff" }}
                 >
                   <Play className="w-3 h-3" fill="white" />
                 </span>

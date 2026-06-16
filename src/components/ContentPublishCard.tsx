@@ -71,7 +71,7 @@ const ContentPublishCard = () => {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5 mb-6">
       <div className="flex items-start gap-3 mb-4">
-        <div className="w-9 h-9 rounded-xl bg-[#A50034]/10 text-[#A50034] flex items-center justify-center shrink-0">
+        <div className="w-9 h-9 rounded-xl bg-brand/10 text-brand flex items-center justify-center shrink-0">
           <Rocket className="w-5 h-5" strokeWidth={2.2} />
         </div>
         <div className="min-w-0 flex-1">
@@ -97,14 +97,14 @@ const ContentPublishCard = () => {
             if (status === "error") setStatus("idle");
           }}
           placeholder="관리자 패스코드"
-          className="h-10 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#A50034]/15 focus:border-[#A50034] flex-1"
+          className="h-10 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand/15 focus:border-brand flex-1"
           disabled={status === "loading"}
         />
         <button
           type="button"
           onClick={handlePublish}
           disabled={status === "loading"}
-          className="h-10 px-4 rounded-lg bg-[#A50034] text-white text-sm font-semibold hover:bg-[#8a002b] transition-colors disabled:opacity-60 inline-flex items-center justify-center gap-1.5"
+          className="h-10 px-4 rounded-lg bg-brand text-white text-sm font-semibold hover:bg-brand-dark transition-colors disabled:opacity-60 inline-flex items-center justify-center gap-1.5"
         >
           <Rocket className="w-4 h-4" />
           {status === "loading" ? "퍼블리시 중..." : "지금 퍼블리시"}
