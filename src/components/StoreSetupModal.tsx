@@ -159,7 +159,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
 
   const fieldClass =
     "w-full bg-white border border-slate-200 rounded-xl text-slate-800 " +
-    "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 " +
+    "hover:border-slate-300 focus:border-brand focus:ring-2 focus:ring-brand/15 focus:ring-offset-0 " +
     "h-11 px-3.5 text-sm transition-colors";
 
   return (
@@ -175,8 +175,8 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
       >
         <DialogHeader className="min-w-0 pr-8">
           <div className="flex min-w-0 items-center gap-2">
-            <div className="w-9 h-9 shrink-0 rounded-xl bg-[#FBE8EE] flex items-center justify-center">
-              <Store className="w-5 h-5 text-[#A50034]" />
+            <div className="w-9 h-9 shrink-0 rounded-xl bg-brand-soft flex items-center justify-center">
+              <Store className="w-5 h-5 text-brand" />
             </div>
             <DialogTitle>지점 설정</DialogTitle>
           </div>
@@ -191,7 +191,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
             {!editing && name ? (
               <div className={cn(fieldClass, "flex items-center justify-between")}>
                 <div className="flex items-center gap-2 min-w-0">
-                  <Store className="w-4 h-4 text-[#A50034] shrink-0" />
+                  <Store className="w-4 h-4 text-brand shrink-0" />
                   <span className="font-medium text-slate-900 truncate">{cleanBranchName(name)}</span>
                   {manager && (
                     <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 shrink-0">
@@ -202,7 +202,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                 <button
                   type="button"
                   onClick={() => { setEditing(true); setQuery(""); }}
-                  className="text-[11px] text-[#A50034] hover:underline shrink-0"
+                  className="text-[11px] text-brand hover:underline shrink-0"
                 >
                   변경
                 </button>
@@ -237,11 +237,11 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                           setEditing(false);
                           setQuery("");
                         }}
-                        className="w-full text-left px-3.5 py-2 text-sm hover:bg-[#A50034]/10 hover:text-[#A50034] flex items-center justify-between border-b border-slate-100"
+                        className="w-full text-left px-3.5 py-2 text-sm hover:bg-brand/10 hover:text-brand flex items-center justify-between border-b border-slate-100"
                       >
                         <span className="flex items-center gap-1.5">
                           <span className="font-medium">관리자 계정</span>
-                          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-[#A50034]/10 text-[#A50034] font-semibold">SC</span>
+                          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-brand/10 text-brand font-semibold">SC</span>
                         </span>
                         <span className="text-[10px] text-slate-400">전 매장 집계</span>
                       </button>
@@ -255,11 +255,11 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                           setEditing(false);
                           setQuery("");
                         }}
-                        className="w-full text-left px-3.5 py-2 text-sm hover:bg-[#A50034]/10 hover:text-[#A50034] flex items-center justify-between border-b border-slate-100"
+                        className="w-full text-left px-3.5 py-2 text-sm hover:bg-brand/10 hover:text-brand flex items-center justify-between border-b border-slate-100"
                       >
                         <span className="flex items-center gap-1.5">
                           <span className="font-medium">유관부서</span>
-                          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-[#A50034]/10 text-[#A50034] font-semibold">KOR</span>
+                          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-brand/10 text-brand font-semibold">KOR</span>
                         </span>
                         <span className="text-[10px] text-slate-400">한영본부 등</span>
                       </button>
@@ -269,7 +269,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                         key={b}
                         type="button"
                         onClick={() => handlePickBranch(b)}
-                        className="w-full text-left px-3.5 py-2 text-sm hover:bg-[#A50034]/10 hover:text-[#A50034] flex items-center justify-between"
+                        className="w-full text-left px-3.5 py-2 text-sm hover:bg-brand/10 hover:text-brand flex items-center justify-between"
                       >
                         <span>{cleanBranchName(b)}</span>
                         <span className="text-[10px] text-slate-400">
@@ -282,7 +282,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                         key={`dealer-${dealer}`}
                         type="button"
                         onClick={() => handlePickBranch(branch)}
-                        className="w-full text-left px-3.5 py-2 text-sm hover:bg-[#A50034]/10 hover:text-[#A50034] flex items-center justify-between border-t border-slate-100"
+                        className="w-full text-left px-3.5 py-2 text-sm hover:bg-brand/10 hover:text-brand flex items-center justify-between border-t border-slate-100"
                         title={`거래선명: ${dealer}`}
                       >
                         <span className="flex flex-col">
@@ -323,7 +323,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                   placeholder="지점명 직접 입력 (한글로만, 예: 신규지점)"
                 />
                 <p className="text-[11px] text-slate-500 leading-relaxed break-keep">
-                  목록에 없는 매장은 <span className="font-semibold text-[#A50034]">한글로만</span> 입력해 주세요. 영문·숫자·특수문자는 자동으로 제거됩니다.
+                  목록에 없는 매장은 <span className="font-semibold text-brand">한글로만</span> 입력해 주세요. 영문·숫자·특수문자는 자동으로 제거됩니다.
                 </p>
                 <Input
                   value={codeOverride}
@@ -339,7 +339,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
               <p className="flex min-w-0 flex-col gap-0.5 text-xs text-gray-600 sm:flex-row sm:flex-wrap">
                 <span>
                   공유 URL{" "}
-                  <span className="font-mono text-[10px] text-[#A50034]">
+                  <span className="font-mono text-[10px] text-brand">
                     · {finalSlug}
                     {isMasterBranch
                       ? " (마스터 코드)"
@@ -389,7 +389,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
                       setEditing(false);
                       setQuery("");
                     }}
-                    className="text-xs px-2 py-1 rounded-md bg-white border border-gray-200 hover:border-[#A50034] hover:text-[#A50034] transition-colors"
+                    className="text-xs px-2 py-1 rounded-md bg-white border border-gray-200 hover:border-brand hover:text-brand transition-colors"
                   >
                     {cleanBranchName(n)} <span className="text-gray-400">· {s}</span>
                   </button>
@@ -401,7 +401,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
 
         <div className="mt-2 space-y-2">
           {!validation.ok && validation.msg && (
-            <p className="text-[11px] text-[#A50034] leading-relaxed break-keep">
+            <p className="text-[11px] text-brand leading-relaxed break-keep">
               {validation.msg}
             </p>
           )}
@@ -414,7 +414,7 @@ const StoreSetupModal: React.FC<StoreSetupModalProps> = ({
             <Button
               onClick={handleSave}
               disabled={!canSave}
-              className="bg-[#A50034] hover:bg-[#7A0026] text-white"
+              className="bg-brand hover:bg-[#7A0026] text-white"
             >
               저장
             </Button>

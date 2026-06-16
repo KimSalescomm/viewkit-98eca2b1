@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import useAnalytics from "@/hooks/useAnalytics";
 import { products } from "@/data/products";
@@ -182,8 +183,8 @@ const SalesCertBadge = () => {
           "inline-flex items-center gap-2",
           "h-12 pl-4 pr-4 rounded-full",
           "text-white",
-          "bg-gradient-to-r from-[#FF4D6D] via-[#A50034] to-[#FF8A3D]",
-          "shadow-[0_10px_30px_-6px_rgba(165,0,52,0.45)]",
+          "bg-gradient-to-r from-[#FF4D6D] via-brand to-[#FF8A3D]",
+          "shadow-[0_10px_30px_-6px_hsl(var(--brand)/0.45)]",
           "ring-1 ring-white/40",
           "hover:scale-105 hover:-translate-y-0.5",
           "transition-transform duration-200",
@@ -195,7 +196,7 @@ const SalesCertBadge = () => {
         <span className="text-[13px] font-extrabold tracking-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
           판매 인증
         </span>
-        <span className="ml-0.5 text-[10px] px-1.5 py-0.5 rounded-full bg-white text-[#A50034] font-black tracking-wider shadow-sm">
+        <span className="ml-0.5 text-[10px] px-1.5 py-0.5 rounded-full bg-white text-brand font-black tracking-wider shadow-sm">
           매장 전용
         </span>
       </button>
@@ -219,7 +220,7 @@ const SalesCertBadge = () => {
                     판매 인증
                   </DialogTitle>
                   <DialogDescription className="text-xs text-slate-500 leading-relaxed">
-                    상담 중 <span className="font-semibold text-[#A50034]">'뷰킷'</span>을 사용하여 판매에 성공한 건을 인증해 주세요!
+                    상담 중 <span className="font-semibold text-brand">'뷰킷'</span>을 사용하여 판매에 성공한 건을 인증해 주세요!
                   </DialogDescription>
                 </DialogHeader>
               </div>
@@ -229,7 +230,7 @@ const SalesCertBadge = () => {
                   <div className="flex items-center justify-between">
                     <label className="text-[11px] font-medium tracking-wide text-slate-500">지점</label>
                     {isAdmin && (
-                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-[#A50034]/10 text-[#A50034] font-semibold">
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-brand/10 text-brand font-semibold">
                         관리자 (SC)
                       </span>
                     )}
@@ -272,7 +273,7 @@ const SalesCertBadge = () => {
                 {needsSubcategory && (
                   <div className="space-y-1.5">
                     <label className="text-[11px] font-medium tracking-wide text-slate-500">
-                      세부 분류 <span className="text-[#A50034]">*</span>
+                      세부 분류 <span className="text-brand">*</span>
                     </label>
                     <Select value={subcategory} onValueChange={setSubcategory}>
                       <SelectTrigger className={fieldClass}>
@@ -337,21 +338,24 @@ const SalesCertBadge = () => {
               </div>
 
               <div className="p-6 pt-2 flex gap-2">
-                <button
+                <Button
                   type="button"
+                  variant="subtle"
                   onClick={() => handleOpenChange(false)}
-                  className="flex-1 h-11 rounded-xl border border-slate-200 text-slate-600 text-sm hover:bg-slate-50 hover:text-slate-900 transition-colors"
+                  className="flex-1 h-12 rounded-xl border border-slate-200"
                 >
                   취소
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
+                  variant="brand"
+                  size="cta"
                   onClick={() => void handleSubmit()}
                   disabled={!canSubmit || submitting || submitLockRef.current}
-                  className="flex-[2] h-11 rounded-xl bg-[#3182CE] text-white text-sm font-semibold hover:bg-[#2c74b8] shadow-[0_6px_16px_-6px_rgba(49,130,206,0.5)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="flex-[2] rounded-xl shadow-[0_6px_16px_-6px_hsl(var(--brand)/0.5)] disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   {submitting ? "저장 중..." : "인증 완료"}
-                </button>
+                </Button>
               </div>
             </>
           ) : (

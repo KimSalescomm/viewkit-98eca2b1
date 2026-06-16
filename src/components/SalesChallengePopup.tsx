@@ -169,15 +169,15 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Pr
           <div className="absolute top-4 left-1/2 -translate-x-1/2 w-52 h-52 rounded-full bg-[radial-gradient(circle,_rgba(232,169,51,0.22)_0%,_rgba(232,169,51,0)_70%)] pointer-events-none" />
           {/* Confetti dots */}
           <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-[#E8A933] opacity-60" />
-          <div className="absolute top-14 right-10 w-1 h-1 rounded-full bg-[#A50034] opacity-40" />
+          <div className="absolute top-14 right-10 w-1 h-1 rounded-full bg-brand opacity-40" />
           <div className="absolute bottom-10 left-12 w-1 h-1 rounded-full bg-[#E8A933] opacity-50" />
-          <div className="absolute bottom-16 right-8 w-1.5 h-1.5 rounded-full bg-[#A50034] opacity-30" />
+          <div className="absolute bottom-16 right-8 w-1.5 h-1.5 rounded-full bg-brand opacity-30" />
 
           <div className="relative flex flex-col items-center text-center">
             {/* 3D Trophy */}
             <Trophy3D className="w-24 h-28 mb-3 drop-shadow-[0_10px_22px_rgba(184,122,20,0.35)]" />
 
-            <p className="text-[10.5px] font-black tracking-[0.32em] uppercase text-[#A50034] mb-2">
+            <p className="text-[10.5px] font-black tracking-[0.32em] uppercase text-brand mb-2">
               No.1 Sales Champion
             </p>
             <h2
@@ -189,8 +189,8 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Pr
             </h2>
 
             {/* 지점명 — 화이트 칩 + LG 레드 외곽, 사이트 톤과 직결 */}
-            <div className="mt-4 inline-flex items-center bg-white border-2 border-[#A50034] px-6 py-3 rounded-2xl shadow-[0_10px_28px_-12px_rgba(165,0,52,0.35)]">
-              <span className="text-[26px] sm:text-[28px] font-extrabold tracking-tight text-[#A50034]">
+            <div className="mt-4 inline-flex items-center bg-white border-2 border-brand px-6 py-3 rounded-2xl shadow-[0_10px_28px_-12px_hsl(var(--brand)/0.35)]">
+              <span className="text-[26px] sm:text-[28px] font-extrabold tracking-tight text-brand">
                 {leaderBranch}
               </span>
             </div>
@@ -198,7 +198,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Pr
             {/* 누적 판매 인증 건수 */}
             <p className="mt-3 text-[13px] font-semibold text-gray-600">
               누적 판매 인증{" "}
-              <span className="text-[#A50034] font-extrabold">{leaderCount.toLocaleString()}건</span>
+              <span className="text-brand font-extrabold">{leaderCount.toLocaleString()}건</span>
             </p>
           </div>
         </div>
@@ -238,7 +238,7 @@ const SalesChallengePopup = ({ currentStoreSlug, currentStoreName, onClose }: Pr
           <button
             type="button"
             onClick={handleClose}
-            className="w-full h-12 rounded-2xl bg-[#A50034] hover:bg-[#8a002b] text-white text-[15px] font-bold tracking-tight transition-colors shadow-[0_10px_24px_-10px_rgba(165,0,52,0.55)]"
+            className="w-full h-12 rounded-2xl bg-brand hover:bg-brand-dark text-white text-[15px] font-bold tracking-tight transition-colors shadow-[0_10px_24px_-10px_hsl(var(--brand)/0.55)]"
           >
             확인
           </button>

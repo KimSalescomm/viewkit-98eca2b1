@@ -43,7 +43,7 @@ const MobileAccessQR = ({ storeSlug, variant = "pill" }: MobileAccessQRProps) =>
         className={
           variant === "segment"
             ? "inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
-            : "inline-flex h-8 items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 hover:border-[#A50034] hover:text-[#A50034] transition-colors shadow-sm"
+            : "inline-flex h-8 items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 hover:border-brand hover:text-brand transition-colors shadow-sm"
         }
         title="모바일에서 보기"
       >
@@ -70,8 +70,8 @@ const MobileAccessQR = ({ storeSlug, variant = "pill" }: MobileAccessQRProps) =>
             </button>
 
             <div className="text-center mb-5">
-              <div className="inline-flex w-11 h-11 rounded-full bg-[#FBE8EE] items-center justify-center mb-3">
-                <Smartphone className="w-5 h-5 text-[#A50034]" />
+              <div className="inline-flex w-11 h-11 rounded-full bg-brand-soft items-center justify-center mb-3">
+                <Smartphone className="w-5 h-5 text-brand" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-1">모바일에서 접속하기</h3>
               <p className="text-xs text-gray-500 leading-relaxed">
@@ -92,7 +92,7 @@ const MobileAccessQR = ({ storeSlug, variant = "pill" }: MobileAccessQRProps) =>
 
             {storeSlug && (
               <div className="text-center mb-3">
-                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#FBE8EE] text-[#A50034] text-xs font-semibold">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-brand-soft text-brand text-xs font-semibold">
                   지점 코드 {storeSlug}
                 </span>
               </div>

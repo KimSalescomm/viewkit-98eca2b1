@@ -41,9 +41,9 @@ const ProductLucideIcon = ({ name, className }: { name: string; className?: stri
 
 const productAccents: Record<string, { gradient: string; tint: string; chip: string; keywords: string[] }> = {
   subscription: {
-    gradient: "from-[#A50034] to-[#7A0026]",
+    gradient: "from-brand to-[#7A0026]",
     tint: "from-[#FFF5F8] via-white to-white",
-    chip: "bg-[#FBE8EE] text-[#A50034] border-[#F5C9D5]",
+    chip: "bg-brand-soft text-brand border-[#F5C9D5]",
     keywords: ["케어 서비스", "Before / After"],
   },
   refrigerator: {
@@ -204,7 +204,7 @@ const ProductSelection = () => {
                   setModalDismissible(true);
                   setModalOpen(true);
                 }}
-                className="inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-semibold bg-[#A50034] text-white hover:bg-[#8a002b] transition-colors shadow-sm"
+                className="inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-semibold bg-brand text-white hover:bg-brand-dark transition-colors shadow-sm"
                 title="지점 변경"
               >
                 <Store className="w-3.5 h-3.5" />
@@ -226,7 +226,7 @@ const ProductSelection = () => {
 
         {/* Header Section */}
         <div className="text-center mb-12 sm:mb-16 space-y-3">
-          <p className="text-[11px] sm:text-[12px] font-black tracking-[0.3em] uppercase text-[#A50034]">
+          <p className="text-[11px] sm:text-[12px] font-black tracking-[0.3em] uppercase text-brand">
             VIEW KIT
           </p>
           <h1 className="text-[32px] sm:text-[44px] font-extrabold tracking-tight text-[#111111] leading-tight">

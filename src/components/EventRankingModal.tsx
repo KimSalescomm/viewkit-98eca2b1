@@ -67,7 +67,7 @@ const EventRankingModal = ({ open, onClose }: Props) => {
               </span>
               LIVE
             </div>
-            <div className="w-14 h-14 rounded-2xl bg-[#A50034] flex items-center justify-center shadow-[0_12px_28px_-8px_rgba(165,0,52,0.45)] mb-4">
+            <div className="w-14 h-14 rounded-2xl bg-brand flex items-center justify-center shadow-[0_12px_28px_-8px_hsl(var(--brand)/0.45)] mb-4">
               <Activity className="w-7 h-7 text-white" strokeWidth={2.4} />
             </div>
             <h2
@@ -118,16 +118,16 @@ const EventRankingModal = ({ open, onClose }: Props) => {
                   key={r.store_id}
                   className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl border transition-colors ${
                     isMine
-                      ? "bg-[#A50034]/10 border-[#A50034]/40 shadow-sm shadow-[#A50034]/10"
+                      ? "bg-brand/10 border-brand/40 shadow-sm shadow-brand/10"
                       : i === 0
-                        ? "bg-[#A50034]/5 border-[#A50034]/20 shadow-sm"
+                        ? "bg-brand/5 border-brand/20 shadow-sm"
                         : "bg-slate-50 border-slate-100"
                   }`}
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <span
                       className={`w-6 text-center text-[14px] font-extrabold tabular-nums ${
-                        isMine ? "text-[#A50034]" : i === 0 ? "text-[#A50034]" : "text-slate-400"
+                        isMine ? "text-brand" : i === 0 ? "text-brand" : "text-slate-400"
                       }`}
                     >
                       {i + 1}
@@ -135,13 +135,13 @@ const EventRankingModal = ({ open, onClose }: Props) => {
                     {i === 0 && !isMine && <Trophy className="w-3.5 h-3.5 text-amber-500 shrink-0" />}
                     <span
                       className={`truncate text-[14px] font-semibold ${
-                        isMine ? "text-[#A50034]" : "text-slate-900"
+                        isMine ? "text-brand" : "text-slate-900"
                       }`}
                       style={{ wordBreak: "keep-all" }}
                     >
                       {cleanBranchName(r.store_name)}
                       {isMine && (
-                        <span className="ml-1.5 text-[10px] px-1.5 py-0.5 rounded-full bg-[#A50034] text-white align-middle">
+                        <span className="ml-1.5 text-[10px] px-1.5 py-0.5 rounded-full bg-brand text-white align-middle">
                           우리 매장
                         </span>
                       )}
@@ -150,7 +150,7 @@ const EventRankingModal = ({ open, onClose }: Props) => {
                   <div className="text-right shrink-0">
                     <div
                       className={`text-[13px] font-extrabold tabular-nums ${
-                        isMine ? "text-[#A50034]" : i === 0 ? "text-[#A50034]" : "text-slate-900"
+                        isMine ? "text-brand" : i === 0 ? "text-brand" : "text-slate-900"
                       }`}
                     >
                       {r.sessions.toLocaleString()}
@@ -167,20 +167,20 @@ const EventRankingModal = ({ open, onClose }: Props) => {
 
           {/* 본인 매장이 TOP5 밖일 때 */}
           {mySlug && !isAdminStore(mySlug) && myRankIndex >= 0 && !inTop5 && (
-            <div className="mt-3 flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#A50034]/5 border border-[#A50034]/30">
+            <div className="mt-3 flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-brand/5 border border-brand/30">
               <div className="flex items-center gap-3 min-w-0">
-                <span className="w-6 text-center text-[13px] font-extrabold text-[#A50034] tabular-nums">
+                <span className="w-6 text-center text-[13px] font-extrabold text-brand tabular-nums">
                   {myRankIndex + 1}
                 </span>
-                <span className="truncate text-[13.5px] font-semibold text-[#A50034]">
+                <span className="truncate text-[13.5px] font-semibold text-brand">
                   {cleanBranchName(myName)}
-                  <span className="ml-1.5 text-[10px] px-1.5 py-0.5 rounded-full bg-[#A50034] text-white align-middle">
+                  <span className="ml-1.5 text-[10px] px-1.5 py-0.5 rounded-full bg-brand text-white align-middle">
                     우리 매장
                   </span>
                 </span>
               </div>
               <div className="text-right shrink-0">
-                <div className="text-[13px] font-extrabold text-[#A50034] tabular-nums">
+                <div className="text-[13px] font-extrabold text-brand tabular-nums">
                   {rows[myRankIndex].sessions.toLocaleString()}
                 </div>
                 <div className="text-[10px] text-slate-400">접속</div>
@@ -200,7 +200,7 @@ const EventRankingModal = ({ open, onClose }: Props) => {
           <button
             type="button"
             onClick={onClose}
-            className="w-full h-12 rounded-2xl bg-[#A50034] hover:bg-[#800028] text-white text-[15px] font-bold tracking-tight transition-colors shadow-lg shadow-[#A50034]/25 active:scale-[0.98]"
+            className="w-full h-12 rounded-2xl bg-brand hover:bg-brand-dark text-white text-[15px] font-bold tracking-tight transition-colors shadow-lg shadow-brand/25 active:scale-[0.98]"
           >
             확인
           </button>

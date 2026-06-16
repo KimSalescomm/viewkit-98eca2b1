@@ -77,7 +77,7 @@ const Ranking = () => {
             <ArrowLeft className="w-4 h-4" /> 제품 페이지로
           </Link>
           {isAdmin && (
-            <span className="inline-flex items-center gap-1 text-[11px] px-2 py-1 rounded-full bg-[#A50034]/10 text-[#A50034] font-semibold">
+            <span className="inline-flex items-center gap-1 text-[11px] px-2 py-1 rounded-full bg-brand/10 text-brand font-semibold">
               <ShieldCheck className="w-3.5 h-3.5" /> 관리자 (SC) · 누적 보존
             </span>
           )}
