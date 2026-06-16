@@ -162,7 +162,7 @@ const SalesCertBadge = () => {
     "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 " +
     "h-11 px-3.5 text-sm transition-colors";
 
-  const canSubmit = !!(defaultBranch && product && date && (!needsSubcategory || subcategory));
+  const canSubmit = !!(defaultBranch && product && date && (!needsSubcategory || subcategory) && memo.trim().length > 0);
 
   return (
     <>
