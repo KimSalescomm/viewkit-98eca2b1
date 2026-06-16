@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { getSales, clearAllSales, deleteSale, deleteSalesByIds, SaleRecord } from "@/utils/salesLog";
 import StoreVisitStats from "@/components/StoreVisitStats";
+import ScreensaverManager from "@/components/ScreensaverManager";
 import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
