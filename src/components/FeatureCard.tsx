@@ -68,7 +68,7 @@ const FeatureCard = ({ id, title, subtitle, icon, productId, productName, tag, c
           <FeatureIcon iconKey={icon} className="text-white w-6 h-6 sm:w-8 sm:h-8" />
         </div>
         {tag && (
-          <span className="inline-block bg-blue-50 border border-blue-200 text-blue-600 text-sm font-bold px-2.5 py-1 rounded-lg mb-2 sm:mb-3">
+          <span className="inline-block bg-brand-soft text-brand text-sm font-bold px-2.5 py-1 rounded-lg mb-2 sm:mb-3">
             {tag}
           </span>
         )}
