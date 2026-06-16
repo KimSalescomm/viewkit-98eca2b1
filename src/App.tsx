@@ -12,6 +12,7 @@ import ProductSelection from "./pages/ProductSelection";
 import Maintenance from "./pages/Maintenance";
 import SalesCertBadge from "./components/SalesCertBadge";
 import EventRankingAutoPopup from "./components/EventRankingAutoPopup";
+import ScreensaverOverlay from "./components/ScreensaverOverlay";
 
 const Home = lazy(() => import("./pages/Home"));
 const Subscription = lazy(() => import("./pages/Subscription"));
@@ -86,6 +87,7 @@ const App = () => (
               </Suspense>
               <SalesCertBadge />
               <EventRankingAutoPopup />
+              <ScreensaverOverlay />
             </ContentProvider>
           </AnalyticsProvider>
         </OrientationProvider>
