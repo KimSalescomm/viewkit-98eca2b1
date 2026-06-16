@@ -1,20 +1,7 @@
 import { Sparkles } from "lucide-react";
-import ProductSelection from "./ProductSelection";
 
 const Maintenance = () => (
-  <div className="relative min-h-screen overflow-hidden">
-    {/* Blurred background of existing product page */}
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 select-none"
-      style={{ filter: "blur(16px) saturate(1.1)", transform: "scale(1.05)" }}
-    >
-      <ProductSelection />
-    </div>
-
-    {/* Soft overlay to soften the background */}
-    <div className="absolute inset-0 bg-white/50 backdrop-blur-sm" aria-hidden />
-
+  <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-pink-50 via-white to-purple-50">
     {/* Foreground notice */}
     <div className="relative z-10 flex min-h-screen items-center justify-center px-6">
       <div
