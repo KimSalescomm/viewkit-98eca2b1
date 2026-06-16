@@ -159,7 +159,7 @@ const SalesCertBadge = () => {
 
   const fieldClass =
     "w-full bg-white border border-slate-200 rounded-xl text-slate-800 " +
-    "hover:border-slate-300 focus:border-[#3182CE] focus:ring-2 focus:ring-[#3182CE]/15 focus:ring-offset-0 " +
+    "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 " +
     "h-11 px-3.5 text-sm transition-colors";
 
   const canSubmit = !!(defaultBranch && product && date && (!needsSubcategory || subcategory));
@@ -214,7 +214,7 @@ const SalesCertBadge = () => {
               <div className="p-6 pb-4 border-b border-slate-100">
                 <DialogHeader className="space-y-1.5 text-left">
                   <DialogTitle className="text-base font-semibold tracking-tight text-slate-900 flex items-center gap-2">
-                    <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-[#3182CE]/10 text-[#3182CE]">
+                    <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-[#A50034]/10 text-[#A50034]">
                       <Trophy className="w-4 h-4" strokeWidth={2.4} />
                     </span>
                     판매 인증
@@ -236,7 +236,7 @@ const SalesCertBadge = () => {
                     )}
                   </div>
                   <div className={cn(fieldClass, "flex items-center gap-2")}>
-                    <Store className="w-4 h-4 text-[#3182CE] shrink-0" />
+                    <Store className="w-4 h-4 text-[#A50034] shrink-0" />
                     <span className="font-medium text-slate-900 truncate">
                       {defaultBranch ? cleanBranchName(defaultBranch) : "지점 미설정"}
                     </span>
@@ -262,7 +262,7 @@ const SalesCertBadge = () => {
                     </SelectTrigger>
                     <SelectContent className="bg-white border border-slate-200 rounded-xl text-slate-800">
                       {PRODUCT_OPTIONS.map((p) => (
-                        <SelectItem key={p} value={p} className="rounded-lg focus:bg-[#3182CE]/10 focus:text-[#3182CE]">
+                        <SelectItem key={p} value={p} className="rounded-lg focus:bg-[#A50034]/10 focus:text-[#A50034]">
                           {p}
                         </SelectItem>
                       ))}
@@ -281,7 +281,7 @@ const SalesCertBadge = () => {
                       </SelectTrigger>
                       <SelectContent className="bg-white border border-slate-200 rounded-xl text-slate-800">
                         {subcategoryOptions!.map((s) => (
-                          <SelectItem key={s} value={s} className="rounded-lg focus:bg-[#3182CE]/10 focus:text-[#3182CE]">
+                          <SelectItem key={s} value={s} className="rounded-lg focus:bg-[#A50034]/10 focus:text-[#A50034]">
                             {s}
                           </SelectItem>
                         ))}
@@ -329,7 +329,7 @@ const SalesCertBadge = () => {
                     rows={3}
                     className={cn(
                       "w-full bg-white border border-slate-200 rounded-xl text-slate-800",
-                      "hover:border-slate-300 focus:border-[#3182CE] focus:ring-2 focus:ring-[#3182CE]/15 focus:ring-offset-0 focus:outline-none",
+                      "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 focus:outline-none",
                       "px-3.5 py-2.5 text-sm transition-colors resize-none leading-relaxed",
                       "placeholder:text-[11px] placeholder:text-slate-400 placeholder:whitespace-pre-line",
                     )}
@@ -360,7 +360,7 @@ const SalesCertBadge = () => {
             </>
           ) : (
             <div className="p-8 text-center">
-              <div className="mx-auto w-14 h-14 rounded-full bg-[#3182CE]/10 text-[#3182CE] flex items-center justify-center mb-4">
+              <div className="mx-auto w-14 h-14 rounded-full bg-[#A50034]/10 text-[#A50034] flex items-center justify-center mb-4">
                 <CheckCircle2 className="w-7 h-7" strokeWidth={2.2} />
               </div>
               <h3 className="text-lg font-semibold text-slate-900 mb-1.5">실적이 기록되었습니다</h3>
@@ -373,7 +373,7 @@ const SalesCertBadge = () => {
                 <button
                   type="button"
                   onClick={goProducts}
-                  className="w-full h-11 rounded-xl bg-[#3182CE] text-white text-sm font-semibold hover:bg-[#2c74b8] shadow-[0_6px_16px_-6px_rgba(49,130,206,0.5)] transition-colors inline-flex items-center justify-center gap-1.5"
+                  className="w-full h-11 rounded-xl bg-[#A50034] text-white text-sm font-semibold hover:bg-[#7A0026] shadow-[0_6px_16px_-6px_rgba(165,0,52,0.5)] transition-colors inline-flex items-center justify-center gap-1.5"
                 >
                   <Home className="w-4 h-4" />
                   제품 페이지로 돌아가기
