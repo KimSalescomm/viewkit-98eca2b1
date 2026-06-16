@@ -623,7 +623,9 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                       <th className="py-2 pr-4 font-medium">#</th>
                       <th className="py-2 pr-4 font-medium">지점</th>
                       <th className="py-2 pr-4 font-medium">제품</th>
+                      <th className="py-2 pr-4 font-medium">세부</th>
                       <th className="py-2 pr-4 font-medium">판매일</th>
+                      <th className="py-2 pr-4 font-medium">메모</th>
                       <th className="py-2 pr-4 font-medium">기록 시각</th>
                       <th className="py-2 pr-2 font-medium w-12"></th>
                     </tr>
@@ -653,7 +655,15 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                           <td className="py-2.5 pr-4 text-slate-400 tabular-nums">{recent.length - i}</td>
                           <td className="py-2.5 pr-4 text-slate-800 font-medium">{r.branch}</td>
                           <td className="py-2.5 pr-4 text-slate-600">{r.product}</td>
+                          <td className="py-2.5 pr-4 text-slate-500 text-xs">{r.subcategory || "—"}</td>
                           <td className="py-2.5 pr-4 text-slate-600 tabular-nums">{r.sold_at}</td>
+                          <td
+                            className="py-2.5 pr-4 text-slate-600 text-xs max-w-[240px]"
+                            title={r.memo || ""}
+                            style={{ wordBreak: "keep-all", overflowWrap: "break-word", lineBreak: "auto", whiteSpace: "pre-line" }}
+                          >
+                            {r.memo ? r.memo : <span className="text-slate-300">—</span>}
+                          </td>
                           <td className="py-2.5 pr-4 text-slate-400 tabular-nums text-xs">
                             {format(new Date(r.created_at), "yyyy.MM.dd HH:mm", { locale: ko })}
                           </td>
