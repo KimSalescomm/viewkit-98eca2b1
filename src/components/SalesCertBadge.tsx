@@ -318,7 +318,7 @@ const SalesCertBadge = () => {
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
                     <label className="text-[11px] font-semibold tracking-wide text-slate-700">
-                      뷰킷과 함께한 나의 성공담을 들려주세요
+                      뷰킷과 함께한 나의 성공담을 들려주세요 <span className="text-brand">*</span>
                     </label>
                     <span className="text-[10px] text-slate-400">{memo.length}/200</span>
                   </div>
