@@ -14,10 +14,10 @@ const Home = () => {
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
+      <div className="min-h-screen flex items-center justify-center bg-[#F3F4F6]">
         <div className="text-center">
           <h1 className="text-xl text-gray-900 mb-4">제품을 찾을 수 없습니다</h1>
-          <Link to="/" className="text-blue-600 font-medium">
+          <Link to="/" className="text-brand font-medium">
             ← 제품 선택으로 돌아가기
           </Link>
         </div>
@@ -26,16 +26,16 @@ const Home = () => {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 px-4 py-6 sm:px-6 sm:py-6">
+    <main className="min-h-screen bg-[#F3F4F6] px-5 py-8 sm:px-8 sm:py-12">
       <div className="max-w-xl mx-auto sm:max-w-4xl">
         {/* Top Bar */}
-        <div className="flex items-center justify-between mb-4 sm:mb-6">
+        <div className="flex items-center justify-between mb-6 sm:mb-8">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 text-sm sm:text-base transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-xl border border-white/70 px-4 h-9 text-[13px] font-semibold text-gray-700 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:bg-white transition-colors"
           >
-            <span className="text-lg" aria-hidden="true">←</span>
-            <span>제품 선택으로 돌아가기</span>
+            <span className="text-base leading-none" aria-hidden="true">←</span>
+            <span>제품 선택</span>
           </Link>
           <div className="flex items-center gap-2">
             <OrientationToggle />
@@ -43,21 +43,18 @@ const Home = () => {
         </div>
 
         {/* Header */}
-        <div className="text-center mb-6 sm:mb-8">
-          <p className="text-xs sm:text-sm font-medium tracking-widest uppercase text-gray-400 mb-3 sm:mb-4">
-            VIEW KIT
+        <div className="text-center mb-8 sm:mb-10 space-y-3">
+          <p className="text-[11px] sm:text-[12px] font-black tracking-[0.3em] uppercase text-brand">
+            VIEW KIT · {product.name}
           </p>
-          <div className="inline-block bg-purple-50 border border-purple-200 px-4 py-1.5 sm:px-5 sm:py-2 rounded-full mb-4 sm:mb-5">
-            <span className="text-sm sm:text-base font-semibold text-purple-600">{product.name}</span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
+          <h1 className="text-[28px] sm:text-[40px] font-extrabold tracking-tight text-[#111111] leading-tight">
             {product.title}
           </h1>
-          <p className="text-base sm:text-lg text-gray-600">{product.description}</p>
+          <p className="text-base sm:text-lg text-gray-500 font-medium">{product.description}</p>
         </div>
 
         {/* Key Visual */}
-        <div className="rounded-2xl overflow-hidden mb-8 sm:mb-10 shadow-2xl">
+        <div className="rounded-[28px] sm:rounded-[36px] overflow-hidden mb-10 sm:mb-14 border border-white bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]">
           <SafeImage
             src={product.keyVisualImage}
             alt={`LG ${product.name} 대표 이미지`}
@@ -76,12 +73,13 @@ const Home = () => {
         </div>
 
         {/* Features Section Title */}
-        <div className="text-center mb-5 sm:mb-6">
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">주요 특장점</h3>
+        <div className="text-center mb-6 sm:mb-8">
+          <p className="text-[11px] font-black tracking-[0.25em] uppercase text-gray-400 mb-2">FEATURES</p>
+          <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111111]">주요 특장점</h3>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-12 sm:mb-16">
           {features.map((feature, index) => {
             const isFitMax = productId === "refrigerator" && (feature.id === "11" || feature.id === "12");
 
@@ -117,9 +115,10 @@ const Home = () => {
         <div className="text-center">
           <button
             onClick={() => navigate("/")}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 sm:px-12 sm:py-4 rounded-xl text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+            className="inline-flex items-center justify-center gap-2 h-12 sm:h-14 px-8 sm:px-10 rounded-full bg-white border border-gray-200 text-gray-800 text-base sm:text-lg font-semibold shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:border-brand hover:text-brand transition-colors"
           >
-            다른 제품 보기
+            <span aria-hidden="true">←</span>
+            <span>다른 제품 보기</span>
           </button>
         </div>
       </div>
