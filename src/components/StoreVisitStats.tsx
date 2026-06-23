@@ -4,12 +4,29 @@ import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { cn } from "@/lib/utils";
-import { BRANCH_CODE_MAP } from "@/data/branches";
+import { BRANCH_CODE_MAP, getManagerByBranch, isSpecialtyManager } from "@/data/branches";
 
 // 코드(store_id) → 정식 지점명 역매핑 (DB에 잘못 저장된 store_name 보정용)
 const CODE_TO_NAME: Record<string, string> = Object.fromEntries(
   Object.entries(BRANCH_CODE_MAP).map(([name, code]) => [code, name]),
 );
+
+// 매장 카테고리: 'specialty' = 전문점(베스트샵), 'hiplaza' = 하이프라자(일반/본점/백화점), 'unknown'
+type StoreCategory = "specialty" | "hiplaza" | "unknown";
+const getCategoryByCode = (code: string): StoreCategory => {
+  const name = CODE_TO_NAME[code];
+  if (!name) return "unknown";
+  const manager = getManagerByBranch(name);
+  if (!manager) return "unknown";
+  return isSpecialtyManager(manager) ? "specialty" : "hiplaza";
+};
+
+type CategoryKey = "all" | "specialty" | "hiplaza";
+const CATEGORIES: { key: CategoryKey; label: string }[] = [
+  { key: "all", label: "전체" },
+  { key: "hiplaza", label: "하이프라자" },
+  { key: "specialty", label: "전문점" },
+];
 
 type Row = {
   id: string;
@@ -43,6 +60,7 @@ const getSince = (key: RangeKey): string | null => {
 
 const StoreVisitStats = () => {
   const [range, setRange] = useState<RangeKey>("7d");
+  const [category, setCategory] = useState<CategoryKey>("all");
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -73,12 +91,17 @@ const StoreVisitStats = () => {
     };
   }, [range]);
 
+  const filteredRows = useMemo(() => {
+    if (category === "all") return rows;
+    return rows.filter((r) => getCategoryByCode(r.store_id) === category);
+  }, [rows, category]);
+
   const stats = useMemo(() => {
     const map = new Map<
       string,
       { store_id: string; store_name: string; views: number; sessions: Set<string>; lastAt: string }
     >();
-    rows.forEach((r) => {
+    filteredRows.forEach((r) => {
       const key = r.store_id;
       // 정식 명칭은 코드 매핑이 우선 (DB의 store_name 불일치 보정)
       const canonicalName = CODE_TO_NAME[r.store_id] || r.store_name || r.store_id;
@@ -107,16 +130,16 @@ const StoreVisitStats = () => {
         lastAt: v.lastAt,
       }))
       .sort((a, b) => b.views - a.views);
-  }, [rows]);
+  }, [filteredRows]);
 
   const totals = useMemo(() => {
-    const sessions = new Set(rows.map((r) => r.session_id));
+    const sessions = new Set(filteredRows.map((r) => r.session_id));
     return {
-      views: rows.length,
+      views: filteredRows.length,
       visits: sessions.size,
       stores: stats.length,
     };
-  }, [rows, stats]);
+  }, [filteredRows, stats]);
 
   const handleExport = () => {
     const rangeLabel = RANGES.find((r) => r.key === range)?.label || range;
