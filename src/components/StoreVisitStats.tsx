@@ -192,7 +192,24 @@ const StoreVisitStats = () => {
           </div>
           <h2 className="text-sm font-semibold text-slate-900">지점별 접속 통계</h2>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
+          <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5">
+            {CATEGORIES.map((c) => (
+              <button
+                key={c.key}
+                type="button"
+                onClick={() => setCategory(c.key)}
+                className={cn(
+                  "px-3 h-7 rounded-md text-xs font-medium transition-colors",
+                  category === c.key
+                    ? "bg-white text-slate-900 shadow-sm"
+                    : "text-slate-500 hover:text-slate-700",
+                )}
+              >
+                {c.label}
+              </button>
+            ))}
+          </div>
           <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5">
           {RANGES.map((r) => (
             <button
