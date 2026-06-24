@@ -16,11 +16,17 @@ const EventRankingAutoPopup = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const store = getCurrentStore();
-    if (store && isAdminStore(store.slug)) return; // SC 제외
+    // URL 강제 표시 옵션: ?ranking=1 또는 ?showRanking=1
+    const params = new URLSearchParams(window.location.search);
+    const forceShow = params.get("ranking") === "1" || params.get("showRanking") === "1";
 
-    const today = getTodayKST();
-    if (localStorage.getItem(DAILY_KEY) === today) return; // 오늘 이미 노출됨
+    if (!forceShow) {
+      const store = getCurrentStore();
+      if (store && isAdminStore(store.slug)) return; // SC 제외
+
+      const today = getTodayKST();
+      if (localStorage.getItem(DAILY_KEY) === today) return; // 오늘 이미 노출됨
+    }
 
     // 즉시 노출 — 어두워졌다가 다시 밝아지는 시각적 단절을 제거
     // 노출 기록은 닫는 시점에 저장하여 새로고침 시 재표시되지 않도록 함
