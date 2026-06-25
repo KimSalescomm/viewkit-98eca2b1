@@ -27,7 +27,7 @@ const Guide = lazy(() => import("./pages/Guide"));
 
 const queryClient = new QueryClient();
 
-const MAINTENANCE_MODE = false;
+const MAINTENANCE_MODE = true;
 
 // 관리자(세션에 인증된 사용자)만 점검 모드 우회
 const isAdminBypass = () => {
