@@ -129,7 +129,21 @@ const ScreensaverOverlay = () => {
           autoPlay
           muted
           playsInline
-          onEnded={goNext}
+          loop={videos.length === 1}
+          onEnded={() => {
+            if (videos.length <= 1) {
+              // 단일 영상: loop 속성이 처리하지만, 혹시 모를 정지 대비 재생 재시도
+              const v = videoRef.current;
+              if (v) {
+                try {
+                  v.currentTime = 0;
+                  void v.play();
+                } catch {}
+              }
+              return;
+            }
+            goNext();
+          }}
           onError={goNext}
           className="w-full h-full object-contain"
         />
