@@ -114,13 +114,6 @@ const FeatureDetail = () => {
 
         {/* Media - video_click 이벤트용 래퍼 */}
         <div className="mb-6 sm:mb-8 relative" onClick={handleVideoClick}>
-          {activeTabData?.description && id !== "13" && (
-            <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 px-4 py-4 sm:py-6 text-center pointer-events-none">
-              <p className="text-sm sm:text-base text-gray-700 leading-relaxed sm:leading-loose whitespace-pre-line">
-                {activeTabData.description}
-              </p>
-            </div>
-          )}
           <MediaViewer
             key={tabs ? `tab-${activeTab}` : "main"}
             mediaType={activeTabData?.mediaType ?? feature.mediaType}
@@ -133,15 +126,13 @@ const FeatureDetail = () => {
           />
         </div>
 
-        {/* Description Card (hidden when tab has its own copy) */}
-        {!activeTabData?.description && (
-          <div className="bg-white rounded-2xl p-5 sm:p-6 mb-4 sm:mb-6 shadow-md">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{feature.descriptionTitle || "설명 더 보기"}</h2>
-            <p className="text-sm sm:text-base text-gray-600 leading-relaxed sm:leading-loose whitespace-pre-line">
-              {feature.description}
-            </p>
-          </div>
-        )}
+        {/* Description Card: active tab description takes precedence */}
+        <div className="bg-white rounded-2xl p-5 sm:p-6 mb-4 sm:mb-6 shadow-md">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{feature.descriptionTitle || "설명 더 보기"}</h2>
+          <p className="text-sm sm:text-base text-gray-600 leading-relaxed sm:leading-loose whitespace-pre-line">
+            {activeTabData?.description ?? feature.description}
+          </p>
+        </div>
 
 
         {/* Highlights Card */}

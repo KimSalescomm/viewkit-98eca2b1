@@ -802,6 +802,8 @@ export const featuresMap: Record<string, Feature[]> = {
         },
         {
           label: "엣지 확장 브러시",
+          description:
+            "벽과 가구 모서리, 청소로봇이 닿기 어려운 곳에 쌓인 먼지를 걱정하셨나요?\n엣지 확장 브러시가 벽면 쪽으로 뻗어나가 모서리 먼지까지 꼼꼼히 털어냅니다.\n단차 없는 바닥이라면 더욱 밀착해 청소 범위를 넓혀줘요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_10_edge_cleaning.mp4",
         },
