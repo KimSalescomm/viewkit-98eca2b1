@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, useMemo } from "react";
 import { PlayCircle, AlertCircle } from "lucide-react";
 import { useLocation, useParams } from "react-router-dom";
 import VideoDebugOverlay from "@/components/VideoDebugOverlay";
