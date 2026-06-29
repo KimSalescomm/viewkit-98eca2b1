@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   SCREENSAVER_ENABLED,
   SCREENSAVER_IDLE_MS,
