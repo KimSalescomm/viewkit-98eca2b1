@@ -842,7 +842,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "보이지 않아도, 보일수록\n공간에 어우러지는 스테이션",
+      title: "매립되는 히든스테이션부터\n오브제가 되는 디자인 도크까지",
       subtitle: "가구에 매립되는 히든스테이션부터\n거실의 오브제가 되는 디자인 도크까지.",
       icon: "Armchair",
       tag: "공간 맞춤 솔루션",
