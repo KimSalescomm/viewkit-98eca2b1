@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   SCREENSAVER_ENABLED,
   SCREENSAVER_IDLE_MS,
@@ -19,6 +20,7 @@ const ScreensaverOverlay = () => {
   const [videos, setVideos] = useState<ScreensaverVideo[]>(SCREENSAVER_VIDEOS);
   const idleTimerRef = useRef<number | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const navigate = useNavigate();
 
   // DB에서 플레이리스트 로드 (없으면 config 폴백)
   useEffect(() => {
@@ -65,10 +67,18 @@ const ScreensaverOverlay = () => {
     }, SCREENSAVER_IDLE_MS);
   }, [enabled]);
 
-  const dismiss = useCallback(() => {
-    setActive(false);
-    scheduleIdle();
-  }, [scheduleIdle]);
+  const dismiss = useCallback(
+    (e?: React.SyntheticEvent) => {
+      e?.preventDefault?.();
+      e?.stopPropagation?.();
+      setActive(false);
+      // 현재 경로 유지하지 말고 제품 선택 페이지로 이동
+      const search = window.location.search || "";
+      navigate(`/${search}`, { replace: true });
+      scheduleIdle();
+    },
+    [scheduleIdle, navigate]
+  );
 
   useEffect(() => {
     if (!enabled) return;
