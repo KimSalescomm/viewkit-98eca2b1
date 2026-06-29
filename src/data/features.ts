@@ -841,6 +841,17 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
     },
     {
+      id: "4",
+      title: "복잡한 집안, AI가 알아서 피해 다닐 수 있을까?",
+      subtitle: "3D 인식 센서와 AI가 장애물을 피하고\n최적의 경로로 청소해요.",
+      icon: "Navigation",
+      tag: "AI 주행",
+      mediaType: "image",
+      mediaUrl: "https://images.unsplash.com/photo-1558002038-1091a166111c?w=1200&h=800&fit=crop",
+      description:
+        "3D 인식 센서와 AI 딥러닝이 집 안의 장애물을 실시간으로 인식해 전선, 양말, 신발까지 피해가며 똑똑하게 주행합니다. 청소한 공간은 기억해 다음번에 더 효율적인 경로로 청소합니다.",
+      highlights: ["3D 인식 센서 장애물 회피", "AI 딥러닝 실시간 인식", "스마트 경로 최적화", "집 안 구조 학습"],
+    {
       id: "3",
       title: "보이지 않아도 완성되고, 보일수록 품격이 되는",
       subtitle: "가구에 매립되는 히든스테이션부터\n오브제가 되는 디자인 도크까지",
@@ -1021,6 +1032,7 @@ export const featureIconNames: Record<string, string> = {
   Globe: "Globe",
   Shield: "Shield",
   ShieldCheck: "ShieldCheck",
+  Navigation: "Navigation",
   Square: "EyeOff",
 };
 
