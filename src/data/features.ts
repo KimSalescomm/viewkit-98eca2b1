@@ -773,7 +773,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "마른 얼룩, AI가 알아서 닦아줄 순 없을까?",
       subtitle: "오염에 맞춰 빠르게 움직이는 세계최초 100℃ 무빙 스팀!\n마른 얼룩을 발견하면 바로 만든 스팀으로 얼룩을 닦아요.",
       icon: "Flame",
-      tag: "청소 성능",
+      tag: "세계최초 100℃ 무빙 스팀",
       mediaType: "video",
       mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_02_moving_steam_pc.mp4",
       description:
