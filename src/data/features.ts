@@ -779,23 +779,6 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "그냥 지나가면 마른 얼룩이 닦이나요? 마른 얼룩은 촉촉하게 불려서 박박 닦아야 해요. 그걸 AI가 알아서 해줍니다! AI 맞춤 청소 모드로 청소하면, 물기 없이 굳어버린 얼룩을 감지하고, 100℃ 스팀을 바로 만들어 해당 지점만 집중적으로 청소해요.",
       highlights: ["마른 얼룩 자동 감지", "100℃ 고온 스팀 분사", "최대 2회 집중 케어", "AI맞춤 청소 모드"],
-      tabs: [
-        {
-          label: "스팀 물걸레",
-          mediaType: "video",
-          mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_02_moving_steam_pc.mp4",
-        },
-        {
-          label: "흡입 청소",
-          mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
-        },
-        {
-          label: "AI 주행",
-          mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
-        },
-      ],
     },
     {
       id: "2",
