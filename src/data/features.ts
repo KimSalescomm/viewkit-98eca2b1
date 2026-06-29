@@ -941,18 +941,6 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["사이드 확장 구조", "벽·모서리 집중 청소", "사각지대 제거", "자동 인식·확장"],
     },
     {
-      id: "10",
-      title: "머리카락 엉킴, 더 이상 없을까?",
-      subtitle: "듀얼 엉킴 방지 브러시가 머리카락과 반려동물 털을\n자동으로 분리해 흡입통으로 보내요.",
-      icon: "Scissors",
-      tag: "듀얼 엉킴 방지 브러시",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
-      description:
-        "두 개의 브러시가 반대 방향으로 회전하며 머리카락과 반려동물 털이 감기는 것을 막아줍니다. 청소 후 브러시에서 머리카락을 떼어내는 번거로운 과정 없이, 흡입통만 비우면 끝이에요.",
-      highlights: ["듀얼 회전 구조", "머리카락 자동 분리", "반려동물 털 케어", "유지 관리 간편"],
-    },
-    {
 
       id: "6",
       title: "지금 사전 예약하고 혜택 받기",
