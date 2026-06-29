@@ -863,17 +863,21 @@ export const featuresMap: Record<string, Feature[]> = {
       tabs: [
         {
           label: "히든스테이션",
+          description:
+            "보이지 않아도 완성되는 초슬림 히든스테이션\n약 15cm 초슬림 히든스테이션은 주방의 숨겨진 공간을 가치 있는 공간으로 바꿉니다.\n별도 전용 수납장을 마련할 필요 없이 싱크대 하단 걸레받이에 설치 가능해 기존 수납 공간도 그대로 활용할 수 있습니다.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
         },
         {
           label: "오브제스테이션",
+          description:
+            "보일수록 품격이 되는 오브제스테이션\n공간 맞춤 디자인의 오브제스테이션을 거실 내 사이드 테이블로 자연스럽게 배치하세요.\n인테리어에 매끄럽게 스며들어 공간의 품격을 높여줍니다.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
         },
       ],
       description:
-        "주방·다용도실 가구에 자연스럽게 빌트인되는 히든스테이션과, 거실 어디에 두어도 오브제처럼 어우러지는 오브제스테이션. 공간 성격에 맞춰 두 가지 디자인을 선택할 수 있어요.",
+        "보이지 않아도 완성되는 히든스테이션부터, 보일수록 품격이 되는 오브제스테이션까지. 공간 성격에 맞춰 두 가지 디자인을 선택할 수 있어요.",
       highlights: ["히든스테이션 빌트인", "오브제스테이션 디자인", "공간 맞춤 선택", "보일수록 품격"],
     },
     {
