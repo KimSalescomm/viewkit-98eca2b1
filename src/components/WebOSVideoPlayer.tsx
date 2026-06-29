@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, useMemo } from "react";
 import { PlayCircle, AlertCircle } from "lucide-react";
 import { useLocation, useParams } from "react-router-dom";
 import VideoDebugOverlay from "@/components/VideoDebugOverlay";
@@ -34,6 +34,17 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
 
   const currentUrl = currentSource === "primary" ? mediaUrl : fallbackUrl;
 
+  const debugExtra = useMemo(
+    () => ({
+      productId,
+      featureId: id,
+      detectedFormat,
+      currentSource,
+      currentUrl,
+    }),
+    [productId, id, detectedFormat, currentSource, currentUrl]
+  );
+
   const {
     enabled: videoDebugEnabled,
     items: videoDebugItems,
@@ -41,18 +52,19 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
     log: logVideoDebug,
     isInGestureContext,
     logCanPlayTypes,
-    timing: videoTiming,
+    timing: rawTiming,
   } = useVideoDebug({
     videoRef,
     pageId: id || undefined,
-    extra: {
-      productId,
-      featureId: id,
-      detectedFormat,
-      currentSource,
-      currentUrl,
-    },
+    extra: debugExtra,
   });
+
+  // useVideoDebug returns a new timing object every render, so wrap it in a stable reference
+  const { startTiming, markEvent, getTiming, resetTiming } = rawTiming;
+  const videoTiming = useMemo(
+    () => ({ startTiming, markEvent, getTiming, resetTiming }),
+    [startTiming, markEvent, getTiming, resetTiming]
+  );
 
   const tryPlay = useCallback(
     async (reason: string) => {
