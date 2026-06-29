@@ -771,8 +771,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "모델별 스펙비교",
       mediaType: "table",
       mediaUrl: "",
-      description: "2026년 LG 휘센 에어컨 주요 라인업의 AI 기능, 냉방, 청정, 디자인, 효율 등급까지 한눈에 비교해보세요.
-제품별 스펙은 다를 수 있으니 정확한 내용은 각 제품 상세 스펙을 확인해주세요.",
+      description: "2026년 LG 휘센 에어컨 주요 라인업의 AI 기능, 냉방, 청정, 디자인, 효율 등급까지 한눈에 비교해보세요.\n제품별 스펙은 다를 수 있으니 정확한 내용은 각 제품 상세 스펙을 확인해주세요.",
       highlights: ["AI 기능별 지원 여부", "냉방면적 및 에너지 등급", "디자인·색상 옵션", "출시연도 비교"],
       tableData: [
         {
