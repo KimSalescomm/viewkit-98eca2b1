@@ -125,7 +125,10 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (isAdmin) return;
     let cancelled = false;
-    (async () => {
+    let lastSeenAt: string | null = state.publishedAt;
+    let firstLoad = true;
+
+    const fetchLatest = async (options?: { reloadOnChange?: boolean }) => {
       try {
         const { data, error } = await supabase
           .from("content_snapshots")
@@ -133,10 +136,13 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
           .order("created_at", { ascending: false })
           .limit(1)
           .maybeSingle();
-        if (cancelled) return;
-        if (error || !data) return;
+        if (cancelled || error || !data) return;
         const payload = data.payload as unknown as ContentPayload;
         if (!payload?.featuresMap || !payload?.products) return;
+
+        const changed = lastSeenAt !== data.created_at;
+        lastSeenAt = data.created_at;
+
         setState({
           payload,
           source: "published",
@@ -151,13 +157,54 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
         } catch {
           /* noop */
         }
+
+        // Auto-reload general store pages once when a newer publish is detected
+        // after the first load, so퍼블리시 → 일반 지점 화면이 즉시 반영됨.
+        if (changed && !firstLoad && options?.reloadOnChange !== false) {
+          window.location.reload();
+        }
+        firstLoad = false;
       } catch {
         /* ignore — keep current state */
       }
-    })();
+    };
+
+    // Initial fetch
+    fetchLatest({ reloadOnChange: false });
+
+    // Realtime subscription: invalidate cache on any new snapshot insert.
+    const channel = supabase
+      .channel("content_snapshots_changes")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "content_snapshots" },
+        () => {
+          fetchLatest();
+        },
+      )
+      .subscribe();
+
+    // Polling fallback in case realtime is unavailable.
+    const pollId = window.setInterval(() => {
+      fetchLatest();
+    }, 60_000);
+
+    // Re-check when the kiosk regains focus / visibility.
+    const onFocus = () => fetchLatest();
+    const onVisibility = () => {
+      if (document.visibilityState === "visible") fetchLatest();
+    };
+    window.addEventListener("focus", onFocus);
+    document.addEventListener("visibilitychange", onVisibility);
+
     return () => {
       cancelled = true;
+      window.clearInterval(pollId);
+      window.removeEventListener("focus", onFocus);
+      document.removeEventListener("visibilitychange", onVisibility);
+      supabase.removeChannel(channel);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAdmin]);
 
   const value = useMemo(
