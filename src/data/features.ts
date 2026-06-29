@@ -868,12 +868,12 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Shield",
       tag: "체계적인 보안 솔루션",
       mediaType: "image",
-      mediaUrl: "/images/security-cert.png",
+      mediaUrl: "/__l5e/assets-v1/6da4d6c5-956b-464a-9c56-06fc1e34b26b/vacuum-security-cert.png",
       tabs: [
         {
           label: "보안 인증",
           mediaType: "image",
-          mediaUrl: "/images/security-cert.png",
+          mediaUrl: "/__l5e/assets-v1/6da4d6c5-956b-464a-9c56-06fc1e34b26b/vacuum-security-cert.png",
         },
         {
           label: "개인정보 보호",
