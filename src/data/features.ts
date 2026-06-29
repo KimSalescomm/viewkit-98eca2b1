@@ -847,7 +847,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Navigation",
       tag: "AI 주행",
       mediaType: "video",
-      mediaUrl: "/__l5e/assets-v1/6f23dc72-c87d-42a7-baa0-625fee645dc6/N95THO_ai_driving.mp4",
+      mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_03_sensing_ai_driving_pc.mp4",
       description:
         "3D 인식 센서와 AI 딥러닝이 집 안의 장애물을 실시간으로 인식해 전선, 양말, 신발까지 피해가며 똑똑하게 주행합니다. 청소한 공간은 기억해 다음번에 더 효율적인 경로로 청소합니다.",
       highlights: ["3D 인식 센서 장애물 회피", "AI 딥러닝 실시간 인식", "스마트 경로 최적화", "집 안 구조 학습"],
