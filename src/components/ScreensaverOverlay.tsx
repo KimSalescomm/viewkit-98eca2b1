@@ -20,6 +20,7 @@ const ScreensaverOverlay = () => {
   const [videos, setVideos] = useState<ScreensaverVideo[]>(SCREENSAVER_VIDEOS);
   const idleTimerRef = useRef<number | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const navigate = useNavigate();
 
   // DB에서 플레이리스트 로드 (없으면 config 폴백)
   useEffect(() => {
