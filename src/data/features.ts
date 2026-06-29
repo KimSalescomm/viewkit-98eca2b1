@@ -849,7 +849,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_03_sensing_ai_driving_pc.mp4",
       description:
-        "3D 인식 센서와 AI 딥러닝이 집 안의 장애물을 실시간으로 인식해 전선, 양말, 신발까지 피해가며 똑똑하게 주행합니다. 청소한 공간은 기억해 다음번에 더 효율적인 경로로 청소합니다.",
+        "LG의 진화된 주행 기술 AlphaUp Drive가 실시간 센싱으로 장애물 제거 영역을 즉시 파악해, 비워진 공간까지 놓치지 않고 꼼꼼히 청소해요.\n전선, 양말, 신발 같은 집 안 장애물은 AI 딥러닝으로 스스로 피해가며, 청소한 공간은 기억해 다음 번엔 더 효율적인 경로로 주행합니다.",
       highlights: ["3D 인식 센서 장애물 회피", "AI 딥러닝 실시간 인식", "스마트 경로 최적화", "집 안 구조 학습"],
     },
     {
