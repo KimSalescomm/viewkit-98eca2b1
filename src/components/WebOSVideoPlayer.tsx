@@ -34,6 +34,17 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
 
   const currentUrl = currentSource === "primary" ? mediaUrl : fallbackUrl;
 
+  const debugExtra = useMemo(
+    () => ({
+      productId,
+      featureId: id,
+      detectedFormat,
+      currentSource,
+      currentUrl,
+    }),
+    [productId, id, detectedFormat, currentSource, currentUrl]
+  );
+
   const {
     enabled: videoDebugEnabled,
     items: videoDebugItems,
@@ -45,13 +56,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
   } = useVideoDebug({
     videoRef,
     pageId: id || undefined,
-    extra: {
-      productId,
-      featureId: id,
-      detectedFormat,
-      currentSource,
-      currentUrl,
-    },
+    extra: debugExtra,
   });
 
   // useVideoDebug returns a new timing object every render, so wrap it in a stable reference
