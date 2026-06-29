@@ -67,10 +67,18 @@ const ScreensaverOverlay = () => {
     }, SCREENSAVER_IDLE_MS);
   }, [enabled]);
 
-  const dismiss = useCallback(() => {
-    setActive(false);
-    scheduleIdle();
-  }, [scheduleIdle]);
+  const dismiss = useCallback(
+    (e?: React.SyntheticEvent) => {
+      e?.preventDefault?.();
+      e?.stopPropagation?.();
+      setActive(false);
+      // 현재 경로 유지하지 말고 제품 선택 페이지로 이동
+      const search = window.location.search || "";
+      navigate(`/${search}`, { replace: true });
+      scheduleIdle();
+    },
+    [scheduleIdle, navigate]
+  );
 
   useEffect(() => {
     if (!enabled) return;
