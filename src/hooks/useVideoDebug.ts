@@ -190,6 +190,11 @@ export function useVideoDebug(params: {
   const [items, setItems] = useState<VideoDebugSnapshot[]>([]);
   const canPlayTypeCapturedRef = useRef(false);
   const timing = useVideoTiming();
+  const { startTiming, markEvent, getTiming, resetTiming } = timing;
+  const stableTiming = useMemo(
+    () => ({ startTiming, markEvent, getTiming, resetTiming }),
+    [startTiming, markEvent, getTiming, resetTiming]
+  );
 
   const enabled = useMemo(() => {
     return isEnabledFromSearch(location.search) || isEnabledFromStorage();
@@ -234,10 +239,10 @@ export function useVideoDebug(params: {
         boundingRect: captureBoundingRect(video),
         ancestorStyles: captureAncestorStyles(video),
         extra: { ...(params.extra ?? {}), ...(extra ?? {}) },
-        timing: timing.getTiming() ?? undefined,
+        timing: stableTiming.getTiming() ?? undefined,
       };
     },
-    [location.pathname, location.key, params.pageId, params.extra, params.videoRef, timing]
+    [location.pathname, location.key, params.pageId, params.extra, params.videoRef, stableTiming]
   );
 
   const log = useCallback(
