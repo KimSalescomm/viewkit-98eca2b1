@@ -286,6 +286,6 @@ export function useVideoDebug(params: {
     snapshot,
     isInGestureContext,
     logCanPlayTypes,
-    timing,
+    timing: stableTiming,
   };
 }
