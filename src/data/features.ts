@@ -888,7 +888,7 @@ export const featuresMap: Record<string, Feature[]> = {
           description:
             "청소가 끝나면 도크 스테이션 내부로 자동 복귀하고, 자동 개폐 도어가 닫히며 청소로봇 본체가 외부에 노출되지 않습니다. 슬림한 히든스테이션은 주방 싱크대 하단에 빌트인되고, 오브제스테이션은 가구처럼 자연스럽게 배치되어 외부 충격·먼지·이물질은 물론 아이와 반려동물의 접근까지 막아 물리적 보안을 완성합니다.",
           mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/b83bfb31-4629-4d96-b5bf-092d92149293/vacuum-physical-security.png",
+          mediaUrl: "/__l5e/assets-v1/ca71652e-e0c0-41d1-b9cb-85f4f5c8f07a/vacuum-physical-security.png",
         },
       ],
       description:
