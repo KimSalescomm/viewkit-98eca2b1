@@ -38,6 +38,21 @@ const STATIC_PAYLOAD: ContentPayload = {
 
 const CACHE_KEY = "viewkit_content_snapshot_v1";
 
+const applyDraftOverrides = (payload: ContentPayload): ContentPayload => {
+  const draftVacuumSteam = staticFeaturesMap.vacuum?.find((feature) => feature.id === "1");
+  if (!draftVacuumSteam) return payload;
+
+  return {
+    ...payload,
+    featuresMap: {
+      ...payload.featuresMap,
+      vacuum: (payload.featuresMap.vacuum ?? []).map((feature) =>
+        feature.id === "1" ? draftVacuumSteam : feature,
+      ),
+    },
+  };
+};
+
 const ContentContext = createContext<ContentContextValue | null>(null);
 
 const buildValue = (
@@ -46,13 +61,13 @@ const buildValue = (
   publishedAt: string | null,
   ready: boolean,
 ): ContentContextValue => ({
-  featuresMap: payload.featuresMap,
-  products: payload.products,
-  getProductById: (id) => payload.products.find((p) => p.id === id),
+  featuresMap: applyDraftOverrides(payload).featuresMap,
+  products: applyDraftOverrides(payload).products,
+  getProductById: (id) => applyDraftOverrides(payload).products.find((p) => p.id === id),
   getFeaturesByProductId: (productId) =>
-    (payload.featuresMap[productId] ?? []).filter((f) => !f.disabled),
+    (applyDraftOverrides(payload).featuresMap[productId] ?? []).filter((f) => !f.disabled),
   getFeatureById: (productId, featureId) =>
-    (payload.featuresMap[productId] ?? [])
+    (applyDraftOverrides(payload).featuresMap[productId] ?? [])
       .filter((f) => !f.disabled)
       .find((f) => f.id === featureId),
   source,
