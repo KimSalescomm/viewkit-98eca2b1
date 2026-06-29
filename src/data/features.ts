@@ -883,6 +883,13 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaType: "image",
           mediaUrl: "/images/security-privacy.png",
         },
+        {
+          label: "물리적 보안",
+          description:
+            "도크 스테이션 내부에 청소로봇을 안전하게 수납해 외부 충격이나 먼지, 이물질로부터 본체를 보호합니다. 아이와 반려동물이 접근해도 안전한 밀폐형 구조로 물리적 보안을 강화했습니다.",
+          mediaType: "image",
+          mediaUrl: "/__l5e/assets-v1/b83bfb31-4629-4d96-b5bf-092d92149293/vacuum-physical-security.png",
+        },
       ],
       description:
         "글로벌 보안 인증을 획득한 LG 청소로봇은 개인정보 보호까지 갖춰 통신·저장·접근 전 단계에서 빈틈없이 안전을 지켜드립니다.",
