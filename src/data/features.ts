@@ -854,7 +854,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "보이지 않게 완성되고, 보일수록 품격이 되는",
+      title: "보이지 않게 완성되는\n초슬림 히든 스테이션",
       subtitle: "가구에 매립되는 히든 스테이션부터\n오브제가 되는 디자인까지",
       icon: "Armchair",
       tag: "공간 맞춤 솔루션",
