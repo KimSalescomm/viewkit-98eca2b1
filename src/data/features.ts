@@ -835,26 +835,26 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "3",
       title: "보이지 않아도, 보일수록\n공간에 어우러지는 스테이션",
-      subtitle: "가구에 매립되는 히든 스테이션부터\n거실의 오브제가 되는 디자인 도크까지.",
+      subtitle: "가구에 매립되는 히든스테이션부터\n거실의 오브제가 되는 디자인 도크까지.",
       icon: "Armchair",
       tag: "공간 맞춤 솔루션",
       mediaType: "video",
       mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
       tabs: [
         {
-          label: "히든 스테이션",
+          label: "히든스테이션",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
         },
         {
-          label: "오브제 스테이션",
+          label: "오브제스테이션",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
         },
       ],
       description:
-        "주방·다용도실 가구에 자연스럽게 빌트인되는 히든 스테이션과, 거실 어디에 두어도 오브제처럼 어우러지는 오브제 스테이션. 공간 성격에 맞춰 두 가지 도크 디자인을 선택할 수 있어요.",
-      highlights: ["히든 스테이션 빌트인", "오브제 스테이션 디자인", "공간 맞춤 선택", "보일수록 품격"],
+        "주방·다용도실 가구에 자연스럽게 빌트인되는 히든스테이션과, 거실 어디에 두어도 오브제처럼 어우러지는 오브제스테이션. 공간 성격에 맞춰 두 가지 도크 디자인을 선택할 수 있어요.",
+      highlights: ["히든스테이션 빌트인", "오브제스테이션 디자인", "공간 맞춤 선택", "보일수록 품격"],
     },
     {
       id: "5",
