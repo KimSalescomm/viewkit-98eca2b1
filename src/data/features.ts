@@ -808,7 +808,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "듀얼 엉킴 방지 브러시",
           mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_11_dual_tangle_free_brush.mp4",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_11_anti_tangle.mp4",
         },
       ],
       disclaimers: [
