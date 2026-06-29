@@ -785,7 +785,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "흡입력과 브러시, 어디까지 강해질 수 있을까?",
       subtitle: "최대 30W 강력 흡입력에 엣지 확장 브러시를 더했어요.",
       icon: "Zap",
-      tag: "30W 흡입력 + 엣지 확장 브러시",
+      tag: "흡입 청소",
       mediaType: "video",
       mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
       description:
