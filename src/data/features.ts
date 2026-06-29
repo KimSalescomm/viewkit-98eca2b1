@@ -771,7 +771,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "1",
       title: "마른 얼룩, AI가 알아서 닦아줄 순 없을까?",
-      subtitle: "AI 오염 맞춤 클리닝으로 오염 공간을 센싱하고,\n세계최초 100°C 스팀 물걸레로 찌든 때와 기름때까지\n말끔하게 청소해요.",
+      subtitle: "AI 오염 맞춤 클리닝으로 오염 공간을 센싱하고 세계최초 100°C 스팀 물걸레로 찌든 때와 기름때까지 말끔하게 청소해요.",
       icon: "Flame",
       tag: "AI 오염 맞춤 클리닝",
       mediaType: "video",
