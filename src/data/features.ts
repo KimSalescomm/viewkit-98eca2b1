@@ -842,8 +842,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "매립되는 히든스테이션부터\n오브제가 되는 디자인 도크까지",
-      subtitle: "가구에 매립되는 히든스테이션부터\n거실의 오브제가 되는 디자인 도크까지.",
+      title: "보이지 않아도 완성되고, 보일수록 품격이 되는",
+      subtitle: "가구에 매립되는 히든스테이션부터\n오브제가 되는 디자인 도크까지",
       icon: "Armchair",
       tag: "공간 맞춤 솔루션",
       mediaType: "video",
