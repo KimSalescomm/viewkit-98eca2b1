@@ -843,7 +843,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "4",
       title: "복잡한 집안, AI가 알아서 피해 다닐 수 있을까?",
-      subtitle: "LG의 진화된 주행 기술 AlphaUp Drive가\n실시간 센싱으로 장애물 제거 영역을 즉시 인식하고,\n해당 공간까지 놓치지 않고 청소해요.",
+      subtitle: "LG의 진화된 주행 기술 AlphaUp Drive는 실시간 센싱으로 장애물 제거 영역을 즉시 인식하며, 해당 공간까지 놓치지 않고 청소해요.",
       icon: "Navigation",
       tag: "AI 주행",
       mediaType: "video",
