@@ -883,7 +883,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "물리적 보안",
           mediaType: "image",
-          mediaUrl: "/images/security-physical.png",
+          mediaUrl: "/__l5e/assets-v1/e9c35cee-3d44-4462-a61b-f120cf3dd88a/vacuum-security-physical.png",
         },
       ],
       description:
