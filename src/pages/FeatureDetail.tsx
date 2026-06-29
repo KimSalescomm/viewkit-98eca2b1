@@ -15,12 +15,23 @@ import {
 const FeatureDetail = () => {
   const { productId, id } = useParams<{ productId: string; id: string }>();
   const { trackDetailView, trackVideoClick } = useAnalyticsContext();
-  const [activeTab, setActiveTab] = useState(0);
   const { getFeatureById, getProductById } = useContent();
 
   const feature = getFeatureById(productId || "", id || "");
   const product = getProductById(productId || "");
   const tabs = feature?.tabs;
+
+  const getDualAntiTangleTabIndex = () => {
+    const idx = tabs?.findIndex((tab) => tab.label.includes("듀얼 엉킴 방지")) ?? -1;
+    return idx >= 0 ? idx : 0;
+  };
+
+  const [activeTab, setActiveTab] = useState(getDualAntiTangleTabIndex);
+
+  useEffect(() => {
+    setActiveTab(getDualAntiTangleTabIndex());
+  }, [feature, tabs]);
+
   const activeTabData = tabs?.[activeTab];
 
   // detail_view 이벤트
