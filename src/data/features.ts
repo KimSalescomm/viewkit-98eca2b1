@@ -863,7 +863,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "보이지 않아도, 보일수록\n공간에 어우러지는 스테이션",
       subtitle: "가구에 매립되는 히든 스테이션부터\n거실의 오브제가 되는 디자인 도크까지.",
       icon: "Armchair",
-      tag: "히든 · 오브제 스테이션",
+      tag: "공간 맞춤 솔루션",
       mediaType: "video",
       mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
       tabs: [
