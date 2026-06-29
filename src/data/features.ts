@@ -797,6 +797,8 @@ export const featuresMap: Record<string, Feature[]> = {
       tabs: [
         {
           label: "30W 강력 흡입력",
+          description:
+            "AlphaUP Drive에 탑재된 고출력 흡입 모터가 최대 30W에 달하는 강력한 흡입력을 발휘합니다.\n스마트 터보가 카펫과 같이 청소가 까다로운 바닥재를 자동 감지하면 흡입 세기를 한 단계 더 끌어올려 깊숙한 먼지까지 꼼꼼하게 청소합니다.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
         },
@@ -809,6 +811,8 @@ export const featuresMap: Record<string, Feature[]> = {
         },
         {
           label: "듀얼 엉킴 방지 브러시",
+          description:
+            "길고 짧은 머리카락, 반려동물 털이 브러시에 엉켜 청소 성능이 떨어지는 일을 줄였습니다.\n듀얼 엉킴 방지 브러시가 회전하며 머리카락을 흡입구 쪽으로 밀어내, 엉킴 걱정 없이 꾸준한 청소 성능을 유지합니다.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_11_anti_tangle.mp4",
         },
