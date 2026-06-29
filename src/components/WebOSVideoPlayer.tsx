@@ -41,7 +41,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
     log: logVideoDebug,
     isInGestureContext,
     logCanPlayTypes,
-    timing: videoTiming,
+    timing: rawTiming,
   } = useVideoDebug({
     videoRef,
     pageId: id || undefined,
@@ -53,6 +53,13 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
       currentUrl,
     },
   });
+
+  // useVideoDebug returns a new timing object every render, so wrap it in a stable reference
+  const { startTiming, markEvent, getTiming, resetTiming } = rawTiming;
+  const videoTiming = useMemo(
+    () => ({ startTiming, markEvent, getTiming, resetTiming }),
+    [startTiming, markEvent, getTiming, resetTiming]
+  );
 
   const tryPlay = useCallback(
     async (reason: string) => {
