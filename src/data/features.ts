@@ -868,27 +868,22 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Shield",
       tag: "체계적인 보안 솔루션",
       mediaType: "image",
-      mediaUrl: "/__l5e/assets-v1/6da4d6c5-956b-464a-9c56-06fc1e34b26b/vacuum-security-cert.png",
+      mediaUrl: "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png",
       tabs: [
         {
           label: "보안 인증",
           mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/6da4d6c5-956b-464a-9c56-06fc1e34b26b/vacuum-security-cert.png",
+          mediaUrl: "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png",
         },
         {
           label: "개인정보 보호",
           mediaType: "image",
           mediaUrl: "/images/security-privacy.png",
         },
-        {
-          label: "물리적 보안",
-          mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/e9c35cee-3d44-4462-a61b-f120cf3dd88a/vacuum-security-physical.png",
-        },
       ],
       description:
-        "글로벌 보안 인증을 획득한 LG 청소로봇은 개인정보 보호와 물리적 보안 장치까지 갖춰 통신·저장·접근 전 단계에서 빈틈없이 안전을 지켜드립니다.",
-      highlights: ["글로벌 보안 인증", "개인정보 암호화 보호", "물리적 보안 장치", "다층 보안 체계"],
+        "글로벌 보안 인증을 획득한 LG 청소로봇은 개인정보 보호까지 갖춰 통신·저장·접근 전 단계에서 빈틈없이 안전을 지켜드립니다.",
+      highlights: ["글로벌 보안 인증", "개인정보 암호화 보호", "다층 보안 체계"],
     },
     {
       id: "7",
