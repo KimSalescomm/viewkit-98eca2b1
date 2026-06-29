@@ -908,18 +908,6 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
     },
     {
-      id: "9",
-      title: "벽 모서리 먼지, 어떻게 닦을까?",
-      subtitle: "엣지 확장 브러시가 본체 밖으로 뻗어 나와\n벽면과 모서리까지 빈틈없이 청소해요.",
-      icon: "Move",
-      tag: "엣지 확장 브러시",
-      mediaType: "video",
-      mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_10_edge_cleaning.mp4",
-      description:
-        "원형 본체로는 닿기 힘든 벽 모서리, 가구 옆 틈새의 먼지를 엣지 확장 브러시가 바깥으로 펼쳐지며 쓸어 담습니다. 사각지대 없는 청소로 매번 더 깨끗한 결과를 보여드려요.",
-      highlights: ["사이드 확장 구조", "벽·모서리 집중 청소", "사각지대 제거", "자동 인식·확장"],
-    },
-    {
 
       id: "6",
       title: "지금 사전 예약하고 혜택 받기",
