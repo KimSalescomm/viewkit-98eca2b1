@@ -770,7 +770,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Sparkles",
       tag: "엘숏츠",
       mediaType: "youtube",
-      mediaUrl: "https://youtu.be/GtQeFMgoRAg",
+      mediaUrl: "https://youtu.be/DRk0yXY8zPg",
       isShorts: false,
       descriptionTitle: "에어컨 청소 지옥에서 탈출하는 가장 쉬운 방법은?",
       description:
