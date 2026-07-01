@@ -1055,9 +1055,10 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
           highlights: [
-            "흡입구·먼지통·회전솔 관리",
+            "흡입구·먼지통·회전솔 꼼꼼 관리",
             "청소 성능 유지",
-            "무상 A/S 및 소모품 교체",
+            "계약기간 내내 무상 A/S",
+            "소모품 정기 교체",
           ],
         },
       ],
