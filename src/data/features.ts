@@ -939,7 +939,6 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "우리 집엔 어떤 게 어울릴까요?",
       subtitle: "우리 집 공간에 딱 맞춘 두 가지 타입의 프리미엄 스테이션을 비교해보세요.",
 
-
       icon: "Armchair",
       tag: "공간 맞춤 솔루션",
       mediaType: "video",
