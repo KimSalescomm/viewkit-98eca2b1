@@ -1028,7 +1028,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "8",
       title: "위생과 성능, 누가 챙겨줄까요?",
-      subtitle: "100℃ 살균 스팀과 스테이션 컨디셔닝으로\n청결과 성능을 함께 챙겨드려요.",
+      subtitle: "물걸레 살균·탈취와 내부 관리 부담을 깔끔하게 덜어주는 토탈 위생&케어 솔루션을 직접 확인해보세요.",
       icon: "Sparkles",
       tag: "위생&케어 솔루션",
       mediaType: "image",
