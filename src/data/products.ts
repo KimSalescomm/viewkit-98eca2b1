@@ -29,8 +29,9 @@ export const products: Product[] = [
     title: "LG HOM-BOT RONi",
     description: "세계최초 100℃ 투웨이 스팀 청소로봇",
     keyVisualImage: vacuumKeyVisual,
-    secondaryKeyVisualImage: vacuumKeyVisualKitchen.url,
+    secondaryKeyVisualImage: vacuumKeyVisualKitchen,
     icon: "Sparkles",
+
   },
   {
     id: "styler",
