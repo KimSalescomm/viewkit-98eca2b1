@@ -835,16 +835,17 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "2",
       title: "흡입력과 브러시, 어디까지 강해질 수 있을까?",
-      subtitle: "최대 30W 강력 흡입력에 엣지 확장 브러시를 더했어요.",
+      subtitle: "최대 30W 강력 흡입력에 엣지 확장 브러시,\n듀얼 엉킴 방지 브러시까지 더했어요.",
       icon: "Zap",
       tag: "흡입 청소",
       mediaType: "video",
       mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
       description:
-        "AlphaUP Drive에 탑재된 고출력 흡입 모터가 최대 30W에 달하는 강력한 흡입력을 발휘합니다. 스마트 터보가 카펫과 같이 청소가 까다로운 바닥재를 자동 감지하면 흡입 세기를 한 단계 더 끌어올려 깊숙한 먼지까지 꼼꼼하게 청소합니다.",
+        "AlphaUP Drive에 탑재된 고출력 흡입 모터가 최대 30W에 달하는 강력한 흡입력을 발휘합니다. 여기에 벽·모서리 먼지까지 꼼꼼히 청소하는 엣지 확장 브러시와 머리카락·반려동물 털 엉킴을 방지하는 듀얼 엉킴 방지 브러시를 더해, 한층 강력하고 편리한 흡입 청소를 완성합니다.",
       highlights: [
-        "스마트 터보 카펫 자동 부스트",
+        "최대 30W 강력 흡입력",
         "엣지 확장 브러시로 벽·모서리 청소",
+        "듀얼 엉킴 방지 브러시",
       ],
       tabs: [
         {
