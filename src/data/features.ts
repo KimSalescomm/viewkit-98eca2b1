@@ -829,7 +829,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_02_moving_steam_pc.mp4",
       description:
         "AI 오염 인식으로 바닥 오염물을 인식하면 자동으로 스팀 물걸레 청소를 시작해요.\n100°C 스팀을 물걸레에 직접 분사해 강력하게 청소하고, 오염 정도에 따라 최대 2회 반복 후 ThinQ 앱에서 전후 사진을 비교할 수 있어요.",
-      highlights: ["AI로 마른 얼룩 감지", "100°C 스팀 물걸레 청소", "오염 정도에 따라 최대 2회 반복", "청소 전후 사진 비교"],
+      highlights: ["AI로 바닥 오염물 인식", "100°C 스팀 물걸레 청소", "최대 2회 반복 청소", "ThinQ 전후 사진 비교"],
       
     },
     {
