@@ -55,34 +55,45 @@ const Home = () => {
 
         {/* Key Visual */}
         <div className="mb-10 sm:mb-14 space-y-4 sm:space-y-5">
-          <div className="rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]">
-            <SafeImage
-              src={product.keyVisualImage}
-              alt={`LG ${product.name} 대표 이미지`}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              className={`w-full ${
-                productId === "airconditioner" ? "h-auto object-contain" : "h-[220px] sm:h-[480px] object-cover"
-              } ${
-                productId === "tv" ? "scale-[1.15] object-[65%_55%] -translate-y-[20px]" :
-                productId === "washer" ? "object-[55%_center]" :
-                productId === "airconditioner" ? "" :
-                "object-center"
-              }`}
-            />
-          </div>
-          {product.secondaryKeyVisualImage && (
-            <div className="rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]">
-              <SafeImage
-                src={product.secondaryKeyVisualImage}
-                alt={`LG ${product.name} 추가 이미지`}
-                loading="eager"
-                decoding="async"
-                className="w-full h-[220px] sm:h-[480px] object-cover object-center"
-              />
-            </div>
-          )}
+          {(() => {
+            const isVacuum = productId === "vacuum";
+            const images = product.secondaryKeyVisualImage
+              ? isVacuum
+                ? [product.secondaryKeyVisualImage, product.keyVisualImage]
+                : [product.keyVisualImage, product.secondaryKeyVisualImage]
+              : [product.keyVisualImage];
+
+            return images.map((src, index) => {
+              const isFirst = index === 0;
+              return (
+                <div
+                  key={src + index}
+                  className="rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]"
+                >
+                  <SafeImage
+                    src={src}
+                    alt={`LG ${product.name} ${isFirst ? "대표 이미지" : "추가 이미지"}`}
+                    loading="eager"
+                    fetchPriority={isFirst ? "high" : undefined}
+                    decoding="async"
+                    className={`w-full ${
+                      productId === "airconditioner"
+                        ? "h-auto object-contain"
+                        : "h-[220px] sm:h-[480px] object-cover"
+                    } ${
+                      productId === "tv" && isFirst
+                        ? "scale-[1.15] object-[65%_55%] -translate-y-[20px]"
+                        : productId === "washer" && isFirst
+                        ? "object-[55%_center]"
+                        : productId === "airconditioner"
+                        ? ""
+                        : "object-center"
+                    }`}
+                  />
+                </div>
+              );
+            });
+          })()}
         </div>
 
         {/* Features Section Title */}
