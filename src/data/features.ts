@@ -866,8 +866,8 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: [
         "30W 강력 흡입력",
         "카펫 속 미세먼지까지 흡입",
-        "엣지 확장 물걸레로 벽면 밀착 청소",
-        "구석구석 사각지대 해결",
+        "듀얼 엉킴 방지 브러시",
+        "머리카락 걱정 없는 청소",
       ],
       tabs: [
         {
