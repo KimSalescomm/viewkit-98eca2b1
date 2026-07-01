@@ -41,6 +41,7 @@ export interface Feature {
   highlights: string[];
   tableData?: ProductComparisonTable[];
   galleryImages?: (string | GalleryImage)[];
+  additionalImages?: string[];
   isShorts?: boolean;
   disclaimers?: string[];
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
