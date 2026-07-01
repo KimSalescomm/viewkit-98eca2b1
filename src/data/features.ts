@@ -1076,14 +1076,14 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "스테이션 컨디셔닝",
           description:
-            "보이지 않는 틈새까지 꼼꼼하게 관리해 줄 뿐만 아니라, 처음처럼 강력한 청소 성능을 오랫동안 변함없이 유지할 수 있도록 알아서 도와주니 언제나 쾌적하고 청정한 바닥을 누릴 수 있어요.",
+            "계약기간 내 무상 A/S는 기본, 알아서 챙겨주는 소모품 정기 교체 서비스로 번거로운 신경을 쓸 필요가 없으니까요. 게다가 전문가의 세심한 케어가 더해져 매일 더 완벽하고 차별화된 안심 구독 서비스를 완성해요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
           highlights: [
-            "흡입구·먼지통·회전솔 꼼꼼 관리",
-            "보이지 않는 틈새까지 청소",
-            "강력한 청소 성능 유지",
-            "쾌적하고 청정한 바닥",
+            "계약기간 내내 무상 A/S",
+            "소모품 정기 교체 서비스",
+            "전문가의 세심한 케어",
+            "안심 구독 서비스",
           ],
         },
       ],
