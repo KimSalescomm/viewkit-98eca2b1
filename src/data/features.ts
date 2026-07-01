@@ -925,7 +925,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "4",
       title: "우리 집 구조에 맞춘 스마트한 청소, 가능할까요?",
-      subtitle: "복잡한 구조와 장애물은 안전하게 회피하고, 놓친 공간까지 스스로 찾아가 완성하는\n진화된 AI 맞춤 청소를 경험해보세요.",
+      subtitle: "복잡한 장애물은 알아서 피하고, 놓친 공간까지 스스로 찾아 완성하는 AI 맞춤 청소를 경험해보세요.",
       icon: "Navigation",
       tag: "AI 맞춤 청소",
       mediaType: "video",
