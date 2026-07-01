@@ -936,7 +936,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "5",
       title: "보안까지 빈틈없이,\n체계적인 보안 솔루션",
-      subtitle: "보안 인증·개인정보·물리적 보안까지\n빈틈없이 지켜드려요.",,
+      subtitle: "보안 인증·개인정보·물리적 보안까지\n빈틈없이 지켜드려요.",
       icon: "Shield",
       tag: "체계적인 보안 솔루션",
       mediaType: "image",
