@@ -845,8 +845,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "흡입력과 브러시, 어떻게 청소할까요?",
-      subtitle: "흡입력, 엣지, 듀얼 엉킴 방지 브러시의 역할을 확인해보세요.",
+      title: "흡입력, 어디까지 강해질까요?",
+      subtitle: "최대 30W 강력한 흡입력과 엉킴 방지 브러시로 머리카락 걱정 없는 강력하고 편리한 흡입 청소를 직접 확인해보세요.",
       icon: "Zap",
       tag: "흡입 청소",
       mediaType: "video",
