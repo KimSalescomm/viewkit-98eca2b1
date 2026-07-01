@@ -1139,7 +1139,7 @@ export const featuresMap: Record<string, Feature[]> = {
 
       id: "6",
       title: "사전 예약, 어떤 혜택이 있을까요?",
-      subtitle: "청소로봇 사전 예약 고객에게만 드리는\n6가지 특별 혜택을 확인해 보세요.",
+      subtitle: "사전 예약 고객에게만 드리는\n6가지 특별 혜택을 확인해 보세요.",
       icon: "Globe",
       tag: "사전 예약 판매",
       mediaType: "image",
