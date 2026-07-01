@@ -35,6 +35,7 @@ export interface FeatureTab {
   fallbackUrl?: string;
   isShorts?: boolean;
   mediaSlides?: MediaSlide[];
+  highlights?: string[];
 }
 
 export interface Feature {
