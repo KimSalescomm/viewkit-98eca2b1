@@ -21,15 +21,10 @@ const FeatureDetail = () => {
   const product = getProductById(productId || "");
   const tabs = feature?.tabs;
 
-  const getDualAntiTangleTabIndex = () => {
-    const idx = tabs?.findIndex((tab) => tab.label.includes("듀얼 엉킴 방지")) ?? -1;
-    return idx >= 0 ? idx : 0;
-  };
-
-  const [activeTab, setActiveTab] = useState(getDualAntiTangleTabIndex);
+  const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
-    setActiveTab(getDualAntiTangleTabIndex());
+    setActiveTab(0);
   }, [feature, tabs]);
 
   const activeTabData = tabs?.[activeTab];
