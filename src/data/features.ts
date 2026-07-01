@@ -876,6 +876,12 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "엣지 확장 브러시",
           description:
             "엣지 확장 브러시로 청소 사각지대인 벽면 가장자리까지 밀착해 구석구석 꼼꼼하게 청소해요.",
+          highlights: [
+            "엣지 확장 브러시",
+            "벽면 가장자리 밀착 청소",
+            "청소 사각지대 해결",
+            "구석구석 꼼꼼 청소",
+          ],
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_10_edge_cleaning.mp4",
         },
