@@ -864,7 +864,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "30W 강력 흡입력",
           description:
-            "AlphaUP Drive에 탑재된 고출력 흡입 모터가 최대 30W에 달하는 강력한 흡입력을 발휘합니다.\n스마트 터보가 카펫과 같이 청소가 까다로운 바닥재를 자동 감지하면 흡입 세기를 한 단계 더 끌어올려 깊숙한 먼지까지 꼼꼼하게 청소합니다.",
+            "AlphaUP Drive에 탑재된 고출력 흡입 모터가 최대 30W에 달하는 강력한 흡입력을 발휘해요.\n스마트 터보가 카펫과 같이 청소가 까다로운 바닥재를 자동 감지하면 흡입 세기를 한 단계 더 끌어올려 깊숙한 먼지까지 꼼꼼하게 청소해요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
         },
@@ -978,7 +978,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "오브제스테이션",
           description:
-            "보일수록 품격이 되는\n오브제스테이션\n컨테이너 내부 부품격이 있습니다.",
+            "보일수록 품격이 되는 오브제스테이션은 거실에 자연스럽게 어울리는 디자인으로 공간을 완성해요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
           mediaSlides: [
@@ -1047,13 +1047,13 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "물리적 보안",
           description:
-            "청소가 끝나면 스테이션 내부로 자동 복귀하고, 자동 개폐 도어가 닫히며 청소로봇 본체가 외부에 노출되지 않습니다. 슬림한 히든스테이션은 주방 싱크대 하단에 빌트인되고, 오브제스테이션은 가구처럼 자연스럽게 배치되어 외부 충격·먼지·이물질은 물론 아이와 반려동물의 접근까지 막아 물리적 보안을 완성합니다.",
+            "청소가 끝나면 스테이션 내부로 자동 복귀하고, 자동 개폐 도어가 닫히며 청소로봇 본체가 외부에 노출되지 않아요. 슬림한 히든스테이션은 주방 싱크대 하단에 빌트인되고, 오브제스테이션은 가구처럼 자연스럽게 배치되어 외부 충격·먼지·이물질은 물론 아이와 반려동물의 접근까지 막아 물리적 보안을 완성해요.",
           mediaType: "image",
           mediaUrl: "/__l5e/assets-v1/ca71652e-e0c0-41d1-b9cb-85f4f5c8f07a/vacuum-physical-security.png",
         },
       ],
       description:
-        "글로벌 보안 인증을 획득한 LG 청소로봇은 개인정보 보호와 물리적 보안까지 갖춰 통신·저장·접근·보관 전 단계에서 빈틈없이 안전을 지켜드립니다.",
+        "글로벌 보안 인증을 획득한 LG 청소로봇은 개인정보 보호와 물리적 보안까지 갖춰 통신·저장·접근·보관 전 단계에서 빈틈없이 안전을 지켜줘요.",
       highlights: ["글로벌 보안 인증", "개인정보 암호화 보호", "다층 보안 체계", "물리적 보안 스테이션"],
     },
     {
