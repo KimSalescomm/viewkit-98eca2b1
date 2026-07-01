@@ -651,9 +651,14 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
     <div
       style={{
         width: "100%",
+        maxWidth: "600px",
+        margin: "0 auto",
         borderRadius: "16px",
         overflow: "hidden",
-        background: "#f3f4f6"
+        background: "#f3f4f6",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <SafeImage
