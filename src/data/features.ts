@@ -920,8 +920,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "공간 맞춤 솔루션",
-      subtitle: "초슬림 히든스테이션",
+      title: "보이지 않아도 완성되고, 보일수록 품격이 되는",
+      subtitle: "공간 맞춤 솔루션",
 
       icon: "Armchair",
       tag: "공간 맞춤 솔루션",
