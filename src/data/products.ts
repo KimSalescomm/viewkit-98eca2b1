@@ -8,6 +8,7 @@ export interface Product {
   title: string;
   description: string;
   keyVisualImage: string;
+  secondaryKeyVisualImage?: string;
   icon: string;
 }
 
@@ -26,6 +27,8 @@ export const products: Product[] = [
     title: "LG HOM-BOT RONi",
     description: "세계최초 100℃ 투웨이 스팀 청소로봇",
     keyVisualImage: vacuumKeyVisual,
+    secondaryKeyVisualImage:
+      "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
     icon: "Sparkles",
   },
   {
