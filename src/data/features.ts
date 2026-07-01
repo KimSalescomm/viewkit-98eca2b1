@@ -30,10 +30,11 @@ export interface CollapsibleDisclaimer {
 export interface FeatureTab {
   label: string;
   description?: string;
-  mediaType: "video" | "image" | "youtube";
-  mediaUrl: string;
+  mediaType?: "video" | "image" | "youtube";
+  mediaUrl?: string;
   fallbackUrl?: string;
   isShorts?: boolean;
+  mediaSlides?: MediaSlide[];
 }
 
 export interface Feature {
@@ -50,7 +51,8 @@ export interface Feature {
   highlights: string[];
   tableData?: ProductComparisonTable[];
   galleryImages?: (string | GalleryImage)[];
-  
+  mediaSlides?: MediaSlide[];
+
   isShorts?: boolean;
   disclaimers?: string[];
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
