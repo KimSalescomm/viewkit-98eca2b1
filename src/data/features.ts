@@ -828,8 +828,8 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_02_moving_steam_pc.mp4",
       description:
-        "AI가 오염 공간을 감지하면 세계최초 100°C 스팀 물걸레로 찌든 때와 기름때까지 말끔하게 청소해요. 마른 얼룩은 촉촉하게 불린 뒤 집중 케어로 박박 닦아내, 얼룩 제거는 물론 위생까지 챙깁니다.",
-      highlights: ["오염 공간 AI 센싱", "100°C 스팀 물걸레", "찌든 때·기름때 청소", "AI맞춤 클리닝 모드"],
+        "AI 오염 인식으로 바닥 오염물을 감지해, 세계최초 100°C 스팀 물걸레로 찌든 때와 기름때까지 보다 말끔하게 청소해요.",
+      highlights: ["AI 오염 인식", "100°C 스팀 물걸레", "찌든 때·기름때 말끔 청소", "오염 맞춤 클리닝"],
       
     },
     {
