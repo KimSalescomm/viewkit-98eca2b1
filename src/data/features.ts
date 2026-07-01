@@ -1076,14 +1076,14 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "스테이션 컨디셔닝",
           description:
-            "먼지와 이물질이 쌓일 수 있는 흡입구, 먼지통, 회전솔 등을 꼼꼼히 관리하여 청소 성능을 유지할 수 있도록 도와줘요.\n계약기간 내내 무상 A/S 제공은 기본, 소모품 정기 교체로 관리의 번거로움을 줄여줘요.",
+            "보이지 않는 틈새까지 꼼꼼하게 관리해 줄 뿐만 아니라, 처음처럼 강력한 청소 성능을 오랫동안 변함없이 유지할 수 있도록 알아서 도와주니 언제나 쾌적하고 청정한 바닥을 누릴 수 있어요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
           highlights: [
             "흡입구·먼지통·회전솔 꼼꼼 관리",
-            "청소 성능 유지",
-            "계약기간 내내 무상 A/S",
-            "소모품 정기 교체",
+            "보이지 않는 틈새까지 청소",
+            "강력한 청소 성능 유지",
+            "쾌적하고 청정한 바닥",
           ],
         },
       ],
