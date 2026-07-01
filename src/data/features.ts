@@ -965,6 +965,41 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["글로벌 보안 인증", "개인정보 암호화 보호", "다층 보안 체계", "물리적 보안 스테이션"],
     },
     {
+      id: "8",
+      title: "청소로봇 관리,\n위생&케어 솔루션",
+      subtitle: "위생부터 성능까지 한 번에 관리하여\n언제나 청결하게 사용할 수 있어요.",
+      icon: "Sparkles",
+      tag: "위생&케어 솔루션",
+      mediaType: "image",
+      mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
+      description:
+        "청소로봇의 위생과 성능을 한 번에 관리하는 위생&케어 솔루션입니다. 케어 전문가가 정기 방문해 청소로봇의 내·외부 위생과 성능을 꼼꼼히 관리해드려요.",
+      highlights: ["위생 케어", "성능 관리", "무상 A/S 및 소모품 교체"],
+      tabs: [
+        {
+          label: "위생 케어",
+          description:
+            "물때와 세균 발생이 쉬운 급·배수통, 필터, 회전솔을 스팀으로 꼼꼼히 세척하고 전용 관리제로 스테이션 내부 오수관을 세척합니다.",
+          mediaType: "image",
+          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
+        },
+        {
+          label: "성능 관리",
+          description:
+            "먼지와 이물질이 쌓일 수 있는 흡입구와 먼지통, 회전솔 등을 꼼꼼히 관리하여 청소 성능을 유지할 수 있도록 도와줍니다.",
+          mediaType: "image",
+          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/792fb934-9d72-442d-8433-c950ecc722ec/vacuum-subscription-service-02.jpg",
+        },
+        {
+          label: "무상 A/S 및 소모품 교체",
+          description:
+            "계약기간 내내 무상 A/S 제공은 기본, 소모품 정기 교체로 관리의 번거로움을 줄여줍니다.",
+          mediaType: "image",
+          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/053e6377-2ea6-425d-bb5a-aa3306c91d16/vacuum-subscription-service-03.jpg",
+        },
+      ],
+    },
+    {
       id: "7",
       title: "우리집 청소 책임지는 청소 로봇\n청소 로봇의 청소는 구독으로",
       subtitle:
