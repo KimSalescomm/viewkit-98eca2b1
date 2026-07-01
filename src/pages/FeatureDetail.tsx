@@ -148,12 +148,12 @@ const FeatureDetail = () => {
         </div>
 
 
-        {/* Highlights Card */}
-        {feature.highlights && feature.highlights.length > 0 && (
+        {/* Highlights Card: active tab highlights take precedence */}
+        {(activeTabData?.highlights ?? feature.highlights) && (activeTabData?.highlights ?? feature.highlights)?.length > 0 && (
           <div className="bg-white rounded-2xl p-5 sm:p-6 mb-10 sm:mb-12 shadow-md">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">핵심만 쏙</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-              {feature.highlights.map((highlight, index) => (
+              {(activeTabData?.highlights ?? feature.highlights).map((highlight, index) => (
                 <div
                   key={index}
                   className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 bg-blue-50 rounded-xl"

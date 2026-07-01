@@ -35,6 +35,7 @@ export interface FeatureTab {
   fallbackUrl?: string;
   isShorts?: boolean;
   mediaSlides?: MediaSlide[];
+  highlights?: string[];
 }
 
 export interface Feature {
@@ -967,6 +968,11 @@ export const featuresMap: Record<string, Feature[]> = {
             "보이지 않게 완성되는\n초슬림 히든스테이션\n15cm 초슬림 히든스테이션은 주방의 숨겨진 약 공간을 가치 있는 공간으로 바꿉니다.\n별도의 공간을 확보할 필요 없이 싱크대 하부 걸레받이에 설치할 수 있는 공간도 사실상 사용할 수 있습니다.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
+          highlights: [
+            "15cm 초슬림 히든스테이션",
+            "싱크대 하부 걸레받이에 빌트인돼요",
+            "주방 숨겨진 공간을 가치 있는 공간으로 바꿔요",
+          ],
         },
         {
           label: "오브제스테이션",
