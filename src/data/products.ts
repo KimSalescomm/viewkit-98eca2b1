@@ -27,7 +27,7 @@ export const products: Product[] = [
     id: "vacuum",
     name: "청소로봇",
     title: "청소로봇",
-    description: "청소도 물걸레도 번거롭지 않나요?\n100℃ 투웨이 STEAM으로 알아서 청소하는 AI 청소로봇\nRONi",
+    description: "세계최초 100℃ 투웨이 스팀 청소로봇.",
     keyVisualImage: vacuumKeyVisual,
     secondaryKeyVisualImage: vacuumKeyVisualKitchen,
     icon: "Sparkles",
