@@ -1028,19 +1028,19 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "8",
       title: "위생과 성능, 누가 챙겨줄까요?",
-      subtitle: "위생부터 성능까지 한 번에 관리하여\n언제나 청결하게 사용할 수 있어요.",
+      subtitle: "100℃ 살균 스팀과 스테이션 컨디셔닝으로\n청결과 성능을 함께 챙겨드려요.",
       icon: "Sparkles",
       tag: "위생&케어 솔루션",
       mediaType: "image",
       mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
       description:
-        "청소로봇의 위생과 성능을 한 번에 관리하는 위생&케어 솔루션이에요. 케어 전문가가 정기 방문해 청소로봇의 내·외부 위생과 성능을 꼼꼼히 관리해드려요.",
-      highlights: ["100℃ 살균 스팀", "스테이션 컨디셔닝", "무상 A/S 및 소모품 교체"],
+        "100℃ 살균 스팀과 스테이션 컨디셔닝으로 물걸레 살균부터 스테이션 내부 관리까지 한 번에 관리해요. 청소로봇의 위생과 성능을 꾸준히 지켜드려요.",
+      highlights: ["100℃ 살균 스팀", "스테이션 컨디셔닝", "위생·성능 동시 관리", "정기 케어 서비스"],
       tabs: [
         {
-          label: "100℃ 살균 스팀",
+          label: "100℃ 살균 스팀은 어떤 위생 케어를 하나요?",
           description:
-            "유해균은 99.99% 제거하고, 건조 기능으로 탈취까지 완성해요.\n스테이션 내 100℃ 살균 스팀으로 물걸레를 위생적으로 관리해 유해균을 99.99% 제거할 수 있으며,\n건조 기능까지 함께 사용하면 탈취까지 깔끔하게 가능해요.",
+            "100℃ 살균 스팀으로 물걸레의 유해균을 99.99% 제거하고, 건조 기능으로 냄새까지 말끔하게 관리해요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_12_mop_solution_pc.mp4",
           highlights: [
@@ -1050,9 +1050,9 @@ export const featuresMap: Record<string, Feature[]> = {
           ],
         },
         {
-          label: "스테이션 컨디셔닝",
+          label: "스테이션 컨디셔닝은 어떤 역할을 하나요?",
           description:
-            "습증기는 외부로 배출하고, 위생 관리 걱정과 부담은 완화해요.\n히든스테이션 상부 배기 팬으로 제품 내부에서 발생할 수 있는 습증기를 외부로 배출해 내부 관리 걱정과 부담을 깔끔하게 완화해 드려요.",
+            "히든스테이션 상부 배기 팬으로 제품 내부 습증기를 외부로 배출해, 위생 관리 부담을 줄여드려요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
           highlights: [
