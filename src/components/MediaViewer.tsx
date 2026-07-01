@@ -1,7 +1,7 @@
 import { convertToEmbedUrl } from "@/utils/videoUtils";
 import SafeImage from "@/components/SafeImage";
 import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
-import { ProductComparisonTable, GalleryImage } from "@/data/features";
+import { ProductComparisonTable, GalleryImage, MediaSlide } from "@/data/features";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -12,6 +12,7 @@ interface MediaViewerProps {
   title: string;
   tableData?: ProductComparisonTable[];
   galleryImages?: (string | GalleryImage)[];
+  mediaSlides?: MediaSlide[];
   isShorts?: boolean;
   fallbackUrl?: string; // MP4 fallback URL for webOS compatibility
 }
