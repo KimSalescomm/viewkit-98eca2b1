@@ -874,7 +874,7 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_10_edge_cleaning.mp4",
         },
         {
-          label: "듀얼 엉킴 방지 브러시는 어떤 역할을 하나요?",
+          label: "듀얼 엉킴 방지 브러시",
           description:
             "듀얼 엉킴 방지 브러시가 회전하며 머리카락을 흡입구 쪽으로 밀어내, 엉킴 걱정 없이 꾸준한 청소 성능을 유지해요.",
           mediaType: "video",
