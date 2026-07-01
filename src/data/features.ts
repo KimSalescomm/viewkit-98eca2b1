@@ -931,7 +931,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_03_sensing_ai_driving_pc.mp4",
       description:
-        "RGB 카메라와 센서 기반으로 복잡한 집안 구조와 장애물을 똑똑하게 판단해요.\n고립 위험 영역을 스스로 학습해 안전하게 회피하고, 장애물이 사라지면 놓친 곳까지 알아서 다시 찾아가 청소를 재개하니\n쓸수록 진화하는 편리함을 누릴 수 있어요.",
+        "복잡한 집안 구조나 예기치 못한 장애물도 똑똑하게 판단하니까 헤맬 걱정이 없어요.\n바퀴가 들리거나 갇히기 쉬운 고립 위험 공간을 스스로 학습해 안전하게 회피하고, 게다가 장애물이 치워지면 놓친 곳까지 알아서 다시 찾아가 청소를 완료해 주니\n쓸수록 진화하는 편리함을 누릴 수 있어요.",
       highlights: ["RGB 카메라·센서 기반 인식", "고립 위험 영역 학습", "장애물 사라지면 청소 재개", "쓸수록 진화하는 청소"],
     },
     {
