@@ -989,7 +989,7 @@ export const featuresMap: Record<string, Feature[]> = {
           description:
             "먼지와 이물질이 쌓일 수 있는 흡입구와 먼지통, 회전솔 등을 꼼꼼히 관리하여\n청소 성능을 유지할 수 있도록 도와줍니다.",
           mediaType: "image",
-          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/3c67e31c-6874-43b6-a69c-755001a80283/sub-2.png",
+          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/792fb934-9d72-442d-8433-c950ecc722ec/vacuum-subscription-service-02.jpg",
         },
         {
           label: "무상 A/S 및 소모품 교체",
