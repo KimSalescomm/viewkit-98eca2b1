@@ -1028,7 +1028,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "8",
-      title: "청소로봇 관리,\n위생&케어 솔루션",
+      title: "청소로봇 관리, 위생과 성능을 모두 챙겨야 할까요?",
       subtitle: "위생부터 성능까지 한 번에 관리하여\n언제나 청결하게 사용할 수 있어요.",
       icon: "Sparkles",
       tag: "위생&케어 솔루션",
