@@ -1050,8 +1050,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "8",
-      title: "",
-      subtitle: "물걸레 냄새와 빨래, 매번 직접 하기 번거로우셨나요?\n알아서 세척하고 100℃ 스팀 살균에 온풍 건조까지 한 번에 끝내는 완벽한 위생 케어 솔루션을 지금 경험해보세요.",
+      title: "위생 케어, 손 안 대고도 깨끗할까요?",
+      subtitle: "물걸레 냄새와 빨래 번거로움 없이 100℃ 스팀 살균과 온풍 건조로 언제나 청결한 위생 케어 솔루션을 경험해보세요.",
       icon: "Sparkles",
       tag: "위생&케어 솔루션",
       mediaType: "image",
