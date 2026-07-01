@@ -1051,13 +1051,13 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "스테이션 컨디셔닝",
           description:
-            "먼지와 이물질이 쌓일 수 있는 흡입구, 먼지통, 회전솔 등을 꼼꼼히 관리하여 청소 성능을 유지할 수 있도록 도와줘요.\n계약기간 내내 무상 A/S 제공은 기본, 소모품 정기 교체로 관리의 번거로움을 줄여줘요.",
+            "습증기는 외부로 배출하고, 위생 관리 걱정과 부담은 완화해요.\n히든스테이션 상부 배기 팬으로 제품 내부에서 발생할 수 있는 습증기를 외부로 배출해 내부 관리 걱정과 부담을 깔끔하게 완화해 드려요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
           highlights: [
-            "흡입구·먼지통·회전솔 관리",
-            "청소 성능 유지",
-            "무상 A/S 및 소모품 교체",
+            "히든스테이션 상부 배기 팬",
+            "습증기 외부 배출",
+            "위생 관리 부담 완화",
           ],
         },
       ],
