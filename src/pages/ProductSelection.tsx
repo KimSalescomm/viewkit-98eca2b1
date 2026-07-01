@@ -267,18 +267,39 @@ const ProductSelection = () => {
                 {/* Image */}
                 <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
                   {isEnabled ? (
-                    <SafeImage
-                      src={product.keyVisualImage}
-                      alt={`LG ${product.name} 대표 이미지`}
-                      loading={index < 2 ? "eager" : "lazy"}
-                      fetchPriority={index < 2 ? "high" : undefined}
-                      decoding="async"
-                      className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${
-                        product.id === "tv" ? "object-[65%_55%]" :
-                        product.id === "airconditioner" ? "object-top" :
-                        "object-center"
-                      }`}
-                    />
+                    product.id === "vacuum" && product.secondaryKeyVisualImage ? (
+                      <div className="grid grid-cols-2 h-full w-full">
+                        <SafeImage
+                          src={product.secondaryKeyVisualImage}
+                          alt={`LG ${product.name} 히든스테이션`}
+                          loading={index < 2 ? "eager" : "lazy"}
+                          fetchPriority={index < 2 ? "high" : undefined}
+                          decoding="async"
+                          className="w-full h-full object-cover object-[60%_center] transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-y-0 left-1/2 w-px bg-white/40 z-10" />
+                        <SafeImage
+                          src={product.keyVisualImage}
+                          alt={`LG ${product.name} 오브제스테이션`}
+                          loading={index < 2 ? "eager" : "lazy"}
+                          decoding="async"
+                          className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                        />
+                      </div>
+                    ) : (
+                      <SafeImage
+                        src={product.keyVisualImage}
+                        alt={`LG ${product.name} 대표 이미지`}
+                        loading={index < 2 ? "eager" : "lazy"}
+                        fetchPriority={index < 2 ? "high" : undefined}
+                        decoding="async"
+                        className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${
+                          product.id === "tv" ? "object-[65%_55%]" :
+                          product.id === "airconditioner" ? "object-top" :
+                          "object-center"
+                        }`}
+                      />
+                    )
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-gray-50">
                       <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-gray-200 bg-white shadow-sm">

@@ -1,7 +1,8 @@
 import washerKeyVisual from "@/assets/washer-keyvisual.png";
 import stylerKeyVisual from "@/assets/styler-keyvisual.png";
 import vacuumKeyVisual from "@/assets/vacuum-keyvisual.png";
-import vacuumKeyVisualKitchen from "@/assets/vacuum-key-visual-kitchen.png.asset.json";
+import vacuumKeyVisualKitchen from "@/assets/vacuum-key-visual-kitchen.png";
+
 
 export interface Product {
   id: string;
@@ -28,8 +29,9 @@ export const products: Product[] = [
     title: "LG HOM-BOT RONi",
     description: "세계최초 100℃ 투웨이 스팀 청소로봇",
     keyVisualImage: vacuumKeyVisual,
-    secondaryKeyVisualImage: vacuumKeyVisualKitchen.url,
+    secondaryKeyVisualImage: vacuumKeyVisualKitchen,
     icon: "Sparkles",
+
   },
   {
     id: "styler",
