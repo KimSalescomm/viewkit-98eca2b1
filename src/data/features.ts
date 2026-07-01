@@ -834,7 +834,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "1",
       title: "바닥 얼룩, AI가 알아서 닦아줄까요?",
-      subtitle: "AI 오염 인식으로 바닥 오염물을 인식하면\n자동으로 스팀 물걸레 청소를 시작해요.",
+      subtitle: "AI 오염 인식으로 자동으로 바닥 오염물을 알아서 닦아주는 편리한 스팀 물걸레 청소를 직접 확인해보세요.",
       icon: "Flame",
       tag: "스팀 물걸레",
       mediaType: "video",
