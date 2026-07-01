@@ -841,7 +841,17 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_02_moving_steam_pc.mp4",
       description: "오염 정도에 따라 최대 2회까지 반복 청소한 뒤, ThinQ 앱에서 청소 전후 사진까지 비교할 수 있어요.",
       highlights: ["AI로 바닥 오염물 인식", "100°C 스팀 물걸레 청소", "최대 2회 반복 청소", "ThinQ 전후 사진 비교"],
-      
+    },
+    {
+      id: "9",
+      title: "구석까지 닦아주는 엣지 확장 물걸레가 있을까요?",
+      subtitle: "벽면 가장자리까지 밀착 청소하는 엣지 확장 물걸레로 사각지대 없이 깨끗하게 닦아보세요.",
+      icon: "Brush",
+      tag: "엣지 확장 물걸레",
+      mediaType: "video",
+      mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_10_edge_cleaning.mp4",
+      description: "청소 사각지대인 벽면 가장자리까지 밀착해 구석구석 꼼꼼하게 청소해요.",
+      highlights: ["벽면 가장자리 밀착 청소", "사각지대 없는 깨끗한 청소", "구석구석 꼼꼼하게", "엣지 확장 물걸레"],
     },
     {
       id: "2",
