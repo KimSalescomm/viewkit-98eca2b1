@@ -822,7 +822,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "1",
       title: "마른 얼룩, AI가 알아서 닦아줄 순 없을까?",
-      subtitle: "AI 오염 맞춤 클리닝으로 오염 공간을 센싱하고 세계최초 100°C 스팀 물걸레로 찌든 때와 기름때까지 말끔하게 청소해요.",
+      subtitle: "AI가 오염 공간을 센싱하고\n100°C 스팀 물걸레로 찌든 때까지 말끔하게 청소해요.",
       icon: "Flame",
       tag: "AI 오염 맞춤 클리닝",
       mediaType: "video",
@@ -835,7 +835,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "2",
       title: "흡입력과 브러시, 어디까지 강해질 수 있을까?",
-      subtitle: "최대 30W 강력 흡입력에 엣지 확장 브러시,\n듀얼 엉킴 방지 브러시까지 더했어요.",
+      subtitle: "최대 30W 강력 흡입력에\n엣지·듀얼 엉킴 방지 브러시를 더했어요.",
       icon: "Zap",
       tag: "흡입 청소",
       mediaType: "video",
@@ -896,7 +896,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "4",
       title: "복잡한 집안, AI가 알아서 피해 다닐 수 있을까?",
-      subtitle: "LG의 진화된 주행 기술 AlphaUp Drive는 실시간 센싱으로 장애물 제거 영역을 즉시 인식하며, 해당 공간까지 놓치지 않고 청소해요.",
+      subtitle: "AlphaUp Drive가 실시간 센싱으로\n장애물 제거 영역까지 놓치지 않고 청소해요.",
       icon: "Navigation",
       tag: "AI 주행",
       mediaType: "video",
@@ -908,7 +908,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "3",
       title: "보이지 않아도 완성되고, 보일수록 품격이 되는",
-      subtitle: "보이지 않게 완성되는\n초슬림 히든스테이션과 보일수록 품격이 되는\n오브제스테이션",
+      subtitle: "초슬림 히든스테이션과\n오브제스테이션으로 공간을 완성해요.",
       icon: "Armchair",
       tag: "공간 맞춤 솔루션",
       mediaType: "video",
@@ -936,7 +936,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "5",
       title: "보안까지 빈틈없이,\n체계적인 보안 솔루션",
-      subtitle: "보안 인증·개인정보 보호·물리적 보안까지\n믿고 맡길 수 있는 LG 보안 시스템.",
+      subtitle: "보안 인증·개인정보·물리적 보안까지\n빈틈없이 지켜드려요.",
       icon: "Shield",
       tag: "체계적인 보안 솔루션",
       mediaType: "image",
@@ -968,13 +968,13 @@ export const featuresMap: Record<string, Feature[]> = {
       id: "7",
       title: "우리집 청소 책임지는 청소 로봇\n청소 로봇의 청소는 구독으로",
       subtitle:
-        "구독 기간 내 무상 A/S는 기본, 케어 전문가가 정기 방문해\n청소 로봇 내·외부 위생 케어와 성능 관리, 소모품 정기 교체를 진행합니다.\n직접 세척하기 어렵고 번거로웠던 관리 부담을 줄여 더 편리하게 청소 로봇을 사용하세요.",
+        "무상 A/S는 기본, 케어 전문가가 정기 방문해\n청소로봇 위생과 성능을 관리해드려요.",
       icon: "Wrench",
       tag: "구독",
       mediaType: "image",
       mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/4a7d57cd-5745-4726-aa9a-a33cee7d8412/sub-1.png",
       description:
-        "구독 기간 내 무상 A/S는 기본, 케어 전문가가 정기 방문해 청소 로봇 내·외부 위생 케어와 성능 관리, 소모품 정기 교체를 진행합니다. 직접 세척하기 어렵고 번거로웠던 관리 부담을 줄여 더 편리하게 청소 로봇을 사용하세요.",
+        "구독 기간 동안 무상 A/S는 기본, 케어 전문가가 정기 방문해 청소로봇의 내·외부 위생과 성능을 관리해드려요. 번거로운 소모품 교체까지 챙겨 더 편하게 사용할 수 있어요.",
       highlights: ["위생 케어", "성능 관리", "무상 A/S 및 소모품 교체"],
       tabs: [
         {
@@ -1004,7 +1004,7 @@ export const featuresMap: Record<string, Feature[]> = {
 
       id: "6",
       title: "지금 사전 예약하고 혜택 받기",
-      subtitle: "정식 출시 전 가장 먼저 만나보는\n사전 예약 한정 판매 이벤트.",
+      subtitle: "정식 출시 전 가장 먼저 만나볼 수 있는\n사전 예약 한정 판매 이벤트예요.",
       icon: "Globe",
       tag: "사전 예약 판매",
       mediaType: "image",
