@@ -896,8 +896,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "4",
-      title: "노하우를 쌓아 진화하는\n스마트한 AlphaUP Drive 주행",
-      subtitle: "RGB 카메라와 센서 기반으로\n다양한 상황과 장애물을 섬세하게 인식하고 똑똑하게 판단해요.",
+      title: "복잡한 집안, AI가 노하우를 쌓아 진화할 수 있을까?",
+      subtitle: "RGB 카메라와 센서 기반으로\n고립 위험 영역을 학습하고 장애물이 사라지면 청소를 재개해요.",
       icon: "Navigation",
       tag: "AI 맞춤 청소",
       mediaType: "video",
