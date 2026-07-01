@@ -13,6 +13,15 @@ export interface GalleryImage {
   description?: string;
 }
 
+export interface MediaSlide {
+  mediaType: "video" | "image" | "youtube";
+  mediaUrl: string;
+  fallbackUrl?: string;
+  isShorts?: boolean;
+  title?: string;
+  description?: string;
+}
+
 export interface CollapsibleDisclaimer {
   title: string;
   items: string[];
