@@ -996,6 +996,12 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "오브제스테이션",
           description:
             "소파 옆 공간에 간단히 설치해 편리한 사이드 테이블로 사용할 수 있을 뿐만 아니라,\n집안 분위기를 높여주는 인테리어 오브제로도 아름답게 활용할 수 있는 프리스탠딩 전용 스테이션을 완성했어요.",
+          highlights: [
+            "프리스탠딩 전용 스테이션",
+            "소파 옆 간편 설치",
+            "사이드 테이블로 활용",
+            "인테리어 오브제 활용",
+          ],
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
           mediaSlides: [
