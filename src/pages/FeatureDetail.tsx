@@ -87,9 +87,11 @@ const FeatureDetail = () => {
             <FeatureIcon iconKey={feature.icon} className="text-white w-8 h-8 sm:w-12 sm:h-12" />
           </div>
           <div className="min-w-0">
-            <h1 className="text-xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">
-              {feature.title}
-            </h1>
+            {feature.title && (
+              <h1 className="text-xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">
+                {feature.title}
+              </h1>
+            )}
             <p className="text-sm sm:text-lg text-gray-500 whitespace-pre-line leading-relaxed">
               {feature.subtitle}
             </p>
