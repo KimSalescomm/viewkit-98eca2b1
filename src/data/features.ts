@@ -1145,44 +1145,6 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "사전 예약 판매",
       mediaType: "image",
       mediaUrl: "/__l5e/assets-v1/fa760fd9-08e7-4640-ad40-3003030ce22b/vacuum-benefits-no-buttons.png",
-      mediaSlides: [
-        {
-          mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/8980fbf8-4440-4813-911d-8c8f09420a75/vacuum-benefit-1.png",
-          title: "혜택 1. 사전 일시불 구매 웰컴키트 증정",
-          description: "사전 예약 기간 중 일시불로 구매하시면 청소로봇 사용을 더욱 특별하게 시작할 수 있는 웰컴키트를 드려요.",
-        },
-        {
-          mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/47cd1021-2902-4878-8850-ccf2c739ea0b/vacuum-benefit-2.png",
-          title: "혜택 2. 사전 구독 월 1,400원 할인",
-          description: "사전 예약 기간 중 구독으로 신청하시면 매달 1,400원씩 할인 혜택을 받으실 수 있어요.",
-        },
-        {
-          mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/3f903885-a9d6-4de4-9431-9823df3ce76e/vacuum-benefit-3.png",
-          title: "혜택 3. 포토리뷰 후 렉슨 조명 신청",
-          description: "구매 후 포토리뷰를 작성하시면 감각적인 렉슨(LEXON) 조명을 신청하실 수 있어요.",
-        },
-        {
-          mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/4d9e9a11-51d7-4595-a044-38e074eb4ca5/vacuum-benefit-4.png",
-          title: "혜택 4. LGE.COM 앱전용 총 50만원 쿠폰팩",
-          description: "LGE.COM 앱에서만 사용할 수 있는 총 50만원 상당의 쿠폰팩을 드려요.",
-        },
-        {
-          mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/4e1ad865-557c-4f94-8c78-5f368a4c3df8/vacuum-benefit-5.png",
-          title: "혜택 5. 카드사 결제일 할인 최대 10%",
-          description: "제휴 카드사 결제 시 결제일 할인으로 최대 10%까지 알뜰하게 구매하실 수 있어요.",
-        },
-        {
-          mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/107a0f11-bb7e-4616-a172-f9fa928b32e8/vacuum-benefit-6.png",
-          title: "혜택 6. 무이자 혜택 최대 12개월",
-          description: "최대 12개월 무이자 할부로 부담은 줄이고 가치는 그대로 누리실 수 있어요.",
-        },
-      ],
       description:
         "사전 예약 고객을 위한 특별한 구매 혜택이 준비되어 있어요.\n\n사전 일시불 구매 시 웰컴키트를 증정해드리고, 사전 구독 신청 시 월 1,400원 할인 혜택을 드려요. 포토리뷰 작성 후 렉슨 조명도 신청할 수 있어요.\n\nLGE.COM 앱 전용 총 50만원 쿠폰팩과 카드사 결제일 할인 최대 10%, 그리고 최대 12개월 무이자 혜택까지 놓치지 마세요.\n\n자세한 내용은 매장 직원에게 문의해 주세요.",
       highlights: [
