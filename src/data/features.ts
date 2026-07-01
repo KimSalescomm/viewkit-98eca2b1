@@ -864,7 +864,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "30W 강력 흡입력",
           description:
-            "AlphaUP Drive에 탑재된 고출력 흡입 모터가 최대 30W에 달하는 강력한 흡입력을 발휘합니다.\n스마트 터보가 카펫과 같이 청소가 까다로운 바닥재를 자동 감지하면 흡입 세기를 한 단계 더 끌어올려 깊숙한 먼지까지 꼼꼼하게 청소합니다.",
+            "AlphaUP Drive에 탑재된 고출력 흡입 모터가 최대 30W에 달하는 강력한 흡입력을 발휘해요.\n스마트 터보가 카펫과 같이 청소가 까다로운 바닥재를 자동 감지하면 흡입 세기를 한 단계 더 끌어올려 깊숙한 먼지까지 꼼꼼하게 청소해요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
         },
@@ -978,7 +978,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "오브제스테이션",
           description:
-            "보일수록 품격이 되는\n오브제스테이션\n컨테이너 내부 부품격이 있습니다.",
+            "보일수록 품격이 되는 오브제스테이션은 거실에 자연스럽게 어울리는 디자인으로 공간을 완성해요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
           mediaSlides: [
@@ -1047,13 +1047,13 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "물리적 보안",
           description:
-            "청소가 끝나면 스테이션 내부로 자동 복귀하고, 자동 개폐 도어가 닫히며 청소로봇 본체가 외부에 노출되지 않습니다. 슬림한 히든스테이션은 주방 싱크대 하단에 빌트인되고, 오브제스테이션은 가구처럼 자연스럽게 배치되어 외부 충격·먼지·이물질은 물론 아이와 반려동물의 접근까지 막아 물리적 보안을 완성합니다.",
+            "청소가 끝나면 스테이션 내부로 자동 복귀하고, 자동 개폐 도어가 닫히며 청소로봇 본체가 외부에 노출되지 않아요. 슬림한 히든스테이션은 주방 싱크대 하단에 빌트인되고, 오브제스테이션은 가구처럼 자연스럽게 배치되어 외부 충격·먼지·이물질은 물론 아이와 반려동물의 접근까지 막아 물리적 보안을 완성해요.",
           mediaType: "image",
           mediaUrl: "/__l5e/assets-v1/ca71652e-e0c0-41d1-b9cb-85f4f5c8f07a/vacuum-physical-security.png",
         },
       ],
       description:
-        "글로벌 보안 인증을 획득한 LG 청소로봇은 개인정보 보호와 물리적 보안까지 갖춰 통신·저장·접근·보관 전 단계에서 빈틈없이 안전을 지켜드립니다.",
+        "글로벌 보안 인증을 획득한 LG 청소로봇은 개인정보 보호와 물리적 보안까지 갖춰 통신·저장·접근·보관 전 단계에서 빈틈없이 안전을 지켜줘요.",
       highlights: ["글로벌 보안 인증", "개인정보 암호화 보호", "다층 보안 체계", "물리적 보안 스테이션"],
     },
     {
@@ -1065,13 +1065,13 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "image",
       mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
       description:
-        "청소로봇의 위생과 성능을 한 번에 관리하는 위생&케어 솔루션입니다. 케어 전문가가 정기 방문해 청소로봇의 내·외부 위생과 성능을 꼼꼼히 관리해드려요.",
+        "청소로봇의 위생과 성능을 한 번에 관리하는 위생&케어 솔루션이에요. 케어 전문가가 정기 방문해 청소로봇의 내·외부 위생과 성능을 꼼꼼히 관리해드려요.",
       highlights: ["100℃ 살균 스팀", "스테이션 컨디셔닝", "무상 A/S 및 소모품 교체"],
       tabs: [
         {
           label: "100℃ 살균 스팀",
           description:
-            "물때와 세균 발생이 쉬운 급·배수통, 필터, 회전솔을 스팀으로 꼼꼼히 세척하고 전용 관리제로 스테이션 내부 오수관을 세척합니다.",
+            "물때와 세균 발생이 쉬운 급·배수통, 필터, 회전솔을 스팀으로 꼼꼼히 세척하고 전용 관리제로 스테이션 내부 오수관을 세척해요.",
           mediaType: "image",
           mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
           highlights: [
@@ -1083,7 +1083,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "스테이션 컨디셔닝",
           description:
-            "먼지와 이물질이 쌓일 수 있는 흡입구, 먼지통, 회전솔 등을 꼼꼼히 관리하여 청소 성능을 유지할 수 있도록 도와줍니다.\n계약기간 내내 무상 A/S 제공은 기본, 소모품 정기 교체로 관리의 번거로움을 줄여줍니다.",
+            "먼지와 이물질이 쌓일 수 있는 흡입구, 먼지통, 회전솔 등을 꼼꼼히 관리하여 청소 성능을 유지할 수 있도록 도와줘요.\n계약기간 내내 무상 A/S 제공은 기본, 소모품 정기 교체로 관리의 번거로움을 줄여줘요.",
           mediaType: "image",
           mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/792fb934-9d72-442d-8433-c950ecc722ec/vacuum-subscription-service-02.jpg",
           highlights: [
@@ -1110,21 +1110,21 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "위생 케어",
           description:
-            "물때와 세균 발생이 쉬운 급·배수통, 필터, 회전솔을 스팀으로 꼼꼼히 세척하고\n전용 관리제로 스테이션 내부 오수관을 세척합니다.",
+            "물때와 세균 발생이 쉬운 급·배수통, 필터, 회전솔을 스팀으로 꼼꼼히 세척하고\n전용 관리제로 스테이션 내부 오수관을 세척해요.",
           mediaType: "image",
           mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
         },
         {
           label: "성능 관리",
           description:
-            "먼지와 이물질이 쌓일 수 있는 흡입구와 먼지통, 회전솔 등을 꼼꼼히 관리하여\n청소 성능을 유지할 수 있도록 도와줍니다.",
+            "먼지와 이물질이 쌓일 수 있는 흡입구와 먼지통, 회전솔 등을 꼼꼼히 관리하여\n청소 성능을 유지할 수 있도록 도와줘요.",
           mediaType: "image",
           mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/792fb934-9d72-442d-8433-c950ecc722ec/vacuum-subscription-service-02.jpg",
         },
         {
           label: "무상 A/S 및 소모품 교체",
           description:
-            "계약기간 내내 무상 A/S 제공은 기본,\n소모품 정기 교체로 관리의 번거로움을 줄여줍니다.",
+            "계약기간 내내 무상 A/S 제공은 기본,\n소모품 정기 교체로 관리의 번거로움을 줄여줘요.",
           mediaType: "image",
           mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/04011284-51c7-43a5-83c5-2ad70db02be6/vacuum-subscription-service-03.jpg",
         },
@@ -1140,7 +1140,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
       description:
-        "정식 출시에 앞서 진행되는 사전 예약 한정 판매 이벤트입니다. 예약 고객 대상 특별 구성·우선 배송 등 한정 혜택이 제공됩니다.\n\n자세한 내용은 매장 직원에게 문의해 주세요.",
+        "정식 출시에 앞서 진행되는 사전 예약 한정 판매 이벤트예요. 예약 고객 대상 특별 구성·우선 배송 등 한정 혜택이 제공돼요.\n\n자세한 내용은 매장 직원에게 문의해 주세요.",
       highlights: ["사전 예약 한정 혜택", "우선 배송", "한정 수량 판매"],
       collapsibleDisclaimers: [
         {
