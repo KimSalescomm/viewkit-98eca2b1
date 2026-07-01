@@ -1143,7 +1143,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Globe",
       tag: "사전 예약 판매",
       mediaType: "image",
-      mediaUrl: "/__l5e/assets-v1/fa760fd9-08e7-4640-ad40-3003030ce22b/vacuum-benefits-no-buttons.png",
+      mediaUrl: "/__l5e/assets-v1/27a8a07f-5db1-487e-ac72-e40ef5ddd6b3/vacuum-benefits-section02.png",
       description:
         "사전 예약 고객을 위한 특별한 구매 혜택이 준비되어 있어요.\n\n사전 일시불 구매 시 웰컴키트를 증정해드리고, 사전 구독 신청 시 월 1,400원 할인 혜택을 드려요. 포토리뷰 작성 후 렉슨 조명도 신청할 수 있어요.\n\nLGE.COM 앱 전용 총 50만원 쿠폰팩과 카드사 결제일 할인 최대 10%, 그리고 최대 12개월 무이자 혜택까지 놓치지 마세요.\n\n자세한 내용은 매장 직원에게 문의해 주세요.",
       highlights: [
