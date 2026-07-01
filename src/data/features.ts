@@ -920,8 +920,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "보이지 않아도 완성되고, 보일수록 품격이 되는",
-      subtitle: "공간 맞춤 솔루션",
+      title: "공간을 완성하는 스테이션, 어떤 선택이 있을까요?",
+      subtitle: "보이지 않아도 완성되고, 보일수록 품격이 되는",
 
       icon: "Armchair",
       tag: "공간 맞춤 솔루션",
@@ -1028,7 +1028,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "8",
-      title: "청소로봇 관리,\n위생&케어 솔루션",
+      title: "청소로봇 관리, 위생과 성능을 모두 챙겨야 할까요?",
       subtitle: "위생부터 성능까지 한 번에 관리하여\n언제나 청결하게 사용할 수 있어요.",
       icon: "Sparkles",
       tag: "위생&케어 솔루션",
@@ -1066,7 +1066,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "5",
-      title: "보안까지 빈틈없이,\n체계적인 보안 솔루션",
+      title: "청소로봇 보안, 정말 빈틈없이 지켜줄까요?",
       subtitle: "보안 인증·개인정보·물리적 보안까지\n빈틈없이 지켜드려요.",
       icon: "Shield",
       tag: "체계적인 보안 솔루션",
@@ -1097,7 +1097,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "7",
-      title: "우리집 청소 책임지는 청소 로봇\n청소 로봇의 청소는 구독으로",
+      title: "청소로봇 관리, 구독으로 더 편하게 할 수 있을까요?",
       subtitle:
         "무상 A/S는 기본, 케어 전문가가 정기 방문해\n청소로봇 위생과 성능을 관리해드려요.",
       icon: "Wrench",
@@ -1139,7 +1139,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
 
       id: "6",
-      title: "한눈에 보는\n특별한 구매 혜택",
+      title: "청소로봇 사전 예약, 어떤 특별한 혜택이 있을까요?",
       subtitle: "청소로봇 사전 예약 고객에게만 드리는\n6가지 특별 혜택을 확인해 보세요.",
       icon: "Globe",
       tag: "사전 예약 판매",
