@@ -821,8 +821,8 @@ export const featuresMap: Record<string, Feature[]> = {
   vacuum: [
     {
       id: "1",
-      title: "마른 얼룩, AI가 알아서 닦아줄 순 없을까?",
-      subtitle: "AI 오염 인식으로 바닥 오염물을 감지하고\n100°C 스팀 물걸레로 찌든 때까지 말끔하게 청소해요.",
+      title: "바닥 오염물, AI가 알아서 닦아줄 순 없을까?",
+      subtitle: "AI 오염 인식으로 바닥 오염물을 인식하면\n자동으로 스팀 물걸레 청소를 시작해요.",
       icon: "Flame",
       tag: "스팀 물걸레",
       mediaType: "video",
