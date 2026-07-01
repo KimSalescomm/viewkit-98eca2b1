@@ -866,7 +866,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "듀얼 엉킴 방지 브러시",
           description:
-            "두 개의 브러시가 회전하며 머리카락을 가운데로 모아 엉킴을 방지해요.\n모은 머리카락은 효율적으로 분리되어 먼지통으로 흡입돼요.",
+            "길고 짧은 머리카락과 반려동물 털이 브러시에 엉켜 청소 성능이 떨어지는 일을 줄였어요.\n듀얼 엉킴 방지 브러시가 회전하며 머리카락을 흡입구 쪽으로 밀어내, 엉킴 걱정 없이 꾸준한 청소 성능을 유지해요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_11_anti_tangle.mp4",
         },
