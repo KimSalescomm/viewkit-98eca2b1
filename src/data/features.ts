@@ -920,7 +920,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "보이지 않게 완성되는",
+      title: "공간 맞춤 솔루션",
       subtitle: "초슬림 히든스테이션",
 
       icon: "Armchair",
