@@ -1109,7 +1109,7 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: [
         "급·배수통·필터·회전솔 스팀 세척",
         "스테이션 내부 오수관 세척",
-        "청소 성능 유지",
+        "흡입구·먼지통·회전솔 관리",
         "무상 A/S 및 소모품 교체",
       ],
       tabs: [
