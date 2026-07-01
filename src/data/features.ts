@@ -1028,7 +1028,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "8",
-      title: "청소로봇 관리, 누가 대신해줄까요?",
+      title: "위생과 성능, 누가 챙겨줄까요?",
       subtitle: "위생부터 성능까지 한 번에 관리하여\n언제나 청결하게 사용할 수 있어요.",
       icon: "Sparkles",
       tag: "위생&케어 솔루션",
@@ -1066,7 +1066,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "5",
-      title: "청소로봇 보안, 정말 안심해도 될까요?",
+      title: "보안, 정말 안심해도 될까요?",
       subtitle: "보안 인증·개인정보·물리적 보안까지\n빈틈없이 지켜드려요.",
       icon: "Shield",
       tag: "체계적인 보안 솔루션",
@@ -1097,7 +1097,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "7",
-      title: "청소로봇, 구독으로 더 편해질까요?",
+      title: "구독, 더 편해질까요?",
       subtitle:
         "무상 A/S는 기본, 케어 전문가가 정기 방문해\n청소로봇 위생과 성능을 관리해드려요.",
       icon: "Wrench",
