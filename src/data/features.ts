@@ -1156,7 +1156,7 @@ export const featuresMap: Record<string, Feature[]> = {
         },
       ],
     },
-
+  ],
 
   // PC 특장점
   pc: [
