@@ -845,8 +845,8 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: [
         "강력한 30W 흡입력",
         "카펫 속 숨어 있는 먼지까지 흡입",
+        "엣지 확장 브러시로 벽·모서리 먼지 청소",
         "두 개의 브러시로 머리카락을 가운데 모아 엉킴 방지",
-        "모은 머리카락은 효율적으로 분리·흡입",
       ],
       tabs: [
         {
