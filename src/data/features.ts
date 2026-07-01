@@ -13,6 +13,15 @@ export interface GalleryImage {
   description?: string;
 }
 
+export interface MediaSlide {
+  mediaType: "video" | "image" | "youtube";
+  mediaUrl: string;
+  fallbackUrl?: string;
+  isShorts?: boolean;
+  title?: string;
+  description?: string;
+}
+
 export interface CollapsibleDisclaimer {
   title: string;
   items: string[];
@@ -21,10 +30,11 @@ export interface CollapsibleDisclaimer {
 export interface FeatureTab {
   label: string;
   description?: string;
-  mediaType: "video" | "image" | "youtube";
-  mediaUrl: string;
+  mediaType?: "video" | "image" | "youtube";
+  mediaUrl?: string;
   fallbackUrl?: string;
   isShorts?: boolean;
+  mediaSlides?: MediaSlide[];
 }
 
 export interface Feature {
@@ -41,7 +51,8 @@ export interface Feature {
   highlights: string[];
   tableData?: ProductComparisonTable[];
   galleryImages?: (string | GalleryImage)[];
-  
+  mediaSlides?: MediaSlide[];
+
   isShorts?: boolean;
   disclaimers?: string[];
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
@@ -914,6 +925,20 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "공간 맞춤 솔루션",
       mediaType: "video",
       mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
+      mediaSlides: [
+        {
+          mediaType: "video",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
+        },
+        {
+          mediaType: "image",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
+        },
+        {
+          mediaType: "image",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_02.jpg",
+        },
+      ],
       tabs: [
         {
           label: "히든스테이션",

@@ -1,7 +1,7 @@
 import { convertToEmbedUrl } from "@/utils/videoUtils";
 import SafeImage from "@/components/SafeImage";
 import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
-import { ProductComparisonTable, GalleryImage } from "@/data/features";
+import { ProductComparisonTable, GalleryImage, MediaSlide } from "@/data/features";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -12,11 +12,12 @@ interface MediaViewerProps {
   title: string;
   tableData?: ProductComparisonTable[];
   galleryImages?: (string | GalleryImage)[];
+  mediaSlides?: MediaSlide[];
   isShorts?: boolean;
   fallbackUrl?: string; // MP4 fallback URL for webOS compatibility
 }
 
-const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isShorts, fallbackUrl }: MediaViewerProps) => {
+const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, mediaSlides, isShorts, fallbackUrl }: MediaViewerProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     align: "start",
     containScroll: "trimSnaps",
@@ -211,6 +212,192 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, isS
           ))}
         </div>
       </TableScrollContainer>
+    );
+  }
+
+  // Mixed media slides carousel (video + images)
+  if (mediaSlides && mediaSlides.length > 0) {
+    const normalizedSlides: MediaSlide[] = mediaSlides.map((slide) => ({
+      ...slide,
+    }));
+
+    const currentSlide = normalizedSlides[selectedIndex] ?? normalizedSlides[0];
+
+    return (
+      <div style={{ width: "100%", position: "relative" }}>
+        {/* Carousel Navigation */}
+        {canScrollPrev && (
+          <button
+            onClick={scrollPrev}
+            style={{
+              position: "absolute",
+              left: "8px",
+              top: "calc(50% - 40px)",
+              transform: "translateY(-50%)",
+              zIndex: 10,
+              background: "rgba(255,255,255,0.9)",
+              border: "none",
+              borderRadius: "50%",
+              width: "44px",
+              height: "44px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+            }}
+          >
+            <ChevronLeft size={24} color="#333" />
+          </button>
+        )}
+        {canScrollNext && (
+          <button
+            onClick={scrollNext}
+            style={{
+              position: "absolute",
+              right: "8px",
+              top: "calc(50% - 40px)",
+              transform: "translateY(-50%)",
+              zIndex: 10,
+              background: "rgba(255,255,255,0.9)",
+              border: "none",
+              borderRadius: "50%",
+              width: "44px",
+              height: "44px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+            }}
+          >
+            <ChevronRight size={24} color="#333" />
+          </button>
+        )}
+
+        {/* Mixed Media Carousel */}
+        <div ref={emblaRef} style={{ overflow: "hidden", borderRadius: "16px" }}>
+          <div style={{ display: "flex" }}>
+            {normalizedSlides.map((slide, idx) => (
+              <div
+                key={idx}
+                style={{
+                  flex: "0 0 100%",
+                  minWidth: "100%",
+                }}
+              >
+                {slide.mediaType === "video" ? (
+                  <WebOSVideoPlayer mediaUrl={slide.mediaUrl} fallbackUrl={slide.fallbackUrl} />
+                ) : slide.mediaType === "youtube" ? (
+                  <div
+                    style={{
+                      position: "relative",
+                      width: "100%",
+                      paddingBottom: "56.25%",
+                      borderRadius: "16px",
+                      overflow: "hidden",
+                      background: "#000",
+                    }}
+                  >
+                    <iframe
+                      src={(() => {
+                        const { embedUrl } = convertToEmbedUrl(slide.mediaUrl);
+                        const videoId = embedUrl.split("/embed/")[1]?.split("?")[0] || "";
+                        const separator = embedUrl.includes("?") ? "&" : "?";
+                        return `${embedUrl}${separator}autoplay=1&mute=1&loop=1&playsinline=1&playlist=${videoId}`;
+                      })()}
+                      title={title}
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        border: "none",
+                      }}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                ) : (
+                  <SafeImage
+                    src={slide.mediaUrl}
+                    alt={slide.title || `${title} - 이미지 ${idx + 1}`}
+                    loading="lazy"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      display: "block",
+                    }}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Caption Box */}
+        {(currentSlide?.title || currentSlide?.description) && (
+          <div
+            style={{
+              background: "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
+              padding: "20px 24px",
+              borderRadius: "0 0 16px 16px",
+              borderTop: "1px solid #dee2e6",
+            }}
+          >
+            {currentSlide?.title && (
+              <h4
+                style={{
+                  fontSize: "18px",
+                  fontWeight: 700,
+                  color: "#212529",
+                  marginBottom: currentSlide?.description ? "8px" : 0,
+                }}
+              >
+                {currentSlide.title}
+              </h4>
+            )}
+            {currentSlide?.description && (
+              <p
+                style={{
+                  fontSize: "15px",
+                  color: "#495057",
+                  lineHeight: 1.5,
+                  margin: 0,
+                }}
+              >
+                {currentSlide.description}
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* Dots indicator */}
+        <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginTop: "16px" }}>
+          {normalizedSlides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => emblaApi?.scrollTo(idx)}
+              style={{
+                width: selectedIndex === idx ? "24px" : "8px",
+                height: "8px",
+                borderRadius: "4px",
+                background: selectedIndex === idx ? "#333" : "#ccc",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                transition: "all 0.3s ease",
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Slide counter */}
+        <div style={{ textAlign: "center", marginTop: "8px", fontSize: "14px", color: "#666" }}>
+          {selectedIndex + 1} / {normalizedSlides.length}
+        </div>
+      </div>
     );
   }
 

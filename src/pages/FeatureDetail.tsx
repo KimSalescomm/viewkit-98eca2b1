@@ -127,8 +127,9 @@ const FeatureDetail = () => {
         <div className="mb-6 sm:mb-8 relative" onClick={handleVideoClick}>
           <MediaViewer
             key={tabs ? `tab-${activeTab}` : "main"}
-            mediaType={activeTabData?.mediaType ?? feature.mediaType}
+            mediaType={activeTabData?.mediaSlides ? "gallery" : activeTabData?.mediaType ?? feature.mediaType}
             mediaUrl={activeTabData?.mediaUrl ?? feature.mediaUrl}
+            mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
             title={feature.title}
             tableData={feature.tableData}
             galleryImages={feature.galleryImages}
