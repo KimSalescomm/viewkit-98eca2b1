@@ -839,7 +839,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "스팀 물걸레",
       mediaType: "video",
       mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_02_moving_steam_pc.mp4",
-      description: "오염 정도에 따라 최대 2회까지 반복 청소한 뒤, ThinQ 앱에서 청소 전후 사진까지 비교할 수 있어요.",
+      description: "바닥에 굳은 마른 얼룩도 이제 직접 닦아낼 필요 없어요. AI가 오염을 인식하면 자동으로 100℃ 실시간 스팀을 분사해 오염 정도에 따라 최대 2회까지 알아서 반복 청소해 주니까요. 청소가 끝난 뒤에는 LG ThinQ 앱으로 깨끗해진 전후 모습까지 눈으로 안심하고 확인할 수 있어 더 편리해요.",
       highlights: ["AI로 바닥 오염물 인식", "100°C 스팀 물걸레 청소", "최대 2회 반복 청소", "ThinQ 전후 사진 비교"],
     },
     {
