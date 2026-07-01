@@ -1108,7 +1108,7 @@ export const featuresMap: Record<string, Feature[]> = {
           description:
             "우리 집 내부를 비추던 카메라의 시선을 완벽하게 차단해 보세요. 청소를 마치면 자동 도어 닫힘 기능이 렌즈 노출 걱정을 알아서 싹 지워주니까요.",
           mediaType: "image",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_15_shield_pc.jpg",
+          mediaUrl: "/__l5e/assets-v1/06b62dd4-95e6-4ef2-8a28-e629a3b4f161/vacuum-physical-security-right.png",
         },
       ],
       description:
