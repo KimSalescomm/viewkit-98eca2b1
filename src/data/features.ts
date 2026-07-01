@@ -1027,37 +1027,6 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["히든스테이션 빌트인", "오브제스테이션 디자인", "공간 맞춤 선택", "보일수록 품격"],
     },
     {
-      id: "5",
-      title: "보안까지 빈틈없이,\n체계적인 보안 솔루션",
-      subtitle: "보안 인증·개인정보·물리적 보안까지\n빈틈없이 지켜드려요.",
-      icon: "Shield",
-      tag: "체계적인 보안 솔루션",
-      mediaType: "image",
-      mediaUrl: "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png",
-      tabs: [
-        {
-          label: "보안 인증",
-          mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png",
-        },
-        {
-          label: "개인정보 보호",
-          mediaType: "image",
-          mediaUrl: "/images/security-privacy.png",
-        },
-        {
-          label: "물리적 보안",
-          description:
-            "청소가 끝나면 스테이션 내부로 자동 복귀하고, 자동 개폐 도어가 닫히면서 청소로봇 본체가 외부에 노출되지 않아요. 도어가 닫히면 카메라의 일상적 노출도 함께 막아주니 프라이빗한 공간을 지킬 수 있어요.\n히든스테이션은 싱크대 하단에 슬림하게 빌트인되고, 오브제스테이션은 가구처럼 자연스럽게 배치돼요. 외부 충격·먼지·이물질은 물론이고 아이와 반려동물의 접근까지 막아주니 물리적 보안이 빈틈없어요.",
-          mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/ca71652e-e0c0-41d1-b9cb-85f4f5c8f07a/vacuum-physical-security.png",
-        },
-      ],
-      description:
-        "글로벌 보안 인증을 획득한 LG 청소로봇은 개인정보 보호와 물리적 보안까지 갖춰 통신·저장·접근·보관 전 단계에서 빈틈없이 안전을 지켜줘요.",
-      highlights: ["글로벌 보안 인증", "개인정보 암호화 보호", "다층 보안 체계", "물리적 보안 스테이션"],
-    },
-    {
       id: "8",
       title: "청소로봇 관리,\n위생&케어 솔루션",
       subtitle: "위생부터 성능까지 한 번에 관리하여\n언제나 청결하게 사용할 수 있어요.",
@@ -1094,6 +1063,37 @@ export const featuresMap: Record<string, Feature[]> = {
           ],
         },
       ],
+    },
+    {
+      id: "5",
+      title: "보안까지 빈틈없이,\n체계적인 보안 솔루션",
+      subtitle: "보안 인증·개인정보·물리적 보안까지\n빈틈없이 지켜드려요.",
+      icon: "Shield",
+      tag: "체계적인 보안 솔루션",
+      mediaType: "image",
+      mediaUrl: "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png",
+      tabs: [
+        {
+          label: "보안 인증",
+          mediaType: "image",
+          mediaUrl: "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png",
+        },
+        {
+          label: "개인정보 보호",
+          mediaType: "image",
+          mediaUrl: "/images/security-privacy.png",
+        },
+        {
+          label: "물리적 보안",
+          description:
+            "청소가 끝나면 스테이션 내부로 자동 복귀하고, 자동 개폐 도어가 닫히면서 청소로봇 본체가 외부에 노출되지 않아요. 도어가 닫히면 카메라의 일상적 노출도 함께 막아주니 프라이빗한 공간을 지킬 수 있어요.\n히든스테이션은 싱크대 하단에 슬림하게 빌트인되고, 오브제스테이션은 가구처럼 자연스럽게 배치돼요. 외부 충격·먼지·이물질은 물론이고 아이와 반려동물의 접근까지 막아주니 물리적 보안이 빈틈없어요.",
+          mediaType: "image",
+          mediaUrl: "/__l5e/assets-v1/ca71652e-e0c0-41d1-b9cb-85f4f5c8f07a/vacuum-physical-security.png",
+        },
+      ],
+      description:
+        "글로벌 보안 인증을 획득한 LG 청소로봇은 개인정보 보호와 물리적 보안까지 갖춰 통신·저장·접근·보관 전 단계에서 빈틈없이 안전을 지켜줘요.",
+      highlights: ["글로벌 보안 인증", "개인정보 암호화 보호", "다층 보안 체계", "물리적 보안 스테이션"],
     },
     {
       id: "7",
