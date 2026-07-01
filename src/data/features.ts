@@ -938,7 +938,28 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaType: "image",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_02.jpg",
         },
+        {
+          mediaType: "image",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_01.jpg",
+        },
+        {
+          mediaType: "image",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_02.jpg",
+        },
+        {
+          mediaType: "image",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_03.jpg",
+        },
+        {
+          mediaType: "image",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_04.jpg",
+        },
+        {
+          mediaType: "image",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_05.jpg",
+        },
       ],
+
       tabs: [
         {
           label: "히든스테이션",
