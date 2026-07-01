@@ -969,7 +969,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Wrench",
       tag: "구독",
       mediaType: "image",
-      mediaUrl: "/__l5e/assets-v1/081be2f5-ad76-40a7-8170-b0234d540f61/sub-1.png",
+      mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/081be2f5-ad76-40a7-8170-b0234d540f61/sub-1.png",
       description:
         "구독 기간 내 무상 A/S는 기본, 케어 전문가가 정기 방문해 청소 로봇 내·외부 위생 케어와 성능 관리, 소모품 정기 교체를 진행합니다. 직접 세척하기 어렵고 번거로웠던 관리 부담을 줄여 더 편리하게 청소 로봇을 사용하세요.",
       highlights: ["위생 케어", "성능 관리", "무상 A/S 및 소모품 교체"],
@@ -979,21 +979,21 @@ export const featuresMap: Record<string, Feature[]> = {
           description:
             "물때와 세균 발생이 쉬운 급·배수통, 필터, 회전솔을 스팀으로 꼼꼼히 세척하고\n전용 관리제로 스테이션 내부 오수관을 세척합니다.",
           mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/081be2f5-ad76-40a7-8170-b0234d540f61/sub-1.png",
+          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/081be2f5-ad76-40a7-8170-b0234d540f61/sub-1.png",
         },
         {
           label: "성능 관리",
           description:
             "먼지와 이물질이 쌓일 수 있는 흡입구와 먼지통, 회전솔 등을 꼼꼼히 관리하여\n청소 성능을 유지할 수 있도록 도와줍니다.",
           mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/157f7151-e789-4ced-8551-e05ca4fd864c/sub-2.png",
+          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/157f7151-e789-4ced-8551-e05ca4fd864c/sub-2.png",
         },
         {
           label: "무상 A/S 및 소모품 교체",
           description:
             "계약기간 내내 무상 A/S 제공은 기본,\n소모품 정기 교체로 관리의 번거로움을 줄여줍니다.",
           mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/611e17fb-2936-4157-91a5-cfcb72021bb5/sub-3.png",
+          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/611e17fb-2936-4157-91a5-cfcb72021bb5/sub-3.png",
         },
       ],
     },
