@@ -974,7 +974,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "image",
       mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/4a7d57cd-5745-4726-aa9a-a33cee7d8412/sub-1.png",
       description:
-        "구독 기간 내 무상 A/S는 기본, 케어 전문가가 정기 방문해 청소 로봇 내·외부 위생 케어와 성능 관리, 소모품 정기 교체를 진행합니다. 직접 세척하기 어렵고 번거로웠던 관리 부담을 줄여 더 편리하게 청소 로봇을 사용하세요.",
+        "구독 기간 동안 무상 A/S는 기본, 케어 전문가가 정기 방문해 청소로봇의 내·외부 위생과 성능을 관리해드려요. 번거로운 소모품 교체까지 챙겨 더 편하게 사용할 수 있어요.",
       highlights: ["위생 케어", "성능 관리", "무상 A/S 및 소모품 교체"],
       tabs: [
         {
