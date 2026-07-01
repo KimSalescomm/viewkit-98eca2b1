@@ -963,19 +963,38 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "7",
-      title: "보이지 않는 청소로봇 속,\n관리는 누가 할까요?",
-      subtitle: "필터부터 브러시·물걸레까지, 전문가가\n알아서 챙겨주는 전문 케어를 보여드려요.",
+      title: "우리집 청소 책임지는 청소 로봇\n청소 로봇의 청소는 구독으로",
+      subtitle:
+        "구독 기간 내 무상 A/S는 기본, 케어 전문가가 정기 방문해\n청소 로봇 내·외부 위생 케어와 성능 관리, 소모품 정기 교체를 진행합니다.\n직접 세척하기 어렵고 번거로웠던 관리 부담을 줄여 더 편리하게 청소 로봇을 사용하세요.",
       icon: "Wrench",
-      tag: "구독 전문케어",
-      mediaType: "youtube",
-      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM?si=j4iIwotCwLBvji5k",
+      tag: "구독",
+      mediaType: "image",
+      mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/4a7d57cd-5745-4726-aa9a-a33cee7d8412/sub-1.png",
       description:
-        "먼지통·필터 세척부터 브러시·물걸레 패드 교체, 스테이션 케어까지 청소로봇을 늘 최상의 상태로 유지할 수 있도록 다양한 케어 서비스 혜택을 제공합니다.",
-      highlights: ["먼지통·필터 케어", "브러시 교체", "물걸레 패드 교체", "스테이션 세척"],
-      disclaimers: [
-        "[필터 케어] 필터 교체 주기는 모델 및 사용 환경에 따라 달라질 수 있습니다.",
-        "[물걸레 패드] 패드 교체는 구독 유형(프리미엄/라이트 등)에 따라 제공 횟수가 다를 수 있습니다.",
-        "[방문 관리] 방문 관리는 사전 안내드리고 있으며, 고객 요청에 의해 협의된 일정으로 변경하실 수 있습니다.",
+        "구독 기간 내 무상 A/S는 기본, 케어 전문가가 정기 방문해 청소 로봇 내·외부 위생 케어와 성능 관리, 소모품 정기 교체를 진행합니다. 직접 세척하기 어렵고 번거로웠던 관리 부담을 줄여 더 편리하게 청소 로봇을 사용하세요.",
+      highlights: ["위생 케어", "성능 관리", "무상 A/S 및 소모품 교체"],
+      tabs: [
+        {
+          label: "위생 케어",
+          description:
+            "물때와 세균 발생이 쉬운 급·배수통, 필터, 회전솔을 스팀으로 꼼꼼히 세척하고\n전용 관리제로 스테이션 내부 오수관을 세척합니다.",
+          mediaType: "image",
+          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/4a7d57cd-5745-4726-aa9a-a33cee7d8412/sub-1.png",
+        },
+        {
+          label: "성능 관리",
+          description:
+            "먼지와 이물질이 쌓일 수 있는 흡입구와 먼지통, 회전솔 등을 꼼꼼히 관리하여\n청소 성능을 유지할 수 있도록 도와줍니다.",
+          mediaType: "image",
+          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/3c67e31c-6874-43b6-a69c-755001a80283/sub-2.png",
+        },
+        {
+          label: "무상 A/S 및 소모품 교체",
+          description:
+            "계약기간 내내 무상 A/S 제공은 기본,\n소모품 정기 교체로 관리의 번거로움을 줄여줍니다.",
+          mediaType: "image",
+          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/8d4e238a-90c3-4af7-8cf4-7476c9547643/sub-3.png",
+        },
       ],
     },
     {
