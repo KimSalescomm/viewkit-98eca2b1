@@ -1040,7 +1040,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "100℃ 살균 스팀",
           description:
-            "유해균은 99.99% 제거하고, 건조 기능으로 탈취까지 완성해요.\n스테이션 내 100℃ 살균 스팀으로 물걸레를 위생적으로 관리해 유해균을 99.99% 제거할 수 있으며, 건조 기능까지 함께 사용하면 탈취까지 깔끔하게 가능해요.",
+            "유해균은 99.99% 제거하고, 건조 기능으로 탈취까지 완성해요.\n스테이션 내 100℃ 살균 스팀으로 물걸레를 위생적으로 관리해 유해균을 99.99% 제거할 수 있으며,\n건조 기능까지 함께 사용하면 탈취까지 깔끔하게 가능해요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_12_mop_solution_pc.mp4",
           highlights: [
