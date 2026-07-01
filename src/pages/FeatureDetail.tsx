@@ -137,20 +137,6 @@ const FeatureDetail = () => {
           />
         </div>
 
-        {/* Additional images (secondary main visuals) */}
-        {feature.additionalImages && feature.additionalImages.length > 0 && (
-          <div className="mb-6 sm:mb-8 space-y-4">
-            {feature.additionalImages.map((src, idx) => (
-              <img
-                key={idx}
-                src={src}
-                alt={`${feature.title} ${idx + 2}`}
-                className="w-full h-auto rounded-2xl shadow-md"
-                loading="lazy"
-              />
-            ))}
-          </div>
-        )}
 
         {/* Description Card: active tab description takes precedence */}
         <div className="bg-white rounded-2xl p-5 sm:p-6 mb-4 sm:mb-6 shadow-md">
