@@ -1098,7 +1098,7 @@ export const featuresMap: Record<string, Feature[]> = {
       id: "7",
       title: "구독, 더 편해질까요?",
       subtitle:
-        "무상 A/S는 기본, 케어 전문가가 정기 방문해\n청소로봇 위생과 성능을 관리해드려요.",
+        "무상 A/S는 기본, 전문가가 늘 새것처럼 유지해 주는 차별화된 구독 서비스를 직접 확인해보세요.",
       icon: "Wrench",
       tag: "구독",
       mediaType: "image",
