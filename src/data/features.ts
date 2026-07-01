@@ -834,7 +834,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "1",
       title: "바닥 얼룩, AI가 알아서 닦아줄까요?",
-      subtitle: "AI 오염 인식으로 자동으로 바닥 오염물을 알아서 닦아주는 편리한 스팀 물걸레 청소를 직접 확인해보세요.",
+      subtitle: "AI 오염 인식으로 자동으로 바닥 오염물을 알아서 닦아주는 편리한 스팀 물걸레 청소를 경험해보세요.",
       icon: "Flame",
       tag: "스팀 물걸레",
       mediaType: "video",
@@ -845,7 +845,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "2",
       title: "흡입력, 어디까지 강해질까요?",
-      subtitle: "최대 30W 강력한 흡입력과 엉킴 방지 브러시로 머리카락 걱정 없는 강력하고 편리한 흡입 청소를 직접 확인해보세요.",
+      subtitle: "최대 30W 강력한 흡입력과 엉킴 방지 브러시로 머리카락 걱정 없는 강력하고 편리한 흡입 청소를 만나보세요.",
       icon: "Zap",
       tag: "흡입 청소",
       mediaType: "video",
@@ -919,7 +919,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "3",
       title: "스테이션, 우리 집엔 어떤 게 어울릴까요?",
-      subtitle: "우리 집 공간에 딱 맞춘 두 가지 타입의 프리미엄 스테이션을 직접 확인해보세요",
+      subtitle: "우리 집 공간에 딱 맞춘 두 가지 타입의 프리미엄 스테이션을 비교해보세요",
 
       icon: "Armchair",
       tag: "공간 맞춤 솔루션",
@@ -1065,7 +1065,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "5",
       title: "보안, 정말 안심해도 될까요?",
-      subtitle: "보안 인증부터 개인정보, 물리적 보안까지 빈틈없이 지켜주는 체계적인 보안 시스템을 직접 확인해보세요.",
+      subtitle: "보안 인증부터 개인정보, 물리적 보안까지 빈틈없이 지켜주는 체계적인 보안 시스템을 알아보세요.",
       icon: "Shield",
       tag: "체계적인 보안 솔루션",
       mediaType: "image",
@@ -1097,7 +1097,7 @@ export const featuresMap: Record<string, Feature[]> = {
       id: "7",
       title: "구독, 더 편해질까요?",
       subtitle:
-        "무상 A/S는 기본, 전문가가 늘 새것처럼 유지해 주는 차별화된 구독 서비스를 직접 확인해보세요.",
+        "무상 A/S는 기본, 전문가가 늘 새것처럼 유지해 주는 차별화된 구독 서비스를 살펴보세요.",
       icon: "Wrench",
       tag: "구독",
       mediaType: "image",
@@ -1138,7 +1138,7 @@ export const featuresMap: Record<string, Feature[]> = {
 
       id: "6",
       title: "사전 예약, 어떤 혜택이 있을까요?",
-      subtitle: "오직 사전 예약 고객님을 위해 준비한 6가지 역대급 특별 혜택을 지금 직접 확인해보세요.",
+      subtitle: "오직 사전 예약 고객님을 위해 준비한 6가지 역대급 특별 혜택을 지금 누려보세요.",
       icon: "Globe",
       tag: "사전 예약 판매",
       mediaType: "image",
