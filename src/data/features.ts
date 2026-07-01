@@ -1040,8 +1040,8 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "100℃ 살균 스팀",
           description:
             "물때와 세균 발생이 쉬운 급·배수통, 필터, 회전솔을 스팀으로 꼼꼼히 세척하고 전용 관리제로 스테이션 내부 오수관을 세척해요.",
-          mediaType: "image",
-          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
+          mediaType: "video",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_12_mop_solution_pc.mp4",
           highlights: [
             "100℃ 살균 스팀",
             "급·배수통, 필터, 회전솔 세척",
