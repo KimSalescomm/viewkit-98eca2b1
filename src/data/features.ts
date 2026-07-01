@@ -824,12 +824,12 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "마른 얼룩, AI가 알아서 닦아줄 순 없을까?",
       subtitle: "AI 오염 인식으로 바닥 오염물을 감지하고\n100°C 스팀 물걸레로 찌든 때까지 말끔하게 청소해요.",
       icon: "Flame",
-      tag: "AI 오염 맞춤 클리닝",
+      tag: "스팀 물걸레",
       mediaType: "video",
       mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_02_moving_steam_pc.mp4",
       description:
         "AI 오염 인식으로 바닥 오염물을 감지해, 세계최초 100°C 스팀 물걸레로 찌든 때와 기름때까지 보다 말끔하게 청소해요.",
-      highlights: ["AI 오염 인식", "100°C 스팀 물걸레", "찌든 때·기름때 말끔 청소", "오염 맞춤 클리닝"],
+      highlights: ["AI 오염 인식", "100°C 스팀 물걸레", "찌든 때·기름때 말끔 청소", "스팀 물걸레"],
       
     },
     {
