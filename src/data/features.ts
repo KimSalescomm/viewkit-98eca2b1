@@ -896,15 +896,15 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "4",
-      title: "복잡한 집안, AI가 알아서 피해 다닐 수 있을까?",
-      subtitle: "AlphaUp Drive가 실시간 센싱으로\n장애물 제거 영역까지 놓치지 않고 청소해요.",
+      title: "노하우를 쌓아 진화하는\n스마트한 AlphaUP Drive 주행",
+      subtitle: "RGB 카메라와 센서 기반으로\n다양한 상황과 장애물을 섬세하게 인식하고 똑똑하게 판단해요.",
       icon: "Navigation",
       tag: "AI 맞춤 청소",
       mediaType: "video",
       mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_03_sensing_ai_driving_pc.mp4",
       description:
-        "LG의 진화된 주행 기술 AlphaUp Drive가 실시간 센싱으로 장애물 제거 영역을 즉시 파악해, 비워진 공간까지 놓치지 않고 꼼꼼히 청소해요.\n전선, 양말, 신발 같은 집 안 장애물은 AI 딥러닝으로 스스로 피해가며, 청소한 공간은 기억해 다음 번엔 더 효율적인 경로로 주행합니다.",
-      highlights: ["3D 인식 센서 장애물 회피", "AI 딥러닝 실시간 인식", "스마트 경로 최적화", "집 안 구조 학습"],
+        "RGB 카메라와 센서 기반으로 다양한 상황과 장애물을 섬세하게 인식하고 똑똑하게 판단해요.\n헤매거나 바퀴가 들려 구속되었던 공간은 ‘고립 위험 영역’으로 인식하고, 다음 청소에는 이를 회피해요.\n이후 해당 영역 내 장애물이 사라지면 청소를 재개해 진화하는 청소 경험을 제공해요.",
+      highlights: ["RGB 카메라·센서로 상황과 장애물 인식", "‘고립 위험 영역’ 학습 후 회피 주행", "장애물 사라지면 청소 재개", "노하우를 쌓아 진화하는 청소"],
     },
     {
       id: "3",
