@@ -862,7 +862,7 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
       tabs: [
         {
-          label: "30W 강력 흡입력",
+          label: "흡입 청소",
           description:
             "AlphaUP Drive에 탑재된 고출력 흡입 모터가 최대 30W에 달하는 강력한 흡입력을 발휘해요.\n스마트 터보가 카펫과 같이 청소가 까다로운 바닥재를 자동 감지하면 흡입 세기를 한 단계 더 끌어올려 깊숙한 먼지까지 꼼꼼하게 청소해요.",
           mediaType: "video",
