@@ -920,8 +920,9 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "보이지 않아도 완성되고, 보일수록 품격이 되는",
-      subtitle: "초슬림 히든스테이션과\n오브제스테이션으로 공간을 완성해요.",
+      title: "보이지 않게 완성되는",
+      subtitle: "초슬림 히든스테이션",
+
       icon: "Armchair",
       tag: "공간 맞춤 솔루션",
       mediaType: "video",
