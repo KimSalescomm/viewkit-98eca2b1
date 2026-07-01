@@ -924,8 +924,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "4",
-      title: "복잡한 집안, AI가 알아서 청소할까요?",
-      subtitle: "RGB 카메라와 센서 기반으로\n고립 위험 영역을 학습하고 장애물이 사라지면 청소를 재개해요.",
+      title: "우리 집 구조에 맞춘 스마트한 청소, 가능할까요?",
+      subtitle: "복잡한 구조와 장애물은 안전하게 회피하고,\n놓친 공간까지 스스로 찾아가 완성하는\n진화된 AI 맞춤 청소를 경험해보세요.",
       icon: "Navigation",
       tag: "AI 맞춤 청소",
       mediaType: "video",
