@@ -841,7 +841,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
       description:
-        "AlphaUP Drive에 탑재된 고출력 흡입 모터가 최대 30W에 달하는 강력한 흡입력을 발휘합니다. 여기에 벽·모서리 먼지까지 꼼꼼히 청소하는 엣지 확장 브러시와 머리카락·반려동물 털 엉킴을 방지하는 듀얼 엉킴 방지 브러시를 더해, 한층 강력하고 편리한 흡입 청소를 완성합니다.",
+        "강력한 30W 흡입력으로 카펫 속 숨어 있는 먼지까지 흡입하고, 벽·모서리 먼지는 엣지 확장 브러시로, 머리카락과 반려동물 털은 듀얼 엉킴 방지 브러시로 한 번에 해결해요.",
       highlights: [
         "최대 30W 강력 흡입력",
         "엣지 확장 브러시로 벽·모서리 청소",
