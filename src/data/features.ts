@@ -1004,7 +1004,7 @@ export const featuresMap: Record<string, Feature[]> = {
 
       id: "6",
       title: "지금 사전 예약하고 혜택 받기",
-      subtitle: "정식 출시 전 가장 먼저 만나보는\n사전 예약 한정 판매 이벤트.",
+      subtitle: "정식 출시 전 가장 먼저 만나볼 수 있는\n사전 예약 한정 판매 이벤트예요.",
       icon: "Globe",
       tag: "사전 예약 판매",
       mediaType: "image",
