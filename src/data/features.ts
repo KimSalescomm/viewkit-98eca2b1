@@ -925,6 +925,20 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "공간 맞춤 솔루션",
       mediaType: "video",
       mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
+      mediaSlides: [
+        {
+          mediaType: "video",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
+        },
+        {
+          mediaType: "image",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
+        },
+        {
+          mediaType: "image",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_02.jpg",
+        },
+      ],
       tabs: [
         {
           label: "히든스테이션",
