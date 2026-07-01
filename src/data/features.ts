@@ -1098,14 +1098,10 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png",
       tabs: [
         {
-          label: "보안 인증",
+          label: "보안 인증 & 개인정보 보호",
           mediaType: "image",
           mediaUrl: "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png",
-        },
-        {
-          label: "개인정보 보호",
-          mediaType: "image",
-          mediaUrl: "/images/security-privacy.png",
+          description: "글로벌 보안 인증을 획득하고 개인정보를 체계적으로 보호해요.",
         },
         {
           label: "물리적 보안",
@@ -1117,7 +1113,7 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
       description:
         "글로벌 보안 인증을 획득한 LG 청소로봇은 개인정보 보호와 물리적 보안까지 갖춰 통신·저장·접근·보관 전 단계에서 빈틈없이 안전을 지켜줘요.",
-      highlights: ["글로벌 보안 인증", "개인정보 암호화 보호", "다층 보안 체계", "물리적 보안 스테이션"],
+      highlights: ["글로벌 보안 인증", "개인정보 보호", "물리적 보안", "통신·저장·접근·보관 전 단계 안전"],
     },
     {
       id: "7",
