@@ -828,7 +828,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_02_moving_steam_pc.mp4",
       description:
-        "AI 오염 인식으로 바닥 오염물을 감지해, 세계최초 100°C 스팀 물걸레로 찌든 때와 기름때까지 보다 말끔하게 청소해요.",
+        "AI 오염 인식으로 바닥의 마른 얼룩을 감지하면, 스팀 물걸레 청소를 자동으로 시작해요.\n실시간으로 생성된 100°C 스팀을 물걸레에 직접 분사해 강력하게 청소하며, 오염 정도에 따라 최대 2회까지 반복 청소해요.\n청소가 끝나면 LG ThinQ 앱에서 청소 전후를 사진으로 비교할 수 있어요.",
       highlights: ["AI 오염 인식", "100°C 스팀 물걸레", "찌든 때·기름때 말끔 청소", "스팀 물걸레"],
       
     },
