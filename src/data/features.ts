@@ -1066,7 +1066,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "5",
       title: "보안, 정말 안심해도 될까요?",
-      subtitle: "보안 인증·개인정보·물리적 보안까지\n빈틈없이 지켜드려요.",
+      subtitle: "보안 인증부터 개인정보, 물리적 보안까지 빈틈없이 지켜주는 체계적인 보안 시스템을 직접 확인해보세요.",
       icon: "Shield",
       tag: "체계적인 보안 솔루션",
       mediaType: "image",
