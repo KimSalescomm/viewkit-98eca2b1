@@ -851,12 +851,12 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
       description:
-        "강력한 30W 흡입력으로 카펫 속 숨어 있는 먼지까지 흡입하고, 머리카락과 반려동물 털은 듀얼 엉킴 방지 브러시로 한 번에 해결해요.",
+        "강력한 30W 흡입력으로 카펫 속 숨어 있는 먼지까지 흡입하고, 벽·모서리 먼지는 엣지 확장 브러시로, 머리카락과 반려동물 털은 듀얼 엉킴 방지 브러시로 한 번에 해결해요.",
       highlights: [
         "30W 강력 흡입력",
         "카펫 속 미세먼지까지 흡입",
-        "듀얼 엉킴 방지 브러시",
-        "머리카락 걱정 없는 청소",
+        "엣지 확장 물걸레로 벽면 밀착 청소",
+        "구석구석 사각지대 해결",
       ],
       tabs: [
         {
@@ -867,7 +867,14 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
         },
         {
-          label: "2. 듀얼 엉킴 방지 브러시는 어떤 역할을 하나요?",
+          label: "2. 엣지 확장 브러시는 어떻게 청소하나요?",
+          description:
+            "엣지 확장 물걸레로 청소 사각지대인 벽면 가장자리까지 밀착해 구석구석 꼼꼼하게 청소해요.",
+          mediaType: "video",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_10_edge_cleaning.mp4",
+        },
+        {
+          label: "3. 듀얼 엉킴 방지 브러시는 어떤 역할을 하나요?",
           description:
             "듀얼 엉킴 방지 브러시가 회전하며 머리카락을 흡입구 쪽으로 밀어내, 엉킴 걱정 없이 꾸준한 청소 성능을 유지해요.",
           mediaType: "video",
@@ -886,6 +893,13 @@ export const featuresMap: Record<string, Feature[]> = {
             "공기 데이터 시험 장비 연결을 위해 별도 제작한 어댑터로 회전 브러시를 제거한 상태에서 제품 최대 흡입력을 산정했습니다.",
             "스마트 터보 설정은 LG ThinQ 앱에서 켜고 끌 수 있으며, 카펫 재질에 따라 감지 성능은 차이가 있을 수 있습니다.",
             "모가 얇거나 20mm 이상의 카펫은 손상될 수 있으므로 정리 후 사용을 권장합니다.",
+          ],
+        },
+        {
+          title: "엣지 확장 브러시 안내",
+          items: [
+            "엣지 확장 브러시의 확장 거리와 청소 성능은 가구 배치, 벽 형상 등 사용 환경에 따라 차이가 있을 수 있습니다.",
+            "브러시는 소모품으로, 사용 환경에 따라 교체 주기가 달라질 수 있습니다.",
           ],
         },
       ],
