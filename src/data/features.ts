@@ -862,7 +862,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
       description:
-        "강력한 30W 흡입력으로 카펫 속 숨어 있는 먼지까지 흡입하고, 벽·모서리 먼지는 엣지 확장 브러시로, 머리카락과 반려동물 털은 듀얼 엉킴 방지 브러시로 한 번에 해결해요.",
+        "강력한 30W 흡입력으로 카펫 속 숨어 있는 먼지까지 흡입하고, 머리카락과 반려동물 털은 듀얼 엉킴 방지 브러시로 한 번에 해결해요.",
       highlights: [
         "30W 강력 흡입력",
         "카펫 속 미세먼지까지 흡입",
