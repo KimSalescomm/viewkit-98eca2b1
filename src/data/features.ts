@@ -1050,7 +1050,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "8",
-      title: "청소로봇 관리,\n위생&케어 솔루션",
+      title: "",
       subtitle: "물걸레 냄새와 빨래, 매번 직접 하기 번거로우셨나요?\n알아서 세척하고 100℃ 스팀 살균에 온풍 건조까지 한 번에 끝내는 완벽한 위생 케어 솔루션을 지금 경험해보세요.",
       icon: "Sparkles",
       tag: "위생&케어 솔루션",
