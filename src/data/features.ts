@@ -842,7 +842,6 @@ export const featuresMap: Record<string, Feature[]> = {
       description: "오염 정도에 따라 최대 2회까지 반복 청소한 뒤, ThinQ 앱에서 청소 전후 사진까지 비교할 수 있어요.",
       highlights: ["AI로 바닥 오염물 인식", "100°C 스팀 물걸레 청소", "최대 2회 반복 청소", "ThinQ 전후 사진 비교"],
     },
-    },
     {
       id: "2",
       title: "흡입력, 어디까지 강해질까요?",
