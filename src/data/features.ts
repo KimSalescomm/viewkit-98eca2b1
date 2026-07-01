@@ -846,7 +846,7 @@ export const featuresMap: Record<string, Feature[]> = {
       id: "9",
       title: "구석까지 닦아주는 엣지 확장 물걸레가 있을까요?",
       subtitle: "벽면 가장자리까지 밀착 청소하는 엣지 확장 물걸레로 사각지대 없이 깨끗하게 닦아보세요.",
-      icon: "Brush",
+      icon: "Cleaning",
       tag: "엣지 확장 물걸레",
       mediaType: "video",
       mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_10_edge_cleaning.mp4",
