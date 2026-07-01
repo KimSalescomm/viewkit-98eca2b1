@@ -905,30 +905,30 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "3",
       title: "보이지 않아도 완성되고, 보일수록 품격이 되는",
-      subtitle: "보이지 않게 완성되는\n초슬림 히든 스테이션과 보일수록 품격이 되는\n오브제 스테이션",
+      subtitle: "보이지 않게 완성되는\n초슬림 히든스테이션과 보일수록 품격이 되는\n오브제스테이션",
       icon: "Armchair",
       tag: "공간 맞춤 솔루션",
       mediaType: "video",
       mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
       tabs: [
         {
-          label: "히든 스테이션",
+          label: "히든스테이션",
           description:
-            "보이지 않게 완성되는\n초슬림 히든 스테이션\n15cm 초슬림 히든 스테이션은 주방의 숨겨진 약 공간을 가치 있는 공간으로 바꿉니다.\n별도의 공간을 확보할 필요 없이 싱크대 하부 걸레받이에 설치할 수 있는 공간도 사실상 사용할 수 있습니다.",
+            "보이지 않게 완성되는\n초슬림 히든스테이션\n15cm 초슬림 히든스테이션은 주방의 숨겨진 약 공간을 가치 있는 공간으로 바꿉니다.\n별도의 공간을 확보할 필요 없이 싱크대 하부 걸레받이에 설치할 수 있는 공간도 사실상 사용할 수 있습니다.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
         },
         {
-          label: "오브제 스테이션",
+          label: "오브제스테이션",
           description:
-            "보일수록 품격이 되는\n오브제 스테이션\n컨테이너 내부 부품격이 있습니다.",
+            "보일수록 품격이 되는\n오브제스테이션\n컨테이너 내부 부품격이 있습니다.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
         },
       ],
       description:
-        "보이지 않게 완성되는 히든 스테이션부터, 보일수록 품격이 되는 오브제 스테이션까지. 공간 성격에 맞춰 두 가지 디자인을 선택할 수 있어요.",
-      highlights: ["히든 스테이션 빌트인", "오브제 스테이션 디자인", "공간 맞춤 선택", "보일수록 품격"],
+        "보이지 않게 완성되는 히든스테이션부터, 보일수록 품격이 되는 오브제스테이션까지. 공간 성격에 맞춰 두 가지 디자인을 선택할 수 있어요.",
+      highlights: ["히든스테이션 빌트인", "오브제스테이션 디자인", "공간 맞춤 선택", "보일수록 품격"],
     },
     {
       id: "5",
