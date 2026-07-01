@@ -835,7 +835,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "2",
       title: "흡입력과 브러시, 어디까지 강해질 수 있을까?",
-      subtitle: "최대 30W 강력 흡입력에 엣지 확장 브러시,\n듀얼 엉킴 방지 브러시까지 더했어요.",
+      subtitle: "최대 30W 강력 흡입력에\n엣지·듀얼 엉킴 방지 브러시를 더했어요.",
       icon: "Zap",
       tag: "흡입 청소",
       mediaType: "video",
