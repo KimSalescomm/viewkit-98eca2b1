@@ -863,6 +863,12 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "강력한 30W 흡입력",
           description:
             "바닥 먼지를 완전히 걷어내고 싶다면 강력한 흡입력에 맡겨보세요.\n고성능 모터가 만들어내는 최대 30W의 강력한 흡입력으로 무거운 이물질까지 남김없이 닦아내 주니까요.",
+          highlights: [
+            "30W 강력 흡입력",
+            "고성능 모터",
+            "무거운 이물질 흡입",
+            "바닥 먼지 완전 제거",
+          ],
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
         },
