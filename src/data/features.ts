@@ -1110,21 +1110,21 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "위생 케어",
           description:
-            "물때와 세균 발생이 쉬운 급·배수통, 필터, 회전솔을 스팀으로 꼼꼼히 세척하고\n전용 관리제로 스테이션 내부 오수관을 세척합니다.",
+            "물때와 세균 발생이 쉬운 급·배수통, 필터, 회전솔을 스팀으로 꼼꼼히 세척하고\n전용 관리제로 스테이션 내부 오수관을 세척해요.",
           mediaType: "image",
           mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
         },
         {
           label: "성능 관리",
           description:
-            "먼지와 이물질이 쌓일 수 있는 흡입구와 먼지통, 회전솔 등을 꼼꼼히 관리하여\n청소 성능을 유지할 수 있도록 도와줍니다.",
+            "먼지와 이물질이 쌓일 수 있는 흡입구와 먼지통, 회전솔 등을 꼼꼼히 관리하여\n청소 성능을 유지할 수 있도록 도와줘요.",
           mediaType: "image",
           mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/792fb934-9d72-442d-8433-c950ecc722ec/vacuum-subscription-service-02.jpg",
         },
         {
           label: "무상 A/S 및 소모품 교체",
           description:
-            "계약기간 내내 무상 A/S 제공은 기본,\n소모품 정기 교체로 관리의 번거로움을 줄여줍니다.",
+            "계약기간 내내 무상 A/S 제공은 기본,\n소모품 정기 교체로 관리의 번거로움을 줄여줘요.",
           mediaType: "image",
           mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/04011284-51c7-43a5-83c5-2ad70db02be6/vacuum-subscription-service-03.jpg",
         },
@@ -1140,7 +1140,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10360831/usp2/24_pc.png",
       description:
-        "정식 출시에 앞서 진행되는 사전 예약 한정 판매 이벤트입니다. 예약 고객 대상 특별 구성·우선 배송 등 한정 혜택이 제공됩니다.\n\n자세한 내용은 매장 직원에게 문의해 주세요.",
+        "정식 출시에 앞서 진행되는 사전 예약 한정 판매 이벤트예요. 예약 고객 대상 특별 구성·우선 배송 등 한정 혜택이 제공돼요.\n\n자세한 내용은 매장 직원에게 문의해 주세요.",
       highlights: ["사전 예약 한정 혜택", "우선 배송", "한정 수량 판매"],
       collapsibleDisclaimers: [
         {
