@@ -898,7 +898,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "복잡한 집안, AI가 알아서 피해 다닐 수 있을까?",
       subtitle: "AlphaUp Drive가 실시간 센싱으로\n장애물 제거 영역까지 놓치지 않고 청소해요.",
       icon: "Navigation",
-      tag: "AI 주행",
+      tag: "AI 맞춤 청소",
       mediaType: "video",
       mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_03_sensing_ai_driving_pc.mp4",
       description:
