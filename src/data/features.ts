@@ -965,10 +965,10 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
           highlights: [
-            "15cm 초슬림 히든스테이션이에요",
-            "싱크대 하부 걸레받이에 설치돼요",
-            "기존 수납 공간을 그대로 사용해요",
-            "자동 급배수로 편리해요",
+            "15cm 초슬림 히든스테이션",
+            "싱크대 하부 걸레받이 설치",
+            "기존 수납 공간 그대로",
+            "자동 급배수 편의성",
           ],
         },
         {
