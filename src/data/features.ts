@@ -1108,7 +1108,7 @@ export const featuresMap: Record<string, Feature[]> = {
           description:
             "청소가 끝나면 스테이션 내부로 자동 복귀하고, 자동 개폐 도어가 닫히면서 청소로봇 본체가 외부에 노출되지 않아요. 도어가 닫히면 카메라의 일상적 노출도 함께 막아주니 프라이빗한 공간을 지킬 수 있어요.\n히든스테이션은 싱크대 하단에 슬림하게 빌트인되고, 오브제스테이션은 가구처럼 자연스럽게 배치돼요. 외부 충격·먼지·이물질은 물론이고 아이와 반려동물의 접근까지 막아주니 물리적 보안이 빈틈없어요.",
           mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/ca71652e-e0c0-41d1-b9cb-85f4f5c8f07a/vacuum-physical-security.png",
+          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_15_shield_pc.jpg",
         },
       ],
       description:
