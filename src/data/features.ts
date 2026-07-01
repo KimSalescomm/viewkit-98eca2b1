@@ -972,7 +972,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Wrench",
       tag: "구독",
       mediaType: "image",
-      mediaUrl: "/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
+      mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
       description:
         "구독 기간 동안 무상 A/S는 기본, 케어 전문가가 정기 방문해 청소로봇의 내·외부 위생과 성능을 관리해드려요. 번거로운 소모품 교체까지 챙겨 더 편하게 사용할 수 있어요.",
       highlights: ["위생 케어", "성능 관리", "무상 A/S 및 소모품 교체"],
