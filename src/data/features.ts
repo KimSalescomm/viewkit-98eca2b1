@@ -860,21 +860,21 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
       tabs: [
         {
-          label: "1. 흡입력은 얼마나 강해요?",
+          label: "흡입력은 얼마나 강해요?",
           description:
             "AlphaUP Drive에 탑재된 고출력 흡입 모터가 최대 30W에 달하는 강력한 흡입력을 발휘해요.\n스마트 터보가 카펫과 같이 청소가 까다로운 바닥재를 자동 감지하면 흡입 세기를 한 단계 더 끌어올려 깊숙한 먼지까지 꼼꼼하게 청소해요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
         },
         {
-          label: "2. 엣지 확장 브러시는 어떻게 청소하나요?",
+          label: "엣지 확장 브러시는 어떻게 청소하나요?",
           description:
             "엣지 확장 물걸레로 청소 사각지대인 벽면 가장자리까지 밀착해 구석구석 꼼꼼하게 청소해요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_10_edge_cleaning.mp4",
         },
         {
-          label: "3. 듀얼 엉킴 방지 브러시는 어떤 역할을 하나요?",
+          label: "듀얼 엉킴 방지 브러시는 어떤 역할을 하나요?",
           description:
             "듀얼 엉킴 방지 브러시가 회전하며 머리카락을 흡입구 쪽으로 밀어내, 엉킴 걱정 없이 꾸준한 청소 성능을 유지해요.",
           mediaType: "video",
