@@ -1026,20 +1026,20 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "8",
-      title: "위생과 성능, 누가 챙겨줄까요?",
-      subtitle: "물걸레 살균·탈취와 내부 관리 부담을 깔끔하게 덜어주는 토탈 위생&케어 솔루션을 직접 확인해보세요.",
+      title: "청소로봇 관리,\n위생&케어 솔루션",
+      subtitle: "위생부터 성능까지 한 번에 관리하여\n언제나 청결하게 사용할 수 있어요.",
       icon: "Sparkles",
       tag: "위생&케어 솔루션",
       mediaType: "image",
       mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
       description:
-        "100℃ 살균 스팀과 스테이션 컨디셔닝으로 물걸레 살균부터 스테이션 내부 관리까지 한 번에 관리해요. 청소로봇의 위생과 성능을 꾸준히 지켜드려요.",
-      highlights: ["100℃ 살균 스팀", "스테이션 컨디셔닝", "위생·성능 동시 관리", "정기 케어 서비스"],
+        "청소로봇의 위생과 성능을 한 번에 관리하는 위생&케어 솔루션이에요. 케어 전문가가 정기 방문해 청소로봇의 내·외부 위생과 성능을 꼼꼼히 관리해드려요.",
+      highlights: ["100℃ 살균 스팀", "스테이션 컨디셔닝", "무상 A/S 및 소모품 교체"],
       tabs: [
         {
-          label: "100℃ 살균 스팀은 어떤 위생 케어를 하나요?",
+          label: "100℃ 살균 스팀",
           description:
-            "100℃ 살균 스팀으로 물걸레의 유해균을 99.99% 제거하고, 건조 기능으로 냄새까지 말끔하게 관리해요.",
+            "유해균은 99.99% 제거하고, 건조 기능으로 탈취까지 완성해요.\n스테이션 내 100℃ 살균 스팀으로 물걸레를 위생적으로 관리해 유해균을 99.99% 제거할 수 있으며, 건조 기능까지 함께 사용하면 탈취까지 깔끔하게 가능해요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_12_mop_solution_pc.mp4",
           highlights: [
@@ -1049,15 +1049,15 @@ export const featuresMap: Record<string, Feature[]> = {
           ],
         },
         {
-          label: "스테이션 컨디셔닝은 어떤 역할을 하나요?",
+          label: "스테이션 컨디셔닝",
           description:
-            "히든스테이션 상부 배기 팬으로 제품 내부 습증기를 외부로 배출해, 위생 관리 부담을 줄여드려요.",
+            "먼지와 이물질이 쌓일 수 있는 흡입구, 먼지통, 회전솔 등을 꼼꼼히 관리하여 청소 성능을 유지할 수 있도록 도와줘요.\n계약기간 내내 무상 A/S 제공은 기본, 소모품 정기 교체로 관리의 번거로움을 줄여줘요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
           highlights: [
-            "히든스테이션 상부 배기 팬",
-            "습증기 외부 배출",
-            "위생 관리 부담 완화",
+            "흡입구·먼지통·회전솔 관리",
+            "청소 성능 유지",
+            "무상 A/S 및 소모품 교체",
           ],
         },
       ],
