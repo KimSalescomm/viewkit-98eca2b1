@@ -90,7 +90,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "3",
       title: "눈에 보이지 않는 세균, 정말 없어졌을까요?",
-      subtitle: "옷에도 세균, 먼지가 묻어와요!\n스타일링 후 세균 수가 줄어드는지 직접 측정해봤습니다.",
+      subtitle: "옷에도 세균, 먼지가 묻어와요!\n스타일링 후 세균 수가 줄어드는지 직접 측정해봤어요.",
       icon: "Cpu",
       tag: "세균 수 감소",
       mediaType: "video",
@@ -126,7 +126,7 @@ export const featuresMap: Record<string, Feature[]> = {
         },
       ],
       description:
-        "2011년 세계 최초로 의류관리기를 선보인 LG 스타일러가 글로벌 누적 판매 200만대를 돌파했습니다.\n\n현재 27개국에서 판매되며, 트루스팀과 다이내믹 무빙행어 등 핵심 기술력으로 의류관리 가전의 글로벌 기준을 만들어가고 있습니다.",
+        "2011년 세계 최초로 의류관리기를 선보인 LG 스타일러가 글로벌 누적 판매 200만대를 돌파했어요.\n\n현재 27개국에서 판매되며, 트루스팀과 다이내믹 무빙행어 등 핵심 기술력으로 의류관리 가전의 글로벌 기준을 만들어가고 있어요.",
       highlights: ["글로벌 200만대 돌파", "27개국 판매", "2026년형 AI 맞춤 관리", "스타일러도 구독으로!"],
     },
   ],
@@ -193,7 +193,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "3",
       title: "인테리어에 녹아드는 갤러리 디자인",
-      subtitle: "벽에 밀착 설치하면 마치\n한 폭의 그림처럼 공간에 녹아듭니다",
+      subtitle: "벽에 밀착 설치하면 마치\n한 폭의 그림처럼 공간에 녹아들어요",
       icon: "ImageIcon",
       tag: "갤러리 디자인",
       mediaType: "gallery",
@@ -202,45 +202,45 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
           title: "거실 인테리어와 조화",
-          description: "슬림한 디자인으로 벽에 밀착 설치하면 마치 액자처럼 공간과 하나가 됩니다.",
+          description: "슬림한 디자인으로 벽에 밀착 설치하면 마치 액자처럼 공간과 하나가 돼요.",
         },
         {
           url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium01.jpg",
           title: "제로 갭 벽걸이",
-          description: "벽과의 간격을 최소화한 제로 갭 벽걸이로 깔끔한 설치가 가능합니다.",
+          description: "벽과의 간격을 최소화한 제로 갭 벽걸이로 깔끔한 설치가 가능해요.",
         },
         {
           url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/OLED65G6KNA_st_mo.jpg",
           title: "스탠드형 설치",
-          description: "전용 스탠드를 활용하면 어떤 공간에서도 프리미엄 인테리어를 연출할 수 있습니다.",
+          description: "전용 스탠드를 활용하면 어떤 공간에서도 프리미엄 인테리어를 연출할 수 있어요.",
         },
       ],
       description:
-        "LG 올레드 evo AI G6는 초슬림 디자인으로 벽에 밀착 설치하면 마치 한 폭의 그림처럼 공간에 녹아듭니다. 전용 갤러리 스탠드로 어디에 놓아도 프리미엄 인테리어를 완성합니다.",
+        "LG 올레드 evo AI G6는 초슬림 디자인으로 벽에 밀착 설치하면 마치 한 폭의 그림처럼 공간에 녹아들어요. 전용 갤러리 스탠드로 어디에 놓아도 프리미엄 인테리어를 완성해요.",
       highlights: ["초슬림 벽밀착 디자인", "갤러리 스탠드 옵션", "인테리어 조화", "138~245cm 다양한 사이즈"],
     },
     {
       id: "4",
       title: "게이머를 위한 완벽한 디스플레이",
-      subtitle: "4K 144Hz, 0.1ms 응답속도로\n차세대 게이밍 경험을 제공합니다",
+      subtitle: "4K 144Hz, 0.1ms 응답속도로\n차세대 게이밍 경험을 제공해요",
       icon: "Gamepad2",
       tag: "게이밍 특화",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770826/gallery/small03.jpg",
       description:
-        "4K 144Hz 주사율과 0.1ms 응답속도, NVIDIA G-Sync 호환으로 최상의 게이밍 환경을 제공합니다. VRR, ALLM, HGiG 등 게임에 최적화된 기능으로 프로 게이머 수준의 플레이가 가능합니다.",
+        "4K 144Hz 주사율과 0.1ms 응답속도, NVIDIA G-Sync 호환으로 최상의 게이밍 환경을 제공해요. VRR, ALLM, HGiG 등 게임에 최적화된 기능으로 프로 게이머 수준의 플레이가 가능해요.",
       highlights: ["4K 144Hz 지원", "0.1ms 응답속도", "G-Sync 호환", "게임 대시보드"],
     },
     {
       id: "5",
       title: "TV가 사운드바 없이도 충분할까?",
-      subtitle: "9.1.2채널 AI 사운드 프로가\n공간에 맞춰 입체 음향을 구현합니다",
+      subtitle: "9.1.2채널 AI 사운드 프로가\n공간에 맞춰 입체 음향을 구현해요",
       icon: "Volume2",
       tag: "AI 사운드",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium01.jpg",
       description:
-        "업파이어링 스피커와 AI 사운드 프로 기술로 Dolby Atmos 기반 9.1.2채널 서라운드를 구현합니다. 시청 공간을 자동 분석하여 최적의 사운드 필드를 만들어줍니다.",
+        "업파이어링 스피커와 AI 사운드 프로 기술로 Dolby Atmos 기반 9.1.2채널 서라운드를 구현해요. 시청 공간을 자동 분석하여 최적의 사운드 필드를 만들어줘요.",
       highlights: ["9.1.2채널 서라운드", "Dolby Atmos", "AI 사운드 프로", "우퍼 내장"],
     },
     {
@@ -252,7 +252,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "table",
       mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
       description:
-        "시청 거리와 공간 크기에 따라 최적의 TV 사이즈가 달라집니다. G6 시리즈는 55인치(138cm)부터 97인치(245cm)까지 다양한 라인업을 갖추고 있습니다.",
+        "시청 거리와 공간 크기에 따라 최적의 TV 사이즈가 달라져요. G6 시리즈는 55인치(138cm)부터 97인치(245cm)까지 다양한 라인업을 갖추고 있어요.",
       highlights: ["138cm (55인치)", "163cm (65인치)", "194cm (77인치)", "245cm (97인치)"],
       tableData: [
         {
@@ -373,7 +373,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM?si=j4iIwotCwLBvji5k",
       description:
-        "물이 흐르는 길을 세척, 청소하기 힘든 기계실 세척, 이사 후 재설치까지 다양한 케어서비스 혜택이 있습니다.",
+        "물이 흐르는 길을 세척, 청소하기 힘든 기계실 세척, 이사 후 재설치까지 다양한 케어서비스 혜택이 있어요.",
       highlights: ["유로 세척 케어", "기계실 세척(프리미엄)", "고무패킹 케어", "소모품 교체"],
       disclaimers: [
         "[유로 세척 케어] 유로 세척키트를 통한 유로살균은 출수구, 정수유로에 한합니다.",
@@ -392,7 +392,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "gallery",
       mediaUrl: "",
       description:
-        "수도관 매립 여부, 냉장고와 싱크대의 거리 등 환경에 따라 STEM 설치는 달라집니다. 가구색과 유사한 몰딩을 이용해 수도관이 드러나지 않도록 깔끔하게 마감합니다.",
+        "수도관 매립 여부, 냉장고와 싱크대의 거리 등 환경에 따라 STEM 설치는 달라져요. 가구색과 유사한 몰딩을 이용해 수도관이 드러나지 않도록 깔끔하게 마감해요.",
       highlights: ["수도관 매립 여부 확인", "싱크대 타공 가능한지 확인", "몰딩 처리 확인"],
       galleryImages: [
         {
@@ -411,19 +411,19 @@ export const featuresMap: Record<string, Feature[]> = {
           url: "/images/installation-step3.jpeg",
           title: "3.싱크대 거리가 가깝지만, 싱크대 타공을 할 수 없다면?",
           description:
-            "싱크대 아래 걸레받이 틈으로 수도관을 꺼내 연결할 수 있어요. 가구색과 가장 유사항 몰딩으로 깔끔하게 마무리 해드립니다.",
+            "싱크대 아래 걸레받이 틈으로 수도관을 꺼내 연결할 수 있어요. 가구색과 가장 유사항 몰딩으로 깔끔하게 마무리 해드려요.",
         },
         {
           url: "/images/installation-step4.jpeg",
           title: "4.싱크대가 냉장고를 놓을 위치와 다소 떨어져 있나요?",
           description:
-            "싱크대와 냉장고 사이를 잇는 수도관을 벽면에 가깝게 붙여 설치합니다. 가구색과 가장 유사한 몰딩으로 깔끔하게 마무리 해드립니다",
+            "싱크대와 냉장고 사이를 잇는 수도관을 벽면에 가깝게 붙여 설치해요. 가구색과 가장 유사한 몰딩으로 깔끔하게 마무리 해드려요",
         },
         {
           url: "/images/installation-step5.jpeg",
           title: "인테리어에 맞춘 몰딩 부자재",
           description:
-            "Case3,4처럼 수도관이 밖으로 이어지는 경우에는 주방 가구 컬러에 맞춘 몰딩 부자재로 숨김 처리를 해드립니다.",
+            "Case3,4처럼 수도관이 밖으로 이어지는 경우에는 주방 가구 컬러에 맞춘 몰딩 부자재로 숨김 처리를 해드려요.",
         },
       ],
       disclaimers: [
@@ -441,20 +441,20 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10780841/ZEROHINGE_SWING.mp4",
       description:
-        "도어 걸림을 없앤 제로 클리어런스 힌지가 만드는 단 4mm 간격의 완벽에 가까운 밀착! 인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아듭니다.",
+        "도어 걸림을 없앤 제로 클리어런스 힌지가 만드는 단 4mm 간격의 완벽에 가까운 밀착! 인테리어 조화를 생각한 디자인으로 공간에 자연스럽게 녹아들어요.",
       highlights: ["제로 클리어런스 힌지", "인테리어 냉장고", "다양한 라인업", "냉툭튀가 싫다면 Fit & Max로"],
       tabs: [
         {
           label: "제로 클리어런스 힌지",
           description:
-            "도어가 안쪽으로 회전하는 제로 클리어런스 힌지로\n냉장고 장과의 간격을 최소화해 더 완성도 높은\n주방 인테리어를 완성할 수 있습니다.",
+            "도어가 안쪽으로 회전하는 제로 클리어런스 힌지로\n냉장고 장과의 간격을 최소화해 더 완성도 높은\n주방 인테리어를 완성할 수 있어요.",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10780841/ZEROHINGE_SWING.mp4",
         },
         {
           label: "다양한 조합",
           description:
-            "Fit & Max 라인업은 가구장 간격을\n4mm로 최소화한 밀착 설계를 적용했습니다.\n우리 집 구조에 딱 맞는 조합을 선택해보세요.",
+            "Fit & Max 라인업은 가구장 간격을\n4mm로 최소화한 밀착 설계를 적용했어요.\n우리 집 구조에 딱 맞는 조합을 선택해보세요.",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10780841/FitNMax_1380x670.mp4",
         },
@@ -619,7 +619,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10575829/usp/WA2323/WA2323EGZN_ai_laundry_pc.mp4",
       description:
-        "AI가 세탁의 시작부터, 건조가 끝나는 과정까지 함께합니다. 세탁물의 무게를 감지하여 3초만에 코스별 예상 종료시간을 알 수 있고, AI 맞춤 세탁은 의류의 무게와 재질, 오염도에 맞춰 최적의 코스를 추천합니다. 건조가 끝날무렵 건조기를 예열해두고, 사용하면 할수록 더 정확하게 건조 완료 시간을 알려줍니다.",
+        "AI가 세탁의 시작부터, 건조가 끝나는 과정까지 함께해요. 세탁물의 무게를 감지하여 3초만에 코스별 예상 종료시간을 알 수 있고, AI 맞춤 세탁은 의류의 무게와 재질, 오염도에 맞춰 최적의 코스를 추천해요. 건조가 끝날무렵 건조기를 예열해두고, 사용하면 할수록 더 정확하게 건조 완료 시간을 알려줘요.",
       highlights: ["AI 타임센싱", "AI 맞춤 세탁, 탈수", "AI 시간 안내", "AI 세탁•건조 리포트"],
       disclaimers: ["소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
       collapsibleDisclaimers: [
@@ -681,7 +681,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10575829/usp/WA2525EGZF_ai_dd_Cover_pc.mp4",
       description:
-        "AI DD 모터가 세탁물의 무게와 옷감의 부드러움을 스스로 감지해, 손빨래 동작을 본뜬 6가지 모션으로 옷감 손상은 줄이고 세탁 성능은 높여줍니다. 건조할 때도 무게와 습도를 인식해 6모션으로 보송하게 마무리해주니, 아끼는 옷도 안심하고 맡기실 수 있어요.",
+        "AI DD 모터가 세탁물의 무게와 옷감의 부드러움을 스스로 감지해, 손빨래 동작을 본뜬 6가지 모션으로 옷감 손상은 줄이고 세탁 성능은 높여줘요. 건조할 때도 무게와 습도를 인식해 6모션으로 보송하게 마무리해주니, 아끼는 옷도 안심하고 맡기실 수 있어요.",
       highlights: ["AI DD 모터", "6모션 맞춤 세탁·건조", "옷감 손상 최소화", "섬세한 케어"],
       disclaimers: ["소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
       collapsibleDisclaimers: [
@@ -711,7 +711,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10575829/usp/WA2525EGZF_ai_cleancare_pc_01-1.mp4",
       description:
-        "건조 성능을 좌우하는 콘덴서를 물로 자동 세척해 보풀과 먼지가 쌓이지 않도록 관리해줍니다.\n\n사용자가 직접 분리·청소할 필요 없이 늘 깨끗한 상태를 유지해, 건조 효율과 위생을 오래도록 지켜드려요.",
+        "건조 성능을 좌우하는 콘덴서를 물로 자동 세척해 보풀과 먼지가 쌓이지 않도록 관리해줘요.\n\n사용자가 직접 분리·청소할 필요 없이 늘 깨끗한 상태를 유지해, 건조 효율과 위생을 오래도록 지켜드려요.",
       highlights: ["콘덴서 자동 물 세척", "보풀·먼지 케어", "건조 효율 유지", "관리 부담 최소화"],
     },
     {
@@ -736,7 +736,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md09942826/usp/TotalAI_3.mp4",
       description:
-        "통 내부는 물론 보이지 않는 건조기 내부까지 최대 12포인트를 살균해 유해 세균 4종을 99.9% 제거합니다.\n\n세탁기와 건조기를 따로 관리할 필요 없이 한 번의 케어로 위생을 지켜드려요.",
+        "통 내부는 물론 보이지 않는 건조기 내부까지 최대 12포인트를 살균해 유해 세균 4종을 99.9% 제거해요.\n\n세탁기와 건조기를 따로 관리할 필요 없이 한 번의 케어로 위생을 지켜드려요.",
       highlights: ["최대 12포인트 살균", "유해 세균 4종 99.9% 제거", "세탁통·건조기 동시 케어", "위생 걱정 끝"],
       disabled: true,
     },
@@ -787,7 +787,7 @@ export const featuresMap: Record<string, Feature[]> = {
       isShorts: false,
       descriptionTitle: "에어컨 청소 지옥에서 탈출하는 가장 쉬운 방법은?",
       description:
-        `"사설 업체를 부를까?", "내가 직접 뜯어서 닦을까?" 매년 여름 반복되는 리얼한 에어컨 청소 고민! LG전자 에어컨 구독의 라이트 플러스 전문 케어 서비스(분해세척/UV&피톤치드 케어)로 시원하게 해결해드립니다.`,
+        `"사설 업체를 부를까?", "내가 직접 뜯어서 닦을까?" 매년 여름 반복되는 리얼한 에어컨 청소 고민! LG전자 에어컨 구독의 라이트 플러스 전문 케어 서비스(분해세척/UV&피톤치드 케어)로 시원하게 해결해드려요.`,
 
       highlights: ["분해세척", "UV케어", "피톤치드케어", "2명 중 1명꼴로 구독"],
       disclaimers: [
@@ -1173,7 +1173,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
       description:
-        "최신 NVIDIA RTX 4090 그래픽카드와 인텔 13세대 프로세서로 AAA 게임을 최고 옵션에서 플레이할 수 있습니다. 레이트레이싱과 DLSS 3.0을 지원합니다.",
+        "최신 NVIDIA RTX 4090 그래픽카드와 인텔 13세대 프로세서로 AAA 게임을 최고 옵션에서 플레이할 수 있어요. 레이트레이싱과 DLSS 3.0을 지원해요.",
       highlights: ["RTX 4090 GPU", "인텔 i9-13900K", "DDR5 32GB RAM", "레이트레이싱 지원"],
     },
     {
@@ -1184,7 +1184,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "image",
       mediaUrl: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=1200&h=800&fit=crop",
       description:
-        "수냉식 쿨러와 RGB 팬으로 강력한 냉각 성능과 화려한 비주얼을 동시에 제공합니다. 소프트웨어로 다양한 라이팅 효과를 설정할 수 있습니다.",
+        "수냉식 쿨러와 RGB 팬으로 강력한 냉각 성능과 화려한 비주얼을 동시에 제공해요. 소프트웨어로 다양한 라이팅 효과를 설정할 수 있어요.",
       highlights: ["360mm 수냉 쿨러", "RGB 팬 6개", "스마트 온도 제어", "커스터마이징 라이팅"],
     },
   ],
@@ -1199,7 +1199,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "image",
       mediaUrl: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&h=800&fit=crop",
       description:
-        "넓은 내부 공간으로 가족 식사 후 많은 식기를 한 번에 세척할 수 있습니다. 다양한 랙 구성으로 효율적인 공간 활용이 가능합니다.",
+        "넓은 내부 공간으로 가족 식사 후 많은 식기를 한 번에 세척할 수 있어요. 다양한 랙 구성으로 효율적인 공간 활용이 가능해요.",
       highlights: ["15인용 대용량", "3단 랙 시스템", "높이 조절 가능", "다양한 식기 수납"],
     },
     {
@@ -1210,7 +1210,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
       description:
-        "4방향 회전 노즐이 구석구석 강력하게 세척합니다. 찌든 때도 깨끗하게 제거하여 손세척보다 더 위생적입니다.",
+        "4방향 회전 노즐이 구석구석 강력하게 세척해요. 찌든 때도 깨끗하게 제거하여 손세척보다 더 위생적이에요.",
       highlights: ["4방향 회전 분사", "고압 세척", "99.9% 살균", "에너지 절약"],
     },
   ],
