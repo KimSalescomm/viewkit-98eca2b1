@@ -326,7 +326,7 @@ const ProductSelection = () => {
                     <h3 className={`text-xl sm:text-2xl font-extrabold tracking-tight leading-tight ${isEnabled ? "text-gray-900" : "text-gray-400"}`}>
                       {product.name}
                     </h3>
-                    <p className={`text-sm sm:text-[15px] leading-relaxed font-medium ${isEnabled ? "text-gray-500" : "text-gray-300"}`}>
+                    <p className={`text-sm sm:text-[15px] leading-relaxed font-medium whitespace-pre-line ${isEnabled ? "text-gray-500" : "text-gray-300"}`}>
                       {product.description}
                     </p>
                   </div>
