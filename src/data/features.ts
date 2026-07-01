@@ -1097,7 +1097,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "7",
-      title: "우리집 청소 책임지는 청소 로봇\n청소 로봇의 청소는 구독으로",
+      title: "청소로봇 관리, 구독으로 더 편하게 할 수 있을까요?",
       subtitle:
         "무상 A/S는 기본, 케어 전문가가 정기 방문해\n청소로봇 위생과 성능을 관리해드려요.",
       icon: "Wrench",
