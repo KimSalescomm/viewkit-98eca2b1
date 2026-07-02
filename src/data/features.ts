@@ -1050,7 +1050,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "8",
       title: "위생 케어, 손 안 대고도 깨끗할까요?",
-      subtitle: "물걸레 냄새와 빨래 번거로움 없이 100℃ 스팀 살균과 온풍 건조로 언제나 청결한 위생 케어 솔루션을 경험해보세요.",
+      subtitle: "빨래 냄새와 빨래 번거로움 없이 100℃ 스팀 살균과 온풍 건조로\n더 위생적인 케어 솔루션을 경험해보세요.",
       icon: "Sparkles",
       tag: "위생&케어 솔루션",
       mediaType: "image",
@@ -1090,7 +1090,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "5",
       title: "보안, 정말 안심해도 될까요?",
-      subtitle: "보안 인증부터 개인정보, 물리적 보안까지 빈틈없이 지켜주는 체계적인 보안 시스템을 알아보세요.",
+      subtitle: "보안 인증부터 개인정보, 물리적 보안까지\n안심을 더해주는 체계적인 보안 시스템을 알아보세요.",
       icon: "Shield",
       tag: "체계적인 보안 솔루션",
       mediaType: "image",
