@@ -1168,6 +1168,21 @@ export const featuresMap: Record<string, Feature[]> = {
         },
       ],
     },
+    {
+      id: "9",
+      title: "사전 구매하면 어떤 혜택이 있을까요?",
+      subtitle: "한정 기간 사전 구매 고객에게만 제공하는\n특별 혜택을 지금 확인해 보세요.",
+      icon: "Gift",
+      tag: "사전 구매 특별 혜택",
+      mediaType: "image",
+      mediaUrl: "https://www.lge.co.kr/kr/event/2026/05/08_ai_hom_bot_roni/resources/section02.png",
+      description: "청소로봇 사전 구매 고객에게만 준비된 특별 혜택을 확인해 보세요. 한정 수량과 기간 동안 제공되는 추가 서비스 및 사은품으로 더욱 가치 있는 구매 경험을 만들어드려요.",
+      highlights: [
+        "한정 기간 사전 구매 혜택",
+        "특별 사은품 및 추가 서비스",
+        "놓치면 아쉬운 기회",
+      ],
+    },
   ],
 
   // PC 특장점
@@ -1256,6 +1271,7 @@ export const featureIconNames: Record<string, string> = {
   ShieldCheck: "ShieldCheck",
   Navigation: "Navigation",
   Square: "EyeOff",
+  Gift: "Gift",
 };
 
 // Keep legacy export for backwards compat (unused but safe)

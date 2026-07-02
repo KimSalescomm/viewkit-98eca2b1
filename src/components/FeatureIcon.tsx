@@ -6,6 +6,7 @@ import {
   EyeOff,
   Flame,
   Gamepad2,
+  Gift,
   Globe,
   Image,
   Maximize2,
@@ -60,6 +61,7 @@ const featureIcons: Record<string, LucideIcon> = {
   Globe,
   Shield,
   ShieldCheck,
+  Gift,
 };
 
 interface FeatureIconProps extends Omit<LucideProps, "ref"> {
