@@ -1112,7 +1112,7 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
       description:
         "글로벌 보안 인증을 획득한 LG 청소로봇은 개인정보 보호와 물리적 보안까지 갖춰 통신·저장·접근·보관 전 단계에서 빈틈없이 안전을 지켜줘요.",
-      highlights: ["LG Shield 보안 리스크 관리", "PbD 개인정보 보호 인증", "데이터 통신·저장 안전", "매일 안심 사용"],
+      highlights: [],
     },
     {
       id: "7",
