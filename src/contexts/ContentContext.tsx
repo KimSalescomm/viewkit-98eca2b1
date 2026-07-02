@@ -39,7 +39,7 @@ const STATIC_PAYLOAD: ContentPayload = {
 const CACHE_KEY = "viewkit_content_snapshot_v1";
 
 const applyDraftOverrides = (payload: ContentPayload): ContentPayload => {
-  const draftVacuumOverrideIds = new Set(["1", "9"]);
+  const draftVacuumOverrideIds = new Set(["1", "5", "9"]);
   const draftVacuumOverrides = new Map(
     (staticFeaturesMap.vacuum ?? [])
       .filter((feature) => draftVacuumOverrideIds.has(feature.id))
