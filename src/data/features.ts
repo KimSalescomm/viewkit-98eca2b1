@@ -1062,7 +1062,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "100℃ 살균 스팀",
           description:
-            "물걸레를 매번 관리하는 번거로움에서 완전히 벗어나 보세요.\n\n맞춤 냉온수 세척과 100℃ 살균 스팀으로 찌든 때를 싹 빼줄 뿐만 아니라, 청소 후에는 약 40℃ 온풍 건조 기술로 눈에 보이지 않는 유해균까지 99.99% 남김없이 걷어내 주니까요.\n\n손대지 않고도 사계절 내내 처음처럼 깨끗하고 쾌적한 컨디션을 완성해요.",
+            "물걸레를 매번 관리하는 번거로움에서 완전히 벗어나 보세요.\n맞춤 냉온수 세척과 100℃ 살균 스팀으로 찌든 때를 싹 빼줄 뿐만 아니라, 청소 후에는 약 40℃ 온풍 건조 기술로 눈에 보이지 않는 유해균까지 99.99% 남김없이 걷어내 주니까요.\n손대지 않고도 사계절 내내 처음처럼 깨끗하고 쾌적한 컨디션을 완성해요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_12_mop_solution_pc.mp4",
           highlights: [
