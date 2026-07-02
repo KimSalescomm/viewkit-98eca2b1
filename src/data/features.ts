@@ -845,7 +845,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "2",
       title: "흡입력, 어디까지 강해질까요?",
-      subtitle: "최대 30W 강력한 흡입력과 엉킴 방지 브러시로 머리카락 걱정 없는 강력하고 편리한 흡입 청소를 만나보세요.",
+      subtitle: "최대 30W 강력한 흡입력과 엉킴 방지 브러시로 머리카락 걱정 없는\n강력하고 편리한 흡입 청소를 만나보세요.",
       icon: "Zap",
       tag: "흡입 청소",
       mediaType: "video",
@@ -925,7 +925,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "4",
       title: "우리 집 구조에 맞춘 스마트한 청소, 가능할까요?",
-      subtitle: "복잡한 장애물은 알아서 피하고, 놓친 공간까지 스스로 찾아 완성하는 AI 맞춤 청소를 경험해보세요.",
+      subtitle: "복잡한 장애물은 알아서 피하고, 놓친 공간까지\n스스로 찾아 완성하는 AI 맞춤 청소를 경험해보세요.",
       icon: "Navigation",
       tag: "AI 맞춤 청소",
       mediaType: "video",
