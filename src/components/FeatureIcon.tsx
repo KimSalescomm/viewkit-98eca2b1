@@ -6,6 +6,7 @@ import {
   EyeOff,
   Flame,
   Gamepad2,
+  Gift,
   Globe,
   Image,
   Maximize2,
