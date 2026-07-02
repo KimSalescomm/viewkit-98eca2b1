@@ -1139,10 +1139,7 @@ export const featuresMap: Record<string, Feature[]> = {
             "물때와 세균 발생이 쉬운 급·배수통, 필터, 회전솔을 스팀으로 꼼꼼히 세척하고\n전용 관리키로 스테이션 내부 오수관을 세척해요.",
           mediaType: "image",
           mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
-          highlights: [
-            "급·배수통·필터·회전솔 스팀 세척",
-            "스테이션 내부 오수관 세척",
-          ],
+          highlights: [],
         },
         {
           label: "성능 관리",
@@ -1150,10 +1147,7 @@ export const featuresMap: Record<string, Feature[]> = {
             "먼지와 이물질이 쌓일 수 있는 흡입구와 먼지통, 회전솔 등을 꼼꼼히 관리하여\n청소 성능을 유지할 수 있도록 도와줘요.",
           mediaType: "image",
           mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/792fb934-9d72-442d-8433-c950ecc722ec/vacuum-subscription-service-02.jpg",
-          highlights: [
-            "흡입구·먼지통·회전솔 관리",
-            "무상 A/S 및 소모품 교체",
-          ],
+          highlights: [],
         },
         {
           label: "무상 A/S 및 소모품 교체",
@@ -1161,10 +1155,7 @@ export const featuresMap: Record<string, Feature[]> = {
             "계약기간 내내 무상 A/S 제공은 기본,\n소모품 정기 교체로 관리의 번거로움을 줄여줘요.",
           mediaType: "image",
           mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/04011284-51c7-43a5-83c5-2ad70db02be6/vacuum-subscription-service-03.jpg",
-          highlights: [
-            "무상 A/S 및 소모품 교체",
-            "흡입구·먼지통·회전솔 관리",
-          ],
+          highlights: [],
         },
       ],
     },
