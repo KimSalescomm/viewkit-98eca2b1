@@ -1138,7 +1138,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "위생 케어",
           description:
-            "물때와 세균 발생이 쉬운 급·배수통, 필터, 회전솔을 스팀으로 꼼꼼히 세척하고\n전용 관리제로 스테이션 내부 오수관을 세척해요.",
+            "물때와 세균 걱정 없이 급수통, 배수통, 필터, 회전솔을 스팀으로 깨끗하게 세척하고,\n전용 관리제로 스테이션 내부 오수관까지 위생적으로 관리해 드려요.",
           mediaType: "image",
           mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
           highlights: [],
