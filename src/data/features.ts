@@ -875,7 +875,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "엣지 확장 브러시",
           description:
-            "엣지 확장 브러시로 청소 사각지대인 벽면 가장자리까지 밀착해 구석구석 꼼꼼하게 청소해요.",
+            "엣지 확장 브러시가 벽면 가장자리 같은 사각지대까지 밀착하여 구석구석 깨끗하게 청소해 드려요.",
           highlights: [
             "엣지 확장 브러시",
             "벽면 가장자리 밀착 청소",
