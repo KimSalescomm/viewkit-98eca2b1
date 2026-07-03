@@ -867,7 +867,7 @@ export const featuresMap: Record<string, Feature[]> = {
             "30W 강력 흡입력",
             "고성능 모터",
             "무거운 이물질 흡입",
-            "바닥 먼지 완전 제거",
+            "바닥 먼지 강력 제거",
           ],
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
