@@ -1075,14 +1075,13 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "스테이션 컨디셔닝",
           description:
-            "계약기간 내 무상 A/S는 기본, 알아서 챙겨주는 소모품 정기 교체 서비스로 번거로운 신경을 쓸 필요가 없으니까요. 게다가 전문가의 세심한 케어가 더해져 매일 더 완벽하고 차별화된 안심 구독 서비스를 완성해요.",
+            "히든스테이션 상부의 배기 팬이 제품 내부의 습증기를 외부로 배출하여,\n스테이션 내부를 따로 관리할 필요 없이 편리하게 사용할 수 있어요.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
           highlights: [
-            "계약기간 내내 무상 A/S",
-            "소모품 정기 교체 서비스",
-            "전문가의 세심한 케어",
-            "안심 구독 서비스",
+            "히든스테이션 상부 배기 팬",
+            "내부 습증기 외부 배출",
+            "히든 스테이션 내부 관리 부담 감소",
           ],
         },
       ],
