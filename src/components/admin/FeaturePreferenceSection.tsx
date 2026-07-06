@@ -23,6 +23,7 @@ interface AggregatedRow {
   featureTitle: string;
   total: number;
   uniqueStores: number;
+  storeNames: string[];
   lastAt: string;
 }
 
