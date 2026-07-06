@@ -254,7 +254,7 @@ const FeaturePreferenceSection = () => {
                 <th className="py-2 pr-4 font-medium">제품</th>
                 <th className="py-2 pr-4 font-medium">특장점</th>
                 <th className="py-2 pr-4 font-medium text-right">관심 수</th>
-                <th className="py-2 pr-4 font-medium text-right">매장 수</th>
+                <th className="py-2 pr-4 font-medium">매장</th>
                 <th className="py-2 pr-2 font-medium text-right">최근 반응</th>
               </tr>
             </thead>
