@@ -982,7 +982,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "히든스테이션",
           description:
-            "약 15cm 초슬림 히든스테이션은 주방의 숨겨진 공간을 가치 있는 공간으로 바꿉니다.\n별도 전용 수납장을 마련할 필요 없이 싱크대 하단 걸레받이에 설치 가능해 기존 수납 공간도 그대로 활용할 수 있습니다.",
+            "약 15cm 초슬림 히든스테이션은 주방의 숨겨진 공간을 가치 있는 공간으로 바꿉니다.\n별도 전용 수납장을 마련할 필요 없이 싱크대 하단 걸레받이에 설치 가능해\n기존 수납 공간도 그대로 활용할 수 있습니다.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
           highlights: [
