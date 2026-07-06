@@ -1146,7 +1146,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "성능 관리",
           description:
-            "먼지와 이물질이 쌓일 수 있는 흡입구와 먼지통, 회전솔 등을 꼼꼼히 관리하여\n청소 성능을 유지할 수 있도록 도와줍니다.",
+            "청소 성능을 유지할 수 있도록 도와줍니다.\n먼지와 이물질이 쌓일 수 있는 흡입구와 먼지통, 회전솔 등을 꼼꼼히 관리합니다.",
           mediaType: "image",
           mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/792fb934-9d72-442d-8433-c950ecc722ec/vacuum-subscription-service-02.jpg",
           highlights: [],
