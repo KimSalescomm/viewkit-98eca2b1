@@ -23,6 +23,7 @@ interface AggregatedRow {
   featureTitle: string;
   total: number;
   uniqueStores: number;
+  storeNames: string[];
   lastAt: string;
 }
 
@@ -102,13 +103,14 @@ const FeaturePreferenceSection = () => {
   }, [rows]);
 
   const aggregated: AggregatedRow[] = useMemo(() => {
-    const map = new Map<string, AggregatedRow & { storeSet: Set<string> }>();
+    const map = new Map<string, AggregatedRow & { storeSet: Map<string, string> }>();
     filtered.forEach((r) => {
       const key = `${r.product_id}::${r.feature_id}`;
+      const storeLabel = r.store_name || r.store_slug;
       const cur = map.get(key);
       if (cur) {
         cur.total += 1;
-        cur.storeSet.add(r.store_slug);
+        cur.storeSet.set(r.store_slug, storeLabel);
         if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
         if (r.feature_title && !cur.featureTitle) cur.featureTitle = r.feature_title;
       } else {
@@ -119,7 +121,8 @@ const FeaturePreferenceSection = () => {
           featureTitle: r.feature_title || r.feature_id,
           total: 1,
           uniqueStores: 0,
-          storeSet: new Set([r.store_slug]),
+          storeNames: [],
+          storeSet: new Map([[r.store_slug, storeLabel]]),
           lastAt: r.created_at,
         });
       }
@@ -132,6 +135,7 @@ const FeaturePreferenceSection = () => {
         featureTitle: v.featureTitle,
         total: v.total,
         uniqueStores: v.storeSet.size,
+        storeNames: [...v.storeSet.values()].sort((a, b) => a.localeCompare(b, "ko")),
         lastAt: v.lastAt,
       }))
       .sort((a, b) => b.total - a.total);
@@ -143,7 +147,7 @@ const FeaturePreferenceSection = () => {
   }, [filtered, aggregated]);
 
   const handleExport = () => {
-    const header = ["순위", "제품", "특장점", "관심 수", "매장 수", "최근 반응"];
+    const header = ["순위", "제품", "특장점", "관심 수", "매장 수", "매장", "최근 반응"];
     const lines = [
       header.map(esc).join(","),
       ...aggregated.map((r, i) =>
@@ -153,6 +157,7 @@ const FeaturePreferenceSection = () => {
           r.featureTitle,
           r.total,
           r.uniqueStores,
+          r.storeNames.join(", "),
           format(new Date(r.lastAt), "yyyy-MM-dd HH:mm", { locale: ko }),
         ]
           .map(esc)
@@ -249,7 +254,7 @@ const FeaturePreferenceSection = () => {
                 <th className="py-2 pr-4 font-medium">제품</th>
                 <th className="py-2 pr-4 font-medium">특장점</th>
                 <th className="py-2 pr-4 font-medium text-right">관심 수</th>
-                <th className="py-2 pr-4 font-medium text-right">매장 수</th>
+                <th className="py-2 pr-4 font-medium">매장</th>
                 <th className="py-2 pr-2 font-medium text-right">최근 반응</th>
               </tr>
             </thead>
@@ -272,7 +277,16 @@ const FeaturePreferenceSection = () => {
                       </div>
                     </td>
                     <td className="py-2.5 pr-4 text-right text-rose-500 font-semibold tabular-nums">{r.total}</td>
-                    <td className="py-2.5 pr-4 text-right text-slate-600 tabular-nums">{r.uniqueStores}</td>
+                    <td className="py-2.5 pr-4 text-slate-600 text-xs">
+                      <div className="flex flex-wrap gap-1 max-w-[240px]">
+                        {r.storeNames.map((name) => (
+                          <span key={name} className="inline-flex items-center px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-600 text-[11px]">
+                            {name}
+                          </span>
+                        ))}
+                        <span className="text-slate-400 text-[11px] ml-1">({r.uniqueStores})</span>
+                      </div>
+                    </td>
                     <td className="py-2.5 pr-2 text-right text-slate-400 text-xs tabular-nums">
                       {format(new Date(r.lastAt), "yyyy.MM.dd HH:mm", { locale: ko })}
                     </td>
