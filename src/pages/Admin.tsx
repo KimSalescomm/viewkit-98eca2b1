@@ -14,6 +14,7 @@ import { getSales, clearAllSales, deleteSale, deleteSalesByIds, SaleRecord } fro
 import StoreVisitStats from "@/components/StoreVisitStats";
 import ScreensaverManager from "@/components/ScreensaverManager";
 import FeaturePreferenceSection from "@/components/admin/FeaturePreferenceSection";
+import ContentPublishCard from "@/components/ContentPublishCard";
 import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
