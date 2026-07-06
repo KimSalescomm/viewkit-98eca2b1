@@ -38,6 +38,42 @@ export type Database = {
         }
         Relationships: []
       }
+      feature_reactions: {
+        Row: {
+          created_at: string
+          feature_id: string
+          feature_title: string | null
+          id: string
+          product_id: string
+          product_name: string | null
+          session_id: string
+          store_name: string | null
+          store_slug: string
+        }
+        Insert: {
+          created_at?: string
+          feature_id: string
+          feature_title?: string | null
+          id?: string
+          product_id: string
+          product_name?: string | null
+          session_id: string
+          store_name?: string | null
+          store_slug: string
+        }
+        Update: {
+          created_at?: string
+          feature_id?: string
+          feature_title?: string | null
+          id?: string
+          product_id?: string
+          product_name?: string | null
+          session_id?: string
+          store_name?: string | null
+          store_slug?: string
+        }
+        Relationships: []
+      }
       page_views: {
         Row: {
           created_at: string

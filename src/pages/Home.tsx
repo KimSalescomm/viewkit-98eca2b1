@@ -130,6 +130,7 @@ const Home = () => {
                 colorIndex={index}
                 variant={isFitMax ? "gray" : "white"}
                 bannerImage={bannerImage}
+                showLikeHint={index === 0}
               />
             );
           })}
