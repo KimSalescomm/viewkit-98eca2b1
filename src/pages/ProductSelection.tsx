@@ -112,8 +112,9 @@ const ProductSelection = () => {
   const cardThumbnailOverrides: Record<string, { keyVisualImage?: string; secondaryKeyVisualImage?: string }> = {
     vacuum: {
       keyVisualImage: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_mo_01.jpg",
-      secondaryKeyVisualImage: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95THO_lifestyle_livingroom_mo_01.jpg",
+      secondaryKeyVisualImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_mo_01.jpg",
     },
+
   };
   const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")].map((p) => {
     const override = cardThumbnailOverrides[p.id];
