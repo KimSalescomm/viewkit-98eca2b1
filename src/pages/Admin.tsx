@@ -14,6 +14,7 @@ import { getSales, clearAllSales, deleteSale, deleteSalesByIds, SaleRecord } fro
 import StoreVisitStats from "@/components/StoreVisitStats";
 import ScreensaverManager from "@/components/ScreensaverManager";
 import FeaturePreferenceSection from "@/components/admin/FeaturePreferenceSection";
+import ContentPublishCard from "@/components/ContentPublishCard";
 import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
@@ -468,7 +469,10 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
           전체 {sales.length}건 · 필터 결과 {filtered.length}건
         </p>
 
+        <ContentPublishCard />
+
         <ScreensaverManager />
+
 
         {/* 필터 / 액션 */}
         <div className="rounded-2xl border border-slate-200 bg-white p-4 mb-6 flex flex-wrap items-end gap-3">
