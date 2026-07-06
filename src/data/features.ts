@@ -931,7 +931,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_03_sensing_ai_driving_pc.mp4",
       description:
-        "RGB 카메라와 센서가 상황과 장애물을 섬세하게 인식하고 판단하여,\n로봇청소기가 스스로 위험한 공간을 피하고 장애물이 사라지면 다시 돌아와 꼼꼼하게 청소할 수 있도록 도와줘요.",
+        "RGB 카메라와 센서 기반 다양한 상황과 장애물을 섬세하게 인식하고 똑똑하게 판단합니다.\n헤매거나 바퀨가 들려 구속되었던 공간은 '고립 위험 영역'으로 인식하고 다음 청소에는 이를 회피하여 청소합니다.\n이후 해당 영역 내 장애물이 사라지면 청소를 재개해 진화하는 청소 경험을 제공합니다.",
       highlights: ["RGB 카메라·센서로 정밀 인식", "다양한 상황·장애물 똑똑하게 판단", "고립 위험 영역 인식해 회피", "장애물 사라지면 놓친 곳까지 재청소"],
 
     },
