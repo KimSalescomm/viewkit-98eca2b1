@@ -98,7 +98,7 @@ const productAccents: Record<string, { gradient: string; tint: string; chip: str
 
 const ProductSelection = () => {
   const { products } = useContent();
-  const baseEnabledIds = ["subscription", "refrigerator", "airconditioner", "washer"];
+  const baseEnabledIds = ["subscription", "refrigerator", "airconditioner", "washer", "vacuum"];
   const subscriptionCard = {
     id: "subscription",
     name: "구독",
@@ -253,7 +253,7 @@ const ProductSelection = () => {
         <h2 className="sr-only">제품 선택</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
           {visibleProducts.map((product, index) => {
-            const isEnabled = baseEnabledIds.includes(product.id) || (product.id === "vacuum" && currentStore?.slug === "SC");
+            const isEnabled = baseEnabledIds.includes(product.id);
 
             const accent = productAccents[product.id] || {
               gradient: "from-gray-300 to-gray-400",
