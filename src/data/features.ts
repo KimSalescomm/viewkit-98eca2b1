@@ -862,12 +862,12 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "강력한 30W 흡입력",
           description:
-            "바닥 먼지를 깨끗하게 걷어내고 싶을 때 강력한 흡입력으로 해결해 드려요.\n고성능 모터가 만들어내는 최대 30W의 흡입력으로 무거운 이물질까지 시원하게 빨아들여 깨끗한 바닥을 유지할 수 있어요.",
+            "로니는 강력한 모터로 최대 30W의 흡입력을 제공합니다.\n머리카락 엉킴을 줄여주는 듀얼 엉킴 방지 브러시로 청소 효율을 높이고\n에지(Edge) 확장 사이드 브러시와 물걸레로 구석과 벽면까지 밀착 청소합니다.",
           highlights: [
             "30W 강력 흡입력",
             "고성능 모터",
             "무거운 이물질 흡입",
-            "바닥 먼지 강력 제거",
+            "바닥 먼지 완전 제거",
           ],
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
