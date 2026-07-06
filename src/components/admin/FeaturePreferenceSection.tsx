@@ -277,7 +277,16 @@ const FeaturePreferenceSection = () => {
                       </div>
                     </td>
                     <td className="py-2.5 pr-4 text-right text-rose-500 font-semibold tabular-nums">{r.total}</td>
-                    <td className="py-2.5 pr-4 text-right text-slate-600 tabular-nums">{r.uniqueStores}</td>
+                    <td className="py-2.5 pr-4 text-slate-600 text-xs">
+                      <div className="flex flex-wrap gap-1 max-w-[240px]">
+                        {r.storeNames.map((name) => (
+                          <span key={name} className="inline-flex items-center px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-600 text-[11px]">
+                            {name}
+                          </span>
+                        ))}
+                        <span className="text-slate-400 text-[11px] ml-1">({r.uniqueStores})</span>
+                      </div>
+                    </td>
                     <td className="py-2.5 pr-2 text-right text-slate-400 text-xs tabular-nums">
                       {format(new Date(r.lastAt), "yyyy.MM.dd HH:mm", { locale: ko })}
                     </td>
