@@ -78,7 +78,7 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
   const store = typeof window !== "undefined" ? getCurrentStore() : null;
   const isAdmin = isAdminStore(store?.slug);
 
-  // SC(관리자): 항상 전체 제품 노출
+  // SC(관리자): 항상 전체 제품 노출 (구독 가상 카드 포함)
   const [state, setState] = useState<{
     visibleProductIds: string[];
     source: ContentContextValue["source"];
@@ -87,7 +87,9 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
   }>(() => {
     if (isAdmin) {
       return {
-        visibleProductIds: staticProducts.map((p) => p.id),
+        visibleProductIds: Array.from(
+          new Set([...DEFAULT_VISIBLE_PRODUCT_IDS, ...staticProducts.map((p) => p.id)]),
+        ),
         source: "draft",
         publishedAt: null,
         ready: true,
@@ -211,7 +213,9 @@ export const useContent = (): ContentContextValue => {
   const ctx = useContext(ContentContext);
   if (!ctx) {
     return buildValue(
-      staticProducts.map((p) => p.id),
+      Array.from(
+        new Set([...DEFAULT_VISIBLE_PRODUCT_IDS, ...staticProducts.map((p) => p.id)]),
+      ),
       "draft",
       null,
       true,
