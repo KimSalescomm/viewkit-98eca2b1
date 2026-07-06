@@ -1109,7 +1109,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "물리적 보안",
           description:
-            "우리 집 내부를 비추던 카메라의 시선을 차단할 수 있어요.\n청소를 마치면 자동 도어 닫힘 기능이 렌즈 노출 걱정을 덜어줘요.",
+            "청소 후에는 자동 도어 닫힘 기능으로 카메라 노출 걱정까지 줄여\n더욱 안심할 수 있습니다.",
           mediaType: "image",
           mediaUrl: "/__l5e/assets-v1/87dc63ce-7648-4fbf-9550-379990c2c0db/vacuum-physical-security-right-v2.png",
         },
