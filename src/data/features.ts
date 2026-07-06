@@ -1169,7 +1169,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "사전 구매 특별 혜택",
       mediaType: "image",
       mediaUrl: "/images/vacuum-preorder-benefits.png?v=20260703b",
-      description: "사전 구매 고객님께만 드리는 특별한 혜택을 지금 바로 확인해 보세요. 한정 수량과 기간 동안 제공되는 추가 서비스와 사은품으로 더욱 만족스러운 구매 경험을 선사해 드립니다.",
+      description: "사전 구매 고객님께만 드리는 특별한 혜택을 지금 바로 확인해 보세요.\n한정 수량과 기간 동안 제공되는 추가 서비스와 사은품으로 더욱 만족스러운 구매 경험을 선사해 드립니다.",
       highlights: [],
     },
   ],
