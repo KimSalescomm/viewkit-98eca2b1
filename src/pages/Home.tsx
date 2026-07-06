@@ -79,13 +79,15 @@ const Home = () => {
                     className={`w-full ${
                       productId === "airconditioner"
                         ? "h-auto object-contain"
+                        : productId === "vacuum"
+                        ? "h-auto aspect-[138/67] object-cover object-center"
                         : "h-[220px] sm:h-[480px] object-cover"
                     } ${
                       productId === "tv" && isFirst
                         ? "scale-[1.15] object-[65%_55%] -translate-y-[20px]"
                         : productId === "washer" && isFirst
                         ? "object-[55%_center]"
-                        : productId === "airconditioner"
+                        : productId === "airconditioner" || productId === "vacuum"
                         ? ""
                         : "object-center"
                     }`}
