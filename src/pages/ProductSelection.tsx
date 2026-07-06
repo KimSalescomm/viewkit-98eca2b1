@@ -108,8 +108,19 @@ const ProductSelection = () => {
     icon: "Waves",
   } as (typeof products)[number];
   const desiredOrder = ["subscription", "refrigerator", "airconditioner", "washer", "styler", "vacuum", "tv", "cooking"];
-  const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")];
+  // 제품 카드(홈) 전용 썸네일 오버라이드 — 다른 페이지의 키비주얼은 유지
+  const cardThumbnailOverrides: Record<string, { keyVisualImage?: string; secondaryKeyVisualImage?: string }> = {
+    vacuum: {
+      keyVisualImage: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_mo_01.jpg",
+      secondaryKeyVisualImage: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95THO_lifestyle_livingroom_mo_01.jpg",
+    },
+  };
+  const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")].map((p) => {
+    const override = cardThumbnailOverrides[p.id];
+    return override ? { ...p, ...override } : p;
+  });
   const visibleProducts = desiredOrder.map((id) => allProducts.find((p) => p.id === id)).filter(Boolean) as (typeof allProducts);
+
   const { trackProductClick } = useAnalyticsContext();
   const navigate = useNavigate();
   const location = useLocation();
