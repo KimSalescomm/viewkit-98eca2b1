@@ -103,13 +103,14 @@ const FeaturePreferenceSection = () => {
   }, [rows]);
 
   const aggregated: AggregatedRow[] = useMemo(() => {
-    const map = new Map<string, AggregatedRow & { storeSet: Set<string> }>();
+    const map = new Map<string, AggregatedRow & { storeSet: Map<string, string> }>();
     filtered.forEach((r) => {
       const key = `${r.product_id}::${r.feature_id}`;
+      const storeLabel = r.store_name || r.store_slug;
       const cur = map.get(key);
       if (cur) {
         cur.total += 1;
-        cur.storeSet.add(r.store_slug);
+        cur.storeSet.set(r.store_slug, storeLabel);
         if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
         if (r.feature_title && !cur.featureTitle) cur.featureTitle = r.feature_title;
       } else {
@@ -120,7 +121,8 @@ const FeaturePreferenceSection = () => {
           featureTitle: r.feature_title || r.feature_id,
           total: 1,
           uniqueStores: 0,
-          storeSet: new Set([r.store_slug]),
+          storeNames: [],
+          storeSet: new Map([[r.store_slug, storeLabel]]),
           lastAt: r.created_at,
         });
       }
@@ -133,6 +135,7 @@ const FeaturePreferenceSection = () => {
         featureTitle: v.featureTitle,
         total: v.total,
         uniqueStores: v.storeSet.size,
+        storeNames: [...v.storeSet.values()].sort((a, b) => a.localeCompare(b, "ko")),
         lastAt: v.lastAt,
       }))
       .sort((a, b) => b.total - a.total);
