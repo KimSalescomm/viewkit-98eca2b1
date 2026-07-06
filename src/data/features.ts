@@ -1080,7 +1080,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "스테이션 컨디셔닝",
           description:
-            "히든스테이션 상부의 배기 팬이 제품 내부의 습증기를 외부로 배출하여,\n스테이션 내부를 따로 관리할 필요 없이 편리하게 사용할 수 있어요.",
+            "히든스테이션 상부의 배기 팬이 제품 내부에서 발생할 수 있는 습증기를 외부로 배출해 스테이션 내부 관리에 대한 걱정과 부담을 덜어줍니다.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
           highlights: [
