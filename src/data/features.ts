@@ -1066,7 +1066,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "100℃ 살균 스팀",
           description:
-            "물걸레를 매번 관리하는 번거로움에서 벗어나 보세요.\n냉온수 세척부터 100℃ 살균 스팀까지, 물걸레를 맞춤 세척해 드려요.\n세척이 끝난 후에는 약 40℃ 온풍으로 건조해 물걸레 속 유해균을 효과적으로 제거해요.",
+            "로니는 냉온수 세척부터 100℃ 살균 스팀까지 맞춤 세척 솔루션이 끝난 후에는 약 40~60℃ 온풍으로 물걸레를 건조시켜 물걸레 속 유해균을 99.99% 제거합니다.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_12_mop_solution_pc.mp4",
           highlights: [
