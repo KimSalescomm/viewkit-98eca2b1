@@ -28,8 +28,9 @@ export const products: Product[] = [
     name: "청소로봇",
     title: "청소로봇",
     description: "세계최초 100℃ 투웨이 스팀 청소로봇.",
-    keyVisualImage: vacuumKeyVisual,
-    secondaryKeyVisualImage: vacuumKeyVisualKitchen,
+    // 상세 페이지(/product/vacuum) 전용 PC 가로형 이미지 — 제품 리스트(/) 썸네일과는 별도 관리
+    keyVisualImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg",
+    secondaryKeyVisualImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
     icon: "Sparkles",
 
 
