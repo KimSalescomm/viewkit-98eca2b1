@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import FeatureIcon from "@/components/FeatureIcon";
-import SafeImage from "@/components/SafeImage";
+import FeatureLikeButton from "@/components/FeatureLikeButton";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 
 const cardColors = [
@@ -25,24 +25,49 @@ interface FeatureCardProps {
   colorIndex?: number;
   variant?: "white" | "gray";
   bannerImage?: string;
+  showLikeHint?: boolean;
 }
 
-const FeatureCard = ({ id, title, subtitle, icon, productId, productName, tag, colorIndex = 0, variant = "white", bannerImage }: FeatureCardProps) => {
+const FeatureCard = ({
+  id,
+  title,
+  subtitle,
+  icon,
+  productId,
+  productName,
+  tag,
+  colorIndex = 0,
+  variant = "white",
+  bannerImage,
+  showLikeHint = false,
+}: FeatureCardProps) => {
   const color = cardColors[colorIndex % cardColors.length];
   const bgClass = variant === "gray" ? "bg-gray-50 border-gray-200" : "bg-white border-gray-100";
   const { trackFeatureClick } = useAnalyticsContext();
+
+  const likeButton = (variantMode: "mobile" | "desktop", extraClass?: string) => (
+    <FeatureLikeButton
+      productId={productId}
+      productName={productName}
+      featureId={id}
+      featureTitle={title}
+      variant={variantMode}
+      showHint={showLikeHint}
+      className={extraClass}
+    />
+  );
 
   return (
     <Link
       to={`/product/${productId}/feature/${id}`}
       onClick={() => trackFeatureClick(productName || productId, title)}
-      className={`block ${bgClass} border shadow-md hover:shadow-xl transition-all duration-300
+      className={`relative block ${bgClass} border shadow-md hover:shadow-xl transition-all duration-300
         rounded-2xl
         sm:p-6 sm:text-center sm:hover:scale-[1.03]
         max-sm:px-4 max-sm:py-3.5 max-sm:active:scale-[0.99]`}
     >
       {/* Mobile layout: horizontal list with icon */}
-      <div className="sm:hidden flex items-center gap-3.5">
+      <div className="sm:hidden flex items-center gap-3">
         <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${color.gradient} flex items-center justify-center flex-shrink-0 shadow-sm`}>
           <FeatureIcon iconKey={icon} className="text-white w-6 h-6" />
         </div>
@@ -59,11 +84,17 @@ const FeatureCard = ({ id, title, subtitle, icon, productId, productName, tag, c
             {subtitle}
           </p>
         </div>
-        <span className="text-gray-300 text-xl flex-shrink-0">›</span>
+        <div className="flex items-center gap-1 flex-shrink-0">
+          {likeButton("mobile")}
+          <span className="text-gray-300 text-xl">›</span>
+        </div>
       </div>
 
-      {/* Desktop / tablet layout: original square card */}
+      {/* Desktop / tablet layout: square card */}
       <div className="hidden sm:block">
+        <div className="absolute top-4 right-4 z-10">
+          {likeButton("desktop")}
+        </div>
         <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br ${color.gradient} flex items-center justify-center mx-auto mb-3 sm:mb-4`}>
           <FeatureIcon iconKey={icon} className="text-white w-6 h-6 sm:w-8 sm:h-8" />
         </div>
