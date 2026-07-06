@@ -15,9 +15,17 @@ import { supabase } from "@/integrations/supabase/client";
 import { getCurrentStore } from "@/utils/storeId";
 import { isAdminStore } from "@/data/branches";
 
-export interface ContentPayload {
-  featuresMap: Record<string, Feature[]>;
-  products: Product[];
+// 스냅샷이 없거나 실패했을 때 지점 계정에서 활성화할 기본 제품 목록
+export const DEFAULT_VISIBLE_PRODUCT_IDS = [
+  "subscription",
+  "vacuum",
+  "refrigerator",
+  "airconditioner",
+  "washer",
+];
+
+export interface VisibilityPayload {
+  visibleProductIds: string[];
 }
 
 interface ContentContextValue {
@@ -26,91 +34,76 @@ interface ContentContextValue {
   getProductById: (id: string) => Product | undefined;
   getFeaturesByProductId: (productId: string) => Feature[];
   getFeatureById: (productId: string, featureId: string) => Feature | undefined;
+  /** 지점 계정에서 활성화(강조·클릭 가능) 노출할 제품 id 집합. SC는 전체. */
+  visibleProductIds: string[];
   source: "draft" | "published" | "fallback";
   publishedAt: string | null;
   ready: boolean;
 }
 
-const STATIC_PAYLOAD: ContentPayload = {
-  featuresMap: staticFeaturesMap,
-  products: staticProducts,
-};
-
-const CACHE_KEY = "viewkit_content_snapshot_v1";
-
-const applyDraftOverrides = (payload: ContentPayload): ContentPayload => {
-  const draftVacuumOverrideIds = new Set(["1", "5", "9"]);
-  const draftVacuumOverrides = new Map(
-    (staticFeaturesMap.vacuum ?? [])
-      .filter((feature) => draftVacuumOverrideIds.has(feature.id))
-      .map((feature) => [feature.id, feature]),
-  );
-
-  if (draftVacuumOverrides.size === 0) return payload;
-
-  return {
-    ...payload,
-    featuresMap: {
-      ...payload.featuresMap,
-      vacuum: (payload.featuresMap.vacuum ?? []).map((feature) =>
-        draftVacuumOverrides.get(feature.id) ?? feature,
-      ),
-    },
-  };
-};
+const CACHE_KEY = "viewkit_visibility_snapshot_v1";
 
 const ContentContext = createContext<ContentContextValue | null>(null);
 
 const buildValue = (
-  payload: ContentPayload,
+  visibleProductIds: string[],
   source: ContentContextValue["source"],
   publishedAt: string | null,
   ready: boolean,
 ): ContentContextValue => ({
-  featuresMap: applyDraftOverrides(payload).featuresMap,
-  products: applyDraftOverrides(payload).products,
-  getProductById: (id) => applyDraftOverrides(payload).products.find((p) => p.id === id),
+  featuresMap: staticFeaturesMap,
+  products: staticProducts,
+  getProductById: (id) => staticProducts.find((p) => p.id === id),
   getFeaturesByProductId: (productId) =>
-    (applyDraftOverrides(payload).featuresMap[productId] ?? []).filter((f) => !f.disabled),
+    (staticFeaturesMap[productId] ?? []).filter((f) => !f.disabled),
   getFeatureById: (productId, featureId) =>
-    (applyDraftOverrides(payload).featuresMap[productId] ?? [])
+    (staticFeaturesMap[productId] ?? [])
       .filter((f) => !f.disabled)
       .find((f) => f.id === featureId),
+  visibleProductIds,
   source,
   publishedAt,
   ready,
 });
 
+const parseVisibility = (raw: unknown): string[] | null => {
+  if (!raw || typeof raw !== "object") return null;
+  const list = (raw as { visibleProductIds?: unknown }).visibleProductIds;
+  if (!Array.isArray(list)) return null;
+  const ids = list.filter((v): v is string => typeof v === "string" && v.length > 0);
+  return ids.length > 0 ? ids : [];
+};
+
 export const ContentProvider = ({ children }: { children: ReactNode }) => {
   const store = typeof window !== "undefined" ? getCurrentStore() : null;
   const isAdmin = isAdminStore(store?.slug);
 
-  // SC: always render the draft (code-level data) — no loading state.
+  // SC(관리자): 항상 전체 제품 노출
   const [state, setState] = useState<{
-    payload: ContentPayload;
+    visibleProductIds: string[];
     source: ContentContextValue["source"];
     publishedAt: string | null;
     ready: boolean;
   }>(() => {
     if (isAdmin) {
       return {
-        payload: STATIC_PAYLOAD,
+        visibleProductIds: staticProducts.map((p) => p.id),
         source: "draft",
         publishedAt: null,
         ready: true,
       };
     }
-    // Try cached snapshot for fast first paint.
+    // 캐시된 visibility 우선 사용 → 첫 페인트 빠르게
     try {
       const raw = localStorage.getItem(CACHE_KEY);
       if (raw) {
         const cached = JSON.parse(raw) as {
-          payload: ContentPayload;
+          visibleProductIds?: string[];
           publishedAt: string | null;
         };
-        if (cached?.payload?.featuresMap && cached?.payload?.products) {
+        if (Array.isArray(cached.visibleProductIds)) {
           return {
-            payload: cached.payload,
+            visibleProductIds: cached.visibleProductIds,
             source: "published",
             publishedAt: cached.publishedAt ?? null,
             ready: true,
@@ -121,7 +114,7 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
       /* noop */
     }
     return {
-      payload: STATIC_PAYLOAD,
+      visibleProductIds: DEFAULT_VISIBLE_PRODUCT_IDS,
       source: "fallback",
       publishedAt: null,
       ready: true,
@@ -131,10 +124,8 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (isAdmin) return;
     let cancelled = false;
-    let lastSeenAt: string | null = state.publishedAt;
-    let firstLoad = true;
 
-    const fetchLatest = async (options?: { reloadOnChange?: boolean }) => {
+    const fetchLatest = async () => {
       try {
         const { data, error } = await supabase
           .from("content_snapshots")
@@ -143,14 +134,13 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
           .limit(1)
           .maybeSingle();
         if (cancelled || error || !data) return;
-        const payload = data.payload as unknown as ContentPayload;
-        if (!payload?.featuresMap || !payload?.products) return;
 
-        const changed = lastSeenAt !== data.created_at;
-        lastSeenAt = data.created_at;
+        const visible = parseVisibility(data.payload);
+        // 이전 형태(featuresMap/products) 스냅샷이면 visibility 정보가 없음 → 기본값 유지
+        if (!visible) return;
 
         setState({
-          payload,
+          visibleProductIds: visible,
           source: "published",
           publishedAt: data.created_at,
           ready: true,
@@ -158,27 +148,22 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
         try {
           localStorage.setItem(
             CACHE_KEY,
-            JSON.stringify({ payload, publishedAt: data.created_at }),
+            JSON.stringify({
+              visibleProductIds: visible,
+              publishedAt: data.created_at,
+            }),
           );
         } catch {
           /* noop */
         }
-
-        // Auto-reload general store pages once when a newer publish is detected
-        // after the first load, so퍼블리시 → 일반 지점 화면이 즉시 반영됨.
-        if (changed && !firstLoad && options?.reloadOnChange !== false) {
-          window.location.reload();
-        }
-        firstLoad = false;
       } catch {
-        /* ignore — keep current state */
+        /* ignore */
       }
     };
 
-    // Initial fetch
-    fetchLatest({ reloadOnChange: false });
+    fetchLatest();
 
-    // Realtime subscription: invalidate cache on any new snapshot insert.
+    // 실시간 구독: 스냅샷 새로 저장되면 즉시 반영 (원고가 아니므로 새로고침 불필요)
     const channel = supabase
       .channel("content_snapshots_changes")
       .on(
@@ -190,12 +175,7 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
       )
       .subscribe();
 
-    // Polling fallback in case realtime is unavailable.
-    const pollId = window.setInterval(() => {
-      fetchLatest();
-    }, 60_000);
-
-    // Re-check when the kiosk regains focus / visibility.
+    const pollId = window.setInterval(fetchLatest, 60_000);
     const onFocus = () => fetchLatest();
     const onVisibility = () => {
       if (document.visibilityState === "visible") fetchLatest();
@@ -214,7 +194,13 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
   }, [isAdmin]);
 
   const value = useMemo(
-    () => buildValue(state.payload, state.source, state.publishedAt, state.ready),
+    () =>
+      buildValue(
+        state.visibleProductIds,
+        state.source,
+        state.publishedAt,
+        state.ready,
+      ),
     [state],
   );
 
@@ -224,12 +210,16 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
 export const useContent = (): ContentContextValue => {
   const ctx = useContext(ContentContext);
   if (!ctx) {
-    // Safe fallback — used during early renders or in tests.
-    return buildValue(STATIC_PAYLOAD, "draft", null, true);
+    return buildValue(
+      staticProducts.map((p) => p.id),
+      "draft",
+      null,
+      true,
+    );
   }
   return ctx;
 };
 
-// Convenience hooks matching the legacy helper signatures.
+// 편의 훅
 export const useProducts = () => useContent().products;
 export const useFeaturesMap = () => useContent().featuresMap;

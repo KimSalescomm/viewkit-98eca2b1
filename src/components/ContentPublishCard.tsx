@@ -1,34 +1,40 @@
 import { useEffect, useMemo, useState } from "react";
-import { Rocket, CheckCircle2, AlertCircle, PackageCheck } from "lucide-react";
-import { featuresMap as draftFeaturesMap, type Feature } from "@/data/features";
-import { products as draftProducts, type Product } from "@/data/products";
+import { Eye, CheckCircle2, AlertCircle, PackageCheck } from "lucide-react";
+import { featuresMap as draftFeaturesMap } from "@/data/features";
+import { products as draftProducts } from "@/data/products";
 import { supabase } from "@/integrations/supabase/client";
+import { DEFAULT_VISIBLE_PRODUCT_IDS } from "@/contexts/ContentContext";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-interface SnapshotPayload {
-  featuresMap: Record<string, Feature[]>;
-  products: Product[];
-}
-
 // 원고가 존재하는(featuresMap에 등록된) 제품만 노출 후보로 사용
 const AUTHORED_PRODUCT_IDS = Object.keys(draftFeaturesMap);
+// "구독" 카드는 별도 제품이지만 항상 노출 후보에 포함 (features에 없음)
+const EXTRA_PRODUCT_IDS = ["subscription"];
+const PUBLISHABLE_IDS = Array.from(
+  new Set([...EXTRA_PRODUCT_IDS, ...AUTHORED_PRODUCT_IDS]),
+);
+
+const SUBSCRIPTION_ENTRY = { id: "subscription", name: "구독 케어" };
 
 const ContentPublishCard = () => {
   const [lastPublishedAt, setLastPublishedAt] = useState<string | null>(null);
-  const [lastPayload, setLastPayload] = useState<SnapshotPayload | null>(null);
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState<string>("");
   const [passcode, setPasscode] = useState<string>("");
   const [selected, setSelected] = useState<Set<string>>(
-    () => new Set(AUTHORED_PRODUCT_IDS),
+    () => new Set(DEFAULT_VISIBLE_PRODUCT_IDS),
   );
 
   const publishableProducts = useMemo(() => {
-    // 드래프트 products 순서 유지, 원고가 있는 항목만
-    return draftProducts.filter((p) => AUTHORED_PRODUCT_IDS.includes(p.id));
+    const items = PUBLISHABLE_IDS.map((id) => {
+      if (id === "subscription") return SUBSCRIPTION_ENTRY;
+      const p = draftProducts.find((dp) => dp.id === id);
+      return p ? { id: p.id, name: p.name } : null;
+    }).filter((v): v is { id: string; name: string } => Boolean(v));
+    return items;
   }, []);
 
   const fetchLatest = async () => {
@@ -39,7 +45,13 @@ const ContentPublishCard = () => {
       .limit(1)
       .maybeSingle();
     setLastPublishedAt(data?.created_at ?? null);
-    setLastPayload((data?.payload as unknown as SnapshotPayload) ?? null);
+    const raw = data?.payload as { visibleProductIds?: unknown } | null;
+    if (raw && Array.isArray(raw.visibleProductIds)) {
+      const ids = raw.visibleProductIds.filter(
+        (v): v is string => typeof v === "string",
+      );
+      if (ids.length > 0) setSelected(new Set(ids));
+    }
   };
 
   useEffect(() => {
@@ -56,46 +68,8 @@ const ContentPublishCard = () => {
     if (status === "error") setStatus("idle");
   };
 
-  const selectAll = () => setSelected(new Set(AUTHORED_PRODUCT_IDS));
+  const selectAll = () => setSelected(new Set(PUBLISHABLE_IDS));
   const clearAll = () => setSelected(new Set());
-
-  const buildMergedPayload = (): SnapshotPayload => {
-    // 기준(base): 최신 퍼블리시된 스냅샷이 있으면 그것, 없으면 드래프트 전체
-    const base: SnapshotPayload = lastPayload
-      ? {
-          featuresMap: { ...lastPayload.featuresMap },
-          products: [...lastPayload.products],
-        }
-      : {
-          featuresMap: { ...draftFeaturesMap },
-          products: [...draftProducts],
-        };
-
-    const nextFeaturesMap = { ...base.featuresMap };
-    const productMap = new Map(base.products.map((p) => [p.id, p]));
-
-    for (const id of selected) {
-      // features 최신 원고로 덮어쓰기
-      if (draftFeaturesMap[id]) {
-        nextFeaturesMap[id] = draftFeaturesMap[id];
-      }
-      // product 메타(썸네일/설명 등) 최신 원고로 덮어쓰기
-      const draftProduct = draftProducts.find((p) => p.id === id);
-      if (draftProduct) productMap.set(id, draftProduct);
-    }
-
-    // products 배열 순서는 드래프트 순서를 우선, 나머지는 base 순서로 뒤에 붙임
-    const draftOrder = draftProducts.map((p) => p.id);
-    const orderedIds = [
-      ...draftOrder.filter((id) => productMap.has(id)),
-      ...Array.from(productMap.keys()).filter((id) => !draftOrder.includes(id)),
-    ];
-    const nextProducts = orderedIds
-      .map((id) => productMap.get(id))
-      .filter((p): p is Product => Boolean(p));
-
-    return { featuresMap: nextFeaturesMap, products: nextProducts };
-  };
 
   const handlePublish = async () => {
     if (!passcode.trim()) {
@@ -103,18 +77,18 @@ const ContentPublishCard = () => {
       setMessage("관리자 패스코드를 입력해 주세요.");
       return;
     }
-    if (selected.size === 0) {
-      setStatus("error");
-      setMessage("퍼블리시할 제품을 하나 이상 선택해 주세요.");
-      return;
-    }
+    const selectedIds = publishableProducts
+      .map((p) => p.id)
+      .filter((id) => selected.has(id));
     const selectedNames = publishableProducts
       .filter((p) => selected.has(p.id))
       .map((p) => p.name)
       .join(", ");
     if (
       !confirm(
-        `선택한 제품(${selectedNames})의 최신 원고를 모든 일반 지점에 퍼블리시합니다. 진행할까요?`,
+        selectedIds.length === 0
+          ? "선택된 제품이 없습니다. 지점 계정에서 모든 제품 카드가 비활성으로 보이게 됩니다. 진행할까요?"
+          : `지점 계정에서 다음 제품 카드만 활성화합니다 — ${selectedNames}. 진행할까요?`,
       )
     )
       return;
@@ -122,13 +96,12 @@ const ContentPublishCard = () => {
     setStatus("loading");
     setMessage("");
     try {
-      const payload = buildMergedPayload();
       const { data, error } = await supabase.functions.invoke("publish-content", {
         body: {
           passcode: passcode.trim(),
-          payload,
+          visibleProductIds: selectedIds,
           published_by: "SC",
-          note: `products: ${Array.from(selected).join(",")}`,
+          note: `visibility: ${selectedIds.join(",")}`,
         },
       });
       if (error || !data?.ok) {
@@ -136,19 +109,19 @@ const ContentPublishCard = () => {
         setMessage(
           (data as { error?: string })?.error ??
             error?.message ??
-            "퍼블리시에 실패했습니다.",
+            "저장에 실패했습니다.",
         );
         return;
       }
       setStatus("success");
       setMessage(
-        `퍼블리시 완료 — ${selectedNames}. 일반 지점은 다음 새로고침부터 반영됩니다.`,
+        `노출 설정 저장 완료 — 지점 계정에 즉시 반영됩니다. (${selectedNames || "노출 없음"})`,
       );
       setPasscode("");
       await fetchLatest();
     } catch (e) {
       setStatus("error");
-      setMessage(e instanceof Error ? e.message : "퍼블리시 중 오류가 발생했습니다.");
+      setMessage(e instanceof Error ? e.message : "저장 중 오류가 발생했습니다.");
     }
   };
 
@@ -156,20 +129,20 @@ const ContentPublishCard = () => {
     <div className="rounded-2xl border border-slate-200 bg-white p-5 mb-6">
       <div className="flex items-start gap-3 mb-4">
         <div className="w-9 h-9 rounded-xl bg-brand/10 text-brand flex items-center justify-center shrink-0">
-          <Rocket className="w-5 h-5" strokeWidth={2.2} />
+          <Eye className="w-5 h-5" strokeWidth={2.2} />
         </div>
         <div className="min-w-0 flex-1">
-          <h2 className="text-sm font-bold text-slate-900">콘텐츠 퍼블리시</h2>
+          <h2 className="text-sm font-bold text-slate-900">제품 카드 노출 관리</h2>
           <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
-            SC 계정은 항상 코드의 최신(드래프트) 원고가 보입니다. 퍼블리시하려는 제품에 체크한 뒤
-            아래 버튼을 누르면 선택한 제품만 최신 버전으로 일반 지점·KOR 계정에 반영됩니다.
-            (선택하지 않은 제품은 직전 퍼블리시 상태 유지)
+            지점 계정(일반 매장·KOR)에서 <b>활성화</b>되어 클릭 가능한 제품 카드를 선택합니다.
+            원고·이미지·순서 등 <b>콘텐츠 수정은 러버블 우측 상단 Publish</b>만으로 전 계정에 자동 반영됩니다.
+            (SC 관리자 계정은 항상 전체 노출)
           </p>
           <p className="text-[11px] text-slate-400 mt-1.5">
-            마지막 퍼블리시:{" "}
+            마지막 노출 설정 저장:{" "}
             {lastPublishedAt
               ? format(new Date(lastPublishedAt), "yyyy.MM.dd HH:mm", { locale: ko })
-              : "기록 없음 (일반 지점은 코드 기본값 표시 중)"}
+              : "기록 없음 (기본 노출 세트 사용 중)"}
           </p>
         </div>
       </div>
@@ -179,7 +152,7 @@ const ContentPublishCard = () => {
         <div className="flex items-center justify-between mb-2">
           <div className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-600">
             <PackageCheck className="w-3.5 h-3.5" />
-            퍼블리시 대상 제품 ({selected.size}/{publishableProducts.length})
+            노출 대상 제품 ({selected.size}/{publishableProducts.length})
           </div>
           <div className="inline-flex items-center gap-1.5">
             <button
@@ -220,9 +193,11 @@ const ContentPublishCard = () => {
                 <span className="min-w-0 flex-1 truncate font-semibold">
                   {p.name}
                 </span>
-                <span className="text-[10px] text-slate-400 shrink-0">
-                  {featureCount}
-                </span>
+                {featureCount > 0 && (
+                  <span className="text-[10px] text-slate-400 shrink-0">
+                    {featureCount}
+                  </span>
+                )}
               </label>
             );
           })}
@@ -245,13 +220,11 @@ const ContentPublishCard = () => {
         <button
           type="button"
           onClick={handlePublish}
-          disabled={status === "loading" || selected.size === 0}
+          disabled={status === "loading"}
           className="h-10 px-4 rounded-lg bg-brand text-white text-sm font-semibold hover:bg-brand-dark transition-colors disabled:opacity-60 inline-flex items-center justify-center gap-1.5"
         >
-          <Rocket className="w-4 h-4" />
-          {status === "loading"
-            ? "퍼블리시 중..."
-            : `선택 ${selected.size}개 퍼블리시`}
+          <Eye className="w-4 h-4" />
+          {status === "loading" ? "저장 중..." : "노출 설정 저장"}
         </button>
       </div>
 

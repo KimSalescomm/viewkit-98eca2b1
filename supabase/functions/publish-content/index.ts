@@ -28,9 +28,9 @@ Deno.serve(async (req) => {
       });
     }
 
-    const { passcode, payload, published_by, note } = body as {
+    const { passcode, visibleProductIds, published_by, note } = body as {
       passcode?: string;
-      payload?: { featuresMap?: unknown; products?: unknown };
+      visibleProductIds?: unknown;
       published_by?: string;
       note?: string;
     };
@@ -43,14 +43,22 @@ Deno.serve(async (req) => {
       });
     }
 
-    if (
-      !payload ||
-      typeof payload !== "object" ||
-      !payload.featuresMap ||
-      !payload.products
-    ) {
+    if (!Array.isArray(visibleProductIds)) {
       return new Response(
-        JSON.stringify({ error: "payload.featuresMap and payload.products are required" }),
+        JSON.stringify({ error: "visibleProductIds (string[]) is required" }),
+        {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        },
+      );
+    }
+    const cleanIds = (visibleProductIds as unknown[])
+      .filter((v): v is string => typeof v === "string")
+      .map((v) => v.trim())
+      .filter((v) => v.length > 0 && v.length <= 64);
+    if (cleanIds.length !== visibleProductIds.length) {
+      return new Response(
+        JSON.stringify({ error: "visibleProductIds must contain only non-empty strings (≤64 chars)" }),
         {
           status: 400,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -66,7 +74,7 @@ Deno.serve(async (req) => {
     const { data, error } = await supabase
       .from("content_snapshots")
       .insert({
-        payload,
+        payload: { visibleProductIds: cleanIds },
         published_by: published_by ?? null,
         note: note ?? null,
       })
