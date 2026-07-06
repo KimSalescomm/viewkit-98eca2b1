@@ -1054,7 +1054,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "8",
       title: "위생 케어, 손 안 대고도 깨끗할까요?",
-      subtitle: "물걸레 냄새와 빨래 번거로움 없이 100℃ 스팀 살균과 온풍 건조로\n더 위생적인 케어 솔루션을 경험해보세요.",
+      subtitle: "물걸레 냄새와 빨래 번거로움 없이 100℃ 스팀 살균과 온풍 건조로 더 위생적인 케어 솔루션을 경험해보세요.",
       icon: "Sparkles",
       tag: "위생&케어 솔루션",
       mediaType: "image",
