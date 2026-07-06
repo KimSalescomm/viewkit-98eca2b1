@@ -1154,7 +1154,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "무상 A/S 및 소모품 교체",
           description:
-            "계약 기간 내내 무상 A/S를 제공하고, 소모품을 정기적으로 교체해 관리 부담을 덜어드려요.",
+            "계약기간 내내 무상 A/S 제공은 기본,\n소모품 정기 교체로 관리의 번거로움을 줄여줍니다.",
           mediaType: "image",
           mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/04011284-51c7-43a5-83c5-2ad70db02be6/vacuum-subscription-service-03.jpg",
           highlights: [],
