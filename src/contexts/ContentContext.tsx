@@ -213,7 +213,9 @@ export const useContent = (): ContentContextValue => {
   const ctx = useContext(ContentContext);
   if (!ctx) {
     return buildValue(
-      staticProducts.map((p) => p.id),
+      Array.from(
+        new Set([...DEFAULT_VISIBLE_PRODUCT_IDS, ...staticProducts.map((p) => p.id)]),
+      ),
       "draft",
       null,
       true,
