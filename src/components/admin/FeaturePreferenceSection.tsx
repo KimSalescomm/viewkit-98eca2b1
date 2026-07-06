@@ -147,7 +147,7 @@ const FeaturePreferenceSection = () => {
   }, [filtered, aggregated]);
 
   const handleExport = () => {
-    const header = ["순위", "제품", "특장점", "관심 수", "매장 수", "최근 반응"];
+    const header = ["순위", "제품", "특장점", "관심 수", "매장 수", "매장", "최근 반응"];
     const lines = [
       header.map(esc).join(","),
       ...aggregated.map((r, i) =>
@@ -157,6 +157,7 @@ const FeaturePreferenceSection = () => {
           r.featureTitle,
           r.total,
           r.uniqueStores,
+          r.storeNames.join(", "),
           format(new Date(r.lastAt), "yyyy-MM-dd HH:mm", { locale: ko }),
         ]
           .map(esc)
