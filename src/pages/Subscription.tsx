@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Check, ArrowLeft, Sparkles, ImageIcon, X, Play } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
+import FeatureLikeButton from "@/components/FeatureLikeButton";
 import washcomboBefore from "@/assets/tower-before.png";
 import washcomboAfter from "@/assets/tower-after.png";
 import washerBefore from "@/assets/washercare-b.png";
@@ -428,7 +429,7 @@ const Subscription = () => {
           const title = sectionTitles[selected.id];
           if (!title) return null;
           return (
-            <div className="mb-4 sm:mb-5">
+            <div className="mb-4 sm:mb-5 flex items-start justify-between gap-3">
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-tight flex items-center gap-3">
                 <span
                   aria-hidden="true"
@@ -437,6 +438,14 @@ const Subscription = () => {
                 />
                 {title}
               </h2>
+              <FeatureLikeButton
+                productId="subscription"
+                productName="구독 케어"
+                featureId={`care-before-after:${selected.id}`}
+                featureTitle={title}
+                variant="desktop"
+                className="shrink-0"
+              />
             </div>
           );
         })()}
