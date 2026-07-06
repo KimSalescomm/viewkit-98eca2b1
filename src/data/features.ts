@@ -1104,7 +1104,7 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "보안 인증 & 개인정보 보호",
           mediaType: "image",
           mediaUrl: "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png",
-          description: "고객의 데이터를 안전하게 지키는 강력한 LG Shield로 보안 위험을 철저하게 관리해 드려요.\n국가 기관인 개인정보보호위원회의 까다로운 PbD 인증까지 공식 획득하여 불안감 없이 편리하게 이용할 수 있어요.",
+          description: "사용자의 데이터를 안전하게 지키는 LG Shield로 철저한 보안 리스크 관리가 가능하고 이에 대해 개인정보보호위원회로부터 PbD 인증도 부여받았습니다.\n또한 소중한 개인 정보가 국외 서버로 전송되는 것을 제한하며 개인 정보를 철저하게 보호합니다.",
         },
         {
           label: "물리적 보안",
