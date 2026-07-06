@@ -107,7 +107,7 @@ const ProductSelection = () => {
     keyVisualImage: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_stove_03_250804.jpg",
     icon: "Waves",
   } as (typeof products)[number];
-  const desiredOrder = ["subscription", "refrigerator", "airconditioner", "washer", "styler", "vacuum", "tv", "cooking"];
+  const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "styler", "tv", "cooking"];
   // 제품 카드(홈) 전용 썸네일 오버라이드 — 다른 페이지의 키비주얼은 유지
   const cardThumbnailOverrides: Record<string, { keyVisualImage?: string; secondaryKeyVisualImage?: string }> = {
     vacuum: {
