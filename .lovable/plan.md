@@ -1,36 +1,23 @@
-# 원인 분석 및 수정 — SC에서만 구독 카드 비활성
+현재 판매 인증 모달에서 선택한 '뷰킷을 사용하며 가장 도움이 되었던 부분'은 `sales_certifications.memo` 컬럼에 이미 저장되어 있으나, 관리자 대시보드와 CSV보내기에 표시되지 않고 있어요. 이 값을 시각적으로 확인할 수 있게 개선합니다.
 
-## 원인
+### 변경 범위
+`src/pages/Admin.tsx` 단일 파일 수정
 
-`src/contexts/ContentContext.tsx`에서 SC(관리자) 계정의 초기 `visibleProductIds`를 이렇게 계산합니다:
+### 상세 작업
+1. **대시보드 판매 기록 테이블에 '도움된 항목' 노출**
+   - 전체/필터 결과 리스트(`recent`)의 각 행에 `memo` 컬럼 추가
+   - `memo`가 없는 레코드(구버전 데이터)는 '-' 또는 '미기록'으로 표시
+   - 테이블 헤더에 '도움된 항목' 추가
 
-```ts
-visibleProductIds: staticProducts.map((p) => p.id)
-```
+2. **CSV보내기에 `memo` 컬럼 포함**
+   - `toCsv` 함수 헤더에 `memo` 추가
+   - 각 행 데이터에 `r.memo` 포함
+   - `handleExportAll`의 전체 기록 섹션에도 '도움된 항목' 컬럼 추가
 
-그런데 `src/data/products.ts`에는 실제 제품(refrigerator, washer, vacuum 등)만 있고 **"subscription" 항목이 없습니다**. 구독 카드는 `ProductSelection.tsx`에서 별도의 가상 카드(`subscriptionCard`)로 붙이는 구조라, `staticProducts.map`에는 잡히지 않습니다.
+3. **반응형/가독성**
+   - 테이블 컬럼 증가로 인해 가로 폭이 넘칠 경우 가로 스크롤 유지
+   - `memo` 텍스트는 길어질 경우 줄바꿈 처리 (white-space: pre-line 또는 wrap)
 
-그 결과 SC의 `visibleProductIds`에는 `"subscription"`이 빠져 있고, `ProductSelection`이 `baseEnabledIds.includes("subscription")` 검사에서 false를 받아 카드가 회색·비활성으로 렌더됩니다.
-
-반면 일반 지점은 스냅샷/기본값(`DEFAULT_VISIBLE_PRODUCT_IDS`)에 `"subscription"`이 처음부터 포함되어 있어 정상 노출됩니다. 그래서 지점 계정만 멀쩡해 보이는 것.
-
-```text
-SC          → visible = [refrigerator, washer, ...]           ← subscription 누락
-매장 계정   → visible = [subscription, vacuum, refrigerator,   ← 정상
-                       airconditioner, washer]
-```
-
-## 수정
-
-**`src/contexts/ContentContext.tsx` 한 파일**
-
-- SC 초기값 계산을 `DEFAULT_VISIBLE_PRODUCT_IDS`와 `staticProducts` 를 합쳐 중복 제거한 목록으로 변경:
-  ```ts
-  visibleProductIds: Array.from(new Set([
-    ...DEFAULT_VISIBLE_PRODUCT_IDS,     // subscription 포함
-    ...staticProducts.map((p) => p.id), // 나머지 실제 제품
-  ]))
-  ```
-- 컨텍스트 미사용 시 안전 fallback(`useContent`)도 동일하게 처리.
-
-다른 파일(엣지 함수·대시보드·ProductSelection 로직)은 손대지 않습니다. 이렇게 하면 SC에서 구독 카드가 다시 활성화되고, 이후 코드에 새 제품이 추가돼도 자동 포함됩니다.
+### 추가 고려사항
+- 데이터는 이미 저장되고 있으므로 DB 마이그레이션은 필요 없습니다.
+- `memo` 필터는 이번 범위에 포함하지 않습니다. 필요하시면 별도로 말씀해 주세요.
