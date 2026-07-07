@@ -55,7 +55,7 @@ const MEMO_PLACEHOLDER =
   "예) 상담 중 화면을 보여줄 수 있어 좋아요.\n예) 구독 판매에 도움이 되었습니다.\n예) ○○본점 명장 홍길동 판매인증합니다";
 
 const HELPFUL_OPTIONS = [
-  "구독 Before&After 사진 비교",
+  "구독 전/후 비교",
   "제품 원리 설명",
   "설치 환경 확인",
   "기타(직접입력)",
@@ -343,7 +343,7 @@ const SalesCertBadge = () => {
                   <label className="text-[11px] font-semibold tracking-wide text-slate-700">
                     뷰킷을 사용하며 가장 도움이 되었던 부분은 무엇인가요? <span className="text-brand">*</span>
                   </label>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="grid grid-cols-2 gap-2">
                     {HELPFUL_OPTIONS.map((opt) => {
                       const active = helpful === opt;
                       return (
@@ -355,7 +355,7 @@ const SalesCertBadge = () => {
                             if (opt !== OTHER_OPTION) setMemo("");
                           }}
                           className={cn(
-                            "h-11 px-3.5 rounded-xl text-sm font-medium transition-colors",
+                            "w-full h-11 px-2 rounded-xl text-sm font-medium text-center items-center justify-center transition-colors",
                             "border",
                             active
                               ? "bg-[#A50034] text-white border-[#A50034] shadow-[0_4px_10px_-4px_rgba(165,0,52,0.5)]"
