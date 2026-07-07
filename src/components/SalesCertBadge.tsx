@@ -108,6 +108,7 @@ const SalesCertBadge = () => {
     setProduct("");
     setSubcategory("");
     setMemo("");
+    setHelpful("");
     setDate(new Date());
     setSubmitted(false);
     submitLockRef.current = false;
