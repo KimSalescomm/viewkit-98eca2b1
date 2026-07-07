@@ -125,28 +125,33 @@ const SalesCertBadge = () => {
   const subcategoryOptions = product ? SUBCATEGORY_MAP[product] : undefined;
   const needsSubcategory = !!subcategoryOptions && subcategoryOptions.length > 0;
 
+  const isOther = helpful === OTHER_OPTION;
+  const helpfulValue = isOther ? memo.trim() : helpful;
+
   const handleSubmit = async () => {
     if (!defaultBranch || !product || !date) return;
     if (needsSubcategory && !subcategory) return;
-    if (!memo.trim()) return;
+    if (!helpful) return;
+    if (isOther && !memo.trim()) return;
     if (submitLockRef.current) return;
     submitLockRef.current = true;
     setSubmitting(true);
     const soldAt = format(date, "yyyy-MM-dd");
-    const trimmedMemo = memo.trim();
+    const memoToSave = helpfulValue;
     trackEvent("sales_certification", {
       branch: defaultBranch,
       product,
       subcategory: subcategory || undefined,
       sold_at: soldAt,
-      has_memo: trimmedMemo.length > 0,
+      has_memo: memoToSave.length > 0,
+      helpful: helpful || undefined,
     });
     try {
       await appendSale({
         branch: defaultBranch,
         product,
         subcategory: subcategory || null,
-        memo: trimmedMemo || null,
+        memo: memoToSave || null,
         sold_at: soldAt,
       });
       setSubmitted(true);
@@ -174,7 +179,14 @@ const SalesCertBadge = () => {
     "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 " +
     "h-11 px-3.5 text-sm transition-colors";
 
-  const canSubmit = !!(defaultBranch && product && date && (!needsSubcategory || subcategory) && memo.trim().length > 0);
+  const canSubmit = !!(
+    defaultBranch &&
+    product &&
+    date &&
+    (!needsSubcategory || subcategory) &&
+    helpful &&
+    (!isOther || memo.trim().length > 0)
+  );
 
   return (
     <>
