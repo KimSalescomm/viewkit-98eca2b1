@@ -36,6 +36,7 @@ export interface FeatureTab {
   isShorts?: boolean;
   mediaSlides?: MediaSlide[];
   highlights?: string[];
+  caption?: string;
 }
 
 export interface Feature {
