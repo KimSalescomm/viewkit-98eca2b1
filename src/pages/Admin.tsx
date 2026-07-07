@@ -638,7 +638,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                       <th className="py-2 pr-4 font-medium">제품</th>
                       <th className="py-2 pr-4 font-medium">세부</th>
                       <th className="py-2 pr-4 font-medium">판매일</th>
-                      <th className="py-2 pr-4 font-medium">메모</th>
+                      <th className="py-2 pr-4 font-medium">도움된 항목</th>
                       <th className="py-2 pr-4 font-medium">기록 시각</th>
                       <th className="py-2 pr-2 font-medium w-12"></th>
                     </tr>
