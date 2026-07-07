@@ -59,6 +59,7 @@ export interface Feature {
   disclaimers?: string[];
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
   tabs?: FeatureTab[];
+  tabsVariant?: "pill" | "underline";
   disabled?: boolean;
 }
 
