@@ -339,25 +339,54 @@ const SalesCertBadge = () => {
                   </Popover>
                 </div>
 
-                <div className="space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <label className="text-[11px] font-semibold tracking-wide text-slate-700">
-                      뷰킷과 함께한 나의 성공담을 들려주세요 <span className="text-brand">*</span>
-                    </label>
-                    <span className="text-[10px] text-slate-400">{memo.length}/200</span>
+                <div className="space-y-2">
+                  <label className="text-[11px] font-semibold tracking-wide text-slate-700">
+                    뷰킷을 사용하며 가장 도움이 되었던 부분은 무엇인가요? <span className="text-brand">*</span>
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {HELPFUL_OPTIONS.map((opt) => {
+                      const active = helpful === opt;
+                      return (
+                        <button
+                          key={opt}
+                          type="button"
+                          onClick={() => {
+                            setHelpful(opt);
+                            if (opt !== OTHER_OPTION) setMemo("");
+                          }}
+                          className={cn(
+                            "h-11 px-3.5 rounded-xl text-sm font-medium transition-colors",
+                            "border",
+                            active
+                              ? "bg-[#A50034] text-white border-[#A50034] shadow-[0_4px_10px_-4px_rgba(165,0,52,0.5)]"
+                              : "bg-white text-slate-700 border-slate-200 hover:border-slate-300",
+                          )}
+                          style={{ wordBreak: "keep-all" }}
+                        >
+                          {opt}
+                        </button>
+                      );
+                    })}
                   </div>
-                  <textarea
-                    value={memo}
-                    onChange={(e) => setMemo(e.target.value.slice(0, 200))}
-                    placeholder={MEMO_PLACEHOLDER}
-                    rows={3}
-                    className={cn(
-                      "w-full bg-white border border-slate-200 rounded-xl text-slate-800",
-                      "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 focus:outline-none",
-                      "px-3.5 py-2.5 text-sm transition-colors resize-none leading-relaxed",
-                      "placeholder:text-[11px] placeholder:text-slate-400 placeholder:whitespace-pre-line",
-                    )}
-                  />
+                  {isOther && (
+                    <div className="space-y-1.5 pt-1">
+                      <div className="flex items-center justify-end">
+                        <span className="text-[10px] text-slate-400">{memo.length}/200</span>
+                      </div>
+                      <textarea
+                        value={memo}
+                        onChange={(e) => setMemo(e.target.value.slice(0, 200))}
+                        placeholder={MEMO_PLACEHOLDER}
+                        rows={3}
+                        className={cn(
+                          "w-full bg-white border border-slate-200 rounded-xl text-slate-800",
+                          "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 focus:outline-none",
+                          "px-3.5 py-2.5 text-sm transition-colors resize-none leading-relaxed",
+                          "placeholder:text-[11px] placeholder:text-slate-400 placeholder:whitespace-pre-line",
+                        )}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
 
