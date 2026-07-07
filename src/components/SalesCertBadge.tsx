@@ -69,6 +69,7 @@ const SalesCertBadge = () => {
   const [product, setProduct] = useState<string>("");
   const [subcategory, setSubcategory] = useState<string>("");
   const [memo, setMemo] = useState<string>("");
+  const [helpful, setHelpful] = useState<HelpfulOption | "">("");
   const [date, setDate] = useState<Date>(new Date());
   const [dateOpen, setDateOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
