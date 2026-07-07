@@ -54,12 +54,22 @@ const SUBCATEGORY_MAP: Record<string, string[]> = {
 const MEMO_PLACEHOLDER =
   "예) 상담 중 화면을 보여줄 수 있어 좋아요.\n예) 구독 판매에 도움이 되었습니다.\n예) ○○본점 명장 홍길동 판매인증합니다";
 
+const HELPFUL_OPTIONS = [
+  "구독 Before&After 사진 비교",
+  "제품 원리 설명",
+  "설치 환경 확인",
+  "기타(직접입력)",
+] as const;
+type HelpfulOption = (typeof HELPFUL_OPTIONS)[number];
+const OTHER_OPTION: HelpfulOption = "기타(직접입력)";
+
 const SalesCertBadge = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [product, setProduct] = useState<string>("");
   const [subcategory, setSubcategory] = useState<string>("");
   const [memo, setMemo] = useState<string>("");
+  const [helpful, setHelpful] = useState<HelpfulOption | "">("");
   const [date, setDate] = useState<Date>(new Date());
   const [dateOpen, setDateOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -98,6 +108,7 @@ const SalesCertBadge = () => {
     setProduct("");
     setSubcategory("");
     setMemo("");
+    setHelpful("");
     setDate(new Date());
     setSubmitted(false);
     submitLockRef.current = false;
@@ -114,28 +125,33 @@ const SalesCertBadge = () => {
   const subcategoryOptions = product ? SUBCATEGORY_MAP[product] : undefined;
   const needsSubcategory = !!subcategoryOptions && subcategoryOptions.length > 0;
 
+  const isOther = helpful === OTHER_OPTION;
+  const helpfulValue = isOther ? memo.trim() : helpful;
+
   const handleSubmit = async () => {
     if (!defaultBranch || !product || !date) return;
     if (needsSubcategory && !subcategory) return;
-    if (!memo.trim()) return;
+    if (!helpful) return;
+    if (isOther && !memo.trim()) return;
     if (submitLockRef.current) return;
     submitLockRef.current = true;
     setSubmitting(true);
     const soldAt = format(date, "yyyy-MM-dd");
-    const trimmedMemo = memo.trim();
+    const memoToSave = helpfulValue;
     trackEvent("sales_certification", {
       branch: defaultBranch,
       product,
       subcategory: subcategory || undefined,
       sold_at: soldAt,
-      has_memo: trimmedMemo.length > 0,
+      has_memo: memoToSave.length > 0,
+      helpful: helpful || undefined,
     });
     try {
       await appendSale({
         branch: defaultBranch,
         product,
         subcategory: subcategory || null,
-        memo: trimmedMemo || null,
+        memo: memoToSave || null,
         sold_at: soldAt,
       });
       setSubmitted(true);
@@ -163,7 +179,14 @@ const SalesCertBadge = () => {
     "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 " +
     "h-11 px-3.5 text-sm transition-colors";
 
-  const canSubmit = !!(defaultBranch && product && date && (!needsSubcategory || subcategory) && memo.trim().length > 0);
+  const canSubmit = !!(
+    defaultBranch &&
+    product &&
+    date &&
+    (!needsSubcategory || subcategory) &&
+    helpful &&
+    (!isOther || memo.trim().length > 0)
+  );
 
   return (
     <>
@@ -316,25 +339,54 @@ const SalesCertBadge = () => {
                   </Popover>
                 </div>
 
-                <div className="space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <label className="text-[11px] font-semibold tracking-wide text-slate-700">
-                      뷰킷과 함께한 나의 성공담을 들려주세요 <span className="text-brand">*</span>
-                    </label>
-                    <span className="text-[10px] text-slate-400">{memo.length}/200</span>
+                <div className="space-y-2">
+                  <label className="text-[11px] font-semibold tracking-wide text-slate-700">
+                    뷰킷을 사용하며 가장 도움이 되었던 부분은 무엇인가요? <span className="text-brand">*</span>
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {HELPFUL_OPTIONS.map((opt) => {
+                      const active = helpful === opt;
+                      return (
+                        <button
+                          key={opt}
+                          type="button"
+                          onClick={() => {
+                            setHelpful(opt);
+                            if (opt !== OTHER_OPTION) setMemo("");
+                          }}
+                          className={cn(
+                            "h-11 px-3.5 rounded-xl text-sm font-medium transition-colors",
+                            "border",
+                            active
+                              ? "bg-[#A50034] text-white border-[#A50034] shadow-[0_4px_10px_-4px_rgba(165,0,52,0.5)]"
+                              : "bg-white text-slate-700 border-slate-200 hover:border-slate-300",
+                          )}
+                          style={{ wordBreak: "keep-all" }}
+                        >
+                          {opt}
+                        </button>
+                      );
+                    })}
                   </div>
-                  <textarea
-                    value={memo}
-                    onChange={(e) => setMemo(e.target.value.slice(0, 200))}
-                    placeholder={MEMO_PLACEHOLDER}
-                    rows={3}
-                    className={cn(
-                      "w-full bg-white border border-slate-200 rounded-xl text-slate-800",
-                      "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 focus:outline-none",
-                      "px-3.5 py-2.5 text-sm transition-colors resize-none leading-relaxed",
-                      "placeholder:text-[11px] placeholder:text-slate-400 placeholder:whitespace-pre-line",
-                    )}
-                  />
+                  {isOther && (
+                    <div className="space-y-1.5 pt-1">
+                      <div className="flex items-center justify-end">
+                        <span className="text-[10px] text-slate-400">{memo.length}/200</span>
+                      </div>
+                      <textarea
+                        value={memo}
+                        onChange={(e) => setMemo(e.target.value.slice(0, 200))}
+                        placeholder={MEMO_PLACEHOLDER}
+                        rows={3}
+                        className={cn(
+                          "w-full bg-white border border-slate-200 rounded-xl text-slate-800",
+                          "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 focus:outline-none",
+                          "px-3.5 py-2.5 text-sm transition-colors resize-none leading-relaxed",
+                          "placeholder:text-[11px] placeholder:text-slate-400 placeholder:whitespace-pre-line",
+                        )}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
 
