@@ -100,28 +100,50 @@ const FeatureDetail = () => {
 
         {/* Tabs (only when feature.tabs exists) */}
         {tabs && tabs.length > 0 && (
-          <div className="mb-4 sm:mb-5 flex flex-wrap gap-2 justify-center">
-            {tabs.map((tab, idx) => {
-              const isActive = idx === activeTab;
-              return (
-                <button
-                  key={idx}
-                  onClick={() => setActiveTab(idx)}
-                  className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-sm sm:text-base font-semibold transition-all ${
-                    isActive
-                      ? "bg-blue-600 text-white shadow-md"
-                      : "bg-white text-gray-700 border border-gray-200 hover:border-blue-400 hover:text-blue-600"
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              );
-            })}
-          </div>
+          feature.tabsVariant === "underline" ? (
+            <div className="mb-4 sm:mb-5 flex w-full border-b border-gray-200">
+              {tabs.map((tab, idx) => {
+                const isActive = idx === activeTab;
+                return (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setActiveTab(idx)}
+                    className={`flex-1 min-h-[44px] px-3 sm:px-4 text-sm sm:text-base transition-colors -mb-px border-b-2 ${
+                      isActive
+                        ? "font-bold text-[#A50034] border-[#A50034]"
+                        : "font-medium text-black border-transparent"
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="mb-4 sm:mb-5 flex flex-wrap gap-2 justify-center">
+              {tabs.map((tab, idx) => {
+                const isActive = idx === activeTab;
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveTab(idx)}
+                    className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-sm sm:text-base font-semibold transition-all ${
+                      isActive
+                        ? "bg-blue-600 text-white shadow-md"
+                        : "bg-white text-gray-700 border border-gray-200 hover:border-blue-400 hover:text-blue-600"
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+          )
         )}
 
         {/* Media - video_click 이벤트용 래퍼 */}
-        <div className="mb-6 sm:mb-8 relative" onClick={handleVideoClick}>
+        <div className="mb-3 sm:mb-4 relative" onClick={handleVideoClick}>
           <MediaViewer
             key={tabs ? `tab-${activeTab}` : "main"}
             mediaType={activeTabData?.mediaSlides ? "gallery" : activeTabData?.mediaType ?? feature.mediaType}
@@ -134,6 +156,13 @@ const FeatureDetail = () => {
             fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
           />
         </div>
+
+        {/* Tab caption (underline variant) */}
+        {activeTabData?.caption && (
+          <p className="mb-6 sm:mb-8 text-sm sm:text-base text-gray-600 leading-relaxed whitespace-pre-line">
+            {activeTabData.caption}
+          </p>
+        )}
 
 
         {/* Description Card: active tab description takes precedence */}
