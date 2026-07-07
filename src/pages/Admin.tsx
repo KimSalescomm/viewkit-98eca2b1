@@ -164,9 +164,11 @@ const medalColor = (i: number) =>
   i === 0 ? "text-yellow-500" : i === 1 ? "text-slate-400" : i === 2 ? "text-amber-700" : "text-slate-300";
 
 const toCsv = (rows: SaleRecord[]) => {
-  const header = ["branch", "product", "sold_at", "created_at"];
+  const header = ["branch", "product", "subcategory", "memo", "sold_at", "created_at"];
   const body = rows.map((r) =>
-    [r.branch, r.product, r.sold_at, r.created_at].map((v) => `"${String(v).replace(/"/g, '""')}"`).join(","),
+    [r.branch, r.product, r.subcategory ?? "", r.memo ?? "", r.sold_at, r.created_at]
+      .map((v) => `"${String(v).replace(/"/g, '""')}"`)
+      .join(","),
   );
   return [header.join(","), ...body].join("\n");
 };
@@ -366,13 +368,15 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     sections.push("");
 
     sections.push(toRow(["[4] 전체 판매 기록 (필터 적용)"]));
-    sections.push(toRow(["#", "지점", "제품", "판매일", "기록 시각"]));
+    sections.push(toRow(["#", "지점", "제품", "세부", "도움된 항목", "판매일", "기록 시각"]));
     recent.forEach((r, i) =>
       sections.push(
         toRow([
           recent.length - i,
           r.branch,
           r.product,
+          r.subcategory ?? "",
+          r.memo ?? "",
           r.sold_at,
           format(new Date(r.created_at), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
         ]),
