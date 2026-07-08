@@ -2,6 +2,7 @@ import type { LucideIcon, LucideProps } from "lucide-react";
 import {
   Armchair,
   Brush,
+  Cable,
   Cpu,
   EyeOff,
   Flame,
@@ -62,6 +63,7 @@ const featureIcons: Record<string, LucideIcon> = {
   Shield,
   ShieldCheck,
   Gift,
+  Cable,
 };
 
 interface FeatureIconProps extends Omit<LucideProps, "ref"> {

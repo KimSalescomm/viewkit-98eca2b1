@@ -175,15 +175,37 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "눈으로 보는 그 색 그대로 느끼고 싶다면?",
-      subtitle: "빛의 삼원색인 R,G,B를 온전히 그려내는\nTHE NEXT 올레드의 순도 높은 컬러 표현",
+      title: "AI가 알아서 최적의 화질을 만들어준다고?",
+      subtitle: "α11 AI 프로세서 4세대가 얼굴·장르·시청 환경을\n실시간으로 감지해 자동으로 튜닝해줘요",
       icon: "Cpu",
-      tag: "하이퍼 올레드 컬러",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
+      tag: "α11 AI 프로세서",
+      mediaType: "gallery",
+      mediaUrl: "",
+      galleryImages: [
+        {
+          url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
+          title: "AI 화질 프로",
+          description: "얼굴·배경·오브젝트를 각각 인식해 요소별로 화질을 다르게 최적화해요. 매장 조명이 아닌 우리집 조명에서 진가가 드러납니다.",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium01.jpg",
+          title: "장르 자동 인식",
+          description: "스포츠·영화·게임·뉴스 등 시청 중인 콘텐츠를 감지해 최적의 프리셋으로 자동 전환돼요.",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/OLED65G6KNA_st_mo.jpg",
+          title: "R,G,B 각각 발광",
+          description: "빛의 삼원색 R·G·B가 각자 빛을 내는 하이퍼 올레드 컬러 구조로 100% 컬러 볼륨·100% 색 정확도를 구현합니다.",
+        },
+      ],
       description:
-        "실제 눈으로 보는 듯 정확한 컬러를 표현하기 위해서는 빛의 삼원색인 레드, 그린, 블루가 각각 빛나는 구조가 필요해요.\n파장을 조절해 컬러를 인위적으로 만들어내는 과정없이, R(레드), G(그린), B(블루) 광원이 각각 빛을 내는 방식이 적용돼 순수하고 정확한 컬러를 표현할 수 있어요.",
-      highlights: ["R,G,B 컬러층을 분리해 각각의 순도 높은 컬러 표현", "100% 컬러볼륨", "100% 색 정확도"],
+        "α11 AI 프로세서 4세대는 화면 속 얼굴과 배경, 오브젝트를 각각 인식해 요소별로 밝기·명암·색을 다르게 튜닝해요. 시청 중인 콘텐츠 장르, 그리고 우리집 조명 밝기까지 감지해 자동으로 최적의 화질로 맞춰주죠.\n\n매장의 짧은 시연으로는 체감이 어렵지만, 실제 집에서 하루 종일 다양한 콘텐츠를 볼 때 차이가 뚜렷하게 느껴져요.",
+      highlights: [
+        "얼굴·배경 오브젝트별 화질 튜닝",
+        "장르(스포츠·영화·게임) 자동 인식 프리셋",
+        "시청 공간의 밝기를 감지해 자동 보정",
+        "100% 컬러 볼륨·100% 색 정확도 (Intertek 인증)",
+      ],
       disclaimers: [
         "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
         "100% 컬러 볼륨 인증 / 100% 색 정확도 인증",
@@ -211,57 +233,76 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "인테리어에 녹아드는 갤러리 디자인",
-      subtitle: "벽에 밀착 설치하면 마치\n한 폭의 그림처럼 공간에 녹아들어요",
+      title: "사운드바 없이도 극장 사운드가 될까?",
+      subtitle: "AI 사운드 프로가 시청 공간을 분석해\n9.1.2 채널 입체 음향을 자동으로 튜닝해줘요",
+      icon: "Volume2",
+      tag: "AI 사운드 프로 9.1.2",
+      mediaType: "image",
+      mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
+      description:
+        "TV 스피커만으로도 Dolby Atmos 기반의 9.1.2 채널 가상 서라운드를 구현해요. 시청 공간의 크기와 반사 특성을 자동으로 분석해 소리가 머리 위·뒤·옆에서 들리도록 튜닝합니다.\n\n매장은 배경 소음이 많아 입체 음향의 차이를 체감하기 어렵지만, 조용한 우리집 거실에서는 사운드바 없이도 몰입감이 확 달라져요.",
+      highlights: [
+        "TV 스피커만으로 9.1.2 가상 서라운드",
+        "시청 공간 자동 분석 후 사운드 튜닝",
+        "Dolby Atmos · WOW 오케스트라 지원",
+        "번들 사운드바(S95AR/S70TR)로 확장 가능",
+      ],
+      disclaimers: [
+        "소비자의 이해를 돕기 위해 연출된 영상이며, 청취 환경에 따라 체감이 다를 수 있습니다.",
+      ],
+    },
+    {
+      id: "4",
+      title: "벽에 붙이면 정말 액자처럼 보일까?",
+      subtitle: "제로 갭 벽밀착으로 벽과 하나가 되는\n갤러리 디자인의 실제 설치 컷을 확인해보세요",
       icon: "ImageIcon",
-      tag: "갤러리 디자인",
+      tag: "갤러리 디자인 & 제로 갭",
       mediaType: "gallery",
       mediaUrl: "",
       galleryImages: [
         {
           url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
-          title: "거실 인테리어와 조화",
-          description: "슬림한 디자인으로 벽에 밀착 설치하면 마치 액자처럼 공간과 하나가 돼요.",
+          title: "거실 벽밀착",
+          description: "초슬림 패널이 벽에 완전히 밀착돼 마치 한 폭의 그림처럼 공간에 녹아들어요.",
         },
         {
           url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium01.jpg",
           title: "제로 갭 벽걸이",
-          description: "벽과의 간격을 최소화한 제로 갭 벽걸이로 깔끔한 설치가 가능해요.",
+          description: "전용 벽걸이 브래킷으로 벽과의 간격을 최소화해 요철 없이 깔끔하게 설치됩니다.",
         },
         {
           url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/OLED65G6KNA_st_mo.jpg",
-          title: "스탠드형 설치",
-          description: "전용 스탠드를 활용하면 어떤 공간에서도 프리미엄 인테리어를 연출할 수 있어요.",
+          title: "갤러리 스탠드",
+          description: "벽에 붙이지 않아도 전용 스탠드로 어떤 공간에서든 미술관 감성을 연출할 수 있어요.",
         },
       ],
       description:
-        "LG 올레드 evo AI G6는 초슬림 디자인으로 벽에 밀착 설치하면 마치 한 폭의 그림처럼 공간에 녹아들어요. 전용 갤러리 스탠드로 어디에 놓아도 프리미엄 인테리어를 완성해요.",
-      highlights: ["초슬림 벽밀착 디자인", "갤러리 스탠드 옵션", "인테리어 조화", "138~245cm 다양한 사이즈"],
-    },
-    {
-      id: "4",
-      title: "게이머를 위한 완벽한 디스플레이",
-      subtitle: "4K 144Hz, 0.1ms 응답속도로\n차세대 게이밍 경험을 제공해요",
-      icon: "Gamepad2",
-      tag: "게이밍 특화",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770826/gallery/small03.jpg",
-      description:
-        "4K 144Hz 주사율과 0.1ms 응답속도, NVIDIA G-Sync 호환으로 최상의 게이밍 환경을 제공해요. VRR, ALLM, HGiG 등 게임에 최적화된 기능으로 프로 게이머 수준의 플레이가 가능해요.",
-      highlights: ["4K 144Hz 지원", "0.1ms 응답속도", "G-Sync 호환", "게임 대시보드"],
+        "매장에서는 대부분 스탠드형으로 전시돼 벽에 붙였을 때의 인테리어 완성도를 체감하기 어려워요. 실제 집에 벽밀착으로 설치하면 액자처럼 공간에 녹아들죠.\n\n갤러리 스탠드 옵션으로 벽걸이 시공 없이도 프리미엄 인테리어를 완성할 수 있어요.",
+      highlights: [
+        "제로 갭 벽밀착 시공",
+        "요철 없는 초슬림 디자인",
+        "갤러리 스탠드 옵션 지원",
+        "Always Ready 아트 모드 (미술관 감성)",
+      ],
     },
     {
       id: "5",
-      title: "TV가 사운드바 없이도 충분할까?",
-      subtitle: "9.1.2채널 AI 사운드 프로가\n공간에 맞춰 입체 음향을 구현해요",
-      icon: "Volume2",
-      tag: "AI 사운드",
+      title: "선은 다 어디로 갔을까?",
+      subtitle: "복잡한 AV 케이블을 한 곳으로 정리해\n인테리어를 해치지 않는 깔끔한 설치가 가능해요",
+      icon: "Cable",
+      tag: "케이블 매니지먼트",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium01.jpg",
       description:
-        "업파이어링 스피커와 AI 사운드 프로 기술로 Dolby Atmos 기반 9.1.2채널 서라운드를 구현해요. 시청 공간을 자동 분석하여 최적의 사운드 필드를 만들어줘요.",
-      highlights: ["9.1.2채널 서라운드", "Dolby Atmos", "AI 사운드 프로", "우퍼 내장"],
+        "매장의 TV는 대부분 후면과 케이블이 노출된 채 전시돼요. 실제로 집에 설치하면 셋톱박스·게임기·사운드바 등의 케이블 정리가 인테리어 완성도를 좌우합니다.\n\nG6는 케이블 매니지먼트 구조와 전용 스탠드로 배선을 뒤로 모아 정리할 수 있어, 벽걸이든 스탠드든 선이 거의 보이지 않는 깔끔한 마감을 완성해요.",
+      highlights: [
+        "AV 기기 케이블을 한 방향으로 통합 정리",
+        "전용 스탠드 후면 케이블 홀더",
+        "벽걸이·스탠드 모두 대응",
+        "선 정리만으로 인테리어 완성도 UP",
+      ],
     },
+
     {
       id: "6",
       title: "어떤 사이즈가 우리 집에 딱 맞을까?",
@@ -1280,6 +1321,7 @@ export const featureIconNames: Record<string, string> = {
   Navigation: "Navigation",
   Square: "EyeOff",
   Gift: "Gift",
+  Cable: "Cable",
 };
 
 // Keep legacy export for backwards compat (unused but safe)
