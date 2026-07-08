@@ -1321,6 +1321,7 @@ export const featureIconNames: Record<string, string> = {
   Navigation: "Navigation",
   Square: "EyeOff",
   Gift: "Gift",
+  Cable: "Cable",
 };
 
 // Keep legacy export for backwards compat (unused but safe)
