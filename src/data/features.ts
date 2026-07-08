@@ -136,8 +136,8 @@ export const featuresMap: Record<string, Feature[]> = {
   tv: [
     {
       id: "1",
-      title: "올레드는 LCD TV와 다르다고?",
-      subtitle: "픽셀 하나하나가 스스로 빛나는 올레드. 화질이 압도적일 수밖에 이유를 패널 구조로 비교해보세요.",
+      title: "올레드? LCD TV와 다른건가요?",
+      subtitle: "픽셀 하나하나가 스스로 빛나는 올레드.\n화질이 압도적일 수밖에 없는 이유를 패널 구조로 비교해보세요",
       icon: "Sparkles",
       tag: "자발광 올레드",
       mediaType: "video",
