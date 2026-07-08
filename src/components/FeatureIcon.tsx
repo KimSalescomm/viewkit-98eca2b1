@@ -2,6 +2,7 @@ import type { LucideIcon, LucideProps } from "lucide-react";
 import {
   Armchair,
   Brush,
+  Cable,
   Cpu,
   EyeOff,
   Flame,
