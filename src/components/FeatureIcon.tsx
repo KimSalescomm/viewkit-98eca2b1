@@ -63,6 +63,7 @@ const featureIcons: Record<string, LucideIcon> = {
   Shield,
   ShieldCheck,
   Gift,
+  Cable,
 };
 
 interface FeatureIconProps extends Omit<LucideProps, "ref"> {
