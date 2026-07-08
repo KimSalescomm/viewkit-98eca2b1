@@ -377,9 +377,24 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
     video.addEventListener("stalled", handleStalled);
     video.addEventListener("waiting", handleWaiting);
 
-    // webOS 긴 타임아웃
+    // Sync missed events: if the video already reached HAVE_FUTURE_DATA/ENOUGH
+    // before listeners were (re)attached, canplay never fires again — kick it manually.
+    if (video.readyState >= 3) {
+      logVideoDebug("sync: readyState>=3 on attach", { readyState: video.readyState });
+      handleCanPlay();
+    }
+
+    // webOS 긴 타임아웃 — only when playback truly never started
     const timeout = setTimeout(() => {
-      if (isLoading && !hasError) {
+      const v = videoRef.current;
+      if (!v) return;
+      const actuallyPlaying = !v.paused && !v.ended && v.readyState >= 3 && v.currentTime > 0;
+      if (actuallyPlaying || v.readyState >= 3) {
+        // Video is fine — just clear loading if it's still true
+        setIsLoading(false);
+        return;
+      }
+      if (!hasError) {
         console.warn("비디오 로딩 타임아웃");
         switchToFallback();
       }
