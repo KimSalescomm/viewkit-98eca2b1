@@ -179,25 +179,8 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "α11 AI 프로세서 4세대가 얼굴·장르·시청 환경을\n실시간으로 감지해 자동으로 튜닝해줘요",
       icon: "Cpu",
       tag: "α11 AI 프로세서",
-      mediaType: "gallery",
-      mediaUrl: "",
-      galleryImages: [
-        {
-          url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
-          title: "AI 화질 프로",
-          description: "얼굴·배경·오브젝트를 각각 인식해 요소별로 화질을 다르게 최적화해요. 매장 조명이 아닌 우리집 조명에서 진가가 드러납니다.",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium01.jpg",
-          title: "장르 자동 인식",
-          description: "스포츠·영화·게임·뉴스 등 시청 중인 콘텐츠를 감지해 최적의 프리셋으로 자동 전환돼요.",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/OLED65G6KNA_st_mo.jpg",
-          title: "R,G,B 각각 발광",
-          description: "빛의 삼원색 R·G·B가 각자 빛을 내는 하이퍼 올레드 컬러 구조로 100% 컬러 볼륨·100% 색 정확도를 구현합니다.",
-        },
-      ],
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_02_02_pc_b.mp4",
       description:
         "α11 AI 프로세서 4세대는 화면 속 얼굴과 배경, 오브젝트를 각각 인식해 요소별로 밝기·명암·색을 다르게 튜닝해요. 시청 중인 콘텐츠 장르, 그리고 우리집 조명 밝기까지 감지해 자동으로 최적의 화질로 맞춰주죠.\n\n매장의 짧은 시연으로는 체감이 어렵지만, 실제 집에서 하루 종일 다양한 콘텐츠를 볼 때 차이가 뚜렷하게 느껴져요.",
       highlights: [
@@ -205,30 +188,6 @@ export const featuresMap: Record<string, Feature[]> = {
         "장르(스포츠·영화·게임) 자동 인식 프리셋",
         "시청 공간의 밝기를 감지해 자동 보정",
         "100% 컬러 볼륨·100% 색 정확도 (Intertek 인증)",
-      ],
-      disclaimers: [
-        "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
-        "100% 컬러 볼륨 인증 / 100% 색 정확도 인증",
-      ],
-      collapsibleDisclaimers: [
-        {
-          title: "100% 컬러 볼륨 인증",
-          items: [
-            "인증 기관: Intertek",
-            "인증 기준일: 2025년 12월",
-            "인증 대상: 2026년형 올레드 전 모델 TV 세트 기준",
-            "인증 내용(인증 번호): 컬러 볼륨 측정값이 DCI-P3 표준 컬러 볼륨 크기의 100% 이상(25KRQ1124-01)",
-          ],
-        },
-        {
-          title: "100% 색 정확도 인증",
-          items: [
-            "인증 기관: Intertek",
-            "인증 기준일: 2025년 3월",
-            "인증 대상: 2026년형 올레드 전 모델 모듈 기준",
-            "인증 내용(인증 번호): 500lux 환경에서 CIE DE 2000에 따른 125가지 색상 패턴의 목푯값과 측정값 차이가 2.0보다 작아 색 정확도 100% 기준 충족(24KRQ0950-02)",
-          ],
-        },
       ],
     },
     {
