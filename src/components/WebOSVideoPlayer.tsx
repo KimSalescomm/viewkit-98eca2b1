@@ -384,21 +384,17 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
       handleCanPlay();
     }
 
-    // webOS 긴 타임아웃 — only when playback truly never started
+    // Loading indicator safety net — never surface an error from a timeout.
+    // Slow LG/Akamai origins can take >15s on the first byte; the <video>
+    // element will still fire canplay/playing when data arrives. We only clear
+    // the spinner so the user isn't stuck on it. Real errors come from the
+    // `error` event handler above.
     const timeout = setTimeout(() => {
       const v = videoRef.current;
       if (!v) return;
-      const actuallyPlaying = !v.paused && !v.ended && v.readyState >= 3 && v.currentTime > 0;
-      if (actuallyPlaying || v.readyState >= 3) {
-        // Video is fine — just clear loading if it's still true
-        setIsLoading(false);
-        return;
-      }
-      if (!hasError) {
-        console.warn("비디오 로딩 타임아웃");
-        switchToFallback();
-      }
-    }, 15000);
+      if (v.error) return; // real error already handled
+      setIsLoading(false);
+    }, 8000);
 
     return () => {
       video.removeEventListener("loadedmetadata", handleLoadedMetadata);
