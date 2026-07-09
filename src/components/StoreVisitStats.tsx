@@ -64,6 +64,8 @@ const StoreVisitStats = () => {
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const [reloadKey, setReloadKey] = useState(0);
+
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
@@ -71,15 +73,30 @@ const StoreVisitStats = () => {
     // 사이트 오픈일(2026-06-08) 이전 데이터는 허수로 간주하여 제외
     const SITE_OPEN = "2026-06-08T00:00:00Z";
     const effectiveSince = since && since > SITE_OPEN ? since : SITE_OPEN;
-    let q = supabase
-      .from("page_views")
-      .select("id, store_id, store_name, path, session_id, created_at")
-      .order("created_at", { ascending: false })
-      .limit(5000);
-    q = q.gte("created_at", effectiveSince);
-    q.then(({ data }) => {
+
+    // Supabase 기본 응답 상한(1,000행)을 우회하기 위해 페이지네이션으로 전체 조회
+    const PAGE_SIZE = 1000;
+    const fetchAll = async () => {
+      const all: Row[] = [];
+      for (let from = 0; ; from += PAGE_SIZE) {
+        const { data, error } = await supabase
+          .from("page_views")
+          .select("id, store_id, store_name, path, session_id, created_at")
+          .gte("created_at", effectiveSince)
+          .order("created_at", { ascending: false })
+          .range(from, from + PAGE_SIZE - 1);
+        if (error || !data || data.length === 0) break;
+        all.push(...(data as Row[]));
+        if (data.length < PAGE_SIZE) break;
+        // 안전장치: 100,000행 초과 방지
+        if (all.length >= 100000) break;
+      }
+      return all;
+    };
+
+    fetchAll().then((data) => {
       if (cancelled) return;
-      const filtered = ((data as Row[]) || []).filter((r) => {
+      const filtered = data.filter((r) => {
         const sid = (r.store_id || "").toUpperCase();
         return sid !== "SC" && sid !== "KOR";
       });
@@ -89,7 +106,22 @@ const StoreVisitStats = () => {
     return () => {
       cancelled = true;
     };
-  }, [range]);
+  }, [range, reloadKey]);
+
+  // 실시간 구독: 신규 page_views INSERT 발생 시 데이터 재조회
+  useEffect(() => {
+    const channel = supabase
+      .channel("page_views-live")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "page_views" },
+        () => setReloadKey((k) => k + 1),
+      )
+      .subscribe();
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
 
   const filteredRows = useMemo(() => {
     if (category === "all") return rows;
