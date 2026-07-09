@@ -175,7 +175,7 @@ const FeatureDetail = () => {
                   onClick={handleVideoClick}
                 >
                   <div
-                    className={`relative w-full aspect-video overflow-hidden rounded-2xl bg-black ${imgFitClass} [&_video]:!w-full [&_video]:!h-full [&_video]:!object-contain [&_img]:!w-full [&_img]:!h-full [&>div]:!h-full [&>div>div]:!h-full [&>div]:!bg-black`}
+                    className={`relative w-full aspect-video overflow-hidden rounded-2xl bg-black ${imgFitClass} [&_video]:!w-full [&_video]:!h-full [&_video]:!object-contain [&_img]:!w-full [&_img]:!h-full [&>div]:!h-full [&>div>div]:!h-full [&>div]:!bg-black [&>div]:!max-w-none`}
                   >
                     {mediaEl}
                   </div>
