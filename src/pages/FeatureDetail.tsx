@@ -23,6 +23,7 @@ const FeatureDetail = () => {
   const tabs = feature?.tabs;
 
   const [activeTab, setActiveTab] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   useEffect(() => {
     setActiveTab(0);
