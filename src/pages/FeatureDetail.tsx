@@ -6,7 +6,6 @@ import OrientationToggle from "@/components/OrientationToggle";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { useContent } from "@/contexts/ContentContext";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import {
   Accordion,
   AccordionContent,
