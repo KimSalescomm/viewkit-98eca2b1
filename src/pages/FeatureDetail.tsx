@@ -164,6 +164,9 @@ const FeatureDetail = () => {
           );
 
           if (isUnderlineTabs) {
+            const imageFit = activeTabData?.imageFit ?? "contain";
+            const imgFitClass = imageFit === "cover" ? "[&_img]:!object-cover" : "[&_img]:!object-contain";
+
             return (
               <div className="mb-6 sm:mb-8">
                 {/* Media frame - fixed aspect ratio, transparent outer, black letterbox */}
@@ -172,7 +175,7 @@ const FeatureDetail = () => {
                   onClick={handleVideoClick}
                 >
                   <div
-                    className="relative w-full aspect-video overflow-hidden rounded-2xl bg-black [&_video]:!w-full [&_video]:!h-full [&_video]:!object-contain [&_img]:!w-full [&_img]:!h-full [&_img]:!object-contain [&>div]:!h-full [&>div>div]:!h-full"
+                    className={`relative w-full aspect-video overflow-hidden rounded-2xl bg-black ${imgFitClass} [&_video]:!w-full [&_video]:!h-full [&_video]:!object-contain [&_img]:!w-full [&_img]:!h-full [&>div]:!h-full [&>div>div]:!h-full [&>div]:!bg-black`}
                   >
                     {mediaEl}
                   </div>
