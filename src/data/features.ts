@@ -38,6 +38,7 @@ export interface FeatureTab {
   highlights?: string[];
   caption?: string;
   belowMediaImage?: { url: string; alt?: string; caption?: string };
+  frameBg?: string;
 }
 
 export interface Feature {
@@ -208,6 +209,7 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "퍼펙트 블랙",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_03_01_pc.mp4",
+          frameBg: "#e8dccb",
           belowMediaImage: {
             url: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_03_03_pc.jpg",
             alt: "Perfect Black 인증마크 - UL 인증",
@@ -217,6 +219,7 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "퍼펙트 컬러",
           mediaType: "image",
           mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_02_pc.jpg",
+          frameBg: "#000000",
           belowMediaImage: {
             url: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_03_03_pc.jpg",
             alt: "Perfect Color 인증마크 - 100% 색 정확도 · 100% 컬러 볼륨",
