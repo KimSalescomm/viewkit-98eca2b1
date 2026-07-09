@@ -157,6 +157,26 @@ const FeatureDetail = () => {
           />
         </div>
 
+        {/* Below-media image (e.g. certification marks) */}
+        {feature.belowMediaImage && (
+          <figure className="mb-6 sm:mb-8">
+            <div className="rounded-2xl overflow-hidden bg-white shadow-md">
+              <img
+                src={feature.belowMediaImage.url}
+                alt={feature.belowMediaImage.alt || ""}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+            {feature.belowMediaImage.caption && (
+              <figcaption className="mt-2 text-xs sm:text-sm text-gray-500 text-center leading-relaxed">
+                {feature.belowMediaImage.caption}
+              </figcaption>
+            )}
+          </figure>
+        )}
+
         {/* Tab caption (underline variant) */}
         {activeTabData?.caption && (
           <p className="mb-6 sm:mb-8 text-sm sm:text-base text-gray-600 leading-relaxed whitespace-pre-line">
