@@ -54,6 +54,8 @@ export interface Feature {
   tableData?: ProductComparisonTable[];
   galleryImages?: (string | GalleryImage)[];
   mediaSlides?: MediaSlide[];
+  belowMediaImage?: { url: string; alt?: string; caption?: string };
+
 
   isShorts?: boolean;
   disclaimers?: string[];
