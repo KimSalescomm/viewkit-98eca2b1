@@ -194,36 +194,45 @@ export const featuresMap: Record<string, Feature[]> = {
         "AI HDR 리마스터링으로 화질 강화",
       ],
     },
+
     {
       id: "3",
-      title: "밝은 곳에서도 흔들리지 않는\n진정한 블랙, 선명한 컬러",
-      subtitle: "오직 올레드라 가능한 퍼펙트 블랙 & 퍼펙트 컬러.\n낮의 밝은 거실에서도 블랙이 회색으로 흐려지지 않고\n선명한 컬러를 제공합니다.",
+      title: "밝은 곳에서도 진짜 블랙일까?",
+      subtitle: "오직 올레드만 가능한 퍼펙트 블랙 & 퍼펙트 컬러.\n낮의 밝은 거실에서도 블랙과 컬러가 흐려지지 않아요.",
       icon: "Sparkles",
       tag: "퍼펙트 블랙 & 퍼펙트 컬러",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_03_01_pc.mp4",
-      belowMediaImage: {
-        url: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_03_03_pc.jpg",
-        alt: "퍼펙트 블랙 & 퍼펙트 컬러 인증마크",
-        caption: "UL 인증 — 500lux 밝은 환경에서도 블랙 레벨 ≤ 0.24nit, 컬러 일관성 > 99%",
-      },
-      description:
-        "일반 올레드는 매트 처리된 디스플레이라 밝은 곳에서 블랙이 살짝 회색빛으로 뜨는 반면, LG 올레드 evo G6는 '퍼펙트 블랙 & 퍼펙트 컬러' 디스플레이로 500lux 밝기의 거실에서도 진짜 블랙과 왜곡 없는 컬러를 그대로 유지해요.\n\n낮에 커튼을 열어둔 밝은 거실, 조명이 켜진 매장에서도 우주의 별빛 하나까지 또렷하게 보이는 이유입니다.",
-      highlights: [
-        "500lux 밝은 환경에서도 블랙 레벨 ≤ 0.24nit",
-        "500lux 밝은 환경에서도 컬러 일관성 > 99%",
-        "UL 퍼펙트 블랙 · 퍼펙트 컬러 인증",
-        "매트 디스플레이 대비 회색 반사 최소화",
-      ],
-      collapsibleDisclaimers: [
+      tabsVariant: "underline",
+      tabs: [
         {
-          title: "퍼펙트 블랙 인증 마크 살펴보기",
-          items: [
-            "0.24nit : 눈으로 봤을 때 블랙처럼 보이는 밝기 수준입니다.",
-            "500lux : 전등을 모두 켠 밝은 거실, 매장, 사무실 정도의 조도 수준입니다.\n→ 즉, 밝은 환경에서도 블랙이 유지됨을 UL이 시험·인증했다는 의미예요.",
-            "LG 올레드 evo G6는 500lux의 밝은 조명 아래서도 블랙 테스트를 통과해, 대낮의 밝은 거실·매장에서도 블랙이 회색으로 흐려지지 않아요.",
-          ],
+          label: "블랙",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_03_01_pc.mp4",
+          belowMediaImage: {
+            url: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_03_03_pc.jpg",
+            alt: "Perfect Black 인증마크 - UL 인증",
+          },
         },
+        {
+          label: "컬러",
+          mediaType: "image",
+          mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_02_pc.jpg",
+          belowMediaImage: {
+            url: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_03_03_pc.jpg",
+            alt: "Perfect Color 인증마크 - 100% 색 정확도 · 100% 컬러 볼륨",
+          },
+        },
+      ],
+      description:
+        "일반 올레드는 밝은 곳에서 블랙이 살짝 회색빛으로 뜨지만, LG 올레드는 500lux 밝은 거실에서도 진짜 블랙과 왜곡 없는 컬러를 그대로 유지해요.",
+      pullQuote:
+        "블랙이 깊을수록 컬러는 더 정확해져요.\n완벽한 블랙 위에서 컬러가 가장 생생하게 살아납니다.",
+      highlights: [
+        "밝은 곳에서도 회색으로 흐려지지 않는 진짜 블랙",
+        "밝은 곳에서도 선명한 색 그대로",
+        "UL 퍼펙트 블랙 · 퍼펙트 컬러 인증",
+        "100% 색 정확도 인증 · 100% 컬러 볼륨 인증",
       ],
     },
 
