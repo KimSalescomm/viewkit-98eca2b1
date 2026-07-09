@@ -159,25 +159,52 @@ const FeatureDetail = () => {
           />
         </div>
 
-        {/* Below-media image (e.g. certification marks) */}
-        {feature.belowMediaImage && (
-          <figure className="mb-6 sm:mb-8">
-            <div className="rounded-2xl overflow-hidden bg-white shadow-md">
-              <img
-                src={feature.belowMediaImage.url}
-                alt={feature.belowMediaImage.alt || ""}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-auto object-contain"
-              />
-            </div>
-            {feature.belowMediaImage.caption && (
-              <figcaption className="mt-2 text-xs sm:text-sm text-gray-500 text-center leading-relaxed">
-                {feature.belowMediaImage.caption}
-              </figcaption>
-            )}
-          </figure>
-        )}
+        {/* Below-media image (e.g. certification marks) — click to open lightbox */}
+        {(() => {
+          const belowImg = activeTabData?.belowMediaImage ?? feature.belowMediaImage;
+          if (!belowImg) return null;
+          return (
+            <figure className="mb-6 sm:mb-8">
+              <button
+                type="button"
+                onClick={() => setLightboxOpen(true)}
+                aria-label={`${belowImg.alt || "인증 마크"} 확대 보기`}
+                className="block w-full rounded-2xl overflow-hidden bg-white shadow-md transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-zoom-in"
+              >
+                <img
+                  src={belowImg.url}
+                  alt={belowImg.alt || ""}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-contain"
+                />
+              </button>
+              {belowImg.caption && (
+                <figcaption className="mt-2 text-xs sm:text-sm text-gray-500 text-center leading-relaxed">
+                  {belowImg.caption}
+                </figcaption>
+              )}
+            </figure>
+          );
+        })()}
+
+        {/* Lightbox for certification badges */}
+        <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
+          <DialogContent className="max-w-5xl p-2 sm:p-4 bg-white">
+            <DialogTitle className="sr-only">인증 마크 확대 보기</DialogTitle>
+            {(() => {
+              const belowImg = activeTabData?.belowMediaImage ?? feature.belowMediaImage;
+              if (!belowImg) return null;
+              return (
+                <img
+                  src={belowImg.url}
+                  alt={belowImg.alt || ""}
+                  className="w-full h-auto object-contain rounded-lg"
+                />
+              );
+            })()}
+          </DialogContent>
+        </Dialog>
 
         {/* Tab caption (underline variant) */}
         {activeTabData?.caption && (
@@ -194,6 +221,22 @@ const FeatureDetail = () => {
             {activeTabData?.description ?? feature.description}
           </p>
         </div>
+
+        {/* Pull quote */}
+        {feature.pullQuote && (
+          <blockquote className="relative bg-gradient-to-br from-gray-50 to-blue-50/50 border border-gray-100 rounded-2xl px-6 py-8 sm:px-10 sm:py-12 mb-4 sm:mb-6 text-center">
+            <span
+              aria-hidden="true"
+              className="block text-4xl sm:text-5xl leading-none text-blue-400/70 font-serif mb-2 sm:mb-3"
+            >
+              &ldquo;
+            </span>
+            <p className="text-lg sm:text-2xl font-semibold text-gray-800 leading-relaxed whitespace-pre-line">
+              {feature.pullQuote}
+            </p>
+          </blockquote>
+        )}
+
 
 
         {/* Highlights Card: active tab highlights take precedence */}
