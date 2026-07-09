@@ -38,6 +38,7 @@ export interface FeatureTab {
   highlights?: string[];
   caption?: string;
   belowMediaImage?: { url: string; alt?: string; caption?: string };
+  frameBg?: string;
 }
 
 export interface Feature {
