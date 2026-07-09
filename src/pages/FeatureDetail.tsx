@@ -166,46 +166,42 @@ const FeatureDetail = () => {
           if (isUnderlineTabs) {
             return (
               <div className="mb-6 sm:mb-8">
-                <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 items-stretch">
-                  {/* Media frame - fixed size, object-contain */}
+                {/* Media frame - fixed aspect ratio, transparent outer, black letterbox */}
+                <div
+                  className="relative w-full rounded-2xl overflow-hidden bg-transparent"
+                  onClick={handleVideoClick}
+                >
                   <div
-                    className="relative flex-1 min-w-0 rounded-2xl overflow-hidden p-3 sm:p-4"
-                    style={{ background: frameBg }}
-                    onClick={handleVideoClick}
+                    className="relative w-full aspect-video overflow-hidden rounded-2xl bg-black [&_video]:!w-full [&_video]:!h-full [&_video]:!object-contain [&_img]:!w-full [&_img]:!h-full [&_img]:!object-contain [&>div]:!h-full [&>div>div]:!h-full"
                   >
-                    <div
-                      className="relative w-full aspect-video overflow-hidden rounded-xl [&_video]:!w-full [&_video]:!h-full [&_video]:!object-contain [&_img]:!w-full [&_img]:!h-full [&_img]:!object-contain [&>div]:!h-full [&>div>div]:!h-full"
-                      style={{ background: frameBg }}
-                    >
-                      {mediaEl}
-                    </div>
+                    {mediaEl}
                   </div>
-
-                  {/* Right column - certification badges */}
-                  {belowImg && (
-                    <figure className="lg:w-56 xl:w-64 shrink-0 m-0">
-                      <button
-                        type="button"
-                        onClick={() => setLightboxOpen(true)}
-                        aria-label={`${belowImg.alt || "인증 마크"} 확대 보기`}
-                        className="block w-full h-full rounded-2xl overflow-hidden bg-white shadow-md transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-zoom-in"
-                      >
-                        <img
-                          src={belowImg.url}
-                          alt={belowImg.alt || ""}
-                          loading="lazy"
-                          decoding="async"
-                          className="w-full h-full object-contain"
-                        />
-                      </button>
-                      {belowImg.caption && (
-                        <figcaption className="mt-2 text-xs sm:text-sm text-gray-500 text-center leading-relaxed">
-                          {belowImg.caption}
-                        </figcaption>
-                      )}
-                    </figure>
-                  )}
                 </div>
+
+                {/* Certification badges - full-width row below media */}
+                {belowImg && (
+                  <figure className="mt-3 sm:mt-4 m-0">
+                    <button
+                      type="button"
+                      onClick={() => setLightboxOpen(true)}
+                      aria-label={`${belowImg.alt || "인증 마크"} 확대 보기`}
+                      className="block w-full rounded-2xl overflow-hidden bg-white shadow-md transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-zoom-in"
+                    >
+                      <img
+                        src={belowImg.url}
+                        alt={belowImg.alt || ""}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-auto object-contain"
+                      />
+                    </button>
+                    {belowImg.caption && (
+                      <figcaption className="mt-2 text-xs sm:text-sm text-gray-500 text-center leading-relaxed">
+                        {belowImg.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                )}
               </div>
             );
           }
