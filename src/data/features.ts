@@ -37,6 +37,7 @@ export interface FeatureTab {
   mediaSlides?: MediaSlide[];
   highlights?: string[];
   caption?: string;
+  belowMediaImage?: { url: string; alt?: string; caption?: string };
 }
 
 export interface Feature {
