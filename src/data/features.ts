@@ -205,7 +205,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tabsVariant: "underline",
       tabs: [
         {
-          label: "블랙",
+          label: "퍼펙트 블랙",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_03_01_pc.mp4",
           belowMediaImage: {
@@ -214,7 +214,7 @@ export const featuresMap: Record<string, Feature[]> = {
           },
         },
         {
-          label: "컬러",
+          label: "퍼펙트 컬러",
           mediaType: "image",
           mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_02_pc.jpg",
           belowMediaImage: {
