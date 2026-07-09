@@ -56,7 +56,6 @@ export interface Feature {
   galleryImages?: (string | GalleryImage)[];
   mediaSlides?: MediaSlide[];
   belowMediaImage?: { url: string; alt?: string; caption?: string };
-  pullQuote?: string;
 
 
   isShorts?: boolean;
@@ -225,9 +224,7 @@ export const featuresMap: Record<string, Feature[]> = {
         },
       ],
       description:
-        "일반 올레드는 밝은 곳에서 블랙이 살짝 회색빛으로 뜨지만, LG 올레드는 500lux 밝은 거실에서도 진짜 블랙과 왜곡 없는 컬러를 그대로 유지해요.",
-      pullQuote:
-        "블랙이 깊을수록 컬러는 더 정확해져요.\n완벽한 블랙 위에서 컬러가 가장 생생하게 살아납니다.",
+        "블랙이 깊을수록 컬러는 더 정확해져요. 완벽한 블랙 위에서 컬러도 생생하게 살아납니다.\nLG 올레드는 밝은 거실에서도 블랙이 회색으로 흐려지지 않고 선명한 컬러를 그대로 유지해요.",
       highlights: [
         "밝은 곳에서도 회색으로 흐려지지 않는 진짜 블랙",
         "밝은 곳에서도 선명한 색 그대로",

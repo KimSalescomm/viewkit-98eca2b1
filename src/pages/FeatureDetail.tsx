@@ -222,23 +222,6 @@ const FeatureDetail = () => {
           </p>
         </div>
 
-        {/* Pull quote */}
-        {feature.pullQuote && (
-          <blockquote className="relative bg-gradient-to-br from-gray-50 to-blue-50/50 border border-gray-100 rounded-2xl px-6 py-8 sm:px-10 sm:py-12 mb-4 sm:mb-6 text-center">
-            <span
-              aria-hidden="true"
-              className="block text-4xl sm:text-5xl leading-none text-blue-400/70 font-serif mb-2 sm:mb-3"
-            >
-              &ldquo;
-            </span>
-            <p className="text-lg sm:text-2xl font-semibold text-gray-800 leading-relaxed whitespace-pre-line">
-              {feature.pullQuote}
-            </p>
-          </blockquote>
-        )}
-
-
-
         {/* Highlights Card: active tab highlights take precedence */}
         {(activeTabData?.highlights ?? feature.highlights) && (activeTabData?.highlights ?? feature.highlights)?.length > 0 && (
           <div className="bg-white rounded-2xl p-5 sm:p-6 mb-10 sm:mb-12 shadow-md">
