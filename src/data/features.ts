@@ -54,6 +54,8 @@ export interface Feature {
   tableData?: ProductComparisonTable[];
   galleryImages?: (string | GalleryImage)[];
   mediaSlides?: MediaSlide[];
+  belowMediaImage?: { url: string; alt?: string; caption?: string };
+
 
   isShorts?: boolean;
   disclaimers?: string[];
@@ -192,24 +194,37 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "사운드바 없이도 극장 사운드가 될까?",
-      subtitle: "AI 사운드 프로가 시청 공간을 분석해\n9.1.2 채널 입체 음향을 자동으로 튜닝해줘요",
-      icon: "Volume2",
-      tag: "AI 사운드 프로 9.1.2",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
+      title: "밝은 곳에서도 흔들리지 않는\n진정한 블랙, 선명한 컬러",
+      subtitle: "오직 올레드라 가능한 퍼펙트 블랙 & 퍼펙트 컬러.\n낮의 밝은 거실에서도 블랙이 회색으로 흐려지지 않고\n선명한 컬러를 제공합니다.",
+      icon: "Sparkles",
+      tag: "퍼펙트 블랙 & 퍼펙트 컬러",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_03_01_pc.mp4",
+      belowMediaImage: {
+        url: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_03_03_pc.jpg",
+        alt: "퍼펙트 블랙 & 퍼펙트 컬러 인증마크",
+        caption: "UL 인증 — 500lux 밝은 환경에서도 블랙 레벨 ≤ 0.24nit, 컬러 일관성 > 99%",
+      },
       description:
-        "TV 스피커만으로도 Dolby Atmos 기반의 9.1.2 채널 가상 서라운드를 구현해요. 시청 공간의 크기와 반사 특성을 자동으로 분석해 소리가 머리 위·뒤·옆에서 들리도록 튜닝합니다.\n\n매장은 배경 소음이 많아 입체 음향의 차이를 체감하기 어렵지만, 조용한 우리집 거실에서는 사운드바 없이도 몰입감이 확 달라져요.",
+        "일반 올레드는 매트 처리된 디스플레이라 밝은 곳에서 블랙이 살짝 회색빛으로 뜨는 반면, LG 올레드 evo G6는 '퍼펙트 블랙 & 퍼펙트 컬러' 디스플레이로 500lux 밝기의 거실에서도 진짜 블랙과 왜곡 없는 컬러를 그대로 유지해요.\n\n낮에 커튼을 열어둔 밝은 거실, 조명이 켜진 매장에서도 우주의 별빛 하나까지 또렷하게 보이는 이유입니다.",
       highlights: [
-        "TV 스피커만으로 9.1.2 가상 서라운드",
-        "시청 공간 자동 분석 후 사운드 튜닝",
-        "Dolby Atmos · WOW 오케스트라 지원",
-        "번들 사운드바(S95AR/S70TR)로 확장 가능",
+        "500lux 밝은 환경에서도 블랙 레벨 ≤ 0.24nit",
+        "500lux 밝은 환경에서도 컬러 일관성 > 99%",
+        "UL 퍼펙트 블랙 · 퍼펙트 컬러 인증",
+        "매트 디스플레이 대비 회색 반사 최소화",
       ],
-      disclaimers: [
-        "소비자의 이해를 돕기 위해 연출된 영상이며, 청취 환경에 따라 체감이 다를 수 있습니다.",
+      collapsibleDisclaimers: [
+        {
+          title: "퍼펙트 블랙 인증 마크 살펴보기",
+          items: [
+            "0.24nit : 눈으로 봤을 때 블랙처럼 보이는 밝기 수준입니다.",
+            "500lux : 전등을 모두 켠 밝은 거실, 매장, 사무실 정도의 조도 수준입니다.\n→ 즉, 밝은 환경에서도 블랙이 유지됨을 UL이 시험·인증했다는 의미예요.",
+            "LG 올레드 evo G6는 500lux의 밝은 조명 아래서도 블랙 테스트를 통과해, 대낮의 밝은 거실·매장에서도 블랙이 회색으로 흐려지지 않아요.",
+          ],
+        },
       ],
     },
+
     {
       id: "4",
       title: "벽에 붙이면 정말 액자처럼 보일까?",
