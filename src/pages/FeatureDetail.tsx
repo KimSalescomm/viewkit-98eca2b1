@@ -146,18 +146,41 @@ const FeatureDetail = () => {
 
         {/* Media - video_click 이벤트용 래퍼 */}
         <div className="mb-3 sm:mb-4 relative" onClick={handleVideoClick}>
-          <MediaViewer
-            key={tabs ? `tab-${activeTab}` : "main"}
-            mediaType={activeTabData?.mediaSlides ? "gallery" : activeTabData?.mediaType ?? feature.mediaType}
-            mediaUrl={activeTabData?.mediaUrl ?? feature.mediaUrl}
-            mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
-            title={feature.title}
-            tableData={feature.tableData}
-            galleryImages={feature.galleryImages}
-            isShorts={activeTabData?.isShorts ?? feature.isShorts}
-            fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
-          />
+          {feature.tabsVariant === "underline" && tabs && tabs.length > 0 ? (
+            <div
+              className="w-full rounded-2xl overflow-hidden bg-[#e8dccb] p-3 sm:p-4"
+            >
+              <div
+                className="relative w-full aspect-video overflow-hidden rounded-xl bg-[#e8dccb] [&_video]:!w-full [&_video]:!h-full [&_video]:!object-cover [&_img]:!w-full [&_img]:!h-full [&_img]:!object-cover [&>div]:!h-full [&>div>div]:!h-full"
+              >
+                <MediaViewer
+                  key={tabs ? `tab-${activeTab}` : "main"}
+                  mediaType={activeTabData?.mediaSlides ? "gallery" : activeTabData?.mediaType ?? feature.mediaType}
+                  mediaUrl={activeTabData?.mediaUrl ?? feature.mediaUrl}
+                  mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
+                  title={feature.title}
+                  tableData={feature.tableData}
+                  galleryImages={feature.galleryImages}
+                  isShorts={activeTabData?.isShorts ?? feature.isShorts}
+                  fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
+                />
+              </div>
+            </div>
+          ) : (
+            <MediaViewer
+              key={tabs ? `tab-${activeTab}` : "main"}
+              mediaType={activeTabData?.mediaSlides ? "gallery" : activeTabData?.mediaType ?? feature.mediaType}
+              mediaUrl={activeTabData?.mediaUrl ?? feature.mediaUrl}
+              mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
+              title={feature.title}
+              tableData={feature.tableData}
+              galleryImages={feature.galleryImages}
+              isShorts={activeTabData?.isShorts ?? feature.isShorts}
+              fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
+            />
+          )}
         </div>
+
 
         {/* Below-media image (e.g. certification marks) — click to open lightbox */}
         {(() => {
