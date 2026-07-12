@@ -221,7 +221,7 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaType: "image",
           mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_02_pc.jpg",
           frameBg: "#000000",
-          imageFit: "cover",
+          imageFit: "contain",
           belowMediaImage: {
             url: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_01_03_03_pc.jpg",
             alt: "Perfect Color 인증마크 - 100% 색 정확도 · 100% 컬러 볼륨",
