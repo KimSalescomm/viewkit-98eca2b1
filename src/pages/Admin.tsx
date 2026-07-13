@@ -90,6 +90,7 @@ const useAuth = () => {
   const logout = () => {
     try {
       sessionStorage.removeItem(AUTH_KEY);
+      sessionStorage.removeItem(AUTH_CODE_KEY);
     } catch {
       /* noop */
     }
