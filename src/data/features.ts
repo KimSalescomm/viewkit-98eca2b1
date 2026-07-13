@@ -186,7 +186,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "저화질 영상도 선명하게 만들어준다고?",
       subtitle: "AI가 픽셀 단위로 영상을 세밀하게 분석해\n해상도, 밝기, 대비, 선명도를 높여줘요",
       icon: "Cpu",
-      tag: "AI 화질 프로",
+      tag: "AI 화질 엔진",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_02_02_pc_b.mp4",
       description:
