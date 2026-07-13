@@ -240,36 +240,17 @@ export const featuresMap: Record<string, Feature[]> = {
 
     {
       id: "4",
-      title: "벽에 붙이면 정말 액자처럼 보일까?",
-      subtitle: "제로 갭 벽밀착으로 벽과 하나가 되는\n갤러리 디자인의 실제 설치 컷을 확인해보세요",
+      title: "벽에 착 붙는 설치, 어떻게 할까요?",
+      subtitle: "전용 벽 밀착 브라켓으로 벽에 착 붙게 설치할 수 있어요.\n설치 방법을 영상으로 확인해보세요.",
       icon: "ImageIcon",
       tag: "갤러리 디자인 & 제로 갭",
-      mediaType: "gallery",
-      mediaUrl: "",
-      galleryImages: [
-        {
-          url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
-          title: "거실 벽밀착",
-          description: "초슬림 패널이 벽에 완전히 밀착돼 마치 한 폭의 그림처럼 공간에 녹아들어요.",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium01.jpg",
-          title: "제로 갭 벽걸이",
-          description: "전용 벽걸이 브래킷으로 벽과의 간격을 최소화해 요철 없이 깔끔하게 설치됩니다.",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/OLED65G6KNA_st_mo.jpg",
-          title: "갤러리 스탠드",
-          description: "벽에 붙이지 않아도 전용 스탠드로 어떤 공간에서든 미술관 감성을 연출할 수 있어요.",
-        },
-      ],
+      mediaType: "video",
+      mediaUrl: "https://www.youtube.com/watch?v=-0RpTyUXChk",
       description:
-        "매장에서는 대부분 스탠드형으로 전시돼 벽에 붙였을 때의 인테리어 완성도를 체감하기 어려워요. 실제 집에 벽밀착으로 설치하면 액자처럼 공간에 녹아들죠.\n\n갤러리 스탠드 옵션으로 벽걸이 시공 없이도 프리미엄 인테리어를 완성할 수 있어요.",
+        "전용 벽 밀착 브라켓으로 벽에 착 붙게 설치할 수 있어요.\n설치 방법을 영상으로 확인해보세요.",
       highlights: [
-        "제로 갭 벽밀착 시공",
-        "요철 없는 초슬림 디자인",
-        "갤러리 스탠드 옵션 지원",
-        "Always Ready 아트 모드 (미술관 감성)",
+        "벽면에 착 붙는 디자인",
+        "전용 벽밀착 브라켓 사용",
       ],
     },
     {
