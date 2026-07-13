@@ -216,7 +216,10 @@ const FeatureDetail = () => {
                   {feature.mediaSectionTitle}
                 </h2>
               )}
-              <div className="mb-3 sm:mb-4 relative" onClick={handleVideoClick}>
+              <div
+                className={`mb-3 sm:mb-4 relative ${feature.mediaSectionTitle ? "[&>div]:!max-w-none [&>div]:!bg-transparent [&>div]:!rounded-none" : ""}`}
+                onClick={handleVideoClick}
+              >
                 {mediaEl}
               </div>
 
