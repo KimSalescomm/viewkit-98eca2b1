@@ -77,6 +77,7 @@ const useAuth = () => {
       if (error || !data?.ok) return false;
       try {
         sessionStorage.setItem(AUTH_KEY, "1");
+        sessionStorage.setItem(AUTH_CODE_KEY, trimmed);
       } catch {
         /* noop */
       }
