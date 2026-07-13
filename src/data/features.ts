@@ -66,6 +66,8 @@ export interface Feature {
   tabs?: FeatureTab[];
   tabsVariant?: "pill" | "underline";
   disabled?: boolean;
+  /** true면 SC(관리자) 계정에서만 노출, 매장 계정에서는 숨김 */
+  scOnly?: boolean;
 }
 
 export const featuresMap: Record<string, Feature[]> = {
