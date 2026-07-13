@@ -211,9 +211,15 @@ const FeatureDetail = () => {
 
           return (
             <>
+              {feature.mediaSectionTitle && (
+                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">
+                  {feature.mediaSectionTitle}
+                </h2>
+              )}
               <div className="mb-3 sm:mb-4 relative" onClick={handleVideoClick}>
                 {mediaEl}
               </div>
+
 
               {belowImg && (
                 <figure className="mb-6 sm:mb-8">
