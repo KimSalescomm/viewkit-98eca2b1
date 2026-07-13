@@ -237,8 +237,14 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   };
   const clearSelection = () => setSelected(new Set());
 
-  // 삭제 시 관리자 패스코드 재확인 (서버에서 검증)
+  // 삭제 시 관리자 패스코드 재확인 (로그인 시 저장된 값 우선 사용)
   const promptPasscode = (): string | null => {
+    try {
+      const cached = sessionStorage.getItem(AUTH_CODE_KEY);
+      if (cached && cached.trim()) return cached.trim();
+    } catch {
+      /* noop */
+    }
     const code = window.prompt("삭제하려면 관리자 패스코드를 다시 입력해 주세요.");
     if (code === null) return null;
     const trimmed = code.trim();
