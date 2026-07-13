@@ -205,8 +205,9 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
         state.source,
         state.publishedAt,
         state.ready,
+        isAdmin,
       ),
-    [state],
+    [state, isAdmin],
   );
 
   return <ContentContext.Provider value={value}>{children}</ContentContext.Provider>;
