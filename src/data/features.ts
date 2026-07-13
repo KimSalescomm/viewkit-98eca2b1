@@ -66,6 +66,8 @@ export interface Feature {
   tabs?: FeatureTab[];
   tabsVariant?: "pill" | "underline";
   disabled?: boolean;
+  /** true면 SC(관리자) 계정에서만 노출, 매장 계정에서는 숨김 */
+  scOnly?: boolean;
 }
 
 export const featuresMap: Record<string, Feature[]> = {
@@ -255,6 +257,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "5",
+      scOnly: true,
       title: "어떤 사이즈가 우리 집에 딱 맞을까?",
       subtitle: "138cm부터 245cm까지\n공간에 맞는 사이즈를 비교해보세요",
       icon: "Ruler",

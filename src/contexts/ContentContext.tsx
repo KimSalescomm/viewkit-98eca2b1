@@ -50,21 +50,24 @@ const buildValue = (
   source: ContentContextValue["source"],
   publishedAt: string | null,
   ready: boolean,
-): ContentContextValue => ({
-  featuresMap: staticFeaturesMap,
-  products: staticProducts,
-  getProductById: (id) => staticProducts.find((p) => p.id === id),
-  getFeaturesByProductId: (productId) =>
-    (staticFeaturesMap[productId] ?? []).filter((f) => !f.disabled),
-  getFeatureById: (productId, featureId) =>
-    (staticFeaturesMap[productId] ?? [])
-      .filter((f) => !f.disabled)
-      .find((f) => f.id === featureId),
-  visibleProductIds,
-  source,
-  publishedAt,
-  ready,
-});
+  isAdmin: boolean,
+): ContentContextValue => {
+  const filterFeatures = (list: Feature[]) =>
+    list.filter((f) => !f.disabled && (isAdmin || !f.scOnly));
+  return {
+    featuresMap: staticFeaturesMap,
+    products: staticProducts,
+    getProductById: (id) => staticProducts.find((p) => p.id === id),
+    getFeaturesByProductId: (productId) =>
+      filterFeatures(staticFeaturesMap[productId] ?? []),
+    getFeatureById: (productId, featureId) =>
+      filterFeatures(staticFeaturesMap[productId] ?? []).find((f) => f.id === featureId),
+    visibleProductIds,
+    source,
+    publishedAt,
+    ready,
+  };
+};
 
 const parseVisibility = (raw: unknown): string[] | null => {
   if (!raw || typeof raw !== "object") return null;
@@ -202,8 +205,9 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
         state.source,
         state.publishedAt,
         state.ready,
+        isAdmin,
       ),
-    [state],
+    [state, isAdmin],
   );
 
   return <ContentContext.Provider value={value}>{children}</ContentContext.Provider>;
@@ -218,6 +222,7 @@ export const useContent = (): ContentContextValue => {
       ),
       "draft",
       null,
+      true,
       true,
     );
   }
