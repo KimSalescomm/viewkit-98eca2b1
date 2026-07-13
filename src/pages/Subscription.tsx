@@ -171,7 +171,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
       },
       {
         label: "무상 A/S",
-        description: "약정 기간 내 제품 고장 발생 시 무상 A/S를 제공합니다.",
+        description: "계약 기간 내 제품 고장 발생 시 무상 A/S를 제공합니다.",
         notes: [
           "고객 과실로 인한 고장은 무상 A/S 대상에서 제외됩니다.",
         ],
