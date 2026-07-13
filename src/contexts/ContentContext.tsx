@@ -223,6 +223,7 @@ export const useContent = (): ContentContextValue => {
       "draft",
       null,
       true,
+      true,
     );
   }
   return ctx;
