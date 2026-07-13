@@ -22,6 +22,7 @@ import { cn } from "@/lib/utils";
 
 // 패스코드는 서버(Edge Function: admin-login)에서 검증합니다.
 const AUTH_KEY = "viewkit_admin_auth";
+const AUTH_CODE_KEY = "viewkit_admin_code";
 
 // 모바일 브라우저(특히 iOS Safari)에서도 안정적으로 동작하는 CSV 다운로드 헬퍼
 const downloadCsv = async (csv: string, filename: string) => {
