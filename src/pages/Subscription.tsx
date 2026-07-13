@@ -628,7 +628,7 @@ const Subscription = () => {
             <Sparkles className="w-4 h-4" />
           </span>
           <p className="text-[14px] sm:text-[15px] font-semibold leading-relaxed" style={{ color: "#374151" }}>
-            제품별 구독 타입(프리미엄, 라이트, 라이트 플러스 등)에 따라 적용 서비스는 다르니, 자세한 내용은 구독 계약할 때 다시 한번 확인해 주세요.
+            제공되는 케어서비스 항목은 제품별 구독 타입(프리미엄, 라이트, 라이트 플러스 등) 및 구독 모델, 시점에 따라 다를 수 있으므로, 자세한 내용은 구독 계약할 때 반드시 다시 확인해 주세요.
           </p>
         </div>
 
