@@ -243,7 +243,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "벽에 착 붙는 설치, 어떻게 할까요?",
       subtitle: "전용 벽 밀착 브라켓으로 벽에 착 붙게 설치할 수 있어요.\n설치 방법을 영상으로 확인해보세요.",
       icon: "ImageIcon",
-      tag: "갤러리 디자인 & 제로 갭",
+      tag: "갤러리 디자인",
       mediaType: "video",
       mediaUrl: "https://www.youtube.com/watch?v=-0RpTyUXChk",
       description:
