@@ -259,47 +259,16 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "5",
       scOnly: true,
-      title: "어떤 사이즈가 우리 집에 딱 맞을까?",
-      subtitle: "138cm부터 245cm까지\n공간에 맞는 사이즈를 비교해보세요",
+      title: "어떤 올레드가 나에게 맞을까?",
+      subtitle: "사이즈, 디자인, 사양까지\nLG 올레드 라인업을 한눈에 비교해보세요.",
       icon: "Ruler",
-      tag: "사이즈 가이드",
-      mediaType: "table",
-      mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
+      tag: "라인업 비교",
+      mediaType: "image",
+      mediaUrl: "https://static.lge.co.kr/kr/images/common/pdp_lineup_compare/images/tvs/26_tvs_oled_line_up_pc.jpg",
+      mediaSectionTitle: "LG 올레드 한눈에 비교하기",
       description:
-        "시청 거리와 공간 크기에 따라 최적의 TV 사이즈가 달라져요. G6 시리즈는 55인치(138cm)부터 97인치(245cm)까지 다양한 라인업을 갖추고 있어요.",
-      highlights: ["138cm (55인치)", "163cm (65인치)", "194cm (77인치)", "245cm (97인치)"],
-      tableData: [
-        {
-          name: "OLED G6 65인치",
-          imageUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/OLED65G6KNA_st_mo.jpg",
-          specs: [
-            { label: "화면 크기", values: ["163cm (65인치)"] },
-            { label: "권장 시청 거리", values: ["2.0~2.5m"] },
-            { label: "설치 타입", values: ["스탠드형, 벽걸이형, 벽밀착형"] },
-            { label: "회원할인가", values: ["4,290,000원"] },
-          ],
-        },
-        {
-          name: "OLED G6 77인치",
-          imageUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium-interior01.jpg",
-          specs: [
-            { label: "화면 크기", values: ["194cm (77인치)"] },
-            { label: "권장 시청 거리", values: ["2.5~3.0m"] },
-            { label: "설치 타입", values: ["스탠드형, 벽걸이형, 벽밀착형"] },
-            { label: "회원할인가", values: ["가격 확인 필요"] },
-          ],
-        },
-        {
-          name: "OLED G6 97인치",
-          imageUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium01.jpg",
-          specs: [
-            { label: "화면 크기", values: ["245cm (97인치)"] },
-            { label: "권장 시청 거리", values: ["3.0m 이상"] },
-            { label: "설치 타입", values: ["스탠드형, 벽걸이형, 벽밀착형"] },
-            { label: "회원할인가", values: ["가격 확인 필요"] },
-          ],
-        },
-      ],
+        "화면 크기와 디자인, 주요 사양이 라인업별로 어떻게 다른지 한눈에 비교해 우리 집 공간과 취향에 맞는 올레드를 골라보세요.",
+      highlights: [],
     },
   ],
 
