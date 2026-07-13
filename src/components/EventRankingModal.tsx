@@ -45,17 +45,22 @@ const EventRankingModal = ({ open, onClose }: Props) => {
       className="fixed inset-0 z-[130] overflow-y-auto overscroll-contain bg-slate-900/15 backdrop-blur-md animate-in fade-in duration-150"
       role="dialog"
       aria-modal="true"
+      onClick={onClose}
     >
-      <div className="min-h-full flex items-center justify-center px-5 py-6">
+      <div
+        className="min-h-full flex items-center justify-center px-5 py-6"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="relative w-full max-w-md bg-white rounded-[28px] overflow-hidden shadow-[0_30px_80px_-20px_rgba(15,23,42,0.3)] border border-gray-100 animate-in zoom-in-95 duration-200 my-auto">
         <button
           type="button"
           onClick={onClose}
           aria-label="닫기"
-          className="absolute top-4 right-4 z-10 w-9 h-9 inline-flex items-center justify-center rounded-full bg-white/90 hover:bg-gray-100 text-gray-500 border border-gray-200"
+          className="absolute top-4 right-4 z-10 w-9 h-9 inline-flex items-center justify-center rounded-full bg-white/90 hover:bg-gray-100 text-gray-500 border border-gray-200 touch-manipulation"
         >
           <X className="w-4 h-4" />
         </button>
+
 
         {/* Header — 밝은 화이트 + LG 레드 액센트 */}
         <div className="relative px-7 pt-9 pb-7 bg-white border-b border-slate-100">
