@@ -255,24 +255,6 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "5",
-      title: "선은 다 어디로 갔을까?",
-      subtitle: "복잡한 AV 케이블을 한 곳으로 정리해\n인테리어를 해치지 않는 깔끔한 설치가 가능해요",
-      icon: "Cable",
-      tag: "케이블 매니지먼트",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/tvs/md10770835/gallery/medium01.jpg",
-      description:
-        "매장의 TV는 대부분 후면과 케이블이 노출된 채 전시돼요. 실제로 집에 설치하면 셋톱박스·게임기·사운드바 등의 케이블 정리가 인테리어 완성도를 좌우합니다.\n\nG6는 케이블 매니지먼트 구조와 전용 스탠드로 배선을 뒤로 모아 정리할 수 있어, 벽걸이든 스탠드든 선이 거의 보이지 않는 깔끔한 마감을 완성해요.",
-      highlights: [
-        "AV 기기 케이블을 한 방향으로 통합 정리",
-        "전용 스탠드 후면 케이블 홀더",
-        "벽걸이·스탠드 모두 대응",
-        "선 정리만으로 인테리어 완성도 UP",
-      ],
-    },
-
-    {
-      id: "6",
       title: "어떤 사이즈가 우리 집에 딱 맞을까?",
       subtitle: "138cm부터 245cm까지\n공간에 맞는 사이즈를 비교해보세요",
       icon: "Ruler",
