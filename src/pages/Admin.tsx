@@ -22,6 +22,7 @@ import { cn } from "@/lib/utils";
 
 // 패스코드는 서버(Edge Function: admin-login)에서 검증합니다.
 const AUTH_KEY = "viewkit_admin_auth";
+const AUTH_CODE_KEY = "viewkit_admin_code";
 
 // 모바일 브라우저(특히 iOS Safari)에서도 안정적으로 동작하는 CSV 다운로드 헬퍼
 const downloadCsv = async (csv: string, filename: string) => {
@@ -76,6 +77,7 @@ const useAuth = () => {
       if (error || !data?.ok) return false;
       try {
         sessionStorage.setItem(AUTH_KEY, "1");
+        sessionStorage.setItem(AUTH_CODE_KEY, trimmed);
       } catch {
         /* noop */
       }
@@ -88,6 +90,7 @@ const useAuth = () => {
   const logout = () => {
     try {
       sessionStorage.removeItem(AUTH_KEY);
+      sessionStorage.removeItem(AUTH_CODE_KEY);
     } catch {
       /* noop */
     }
@@ -234,8 +237,14 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   };
   const clearSelection = () => setSelected(new Set());
 
-  // 삭제 시 관리자 패스코드 재확인 (서버에서 검증)
+  // 삭제 시 관리자 패스코드 재확인 (로그인 시 저장된 값 우선 사용)
   const promptPasscode = (): string | null => {
+    try {
+      const cached = sessionStorage.getItem(AUTH_CODE_KEY);
+      if (cached && cached.trim()) return cached.trim();
+    } catch {
+      /* noop */
+    }
     const code = window.prompt("삭제하려면 관리자 패스코드를 다시 입력해 주세요.");
     if (code === null) return null;
     const trimmed = code.trim();
