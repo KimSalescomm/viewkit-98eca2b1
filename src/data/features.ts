@@ -58,6 +58,7 @@ export interface Feature {
   galleryImages?: (string | GalleryImage)[];
   mediaSlides?: MediaSlide[];
   belowMediaImage?: { url: string; alt?: string; caption?: string };
+  mediaSectionTitle?: string;
 
 
   isShorts?: boolean;
