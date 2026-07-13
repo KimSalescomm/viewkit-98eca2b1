@@ -619,15 +619,15 @@ const Subscription = () => {
         {/* Highlight banner */}
         <div
           className="mt-10 rounded-2xl px-5 py-4 sm:px-6 sm:py-5 flex items-start gap-3"
-          style={{ backgroundColor: "#F3F4F6", border: "1px solid #E5E7EB" }}
+          style={{ backgroundColor: "#FEF3C7", border: "1.5px solid #F59E0B" }}
         >
           <span
             className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center mt-0.5"
-            style={{ backgroundColor: "#4B5563", color: "#fff" }}
+            style={{ backgroundColor: "#B45309", color: "#fff" }}
           >
             <Sparkles className="w-4 h-4" />
           </span>
-          <p className="text-[14px] sm:text-[15px] font-semibold leading-relaxed" style={{ color: "#374151" }}>
+          <p className="text-[15px] sm:text-[16px] font-bold leading-relaxed" style={{ color: "#7C2D12" }}>
             제공되는 케어서비스 항목은 제품별 구독 타입(프리미엄, 라이트, 라이트 플러스 등) 및 구독 모델, 시점에 따라 다를 수 있으므로, 자세한 내용은 구독 계약할 때 반드시 다시 확인해 주세요.
           </p>
         </div>
