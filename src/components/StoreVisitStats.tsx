@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { BarChart3, Users, Eye, Store, Download } from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { BarChart3, Users, Eye, Store, Download, RefreshCw } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
@@ -63,8 +63,11 @@ const StoreVisitStats = () => {
   const [category, setCategory] = useState<CategoryKey>("all");
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
+  const [serverTotal, setServerTotal] = useState<number | null>(null);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
   const [reloadKey, setReloadKey] = useState(0);
+  const refetch = useCallback(() => setReloadKey((k) => k + 1), []);
 
   useEffect(() => {
     let cancelled = false;
@@ -77,8 +80,17 @@ const StoreVisitStats = () => {
     // Supabase 기본 응답 상한(1,000행)을 우회하기 위해 페이지네이션으로 전체 조회
     const PAGE_SIZE = 1000;
     const fetchAll = async () => {
+      // 서버측 정확한 카운트 (표시된 수치가 캡이 아님을 확인)
+      const { count } = await supabase
+        .from("page_views")
+        .select("id", { count: "exact", head: true })
+        .gte("created_at", effectiveSince);
+      if (!cancelled) setServerTotal(count ?? null);
+
       const all: Row[] = [];
-      for (let from = 0; ; from += PAGE_SIZE) {
+      const maxPages = Math.max(1, Math.ceil((count ?? 100000) / PAGE_SIZE));
+      for (let page = 0; page < maxPages; page++) {
+        const from = page * PAGE_SIZE;
         const { data, error } = await supabase
           .from("page_views")
           .select("id, store_id, store_name, path, session_id, created_at")
@@ -88,8 +100,7 @@ const StoreVisitStats = () => {
         if (error || !data || data.length === 0) break;
         all.push(...(data as Row[]));
         if (data.length < PAGE_SIZE) break;
-        // 안전장치: 100,000행 초과 방지
-        if (all.length >= 100000) break;
+        if (all.length >= 200000) break; // 안전장치
       }
       return all;
     };
@@ -101,6 +112,7 @@ const StoreVisitStats = () => {
         return sid !== "SC" && sid !== "KOR";
       });
       setRows(filtered);
+      setLastUpdated(new Date());
       setLoading(false);
     });
     return () => {
@@ -108,20 +120,32 @@ const StoreVisitStats = () => {
     };
   }, [range, reloadKey]);
 
-  // 실시간 구독: 신규 page_views INSERT 발생 시 데이터 재조회
+  // 실시간 구독: 신규 page_views INSERT 발생 시 데이터 재조회 (5초 디바운스)
   useEffect(() => {
+    let timer: number | null = null;
     const channel = supabase
       .channel("page_views-live")
       .on(
         "postgres_changes",
         { event: "INSERT", schema: "public", table: "page_views" },
-        () => setReloadKey((k) => k + 1),
+        () => {
+          if (timer) window.clearTimeout(timer);
+          timer = window.setTimeout(() => setReloadKey((k) => k + 1), 5000);
+        },
       )
       .subscribe();
     return () => {
+      if (timer) window.clearTimeout(timer);
       supabase.removeChannel(channel);
     };
   }, []);
+
+  // 60초마다 자동 새로고침(폴백)
+  useEffect(() => {
+    const id = window.setInterval(() => setReloadKey((k) => k + 1), 60000);
+    return () => window.clearInterval(id);
+  }, []);
+
 
   const filteredRows = useMemo(() => {
     if (category === "all") return rows;
@@ -228,6 +252,10 @@ const StoreVisitStats = () => {
             <BarChart3 className="w-4 h-4" strokeWidth={2.4} />
           </div>
           <h2 className="text-sm font-semibold text-slate-900">지점별 접속 통계</h2>
+          <span className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            실시간
+          </span>
         </div>
         <div className="flex items-center gap-2 flex-wrap">
           <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5">
@@ -264,9 +292,27 @@ const StoreVisitStats = () => {
             </button>
           ))}
           </div>
+          <button
+            type="button"
+            onClick={refetch}
+            title="새로고침"
+            className="inline-flex items-center gap-1 h-7 px-2 rounded-md border border-slate-200 bg-white text-xs text-slate-600 hover:bg-slate-50"
+          >
+            <RefreshCw className={cn("w-3 h-3", loading && "animate-spin")} />
+          </button>
         </div>
       </div>
 
+      <div className="flex items-center justify-between mb-2 text-[11px] text-slate-400">
+        <div>
+          {serverTotal !== null && (
+            <span>서버 기록 {serverTotal.toLocaleString()}행 (SC/KOR 포함 원본)</span>
+          )}
+        </div>
+        <div>
+          {lastUpdated && <>업데이트: {format(lastUpdated, "HH:mm:ss", { locale: ko })}</>}
+        </div>
+      </div>
 
       <div className="grid grid-cols-3 gap-3 mb-4">
         <div className="rounded-xl bg-slate-50/70 px-4 py-3">
@@ -288,6 +334,7 @@ const StoreVisitStats = () => {
           <div className="text-xl font-bold text-slate-900 tabular-nums">{totals.stores.toLocaleString()}</div>
         </div>
       </div>
+
 
       {loading ? (
         <div className="py-10 text-center text-sm text-slate-400">불러오는 중...</div>
