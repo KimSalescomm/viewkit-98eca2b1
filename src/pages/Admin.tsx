@@ -337,28 +337,26 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     };
     const toRow = (arr: unknown[]) => arr.map(esc).join(",");
 
-    // 페이지뷰(지점별 접속) 데이터 조회
+    // 페이지뷰(지점별 접속) 데이터 조회 - 전체 페이지네이션
     const SITE_OPEN = "2026-06-08T00:00:00Z";
-    const { data: pvData } = await supabase
-      .from("page_views")
-      .select("store_id, store_name, session_id, created_at")
-      .gte("created_at", SITE_OPEN)
-      .order("created_at", { ascending: false })
-      .limit(10000);
-    const pvRows = (pvData || []).filter((r) => {
+    const pvData = await fetchAllPageViews(SITE_OPEN);
+    const pvRows = pvData.filter((r) => {
       const sid = (r.store_id || "").toUpperCase();
       return sid !== "SC" && sid !== "KOR";
     });
     const visitMap = new Map<string, { name: string; views: number; sessions: Set<string>; lastAt: string }>();
     pvRows.forEach((r) => {
+      const canonicalName = CODE_TO_NAME[r.store_id] || r.store_name || r.store_id;
       const cur = visitMap.get(r.store_id);
       if (cur) {
         cur.views += 1;
         cur.sessions.add(r.session_id);
         if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
+        cur.name = canonicalName;
       } else {
         visitMap.set(r.store_id, {
-          name: r.store_name || r.store_id,
+          name: canonicalName,
+
           views: 1,
           sessions: new Set([r.session_id]),
           lastAt: r.created_at,
