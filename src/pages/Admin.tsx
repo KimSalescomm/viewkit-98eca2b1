@@ -19,6 +19,34 @@ import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { cn } from "@/lib/utils";
+import { BRANCH_CODE_MAP } from "@/data/branches";
+
+// 코드(store_id) → 정식 지점명 역매핑 (DB의 store_name 불일치 보정용)
+const CODE_TO_NAME: Record<string, string> = Object.fromEntries(
+  Object.entries(BRANCH_CODE_MAP).map(([name, code]) => [code, name]),
+);
+
+// page_views 전체 페이지네이션 조회 (Supabase 1,000행 응답 상한 우회)
+const fetchAllPageViews = async (sinceISO: string) => {
+  const PAGE_SIZE = 1000;
+  type PV = { store_id: string; store_name: string | null; session_id: string; created_at: string };
+  const all: PV[] = [];
+  for (let page = 0; page < 500; page++) {
+    const from = page * PAGE_SIZE;
+    const { data, error } = await supabase
+      .from("page_views")
+      .select("store_id, store_name, session_id, created_at")
+      .gte("created_at", sinceISO)
+      .order("created_at", { ascending: false })
+      .range(from, from + PAGE_SIZE - 1);
+    if (error || !data || data.length === 0) break;
+    all.push(...(data as PV[]));
+    if (data.length < PAGE_SIZE) break;
+    if (all.length >= 200000) break;
+  }
+  return all;
+};
+
 
 // 패스코드는 서버(Edge Function: admin-login)에서 검증합니다.
 const AUTH_KEY = "viewkit_admin_auth";
@@ -309,28 +337,26 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     };
     const toRow = (arr: unknown[]) => arr.map(esc).join(",");
 
-    // 페이지뷰(지점별 접속) 데이터 조회
+    // 페이지뷰(지점별 접속) 데이터 조회 - 전체 페이지네이션
     const SITE_OPEN = "2026-06-08T00:00:00Z";
-    const { data: pvData } = await supabase
-      .from("page_views")
-      .select("store_id, store_name, session_id, created_at")
-      .gte("created_at", SITE_OPEN)
-      .order("created_at", { ascending: false })
-      .limit(10000);
-    const pvRows = (pvData || []).filter((r) => {
+    const pvData = await fetchAllPageViews(SITE_OPEN);
+    const pvRows = pvData.filter((r) => {
       const sid = (r.store_id || "").toUpperCase();
       return sid !== "SC" && sid !== "KOR";
     });
     const visitMap = new Map<string, { name: string; views: number; sessions: Set<string>; lastAt: string }>();
     pvRows.forEach((r) => {
+      const canonicalName = CODE_TO_NAME[r.store_id] || r.store_name || r.store_id;
       const cur = visitMap.get(r.store_id);
       if (cur) {
         cur.views += 1;
         cur.sessions.add(r.session_id);
         if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
+        cur.name = canonicalName;
       } else {
         visitMap.set(r.store_id, {
-          name: r.store_name || r.store_id,
+          name: canonicalName,
+
           views: 1,
           sessions: new Set([r.session_id]),
           lastAt: r.created_at,
@@ -403,32 +429,30 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     };
     const toRow = (arr: unknown[]) => arr.map(esc).join(",");
     const SITE_OPEN = "2026-06-08T00:00:00Z";
-    const { data } = await supabase
-      .from("page_views")
-      .select("store_id, store_name, session_id, created_at")
-      .gte("created_at", SITE_OPEN)
-      .order("created_at", { ascending: false })
-      .limit(10000);
-    const pvRows = (data || []).filter((r) => {
+    const data = await fetchAllPageViews(SITE_OPEN);
+    const pvRows = data.filter((r) => {
       const sid = (r.store_id || "").toUpperCase();
       return sid !== "SC" && sid !== "KOR";
     });
     const map = new Map<string, { name: string; views: number; sessions: Set<string>; lastAt: string }>();
     pvRows.forEach((r) => {
+      const canonicalName = CODE_TO_NAME[r.store_id] || r.store_name || r.store_id;
       const cur = map.get(r.store_id);
       if (cur) {
         cur.views += 1;
         cur.sessions.add(r.session_id);
         if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
+        cur.name = canonicalName;
       } else {
         map.set(r.store_id, {
-          name: r.store_name || r.store_id,
+          name: canonicalName,
           views: 1,
           sessions: new Set([r.session_id]),
           lastAt: r.created_at,
         });
       }
     });
+
     const stats = [...map.entries()]
       .map(([code, v]) => ({ code, name: v.name, views: v.views, visits: v.sessions.size, lastAt: v.lastAt }))
       .sort((a, b) => b.views - a.views);
