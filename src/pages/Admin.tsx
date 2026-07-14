@@ -429,32 +429,30 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     };
     const toRow = (arr: unknown[]) => arr.map(esc).join(",");
     const SITE_OPEN = "2026-06-08T00:00:00Z";
-    const { data } = await supabase
-      .from("page_views")
-      .select("store_id, store_name, session_id, created_at")
-      .gte("created_at", SITE_OPEN)
-      .order("created_at", { ascending: false })
-      .limit(10000);
-    const pvRows = (data || []).filter((r) => {
+    const data = await fetchAllPageViews(SITE_OPEN);
+    const pvRows = data.filter((r) => {
       const sid = (r.store_id || "").toUpperCase();
       return sid !== "SC" && sid !== "KOR";
     });
     const map = new Map<string, { name: string; views: number; sessions: Set<string>; lastAt: string }>();
     pvRows.forEach((r) => {
+      const canonicalName = CODE_TO_NAME[r.store_id] || r.store_name || r.store_id;
       const cur = map.get(r.store_id);
       if (cur) {
         cur.views += 1;
         cur.sessions.add(r.session_id);
         if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
+        cur.name = canonicalName;
       } else {
         map.set(r.store_id, {
-          name: r.store_name || r.store_id,
+          name: canonicalName,
           views: 1,
           sessions: new Set([r.session_id]),
           lastAt: r.created_at,
         });
       }
     });
+
     const stats = [...map.entries()]
       .map(([code, v]) => ({ code, name: v.name, views: v.views, visits: v.sessions.size, lastAt: v.lastAt }))
       .sort((a, b) => b.views - a.views);
