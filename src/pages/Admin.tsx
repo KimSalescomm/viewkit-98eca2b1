@@ -47,6 +47,24 @@ const fetchAllPageViews = async (sinceISO: string) => {
   return all;
 };
 
+// 접속기록 CSV 기간 옵션 (StoreVisitStats와 동일)
+type VisitsRangeKey = "today" | "7d" | "30d" | "all";
+const VISITS_RANGES: { key: VisitsRangeKey; label: string }[] = [
+  { key: "today", label: "오늘" },
+  { key: "7d", label: "7일" },
+  { key: "30d", label: "30일" },
+  { key: "all", label: "전체" },
+];
+const SITE_OPEN_ISO = "2026-06-08T00:00:00Z";
+const getVisitsSinceISO = (key: VisitsRangeKey): string => {
+  if (key === "all") return SITE_OPEN_ISO;
+  const d = new Date();
+  if (key === "today") d.setHours(0, 0, 0, 0);
+  else d.setDate(d.getDate() - (key === "7d" ? 7 : 30));
+  const iso = d.toISOString();
+  return iso > SITE_OPEN_ISO ? iso : SITE_OPEN_ISO;
+};
+
 
 // 패스코드는 서버(Edge Function: admin-login)에서 검증합니다.
 const AUTH_KEY = "viewkit_admin_auth";
@@ -221,6 +239,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   const [productFilter, setProductFilter] = useState<string>("all");
   const [from, setFrom] = useState<string>("");
   const [to, setTo] = useState<string>("");
+  const [visitsRange, setVisitsRange] = useState<VisitsRangeKey>("7d");
+
 
   const branches = useMemo(() => [...new Set(sales.map((s) => s.branch))], [sales]);
   const productList = useMemo(() => [...new Set(sales.map((s) => s.product))], [sales]);
@@ -337,9 +357,10 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     };
     const toRow = (arr: unknown[]) => arr.map(esc).join(",");
 
-    // 페이지뷰(지점별 접속) 데이터 조회 - 전체 페이지네이션
-    const SITE_OPEN = "2026-06-08T00:00:00Z";
-    const pvData = await fetchAllPageViews(SITE_OPEN);
+    // 페이지뷰(지점별 접속) 데이터 조회 - 선택된 기간 필터 적용
+    const sinceISO = getVisitsSinceISO(visitsRange);
+    const rangeLabel = VISITS_RANGES.find((r) => r.key === visitsRange)?.label ?? visitsRange;
+    const pvData = await fetchAllPageViews(sinceISO);
     const pvRows = pvData.filter((r) => {
       const sid = (r.store_id || "").toUpperCase();
       return sid !== "SC" && sid !== "KOR";
@@ -374,9 +395,10 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     sections.push(toRow(["생성 시각", stamp]));
     sections.push(toRow(["판매 기록 총건수", sales.length]));
     sections.push(toRow(["필터 결과 건수", filtered.length]));
+    sections.push(toRow(["접속 통계 기간", rangeLabel]));
     sections.push("");
 
-    sections.push(toRow(["[1] 지점별 접속 통계 (사이트 오픈일 이후)"]));
+    sections.push(toRow([`[1] 지점별 접속 통계 (기간: ${rangeLabel})`]));
     sections.push(toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"]));
     visitStats.forEach((s, i) =>
       sections.push(
@@ -428,8 +450,9 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
     };
     const toRow = (arr: unknown[]) => arr.map(esc).join(",");
-    const SITE_OPEN = "2026-06-08T00:00:00Z";
-    const data = await fetchAllPageViews(SITE_OPEN);
+    const sinceISO = getVisitsSinceISO(visitsRange);
+    const rangeLabel = VISITS_RANGES.find((r) => r.key === visitsRange)?.label ?? visitsRange;
+    const data = await fetchAllPageViews(sinceISO);
     const pvRows = data.filter((r) => {
       const sid = (r.store_id || "").toUpperCase();
       return sid !== "SC" && sid !== "KOR";
@@ -457,6 +480,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       .map(([code, v]) => ({ code, name: v.name, views: v.views, visits: v.sessions.size, lastAt: v.lastAt }))
       .sort((a, b) => b.views - a.views);
     const lines = [
+      toRow([`접속기록 CSV (기간: ${rangeLabel})`]),
       toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"]),
       ...stats.map((s, i) =>
         toRow([
@@ -545,6 +569,23 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
           </div>
 
           <div className="flex-1" />
+
+          <div className="flex flex-col gap-1">
+            <label className="text-[11px] font-medium text-slate-500">접속기록 기간</label>
+            <select
+              value={visitsRange}
+              onChange={(e) => setVisitsRange(e.target.value as VisitsRangeKey)}
+              className={selectClass}
+              title="접속기록/전체 대시보드 CSV의 페이지뷰·세션 집계 기간"
+            >
+              {VISITS_RANGES.map((r) => (
+                <option key={r.key} value={r.key}>
+                  {r.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
 
           <button
             type="button"
