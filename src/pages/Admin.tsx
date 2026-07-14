@@ -480,6 +480,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       .map(([code, v]) => ({ code, name: v.name, views: v.views, visits: v.sessions.size, lastAt: v.lastAt }))
       .sort((a, b) => b.views - a.views);
     const lines = [
+      toRow([`접속기록 CSV (기간: ${rangeLabel})`]),
       toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"]),
       ...stats.map((s, i) =>
         toRow([
