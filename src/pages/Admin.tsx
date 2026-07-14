@@ -357,9 +357,10 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     };
     const toRow = (arr: unknown[]) => arr.map(esc).join(",");
 
-    // 페이지뷰(지점별 접속) 데이터 조회 - 전체 페이지네이션
-    const SITE_OPEN = "2026-06-08T00:00:00Z";
-    const pvData = await fetchAllPageViews(SITE_OPEN);
+    // 페이지뷰(지점별 접속) 데이터 조회 - 선택된 기간 필터 적용
+    const sinceISO = getVisitsSinceISO(visitsRange);
+    const rangeLabel = VISITS_RANGES.find((r) => r.key === visitsRange)?.label ?? visitsRange;
+    const pvData = await fetchAllPageViews(sinceISO);
     const pvRows = pvData.filter((r) => {
       const sid = (r.store_id || "").toUpperCase();
       return sid !== "SC" && sid !== "KOR";
