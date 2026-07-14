@@ -570,6 +570,23 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
 
           <div className="flex-1" />
 
+          <div className="flex flex-col gap-1">
+            <label className="text-[11px] font-medium text-slate-500">접속기록 기간</label>
+            <select
+              value={visitsRange}
+              onChange={(e) => setVisitsRange(e.target.value as VisitsRangeKey)}
+              className={selectClass}
+              title="접속기록/전체 대시보드 CSV의 페이지뷰·세션 집계 기간"
+            >
+              {VISITS_RANGES.map((r) => (
+                <option key={r.key} value={r.key}>
+                  {r.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+
           <button
             type="button"
             onClick={() => void handleExportAll()}
