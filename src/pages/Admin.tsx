@@ -450,8 +450,9 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
     };
     const toRow = (arr: unknown[]) => arr.map(esc).join(",");
-    const SITE_OPEN = "2026-06-08T00:00:00Z";
-    const data = await fetchAllPageViews(SITE_OPEN);
+    const sinceISO = getVisitsSinceISO(visitsRange);
+    const rangeLabel = VISITS_RANGES.find((r) => r.key === visitsRange)?.label ?? visitsRange;
+    const data = await fetchAllPageViews(sinceISO);
     const pvRows = data.filter((r) => {
       const sid = (r.store_id || "").toUpperCase();
       return sid !== "SC" && sid !== "KOR";
