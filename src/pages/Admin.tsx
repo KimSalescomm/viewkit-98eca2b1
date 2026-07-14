@@ -395,9 +395,10 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     sections.push(toRow(["생성 시각", stamp]));
     sections.push(toRow(["판매 기록 총건수", sales.length]));
     sections.push(toRow(["필터 결과 건수", filtered.length]));
+    sections.push(toRow(["접속 통계 기간", rangeLabel]));
     sections.push("");
 
-    sections.push(toRow(["[1] 지점별 접속 통계 (사이트 오픈일 이후)"]));
+    sections.push(toRow([`[1] 지점별 접속 통계 (기간: ${rangeLabel})`]));
     sections.push(toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"]));
     visitStats.forEach((s, i) =>
       sections.push(
