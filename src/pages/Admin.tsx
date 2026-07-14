@@ -47,6 +47,24 @@ const fetchAllPageViews = async (sinceISO: string) => {
   return all;
 };
 
+// 접속기록 CSV 기간 옵션 (StoreVisitStats와 동일)
+type VisitsRangeKey = "today" | "7d" | "30d" | "all";
+const VISITS_RANGES: { key: VisitsRangeKey; label: string }[] = [
+  { key: "today", label: "오늘" },
+  { key: "7d", label: "7일" },
+  { key: "30d", label: "30일" },
+  { key: "all", label: "전체" },
+];
+const SITE_OPEN_ISO = "2026-06-08T00:00:00Z";
+const getVisitsSinceISO = (key: VisitsRangeKey): string => {
+  if (key === "all") return SITE_OPEN_ISO;
+  const d = new Date();
+  if (key === "today") d.setHours(0, 0, 0, 0);
+  else d.setDate(d.getDate() - (key === "7d" ? 7 : 30));
+  const iso = d.toISOString();
+  return iso > SITE_OPEN_ISO ? iso : SITE_OPEN_ISO;
+};
+
 
 // 패스코드는 서버(Edge Function: admin-login)에서 검증합니다.
 const AUTH_KEY = "viewkit_admin_auth";
