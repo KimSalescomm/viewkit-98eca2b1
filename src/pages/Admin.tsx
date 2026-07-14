@@ -19,6 +19,34 @@ import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { cn } from "@/lib/utils";
+import { BRANCH_CODE_MAP } from "@/data/branches";
+
+// 코드(store_id) → 정식 지점명 역매핑 (DB의 store_name 불일치 보정용)
+const CODE_TO_NAME: Record<string, string> = Object.fromEntries(
+  Object.entries(BRANCH_CODE_MAP).map(([name, code]) => [code, name]),
+);
+
+// page_views 전체 페이지네이션 조회 (Supabase 1,000행 응답 상한 우회)
+const fetchAllPageViews = async (sinceISO: string) => {
+  const PAGE_SIZE = 1000;
+  type PV = { store_id: string; store_name: string | null; session_id: string; created_at: string };
+  const all: PV[] = [];
+  for (let page = 0; page < 500; page++) {
+    const from = page * PAGE_SIZE;
+    const { data, error } = await supabase
+      .from("page_views")
+      .select("store_id, store_name, session_id, created_at")
+      .gte("created_at", sinceISO)
+      .order("created_at", { ascending: false })
+      .range(from, from + PAGE_SIZE - 1);
+    if (error || !data || data.length === 0) break;
+    all.push(...(data as PV[]));
+    if (data.length < PAGE_SIZE) break;
+    if (all.length >= 200000) break;
+  }
+  return all;
+};
+
 
 // 패스코드는 서버(Edge Function: admin-login)에서 검증합니다.
 const AUTH_KEY = "viewkit_admin_auth";
