@@ -252,6 +252,10 @@ const StoreVisitStats = () => {
             <BarChart3 className="w-4 h-4" strokeWidth={2.4} />
           </div>
           <h2 className="text-sm font-semibold text-slate-900">지점별 접속 통계</h2>
+          <span className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            실시간
+          </span>
         </div>
         <div className="flex items-center gap-2 flex-wrap">
           <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5">
@@ -288,9 +292,27 @@ const StoreVisitStats = () => {
             </button>
           ))}
           </div>
+          <button
+            type="button"
+            onClick={refetch}
+            title="새로고침"
+            className="inline-flex items-center gap-1 h-7 px-2 rounded-md border border-slate-200 bg-white text-xs text-slate-600 hover:bg-slate-50"
+          >
+            <RefreshCw className={cn("w-3 h-3", loading && "animate-spin")} />
+          </button>
         </div>
       </div>
 
+      <div className="flex items-center justify-between mb-2 text-[11px] text-slate-400">
+        <div>
+          {serverTotal !== null && (
+            <span>서버 기록 {serverTotal.toLocaleString()}행 (SC/KOR 포함 원본)</span>
+          )}
+        </div>
+        <div>
+          {lastUpdated && <>업데이트: {format(lastUpdated, "HH:mm:ss", { locale: ko })}</>}
+        </div>
+      </div>
 
       <div className="grid grid-cols-3 gap-3 mb-4">
         <div className="rounded-xl bg-slate-50/70 px-4 py-3">
@@ -312,6 +334,7 @@ const StoreVisitStats = () => {
           <div className="text-xl font-bold text-slate-900 tabular-nums">{totals.stores.toLocaleString()}</div>
         </div>
       </div>
+
 
       {loading ? (
         <div className="py-10 text-center text-sm text-slate-400">불러오는 중...</div>
