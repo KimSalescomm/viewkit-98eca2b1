@@ -239,6 +239,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   const [productFilter, setProductFilter] = useState<string>("all");
   const [from, setFrom] = useState<string>("");
   const [to, setTo] = useState<string>("");
+  const [visitsRange, setVisitsRange] = useState<VisitsRangeKey>("7d");
+
 
   const branches = useMemo(() => [...new Set(sales.map((s) => s.branch))], [sales]);
   const productList = useMemo(() => [...new Set(sales.map((s) => s.product))], [sales]);
