@@ -122,7 +122,7 @@ const ProductSelection = () => {
     keyVisualImage: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_stove_03_250804.jpg",
     icon: "Waves",
   } as (typeof products)[number];
-  const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "styler", "tv", "cooking"];
+  const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "styler", "tv", "cooking", "bathair"];
   // 제품 카드(홈) 전용 썸네일 오버라이드 — 다른 페이지의 키비주얼은 유지
   const cardThumbnailOverrides: Record<string, { keyVisualImage?: string; secondaryKeyVisualImage?: string }> = {
     vacuum: {
@@ -131,11 +131,21 @@ const ProductSelection = () => {
     },
 
   };
+  const currentSlug = (getCurrentStore()?.slug || "").toUpperCase();
+  const isInternalPreview = INTERNAL_STORE_SLUGS.has(currentSlug);
   const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")].map((p) => {
     const override = cardThumbnailOverrides[p.id];
     return override ? { ...p, ...override } : p;
   });
-  const visibleProducts = desiredOrder.map((id) => allProducts.find((p) => p.id === id)).filter(Boolean) as (typeof allProducts);
+  const visibleProducts = desiredOrder
+    .map((id) => allProducts.find((p) => p.id === id))
+    .filter((p): p is (typeof allProducts)[number] => {
+      if (!p) return false;
+      // 대외비 제품은 SC/KOR 계정에서만 카드 노출 (지점 계정에서는 아예 숨김)
+      if (CONFIDENTIAL_PRODUCT_IDS.has(p.id) && !isInternalPreview) return false;
+      return true;
+    });
+
 
   const { trackProductClick } = useAnalyticsContext();
   const navigate = useNavigate();
