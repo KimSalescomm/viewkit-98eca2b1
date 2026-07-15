@@ -1390,7 +1390,9 @@ export const featureIconNames: Record<string, string> = {
   Square: "EyeOff",
   Gift: "Gift",
   Cable: "Cable",
+  Droplets: "Droplets",
 };
+
 
 // Keep legacy export for backwards compat (unused but safe)
 export const featureIconMap = featureIconNames;
