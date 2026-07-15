@@ -391,7 +391,7 @@ const Subscription = () => {
               return (
                 <button
                   key={p.id}
-                  onClick={() => setSelectedId(p.id)}
+                  onClick={() => handleTabClick(p.id, p.name)}
                   className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${
                     active
                       ? "text-white shadow-md"
