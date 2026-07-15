@@ -280,6 +280,18 @@ const subscriptionProducts: SubscriptionProduct[] = [
 
 const Subscription = () => {
   const [selectedId, setSelectedId] = useState<string>("washer");
+  const { trackEvent } = useAnalyticsContext();
+  const handleTabClick = (productId: string, productName: string) => {
+    if (productId === selectedId) return;
+    setSelectedId(productId);
+    trackEvent("subscription_tab_click", { product_id: productId, product_name: productName });
+    logFeatureReaction({
+      productId: "subscription",
+      productName: "구독 케어",
+      featureId: `tab_${productId}`,
+      featureTitle: `${productName} 탭`,
+    });
+  };
   const [previewStep, setPreviewStep] = useState<CareStep | null>(null);
   const [videoOpen, setVideoOpen] = useState(false);
   const selected = subscriptionProducts.find((p) => p.id === selectedId)!;
