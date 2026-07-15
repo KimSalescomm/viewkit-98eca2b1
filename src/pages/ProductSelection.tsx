@@ -12,9 +12,11 @@ import {
   Wind,
   Monitor,
   UtensilsCrossed,
+  Droplets,
   BookOpen,
   type LucideIcon,
 } from "lucide-react";
+
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import OrientationToggle from "@/components/OrientationToggle";
 import StoreSetupModal from "@/components/StoreSetupModal";
