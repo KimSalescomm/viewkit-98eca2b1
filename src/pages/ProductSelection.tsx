@@ -12,9 +12,11 @@ import {
   Wind,
   Monitor,
   UtensilsCrossed,
+  Droplets,
   BookOpen,
   type LucideIcon,
 } from "lucide-react";
+
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import OrientationToggle from "@/components/OrientationToggle";
 import StoreSetupModal from "@/components/StoreSetupModal";
@@ -32,7 +34,13 @@ const lucideIconMap: Record<string, LucideIcon> = {
   Wind,
   Monitor,
   UtensilsCrossed,
+  Droplets,
 };
+
+// 대외비 제품 — SC(관리자) 및 KOR(유관부서) 계정에서만 노출
+const CONFIDENTIAL_PRODUCT_IDS = new Set(["bathair"]);
+const INTERNAL_STORE_SLUGS = new Set(["SC", "KOR"]);
+
 
 const ProductLucideIcon = ({ name, className }: { name: string; className?: string }) => {
   const Icon = lucideIconMap[name] || Sparkles;
@@ -94,11 +102,18 @@ const productAccents: Record<string, { gradient: string; tint: string; chip: str
     chip: "bg-lime-50 text-lime-600 border-lime-100",
     keywords: ["편리함", "위생"],
   },
+  bathair: {
+    gradient: "from-teal-400 to-cyan-500",
+    tint: "from-teal-50 via-white to-white",
+    chip: "bg-teal-50 text-teal-600 border-teal-100",
+    keywords: ["욕실 케어", "스마트 제습", "대외비"],
+  },
 };
+
 
 const ProductSelection = () => {
   const { products, visibleProductIds } = useContent();
-  const baseEnabledIds = visibleProductIds;
+
   const subscriptionCard = {
     id: "subscription",
     name: "구독",
@@ -107,7 +122,7 @@ const ProductSelection = () => {
     keyVisualImage: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_stove_03_250804.jpg",
     icon: "Waves",
   } as (typeof products)[number];
-  const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "styler", "tv", "cooking"];
+  const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "styler", "tv", "cooking", "bathair"];
   // 제품 카드(홈) 전용 썸네일 오버라이드 — 다른 페이지의 키비주얼은 유지
   const cardThumbnailOverrides: Record<string, { keyVisualImage?: string; secondaryKeyVisualImage?: string }> = {
     vacuum: {
@@ -116,11 +131,21 @@ const ProductSelection = () => {
     },
 
   };
+  const currentSlug = (getCurrentStore()?.slug || "").toUpperCase();
+  const isInternalPreview = INTERNAL_STORE_SLUGS.has(currentSlug);
   const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")].map((p) => {
     const override = cardThumbnailOverrides[p.id];
     return override ? { ...p, ...override } : p;
   });
-  const visibleProducts = desiredOrder.map((id) => allProducts.find((p) => p.id === id)).filter(Boolean) as (typeof allProducts);
+  const visibleProducts = desiredOrder
+    .map((id) => allProducts.find((p) => p.id === id))
+    .filter((p): p is (typeof allProducts)[number] => {
+      if (!p) return false;
+      // 대외비 제품은 SC/KOR 계정에서만 카드 노출 (지점 계정에서는 아예 숨김)
+      if (CONFIDENTIAL_PRODUCT_IDS.has(p.id) && !isInternalPreview) return false;
+      return true;
+    });
+
 
   const { trackProductClick } = useAnalyticsContext();
   const navigate = useNavigate();
@@ -253,7 +278,11 @@ const ProductSelection = () => {
         <h2 className="sr-only">제품 선택</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
           {visibleProducts.map((product, index) => {
-            const isEnabled = baseEnabledIds.includes(product.id);
+            // 내부 계정(SC/KOR)은 대외비 제품도 항상 활성화, 그 외는 퍼블리시된 노출 목록 기준
+            const isEnabled =
+              (isInternalPreview && CONFIDENTIAL_PRODUCT_IDS.has(product.id)) ||
+              visibleProductIds.includes(product.id);
+
 
             const accent = productAccents[product.id] || {
               gradient: "from-gray-300 to-gray-400",
