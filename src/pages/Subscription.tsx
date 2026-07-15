@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Check, ArrowLeft, Sparkles, ImageIcon, X, Play } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
 import FeatureLikeButton from "@/components/FeatureLikeButton";
+import { logFeatureReaction } from "@/utils/featureReactionLog";
+import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import washcomboBefore from "@/assets/tower-before.png";
 import washcomboAfter from "@/assets/tower-after.png";
 import washerBefore from "@/assets/washercare-b.png";
