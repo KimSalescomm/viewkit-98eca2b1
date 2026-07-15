@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Check, ArrowLeft, Sparkles, ImageIcon, X, Play } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
 import FeatureLikeButton from "@/components/FeatureLikeButton";
+import { logFeatureReaction } from "@/utils/featureReactionLog";
+import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import washcomboBefore from "@/assets/tower-before.png";
 import washcomboAfter from "@/assets/tower-after.png";
 import washerBefore from "@/assets/washercare-b.png";
@@ -278,6 +280,18 @@ const subscriptionProducts: SubscriptionProduct[] = [
 
 const Subscription = () => {
   const [selectedId, setSelectedId] = useState<string>("washer");
+  const { trackEvent } = useAnalyticsContext();
+  const handleTabClick = (productId: string, productName: string) => {
+    if (productId === selectedId) return;
+    setSelectedId(productId);
+    trackEvent("subscription_tab_click", { product_id: productId, product_name: productName });
+    logFeatureReaction({
+      productId: "subscription",
+      productName: "구독 케어",
+      featureId: `tab_${productId}`,
+      featureTitle: `${productName} 탭`,
+    });
+  };
   const [previewStep, setPreviewStep] = useState<CareStep | null>(null);
   const [videoOpen, setVideoOpen] = useState(false);
   const selected = subscriptionProducts.find((p) => p.id === selectedId)!;
@@ -377,7 +391,7 @@ const Subscription = () => {
               return (
                 <button
                   key={p.id}
-                  onClick={() => setSelectedId(p.id)}
+                  onClick={() => handleTabClick(p.id, p.name)}
                   className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${
                     active
                       ? "text-white shadow-md"
