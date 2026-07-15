@@ -102,7 +102,14 @@ const productAccents: Record<string, { gradient: string; tint: string; chip: str
     chip: "bg-lime-50 text-lime-600 border-lime-100",
     keywords: ["편리함", "위생"],
   },
+  bathair: {
+    gradient: "from-teal-400 to-cyan-500",
+    tint: "from-teal-50 via-white to-white",
+    chip: "bg-teal-50 text-teal-600 border-teal-100",
+    keywords: ["욕실 케어", "스마트 제습", "대외비"],
+  },
 };
+
 
 const ProductSelection = () => {
   const { products, visibleProductIds } = useContent();
