@@ -1208,7 +1208,152 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["4방향 회전 분사", "고압 세척", "99.9% 살균", "에너지 절약"],
     },
   ],
+
+  // 바스에어 특장점 (대외비 · SC/KOR 계정 전용 미리보기)
+  bathair: [
+    {
+      id: "1",
+      title: "습한 욕실, 정말 그냥 두시겠어요?",
+      subtitle: "샤워 후 남은 습기와 냄새,\n바스에어가 자동으로 관리해드려요.",
+      icon: "Droplets",
+      tag: "스마트 제습",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/lg-styler/md10747827/usp/SC5GMR80S_12_true_steam_Detail_01.mp4",
+      description:
+        "샤워 후 욕실에 남은 습기는 곰팡이와 냄새의 원인이 돼요. 바스에어는 습도를 감지해 자동으로 작동하며, 짧은 시간 안에 욕실 공기를 쾌적하게 바꿔줍니다.",
+      highlights: [
+        "샤워 후 자동 감지·작동",
+        "곰팡이·냄새 원인 습기 제거",
+        "저소음 야간 모드",
+        "에너지 효율 1등급",
+      ],
+    },
+    {
+      id: "2",
+      title: "실제 써본 후기가 궁금하다면?",
+      subtitle: "실사용자의 리뷰 영상으로\n바스에어의 효과를 확인해보세요.",
+      icon: "Tv",
+      tag: "사용자 리뷰",
+      mediaType: "youtube",
+      mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM",
+      description: "설치 전후 욕실 습도 변화와 실사용자의 생생한 후기를 영상으로 만나보세요.",
+      highlights: ["설치 전후 비교", "실측 습도 변화", "생활 소음 체크"],
+    },
+    {
+      id: "3",
+      title: "우리 집 욕실에도 설치될까요?",
+      subtitle: "다양한 욕실 크기와 구조에\n어떻게 설치되는지 살펴보세요.",
+      icon: "ImageIcon",
+      tag: "설치 사례",
+      mediaType: "gallery",
+      mediaUrl: "",
+      galleryImages: [
+        {
+          url: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&h=800&fit=crop",
+          title: "일반 가정 욕실",
+          description: "천장형 슬림 설치로 공간을 차지하지 않아요.",
+        },
+        {
+          url: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&h=800&fit=crop",
+          title: "샤워부스가 있는 욕실",
+          description: "샤워부스 상단 설치로 습기 배출 효율을 극대화했어요.",
+        },
+        {
+          url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop",
+          title: "럭셔리 프리미엄 욕실",
+          description: "인테리어와 어우러지는 무광 화이트 디자인.",
+        },
+      ],
+      description: "천장형 슬림 디자인으로 어떤 욕실에도 자연스럽게 어울려요.",
+      highlights: ["천장형 슬림 설치", "무광 화이트 마감", "기존 환풍구 활용 가능"],
+    },
+    {
+      id: "4",
+      title: "바스에어, 어떤 모델이 맞을까요?",
+      subtitle: "베이직·프리미엄·AI 모델을\n스펙별로 비교해보세요.",
+      icon: "Search",
+      tag: "모델 비교",
+      mediaType: "table",
+      mediaUrl: "",
+      description:
+        "욕실 크기·사용 인원·필요 기능에 따라 알맞은 바스에어 모델을 선택하세요.",
+      highlights: ["적용 면적", "제습 용량", "AI 자동 모드", "스마트홈 연동"],
+      tableData: [
+        {
+          name: "바스에어 베이직",
+          imageUrl: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=600&fit=crop",
+          specs: [
+            { label: "적용 면적", values: ["~ 3평"] },
+            { label: "제습 용량", values: ["일 6L"] },
+            { label: "AI 자동 모드", values: ["-"] },
+            { label: "스마트홈 연동", values: ["-"] },
+            { label: "케어 서비스", values: ["●"] },
+          ],
+        },
+        {
+          name: "바스에어 프리미엄",
+          imageUrl: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&h=600&fit=crop",
+          specs: [
+            { label: "적용 면적", values: ["~ 5평"] },
+            { label: "제습 용량", values: ["일 10L"] },
+            { label: "AI 자동 모드", values: ["●"] },
+            { label: "스마트홈 연동", values: ["ThinQ"] },
+            { label: "케어 서비스", values: ["●"] },
+          ],
+        },
+        {
+          name: "바스에어 AI",
+          imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
+          specs: [
+            { label: "적용 면적", values: ["~ 7평"] },
+            { label: "제습 용량", values: ["일 14L"] },
+            { label: "AI 자동 모드", values: ["●", "학습형 케어"] },
+            { label: "스마트홈 연동", values: ["ThinQ", "Matter"] },
+            { label: "케어 서비스", values: ["●", "프리미엄"] },
+          ],
+        },
+      ],
+      disclaimers: [
+        "본 페이지의 내용은 내부 검토용이며, 실제 출시 사양과 다를 수 있습니다.",
+      ],
+    },
+    {
+      id: "5",
+      title: "AI가 알아서 관리해준다고요?",
+      subtitle: "습도·냄새·사용 패턴을 학습해\n최적의 시점에 자동으로 작동해요.",
+      icon: "Cpu",
+      tag: "AI 스마트 케어",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_02_02_pc_b.mp4",
+      description:
+        "AI 센서가 온도·습도·냄새·사용 시간을 분석해, 사용자가 조작하지 않아도 최적의 상태로 욕실을 관리해줍니다. ThinQ 앱으로 언제 어디서든 확인하세요.",
+      highlights: [
+        "온도·습도·냄새 통합 센싱",
+        "사용 패턴 학습형 자동 모드",
+        "ThinQ 원격 제어",
+        "월간 케어 리포트 제공",
+      ],
+    },
+    {
+      id: "6",
+      title: "구독으로 더 편리하게",
+      subtitle: "필터 교체·정기 세척까지\n전문가가 알아서 챙겨드려요.",
+      icon: "Wrench",
+      tag: "구독 케어",
+      mediaType: "image",
+      mediaUrl: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&h=1000&fit=crop",
+      description:
+        "구독 시 정기 필터 교체, 내부 세척, 성능 점검까지 포함돼요. 별도 관리 없이도 오래 새 제품처럼 사용할 수 있어요.",
+      highlights: [
+        "정기 필터 교체 (6개월)",
+        "연 1회 전문가 방문 세척",
+        "성능 점검 & AS 우선",
+        "월 구독료 형태로 부담 없이",
+      ],
+    },
+  ],
 };
+
 
 // Lucide icon name map – used by FeatureCard and FeatureDetail to render SVG icons
 // Keys must match the `icon` field in each Feature object
