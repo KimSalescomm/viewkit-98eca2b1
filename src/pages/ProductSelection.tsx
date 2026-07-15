@@ -278,7 +278,11 @@ const ProductSelection = () => {
         <h2 className="sr-only">제품 선택</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
           {visibleProducts.map((product, index) => {
-            const isEnabled = baseEnabledIds.includes(product.id);
+            // 내부 계정(SC/KOR)은 대외비 제품도 항상 활성화, 그 외는 퍼블리시된 노출 목록 기준
+            const isEnabled =
+              (isInternalPreview && CONFIDENTIAL_PRODUCT_IDS.has(product.id)) ||
+              visibleProductIds.includes(product.id);
+
 
             const accent = productAccents[product.id] || {
               gradient: "from-gray-300 to-gray-400",
