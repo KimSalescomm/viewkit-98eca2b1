@@ -34,7 +34,13 @@ const lucideIconMap: Record<string, LucideIcon> = {
   Wind,
   Monitor,
   UtensilsCrossed,
+  Droplets,
 };
+
+// 대외비 제품 — SC(관리자) 및 KOR(유관부서) 계정에서만 노출
+const CONFIDENTIAL_PRODUCT_IDS = new Set(["bathair"]);
+const INTERNAL_STORE_SLUGS = new Set(["SC", "KOR"]);
+
 
 const ProductLucideIcon = ({ name, className }: { name: string; className?: string }) => {
   const Icon = lucideIconMap[name] || Sparkles;
