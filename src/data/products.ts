@@ -105,7 +105,9 @@ export const iconMap: Record<string, string> = {
   Wind: "💨",
   Monitor: "🖥️",
   UtensilsCrossed: "🍽️",
+  Droplets: "💧",
 };
+
 
 export const getProductById = (id: string): Product | undefined => {
   return products.find((p) => p.id === id);
