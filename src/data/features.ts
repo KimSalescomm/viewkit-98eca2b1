@@ -867,8 +867,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "20",
-      title: "공기청정 기능, 진짜 효과 있을까요?",
-      subtitle: "6단계 청정 시스템으로 냉방과 동시에\n미세먼지와 유해가스를 걸러줘요.",
+      title: "에어컨, 이제 청정관리가 핵심입니다",
+      subtitle: "바람이 지나가는 길을 꼼꼼하게 케어하는\n휘센 청정관리 시스템",
       icon: "Sparkles",
       tag: "청정 · UVnano",
       mediaType: "video",
