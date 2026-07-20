@@ -930,7 +930,8 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "TVCF",
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/watch?v=TNiEqW-mcb0",
-      description: "",
+      description:
+        "지금까지의 에어컨은 절반의 쾌적\n지금부터 휘센은 완전한 쾌적!\n\n국내최초 AI콜드프리\n온도는 기본, 습도까지 내 마음대로\n\n마침내 AI콜드프리로\n온도를 넘어 습도까지 완벽한 바람",
       highlights: [],
     },
   ],
