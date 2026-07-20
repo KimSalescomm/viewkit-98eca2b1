@@ -922,6 +922,17 @@ export const featuresMap: Record<string, Feature[]> = {
         "상세 사양은 LG전자 공식 홈페이지의 최신 정보를 기준으로 확인해주세요.",
       ],
     },
+    {
+      id: "22",
+      title: "일상이 더 쾌적해지는 순간, TVCF 이야기",
+      subtitle: "혁신적인 기술이 완성한 쾌적함, 영상 속에서 그 차이를 확인하세요.",
+      icon: "Video",
+      tag: "TVCF",
+      mediaType: "youtube",
+      mediaUrl: "",
+      description: "",
+      highlights: [],
+    },
   ],
 
 
