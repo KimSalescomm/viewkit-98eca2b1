@@ -834,6 +834,29 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "19",
+      title: "에어컨, 이제 청정관리가 핵심입니다",
+      subtitle: "바람이 지나가는 길을 꼼꼼하게 케어하는\n휘센 청정관리 시스템",
+      icon: "Sparkles",
+      tag: "청정 · UVnano",
+      mediaType: "video",
+      mediaUrl:
+        "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/25_Tower1_9s_Whisen_Detail_1.mp4",
+      descriptionTitle: "눈에 보이지 않는 곳까지 알아서 관리하여 언제나 깨끗한 바람을 선사합니다",
+      description:
+        "필터 클린봇이 극세필터의 먼지를 청소하고, UV-LED 팬살균, AI열교환기 세척과 AI건조 기능 등으로\n에어컨 내부를 위생적으로 관리해요.",
+      highlights: [
+        "필터 클린봇",
+        "알러지케어 공기청정",
+        "AI열교환기 세척",
+        "UV-LED 팬살균",
+      ],
+      disclaimers: [
+        "UVnano는 팬 표면 살균 기능이며, 실내 전체 공간 살균과는 다릅니다.",
+        "시험 조건 및 환경에 따라 실제 성능은 달라질 수 있습니다.",
+      ],
+    },
+    {
+      id: "20",
       title: "우리 집 인테리어랑 잘 어울릴까요?",
       subtitle: "오브제컬렉션 컬러와 슬림한 실루엣으로\n어떤 공간에도 자연스럽게 스며들어요.",
       icon: "ImageIcon",
@@ -863,29 +886,6 @@ export const featuresMap: Record<string, Feature[]> = {
         "오브제컬렉션 컬러 옵션",
         "미니멀 슬림 실루엣",
         "히든 디스플레이 · 무광 마감",
-      ],
-    },
-    {
-      id: "20",
-      title: "에어컨, 이제 청정관리가 핵심입니다",
-      subtitle: "바람이 지나가는 길을 꼼꼼하게 케어하는\n휘센 청정관리 시스템",
-      icon: "Sparkles",
-      tag: "청정 · UVnano",
-      mediaType: "video",
-      mediaUrl:
-        "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/25_Tower1_9s_Whisen_Detail_1.mp4",
-      descriptionTitle: "눈에 보이지 않는 곳까지 알아서 관리하여 언제나 깨끗한 바람을 선사합니다",
-      description:
-        "필터 클린봇이 극세필터의 먼지를 청소하고, UV-LED 팬살균, AI열교환기 세척과 AI건조 기능 등으로\n에어컨 내부를 위생적으로 관리해요.",
-      highlights: [
-        "필터 클린봇",
-        "알러지케어 공기청정",
-        "AI열교환기 세척",
-        "UV-LED 팬살균",
-      ],
-      disclaimers: [
-        "UVnano는 팬 표면 살균 기능이며, 실내 전체 공간 살균과는 다릅니다.",
-        "시험 조건 및 환경에 따라 실제 성능은 달라질 수 있습니다.",
       ],
     },
     {
