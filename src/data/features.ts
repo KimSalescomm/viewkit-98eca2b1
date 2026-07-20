@@ -874,9 +874,9 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl:
         "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/25_Tower1_9s_Whisen_Detail_1.mp4",
-      descriptionTitle: "에어컨, 이제 청정관리가 핵심입니다",
+      descriptionTitle: "눈에 보이지 않는 곳까지 알아서 관리하여 언제나 깨끗한 바람을 선사합니다",
       description:
-        "바람이 지나가는 길을 꼼꼼하게 케어하는 휘센 청정관리 시스템",
+        "필터 클린봇이 극세필터의 먼지를 청소하고, UV-LED 팬살균, AI열교환기 세척과 AI건조 기능 등으로 에어컨 내부를 위생적으로 관리해요.",
       highlights: [
         "6단계 청정 시스템",
         "PM1.0 초미세먼지 센서",
