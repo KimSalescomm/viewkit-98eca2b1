@@ -931,6 +931,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "youtube",
       mediaUrl: "",
       description: "",
+      highlights: [],
     },
   ],
 
