@@ -818,7 +818,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl:
         "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_choice_02.mp4",
-      descriptionTitle: "원하는 온도는 기본\n나에게 맞는 기류까지",
+      descriptionTitle: "원하는 온도는 기본, 나에게 맞는 기류까지",
       description:
         "더울 때는 빠르고 강력한 바람으로 빠르고 시원하게,\n시원해지면 미세하고 조용한 한쪽바람, 소프트바람으로 부드럽게 유지해요.\n적정 온도에 맞춰 쾌적함을 자동으로 조절하고,\n사용 패턴을 학습해 사용자에게 맞는 온도, 습도, 기류를 알아서 찾아줍니다.",
       highlights: [
