@@ -861,9 +861,8 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "AI수면·외출절전·홈모니터링·AI음성인식으로\n일상이 더 편리해집니다.",
       icon: "Sparkles",
       tag: "AI편의기능 · 절전",
-      mediaType: "video",
-      mediaUrl:
-        "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AOD_cover.mp4",
+      mediaType: "image",
+      mediaUrl: aircondAiSleepAsset.url,
       descriptionTitle: "수면, 절전, 대화까지 나에게 맞춤",
       description:
         "AI수면은 편안한 밤을 위해 사용 패턴 기반 온도, 습도, 기류를 맞춰줘요.\n잠시 외출할 때 에너지 소비를 줄여주는 외출 절전 모드와\n집안의 움직임을 감지해 LG ThinQ 앱으로 알림을 발송해주는 홈모니터링 모드,\n내가 말하는 의도까지 파악해 운전해주는 AI음성인식으로 편리한 일상을 경험할 수 있어요.",
