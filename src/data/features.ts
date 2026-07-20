@@ -878,10 +878,10 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "필터 클린봇이 극세필터의 먼지를 청소하고, UV-LED 팬살균, AI열교환기 세척과 AI건조 기능 등으로\n에어컨 내부를 위생적으로 관리해요.",
       highlights: [
-        "6단계 청정 시스템",
-        "PM1.0 초미세먼지 센서",
-        "UVnano 팬 살균",
-        "청정 모드 단독 운전 가능",
+        "필터 클린봇",
+        "알러지케어 공기청정",
+        "AI열교환기 세척",
+        "UV-LED 팬살균",
       ],
       disclaimers: [
         "UVnano는 팬 표면 살균 기능이며, 실내 전체 공간 살균과는 다릅니다.",
