@@ -871,9 +871,9 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "6단계 청정 시스템으로 냉방과 동시에\n미세먼지와 유해가스를 걸러줘요.",
       icon: "Sparkles",
       tag: "청정 · UVnano",
-      mediaType: "youtube",
-      mediaUrl: "https://youtu.be/Yy-hVdcMPnE",
-      isShorts: false,
+      mediaType: "video",
+      mediaUrl:
+        "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/25_Tower1_9s_Whisen_Detail_1.mp4",
       descriptionTitle: "에어컨 하나로 냉방 + 공기청정까지",
       description:
         "6단계 청정 시스템이 초미세먼지·냄새·유해가스를 단계별로 걸러내고,\nUVnano 팬 살균으로 팬 표면 세균까지 관리해요.\n한 대로 냉방과 공기청정을 동시에 해결할 수 있어요.",
