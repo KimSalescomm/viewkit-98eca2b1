@@ -815,7 +815,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "18",
-      title: "에어컨 바람, 늘 같은 방향이 불편하지 않으세요?",
+      title: "에어컨 바람, 늘 같은 방향이\n불편하지 않으세요?",
       subtitle: "사용패턴과 공간을 분석해\n온도·기류를 알아서 맞춰주는 AI바람.",
       icon: "Wind",
       tag: "AI바람",
