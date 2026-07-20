@@ -1,3 +1,5 @@
+import aircondAiSleepAsset from "@/assets/airconditioner-ai-sleep.png.asset.json";
+
 export interface ProductComparisonTable {
   name: string;
   imageUrl: string;
