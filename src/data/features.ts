@@ -857,37 +857,28 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "20",
-      title: "우리 집 인테리어랑 잘 어울릴까요?",
-      subtitle: "오브제컬렉션 컬러와 슬림한 실루엣으로\n어떤 공간에도 자연스럽게 스며들어요.",
-      icon: "ImageIcon",
-      tag: "오브제컬렉션 디자인",
-      mediaType: "gallery",
-      mediaUrl: "",
-      galleryImages: [
-        {
-          url: "https://static.lge.co.kr/kr/images/air-conditioners/md10738836/gallery/large-interior-m01.jpg",
-          title: "리빙룸 · 네이처 베이지",
-          description: "따뜻한 우드톤 거실에 어우러지는 부드러운 컬러.",
-        },
-        {
-          url: "https://static.lge.co.kr/kr/images/air-conditioners/md10738836/gallery/large-interior-m02.jpg",
-          title: "모던 리빙 · 클레이 브라운",
-          description: "미니멀한 인테리어에 포인트가 되는 차분한 마감.",
-        },
-        {
-          url: "https://static.lge.co.kr/kr/images/air-conditioners/md10738836/gallery/large-interior-m03.jpg",
-          title: "슬림 실루엣",
-          description: "얇은 두께와 히든 디스플레이로 존재감을 덜어냈어요.",
-        },
-      ],
+      title: "수면, 절전, 대화까지 나에게 맞춤",
+      subtitle: "AI수면·외출절전·홈모니터링·AI음성인식으로\n일상이 더 편리해집니다.",
+      icon: "Sparkles",
+      tag: "AI편의기능 · 절전",
+      mediaType: "video",
+      mediaUrl:
+        "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AOD_cover.mp4",
+      descriptionTitle: "수면, 절전, 대화까지 나에게 맞춤",
       description:
-        "LG 오브제컬렉션 에어컨은 가전이 아닌 가구처럼 느껴지는 디자인으로,\n거실 어느 벽에 두어도 인테리어를 해치지 않아요.",
+        "AI수면은 편안한 밤을 위해 사용 패턴 기반 온도, 습도, 기류를 맞춰줘요.\n잠시 외출할 때 에너지 소비를 줄여주는 외출 절전 모드와\n집안의 움직임을 감지해 LG ThinQ 앱으로 알림을 발송해주는 홈모니터링 모드,\n내가 말하는 의도까지 파악해 운전해주는 AI음성인식으로 편리한 일상을 경험할 수 있어요.",
       highlights: [
-        "오브제컬렉션 컬러 옵션",
-        "미니멀 슬림 실루엣",
-        "히든 디스플레이 · 무광 마감",
+        "AI수면",
+        "외출 절전 (레이더)",
+        "홈모니터링",
+        "AI음성인식",
+      ],
+      disclaimers: [
+        "AI편의기능 세부 동작은 모델·설치 환경·설정 조건에 따라 달라질 수 있습니다.",
+        "홈모니터링·AI음성인식은 LG ThinQ 앱 연동 및 네트워크 환경이 필요합니다.",
       ],
     },
+
     {
       id: "21",
       title: "어떤 휘센이 우리 집에 맞을까요?",
