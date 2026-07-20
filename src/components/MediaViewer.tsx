@@ -471,10 +471,6 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
                 style={{
                   flex: "0 0 100%",
                   minWidth: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background: "#f3f4f6",
                 }}
               >
                 <SafeImage
@@ -484,8 +480,6 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
                   style={{
                     width: "100%",
                     height: "auto",
-                    maxHeight: "560px",
-                    objectFit: "contain",
                     display: "block",
                   }}
                 />
