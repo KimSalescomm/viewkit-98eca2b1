@@ -809,7 +809,140 @@ export const featuresMap: Record<string, Feature[]> = {
         },
       ],
     },
+    {
+      id: "18",
+      title: "밤새 켜도 전기요금 걱정 없을까요?",
+      subtitle: "인버터 컴프레서로 필요한 만큼만 돌아가\n한여름 장시간 사용에도 부담이 적어요.",
+      icon: "Zap",
+      tag: "듀얼 인버터",
+      mediaType: "video",
+      mediaUrl:
+        "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_energy_detail_01.mp4",
+      descriptionTitle: "설정 온도에 도달하면 알아서 절전 운전",
+      description:
+        "듀얼 인버터 컴프레서가 설정 온도까지 빠르게 도달한 뒤,\n필요한 만큼만 부드럽게 돌아가며 전력 소비를 최소화해요.\n밤새 켜두어도 전기요금 부담이 훨씬 줄어듭니다.",
+      highlights: [
+        "빠른 냉방 후 자연스러운 절전 운전",
+        "10년 무상보증 듀얼 인버터 컴프레서",
+        "에너지소비효율 1등급 라인업",
+        "AI 절전 모드로 스스로 최적화",
+      ],
+      disclaimers: [
+        "실제 전력 절감량은 사용 환경·설정 온도·모델에 따라 달라질 수 있습니다.",
+        "10년 무상보증은 컴프레서 부품에 한하며, 공임 및 기타 부품은 별도입니다.",
+      ],
+    },
+    {
+      id: "19",
+      title: "우리 집 인테리어랑 잘 어울릴까요?",
+      subtitle: "오브제컬렉션 컬러와 슬림한 실루엣으로\n어떤 공간에도 자연스럽게 스며들어요.",
+      icon: "ImageIcon",
+      tag: "오브제컬렉션 디자인",
+      mediaType: "gallery",
+      mediaUrl: "",
+      galleryImages: [
+        {
+          url: "https://static.lge.co.kr/kr/images/air-conditioners/md10738836/gallery/large-interior-m01.jpg",
+          title: "리빙룸 · 네이처 베이지",
+          description: "따뜻한 우드톤 거실에 어우러지는 부드러운 컬러.",
+        },
+        {
+          url: "https://static.lge.co.kr/kr/images/air-conditioners/md10738836/gallery/large-interior-m02.jpg",
+          title: "모던 리빙 · 클레이 브라운",
+          description: "미니멀한 인테리어에 포인트가 되는 차분한 마감.",
+        },
+        {
+          url: "https://static.lge.co.kr/kr/images/air-conditioners/md10738836/gallery/large-interior-m03.jpg",
+          title: "슬림 실루엣",
+          description: "얇은 두께와 히든 디스플레이로 존재감을 덜어냈어요.",
+        },
+      ],
+      description:
+        "LG 오브제컬렉션 에어컨은 가전이 아닌 가구처럼 느껴지는 디자인으로,\n거실 어느 벽에 두어도 인테리어를 해치지 않아요.",
+      highlights: [
+        "오브제컬렉션 컬러 옵션",
+        "미니멀 슬림 실루엣",
+        "히든 디스플레이 · 무광 마감",
+      ],
+    },
+    {
+      id: "20",
+      title: "공기청정 기능, 진짜 효과 있을까요?",
+      subtitle: "6단계 청정 시스템으로 냉방과 동시에\n미세먼지와 유해가스를 걸러줘요.",
+      icon: "Sparkles",
+      tag: "청정 · UVnano",
+      mediaType: "youtube",
+      mediaUrl: "https://youtu.be/Yy-hVdcMPnE",
+      isShorts: false,
+      descriptionTitle: "에어컨 하나로 냉방 + 공기청정까지",
+      description:
+        "6단계 청정 시스템이 초미세먼지·냄새·유해가스를 단계별로 걸러내고,\nUVnano 팬 살균으로 팬 표면 세균까지 관리해요.\n한 대로 냉방과 공기청정을 동시에 해결할 수 있어요.",
+      highlights: [
+        "6단계 청정 시스템",
+        "PM1.0 초미세먼지 센서",
+        "UVnano 팬 살균",
+        "청정 모드 단독 운전 가능",
+      ],
+      disclaimers: [
+        "UVnano는 팬 표면 살균 기능이며, 실내 전체 공간 살균과는 다릅니다.",
+        "시험 조건 및 환경에 따라 실제 성능은 달라질 수 있습니다.",
+      ],
+    },
+    {
+      id: "21",
+      title: "어떤 휘센이 우리 집에 맞을까요?",
+      subtitle: "평형·기능·구독 여부에 따라\n라인업을 한눈에 비교해보세요.",
+      icon: "Search",
+      tag: "라인업 비교",
+      mediaType: "table",
+      mediaUrl: "",
+      description:
+        "거실 평형, 원하는 기능, 케어 서비스 필요 여부에 따라 알맞은 휘센 모델을 골라보세요.",
+      highlights: ["냉방 면적", "AI 콜드프리", "청정 시스템", "구독 케어"],
+      tableData: [
+        {
+          name: "휘센 타워 7시리즈",
+          imageUrl:
+            "https://static.lge.co.kr/kr/images/air-conditioners/md10738836/gallery/large-interior-m02.jpg",
+          specs: [
+            { label: "냉방 면적", values: ["~ 18평"] },
+            { label: "AI 콜드프리", values: ["-"] },
+            { label: "청정 시스템", values: ["4단계"] },
+            { label: "UVnano 팬 살균", values: ["●"] },
+            { label: "에너지 등급", values: ["1등급"] },
+          ],
+        },
+        {
+          name: "휘센 타워 9시리즈",
+          imageUrl:
+            "https://static.lge.co.kr/kr/images/air-conditioners/md10738836/gallery/large-interior-m01.jpg",
+          specs: [
+            { label: "냉방 면적", values: ["~ 20평"] },
+            { label: "AI 콜드프리", values: ["●"] },
+            { label: "청정 시스템", values: ["6단계"] },
+            { label: "UVnano 팬 살균", values: ["●"] },
+            { label: "에너지 등급", values: ["1등급"] },
+          ],
+        },
+        {
+          name: "휘센 타워 오브제컬렉션",
+          imageUrl:
+            "https://static.lge.co.kr/kr/images/air-conditioners/md10738836/gallery/large-interior-m03.jpg",
+          specs: [
+            { label: "냉방 면적", values: ["~ 22평"] },
+            { label: "AI 콜드프리", values: ["●", "프리미엄"] },
+            { label: "청정 시스템", values: ["6단계", "PM1.0"] },
+            { label: "UVnano 팬 살균", values: ["●"] },
+            { label: "에너지 등급", values: ["1등급"] },
+          ],
+        },
+      ],
+      disclaimers: [
+        "실제 판매 모델의 스펙과 다를 수 있으며, 매장 재고 및 시즌에 따라 라인업이 조정될 수 있습니다.",
+      ],
+    },
   ],
+
 
 
   // 청소기 특장점
