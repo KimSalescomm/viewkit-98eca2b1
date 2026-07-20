@@ -874,9 +874,9 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl:
         "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/25_Tower1_9s_Whisen_Detail_1.mp4",
-      descriptionTitle: "에어컨 하나로 냉방 + 공기청정까지",
+      descriptionTitle: "에어컨, 이제 청정관리가 핵심입니다",
       description:
-        "6단계 청정 시스템이 초미세먼지·냄새·유해가스를 단계별로 걸러내고,\nUVnano 팬 살균으로 팬 표면 세균까지 관리해요.\n한 대로 냉방과 공기청정을 동시에 해결할 수 있어요.",
+        "바람이 지나가는 길을 꼼꼼하게 케어하는 휘센 청정관리 시스템",
       highlights: [
         "6단계 청정 시스템",
         "PM1.0 초미세먼지 센서",
