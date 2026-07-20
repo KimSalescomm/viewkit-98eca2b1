@@ -929,7 +929,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Video",
       tag: "TVCF",
       mediaType: "youtube",
-      mediaUrl: "",
+      mediaUrl: "https://www.youtube.com/watch?v=TNiEqW-mcb0",
       description: "",
       highlights: [],
     },
