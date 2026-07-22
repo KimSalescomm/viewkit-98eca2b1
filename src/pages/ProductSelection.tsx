@@ -335,7 +335,7 @@ const ProductSelection = () => {
                         fetchPriority={index < 2 ? "high" : undefined}
                         decoding="async"
                         className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${
-                          product.id === "tv" ? "object-[65%_55%]" :
+                          product.id === "tv" ? "object-center" :
                           product.id === "airconditioner" ? "object-top" :
                           "object-center"
                         }`}
