@@ -84,7 +84,7 @@ const Home = () => {
                         : "h-[220px] sm:h-[480px] object-cover"
                     } ${
                       productId === "tv" && isFirst
-                        ? "scale-[1.15] object-[65%_55%] -translate-y-[20px]"
+                        ? "scale-[1.15] object-[80%_55%] -translate-y-[20px]"
                         : productId === "washer" && isFirst
                         ? "object-[55%_center]"
                         : productId === "airconditioner" || productId === "vacuum"
