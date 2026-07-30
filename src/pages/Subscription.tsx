@@ -761,13 +761,32 @@ const Subscription = () => {
                 <X className="w-5 h-5 text-white" />
               </button>
             </div>
-            <video
-              src={selected.careVideo}
-              className="w-full h-auto max-h-[80vh] bg-black"
-              controls
-              autoPlay
-              playsInline
-            />
+            {(() => {
+              const { embedUrl, isYoutube } = convertToEmbedUrl(selected.careVideo!);
+              if (isYoutube) {
+                const sep = embedUrl.includes("?") ? "&" : "?";
+                return (
+                  <div className="w-full aspect-video bg-black">
+                    <iframe
+                      src={`${embedUrl}${sep}autoplay=1&rel=0&playsinline=1`}
+                      title={`${selected.name} 케어 영상`}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                );
+              }
+              return (
+                <video
+                  src={selected.careVideo}
+                  className="w-full h-auto max-h-[80vh] bg-black"
+                  controls
+                  autoPlay
+                  playsInline
+                />
+              );
+            })()}
           </div>
         </div>
       )}
