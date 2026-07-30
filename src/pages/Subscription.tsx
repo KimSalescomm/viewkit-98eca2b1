@@ -6,6 +6,7 @@ import FeatureLikeButton from "@/components/FeatureLikeButton";
 import { logFeatureReaction } from "@/utils/featureReactionLog";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { convertToEmbedUrl } from "@/utils/videoUtils";
+import washerCareSteamUvAsset from "@/assets/washer-care-steam-uv.png.asset.json";
 import washcomboBefore from "@/assets/tower-before.png";
 import washcomboAfter from "@/assets/tower-after.png";
 import washerBefore from "@/assets/washercare-b.png";
@@ -50,7 +51,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/washing_machines_250826.mp4",
     careSteps: [
       { label: "분해세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_01.jpg", disclaimer: "프리미엄, 48개월 차에 1회 서비스" },
-      { label: "세탁조 스팀 & UV 관리", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_02.jpg" },
+      { label: "세탁조 스팀 & UV 관리", image: washerCareSteamUvAsset.url },
       { label: "고무패킹 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_03.jpg", disclaimer: "프리미엄, 48개월 차에 1회 서비스" },
       { label: "급/배수 필터 세척" },
       { label: "배수 필터 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_washing_machines_250826_04.jpg" },
