@@ -5,6 +5,7 @@ import OrientationToggle from "@/components/OrientationToggle";
 import FeatureLikeButton from "@/components/FeatureLikeButton";
 import { logFeatureReaction } from "@/utils/featureReactionLog";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
+import { convertToEmbedUrl } from "@/utils/videoUtils";
 import washcomboBefore from "@/assets/tower-before.png";
 import washcomboAfter from "@/assets/tower-after.png";
 import washerBefore from "@/assets/washercare-b.png";
@@ -268,7 +269,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "광파오븐",
     beforeImage: ovenBefore,
     afterImage: ovenAfter,
-    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/electric_stoves_250819.mp4",
+    careVideo: "https://www.youtube.com/watch?v=qoWxart07vs",
     careSteps: [
       { label: "소모품 교체" },
       { label: "토탈 클리닝" },
@@ -761,13 +762,32 @@ const Subscription = () => {
                 <X className="w-5 h-5 text-white" />
               </button>
             </div>
-            <video
-              src={selected.careVideo}
-              className="w-full h-auto max-h-[80vh] bg-black"
-              controls
-              autoPlay
-              playsInline
-            />
+            {(() => {
+              const { embedUrl, isYoutube } = convertToEmbedUrl(selected.careVideo!);
+              if (isYoutube) {
+                const sep = embedUrl.includes("?") ? "&" : "?";
+                return (
+                  <div className="w-full aspect-video bg-black">
+                    <iframe
+                      src={`${embedUrl}${sep}autoplay=1&rel=0&playsinline=1`}
+                      title={`${selected.name} 케어 영상`}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                );
+              }
+              return (
+                <video
+                  src={selected.careVideo}
+                  className="w-full h-auto max-h-[80vh] bg-black"
+                  controls
+                  autoPlay
+                  playsInline
+                />
+              );
+            })()}
           </div>
         </div>
       )}
