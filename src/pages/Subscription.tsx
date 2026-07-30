@@ -269,7 +269,7 @@ const subscriptionProducts: SubscriptionProduct[] = [
     name: "광파오븐",
     beforeImage: ovenBefore,
     afterImage: ovenAfter,
-    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/electric_stoves_250819.mp4",
+    careVideo: "https://www.youtube.com/watch?v=qoWxart07vs",
     careSteps: [
       { label: "소모품 교체" },
       { label: "토탈 클리닝" },
