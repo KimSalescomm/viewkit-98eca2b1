@@ -292,6 +292,7 @@ export const BRANCH_CODE_MAP: Record<string, string> = {
   "내서점":"NS2", "합포점":"HP2", "덕계점":"DG5", "사천점":"SC5",
   "삼천포점":"SCP", "양산시티점":"YSST", "진주성점":"JJ2", "진주시청점":"JJSC",
   "경화점":"GH2", "김해내동점":"GHN", "진영점":"JY2", "통영점":"TY",
+  "신세계 부산 아울렛점":"SSGBSA",
   // ───────── 백화점영업담당 (백화점 입점매장) — 백화점이니셜 + 지점명 초성 ─────────
   // AK PLAZA (AK)
   "AKPLAZA광명":"AKGM", "AKPLAZA분당":"AKBD", "AKPLAZA수원":"AKSW", "AKPLAZA원주":"AKWJ", "AKPLAZA평택":"AKPT",
