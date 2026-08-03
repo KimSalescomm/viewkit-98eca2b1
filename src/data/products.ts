@@ -79,7 +79,7 @@ export const products: Product[] = [
   },
   {
     id: "cooking",
-    name: "쿠킹",
+    name: "식기세척기",
     title: "식기세척기",
     description: "편리함과 깔끔함을 동시에",
     keyVisualImage: "https://www.lge.co.kr/kr/usp_dcr/dishwasher_Largecapacity_Cover.jpg",
