@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Heart, Download, TrendingUp } from "lucide-react";
+import { Heart, Download, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
 import { format, subDays } from "date-fns";
 import { ko } from "date-fns/locale";
 import { supabase } from "@/integrations/supabase/client";
@@ -56,6 +56,16 @@ const FeaturePreferenceSection = () => {
   const [period, setPeriod] = useState<PeriodKey>("30");
   const [productFilter, setProductFilter] = useState<string>("all");
   const [storeFilter, setStoreFilter] = useState<string>("all");
+  const [expandedKeys, setExpandedKeys] = useState<Set<string>>(new Set());
+
+  const toggleExpand = (key: string) => {
+    setExpandedKeys((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -262,8 +272,12 @@ const FeaturePreferenceSection = () => {
               {aggregated.map((r, i) => {
                 const maxTotal = aggregated[0]?.total || 1;
                 const barPct = Math.max(4, Math.round((r.total / maxTotal) * 100));
+                const rowKey = `${r.productId}::${r.featureId}`;
+                const isExpanded = expandedKeys.has(rowKey);
+                const visibleStores = isExpanded ? r.storeNames : r.storeNames.slice(0, 5);
+                const hasMore = r.storeNames.length > 5;
                 return (
-                  <tr key={`${r.productId}::${r.featureId}`} className="border-b border-slate-50 last:border-0 hover:bg-slate-50/60">
+                  <tr key={rowKey} className="border-b border-slate-50 last:border-0 hover:bg-slate-50/60">
                     <td className="py-2.5 pr-3 text-slate-400 tabular-nums">{i + 1}</td>
                     <td className="py-2.5 pr-4 text-slate-600 text-xs">{r.productName}</td>
                     <td className="py-2.5 pr-4 text-slate-800 font-medium">
@@ -279,11 +293,28 @@ const FeaturePreferenceSection = () => {
                     <td className="py-2.5 pr-4 text-right text-rose-500 font-semibold tabular-nums">{r.total}</td>
                     <td className="py-2.5 pr-4 text-slate-600 text-xs">
                       <div className="flex flex-wrap gap-1 max-w-[240px]">
-                        {r.storeNames.map((name) => (
+                        {visibleStores.map((name) => (
                           <span key={name} className="inline-flex items-center px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-600 text-[11px]">
                             {name}
                           </span>
                         ))}
+                        {hasMore && (
+                          <button
+                            type="button"
+                            onClick={() => toggleExpand(rowKey)}
+                            className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-slate-50 text-slate-500 text-[11px] hover:bg-slate-100 transition-colors"
+                          >
+                            {isExpanded ? (
+                              <>
+                                접기 <ChevronUp className="w-3 h-3" />
+                              </>
+                            ) : (
+                              <>
+                                +{r.storeNames.length - 5} 더보기 <ChevronDown className="w-3 h-3" />
+                              </>
+                            )}
+                          </button>
+                        )}
                         <span className="text-slate-400 text-[11px] ml-1">({r.uniqueStores})</span>
                       </div>
                     </td>
