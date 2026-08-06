@@ -115,8 +115,6 @@ const SalesCertBadge = () => {
   const subcategoryOptions = product ? SUBCATEGORY_MAP[product] : undefined;
   const needsSubcategory = !!subcategoryOptions && subcategoryOptions.length > 0;
 
-  const isOther = helpful === OTHER_OPTION;
-  const helpfulValue = isOther ? memo.trim() : helpful;
 
   const handleSubmit = async () => {
     if (!defaultBranch || !product || !date) return;
