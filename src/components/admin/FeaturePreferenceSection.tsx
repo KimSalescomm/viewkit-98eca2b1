@@ -101,6 +101,18 @@ const FeaturePreferenceSection = () => {
     };
   }, []);
 
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const { count, error } = await buildCountQuery();
+      if (cancelled || error) return;
+      setTotalEventCount(count ?? null);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [buildCountQuery]);
+
   const filtered = useMemo(() => {
     const cutoff = period === "all" ? null : subDays(new Date(), Number(period));
     return rows.filter((r) => {
