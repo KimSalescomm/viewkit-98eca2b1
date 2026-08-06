@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Heart, Download, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
 import { format, subDays } from "date-fns";
 import { ko } from "date-fns/locale";
@@ -57,6 +57,7 @@ const FeaturePreferenceSection = () => {
   const [productFilter, setProductFilter] = useState<string>("all");
   const [storeFilter, setStoreFilter] = useState<string>("all");
   const [expandedKeys, setExpandedKeys] = useState<Set<string>>(new Set());
+  const [totalEventCount, setTotalEventCount] = useState<number | null>(null);
 
   const toggleExpand = (key: string) => {
     setExpandedKeys((prev) => {
@@ -66,6 +67,16 @@ const FeaturePreferenceSection = () => {
       return next;
     });
   };
+
+  const buildCountQuery = useCallback(() => {
+    let q = supabase.from("feature_reactions").select("*", { count: "exact", head: true });
+    const cutoff = period === "all" ? null : subDays(new Date(), Number(period)).toISOString();
+    if (cutoff) q = q.gte("created_at", cutoff);
+    if (productFilter !== "all") q = q.eq("product_id", productFilter);
+    if (storeFilter !== "all") q = q.eq("store_slug", storeFilter);
+    q = q.not("store_slug", "ilike", "SC").not("store_slug", "ilike", "KOR");
+    return q;
+  }, [period, productFilter, storeFilter]);
 
   useEffect(() => {
     let cancelled = false;
@@ -89,6 +100,18 @@ const FeaturePreferenceSection = () => {
       cancelled = true;
     };
   }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const { count, error } = await buildCountQuery();
+      if (cancelled || error) return;
+      setTotalEventCount(count ?? null);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [buildCountQuery]);
 
   const filtered = useMemo(() => {
     const cutoff = period === "all" ? null : subDays(new Date(), Number(period));
@@ -153,8 +176,12 @@ const FeaturePreferenceSection = () => {
 
   const totals = useMemo(() => {
     const uniqueStores = new Set(filtered.map((r) => r.store_slug)).size;
-    return { events: filtered.length, features: aggregated.length, stores: uniqueStores };
-  }, [filtered, aggregated]);
+    return {
+      events: totalEventCount ?? filtered.length,
+      features: aggregated.length,
+      stores: uniqueStores,
+    };
+  }, [filtered, aggregated, totalEventCount]);
 
   const handleExport = () => {
     const header = ["순위", "제품", "특장점", "관심 수", "매장 수", "매장", "최근 반응"];
