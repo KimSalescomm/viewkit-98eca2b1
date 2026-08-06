@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Heart, Download, TrendingUp } from "lucide-react";
+import { Heart, Download, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
 import { format, subDays } from "date-fns";
 import { ko } from "date-fns/locale";
 import { supabase } from "@/integrations/supabase/client";
