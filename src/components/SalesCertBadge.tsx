@@ -119,20 +119,18 @@ const SalesCertBadge = () => {
   const handleSubmit = async () => {
     if (!defaultBranch || !product || !date) return;
     if (needsSubcategory && !subcategory) return;
-    if (!helpful) return;
-    if (isOther && !memo.trim()) return;
+    if (!memo.trim()) return;
     if (submitLockRef.current) return;
     submitLockRef.current = true;
     setSubmitting(true);
     const soldAt = format(date, "yyyy-MM-dd");
-    const memoToSave = helpfulValue;
+    const memoToSave = memo.trim();
     trackEvent("sales_certification", {
       branch: defaultBranch,
       product,
       subcategory: subcategory || undefined,
       sold_at: soldAt,
       has_memo: memoToSave.length > 0,
-      helpful: helpful || undefined,
     });
     try {
       await appendSale({
