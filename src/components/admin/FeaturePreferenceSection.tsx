@@ -57,6 +57,7 @@ const FeaturePreferenceSection = () => {
   const [productFilter, setProductFilter] = useState<string>("all");
   const [storeFilter, setStoreFilter] = useState<string>("all");
   const [expandedKeys, setExpandedKeys] = useState<Set<string>>(new Set());
+  const [totalEventCount, setTotalEventCount] = useState<number | null>(null);
 
   const toggleExpand = (key: string) => {
     setExpandedKeys((prev) => {
@@ -66,6 +67,16 @@ const FeaturePreferenceSection = () => {
       return next;
     });
   };
+
+  const buildCountQuery = useCallback(() => {
+    let q = supabase.from("feature_reactions").select("*", { count: "exact", head: true });
+    const cutoff = period === "all" ? null : subDays(new Date(), Number(period)).toISOString();
+    if (cutoff) q = q.gte("created_at", cutoff);
+    if (productFilter !== "all") q = q.eq("product_id", productFilter);
+    if (storeFilter !== "all") q = q.eq("store_slug", storeFilter);
+    q = q.not("store_slug", "ilike", "SC").not("store_slug", "ilike", "KOR");
+    return q;
+  }, [period, productFilter, storeFilter]);
 
   useEffect(() => {
     let cancelled = false;
