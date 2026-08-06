@@ -176,8 +176,12 @@ const FeaturePreferenceSection = () => {
 
   const totals = useMemo(() => {
     const uniqueStores = new Set(filtered.map((r) => r.store_slug)).size;
-    return { events: filtered.length, features: aggregated.length, stores: uniqueStores };
-  }, [filtered, aggregated]);
+    return {
+      events: totalEventCount ?? filtered.length,
+      features: aggregated.length,
+      stores: uniqueStores,
+    };
+  }, [filtered, aggregated, totalEventCount]);
 
   const handleExport = () => {
     const header = ["순위", "제품", "특장점", "관심 수", "매장 수", "매장", "최근 반응"];
