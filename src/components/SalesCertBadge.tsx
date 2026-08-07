@@ -52,7 +52,7 @@ const SUBCATEGORY_MAP: Record<string, string[]> = {
 };
 
 const MEMO_PLACEHOLDER =
-  "예) 구독 전/후 비교를 통해 고객에게 설득력 있게 설명했어요.\n예) 제품 원리 설명 시 뷰킷 화면이 도움이 되었습니다.\n예) ○○본점 명장 홍길동 판매인증합니다";
+  "뷰킷을 사용해 판매한 스토리를 들려주세요\n예) 구독 전/후 비교를 보여주며 구독을 자신있게 설명할 수 있었어요.\n예) 제품 원리를 설명할 때 뷰킷 화면을 보여주니 이해를 잘했어요.";
 
 const SalesCertBadge = () => {
   const navigate = useNavigate();
