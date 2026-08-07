@@ -594,8 +594,13 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
             <select
               value={visitsRange}
               onChange={(e) => setVisitsRange(e.target.value as VisitsRangeKey)}
-              className={selectClass}
-              title="접속기록/전체 대시보드 CSV의 페이지뷰·세션 집계 기간"
+              disabled={!!(from || to)}
+              className={`${selectClass} disabled:opacity-50`}
+              title={
+                from || to
+                  ? "시작일/종료일이 입력되어 있어 해당 날짜 범위가 접속기록에도 적용됩니다"
+                  : "접속기록/전체 대시보드 CSV의 페이지뷰·세션 집계 기간"
+              }
             >
               {VISITS_RANGES.map((r) => (
                 <option key={r.key} value={r.key}>
@@ -609,17 +614,20 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
           <button
             type="button"
             onClick={() => void handleExportAll()}
-            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg bg-[#3182CE] text-white text-xs font-semibold hover:bg-[#2c74b8] transition-colors"
+            disabled={exporting}
+            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg bg-[#3182CE] text-white text-xs font-semibold hover:bg-[#2c74b8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Download className="w-3.5 h-3.5" /> 전체 대시보드 CSV
+            <Download className="w-3.5 h-3.5" /> {exporting ? "생성 중..." : "전체 대시보드 CSV"}
           </button>
           <button
             type="button"
             onClick={() => void handleExportVisits()}
-            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors"
+            disabled={exporting}
+            className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Download className="w-3.5 h-3.5" /> 접속기록 CSV
           </button>
+
           <button
             type="button"
             onClick={handleExport}
