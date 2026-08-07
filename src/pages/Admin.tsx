@@ -384,152 +384,137 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     void downloadCsv(csv, `sales_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
   };
 
-  const handleExportAll = async () => {
-    const esc = (v: unknown) => {
-      const s = String(v ?? "");
-      return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  // 접속기록 집계 기간: 시작일/종료일이 입력되면 그것을 우선 적용, 없으면 기간 셀렉트 사용
+  const resolveVisitsRange = () => {
+    if (from || to) {
+      const sinceISO = from ? new Date(`${from}T00:00:00`).toISOString() : SITE_OPEN_ISO;
+      const untilISO = to ? new Date(`${to}T23:59:59.999`).toISOString() : undefined;
+      const label = `${from || "처음"} ~ ${to || "현재"}`;
+      return { sinceISO, untilISO, label };
+    }
+    return {
+      sinceISO: getVisitsSinceISO(visitsRange),
+      untilISO: undefined as string | undefined,
+      label: VISITS_RANGES.find((r) => r.key === visitsRange)?.label ?? visitsRange,
     };
-    const toRow = (arr: unknown[]) => arr.map(esc).join(",");
+  };
 
-    // 페이지뷰(지점별 접속) 데이터 조회 - 선택된 기간 필터 적용
-    const sinceISO = getVisitsSinceISO(visitsRange);
-    const rangeLabel = VISITS_RANGES.find((r) => r.key === visitsRange)?.label ?? visitsRange;
-    const pvData = await fetchAllPageViews(sinceISO);
-    const pvRows = pvData.filter((r) => {
-      const sid = (r.store_id || "").toUpperCase();
-      return sid !== "SC" && sid !== "KOR";
-    });
-    const visitMap = new Map<string, { name: string; views: number; sessions: Set<string>; lastAt: string }>();
-    pvRows.forEach((r) => {
-      const canonicalName = CODE_TO_NAME[r.store_id] || r.store_name || r.store_id;
-      const cur = visitMap.get(r.store_id);
-      if (cur) {
-        cur.views += 1;
-        cur.sessions.add(r.session_id);
-        if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
-        cur.name = canonicalName;
-      } else {
-        visitMap.set(r.store_id, {
-          name: canonicalName,
+  const [exporting, setExporting] = useState(false);
 
-          views: 1,
-          sessions: new Set([r.session_id]),
-          lastAt: r.created_at,
-        });
-      }
-    });
-    const visitStats = [...visitMap.entries()]
-      .map(([code, v]) => ({ code, name: v.name, views: v.views, visits: v.sessions.size, lastAt: v.lastAt }))
-      .sort((a, b) => b.views - a.views);
+  const handleExportAll = async () => {
+    if (exporting) return;
+    setExporting(true);
+    try {
+      const esc = (v: unknown) => {
+        const s = String(v ?? "");
+        return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+      };
+      const toRow = (arr: unknown[]) => arr.map(esc).join(",");
 
-    const sections: string[] = [];
-    const stamp = format(new Date(), "yyyy-MM-dd HH:mm", { locale: ko });
+      const { sinceISO, untilISO, label: rangeLabel } = resolveVisitsRange();
+      const pvData = await fetchAllPageViews(sinceISO, untilISO);
+      const visitStats = aggregateVisits(pvData);
 
-    sections.push(toRow(["관리자 대시보드 내보내기"]));
-    sections.push(toRow(["생성 시각", stamp]));
-    sections.push(toRow(["판매 기록 총건수", sales.length]));
-    sections.push(toRow(["필터 결과 건수", filtered.length]));
-    sections.push(toRow(["접속 통계 기간", rangeLabel]));
-    sections.push("");
+      const sections: string[] = [];
+      const stamp = format(new Date(), "yyyy-MM-dd HH:mm", { locale: ko });
 
-    sections.push(toRow([`[1] 지점별 접속 통계 (기간: ${rangeLabel})`]));
-    sections.push(toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"]));
-    visitStats.forEach((s, i) =>
-      sections.push(
-        toRow([
-          i + 1,
-          s.name,
-          s.code,
-          s.views,
-          s.visits,
-          format(new Date(s.lastAt), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
-        ]),
-      ),
-    );
-    sections.push("");
+      sections.push(toRow(["관리자 대시보드 내보내기"]));
+      sections.push(toRow(["생성 시각", stamp]));
+      sections.push(toRow(["판매 기록 총건수(전체 DB)", sales.length]));
+      sections.push(toRow(["판매 기록 필터 결과 건수", filtered.length]));
+      sections.push(toRow(["접속 통계 기간", rangeLabel]));
+      sections.push("");
 
-    sections.push(toRow([`[2] 지점별 판매 순위 (필터 적용, ${filtered.length}건 기준)`]));
-    sections.push(toRow(["순위", "지점", "판매건수"]));
-    byBranch.forEach(([name, count], i) => sections.push(toRow([i + 1, name, count])));
-    sections.push("");
+      sections.push(toRow([`[1] 지점별 접속 통계 (기간: ${rangeLabel})`]));
+      sections.push(toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"]));
+      visitStats.forEach((s, i) =>
+        sections.push(
+          toRow([
+            i + 1,
+            s.name,
+            s.code,
+            s.views,
+            s.visits,
+            format(new Date(s.lastAt), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
+          ]),
+        ),
+      );
+      if (visitStats.length === 0) sections.push(toRow(["(해당 기간 접속 기록 없음)"]));
+      sections.push("");
 
-    sections.push(toRow(["[3] 제품별 판매 순위 (필터 적용)"]));
-    sections.push(toRow(["순위", "제품", "판매건수"]));
-    byProduct.forEach(([name, count], i) => sections.push(toRow([i + 1, name, count])));
-    sections.push("");
+      sections.push(toRow([`[2] 지점별 판매 순위 (필터 적용, ${filtered.length}건 기준)`]));
+      sections.push(toRow(["순위", "지점", "판매건수"]));
+      byBranch.forEach(([name, count], i) => sections.push(toRow([i + 1, name, count])));
+      sections.push("");
 
-    sections.push(toRow(["[4] 전체 판매 기록 (필터 적용)"]));
-    sections.push(toRow(["#", "지점", "제품", "세부", "도움된 항목", "판매일", "기록 시각"]));
-    recent.forEach((r, i) =>
-      sections.push(
-        toRow([
-          recent.length - i,
-          r.branch,
-          r.product,
-          r.subcategory ?? "",
-          r.memo ?? "",
-          r.sold_at,
-          format(new Date(r.created_at), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
-        ]),
-      ),
-    );
+      sections.push(toRow(["[3] 제품별 판매 순위 (필터 적용)"]));
+      sections.push(toRow(["순위", "제품", "판매건수"]));
+      byProduct.forEach(([name, count], i) => sections.push(toRow([i + 1, name, count])));
+      sections.push("");
 
-    const csv = sections.join("\n");
-    void downloadCsv(csv, `dashboard_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
+      sections.push(toRow(["[4] 전체 판매 기록 (필터 적용)"]));
+      sections.push(toRow(["#", "지점", "제품", "세부", "도움된 항목", "판매일", "기록 시각"]));
+      recent.forEach((r, i) =>
+        sections.push(
+          toRow([
+            recent.length - i,
+            r.branch,
+            r.product,
+            r.subcategory ?? "",
+            r.memo ?? "",
+            r.sold_at,
+            format(new Date(r.created_at), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
+          ]),
+        ),
+      );
+
+      const csv = sections.join("\n");
+      await downloadCsv(csv, `dashboard_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
+    } catch (e) {
+      console.error("[Admin] 전체 대시보드 CSV 내보내기 실패", e);
+      alert("전체 대시보드 CSV를 만드는 중 오류가 발생했습니다. 기간을 좁혀서 다시 시도해 주세요.");
+    } finally {
+      setExporting(false);
+    }
   };
 
   const handleExportVisits = async () => {
-    const esc = (v: unknown) => {
-      const s = String(v ?? "");
-      return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
-    };
-    const toRow = (arr: unknown[]) => arr.map(esc).join(",");
-    const sinceISO = getVisitsSinceISO(visitsRange);
-    const rangeLabel = VISITS_RANGES.find((r) => r.key === visitsRange)?.label ?? visitsRange;
-    const data = await fetchAllPageViews(sinceISO);
-    const pvRows = data.filter((r) => {
-      const sid = (r.store_id || "").toUpperCase();
-      return sid !== "SC" && sid !== "KOR";
-    });
-    const map = new Map<string, { name: string; views: number; sessions: Set<string>; lastAt: string }>();
-    pvRows.forEach((r) => {
-      const canonicalName = CODE_TO_NAME[r.store_id] || r.store_name || r.store_id;
-      const cur = map.get(r.store_id);
-      if (cur) {
-        cur.views += 1;
-        cur.sessions.add(r.session_id);
-        if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
-        cur.name = canonicalName;
-      } else {
-        map.set(r.store_id, {
-          name: canonicalName,
-          views: 1,
-          sessions: new Set([r.session_id]),
-          lastAt: r.created_at,
-        });
-      }
-    });
-
-    const stats = [...map.entries()]
-      .map(([code, v]) => ({ code, name: v.name, views: v.views, visits: v.sessions.size, lastAt: v.lastAt }))
-      .sort((a, b) => b.views - a.views);
-    const lines = [
-      toRow([`접속기록 CSV (기간: ${rangeLabel})`]),
-      toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"]),
-      ...stats.map((s, i) =>
-        toRow([
-          i + 1,
-          s.name,
-          s.code,
-          s.views,
-          s.visits,
-          format(new Date(s.lastAt), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
-        ]),
-      ),
-    ];
-    const csv = lines.join("\n");
-    void downloadCsv(csv, `visits_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
+    if (exporting) return;
+    setExporting(true);
+    try {
+      const esc = (v: unknown) => {
+        const s = String(v ?? "");
+        return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+      };
+      const toRow = (arr: unknown[]) => arr.map(esc).join(",");
+      const { sinceISO, untilISO, label: rangeLabel } = resolveVisitsRange();
+      const data = await fetchAllPageViews(sinceISO, untilISO);
+      const stats = aggregateVisits(data);
+      const lines = [
+        toRow([`접속기록 CSV (기간: ${rangeLabel})`]),
+        toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"]),
+        ...stats.map((s, i) =>
+          toRow([
+            i + 1,
+            s.name,
+            s.code,
+            s.views,
+            s.visits,
+            format(new Date(s.lastAt), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
+          ]),
+        ),
+      ];
+      if (stats.length === 0) lines.push(toRow(["(해당 기간 접속 기록 없음)"]));
+      const csv = lines.join("\n");
+      await downloadCsv(csv, `visits_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
+    } catch (e) {
+      console.error("[Admin] 접속기록 CSV 내보내기 실패", e);
+      alert("접속기록 CSV를 만드는 중 오류가 발생했습니다. 기간을 좁혀서 다시 시도해 주세요.");
+    } finally {
+      setExporting(false);
+    }
   };
+
 
   const selectClass =
     "h-9 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 " +
