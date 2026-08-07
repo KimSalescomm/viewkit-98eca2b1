@@ -27,24 +27,57 @@ const CODE_TO_NAME: Record<string, string> = Object.fromEntries(
 );
 
 // page_views 전체 페이지네이션 조회 (Supabase 1,000행 응답 상한 우회)
-const fetchAllPageViews = async (sinceISO: string) => {
+type PV = { store_id: string; store_name: string | null; session_id: string; created_at: string };
+const fetchAllPageViews = async (sinceISO: string, untilISO?: string) => {
   const PAGE_SIZE = 1000;
-  type PV = { store_id: string; store_name: string | null; session_id: string; created_at: string };
   const all: PV[] = [];
   for (let page = 0; page < 500; page++) {
     const from = page * PAGE_SIZE;
-    const { data, error } = await supabase
+    let q = supabase
       .from("page_views")
       .select("store_id, store_name, session_id, created_at")
-      .gte("created_at", sinceISO)
+      .gte("created_at", sinceISO);
+    if (untilISO) q = q.lte("created_at", untilISO);
+    const { data, error } = await q
       .order("created_at", { ascending: false })
       .range(from, from + PAGE_SIZE - 1);
-    if (error || !data || data.length === 0) break;
+    if (error) throw error;
+    if (!data || data.length === 0) break;
     all.push(...(data as PV[]));
     if (data.length < PAGE_SIZE) break;
     if (all.length >= 200000) break;
   }
   return all;
+};
+
+// 접속 통계 집계 (SC/KOR 제외, 지점 코드 기준)
+const aggregateVisits = (rows: PV[]) => {
+  const map = new Map<string, { name: string; views: number; sessions: Set<string>; lastAt: string }>();
+  rows
+    .filter((r) => {
+      const sid = (r.store_id || "").toUpperCase();
+      return sid !== "SC" && sid !== "KOR";
+    })
+    .forEach((r) => {
+      const canonicalName = CODE_TO_NAME[r.store_id] || r.store_name || r.store_id;
+      const cur = map.get(r.store_id);
+      if (cur) {
+        cur.views += 1;
+        cur.sessions.add(r.session_id);
+        if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
+        cur.name = canonicalName;
+      } else {
+        map.set(r.store_id, {
+          name: canonicalName,
+          views: 1,
+          sessions: new Set([r.session_id]),
+          lastAt: r.created_at,
+        });
+      }
+    });
+  return [...map.entries()]
+    .map(([code, v]) => ({ code, name: v.name, views: v.views, visits: v.sessions.size, lastAt: v.lastAt }))
+    .sort((a, b) => b.views - a.views);
 };
 
 // 접속기록 CSV 기간 옵션 (StoreVisitStats와 동일)
@@ -64,6 +97,7 @@ const getVisitsSinceISO = (key: VisitsRangeKey): string => {
   const iso = d.toISOString();
   return iso > SITE_OPEN_ISO ? iso : SITE_OPEN_ISO;
 };
+
 
 
 // 패스코드는 서버(Edge Function: admin-login)에서 검증합니다.
