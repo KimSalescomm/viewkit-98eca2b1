@@ -288,20 +288,13 @@ const FeaturePreferenceSection = () => {
         <div className="flex-1" />
         <button
           type="button"
-          onClick={handleExport}
-          disabled={aggregated.length === 0}
-          className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors disabled:opacity-40"
-        >
-          <Download className="w-3.5 h-3.5" /> 집계 CSV
-        </button>
-        <button
-          type="button"
-          onClick={handleExportRaw}
+          onClick={handleExportXlsx}
           disabled={filtered.length === 0}
           className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors disabled:opacity-40"
         >
-          <Download className="w-3.5 h-3.5" /> 전체 기록 CSV ({filtered.length.toLocaleString()})
+          <Download className="w-3.5 h-3.5" /> 엑셀 다운로드 ({filtered.length.toLocaleString()})
         </button>
+
 
       </div>
 
