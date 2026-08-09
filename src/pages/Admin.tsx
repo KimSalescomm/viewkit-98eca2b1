@@ -659,23 +659,6 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
           </button>
         </div>
 
-        {/* 카테고리 탭 */}
-        <div className="flex flex-wrap gap-2 mb-5">
-          {TABS.map((t) => (
-            <button
-              key={t.key}
-              type="button"
-              onClick={() => setTab(t.key)}
-              className={`h-9 px-4 rounded-full text-xs font-semibold transition-colors border ${
-                tab === t.key
-                  ? "bg-[#3182CE] text-white border-[#3182CE]"
-                  : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
 
         {tab === "visits" && <StoreVisitStats />}
 
