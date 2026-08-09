@@ -33,24 +33,8 @@ const selectClass =
   "h-9 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 " +
   "focus:outline-none focus:ring-2 focus:ring-[#3182CE]/15 focus:border-[#3182CE]";
 
-const downloadCsv = (csv: string, filename: string) => {
-  const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8;" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(() => {
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  }, 1000);
-};
 
-const esc = (v: unknown) => {
-  const s = String(v ?? "");
-  return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
-};
+
 
 const FeaturePreferenceSection = () => {
   const [rows, setRows] = useState<ReactionRow[]>([]);
