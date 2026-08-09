@@ -260,9 +260,18 @@ const toCsv = (rows: SaleRecord[]) => {
   return [header.join(","), ...body].join("\n");
 };
 
+type TabKey = "visits" | "content" | "sales";
+const TABS: { key: TabKey; label: string }[] = [
+  { key: "visits", label: "지점별 접속통계" },
+  { key: "content", label: "콘텐츠 선호도" },
+  { key: "sales", label: "판매 인증" },
+];
+
 const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
+  const [tab, setTab] = useState<TabKey>("visits");
   const [version, setVersion] = useState(0);
   const [sales, setSales] = useState<SaleRecord[]>([]);
+
   useEffect(() => {
     let cancelled = false;
     getSales().then((rows) => {
