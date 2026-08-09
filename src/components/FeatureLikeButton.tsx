@@ -102,6 +102,7 @@ const FeatureLikeButton = ({
         "hover:bg-white active:scale-95",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-1",
         size,
+        active && "ring-2 ring-brand/40 bg-brand-soft/30",
         pulse && !active && "animate-pulse ring-2 ring-brand/40",
         className,
       )}
