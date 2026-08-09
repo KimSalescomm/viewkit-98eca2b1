@@ -260,9 +260,18 @@ const toCsv = (rows: SaleRecord[]) => {
   return [header.join(","), ...body].join("\n");
 };
 
+type TabKey = "visits" | "content" | "sales";
+const TABS: { key: TabKey; label: string }[] = [
+  { key: "visits", label: "지점별 접속통계" },
+  { key: "content", label: "콘텐츠 선호도" },
+  { key: "sales", label: "판매 인증" },
+];
+
 const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
+  const [tab, setTab] = useState<TabKey>("visits");
   const [version, setVersion] = useState(0);
   const [sales, setSales] = useState<SaleRecord[]>([]);
+
   useEffect(() => {
     let cancelled = false;
     getSales().then((rows) => {
@@ -558,8 +567,28 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
         <ScreensaverManager />
 
 
+        {/* 카테고리 탭 */}
+        <div className="flex flex-wrap gap-2 mb-5">
+          {TABS.map((t) => (
+            <button
+              key={t.key}
+              type="button"
+              onClick={() => setTab(t.key)}
+              className={`h-9 px-4 rounded-full text-xs font-semibold transition-colors border ${
+                tab === t.key
+                  ? "bg-[#3182CE] text-white border-[#3182CE]"
+                  : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+
         {/* 필터 / 액션 */}
-        <div className="rounded-2xl border border-slate-200 bg-white p-4 mb-6 flex flex-wrap items-end gap-3">
+        {tab !== "content" && (
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 mb-6 flex flex-wrap items-end gap-3">
+
           <div className="flex flex-col gap-1">
             <label className="text-[11px] font-medium text-slate-500">지점</label>
             <select value={branchFilter} onChange={(e) => setBranchFilter(e.target.value)} className={selectClass}>
@@ -648,22 +677,24 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
           >
             <Trash2 className="w-3.5 h-3.5" /> 전체 초기화
           </button>
-        </div>
-
-        <StoreVisitStats />
-
-        <FeaturePreferenceSection />
-
-
-
-
-        {filtered.length === 0 ? (
-          <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center">
-            <Trophy className="w-10 h-10 mx-auto text-slate-300 mb-3" />
-            <p className="text-sm text-slate-500">조건에 맞는 판매 기록이 없습니다</p>
           </div>
-        ) : (
-          <>
+        )}
+
+
+
+        {tab === "visits" && <StoreVisitStats />}
+
+        {tab === "content" && <FeaturePreferenceSection />}
+
+        {tab === "sales" &&
+          (filtered.length === 0 ? (
+            <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center">
+              <Trophy className="w-10 h-10 mx-auto text-slate-300 mb-3" />
+              <p className="text-sm text-slate-500">조건에 맞는 판매 기록이 없습니다</p>
+            </div>
+          ) : (
+            <>
+
             <div className="grid md:grid-cols-2 gap-4 mb-6">
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
                 <h2 className="text-sm font-semibold text-slate-900 mb-4">지점별 순위</h2>
@@ -804,7 +835,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
               </div>
             </div>
           </>
-        )}
+        ))}
+
 
         <p className="text-[11px] text-slate-400 mt-6 text-center">
           ※ 데이터는 Lovable Cloud에 영구 저장되며 모든 매장에서 공유됩니다
