@@ -81,10 +81,11 @@ const aggregateVisits = (rows: PV[]) => {
 };
 
 // 접속기록 CSV 기간 옵션 (StoreVisitStats와 동일)
-type VisitsRangeKey = "today" | "7d" | "30d" | "all";
+type VisitsRangeKey = "today" | "7d" | "14d" | "30d" | "all";
 const VISITS_RANGES: { key: VisitsRangeKey; label: string }[] = [
   { key: "today", label: "오늘" },
   { key: "7d", label: "7일" },
+  { key: "14d", label: "14일" },
   { key: "30d", label: "30일" },
   { key: "all", label: "전체" },
 ];
@@ -93,7 +94,10 @@ const getVisitsSinceISO = (key: VisitsRangeKey): string => {
   if (key === "all") return SITE_OPEN_ISO;
   const d = new Date();
   if (key === "today") d.setHours(0, 0, 0, 0);
-  else d.setDate(d.getDate() - (key === "7d" ? 7 : 30));
+  else {
+    const days = key === "7d" ? 7 : key === "14d" ? 14 : 30;
+    d.setDate(d.getDate() - days);
+  }
   const iso = d.toISOString();
   return iso > SITE_OPEN_ISO ? iso : SITE_OPEN_ISO;
 };
