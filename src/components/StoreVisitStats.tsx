@@ -37,11 +37,12 @@ type Row = {
   created_at: string;
 };
 
-type RangeKey = "today" | "7d" | "30d" | "all";
+type RangeKey = "today" | "7d" | "14d" | "30d" | "all";
 
 const RANGES: { key: RangeKey; label: string; days: number | null }[] = [
   { key: "today", label: "오늘", days: 0 },
   { key: "7d", label: "7일", days: 7 },
+  { key: "14d", label: "14일", days: 14 },
   { key: "30d", label: "30일", days: 30 },
   { key: "all", label: "전체", days: null },
 ];
@@ -52,7 +53,7 @@ const getSince = (key: RangeKey): string | null => {
   if (key === "today") {
     d.setHours(0, 0, 0, 0);
   } else {
-    const days = key === "7d" ? 7 : 30;
+    const days = key === "7d" ? 7 : key === "14d" ? 14 : 30;
     d.setDate(d.getDate() - days);
   }
   return d.toISOString();

@@ -4,7 +4,7 @@ import { format, subDays } from "date-fns";
 import { ko } from "date-fns/locale";
 import { supabase } from "@/integrations/supabase/client";
 
-type PeriodKey = "7" | "30" | "90" | "all";
+type PeriodKey = "7" | "14" | "30" | "90" | "all";
 
 interface ReactionRow {
   created_at: string;
@@ -255,6 +255,7 @@ const FeaturePreferenceSection = () => {
           <label className="text-[11px] font-medium text-slate-500">기간</label>
           <select value={period} onChange={(e) => setPeriod(e.target.value as PeriodKey)} className={selectClass}>
             <option value="7">최근 7일</option>
+            <option value="14">최근 14일</option>
             <option value="30">최근 30일</option>
             <option value="90">최근 90일</option>
             <option value="all">전체</option>
