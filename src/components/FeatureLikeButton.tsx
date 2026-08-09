@@ -3,6 +3,7 @@ import { Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { logFeatureReaction } from "@/utils/featureReactionLog";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
+import { supabase } from "@/integrations/supabase/client";
 
 // 첫 진입 시 pulse 힌트를 딱 한 번만 노출
 const HINT_KEY = "viewkit_like_hint_shown";
@@ -29,9 +30,28 @@ const FeatureLikeButton = ({
   showHint = false,
 }: FeatureLikeButtonProps) => {
   const [pending, setPending] = useState(0); // 아직 서버에 수집되지 않은 클릭 수
+  const [totalCount, setTotalCount] = useState<number | null>(null);
   const [bump, setBump] = useState(0);
   const [pulse, setPulse] = useState(false);
   const { trackEvent } = useAnalyticsContext();
+
+  const fetchTotalCount = useCallback(async () => {
+    try {
+      const { count, error } = await supabase
+        .from("feature_reactions")
+        .select("*", { count: "exact", head: true })
+        .eq("product_id", productId)
+        .eq("feature_id", featureId);
+      if (error) throw error;
+      setTotalCount(count ?? 0);
+    } catch {
+      /* noop - 카운트 조회 실패는 UI 동작에 영향 없음 */
+    }
+  }, [productId, featureId]);
+
+  useEffect(() => {
+    void fetchTotalCount();
+  }, [fetchTotalCount]);
 
   useEffect(() => {
     if (!showHint) return;
@@ -65,6 +85,8 @@ const FeatureLikeButton = ({
       const record = async () => {
         try {
           await logFeatureReaction({ productId, productName, featureId, featureTitle });
+          // 최신 총 개수 갱신
+          await fetchTotalCount();
         } catch {
           /* noop - 분석 실패는 앱 동작에 영향 없음 */
         } finally {
@@ -83,7 +105,7 @@ const FeatureLikeButton = ({
         feature_name: featureTitle,
       });
     },
-    [productId, productName, featureId, featureTitle, trackEvent],
+    [productId, productName, featureId, featureTitle, trackEvent, fetchTotalCount],
   );
 
   const active = pending > 0;
@@ -91,40 +113,44 @@ const FeatureLikeButton = ({
   const icon = variant === "mobile" ? "w-[18px] h-[18px]" : "w-5 h-5";
 
   return (
-    <button
-      type="button"
-      onClick={handleClick}
-      aria-label={active ? `관심 표시 ${pending}회 기록 중` : "이 특장점에 관심 표시하기"}
-      aria-pressed={active}
-      className={cn(
-        "relative inline-flex items-center justify-center rounded-full transition-all duration-200",
-        "bg-white/85 backdrop-blur-sm border border-black/[0.04] shadow-[0_2px_10px_-2px_rgba(0,0,0,0.08)]",
-        "hover:bg-white active:scale-95",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-1",
-        size,
-        active && "ring-2 ring-brand/40 bg-brand-soft/30",
-        pulse && !active && "animate-pulse ring-2 ring-brand/40",
-        className,
-      )}
-    >
-      <Heart
-        key={bump}
+    <div className={cn("inline-flex items-center gap-2", className)}>
+      <button
+        type="button"
+        onClick={handleClick}
+        aria-label={active ? `관심 표시 ${pending}회 기록 중` : "이 특장점에 관심 표시하기"}
+        aria-pressed={active}
         className={cn(
-          icon,
-          "transition-colors duration-200",
-          active ? "text-brand fill-brand animate-scale-in" : "text-gray-400",
+          "relative inline-flex items-center justify-center rounded-full transition-all duration-200",
+          "bg-white/85 backdrop-blur-sm border border-black/[0.04] shadow-[0_2px_10px_-2px_rgba(0,0,0,0.08)]",
+          "hover:bg-white active:scale-95",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-1",
+          size,
+          active && "ring-2 ring-brand/40 bg-brand-soft/30",
+          pulse && !active && "animate-pulse ring-2 ring-brand/40",
         )}
-        strokeWidth={2.2}
-      />
-      {active && (
-        <span
-          key={`badge-${pending}`}
-          className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-brand text-white text-[10px] font-bold leading-[18px] text-center shadow-sm animate-scale-in tabular-nums"
-        >
-          {pending}
-        </span>
-      )}
-    </button>
+      >
+        <Heart
+          key={bump}
+          className={cn(
+            icon,
+            "transition-colors duration-200",
+            active ? "text-brand fill-brand animate-scale-in" : "text-gray-400",
+          )}
+          strokeWidth={2.2}
+        />
+        {active && (
+          <span
+            key={`badge-${pending}`}
+            className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-brand text-white text-[10px] font-bold leading-[18px] text-center shadow-sm animate-scale-in tabular-nums"
+          >
+            {pending}
+          </span>
+        )}
+      </button>
+      <span className="text-sm font-medium text-gray-600 tabular-nums">
+        {totalCount === null ? "—" : totalCount.toLocaleString("ko-KR")}
+      </span>
+    </div>
   );
 };
 
