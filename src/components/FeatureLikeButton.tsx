@@ -17,6 +17,8 @@ interface FeatureLikeButtonProps {
   showHint?: boolean; // 카드 목록 중 첫 카드에서만 pulse 힌트 노출
 }
 
+const MIN_FEEDBACK_MS = 400; // 최소 시각적 피드백 지속 시간
+
 const FeatureLikeButton = ({
   productId,
   productName,
@@ -55,14 +57,27 @@ const FeatureLikeButton = ({
       e.preventDefault();
       e.stopPropagation();
 
+      const clickTime = Date.now();
       setPending((n) => n + 1);
       setBump((n) => n + 1);
       setPulse(false);
 
-      // 서버 기록 완료 후 카운트 감소 → 0이 되면 다시 공백 상태
-      void logFeatureReaction({ productId, productName, featureId, featureTitle }).finally(() => {
-        setPending((n) => Math.max(0, n - 1));
-      });
+      const record = async () => {
+        try {
+          await logFeatureReaction({ productId, productName, featureId, featureTitle });
+        } catch {
+          /* noop - 분석 실패는 앱 동작에 영향 없음 */
+        } finally {
+          // 최소 피드백 지속 시간 보장
+          const elapsed = Date.now() - clickTime;
+          if (elapsed < MIN_FEEDBACK_MS) {
+            await new Promise((resolve) => setTimeout(resolve, MIN_FEEDBACK_MS - elapsed));
+          }
+          setPending((n) => Math.max(0, n - 1));
+        }
+      };
+      void record();
+
       trackEvent("feature_like", {
         product_name: productName || productId,
         feature_name: featureTitle,
