@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { logFeatureReaction } from "@/utils/featureReactionLog";
+import { logFeatureReaction, canLogFeatureReaction } from "@/utils/featureReactionLog";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { supabase } from "@/integrations/supabase/client";
 
