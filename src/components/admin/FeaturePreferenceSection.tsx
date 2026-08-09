@@ -82,14 +82,24 @@ const FeaturePreferenceSection = () => {
     let cancelled = false;
     (async () => {
       setLoading(true);
-      const { data } = await supabase
-        .from("feature_reactions")
-        .select("created_at, store_slug, store_name, product_id, product_name, feature_id, feature_title")
-        .order("created_at", { ascending: false })
-        .limit(50000);
+      // PostgREST 응답은 요청당 최대 1,000행이므로 range 페이지네이션으로 전체를 누적 조회
+      const PAGE = 1000;
+      const all: ReactionRow[] = [];
+      for (let from = 0; ; from += PAGE) {
+        const { data, error } = await supabase
+          .from("feature_reactions")
+          .select("created_at, store_slug, store_name, product_id, product_name, feature_id, feature_title")
+          .order("created_at", { ascending: false })
+          .range(from, from + PAGE - 1);
+        if (error || cancelled) break;
+        const batch = data || [];
+        all.push(...batch);
+        if (batch.length < PAGE) break;
+        if (from > 500_000) break;
+      }
       if (cancelled) return;
       // 관리자/본사 계정 이벤트는 저장 단계에서 걸러지지만, 방어적으로 한 번 더 필터
-      const clean = (data || []).filter((r) => {
+      const clean = all.filter((r) => {
         const s = (r.store_slug || "").toUpperCase();
         return s && s !== "SC" && s !== "KOR";
       });
@@ -100,6 +110,7 @@ const FeaturePreferenceSection = () => {
       cancelled = true;
     };
   }, []);
+
 
   useEffect(() => {
     let cancelled = false;
@@ -177,11 +188,33 @@ const FeaturePreferenceSection = () => {
   const totals = useMemo(() => {
     const uniqueStores = new Set(filtered.map((r) => r.store_slug)).size;
     return {
-      events: totalEventCount ?? filtered.length,
+      // 전체 조회가 페이지네이션으로 누적되므로 화면 집계와 서버 count 중 큰 값(실데이터)을 사용
+      events: Math.max(filtered.length, totalEventCount ?? 0),
       features: aggregated.length,
       stores: uniqueStores,
     };
   }, [filtered, aggregated, totalEventCount]);
+
+  const handleExportRaw = () => {
+    const header = ["기록 시각", "매장", "매장코드", "제품", "특장점", "특장점ID"];
+    const lines = [
+      header.map(esc).join(","),
+      ...filtered.map((r) =>
+        [
+          format(new Date(r.created_at), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
+          r.store_name || r.store_slug,
+          r.store_slug,
+          r.product_name || r.product_id,
+          r.feature_title || r.feature_id,
+          r.feature_id,
+        ]
+          .map(esc)
+          .join(","),
+      ),
+    ];
+    downloadCsv(lines.join("\n"), `feature_reactions_raw_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
+  };
+
 
   const handleExport = () => {
     const header = ["순위", "제품", "특장점", "관심 수", "매장 수", "매장", "최근 반응"];
@@ -256,8 +289,17 @@ const FeaturePreferenceSection = () => {
           disabled={aggregated.length === 0}
           className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors disabled:opacity-40"
         >
-          <Download className="w-3.5 h-3.5" /> CSV 내보내기
+          <Download className="w-3.5 h-3.5" /> 집계 CSV
         </button>
+        <button
+          type="button"
+          onClick={handleExportRaw}
+          disabled={filtered.length === 0}
+          className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors disabled:opacity-40"
+        >
+          <Download className="w-3.5 h-3.5" /> 전체 기록 CSV ({filtered.length.toLocaleString()})
+        </button>
+
       </div>
 
       <div className="grid grid-cols-3 gap-3 mb-4">
