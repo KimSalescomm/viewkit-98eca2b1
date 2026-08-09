@@ -81,11 +81,13 @@ const FeatureLikeButton = ({
       setPending((n) => n + 1);
       setBump((n) => n + 1);
       setPulse(false);
+      // 클릭 즉시 카운트를 1 올려 보여줌
+      setTotalCount((prev) => (prev === null ? 1 : prev + 1));
 
       const record = async () => {
         try {
           await logFeatureReaction({ productId, productName, featureId, featureTitle });
-          // 최신 총 개수 갱신
+          // 최신 총 개수 갱신 (관리자 계정/캡 초과 등으로 실제 기록되지 않았을 경우 보정)
           await fetchTotalCount();
         } catch {
           /* noop - 분석 실패는 앱 동작에 영향 없음 */
