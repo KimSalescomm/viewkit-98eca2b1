@@ -188,11 +188,33 @@ const FeaturePreferenceSection = () => {
   const totals = useMemo(() => {
     const uniqueStores = new Set(filtered.map((r) => r.store_slug)).size;
     return {
-      events: totalEventCount ?? filtered.length,
+      // 전체 조회가 페이지네이션으로 누적되므로 화면 집계와 서버 count 중 큰 값(실데이터)을 사용
+      events: Math.max(filtered.length, totalEventCount ?? 0),
       features: aggregated.length,
       stores: uniqueStores,
     };
   }, [filtered, aggregated, totalEventCount]);
+
+  const handleExportRaw = () => {
+    const header = ["기록 시각", "매장", "매장코드", "제품", "특장점", "특장점ID"];
+    const lines = [
+      header.map(esc).join(","),
+      ...filtered.map((r) =>
+        [
+          format(new Date(r.created_at), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
+          r.store_name || r.store_slug,
+          r.store_slug,
+          r.product_name || r.product_id,
+          r.feature_title || r.feature_id,
+          r.feature_id,
+        ]
+          .map(esc)
+          .join(","),
+      ),
+    ];
+    downloadCsv(lines.join("\n"), `feature_reactions_raw_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
+  };
+
 
   const handleExport = () => {
     const header = ["순위", "제품", "특장점", "관심 수", "매장 수", "매장", "최근 반응"];
