@@ -804,7 +804,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
               </div>
             </div>
           </>
-        )}
+        ))}
+
 
         <p className="text-[11px] text-slate-400 mt-6 text-center">
           ※ 데이터는 Lovable Cloud에 영구 저장되며 모든 매장에서 공유됩니다
