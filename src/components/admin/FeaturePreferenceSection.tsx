@@ -149,29 +149,32 @@ const FeaturePreferenceSection = () => {
   }, [rows]);
 
   const aggregated: AggregatedRow[] = useMemo(() => {
-    const map = new Map<string, AggregatedRow & { storeSet: Map<string, string> }>();
+    type Acc = AggregatedRow & { storeStats: Map<string, { name: string; count: number }> };
+    const map = new Map<string, Acc>();
     filtered.forEach((r) => {
       const key = `${r.product_id}::${r.feature_id}`;
       const storeLabel = r.store_name || r.store_slug;
-      const cur = map.get(key);
-      if (cur) {
-        cur.total += 1;
-        cur.storeSet.set(r.store_slug, storeLabel);
-        if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
-        if (r.feature_title && !cur.featureTitle) cur.featureTitle = r.feature_title;
-      } else {
-        map.set(key, {
+      let cur = map.get(key);
+      if (!cur) {
+        cur = {
           productId: r.product_id,
           productName: r.product_name || r.product_id,
           featureId: r.feature_id,
           featureTitle: r.feature_title || r.feature_id,
-          total: 1,
+          total: 0,
           uniqueStores: 0,
           storeNames: [],
-          storeSet: new Map([[r.store_slug, storeLabel]]),
+          storeStats: new Map(),
           lastAt: r.created_at,
-        });
+        };
+        map.set(key, cur);
       }
+      cur.total += 1;
+      if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
+      if (r.feature_title && !cur.featureTitle) cur.featureTitle = r.feature_title;
+      const stat = cur.storeStats.get(r.store_slug);
+      if (stat) stat.count += 1;
+      else cur.storeStats.set(r.store_slug, { name: storeLabel, count: 1 });
     });
     return [...map.values()]
       .map((v) => ({
@@ -180,12 +183,16 @@ const FeaturePreferenceSection = () => {
         featureId: v.featureId,
         featureTitle: v.featureTitle,
         total: v.total,
-        uniqueStores: v.storeSet.size,
-        storeNames: [...v.storeSet.values()].sort((a, b) => a.localeCompare(b, "ko")),
+        uniqueStores: v.storeStats.size,
+        // 매장 목록은 반응 건수 내림차순(동일 건수는 매장명 가나다순) — 화면/엑셀 동일 기준
+        storeNames: [...v.storeStats.values()]
+          .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "ko"))
+          .map((s) => s.name),
         lastAt: v.lastAt,
       }))
       .sort((a, b) => b.total - a.total);
   }, [filtered]);
+
 
   const totals = useMemo(() => {
     const uniqueStores = new Set(filtered.map((r) => r.store_slug)).size;
