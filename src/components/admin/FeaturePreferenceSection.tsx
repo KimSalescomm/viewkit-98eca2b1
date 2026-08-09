@@ -82,14 +82,24 @@ const FeaturePreferenceSection = () => {
     let cancelled = false;
     (async () => {
       setLoading(true);
-      const { data } = await supabase
-        .from("feature_reactions")
-        .select("created_at, store_slug, store_name, product_id, product_name, feature_id, feature_title")
-        .order("created_at", { ascending: false })
-        .limit(50000);
+      // PostgREST 응답은 요청당 최대 1,000행이므로 range 페이지네이션으로 전체를 누적 조회
+      const PAGE = 1000;
+      const all: ReactionRow[] = [];
+      for (let from = 0; ; from += PAGE) {
+        const { data, error } = await supabase
+          .from("feature_reactions")
+          .select("created_at, store_slug, store_name, product_id, product_name, feature_id, feature_title")
+          .order("created_at", { ascending: false })
+          .range(from, from + PAGE - 1);
+        if (error || cancelled) break;
+        const batch = data || [];
+        all.push(...batch);
+        if (batch.length < PAGE) break;
+        if (from > 500_000) break;
+      }
       if (cancelled) return;
       // 관리자/본사 계정 이벤트는 저장 단계에서 걸러지지만, 방어적으로 한 번 더 필터
-      const clean = (data || []).filter((r) => {
+      const clean = all.filter((r) => {
         const s = (r.store_slug || "").toUpperCase();
         return s && s !== "SC" && s !== "KOR";
       });
@@ -100,6 +110,7 @@ const FeaturePreferenceSection = () => {
       cancelled = true;
     };
   }, []);
+
 
   useEffect(() => {
     let cancelled = false;
