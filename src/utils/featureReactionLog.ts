@@ -1,12 +1,11 @@
 // 특장점 관심 표시(하트) 이벤트 로그
 // - page_views와 유사한 append-only 패턴
 // - 세션당 (product_id, feature_id) 조합 최대 20회 소프트 캡
-// - SC(관리자)/KOR(유관부서) 계정은 집계 제외
+// - 모든 매장(SC/KOR 포함)의 클릭을 동일하게 집계
 // - 300ms debounce (동일 특장점 연속 클릭 스팸 방지)
 
 import { supabase } from "@/integrations/supabase/client";
 import { getCurrentStore } from "@/utils/storeId";
-import { isAdminStore } from "@/data/branches";
 
 const SESSION_KEY = "viewkit_reaction_session_id";
 const CAP_KEY = "viewkit_reaction_caps"; // { [`${productId}:${featureId}`]: count }
@@ -67,9 +66,6 @@ export const canLogFeatureReaction = (productId: string, featureId: string): boo
 
   const store = getCurrentStore();
   if (!store?.slug) return false;
-  const slug = store.slug.toUpperCase();
-  if (isAdminStore(slug) || slug === "KOR") return false;
-
   const caps = getCaps();
   if ((caps[key] ?? 0) >= CAP_LIMIT) return false;
   return true;
@@ -92,8 +88,6 @@ export const logFeatureReaction = async ({
 
   const store = getCurrentStore();
   const slug = (store?.slug || "").toUpperCase();
-  bumpCap(key);
-
   try {
     const { error } = await supabase.from("feature_reactions").insert({
       store_slug: slug,
@@ -105,6 +99,7 @@ export const logFeatureReaction = async ({
       session_id: ensureSessionId(),
     });
     if (error) throw error;
+    bumpCap(key);
     return true;
   } catch {
     /* noop - 분석 실패는 앱 동작에 영향 없음 */
