@@ -99,6 +99,9 @@ const FeatureLikeButton = ({
             if (typeof count === "number") {
               setTotalCount((prev) => (prev === null ? count : Math.max(prev, count)));
             }
+          } else if (willRecord) {
+            // 서버 기록에 실패한 경우에만 낙관적 증가분을 되돌림
+            setTotalCount((prev) => (prev === null ? 0 : Math.max(0, prev - 1)));
           }
         } catch {
           /* noop - 분석 실패는 앱 동작에 영향 없음 */
