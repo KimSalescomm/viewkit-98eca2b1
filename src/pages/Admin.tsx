@@ -567,8 +567,28 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
         <ScreensaverManager />
 
 
+        {/* 카테고리 탭 */}
+        <div className="flex flex-wrap gap-2 mb-5">
+          {TABS.map((t) => (
+            <button
+              key={t.key}
+              type="button"
+              onClick={() => setTab(t.key)}
+              className={`h-9 px-4 rounded-full text-xs font-semibold transition-colors border ${
+                tab === t.key
+                  ? "bg-[#3182CE] text-white border-[#3182CE]"
+                  : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+
         {/* 필터 / 액션 */}
-        <div className="rounded-2xl border border-slate-200 bg-white p-4 mb-6 flex flex-wrap items-end gap-3">
+        {tab !== "content" && (
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 mb-6 flex flex-wrap items-end gap-3">
+
           <div className="flex flex-col gap-1">
             <label className="text-[11px] font-medium text-slate-500">지점</label>
             <select value={branchFilter} onChange={(e) => setBranchFilter(e.target.value)} className={selectClass}>
