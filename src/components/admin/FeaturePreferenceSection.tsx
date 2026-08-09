@@ -2,7 +2,9 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Heart, Download, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
 import { format, subDays } from "date-fns";
 import { ko } from "date-fns/locale";
+import * as XLSX from "xlsx";
 import { supabase } from "@/integrations/supabase/client";
+
 
 type PeriodKey = "7" | "14" | "30" | "90" | "all";
 
@@ -31,24 +33,8 @@ const selectClass =
   "h-9 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 " +
   "focus:outline-none focus:ring-2 focus:ring-[#3182CE]/15 focus:border-[#3182CE]";
 
-const downloadCsv = (csv: string, filename: string) => {
-  const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8;" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(() => {
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  }, 1000);
-};
 
-const esc = (v: unknown) => {
-  const s = String(v ?? "");
-  return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
-};
+
 
 const FeaturePreferenceSection = () => {
   const [rows, setRows] = useState<ReactionRow[]>([]);
@@ -147,29 +133,32 @@ const FeaturePreferenceSection = () => {
   }, [rows]);
 
   const aggregated: AggregatedRow[] = useMemo(() => {
-    const map = new Map<string, AggregatedRow & { storeSet: Map<string, string> }>();
+    type Acc = AggregatedRow & { storeStats: Map<string, { name: string; count: number }> };
+    const map = new Map<string, Acc>();
     filtered.forEach((r) => {
       const key = `${r.product_id}::${r.feature_id}`;
       const storeLabel = r.store_name || r.store_slug;
-      const cur = map.get(key);
-      if (cur) {
-        cur.total += 1;
-        cur.storeSet.set(r.store_slug, storeLabel);
-        if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
-        if (r.feature_title && !cur.featureTitle) cur.featureTitle = r.feature_title;
-      } else {
-        map.set(key, {
+      let cur = map.get(key);
+      if (!cur) {
+        cur = {
           productId: r.product_id,
           productName: r.product_name || r.product_id,
           featureId: r.feature_id,
           featureTitle: r.feature_title || r.feature_id,
-          total: 1,
+          total: 0,
           uniqueStores: 0,
           storeNames: [],
-          storeSet: new Map([[r.store_slug, storeLabel]]),
+          storeStats: new Map(),
           lastAt: r.created_at,
-        });
+        };
+        map.set(key, cur);
       }
+      cur.total += 1;
+      if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
+      if (r.feature_title && !cur.featureTitle) cur.featureTitle = r.feature_title;
+      const stat = cur.storeStats.get(r.store_slug);
+      if (stat) stat.count += 1;
+      else cur.storeStats.set(r.store_slug, { name: storeLabel, count: 1 });
     });
     return [...map.values()]
       .map((v) => ({
@@ -178,12 +167,16 @@ const FeaturePreferenceSection = () => {
         featureId: v.featureId,
         featureTitle: v.featureTitle,
         total: v.total,
-        uniqueStores: v.storeSet.size,
-        storeNames: [...v.storeSet.values()].sort((a, b) => a.localeCompare(b, "ko")),
+        uniqueStores: v.storeStats.size,
+        // 매장 목록은 반응 건수 내림차순(동일 건수는 매장명 가나다순) — 화면/엑셀 동일 기준
+        storeNames: [...v.storeStats.values()]
+          .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "ko"))
+          .map((s) => s.name),
         lastAt: v.lastAt,
       }))
       .sort((a, b) => b.total - a.total);
   }, [filtered]);
+
 
   const totals = useMemo(() => {
     const uniqueStores = new Set(filtered.map((r) => r.store_slug)).size;
@@ -195,47 +188,47 @@ const FeaturePreferenceSection = () => {
     };
   }, [filtered, aggregated, totalEventCount]);
 
-  const handleExportRaw = () => {
-    const header = ["기록 시각", "매장", "매장코드", "제품", "특장점", "특장점ID"];
-    const lines = [
-      header.map(esc).join(","),
-      ...filtered.map((r) =>
-        [
-          format(new Date(r.created_at), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
-          r.store_name || r.store_slug,
-          r.store_slug,
-          r.product_name || r.product_id,
-          r.feature_title || r.feature_id,
-          r.feature_id,
-        ]
-          .map(esc)
-          .join(","),
-      ),
-    ];
-    downloadCsv(lines.join("\n"), `feature_reactions_raw_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
+  const handleExportXlsx = () => {
+    const summaryHeader = ["순위", "제품", "특장점", "관심수", "매장수", "매장목록", "최근 반응"];
+    const summaryRows = aggregated.map((r, i) => {
+      const top = r.storeNames.slice(0, 5).join(", ");
+      const rest = r.storeNames.length - 5;
+      return [
+        i + 1,
+        r.productName,
+        r.featureTitle,
+        r.total,
+        r.uniqueStores,
+        rest > 0 ? `${top} +${rest}개 매장` : top,
+        format(new Date(r.lastAt), "yyyy-MM-dd HH:mm", { locale: ko }),
+      ];
+    });
+
+    const rawHeader = ["기록 시각", "매장", "매장코드", "제품", "특장점", "특장점ID"];
+    const rawRows = [...filtered]
+      .sort((a, b) => (a.created_at < b.created_at ? 1 : a.created_at > b.created_at ? -1 : 0))
+      .map((r) => [
+        format(new Date(r.created_at), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
+        r.store_name || r.store_slug,
+        r.store_slug,
+        r.product_name || r.product_id,
+        r.feature_title || r.feature_id,
+        r.feature_id,
+      ]);
+
+    const wb = XLSX.utils.book_new();
+    const ws1 = XLSX.utils.aoa_to_sheet([summaryHeader, ...summaryRows]);
+    ws1["!cols"] = [{ wch: 6 }, { wch: 14 }, { wch: 34 }, { wch: 8 }, { wch: 8 }, { wch: 60 }, { wch: 18 }];
+    const ws2 = XLSX.utils.aoa_to_sheet([rawHeader, ...rawRows]);
+    ws2["!cols"] = [{ wch: 20 }, { wch: 16 }, { wch: 10 }, { wch: 14 }, { wch: 34 }, { wch: 12 }];
+    XLSX.utils.book_append_sheet(wb, ws1, "관심수 요약");
+    XLSX.utils.book_append_sheet(wb, ws2, "원본 데이터");
+    XLSX.writeFile(wb, `feature_reactions_summary_${format(new Date(), "yyyyMMdd")}.xlsx`, {
+      bookType: "xlsx",
+      compression: true,
+    });
   };
 
-
-  const handleExport = () => {
-    const header = ["순위", "제품", "특장점", "관심 수", "매장 수", "매장", "최근 반응"];
-    const lines = [
-      header.map(esc).join(","),
-      ...aggregated.map((r, i) =>
-        [
-          i + 1,
-          r.productName,
-          r.featureTitle,
-          r.total,
-          r.uniqueStores,
-          r.storeNames.join(", "),
-          format(new Date(r.lastAt), "yyyy-MM-dd HH:mm", { locale: ko }),
-        ]
-          .map(esc)
-          .join(","),
-      ),
-    ];
-    downloadCsv(lines.join("\n"), `feature_preferences_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
-  };
 
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-5 mb-6">
@@ -286,20 +279,13 @@ const FeaturePreferenceSection = () => {
         <div className="flex-1" />
         <button
           type="button"
-          onClick={handleExport}
-          disabled={aggregated.length === 0}
-          className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors disabled:opacity-40"
-        >
-          <Download className="w-3.5 h-3.5" /> 집계 CSV
-        </button>
-        <button
-          type="button"
-          onClick={handleExportRaw}
+          onClick={handleExportXlsx}
           disabled={filtered.length === 0}
           className="h-9 px-3.5 inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors disabled:opacity-40"
         >
-          <Download className="w-3.5 h-3.5" /> 전체 기록 CSV ({filtered.length.toLocaleString()})
+          <Download className="w-3.5 h-3.5" /> 엑셀 다운로드 ({filtered.length.toLocaleString()})
         </button>
+
 
       </div>
 
