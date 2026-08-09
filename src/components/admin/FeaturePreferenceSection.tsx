@@ -2,7 +2,9 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Heart, Download, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
 import { format, subDays } from "date-fns";
 import { ko } from "date-fns/locale";
+import * as XLSX from "xlsx";
 import { supabase } from "@/integrations/supabase/client";
+
 
 type PeriodKey = "7" | "14" | "30" | "90" | "all";
 
