@@ -197,47 +197,47 @@ const FeaturePreferenceSection = () => {
     };
   }, [filtered, aggregated, totalEventCount]);
 
-  const handleExportRaw = () => {
-    const header = ["기록 시각", "매장", "매장코드", "제품", "특장점", "특장점ID"];
-    const lines = [
-      header.map(esc).join(","),
-      ...filtered.map((r) =>
-        [
-          format(new Date(r.created_at), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
-          r.store_name || r.store_slug,
-          r.store_slug,
-          r.product_name || r.product_id,
-          r.feature_title || r.feature_id,
-          r.feature_id,
-        ]
-          .map(esc)
-          .join(","),
-      ),
-    ];
-    downloadCsv(lines.join("\n"), `feature_reactions_raw_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
+  const handleExportXlsx = () => {
+    const summaryHeader = ["순위", "제품", "특장점", "관심수", "매장수", "매장목록", "최근 반응"];
+    const summaryRows = aggregated.map((r, i) => {
+      const top = r.storeNames.slice(0, 5).join(", ");
+      const rest = r.storeNames.length - 5;
+      return [
+        i + 1,
+        r.productName,
+        r.featureTitle,
+        r.total,
+        r.uniqueStores,
+        rest > 0 ? `${top} +${rest}개 매장` : top,
+        format(new Date(r.lastAt), "yyyy-MM-dd HH:mm", { locale: ko }),
+      ];
+    });
+
+    const rawHeader = ["기록 시각", "매장", "매장코드", "제품", "특장점", "특장점ID"];
+    const rawRows = [...filtered]
+      .sort((a, b) => (a.created_at < b.created_at ? 1 : a.created_at > b.created_at ? -1 : 0))
+      .map((r) => [
+        format(new Date(r.created_at), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
+        r.store_name || r.store_slug,
+        r.store_slug,
+        r.product_name || r.product_id,
+        r.feature_title || r.feature_id,
+        r.feature_id,
+      ]);
+
+    const wb = XLSX.utils.book_new();
+    const ws1 = XLSX.utils.aoa_to_sheet([summaryHeader, ...summaryRows]);
+    ws1["!cols"] = [{ wch: 6 }, { wch: 14 }, { wch: 34 }, { wch: 8 }, { wch: 8 }, { wch: 60 }, { wch: 18 }];
+    const ws2 = XLSX.utils.aoa_to_sheet([rawHeader, ...rawRows]);
+    ws2["!cols"] = [{ wch: 20 }, { wch: 16 }, { wch: 10 }, { wch: 14 }, { wch: 34 }, { wch: 12 }];
+    XLSX.utils.book_append_sheet(wb, ws1, "관심수 요약");
+    XLSX.utils.book_append_sheet(wb, ws2, "원본 데이터");
+    XLSX.writeFile(wb, `feature_reactions_summary_${format(new Date(), "yyyyMMdd")}.xlsx`, {
+      bookType: "xlsx",
+      compression: true,
+    });
   };
 
-
-  const handleExport = () => {
-    const header = ["순위", "제품", "특장점", "관심 수", "매장 수", "매장", "최근 반응"];
-    const lines = [
-      header.map(esc).join(","),
-      ...aggregated.map((r, i) =>
-        [
-          i + 1,
-          r.productName,
-          r.featureTitle,
-          r.total,
-          r.uniqueStores,
-          r.storeNames.join(", "),
-          format(new Date(r.lastAt), "yyyy-MM-dd HH:mm", { locale: ko }),
-        ]
-          .map(esc)
-          .join(","),
-      ),
-    ];
-    downloadCsv(lines.join("\n"), `feature_preferences_${format(new Date(), "yyyyMMdd_HHmm")}.csv`);
-  };
 
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-5 mb-6">
