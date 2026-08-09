@@ -657,7 +657,9 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
           >
             <Trash2 className="w-3.5 h-3.5" /> 전체 초기화
           </button>
-        </div>
+          </div>
+        )}
+
 
 
         {tab === "visits" && <StoreVisitStats />}
