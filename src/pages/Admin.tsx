@@ -650,20 +650,37 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
           </button>
         </div>
 
-        <StoreVisitStats />
+        {/* 카테고리 탭 */}
+        <div className="flex flex-wrap gap-2 mb-5">
+          {TABS.map((t) => (
+            <button
+              key={t.key}
+              type="button"
+              onClick={() => setTab(t.key)}
+              className={`h-9 px-4 rounded-full text-xs font-semibold transition-colors border ${
+                tab === t.key
+                  ? "bg-[#3182CE] text-white border-[#3182CE]"
+                  : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
 
-        <FeaturePreferenceSection />
+        {tab === "visits" && <StoreVisitStats />}
 
+        {tab === "content" && <FeaturePreferenceSection />}
 
+        {tab === "sales" &&
+          (filtered.length === 0 ? (
+            <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center">
+              <Trophy className="w-10 h-10 mx-auto text-slate-300 mb-3" />
+              <p className="text-sm text-slate-500">조건에 맞는 판매 기록이 없습니다</p>
+            </div>
+          ) : (
+            <>
 
-
-        {filtered.length === 0 ? (
-          <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center">
-            <Trophy className="w-10 h-10 mx-auto text-slate-300 mb-3" />
-            <p className="text-sm text-slate-500">조건에 맞는 판매 기록이 없습니다</p>
-          </div>
-        ) : (
-          <>
             <div className="grid md:grid-cols-2 gap-4 mb-6">
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
                 <h2 className="text-sm font-semibold text-slate-900 mb-4">지점별 순위</h2>
