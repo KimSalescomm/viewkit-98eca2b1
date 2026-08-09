@@ -56,44 +56,59 @@ export interface LogFeatureReactionInput {
 }
 
 /**
+ * 이번 클릭이 실제로 서버에 기록될 수 있는지 동기적으로 판정.
+ * (낙관적 +1 표시 여부를 결정하기 위해 사용 — 상태를 변경하지 않음)
+ */
+export const canLogFeatureReaction = (productId: string, featureId: string): boolean => {
+  if (!productId || !featureId) return false;
+  const key = `${productId}:${featureId}`;
+  const now = Date.now();
+  if (lastCallAt[key] && now - lastCallAt[key] < DEBOUNCE_MS) return false;
+
+  const store = getCurrentStore();
+  if (!store?.slug) return false;
+  const slug = store.slug.toUpperCase();
+  if (isAdminStore(slug) || slug === "KOR") return false;
+
+  const caps = getCaps();
+  if ((caps[key] ?? 0) >= CAP_LIMIT) return false;
+  return true;
+};
+
+/**
  * 관심 표시 이벤트를 서버에 기록.
- * - UI 반영은 호출부에서 즉시 처리하고, 이 함수는 fire-and-forget으로 사용
- * - 캡 초과/디바운스/관리자 계정이면 조용히 skip (반환값 없음)
+ * - 실제로 기록되었으면 true, skip(캡/디바운스/관리자)되었으면 false 반환
  */
 export const logFeatureReaction = async ({
   productId,
   productName,
   featureId,
   featureTitle,
-}: LogFeatureReactionInput): Promise<void> => {
-  if (!productId || !featureId) return;
+}: LogFeatureReactionInput): Promise<boolean> => {
+  if (!canLogFeatureReaction(productId, featureId)) return false;
 
   const key = `${productId}:${featureId}`;
-  const now = Date.now();
-  if (lastCallAt[key] && now - lastCallAt[key] < DEBOUNCE_MS) return;
-  lastCallAt[key] = now;
+  lastCallAt[key] = Date.now();
 
   const store = getCurrentStore();
-  if (!store?.slug) return; // 매장 미설정 시 기록하지 않음
-
-  const slug = store.slug.toUpperCase();
-  if (isAdminStore(slug) || slug === "KOR") return; // 관리자/본사 제외
-
-  const caps = getCaps();
-  if ((caps[key] ?? 0) >= CAP_LIMIT) return; // 세션 캡 초과
+  const slug = (store?.slug || "").toUpperCase();
   bumpCap(key);
 
   try {
-    await supabase.from("feature_reactions").insert({
+    const { error } = await supabase.from("feature_reactions").insert({
       store_slug: slug,
-      store_name: store.name || slug,
+      store_name: store?.name || slug,
       product_id: productId,
       product_name: productName || productId,
       feature_id: featureId,
       feature_title: featureTitle || null,
       session_id: ensureSessionId(),
     });
+    if (error) throw error;
+    return true;
   } catch {
     /* noop - 분석 실패는 앱 동작에 영향 없음 */
+    return false;
   }
 };
+

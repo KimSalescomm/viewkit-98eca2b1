@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { logFeatureReaction } from "@/utils/featureReactionLog";
+import { logFeatureReaction, canLogFeatureReaction } from "@/utils/featureReactionLog";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -78,17 +78,28 @@ const FeatureLikeButton = ({
       e.stopPropagation();
 
       const clickTime = Date.now();
+      const willRecord = canLogFeatureReaction(productId, featureId);
+
       setPending((n) => n + 1);
       setBump((n) => n + 1);
       setPulse(false);
-      // 클릭 즉시 카운트를 1 올려 보여줌
-      setTotalCount((prev) => (prev === null ? 1 : prev + 1));
+      // 실제로 서버에 기록될 클릭만 즉시 카운트에 반영 (되돌아가는 깜빡임 방지)
+      if (willRecord) setTotalCount((prev) => (prev === null ? 1 : prev + 1));
 
       const record = async () => {
         try {
-          await logFeatureReaction({ productId, productName, featureId, featureTitle });
-          // 최신 총 개수 갱신 (관리자 계정/캡 초과 등으로 실제 기록되지 않았을 경우 보정)
-          await fetchTotalCount();
+          const recorded = await logFeatureReaction({ productId, productName, featureId, featureTitle });
+          if (recorded) {
+            // 서버 기준으로 정확히 보정 (낙관적 값보다 작아지지 않도록)
+            const { count } = await supabase
+              .from("feature_reactions")
+              .select("*", { count: "exact", head: true })
+              .eq("product_id", productId)
+              .eq("feature_id", featureId);
+            if (typeof count === "number") {
+              setTotalCount((prev) => (prev === null ? count : Math.max(prev, count)));
+            }
+          }
         } catch {
           /* noop - 분석 실패는 앱 동작에 영향 없음 */
         } finally {
@@ -107,8 +118,9 @@ const FeatureLikeButton = ({
         feature_name: featureTitle,
       });
     },
-    [productId, productName, featureId, featureTitle, trackEvent, fetchTotalCount],
+    [productId, productName, featureId, featureTitle, trackEvent],
   );
+
 
   const active = pending > 0;
   const size = variant === "mobile" ? "w-9 h-9" : "w-10 h-10";
