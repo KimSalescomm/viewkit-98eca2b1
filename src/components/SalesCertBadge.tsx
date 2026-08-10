@@ -262,7 +262,10 @@ const SalesCertBadge = () => {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[11px] font-medium tracking-wide text-slate-500">제품</label>
+                  <label className="text-[11px] font-medium tracking-wide text-slate-500">
+                    제품 <span className="text-brand">*</span>
+                  </label>
+
                   <Select
                     value={product}
                     onValueChange={(v) => {
