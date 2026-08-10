@@ -173,7 +173,7 @@ const SalesCertBadge = () => {
     product &&
     date &&
     (!needsSubcategory || subcategory) &&
-    memo.trim().length > 0
+    memo.trim().length >= MEMO_MIN
   );
 
   return (
