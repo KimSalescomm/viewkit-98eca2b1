@@ -52,7 +52,8 @@ const SUBCATEGORY_MAP: Record<string, string[]> = {
 };
 
 const MEMO_PLACEHOLDER =
-  "최소 20자 이상 판매 스토리를 들려주세요 (예: 구독 전/후 비교를 보여주며 구독을 자신있게 설명할 수 있었어요.)";
+  "뷰킷을 사용해 판매한 스토리를 들려주세요\n예) 구독 전/후 비교를 보여주며 구독을 자신있게 설명할 수 있었어요.\n예) 제품 원리를 설명할 때 뷰킷 화면을 보여주니 이해를 잘했어요.";
+
 
 const MEMO_MIN = 20;
 const MEMO_MAX = 200;
@@ -334,6 +335,9 @@ const SalesCertBadge = () => {
                       <span className="text-brand">*</span>
                     </label>
                   </div>
+                  <p className="text-[11px] text-slate-400">
+                    구체적인 사용 경험을 20자 이상 작성해 주세요.
+                  </p>
                   <textarea
                     value={memo}
                     onChange={(e) => setMemo(e.target.value.slice(0, MEMO_MAX))}
@@ -349,10 +353,7 @@ const SalesCertBadge = () => {
                         : "border-slate-200",
                     )}
                   />
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] text-slate-400">
-                      구체적인 사용 경험을 20자 이상 작성해 주세요.
-                    </span>
+                  <div className="flex items-center justify-end">
                     <span
                       className={cn(
                         "text-[11px] font-medium transition-colors",
@@ -369,6 +370,7 @@ const SalesCertBadge = () => {
                     </span>
                   </div>
                 </div>
+
               </div>
 
               <div className="p-6 pt-2 flex gap-2">
