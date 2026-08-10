@@ -335,25 +335,10 @@ const SalesCertBadge = () => {
                       <span className="text-brand">*</span>
                     </label>
                   </div>
-                  <p className="text-[11px] text-slate-400">
-                    구체적인 사용 경험을 20자 이상 작성해 주세요.
-                  </p>
-                  <textarea
-                    value={memo}
-                    onChange={(e) => setMemo(e.target.value.slice(0, MEMO_MAX))}
-                    placeholder={MEMO_PLACEHOLDER}
-                    rows={4}
-                    className={cn(
-                      "w-full bg-white border rounded-xl text-slate-800",
-                      "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 focus:outline-none",
-                      "px-3.5 py-2.5 text-sm transition-colors resize-none leading-relaxed",
-                      "placeholder:text-[11px] placeholder:text-slate-400 placeholder:whitespace-pre-line",
-                      memo.length < MEMO_MIN && memo.length > 0
-                        ? "border-orange-300 focus:border-orange-400 focus:ring-orange-200"
-                        : "border-slate-200",
-                    )}
-                  />
-                  <div className="flex items-center justify-end">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] text-slate-400">
+                      구체적인 사용 경험을 20자 이상 작성해 주세요.
+                    </span>
                     <span
                       className={cn(
                         "text-[11px] font-medium transition-colors",
@@ -369,7 +354,23 @@ const SalesCertBadge = () => {
                         : `✓ ${memo.length}/${MEMO_MAX}`}
                     </span>
                   </div>
+                  <textarea
+                    value={memo}
+                    onChange={(e) => setMemo(e.target.value.slice(0, MEMO_MAX))}
+                    placeholder={MEMO_PLACEHOLDER}
+                    rows={4}
+                    className={cn(
+                      "w-full bg-white border rounded-xl text-slate-800",
+                      "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 focus:outline-none",
+                      "px-3.5 py-2.5 text-sm transition-colors resize-none leading-relaxed",
+                      "placeholder:text-[11px] placeholder:text-slate-400 placeholder:whitespace-pre-line",
+                      memo.length < MEMO_MIN && memo.length > 0
+                        ? "border-orange-300 focus:border-orange-400 focus:ring-orange-200"
+                        : "border-slate-200",
+                    )}
+                  />
                 </div>
+
 
               </div>
 
