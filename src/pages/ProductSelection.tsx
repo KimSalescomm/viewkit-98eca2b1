@@ -375,23 +375,16 @@ const ProductSelection = () => {
               </div>
             );
 
-            if (isEnabled) {
-              return (
-                <Link
-                  key={product.id}
-                  to={product.id === "subscription" ? "/subscription" : `/product/${product.id}`}
-                  className="block"
-                  onClick={() => trackProductClick(product.name)}
-                >
-                  {cardContent}
-                </Link>
-              );
-            }
-
+            if (!isEnabled) return null;
             return (
-              <div key={product.id} className="block cursor-not-allowed">
+              <Link
+                key={product.id}
+                to={product.id === "subscription" ? "/subscription" : `/product/${product.id}`}
+                className="block"
+                onClick={() => trackProductClick(product.name)}
+              >
                 {cardContent}
-              </div>
+              </Link>
             );
           })}
         </div>
