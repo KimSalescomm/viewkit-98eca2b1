@@ -375,6 +375,7 @@ const ProductSelection = () => {
               </div>
             );
 
+            if (!isEnabled) return null;
             return (
               <Link
                 key={product.id}
