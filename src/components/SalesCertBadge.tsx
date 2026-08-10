@@ -52,7 +52,10 @@ const SUBCATEGORY_MAP: Record<string, string[]> = {
 };
 
 const MEMO_PLACEHOLDER =
-  "뷰킷을 사용해 판매한 스토리를 들려주세요\n예) 구독 전/후 비교를 보여주며 구독을 자신있게 설명할 수 있었어요.\n예) 제품 원리를 설명할 때 뷰킷 화면을 보여주니 이해를 잘했어요.";
+  "최소 20자 이상 판매 스토리를 들려주세요 (예: 구독 전/후 비교를 보여주며 구독을 자신있게 설명할 수 있었어요.)";
+
+const MEMO_MIN = 20;
+const MEMO_MAX = 200;
 
 const SalesCertBadge = () => {
   const navigate = useNavigate();
