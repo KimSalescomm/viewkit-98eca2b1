@@ -18,10 +18,11 @@ import { isAdminStore } from "@/data/branches";
 // 스냅샷이 없거나 실패했을 때 지점 계정에서 활성화할 기본 제품 목록
 export const DEFAULT_VISIBLE_PRODUCT_IDS = [
   "subscription",
-  "vacuum",
+  "tv",
   "refrigerator",
-  "airconditioner",
   "washer",
+  "airconditioner",
+  "vacuum",
 ];
 
 export interface VisibilityPayload {
@@ -41,7 +42,8 @@ interface ContentContextValue {
   ready: boolean;
 }
 
-const CACHE_KEY = "viewkit_visibility_snapshot_v1";
+// 기본 노출 세트 변경 시 이전 지점 캐시가 남지 않도록 버전을 올립니다.
+const CACHE_KEY = "viewkit_visibility_snapshot_v2";
 
 const ContentContext = createContext<ContentContextValue | null>(null);
 
