@@ -52,7 +52,10 @@ const SUBCATEGORY_MAP: Record<string, string[]> = {
 };
 
 const MEMO_PLACEHOLDER =
-  "뷰킷을 사용해 판매한 스토리를 들려주세요\n예) 구독 전/후 비교를 보여주며 구독을 자신있게 설명할 수 있었어요.\n예) 제품 원리를 설명할 때 뷰킷 화면을 보여주니 이해를 잘했어요.";
+  "최소 20자 이상 판매 스토리를 들려주세요 (예: 구독 전/후 비교를 보여주며 구독을 자신있게 설명할 수 있었어요.)";
+
+const MEMO_MIN = 20;
+const MEMO_MAX = 200;
 
 const SalesCertBadge = () => {
   const navigate = useNavigate();
@@ -119,7 +122,7 @@ const SalesCertBadge = () => {
   const handleSubmit = async () => {
     if (!defaultBranch || !product || !date) return;
     if (needsSubcategory && !subcategory) return;
-    if (!memo.trim()) return;
+    if (memo.trim().length < MEMO_MIN) return;
     if (submitLockRef.current) return;
     submitLockRef.current = true;
     setSubmitting(true);
@@ -170,7 +173,7 @@ const SalesCertBadge = () => {
     product &&
     date &&
     (!needsSubcategory || subcategory) &&
-    memo.trim().length > 0
+    memo.trim().length >= MEMO_MIN
   );
 
   return (
@@ -327,22 +330,44 @@ const SalesCertBadge = () => {
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
                     <label className="text-[11px] font-semibold tracking-wide text-slate-700">
-                      뷰킷을 사용하며 가장 도움이 되었던 부분은 무엇인가요? <span className="text-brand">*</span>
+                      뷰킷을 사용하며 가장 도움이 되었던 부분은 무엇인가요?{" "}
+                      <span className="text-brand">*</span>
                     </label>
-                    <span className="text-[10px] text-slate-400">{memo.length}/200</span>
                   </div>
                   <textarea
                     value={memo}
-                    onChange={(e) => setMemo(e.target.value.slice(0, 200))}
+                    onChange={(e) => setMemo(e.target.value.slice(0, MEMO_MAX))}
                     placeholder={MEMO_PLACEHOLDER}
                     rows={4}
                     className={cn(
-                      "w-full bg-white border border-slate-200 rounded-xl text-slate-800",
+                      "w-full bg-white border rounded-xl text-slate-800",
                       "hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 focus:ring-offset-0 focus:outline-none",
                       "px-3.5 py-2.5 text-sm transition-colors resize-none leading-relaxed",
                       "placeholder:text-[11px] placeholder:text-slate-400 placeholder:whitespace-pre-line",
+                      memo.length < MEMO_MIN && memo.length > 0
+                        ? "border-orange-300 focus:border-orange-400 focus:ring-orange-200"
+                        : "border-slate-200",
                     )}
                   />
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] text-slate-400">
+                      구체적인 사용 경험을 20자 이상 작성해 주세요.
+                    </span>
+                    <span
+                      className={cn(
+                        "text-[11px] font-medium transition-colors",
+                        memo.length < MEMO_MIN
+                          ? memo.length === 0
+                            ? "text-slate-400"
+                            : "text-orange-500"
+                          : "text-[#A50034]",
+                      )}
+                    >
+                      {memo.length < MEMO_MIN
+                        ? `${memo.length}/${MEMO_MIN}자 (${MEMO_MIN - memo.length}자 더 작성해 주세요)`
+                        : `✓ ${memo.length}/${MEMO_MAX}`}
+                    </span>
+                  </div>
                 </div>
               </div>
 
