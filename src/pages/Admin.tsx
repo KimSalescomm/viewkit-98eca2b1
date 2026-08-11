@@ -14,6 +14,7 @@ import { getSales, clearAllSales, deleteSale, deleteSalesByIds, SaleRecord } fro
 import StoreVisitStats from "@/components/StoreVisitStats";
 import ScreensaverManager from "@/components/ScreensaverManager";
 import FeaturePreferenceSection from "@/components/admin/FeaturePreferenceSection";
+import ContentRequestSection from "@/components/admin/ContentRequestSection";
 import ContentPublishCard from "@/components/ContentPublishCard";
 import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
@@ -260,11 +261,12 @@ const toCsv = (rows: SaleRecord[]) => {
   return [header.join(","), ...body].join("\n");
 };
 
-type TabKey = "visits" | "content" | "sales";
+type TabKey = "visits" | "content" | "sales" | "requests";
 const TABS: { key: TabKey; label: string }[] = [
   { key: "visits", label: "지점별 접속통계" },
   { key: "content", label: "콘텐츠 선호도" },
   { key: "sales", label: "판매 인증" },
+  { key: "requests", label: "매장 요청" },
 ];
 
 const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
@@ -586,7 +588,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
         </div>
 
         {/* 필터 / 액션 */}
-        {tab !== "content" && (
+        {tab !== "content" && tab !== "requests" && (
           <div className="rounded-2xl border border-slate-200 bg-white p-4 mb-6 flex flex-wrap items-end gap-3">
 
           <div className="flex flex-col gap-1">
@@ -685,6 +687,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
         {tab === "visits" && <StoreVisitStats />}
 
         {tab === "content" && <FeaturePreferenceSection />}
+
+        {tab === "requests" && <ContentRequestSection />}
 
         {tab === "sales" &&
           (filtered.length === 0 ? (
