@@ -1623,7 +1623,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Video",
       tag: "영상",
       mediaType: "youtube",
-      mediaUrl: "https://youtu.be/DRk0yXY8zPg",
+      mediaUrl: "https://www.youtube.com/watch?v=NOxxvC5cQFw",
       isShorts: false,
       descriptionTitle: "영상으로 확인하는 바스에어 이야기",
       description:
