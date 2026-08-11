@@ -92,13 +92,13 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
       )}
 
       {open && (
-        <div className="fixed inset-0 z-[120] flex items-end sm:items-center justify-center">
+        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6">
           <div
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setOpen(false)}
           />
-          <div className="relative w-full sm:max-w-lg max-h-[90vh] overflow-y-auto bg-white rounded-t-3xl sm:rounded-3xl p-5 sm:p-6 shadow-2xl">
-            <div className="flex items-start justify-between mb-4">
+          <div className="relative w-full sm:max-w-lg max-h-[80vh] bg-white rounded-3xl shadow-2xl overflow-hidden m-auto">
+            <div className="flex items-start justify-between p-5 sm:p-6 pb-4 border-b border-gray-100">
               <div>
                 <h2 className="text-lg font-extrabold text-gray-900">콘텐츠 요청하기</h2>
                 <p className="text-xs text-gray-500 mt-1 break-keep">
@@ -109,13 +109,13 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="닫기"
-                className="p-2 -mr-2 -mt-2 text-gray-400 hover:text-gray-600 touch-manipulation"
+                className="p-2 -mr-2 text-gray-400 hover:text-gray-600 touch-manipulation"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="space-y-4">
+            <div className="p-5 sm:p-6 pt-4 space-y-4 overflow-y-auto">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-semibold text-gray-600 mb-1.5">지점코드</label>
@@ -162,7 +162,7 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   maxLength={1000}
-                  rows={5}
+                  rows={3}
                   className="w-full px-3 py-2.5 rounded-xl border border-gray-200 bg-white text-sm text-gray-800 outline-none focus:border-[#3182CE] transition-colors resize-none break-keep"
                   placeholder="필요한 콘텐츠나 개선이 필요한 부분을 구체적으로 적어주세요"
                 />
