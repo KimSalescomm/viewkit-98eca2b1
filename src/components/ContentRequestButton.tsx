@@ -97,7 +97,7 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setOpen(false)}
           />
-          <div className="relative flex flex-col w-full sm:max-w-lg max-h-[80vh] bg-white rounded-3xl shadow-2xl overflow-hidden">
+          <div className="relative w-full sm:max-w-lg max-h-[80vh] bg-white rounded-3xl shadow-2xl overflow-hidden m-auto">
             <div className="flex items-start justify-between p-5 sm:p-6 pb-4 border-b border-gray-100">
               <div>
                 <h2 className="text-lg font-extrabold text-gray-900">콘텐츠 요청하기</h2>
