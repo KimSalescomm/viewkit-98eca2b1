@@ -67,8 +67,16 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
       toast.error("등록에 실패했습니다. 잠시 후 다시 시도해 주세요");
       return;
     }
-    toast.success("요청이 등록되었습니다");
-    reset();
+    setShowSuccess(true);
+    setTimeout(() => {
+      setShowSuccess(false);
+      reset();
+      setOpen(false);
+    }, 1800);
+  };
+
+  const handleCancel = () => {
+    setShowSuccess(false);
     setOpen(false);
   };
 
