@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MessageSquarePlus, X, Send, Loader2 } from "lucide-react";
+import { MessageSquarePlus, Send, Loader2, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { getCurrentStore } from "@/utils/storeId";
@@ -30,6 +30,7 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
   const [category, setCategory] = useState<string>(REQUEST_CATEGORIES[0]);
   const [content, setContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
     if (!open) return;
@@ -66,8 +67,16 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
       toast.error("등록에 실패했습니다. 잠시 후 다시 시도해 주세요");
       return;
     }
-    toast.success("요청이 등록되었습니다");
-    reset();
+    setShowSuccess(true);
+    setTimeout(() => {
+      setShowSuccess(false);
+      reset();
+      setOpen(false);
+    }, 1800);
+  };
+
+  const handleCancel = () => {
+    setShowSuccess(false);
     setOpen(false);
   };
 
@@ -100,7 +109,13 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
         </div>
       )}
 
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog
+        open={open}
+        onOpenChange={(v) => {
+          if (!v) setShowSuccess(false);
+          setOpen(v);
+        }}
+      >
         <DialogContent className="sm:max-w-md p-0 gap-0 rounded-2xl border border-slate-200 bg-white text-slate-800 shadow-[0_20px_60px_-15px_rgba(15,23,42,0.25)] max-h-[85vh] overflow-y-auto">
           <div className="p-6 pb-4 border-b border-slate-100">
             <DialogHeader className="space-y-1.5 text-left">
@@ -174,18 +189,26 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
               </div>
             </div>
 
+            {showSuccess && (
+              <div className="flex items-center justify-center gap-2 rounded-xl bg-emerald-50 text-emerald-700 px-4 py-3 text-sm font-semibold animate-in fade-in zoom-in-95 duration-200">
+                <CheckCircle2 className="w-5 h-5" />
+                요청이 등록되었습니다
+              </div>
+            )}
+
             <div className="flex gap-2 pt-1">
               <button
                 type="button"
-                onClick={() => setOpen(false)}
-                className="flex-1 h-11 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors touch-manipulation"
+                onClick={handleCancel}
+                disabled={submitting || showSuccess}
+                className="flex-1 h-11 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors touch-manipulation disabled:opacity-40"
               >
                 취소
               </button>
               <button
                 type="button"
                 onClick={handleSubmit}
-                disabled={submitting || !content.trim()}
+                disabled={submitting || !content.trim() || showSuccess}
                 className="flex-[2] h-11 rounded-xl bg-[#A50034] text-white text-sm font-bold inline-flex items-center justify-center gap-2 shadow-[0_6px_16px_-6px_rgba(165,0,52,0.5)] hover:bg-[#7A0026] disabled:opacity-40 disabled:cursor-not-allowed transition-colors touch-manipulation"
               >
                 {submitting ? (
