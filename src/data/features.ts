@@ -1082,24 +1082,8 @@ export const featuresMap: Record<string, Feature[]> = {
         "지금까지의 에어컨은 절반의 쾌적\n지금부터 휘센은 완전한 쾌적!\n\n국내최초 AI콜드프리\n온도는 기본, 습도까지 내 마음대로\n\n마침내 AI콜드프리로\n온도를 넘어 습도까지 완벽한 바람",
       highlights: [],
     },
-    {
-      id: "23",
-      title: "영상으로 확인하는\n휘센 에어컨 이야기",
-      subtitle: "영상 속에서 휘센의 차별화된\n쾌적함을 직접 확인해보세요.",
-      icon: "Video",
-      tag: "영상",
-      mediaType: "youtube",
-      mediaUrl: "https://youtu.be/DRk0yXY8zPg",
-      isShorts: false,
-      descriptionTitle: "영상으로 확인하는 휘센 에어컨 이야기",
-      description:
-        "영상으로 휘센 에어컨의 핵심 기능과 사용 장면을 한눈에 확인하실 수 있어요.",
-      highlights: [],
-      disclaimers: [
-        "소비자의 이해를 돕기 위해 연출된 영상입니다.",
-      ],
-    },
   ],
+
 
 
 
