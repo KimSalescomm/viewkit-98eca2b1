@@ -259,6 +259,7 @@ const ProductSelection = () => {
               <span>뷰킷 소개</span>
             </Link>
             <OrientationToggle variant="segment" />
+            <ContentRequestButton variant="segment" />
           </div>
         </div>
 
