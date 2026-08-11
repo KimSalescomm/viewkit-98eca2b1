@@ -68,16 +68,28 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
 
   return (
     <>
-      <div className="w-full flex justify-center px-4 mt-8 sm:mt-10 pb-10">
+      {variant === "segment" ? (
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-white border border-gray-200 shadow-sm text-sm font-semibold text-gray-700 hover:bg-gray-50 active:scale-[0.98] transition touch-manipulation"
+          className="inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+          title="필요한 콘텐츠 요청하기"
         >
-          <MessageSquarePlus className="w-4 h-4 text-[#A50034]" />
-          필요한 콘텐츠 요청하기
+          <MessageSquarePlus className="w-3.5 h-3.5 text-[#A50034]" />
+          <span>콘텐츠 요청</span>
         </button>
-      </div>
+      ) : (
+        <div className="w-full flex justify-center px-4 mt-8 sm:mt-10 pb-10">
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-white border border-gray-200 shadow-sm text-sm font-semibold text-gray-700 hover:bg-gray-50 active:scale-[0.98] transition touch-manipulation"
+          >
+            <MessageSquarePlus className="w-4 h-4 text-[#A50034]" />
+            필요한 콘텐츠 요청하기
+          </button>
+        </div>
+      )}
 
       {open && (
         <div className="fixed inset-0 z-[120] flex items-end sm:items-center justify-center">
