@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MessageSquarePlus, X, Send, Loader2, CheckCircle2 } from "lucide-react";
+import { MessageSquarePlus, Send, Loader2, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { getCurrentStore } from "@/utils/storeId";
