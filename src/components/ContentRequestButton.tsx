@@ -189,18 +189,26 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
               </div>
             </div>
 
+            {showSuccess && (
+              <div className="flex items-center justify-center gap-2 rounded-xl bg-emerald-50 text-emerald-700 px-4 py-3 text-sm font-semibold animate-in fade-in zoom-in-95 duration-200">
+                <CheckCircle2 className="w-5 h-5" />
+                요청이 등록되었습니다
+              </div>
+            )}
+
             <div className="flex gap-2 pt-1">
               <button
                 type="button"
-                onClick={() => setOpen(false)}
-                className="flex-1 h-11 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors touch-manipulation"
+                onClick={handleCancel}
+                disabled={submitting || showSuccess}
+                className="flex-1 h-11 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors touch-manipulation disabled:opacity-40"
               >
                 취소
               </button>
               <button
                 type="button"
                 onClick={handleSubmit}
-                disabled={submitting || !content.trim()}
+                disabled={submitting || !content.trim() || showSuccess}
                 className="flex-[2] h-11 rounded-xl bg-[#A50034] text-white text-sm font-bold inline-flex items-center justify-center gap-2 shadow-[0_6px_16px_-6px_rgba(165,0,52,0.5)] hover:bg-[#7A0026] disabled:opacity-40 disabled:cursor-not-allowed transition-colors touch-manipulation"
               >
                 {submitting ? (
