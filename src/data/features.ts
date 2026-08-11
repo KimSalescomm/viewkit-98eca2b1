@@ -1616,7 +1616,23 @@ export const featuresMap: Record<string, Feature[]> = {
         "월 구독료 형태로 부담 없이",
       ],
     },
+    {
+      id: "7",
+      title: "영상으로 확인하는\n바스에어 이야기",
+      subtitle: "영상 속에서 바스에어의\n차별화된 쾌적함을 확인해보세요.",
+      icon: "Video",
+      tag: "영상",
+      mediaType: "youtube",
+      mediaUrl: "https://youtu.be/DRk0yXY8zPg",
+      isShorts: false,
+      descriptionTitle: "영상으로 확인하는 바스에어 이야기",
+      description:
+        "영상으로 바스에어의 핵심 기능과 사용 장면을 한눈에 확인하실 수 있어요.",
+      highlights: [],
+      disclaimers: ["소비자의 이해를 돕기 위해 연출된 영상입니다."],
+    },
   ],
+
 };
 
 
