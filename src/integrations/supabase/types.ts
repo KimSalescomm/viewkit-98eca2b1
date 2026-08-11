@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      content_requests: {
+        Row: {
+          category: string
+          content: string
+          created_at: string
+          id: string
+          status: string
+          store_code: string
+          store_name: string | null
+          title: string
+        }
+        Insert: {
+          category: string
+          content: string
+          created_at?: string
+          id?: string
+          status?: string
+          store_code: string
+          store_name?: string | null
+          title: string
+        }
+        Update: {
+          category?: string
+          content?: string
+          created_at?: string
+          id?: string
+          status?: string
+          store_code?: string
+          store_name?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
       content_snapshots: {
         Row: {
           created_at: string
