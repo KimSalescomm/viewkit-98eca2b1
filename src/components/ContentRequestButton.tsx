@@ -3,6 +3,14 @@ import { MessageSquarePlus, X, Send, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { getCurrentStore } from "@/utils/storeId";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+
 
 export const REQUEST_CATEGORIES = [
   "신제품 콘텐츠 추가",
