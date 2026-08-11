@@ -11,7 +11,11 @@ export const REQUEST_CATEGORIES = [
   "기타",
 ] as const;
 
-const ContentRequestButton = () => {
+interface ContentRequestButtonProps {
+  variant?: "pill" | "segment";
+}
+
+const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) => {
   const [open, setOpen] = useState(false);
   const [storeCode, setStoreCode] = useState("");
   const [storeName, setStoreName] = useState("");
