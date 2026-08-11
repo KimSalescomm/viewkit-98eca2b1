@@ -109,7 +109,13 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
         </div>
       )}
 
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog
+        open={open}
+        onOpenChange={(v) => {
+          if (!v) setShowSuccess(false);
+          setOpen(v);
+        }}
+      >
         <DialogContent className="sm:max-w-md p-0 gap-0 rounded-2xl border border-slate-200 bg-white text-slate-800 shadow-[0_20px_60px_-15px_rgba(15,23,42,0.25)] max-h-[85vh] overflow-y-auto">
           <div className="p-6 pb-4 border-b border-slate-100">
             <DialogHeader className="space-y-1.5 text-left">
