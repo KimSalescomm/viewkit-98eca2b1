@@ -71,8 +71,9 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
     setOpen(false);
   };
 
-  const inputClass =
-    "w-full h-11 px-3 rounded-xl border border-gray-200 bg-white text-sm text-gray-800 outline-none focus:border-[#3182CE] transition-colors";
+  const fieldClass =
+    "w-full h-11 px-3.5 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 outline-none hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 transition-colors";
+
 
   return (
     <>
