@@ -16,7 +16,6 @@ const ContentRequestButton = () => {
   const [storeCode, setStoreCode] = useState("");
   const [storeName, setStoreName] = useState("");
   const [category, setCategory] = useState<string>(REQUEST_CATEGORIES[0]);
-  const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
@@ -29,7 +28,6 @@ const ContentRequestButton = () => {
 
   const reset = () => {
     setCategory(REQUEST_CATEGORIES[0]);
-    setTitle("");
     setContent("");
   };
 
@@ -38,8 +36,8 @@ const ContentRequestButton = () => {
       toast.error("지점 정보를 먼저 등록해 주세요");
       return;
     }
-    if (!title.trim() || !content.trim()) {
-      toast.error("제목과 내용을 입력해 주세요");
+    if (!content.trim()) {
+      toast.error("요청 내용을 입력해 주세요");
       return;
     }
     setSubmitting(true);
@@ -47,7 +45,7 @@ const ContentRequestButton = () => {
       store_code: storeCode.trim().toUpperCase(),
       store_name: storeName.trim() || null,
       category,
-      title: title.trim(),
+      title: content.trim().slice(0, 40),
       content: content.trim(),
     });
     setSubmitting(false);
@@ -66,13 +64,13 @@ const ContentRequestButton = () => {
 
   return (
     <>
-      <div className="w-full flex justify-center px-4 pb-8">
+      <div className="w-full flex justify-center px-4 mt-8 sm:mt-10 pb-10">
         <button
           type="button"
           onClick={() => setOpen(true)}
           className="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-white border border-gray-200 shadow-sm text-sm font-semibold text-gray-700 hover:bg-gray-50 active:scale-[0.98] transition touch-manipulation"
         >
-          <MessageSquarePlus className="w-4 h-4 text-[#3182CE]" />
+          <MessageSquarePlus className="w-4 h-4 text-[#A50034]" />
           필요한 콘텐츠 요청하기
         </button>
       </div>
@@ -142,19 +140,6 @@ const ContentRequestButton = () => {
 
               <div>
                 <label className="block text-xs font-semibold text-gray-600 mb-1.5">
-                  요청 제목 <span className="text-[#A50034]">*</span>
-                </label>
-                <input
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  maxLength={100}
-                  className={inputClass}
-                  placeholder="요청을 한 줄로 요약해 주세요"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1.5">
                   요청 내용 <span className="text-[#A50034]">*</span>
                 </label>
                 <textarea
@@ -174,7 +159,7 @@ const ContentRequestButton = () => {
                 type="button"
                 onClick={handleSubmit}
                 disabled={submitting}
-                className="w-full h-12 rounded-xl bg-[#3182CE] text-white text-sm font-bold inline-flex items-center justify-center gap-2 disabled:opacity-50 touch-manipulation"
+                className="w-full h-12 rounded-xl bg-[#A50034] text-white text-sm font-bold inline-flex items-center justify-center gap-2 disabled:opacity-50 touch-manipulation"
               >
                 {submitting ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
