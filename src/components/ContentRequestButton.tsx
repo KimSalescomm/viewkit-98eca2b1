@@ -30,6 +30,7 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
   const [category, setCategory] = useState<string>(REQUEST_CATEGORIES[0]);
   const [content, setContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
     if (!open) return;
