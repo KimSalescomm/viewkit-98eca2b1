@@ -1618,7 +1618,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "7",
-      title: "영상으로 확인하는\n바스에어 이야기",
+      title: "여름철 습기와의 전쟁!\n욕실을 보송하게 바꾼 비결은?",
       subtitle: "영상 속에서 바스에어의\n차별화된 쾌적함을 확인해보세요.",
       icon: "Video",
       tag: "영상",
