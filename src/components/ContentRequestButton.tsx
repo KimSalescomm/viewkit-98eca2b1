@@ -3,6 +3,14 @@ import { MessageSquarePlus, X, Send, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { getCurrentStore } from "@/utils/storeId";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+
 
 export const REQUEST_CATEGORIES = [
   "신제품 콘텐츠 추가",
@@ -63,8 +71,9 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
     setOpen(false);
   };
 
-  const inputClass =
-    "w-full h-11 px-3 rounded-xl border border-gray-200 bg-white text-sm text-gray-800 outline-none focus:border-[#3182CE] transition-colors";
+  const fieldClass =
+    "w-full h-11 px-3.5 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 outline-none hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 transition-colors";
+
 
   return (
     <>
@@ -91,91 +100,93 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
         </div>
       )}
 
-      {open && (
-        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6">
-          <div
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={() => setOpen(false)}
-          />
-          <div className="relative w-full sm:max-w-lg max-h-[80vh] bg-white rounded-3xl shadow-2xl overflow-hidden m-auto">
-            <div className="flex items-start justify-between p-5 sm:p-6 pb-4 border-b border-gray-100">
-              <div>
-                <h2 className="text-lg font-extrabold text-gray-900">콘텐츠 요청하기</h2>
-                <p className="text-xs text-gray-500 mt-1 break-keep">
-                  현장에서 필요한 콘텐츠나 개선 의견을 남겨주세요
-                </p>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="sm:max-w-md p-0 gap-0 rounded-2xl border border-slate-200 bg-white text-slate-800 shadow-[0_20px_60px_-15px_rgba(15,23,42,0.25)] max-h-[85vh] overflow-y-auto">
+          <div className="p-6 pb-4 border-b border-slate-100">
+            <DialogHeader className="space-y-1.5 text-left">
+              <DialogTitle className="text-base font-semibold tracking-tight text-slate-900 flex items-center gap-2">
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-[#A50034]/10 text-[#A50034]">
+                  <MessageSquarePlus className="w-4 h-4" strokeWidth={2.4} />
+                </span>
+                콘텐츠 요청하기
+              </DialogTitle>
+              <DialogDescription className="text-xs text-slate-500 leading-relaxed break-keep">
+                현장에서 필요한 콘텐츠나 개선 의견을 남겨주세요
+              </DialogDescription>
+            </DialogHeader>
+          </div>
+
+          <div className="p-6 space-y-5">
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-medium tracking-wide text-slate-500">지점코드</label>
+                <input
+                  value={storeCode}
+                  onChange={(e) => setStoreCode(e.target.value.toUpperCase())}
+                  maxLength={12}
+                  className={fieldClass}
+                  placeholder="예: GSB"
+                />
               </div>
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-medium tracking-wide text-slate-500">지점명</label>
+                <input
+                  value={storeName}
+                  onChange={(e) => setStoreName(e.target.value)}
+                  maxLength={60}
+                  className={fieldClass}
+                  placeholder="예: 베스트샵 강서본점"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-[11px] font-medium tracking-wide text-slate-500">
+                요청 유형 <span className="text-[#A50034]">*</span>
+              </label>
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className={fieldClass}
+              >
+                {REQUEST_CATEGORIES.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-[11px] font-medium tracking-wide text-slate-500">
+                요청 내용 <span className="text-[#A50034]">*</span>
+              </label>
+              <textarea
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                maxLength={1000}
+                rows={4}
+                className="w-full bg-white border border-slate-200 rounded-xl text-slate-800 hover:border-slate-300 focus:border-[#A50034] focus:ring-2 focus:ring-[#A50034]/15 px-3.5 py-2.5 text-sm transition-colors resize-none outline-none break-keep"
+                placeholder="필요한 콘텐츠나 개선이 필요한 부분을 구체적으로 적어주세요"
+              />
+              <div className="text-right text-[11px] text-slate-400 tabular-nums">
+                {content.length}/1000
+              </div>
+            </div>
+
+            <div className="flex gap-2 pt-1">
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                aria-label="닫기"
-                className="p-2 -mr-2 text-gray-400 hover:text-gray-600 touch-manipulation"
+                className="flex-1 h-11 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors touch-manipulation"
               >
-                <X className="w-5 h-5" />
+                취소
               </button>
-            </div>
-
-            <div className="p-5 sm:p-6 pt-4 space-y-4 overflow-y-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-semibold text-gray-600 mb-1.5">지점코드</label>
-                  <input
-                    value={storeCode}
-                    onChange={(e) => setStoreCode(e.target.value.toUpperCase())}
-                    maxLength={12}
-                    className={inputClass}
-                    placeholder="예: GSB"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-gray-600 mb-1.5">지점명</label>
-                  <input
-                    value={storeName}
-                    onChange={(e) => setStoreName(e.target.value)}
-                    maxLength={60}
-                    className={inputClass}
-                    placeholder="예: 베스트샵 강서본점"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1.5">요청 유형</label>
-                <select
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                  className={inputClass}
-                >
-                  {REQUEST_CATEGORIES.map((c) => (
-                    <option key={c} value={c}>
-                      {c}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1.5">
-                  요청 내용 <span className="text-[#A50034]">*</span>
-                </label>
-                <textarea
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                  maxLength={1000}
-                  rows={3}
-                  className="w-full px-3 py-2.5 rounded-xl border border-gray-200 bg-white text-sm text-gray-800 outline-none focus:border-[#3182CE] transition-colors resize-none break-keep"
-                  placeholder="필요한 콘텐츠나 개선이 필요한 부분을 구체적으로 적어주세요"
-                />
-                <div className="text-right text-[11px] text-gray-400 mt-1 tabular-nums">
-                  {content.length}/1000
-                </div>
-              </div>
-
               <button
                 type="button"
                 onClick={handleSubmit}
-                disabled={submitting}
-                className="w-full h-12 rounded-xl bg-[#A50034] text-white text-sm font-bold inline-flex items-center justify-center gap-2 disabled:opacity-50 touch-manipulation"
+                disabled={submitting || !content.trim()}
+                className="flex-[2] h-11 rounded-xl bg-[#A50034] text-white text-sm font-bold inline-flex items-center justify-center gap-2 shadow-[0_6px_16px_-6px_rgba(165,0,52,0.5)] hover:bg-[#7A0026] disabled:opacity-40 disabled:cursor-not-allowed transition-colors touch-manipulation"
               >
                 {submitting ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -186,8 +197,9 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
               </button>
             </div>
           </div>
-        </div>
-      )}
+        </DialogContent>
+      </Dialog>
+
     </>
   );
 };
