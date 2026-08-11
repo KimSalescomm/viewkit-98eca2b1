@@ -33,19 +33,26 @@ const ContentRequestSection = () => {
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
 
+  const getCode = () => {
+    try {
+      return sessionStorage.getItem("viewkit_admin_code")?.trim() || "";
+    } catch {
+      return "";
+    }
+  };
+
   const load = async () => {
     setLoading(true);
-    const { data, error } = await supabase
-      .from("content_requests")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(2000);
+    const { data, error } = await supabase.functions.invoke("content-requests-admin", {
+      body: { code: getCode(), mode: "list" },
+    });
     setLoading(false);
-    if (error) {
+    if (error || !data?.ok) {
       console.warn("[contentRequest] fetch failed", error);
+      toast.error("요청 목록을 불러오지 못했습니다");
       return;
     }
-    setRows((data ?? []) as RequestRow[]);
+    setRows((data.rows ?? []) as RequestRow[]);
   };
 
   useEffect(() => {
@@ -68,8 +75,10 @@ const ContentRequestSection = () => {
   const updateStatus = async (id: string, status: string) => {
     const prev = rows;
     setRows((rs) => rs.map((r) => (r.id === id ? { ...r, status } : r)));
-    const { error } = await supabase.from("content_requests").update({ status }).eq("id", id);
-    if (error) {
+    const { data, error } = await supabase.functions.invoke("content-requests-admin", {
+      body: { code: getCode(), mode: "status", id, status },
+    });
+    if (error || !data?.ok) {
       setRows(prev);
       toast.error("상태 변경에 실패했습니다");
       return;
