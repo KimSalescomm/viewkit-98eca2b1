@@ -92,12 +92,12 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
       )}
 
       {open && (
-        <div className="fixed inset-0 z-[120] flex items-end sm:items-center justify-center">
+        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6">
           <div
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setOpen(false)}
           />
-          <div className="relative w-full sm:max-w-lg max-h-[90vh] overflow-y-auto bg-white rounded-t-3xl sm:rounded-3xl p-5 sm:p-6 shadow-2xl">
+          <div className="relative w-full sm:max-w-lg max-h-[85vh] overflow-y-auto bg-white rounded-3xl p-5 sm:p-6 shadow-2xl">
             <div className="flex items-start justify-between mb-4">
               <div>
                 <h2 className="text-lg font-extrabold text-gray-900">콘텐츠 요청하기</h2>
@@ -109,7 +109,7 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="닫기"
-                className="p-2 -mr-2 -mt-2 text-gray-400 hover:text-gray-600 touch-manipulation"
+                className="p-2 -mr-2 text-gray-400 hover:text-gray-600 touch-manipulation"
               >
                 <X className="w-5 h-5" />
               </button>
