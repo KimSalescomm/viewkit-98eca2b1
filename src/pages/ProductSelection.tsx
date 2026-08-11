@@ -390,8 +390,6 @@ const ProductSelection = () => {
             );
           })}
         </div>
-
-        <ContentRequestButton />
       </div>
     </main>
   );
