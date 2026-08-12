@@ -1,6 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import FeatureCard from "@/components/FeatureCard";
 import SafeImage from "@/components/SafeImage";
+import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
 import OrientationToggle from "@/components/OrientationToggle";
 import { useContent } from "@/contexts/ContentContext";
 
