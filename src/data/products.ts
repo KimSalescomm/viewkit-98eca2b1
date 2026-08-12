@@ -13,6 +13,7 @@ export interface Product {
   description: string;
   keyVisualImage: string;
   secondaryKeyVisualImage?: string;
+  keyVisualVideo?: string;
   icon: string;
 }
 
