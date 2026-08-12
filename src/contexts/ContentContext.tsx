@@ -189,7 +189,9 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
             JSON.stringify({
               visibleProductIds: visible,
               publishedAt: data.created_at,
+              cachedAt: Date.now(),
             }),
+
           );
         } catch {
           /* noop */
