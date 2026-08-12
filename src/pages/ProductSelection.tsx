@@ -113,7 +113,7 @@ const productAccents: Record<string, { gradient: string; tint: string; chip: str
 
 
 const ProductSelection = () => {
-  const { products, visibleProductIds, isProductVisible } = useContent();
+  const { products, isProductVisible } = useContent();
 
   const subscriptionCard = {
     id: "subscription",
