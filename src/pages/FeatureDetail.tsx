@@ -307,7 +307,7 @@ const FeatureDetail = () => {
 
 
         {/* 세부 기능 (메인 콘텐츠 하위 · 아코디언) */}
-        {feature.subFeatures && feature.subFeatures.length > 0 && (
+        {feature.subFeatures && feature.subFeatures.length > 0 && (!tabs || activeTab === 0) && (
           <section className="mb-10 sm:mb-12">
             <div className="mb-3 sm:mb-4 pl-3 border-l-4 border-blue-600">
               <h2 className="text-base sm:text-lg font-bold text-gray-900">
