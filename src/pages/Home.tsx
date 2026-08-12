@@ -1,6 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import FeatureCard from "@/components/FeatureCard";
 import SafeImage from "@/components/SafeImage";
+import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
 import OrientationToggle from "@/components/OrientationToggle";
 import { useContent } from "@/contexts/ContentContext";
 
@@ -55,6 +56,11 @@ const Home = () => {
 
         {/* Key Visual */}
         <div className="mb-10 sm:mb-14 space-y-4 sm:space-y-5">
+          {product.keyVisualVideo && (
+            <div className="rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]">
+              <WebOSVideoPlayer mediaUrl={product.keyVisualVideo} />
+            </div>
+          )}
           {(() => {
             const isVacuum = productId === "vacuum";
             const images = product.secondaryKeyVisualImage
@@ -63,8 +69,13 @@ const Home = () => {
                 : [product.keyVisualImage, product.secondaryKeyVisualImage]
               : [product.keyVisualImage];
 
-            return images.map((src, index) => {
-              const isFirst = index === 0;
+            // 동영상 키비주얼이 있으면 첫 번째 이미지는 이미 영상으로 노출되므로 제외
+            const displayImages = product.keyVisualVideo
+              ? images.filter((_, index) => index !== 0)
+              : images;
+
+            return displayImages.map((src, index) => {
+              const isFirst = index === 0 && !product.keyVisualVideo;
               return (
                 <div
                   key={src + index}

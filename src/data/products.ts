@@ -13,6 +13,7 @@ export interface Product {
   description: string;
   keyVisualImage: string;
   secondaryKeyVisualImage?: string;
+  keyVisualVideo?: string;
   icon: string;
 }
 
@@ -96,9 +97,10 @@ export const products: Product[] = [
   {
     id: "washcombo",
     name: "워시콤보",
-    title: "워시콤보",
-    description: "세탁과 건조를 한 번에 끝내는 올인원 (내부용)",
+    title: "AI 워시콤보",
+    description: "하나의 통 안에서 세탁부터 건조까지 한 번에",
     keyVisualImage: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo01.jpg",
+    keyVisualVideo: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_02_all_in_one_pc.mp4",
     icon: "Waves",
   },
 
