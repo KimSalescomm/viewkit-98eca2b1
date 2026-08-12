@@ -5,13 +5,14 @@ import FeatureIcon from "@/components/FeatureIcon";
 import OrientationToggle from "@/components/OrientationToggle";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { useContent } from "@/contexts/ContentContext";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import type { HighlightDetail } from "@/data/features";
 
 const FeatureDetail = () => {
   const { productId, id } = useParams<{ productId: string; id: string }>();
@@ -24,6 +25,7 @@ const FeatureDetail = () => {
 
   const [activeTab, setActiveTab] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedHighlight, setSelectedHighlight] = useState<HighlightDetail | null>(null);
 
   useEffect(() => {
     setActiveTab(0);
@@ -270,6 +272,35 @@ const FeatureDetail = () => {
           </DialogContent>
         </Dialog>
 
+        {/* Highlight detail dialog */}
+        <Dialog open={!!selectedHighlight} onOpenChange={(open) => !open && setSelectedHighlight(null)}>
+          <DialogContent className="max-w-3xl p-0 overflow-hidden bg-white">
+            <DialogTitle className="sr-only">{selectedHighlight?.title}</DialogTitle>
+            <DialogDescription className="sr-only">{selectedHighlight?.description}</DialogDescription>
+            {selectedHighlight && (
+              <div className="flex flex-col">
+                <div className="p-4 sm:p-6 border-b border-gray-100">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                    {selectedHighlight.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed whitespace-pre-line">
+                    {selectedHighlight.description}
+                  </p>
+                </div>
+                <div className="bg-black">
+                  <MediaViewer
+                    mediaType={selectedHighlight.mediaType}
+                    mediaUrl={selectedHighlight.mediaUrl}
+                    title={selectedHighlight.title}
+                    isShorts={selectedHighlight.isShorts}
+                    fallbackUrl={selectedHighlight.fallbackUrl}
+                  />
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
+
         {/* Tab caption (underline variant) */}
         {activeTabData?.caption && (
           <p className="mb-6 sm:mb-8 text-sm sm:text-base text-gray-600 leading-relaxed whitespace-pre-line">
@@ -291,15 +322,25 @@ const FeatureDetail = () => {
           <div className="bg-white rounded-2xl p-5 sm:p-6 mb-10 sm:mb-12 shadow-md">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">핵심만 쏙</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-              {(activeTabData?.highlights ?? feature.highlights).map((highlight, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 bg-blue-50 rounded-xl"
-                >
-                  <span className="text-blue-600 font-bold text-base sm:text-lg">✓</span>
-                <span className="text-sm sm:text-base text-gray-800 font-medium">{highlight}</span>
-                </div>
-              ))}
+              {(activeTabData?.highlights ?? feature.highlights).map((highlight, index) => {
+                const detail = feature.highlightDetails?.[highlight];
+                return (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => detail && setSelectedHighlight(detail)}
+                    disabled={!detail}
+                    className={`flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 bg-blue-50 rounded-xl text-left w-full ${
+                      detail
+                        ? "cursor-pointer hover:bg-blue-100 active:scale-[0.99] transition-all"
+                        : "cursor-default"
+                    }`}
+                  >
+                    <span className="text-blue-600 font-bold text-base sm:text-lg">✓</span>
+                    <span className="text-sm sm:text-base text-gray-800 font-medium">{highlight}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         )}
