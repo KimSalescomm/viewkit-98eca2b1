@@ -93,6 +93,15 @@ export const products: Product[] = [
     keyVisualImage: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1600&h=1000&fit=crop",
     icon: "Droplets",
   },
+  {
+    id: "washcombo",
+    name: "워시콤보",
+    title: "워시콤보",
+    description: "세탁과 건조를 한 번에 끝내는 올인원 (내부용)",
+    keyVisualImage: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo01.jpg",
+    icon: "Waves",
+  },
+
 
 ];
 
