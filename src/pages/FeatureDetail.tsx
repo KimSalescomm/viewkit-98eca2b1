@@ -293,15 +293,25 @@ const FeatureDetail = () => {
           <div className="bg-white rounded-2xl p-5 sm:p-6 mb-10 sm:mb-12 shadow-md">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">핵심만 쏙</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-              {(activeTabData?.highlights ?? feature.highlights).map((highlight, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 bg-blue-50 rounded-xl"
-                >
-                  <span className="text-blue-600 font-bold text-base sm:text-lg">✓</span>
-                <span className="text-sm sm:text-base text-gray-800 font-medium">{highlight}</span>
-                </div>
-              ))}
+              {(activeTabData?.highlights ?? feature.highlights).map((highlight, index) => {
+                const detail = feature.highlightDetails?.[highlight];
+                return (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => detail && setSelectedHighlight(detail)}
+                    disabled={!detail}
+                    className={`flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 bg-blue-50 rounded-xl text-left w-full ${
+                      detail
+                        ? "cursor-pointer hover:bg-blue-100 active:scale-[0.99] transition-all"
+                        : "cursor-default"
+                    }`}
+                  >
+                    <span className="text-blue-600 font-bold text-base sm:text-lg">✓</span>
+                    <span className="text-sm sm:text-base text-gray-800 font-medium">{highlight}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         )}
