@@ -1646,7 +1646,7 @@ export const featuresMap: Record<string, Feature[]> = {
       descriptionTitle: "자세히 알아보기",
       description:
         "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁+건조를 완성하고, 결과까지 확인할 수 있어요.",
-      highlights: ["세탁·건조 원스톱", "옮김 없는 편리함", "좁은 공간에도 한 대로", "야간 저소음 운전"],
+      highlights: ["AI 타임 센싱", "AI 시간 안내", "AI 최적화 기록"],
       disclaimers: ["본 페이지는 내부 검토용 대외비 자료입니다."],
     },
     {
