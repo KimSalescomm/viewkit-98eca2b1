@@ -113,7 +113,7 @@ const productAccents: Record<string, { gradient: string; tint: string; chip: str
 
 
 const ProductSelection = () => {
-  const { products, visibleProductIds } = useContent();
+  const { products, visibleProductIds, isProductVisible } = useContent();
 
   const subscriptionCard = {
     id: "subscription",
@@ -281,9 +281,10 @@ const ProductSelection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
           {visibleProducts.map((product, index) => {
             // 내부 계정(SC/KOR)은 대외비 제품도 항상 활성화, 그 외는 퍼블리시된 노출 목록 기준
+            // 노출 판정은 ContentContext 한 곳에서만 결정 (스냅샷/캐시 정합성 보장)
             const isEnabled =
               (isInternalPreview && CONFIDENTIAL_PRODUCT_IDS.has(product.id)) ||
-              visibleProductIds.includes(product.id);
+              isProductVisible(product.id);
 
 
             const accent = productAccents[product.id] || {
