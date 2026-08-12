@@ -1642,7 +1642,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Waves",
       tag: "올인원",
       mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/images/lg-styler/md10747827/usp/SC5GMR80S_12_true_steam_Detail_01.mp4",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_02_all_in_one_pc.mp4",
       descriptionTitle: "자세히 알아보기",
       description:
         "세탁이 끝나면 그대로 건조까지 이어져요. 세탁물을 꺼내 옮기는 번거로움 없이, 한 대로 세탁·건조를 모두 해결할 수 있어요.",
