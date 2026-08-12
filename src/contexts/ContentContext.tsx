@@ -110,11 +110,44 @@ const parseVisibility = (raw: unknown): string[] | null => {
 };
 
 
+/** URL의 store_id(?store_id=SC)를 최우선으로, 없으면 저장된 매장 코드를 사용 */
+const resolveCurrentSlug = (): string => {
+  if (typeof window === "undefined") return "";
+  try {
+    const fromUrl = new URLSearchParams(window.location.search)
+      .get("store_id")
+      ?.trim()
+      .toUpperCase();
+    if (fromUrl) return fromUrl;
+  } catch {
+    /* noop */
+  }
+  return (getCurrentStore()?.slug || "").toUpperCase();
+};
+
 export const ContentProvider = ({ children }: { children: ReactNode }) => {
-  const store = typeof window !== "undefined" ? getCurrentStore() : null;
-  const isAdmin = isAdminStore(store?.slug);
+  const [slug, setSlug] = useState<string>(() => resolveCurrentSlug());
+
+  // URL/저장값이 늦게 반영되는 경우(첫 진입 직후)에도 관리자 판정이 갱신되도록 감시
+  useEffect(() => {
+    const sync = () => {
+      const next = resolveCurrentSlug();
+      setSlug((prev) => (prev === next ? prev : next));
+    };
+    sync();
+    const id = window.setInterval(sync, 1000);
+    window.addEventListener("popstate", sync);
+    window.addEventListener("storage", sync);
+    return () => {
+      window.clearInterval(id);
+      window.removeEventListener("popstate", sync);
+      window.removeEventListener("storage", sync);
+    };
+  }, []);
+
+  const isAdmin = isAdminStore(slug);
   // 내부 계정(SC/KOR): 대외비 제품도 열람 가능
-  const isInternal = isAdmin || (store?.slug || "").toUpperCase() === "KOR";
+  const isInternal = isAdmin || slug === "KOR";
 
   // SC(관리자): 항상 전체 제품 노출 (구독 가상 카드 포함)
   const [state, setState] = useState<{
@@ -166,6 +199,19 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
       ready: true,
     };
   });
+
+  // 관리자(SC) 판정이 뒤늦게 확정되어도 전체 제품이 노출되도록 상태를 승격
+  useEffect(() => {
+    if (!isAdmin) return;
+    setState({
+      visibleProductIds: Array.from(
+        new Set([...DEFAULT_VISIBLE_PRODUCT_IDS, ...staticProducts.map((p) => p.id)]),
+      ),
+      source: "draft",
+      publishedAt: null,
+      ready: true,
+    });
+  }, [isAdmin]);
 
   useEffect(() => {
     if (isAdmin) return;
