@@ -39,7 +39,7 @@ const lucideIconMap: Record<string, LucideIcon> = {
 };
 
 // 대외비 제품 — SC(관리자) 및 KOR(유관부서) 계정에서만 노출
-const CONFIDENTIAL_PRODUCT_IDS = new Set(["bathair"]);
+const CONFIDENTIAL_PRODUCT_IDS = new Set(["bathair", "washcombo"]);
 const INTERNAL_STORE_SLUGS = new Set(["SC", "KOR"]);
 
 
