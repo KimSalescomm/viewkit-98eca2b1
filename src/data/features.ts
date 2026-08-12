@@ -57,6 +57,21 @@ export interface HighlightDetail {
   fallbackUrl?: string;
 }
 
+/** 메인 콘텐츠 하위에 위치하는 세부 기능 (아코디언 카드) */
+export interface SubFeature {
+  /** 기능 명칭 (예: AI 타임 센싱) */
+  label: string;
+  /** 흐름 상 역할 (예: 분석 · 안내 · 기록) */
+  step?: string;
+  title: string;
+  description: string;
+  mediaType?: "video" | "image" | "youtube";
+  mediaUrl?: string;
+  isShorts?: boolean;
+  fallbackUrl?: string;
+}
+
+
 export interface Feature {
   id: string;
   title: string;
@@ -83,6 +98,12 @@ export interface Feature {
   tabs?: FeatureTab[];
   tabsVariant?: "pill" | "underline";
   showMainMedia?: boolean;
+  /** 메인 콘텐츠 하위 세부 기능 (아코디언) */
+  subFeatures?: SubFeature[];
+  /** 세부 기능 영역 제목/부제 */
+  subFeaturesTitle?: string;
+  subFeaturesSubtitle?: string;
+
   disabled?: boolean;
   /** true면 SC(관리자) 계정에서만 노출, 매장 계정에서는 숨김 */
   scOnly?: boolean;
@@ -1660,29 +1681,38 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁+건조를 완성하고, 결과까지 확인할 수 있어요.",
       highlights: [],
-      showMainMedia: true,
-      tabs: [
+      subFeaturesTitle: "AI 세탁+건조 과정에서 제공되는 세부 기능",
+      subFeaturesSubtitle:
+        "AI가 세탁물 상태를 분석하고 → 예상 시간을 안내하고 → 최적화 과정을 기록해요.",
+      subFeatures: [
         {
-          label: "약 3초만에 알려주는 세탁+건조 예상 시간",
+          label: "AI 타임 센싱",
+          step: "1. 분석",
+          title: "약 3초 만에 알려주는 세탁+건조 예상 시간",
           description:
             "세탁물을 투입 후 문을 닫고 시작 버튼을 누르면 무게를 감지해 약 3초 만에 예상 시간을 알려줍니다.\n세탁기 앞에서 오래 기다릴 필요가 없고, 코스 별 시간도 바로 확인할 수 있어 편리해요.",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_05_ai_time_sensing.mp4",
         },
         {
-          label: "더욱 정교화된 예상 건조 시간",
+          label: "AI 시간 안내",
+          step: "2. 안내",
+          title: "더욱 정교화된 예상 건조 시간",
           description: "사용하면 할수록 정확도 높은 예상 건조 시간을 알려줘요.",
           mediaType: "image",
           mediaUrl: washcomboAiTimeGuideAsset.url,
         },
         {
-          label: "세탁물의 특성에 맞춰 AI가 최적화된 세탁+건조 과정을 기록",
+          label: "AI 최적화 기록",
+          step: "3. 기록",
+          title: "세탁물의 특성에 맞춰 AI가 최적화한 세탁+건조 과정을 기록",
           description:
             "AI 세탁+건조 코스를 사용하면 옷감의 재질과 오염도를 분석해\n최적의 세탁+건조 조건을 설정하고 기록해요.\nAI 최적화 기록은 디스플레이에서 확인할 수 있어요.",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_07_ai_report.mp4",
         },
       ],
+
       disclaimers: ["본 페이지는 내부 검토용 대외비 자료입니다."],
     },
     {

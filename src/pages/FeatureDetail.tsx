@@ -350,6 +350,70 @@ const FeatureDetail = () => {
           </div>
         )}
 
+        {/* 세부 기능 (메인 콘텐츠 하위 · 아코디언) */}
+        {feature.subFeatures && feature.subFeatures.length > 0 && (
+          <section className="mb-10 sm:mb-12">
+            <div className="mb-3 sm:mb-4 pl-3 border-l-4 border-blue-600">
+              <h2 className="text-base sm:text-lg font-bold text-gray-900">
+                {feature.subFeaturesTitle || "세부 기능"}
+              </h2>
+              {feature.subFeaturesSubtitle && (
+                <p className="mt-1 text-xs sm:text-sm text-gray-500 leading-relaxed whitespace-pre-line">
+                  {feature.subFeaturesSubtitle}
+                </p>
+              )}
+            </div>
+
+            <Accordion
+              type="single"
+              collapsible
+              defaultValue="sub-0"
+              className="w-full space-y-2 sm:space-y-3"
+            >
+              {feature.subFeatures.map((sub, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`sub-${index}`}
+                  className="border border-gray-200 rounded-2xl bg-white shadow-sm overflow-hidden"
+                >
+                  <AccordionTrigger className="px-4 sm:px-5 py-3.5 sm:py-4 hover:no-underline text-left">
+                    <span className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                      {sub.step && (
+                        <span className="flex-shrink-0 text-[10px] sm:text-xs font-bold text-blue-600 bg-blue-50 rounded-full px-2.5 py-1">
+                          {sub.step}
+                        </span>
+                      )}
+                      <span className="text-sm sm:text-base font-semibold text-gray-900">
+                        {sub.label}
+                      </span>
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 sm:px-5 pb-4 sm:pb-5">
+                    <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-1.5">
+                      {sub.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed whitespace-pre-line mb-3">
+                      {sub.description}
+                    </p>
+                    {sub.mediaUrl && (
+                      <div className="rounded-xl overflow-hidden bg-black" onClick={handleVideoClick}>
+                        <MediaViewer
+                          mediaType={sub.mediaType || "video"}
+                          mediaUrl={sub.mediaUrl}
+                          title={sub.title}
+                          isShorts={sub.isShorts}
+                          fallbackUrl={sub.fallbackUrl}
+                        />
+                      </div>
+                    )}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </section>
+        )}
+
+
         {/* Disclaimers */}
         {feature.disclaimers && feature.disclaimers.length > 0 && (
           <div className="mb-4 sm:mb-6 px-1">
