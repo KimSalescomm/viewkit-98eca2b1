@@ -29,6 +29,26 @@ export interface VisibilityPayload {
   visibleProductIds: string[];
 }
 
+/** 실제 코드에 존재하는 제품 id만 노출 후보로 인정 (가상 카드 '구독' 포함) */
+const KNOWN_PRODUCT_IDS = new Set<string>([
+  "subscription",
+  ...staticProducts.map((p) => p.id),
+]);
+/** 지점 계정에 절대 노출하지 않는 내부/미사용 제품 */
+const NEVER_VISIBLE_PRODUCT_IDS = new Set<string>(["pc"]);
+/** 대외비 제품: 내부 계정(SC/KOR)에서만 열람 가능 */
+const CONFIDENTIAL_PRODUCT_IDS = new Set<string>(["bathair", "washcombo"]);
+
+/** 스냅샷·캐시에 남아있는 오래된/알 수 없는 id를 걸러냅니다. */
+const sanitizeVisibleIds = (ids: string[]): string[] =>
+  Array.from(
+    new Set(
+      ids.filter(
+        (id) => KNOWN_PRODUCT_IDS.has(id) && !NEVER_VISIBLE_PRODUCT_IDS.has(id),
+      ),
+    ),
+  );
+
 interface ContentContextValue {
   featuresMap: Record<string, Feature[]>;
   products: Product[];
@@ -37,13 +57,17 @@ interface ContentContextValue {
   getFeatureById: (productId: string, featureId: string) => Feature | undefined;
   /** 지점 계정에서 활성화(강조·클릭 가능) 노출할 제품 id 집합. SC는 전체. */
   visibleProductIds: string[];
+  /** 해당 제품을 현재 계정에서 열어볼 수 있는지 (지점 계정은 노출 목록 기준) */
+  isProductVisible: (productId: string) => boolean;
   source: "draft" | "published" | "fallback";
   publishedAt: string | null;
   ready: boolean;
 }
 
-// 기본 노출 세트 변경 시 이전 지점 캐시가 남지 않도록 버전을 올립니다.
-const CACHE_KEY = "viewkit_visibility_snapshot_v2";
+// 기본 노출 세트/필터 로직 변경 시 이전 지점 캐시가 남지 않도록 버전을 올립니다.
+const CACHE_KEY = "viewkit_visibility_snapshot_v3";
+// 캐시 유효 시간: 6시간 (오래된 캐시로 숨긴 제품이 계속 보이는 것을 방지)
+const CACHE_TTL_MS = 6 * 60 * 60 * 1000;
 
 const ContentContext = createContext<ContentContextValue | null>(null);
 
@@ -53,9 +77,11 @@ const buildValue = (
   publishedAt: string | null,
   ready: boolean,
   isAdmin: boolean,
+  isInternal: boolean = isAdmin,
 ): ContentContextValue => {
   const filterFeatures = (list: Feature[]) =>
     list.filter((f) => !f.disabled && (isAdmin || !f.scOnly));
+  const visible = isAdmin ? visibleProductIds : sanitizeVisibleIds(visibleProductIds);
   return {
     featuresMap: staticFeaturesMap,
     products: staticProducts,
@@ -64,7 +90,11 @@ const buildValue = (
       filterFeatures(staticFeaturesMap[productId] ?? []),
     getFeatureById: (productId, featureId) =>
       filterFeatures(staticFeaturesMap[productId] ?? []).find((f) => f.id === featureId),
-    visibleProductIds,
+    visibleProductIds: visible,
+    isProductVisible: (productId) =>
+      isAdmin ||
+      visible.includes(productId) ||
+      (isInternal && CONFIDENTIAL_PRODUCT_IDS.has(productId)),
     source,
     publishedAt,
     ready,
@@ -76,12 +106,15 @@ const parseVisibility = (raw: unknown): string[] | null => {
   const list = (raw as { visibleProductIds?: unknown }).visibleProductIds;
   if (!Array.isArray(list)) return null;
   const ids = list.filter((v): v is string => typeof v === "string" && v.length > 0);
-  return ids.length > 0 ? ids : [];
+  return sanitizeVisibleIds(ids);
 };
+
 
 export const ContentProvider = ({ children }: { children: ReactNode }) => {
   const store = typeof window !== "undefined" ? getCurrentStore() : null;
   const isAdmin = isAdminStore(store?.slug);
+  // 내부 계정(SC/KOR): 대외비 제품도 열람 가능
+  const isInternal = isAdmin || (store?.slug || "").toUpperCase() === "KOR";
 
   // SC(관리자): 항상 전체 제품 노출 (구독 가상 카드 포함)
   const [state, setState] = useState<{
@@ -100,26 +133,32 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
         ready: true,
       };
     }
-    // 캐시된 visibility 우선 사용 → 첫 페인트 빠르게
+    // 캐시된 visibility 우선 사용 → 첫 페인트 빠르게 (단, 6시간 이내 캐시만 신뢰)
     try {
       const raw = localStorage.getItem(CACHE_KEY);
       if (raw) {
         const cached = JSON.parse(raw) as {
           visibleProductIds?: string[];
           publishedAt: string | null;
+          cachedAt?: number;
         };
-        if (Array.isArray(cached.visibleProductIds)) {
+        const fresh =
+          typeof cached.cachedAt === "number" &&
+          Date.now() - cached.cachedAt < CACHE_TTL_MS;
+        if (Array.isArray(cached.visibleProductIds) && fresh) {
           return {
-            visibleProductIds: cached.visibleProductIds,
+            visibleProductIds: sanitizeVisibleIds(cached.visibleProductIds),
             source: "published",
             publishedAt: cached.publishedAt ?? null,
             ready: true,
           };
         }
+        if (!fresh) localStorage.removeItem(CACHE_KEY);
       }
     } catch {
       /* noop */
     }
+
     return {
       visibleProductIds: DEFAULT_VISIBLE_PRODUCT_IDS,
       source: "fallback",
@@ -158,7 +197,9 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
             JSON.stringify({
               visibleProductIds: visible,
               publishedAt: data.created_at,
+              cachedAt: Date.now(),
             }),
+
           );
         } catch {
           /* noop */
@@ -208,8 +249,9 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
         state.publishedAt,
         state.ready,
         isAdmin,
+        isInternal,
       ),
-    [state, isAdmin],
+    [state, isAdmin, isInternal],
   );
 
   return <ContentContext.Provider value={value}>{children}</ContentContext.Provider>;

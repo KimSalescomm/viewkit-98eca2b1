@@ -8,16 +8,19 @@ import { useContent } from "@/contexts/ContentContext";
 const Home = () => {
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
-  const { getProductById, getFeaturesByProductId } = useContent();
+  const { getProductById, getFeaturesByProductId, isProductVisible } = useContent();
 
   const product = getProductById(productId || "");
   const features = getFeaturesByProductId(productId || "");
 
-  if (!product) {
+  // 노출 설정에서 제외된 제품은 지점 계정에서 직접 URL 접근도 차단
+  if (!product || !isProductVisible(productId || "")) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#F3F4F6]">
         <div className="text-center">
-          <h1 className="text-xl text-gray-900 mb-4">제품을 찾을 수 없습니다</h1>
+          <h1 className="text-xl text-gray-900 mb-4">
+            {product ? "현재 열람할 수 없는 제품입니다" : "제품을 찾을 수 없습니다"}
+          </h1>
           <Link to="/" className="text-brand font-medium">
             ← 제품 선택으로 돌아가기
           </Link>
@@ -25,6 +28,7 @@ const Home = () => {
       </div>
     );
   }
+
 
   return (
     <main className="min-h-screen bg-[#F3F4F6] px-5 py-8 sm:px-8 sm:py-12">
