@@ -25,6 +25,7 @@ const FeatureDetail = () => {
 
   const [activeTab, setActiveTab] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedHighlight, setSelectedHighlight] = useState<HighlightDetail | null>(null);
 
   useEffect(() => {
     setActiveTab(0);
