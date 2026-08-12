@@ -200,6 +200,19 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
     };
   });
 
+  // 관리자(SC) 판정이 뒤늦게 확정되어도 전체 제품이 노출되도록 상태를 승격
+  useEffect(() => {
+    if (!isAdmin) return;
+    setState({
+      visibleProductIds: Array.from(
+        new Set([...DEFAULT_VISIBLE_PRODUCT_IDS, ...staticProducts.map((p) => p.id)]),
+      ),
+      source: "draft",
+      publishedAt: null,
+      ready: true,
+    });
+  }, [isAdmin]);
+
   useEffect(() => {
     if (isAdmin) return;
     let cancelled = false;
