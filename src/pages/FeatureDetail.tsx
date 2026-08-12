@@ -100,7 +100,25 @@ const FeatureDetail = () => {
           </div>
         </div>
 
+        {/* Main media (kept visible above tabs when requested) */}
+        {feature.showMainMedia && tabs && tabs.length > 0 && (
+          <div className="mb-5 sm:mb-6">
+            <MediaViewer
+              key="main-media"
+              mediaType={feature.mediaSlides ? "gallery" : feature.mediaType}
+              mediaUrl={feature.mediaUrl}
+              mediaSlides={feature.mediaSlides}
+              title={feature.title}
+              tableData={feature.tableData}
+              galleryImages={feature.galleryImages}
+              isShorts={feature.isShorts}
+              fallbackUrl={feature.fallbackUrl}
+            />
+          </div>
+        )}
+
         {/* Tabs (only when feature.tabs exists) */}
+
         {tabs && tabs.length > 0 && (
           feature.tabsVariant === "underline" ? (
             <div className="mb-4 sm:mb-5 flex w-full border-b border-gray-200">
