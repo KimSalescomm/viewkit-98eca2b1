@@ -82,13 +82,21 @@ export const logPageView = async (path: string) => {
 
   const name = store.name || getBranchNameByCode(slug) || slug;
 
+  // 세션 갱신(슬라이딩 TTL) 후 동일 경로 재기록 여부 판단
+  const sessionId = ensureSessionId();
+  if (shouldSkipPath(cleanPath)) {
+    inflightLog = false;
+    return;
+  }
+
   try {
     await supabase.from("page_views").insert({
       store_id: slug,
       store_name: name,
       path: cleanPath,
-      session_id: ensureSessionId(),
+      session_id: sessionId,
     });
+
   } catch {
     /* noop - 분석은 실패해도 앱 동작에 영향 없음 */
   } finally {
