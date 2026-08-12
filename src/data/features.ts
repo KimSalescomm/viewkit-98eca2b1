@@ -46,6 +46,15 @@ export interface FeatureTab {
   imageFit?: "cover" | "contain";
 }
 
+export interface HighlightDetail {
+  title: string;
+  description: string;
+  mediaType: "video" | "image" | "youtube";
+  mediaUrl: string;
+  isShorts?: boolean;
+  fallbackUrl?: string;
+}
+
 export interface Feature {
   id: string;
   title: string;
@@ -58,6 +67,7 @@ export interface Feature {
   description: string;
   descriptionTitle?: string;
   highlights: string[];
+  highlightDetails?: Record<string, HighlightDetail>;
   tableData?: ProductComparisonTable[];
   galleryImages?: (string | GalleryImage)[];
   mediaSlides?: MediaSlide[];
