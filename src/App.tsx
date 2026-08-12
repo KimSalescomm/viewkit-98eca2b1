@@ -16,9 +16,10 @@ import EventRankingAutoPopup from "./components/EventRankingAutoPopup";
 import ScreensaverOverlay from "./components/ScreensaverOverlay";
 
 // 새 버전 배포 후 예전 청크 해시를 요청하면 실패하므로, 1회 자동 새로고침으로 복구
-const lazyWithRetry = <T extends { default: React.ComponentType<never> }>(
+const lazyWithRetry = <T extends { default: React.ComponentType<Record<string, unknown>> }>(
   importer: () => Promise<T>,
 ) =>
+
   lazy(async () => {
     const RELOAD_KEY = "chunk-reload-attempt";
     try {
