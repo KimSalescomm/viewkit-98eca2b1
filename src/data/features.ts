@@ -1665,7 +1665,12 @@ export const featuresMap: Record<string, Feature[]> = {
       descriptionTitle: "여름철 습기와의 전쟁! 욕실을 보송하게 바꾼 비결은?",
       description:
         "샤워하고 나와도 금세 끈적이는 몸, 습기 가득찬 욕실, 꿉꿉한 냄새... 여름철 욕실 관리 때문에 스트레스 받지 마세요! LG전자 퓨리케어 바스에어시스템이 거울 김 서림부터 축축한 바닥 습기까지 싹 잡아서 보송한 욕실을 만들어주니까요.",
-      highlights: [],
+      highlights: [
+        "송풍",
+        "환기모드",
+        "케어 전문가",
+        "분해 세척",
+      ],
       disclaimers: ["소비자의 이해를 돕기 위해 연출된 영상입니다."],
     },
   ],
