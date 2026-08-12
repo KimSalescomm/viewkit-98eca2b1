@@ -36,6 +36,7 @@ export interface CollapsibleDisclaimer {
 export interface FeatureTab {
   label: string;
   description?: string;
+  descriptionTitle?: string;
   mediaType?: "video" | "image" | "youtube";
   mediaUrl?: string;
   fallbackUrl?: string;
