@@ -442,7 +442,7 @@ const FeatureDetail = () => {
                   <div className="hidden md:block w-1 bg-gradient-to-b from-blue-400 to-purple-400 flex-shrink-0" />
                   <div className="w-full md:w-2/5 p-5 sm:p-6 flex flex-col justify-center">
                     <span className="inline-block self-start mb-2 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-blue-50 text-blue-600">
-                      코스
+                      {course.type || "코스"}
                     </span>
                     <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
                       {course.name}
