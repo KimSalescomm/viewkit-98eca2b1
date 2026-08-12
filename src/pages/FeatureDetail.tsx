@@ -5,14 +5,12 @@ import FeatureIcon from "@/components/FeatureIcon";
 import OrientationToggle from "@/components/OrientationToggle";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { useContent } from "@/contexts/ContentContext";
-import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import type { HighlightDetail } from "@/data/features";
 
 const FeatureDetail = () => {
   const { productId, id } = useParams<{ productId: string; id: string }>();
