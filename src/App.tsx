@@ -14,6 +14,7 @@ import Maintenance from "./pages/Maintenance";
 import SalesCertBadge from "./components/SalesCertBadge";
 import EventRankingAutoPopup from "./components/EventRankingAutoPopup";
 import ScreensaverOverlay from "./components/ScreensaverOverlay";
+import { useAppVersionCheck } from "./hooks/useAppVersionCheck";
 
 // 새 버전 배포 후 예전 청크 해시를 요청하면 실패하므로, 1회 자동 새로고침으로 복구
 const lazyWithRetry = <T extends { default: React.ComponentType<Record<string, unknown>> }>(
@@ -78,11 +79,18 @@ const PageLoader = () => (
   </div>
 );
 
+// 키오스크 등 장시간 켜둔 기기에서 새 배포 자동 반영
+const VersionWatcher = () => {
+  useAppVersionCheck();
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <VersionWatcher />
       <BrowserRouter>
         <ScrollToTop />
         <OrientationProvider>
