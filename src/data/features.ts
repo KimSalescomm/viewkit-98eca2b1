@@ -1752,11 +1752,11 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Flame",
       tag: "트루스팀",
       mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_02_02_pc_b.mp4",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_08_true_steam_pc.mp4",
       descriptionTitle: "자세히 알아보기",
       description:
-        "고온 스팀이 섬유 속까지 침투해 세균과 알레르기 유발 물질을 효과적으로 케어해요. 아이 옷, 이불, 운동복도 안심하고 세탁할 수 있어요.",
-      highlights: ["100℃ 트루스팀", "세균 케어", "알레르기 유발물질 감소", "섬세한 옷감 관리"],
+        "물을 끓여 만든 트루스팀과 60℃ 이상 고온의 물로 의류를 살균 케어해요. 세탁부터 건조까지 스팀이 적용된 코스를 선택하거나 옵션 추가해 의류를 관리할 수 있어요.",
+      highlights: ["유해세균 살균", "냄새와 구김 케어"],
       disclaimers: ["트루스팀 효과는 사용 조건 및 대상 세탁물에 따라 달라질 수 있습니다."],
     },
     {
