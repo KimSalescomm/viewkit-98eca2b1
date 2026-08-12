@@ -82,6 +82,7 @@ export interface Feature {
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
   tabs?: FeatureTab[];
   tabsVariant?: "pill" | "underline";
+  showMainMedia?: boolean;
   disabled?: boolean;
   /** true면 SC(관리자) 계정에서만 노출, 매장 계정에서는 숨김 */
   scOnly?: boolean;
@@ -1659,6 +1660,7 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁+건조를 완성하고, 결과까지 확인할 수 있어요.",
       highlights: [],
+      showMainMedia: true,
       tabs: [
         {
           label: "약 3초만에 알려주는 세탁+건조 예상 시간",
