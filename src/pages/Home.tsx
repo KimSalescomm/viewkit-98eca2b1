@@ -58,10 +58,7 @@ const Home = () => {
         <div className="mb-10 sm:mb-14 space-y-4 sm:space-y-5">
           {product.keyVisualVideo && (
             <div className="rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]">
-              <WebOSVideoPlayer
-                mediaUrl={product.keyVisualVideo}
-                poster={product.keyVisualImage}
-              />
+              <WebOSVideoPlayer mediaUrl={product.keyVisualVideo} />
             </div>
           )}
           {(() => {
