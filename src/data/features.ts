@@ -1,6 +1,8 @@
 import aircondAiSleepAsset from "@/assets/airconditioner-ai-sleep.png.asset.json";
 import aircondRadarAsset from "@/assets/airconditioner-radar.png.asset.json";
 import aircondVoiceAsset from "@/assets/airconditioner-voice.png.asset.json";
+import washcomboAiTimeGuideAsset from "@/assets/washcombo-ai-time-guide.png.asset.json";
+
 
 export interface ProductComparisonTable {
   name: string;
@@ -1665,7 +1667,14 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_05_ai_time_sensing.mp4",
         },
+        "AI 시간 안내": {
+          title: "더욱 정교화된 예상 건조 시간",
+          description: "사용하면 할수록 정확도 높은 예상 건조 시간을 알려줘요.",
+          mediaType: "image",
+          mediaUrl: washcomboAiTimeGuideAsset.url,
+        },
       },
+
       disclaimers: ["본 페이지는 내부 검토용 대외비 자료입니다."],
     },
     {
