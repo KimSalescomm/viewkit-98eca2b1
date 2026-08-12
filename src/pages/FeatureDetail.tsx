@@ -299,7 +299,7 @@ const FeatureDetail = () => {
 
         {/* Description Card: active tab description takes precedence */}
         <div className="bg-white rounded-2xl p-5 sm:p-6 mb-4 sm:mb-6 shadow-md">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{feature.descriptionTitle || "자세히 알아보기"}</h2>
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{activeTabData?.descriptionTitle ?? feature.descriptionTitle ?? "자세히 알아보기"}</h2>
           <p className="text-sm sm:text-base text-gray-600 leading-snug whitespace-pre-line">
             {activeTabData?.description ?? feature.description}
           </p>
@@ -307,7 +307,7 @@ const FeatureDetail = () => {
 
 
         {/* 세부 기능 (메인 콘텐츠 하위 · 아코디언) */}
-        {feature.subFeatures && feature.subFeatures.length > 0 && (
+        {feature.subFeatures && feature.subFeatures.length > 0 && (!tabs || activeTab === 0) && (
           <section className="mb-10 sm:mb-12">
             <div className="mb-3 sm:mb-4 pl-3 border-l-4 border-blue-600">
               <h2 className="text-base sm:text-lg font-bold text-gray-900">
