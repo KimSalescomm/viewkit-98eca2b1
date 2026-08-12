@@ -15,16 +15,36 @@ import SalesCertBadge from "./components/SalesCertBadge";
 import EventRankingAutoPopup from "./components/EventRankingAutoPopup";
 import ScreensaverOverlay from "./components/ScreensaverOverlay";
 
-const Home = lazy(() => import("./pages/Home"));
-const Subscription = lazy(() => import("./pages/Subscription"));
-const FeatureDetail = lazy(() => import("./pages/FeatureDetail"));
+// 새 버전 배포 후 예전 청크 해시를 요청하면 실패하므로, 1회 자동 새로고침으로 복구
+const lazyWithRetry = <T extends { default: React.ComponentType<never> }>(
+  importer: () => Promise<T>,
+) =>
+  lazy(async () => {
+    const RELOAD_KEY = "chunk-reload-attempt";
+    try {
+      const mod = await importer();
+      sessionStorage.removeItem(RELOAD_KEY);
+      return mod;
+    } catch (error) {
+      if (!sessionStorage.getItem(RELOAD_KEY)) {
+        sessionStorage.setItem(RELOAD_KEY, "1");
+        window.location.reload();
+        return new Promise<T>(() => {});
+      }
+      throw error;
+    }
+  });
 
-const NotFound = lazy(() => import("./pages/NotFound"));
-const Ranking = lazy(() => import("./pages/Ranking"));
-const Admin = lazy(() => import("./pages/Admin"));
-const Legal = lazy(() => import("./pages/Legal"));
-const StoreCodes = lazy(() => import("./pages/StoreCodes"));
-const Guide = lazy(() => import("./pages/Guide"));
+const Home = lazyWithRetry(() => import("./pages/Home"));
+const Subscription = lazyWithRetry(() => import("./pages/Subscription"));
+const FeatureDetail = lazyWithRetry(() => import("./pages/FeatureDetail"));
+
+const NotFound = lazyWithRetry(() => import("./pages/NotFound"));
+const Ranking = lazyWithRetry(() => import("./pages/Ranking"));
+const Admin = lazyWithRetry(() => import("./pages/Admin"));
+const Legal = lazyWithRetry(() => import("./pages/Legal"));
+const StoreCodes = lazyWithRetry(() => import("./pages/StoreCodes"));
+const Guide = lazyWithRetry(() => import("./pages/Guide"));
 
 const queryClient = new QueryClient();
 
