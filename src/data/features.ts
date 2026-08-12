@@ -98,6 +98,12 @@ export interface Feature {
   tabs?: FeatureTab[];
   tabsVariant?: "pill" | "underline";
   showMainMedia?: boolean;
+  /** 메인 콘텐츠 하위 세부 기능 (아코디언) */
+  subFeatures?: SubFeature[];
+  /** 세부 기능 영역 제목/부제 */
+  subFeaturesTitle?: string;
+  subFeaturesSubtitle?: string;
+
   disabled?: boolean;
   /** true면 SC(관리자) 계정에서만 노출, 매장 계정에서는 숨김 */
   scOnly?: boolean;
