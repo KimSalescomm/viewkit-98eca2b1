@@ -1673,7 +1673,15 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaType: "image",
           mediaUrl: washcomboAiTimeGuideAsset.url,
         },
+        "AI 최적화 기록": {
+          title: "세탁물의 특성에 맞춰 AI가 최적화한 세탁+건조 과정을 기록",
+          description:
+            "AI 세탁+건조 코스를 사용하면 옷감의 재질과 오염도를 분석해 최적의 세탁+건조 조건을 설정하고 기록해요. AI 최적화 기록은 디스플레이에서 확인할 수 있어요.",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_07_ai_report.mp4",
+        },
       },
+
 
       disclaimers: ["본 페이지는 내부 검토용 대외비 자료입니다."],
     },
