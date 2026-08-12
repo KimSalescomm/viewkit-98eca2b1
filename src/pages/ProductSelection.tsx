@@ -39,7 +39,7 @@ const lucideIconMap: Record<string, LucideIcon> = {
 };
 
 // 대외비 제품 — SC(관리자) 및 KOR(유관부서) 계정에서만 노출
-const CONFIDENTIAL_PRODUCT_IDS = new Set(["bathair"]);
+const CONFIDENTIAL_PRODUCT_IDS = new Set(["bathair", "washcombo"]);
 const INTERNAL_STORE_SLUGS = new Set(["SC", "KOR"]);
 
 
@@ -123,7 +123,7 @@ const ProductSelection = () => {
     keyVisualImage: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_stove_03_250804.jpg",
     icon: "Waves",
   } as (typeof products)[number];
-  const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "styler", "tv", "cooking", "bathair"];
+  const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "styler", "tv", "cooking", "bathair", "washcombo"];
   // 제품 카드(홈) 전용 썸네일 오버라이드 — 다른 페이지의 키비주얼은 유지
   const cardThumbnailOverrides: Record<string, { keyVisualImage?: string; secondaryKeyVisualImage?: string }> = {
     vacuum: {

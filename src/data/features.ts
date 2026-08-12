@@ -1633,6 +1633,24 @@ export const featuresMap: Record<string, Feature[]> = {
     },
   ],
 
+  // 워시콤보 특장점 (대외비 · SC/KOR 계정 전용)
+  washcombo: [
+    {
+      id: "1",
+      title: "세탁부터 건조까지,\n한 대로 끝낼 수 있을까요?",
+      subtitle: "세탁과 건조를 한 번에 끝내는\n워시콤보의 올인원 케어.",
+      icon: "Waves",
+      tag: "올인원",
+      mediaType: "image",
+      mediaUrl: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo01.jpg",
+      description:
+        "세탁물을 옮기지 않아도 세탁부터 건조까지 한 번에 끝나요. 좁은 공간에서도 한 대로 세탁·건조를 모두 해결할 수 있어요.",
+      highlights: ["세탁·건조 원스톱", "공간 효율 설계", "옮김 없는 편리함"],
+      disclaimers: ["본 페이지는 내부 검토용 대외비 자료입니다."],
+    },
+  ],
+
+
 };
 
 
