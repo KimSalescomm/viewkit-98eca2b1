@@ -2,7 +2,7 @@ import aircondAiSleepAsset from "@/assets/airconditioner-ai-sleep.png.asset.json
 import aircondRadarAsset from "@/assets/airconditioner-radar.png.asset.json";
 import aircondVoiceAsset from "@/assets/airconditioner-voice.png.asset.json";
 import washcomboAiTimeGuideAsset from "@/assets/washcombo-ai-time-guide.png.asset.json";
-import washcomboAutoDetergentAsset from "@/assets/washcombo-auto-detergent.png.asset.json";
+import washcomboAutomaticAsset from "@/assets/washcombo-automatic.jpg.asset.json";
 
 
 
