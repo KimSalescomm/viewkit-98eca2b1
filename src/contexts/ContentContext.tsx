@@ -125,26 +125,32 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
         ready: true,
       };
     }
-    // 캐시된 visibility 우선 사용 → 첫 페인트 빠르게
+    // 캐시된 visibility 우선 사용 → 첫 페인트 빠르게 (단, 6시간 이내 캐시만 신뢰)
     try {
       const raw = localStorage.getItem(CACHE_KEY);
       if (raw) {
         const cached = JSON.parse(raw) as {
           visibleProductIds?: string[];
           publishedAt: string | null;
+          cachedAt?: number;
         };
-        if (Array.isArray(cached.visibleProductIds)) {
+        const fresh =
+          typeof cached.cachedAt === "number" &&
+          Date.now() - cached.cachedAt < CACHE_TTL_MS;
+        if (Array.isArray(cached.visibleProductIds) && fresh) {
           return {
-            visibleProductIds: cached.visibleProductIds,
+            visibleProductIds: sanitizeVisibleIds(cached.visibleProductIds),
             source: "published",
             publishedAt: cached.publishedAt ?? null,
             ready: true,
           };
         }
+        if (!fresh) localStorage.removeItem(CACHE_KEY);
       }
     } catch {
       /* noop */
     }
+
     return {
       visibleProductIds: DEFAULT_VISIBLE_PRODUCT_IDS,
       source: "fallback",
