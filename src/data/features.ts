@@ -37,6 +37,7 @@ export interface CollapsibleDisclaimer {
 
 export interface TrueSteamCourse {
   name: string;
+  type?: string;
   description: string;
   imageUrl: string;
   imageAlt?: string;
@@ -1824,16 +1825,19 @@ export const featuresMap: Record<string, Feature[]> = {
       courses: [
         {
           name: "알러지케어 코스",
+          type: "세탁/건조 코스",
           description: "알러지 유발 물질 99.99% 제거로 위생적인 세탁",
           imageUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_10_allergy_care.jpg",
         },
         {
           name: "스팀살균 코스",
+          type: "건조 코스",
           description: "유해세균을 99.99% 살균해 위생적인 건조",
           imageUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_11_steam_sterilization.jpg",
         },
         {
           name: "스팀리프레쉬 코스",
+          type: "건조 코스",
           description: "트루스팀으로 생활 속 냄새와 구김까지 케어",
           imageUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_12_steam_refresh.jpg",
         },
