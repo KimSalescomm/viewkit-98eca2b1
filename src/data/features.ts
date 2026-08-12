@@ -57,6 +57,21 @@ export interface HighlightDetail {
   fallbackUrl?: string;
 }
 
+/** 메인 콘텐츠 하위에 위치하는 세부 기능 (아코디언 카드) */
+export interface SubFeature {
+  /** 기능 명칭 (예: AI 타임 센싱) */
+  label: string;
+  /** 흐름 상 역할 (예: 분석 · 안내 · 기록) */
+  step?: string;
+  title: string;
+  description: string;
+  mediaType?: "video" | "image" | "youtube";
+  mediaUrl?: string;
+  isShorts?: boolean;
+  fallbackUrl?: string;
+}
+
+
 export interface Feature {
   id: string;
   title: string;
