@@ -272,6 +272,35 @@ const FeatureDetail = () => {
           </DialogContent>
         </Dialog>
 
+        {/* Highlight detail dialog */}
+        <Dialog open={!!selectedHighlight} onOpenChange={(open) => !open && setSelectedHighlight(null)}>
+          <DialogContent className="max-w-3xl p-0 overflow-hidden bg-white">
+            <DialogTitle className="sr-only">{selectedHighlight?.title}</DialogTitle>
+            <DialogDescription className="sr-only">{selectedHighlight?.description}</DialogDescription>
+            {selectedHighlight && (
+              <div className="flex flex-col">
+                <div className="p-4 sm:p-6 border-b border-gray-100">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                    {selectedHighlight.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed whitespace-pre-line">
+                    {selectedHighlight.description}
+                  </p>
+                </div>
+                <div className="bg-black">
+                  <MediaViewer
+                    mediaType={selectedHighlight.mediaType}
+                    mediaUrl={selectedHighlight.mediaUrl}
+                    title={selectedHighlight.title}
+                    isShorts={selectedHighlight.isShorts}
+                    fallbackUrl={selectedHighlight.fallbackUrl}
+                  />
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
+
         {/* Tab caption (underline variant) */}
         {activeTabData?.caption && (
           <p className="mb-6 sm:mb-8 text-sm sm:text-base text-gray-600 leading-relaxed whitespace-pre-line">
