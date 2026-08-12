@@ -1680,14 +1680,11 @@ export const featuresMap: Record<string, Feature[]> = {
       descriptionTitle: "자세히 알아보기",
       description:
         "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁+건조를 완성하고, 결과까지 확인할 수 있어요.",
-      highlights: [],
+      highlights: ["세탁+건조 모든 과정에 AI 기술 적용"],
       subFeaturesTitle: "AI 세탁+건조 과정에서 제공되는 세부 기능",
-      subFeaturesSubtitle:
-        "AI가 세탁물 상태를 분석하고 → 예상 시간을 안내하고 → 최적화 과정을 기록해요.",
       subFeatures: [
         {
           label: "AI 타임 센싱",
-          step: "1. 분석",
           title: "약 3초 만에 알려주는 세탁+건조 예상 시간",
           description:
             "세탁물을 투입 후 문을 닫고 시작 버튼을 누르면 무게를 감지해 약 3초 만에 예상 시간을 알려줍니다.\n세탁기 앞에서 오래 기다릴 필요가 없고, 코스 별 시간도 바로 확인할 수 있어 편리해요.",
@@ -1696,7 +1693,6 @@ export const featuresMap: Record<string, Feature[]> = {
         },
         {
           label: "AI 시간 안내",
-          step: "2. 안내",
           title: "더욱 정교화된 예상 건조 시간",
           description: "사용하면 할수록 정확도 높은 예상 건조 시간을 알려줘요.",
           mediaType: "image",
@@ -1704,7 +1700,6 @@ export const featuresMap: Record<string, Feature[]> = {
         },
         {
           label: "AI 최적화 기록",
-          step: "3. 기록",
           title: "세탁물의 특성에 맞춰 AI가 최적화한 세탁+건조 과정을 기록",
           description:
             "AI 세탁+건조 코스를 사용하면 옷감의 재질과 오염도를 분석해\n최적의 세탁+건조 조건을 설정하고 기록해요.\nAI 최적화 기록은 디스플레이에서 확인할 수 있어요.",

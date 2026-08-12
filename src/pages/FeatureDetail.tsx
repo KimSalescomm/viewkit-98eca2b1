@@ -305,50 +305,6 @@ const FeatureDetail = () => {
           </p>
         </div>
 
-        {/* Highlights Card: active tab highlights take precedence */}
-        {(activeTabData?.highlights ?? feature.highlights) && (activeTabData?.highlights ?? feature.highlights)?.length > 0 && (
-          <div className="bg-white rounded-2xl p-5 sm:p-6 mb-10 sm:mb-12 shadow-md">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">핵심만 쏙</h2>
-            <div className="space-y-3 sm:space-y-4">
-              {(activeTabData?.highlights ?? feature.highlights).map((highlight, index) => {
-                const detail = feature.highlightDetails?.[highlight];
-                if (detail) {
-                  return (
-                    <div key={index} className="bg-blue-50 rounded-xl p-4 sm:p-5 overflow-hidden">
-                      <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
-                        {detail.title}
-                      </h3>
-                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed whitespace-pre-line mb-3 sm:mb-4">
-                        {detail.description}
-                      </p>
-                      <div
-                        className="rounded-xl overflow-hidden bg-black"
-                        onClick={handleVideoClick}
-                      >
-                        <MediaViewer
-                          mediaType={detail.mediaType}
-                          mediaUrl={detail.mediaUrl}
-                          title={detail.title}
-                          isShorts={detail.isShorts}
-                          fallbackUrl={detail.fallbackUrl}
-                        />
-                      </div>
-                    </div>
-                  );
-                }
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 bg-blue-50 rounded-xl"
-                  >
-                    <span className="text-blue-600 font-bold text-base sm:text-lg">✓</span>
-                    <span className="text-sm sm:text-base text-gray-800 font-medium">{highlight}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
 
         {/* 세부 기능 (메인 콘텐츠 하위 · 아코디언) */}
         {feature.subFeatures && feature.subFeatures.length > 0 && (
@@ -411,6 +367,51 @@ const FeatureDetail = () => {
               ))}
             </Accordion>
           </section>
+        )}
+
+        {/* Highlights Card: active tab highlights take precedence */}
+        {(activeTabData?.highlights ?? feature.highlights) && (activeTabData?.highlights ?? feature.highlights)?.length > 0 && (
+          <div className="bg-white rounded-2xl p-5 sm:p-6 mb-10 sm:mb-12 shadow-md">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">핵심만 쏙</h2>
+            <div className="space-y-3 sm:space-y-4">
+              {(activeTabData?.highlights ?? feature.highlights).map((highlight, index) => {
+                const detail = feature.highlightDetails?.[highlight];
+                if (detail) {
+                  return (
+                    <div key={index} className="bg-blue-50 rounded-xl p-4 sm:p-5 overflow-hidden">
+                      <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
+                        {detail.title}
+                      </h3>
+                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed whitespace-pre-line mb-3 sm:mb-4">
+                        {detail.description}
+                      </p>
+                      <div
+                        className="rounded-xl overflow-hidden bg-black"
+                        onClick={handleVideoClick}
+                      >
+                        <MediaViewer
+                          mediaType={detail.mediaType}
+                          mediaUrl={detail.mediaUrl}
+                          title={detail.title}
+                          isShorts={detail.isShorts}
+                          fallbackUrl={detail.fallbackUrl}
+                        />
+                      </div>
+                    </div>
+                  );
+                }
+                return (
+                  <div
+                    key={index}
+                    className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 bg-blue-50 rounded-xl"
+                  >
+                    <span className="text-blue-600 font-bold text-base sm:text-lg">✓</span>
+                    <span className="text-sm sm:text-base text-gray-800 font-medium">{highlight}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         )}
 
 
