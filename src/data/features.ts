@@ -35,6 +35,14 @@ export interface CollapsibleDisclaimer {
   items: string[];
 }
 
+export interface TrueSteamCourse {
+  name: string;
+  description: string;
+  imageUrl: string;
+  imageAlt?: string;
+}
+
+
 export interface FeatureTab {
   label: string;
   description?: string;
