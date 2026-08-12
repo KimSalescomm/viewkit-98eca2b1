@@ -1782,24 +1782,25 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "와이드 디스플레이, 플랫 도어와 플랫 세제함을\n적용해 프리미엄 디자인을 완성했어요.",
       icon: "Monitor",
       tag: "All New Full 플랫 디자인",
-      mediaType: "gallery",
-      mediaUrl: "",
-      galleryImages: [
-        {
-          url: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo01.jpg",
-          title: "풀 플랫 도어 디자인",
-          description: "도어가 기기 전면과 같은 높이로 마감되어 세탁실도 거실처럼 깔끔해요.",
-        },
-        {
-          url: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo03.jpg",
-          title: "미니멀한 전면 실루엣",
-          description: "불필요한 요소를 덜어내 어떤 인테리어에도 조화롭게 어울려요.",
-        },
-      ],
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_14_design_pc.mp4",
       descriptionTitle: "자세히 알아보기",
       description:
         "풀 플랫 도어와 미니멀한 디자인으로 공간에 자연스럽게 녹아들어요. 세탁실도 거실처럼 깔끔하게 마무리할 수 있어요.",
-      highlights: ["풀 플랫 디자인", "미니멀 전면", "인테리어 통합"],
+      highlights: ["프리미엄 디자인", "넓어진 터치 디스플레이"],
+      tabsVariant: "underline",
+      tabs: [
+        {
+          label: "플랫 도어와 플랫 세제함으로 깔끔한 디자인",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_14_design_pc.mp4",
+        },
+        {
+          label: "더 커진 7인치 와이드 디스플레이",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_15_1_control_pc.mp4",
+        },
+      ],
     },
     {
       id: "6",
