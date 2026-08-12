@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import MediaViewer from "@/components/MediaViewer";
 import FeatureIcon from "@/components/FeatureIcon";
 import OrientationToggle from "@/components/OrientationToggle";
+import SafeImage from "@/components/SafeImage";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { useContent } from "@/contexts/ContentContext";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+
 import {
   Accordion,
   AccordionContent,
@@ -415,7 +417,49 @@ const FeatureDetail = () => {
         )}
 
 
+        {/* 트루스팀 적용 코스 */}
+        {feature.courses && feature.courses.length > 0 && (
+          <section className="mb-10 sm:mb-12">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
+              트루스팀 적용 코스
+            </h2>
+            <div className="space-y-4 sm:space-y-5">
+              {feature.courses.map((course, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col md:flex-row"
+                >
+                  <div className="h-1 w-full bg-gradient-to-r from-blue-400 to-purple-400 md:hidden" />
+                  <div className="w-full md:w-3/5 bg-gray-50">
+                    <SafeImage
+                      src={course.imageUrl}
+                      alt={course.imageAlt || course.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                  <div className="hidden md:block w-1 bg-gradient-to-b from-blue-400 to-purple-400 flex-shrink-0" />
+                  <div className="w-full md:w-2/5 p-5 sm:p-6 flex flex-col justify-center">
+                    <span className="inline-block self-start mb-2 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-blue-50 text-blue-600">
+                      코스
+                    </span>
+                    <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
+                      {course.name}
+                    </h3>
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                      {course.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+
         {/* Disclaimers */}
+
         {feature.disclaimers && feature.disclaimers.length > 0 && (
           <div className="mb-4 sm:mb-6 px-1">
             <ul className="space-y-1">
