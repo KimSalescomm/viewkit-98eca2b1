@@ -115,7 +115,11 @@ export interface Feature {
   subFeaturesTitle?: string;
   subFeaturesSubtitle?: string;
 
+  /** 트루스팀 등 실제 적용 코스 소개 카드 */
+  courses?: TrueSteamCourse[];
+
   disabled?: boolean;
+
   /** true면 SC(관리자) 계정에서만 노출, 매장 계정에서는 숨김 */
   scOnly?: boolean;
 }
