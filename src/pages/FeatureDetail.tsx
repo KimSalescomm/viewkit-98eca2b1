@@ -16,7 +16,7 @@ import {
 const FeatureDetail = () => {
   const { productId, id } = useParams<{ productId: string; id: string }>();
   const { trackDetailView, trackVideoClick } = useAnalyticsContext();
-  const { getFeatureById, getProductById } = useContent();
+  const { getFeatureById, getProductById, isProductVisible } = useContent();
 
   const feature = getFeatureById(productId || "", id || "");
   const product = getProductById(productId || "");
@@ -45,7 +45,7 @@ const FeatureDetail = () => {
     }
   };
 
-  if (!feature || !product) {
+  if (!feature || !product || !isProductVisible(productId || "")) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
         <div className="text-center">
