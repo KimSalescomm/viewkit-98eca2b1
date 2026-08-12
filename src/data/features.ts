@@ -1727,7 +1727,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "5",
-      title: "All New Full 플랫 디자인, 미니워시",
+      title: "All New Full 플랫 디자인",
       subtitle: "세탁기가 가구처럼 깔끔하게 들어간다고요?",
       icon: "Monitor",
       tag: "디자인",
@@ -1744,6 +1744,21 @@ export const featuresMap: Record<string, Feature[]> = {
           title: "미니멀한 전면 실루엣",
           description: "불필요한 요소를 덜어내 어떤 인테리어에도 조화롭게 어울려요.",
         },
+      ],
+      descriptionTitle: "자세히 알아보기",
+      description:
+        "풀 플랫 도어와 미니멀한 디자인으로 공간에 자연스럽게 녹아들어요. 세탁실도 거실처럼 깔끔하게 마무리할 수 있어요.",
+      highlights: ["풀 플랫 디자인", "미니멀 전면", "인테리어 통합"],
+    },
+    {
+      id: "6",
+      title: "미니워시",
+      subtitle: "속옷이나 운동화도 별도로 케어할 수 있다고요?",
+      icon: "Puzzle",
+      tag: "미니워시",
+      mediaType: "gallery",
+      mediaUrl: "",
+      galleryImages: [
         {
           url: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo01.jpg",
           title: "미니워시와의 조합",
@@ -1752,8 +1767,8 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
       descriptionTitle: "자세히 알아보기",
       description:
-        "풀 플랫 도어와 미니멀한 디자인으로 공간에 자연스럽게 녹아들어요. 미니워시와 함께하면 작은 아이템도 별도로 케어할 수 있어요.",
-      highlights: ["풀 플랫 디자인", "미니멀 전면", "미니워시 연동", "인테리어 통합"],
+        "워시콤보와 함께 미니워시를 연동하면 소량 세탁물이나 속옷, 운동화 같은 작은 아이템도 따로 관리할 수 있어요. 세탁물 종류에 맞춰 효율적으로 케어하세요.",
+      highlights: ["미니워시 연동", "소량 세탁", "속옷·운동화 케어"],
     },
   ],
 
