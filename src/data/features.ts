@@ -1637,7 +1637,7 @@ export const featuresMap: Record<string, Feature[]> = {
   washcombo: [
     {
       id: "1",
-      title: "세탁부터 건조까지,\n한 대로 끝낼 수 있을까요?",
+      title: "AI 올인원 세탁+건조",
       subtitle: "세탁물을 옮기지 않아도\n한 대로 세탁·건조가 끝나요.",
       icon: "Waves",
       tag: "올인원",
@@ -1645,7 +1645,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_02_all_in_one_pc.mp4",
       descriptionTitle: "자세히 알아보기",
       description:
-        "세탁이 끝나면 그대로 건조까지 이어져요. 세탁물을 꺼내 옮기는 번거로움 없이, 한 대로 세탁·건조를 모두 해결할 수 있어요.",
+        "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁+건조를 완성하고, 결과까지 확인할 수 있어요.",
       highlights: ["세탁·건조 원스톱", "옮김 없는 편리함", "좁은 공간에도 한 대로", "야간 저소음 운전"],
       disclaimers: ["본 페이지는 내부 검토용 대외비 자료입니다."],
     },
