@@ -1707,7 +1707,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "6",
       title: "여름철 습기와의 전쟁!\n욕실을 보송하게 바꾼 비결은?",
-      subtitle: "여름철 습기와의 전쟁!\n바스에어시스템 구독으로 해결",
+      subtitle: "여름철 습기와의 전쟁!\n바스에어시스템 구독으로 해결해요",
       icon: "Monitor",
       tag: "영상",
       mediaType: "youtube",
@@ -1715,7 +1715,7 @@ export const featuresMap: Record<string, Feature[]> = {
       isShorts: false,
       descriptionTitle: "자세히 알아보기",
       description:
-        "샤워하고 나와도 금세 끈적이는 몸, 습기 가득찬 욕실, 꿉꿉한 냄새...\n여름철 욕실 관리 때문에 스트레스 받지 마세요!\nLG전자 퓨리케어 바스에어시스템이 거울 김 서림부터\n축축한 바닥 습기까지 싹 잡아서 보송한 욕실을 만들어주니까요.",
+        "샤워하고 나와도 금세 끈적이는 몸, 습기 가득찬 욕실, 꿉꿉한 냄새...\n여름철 욕실 관리 때문에 스트레스 받지 마세요.\nLG전자 퓨리케어 바스에어시스템이 거울 김 서림부터\n축축한 바닥 습기까지 싹 잡아서 보송한 욕실을 만들어주니까요.",
       highlights: ["송풍", "환기모드", "케어 전문가", "분해 세척"],
       disclaimers: [],
       collapsibleDisclaimers: [
@@ -1759,7 +1759,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           title: "[환기]",
           items: [
-            "리모컨의 환기 버튼을 누르면 욕실 내 공기가 배기되어 공간을 쾌적하게 유지합니다.",
+            "리모컨의 환기 버튼을 누르면 욕실 내 공기가 배기되어 공간을 쾌적하게 유지해요.",
           ],
         },
       ],
