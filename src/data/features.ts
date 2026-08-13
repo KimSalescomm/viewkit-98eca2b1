@@ -1824,7 +1824,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "7",
-      title: "바스에어시스템 케어서비스를 확인해보세요",
+      title: "케어서비스를 확인해보세요",
       subtitle: "체계적인 전문가 케어 프로세스를 통해 위생적으로 관리해드립니다",
       icon: "Waves",
       tag: "구독",
