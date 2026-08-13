@@ -1,5 +1,7 @@
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import MediaViewer from "@/components/MediaViewer";
 import FeatureIcon from "@/components/FeatureIcon";
 import OrientationToggle from "@/components/OrientationToggle";
