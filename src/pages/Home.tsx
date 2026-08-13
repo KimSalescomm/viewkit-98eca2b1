@@ -88,7 +88,7 @@ const Home = () => {
                   key={src + index}
                   className={`
                     relative rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white bg-gray-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] aspect-video
-                    ${isVacuumHiddenInLandscape ? "hidden sm:block" : ""}
+                    ${isVacuumHiddenInLandscape ? "block sm:hidden" : ""}
                   `}
                 >
                   {/* 블러 배경: 비율이 달라 생기는 여백을 자연스럽게 채움 */}
