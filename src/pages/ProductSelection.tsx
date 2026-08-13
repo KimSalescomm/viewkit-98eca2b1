@@ -252,8 +252,6 @@ const ProductSelection = () => {
             <MobileAccessQR storeSlug={currentStore?.slug} variant="segment" />
             <a
               href="https://viewkitup-showcase-pages.lovable.app"
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-semibold text-gray-700 hover:bg-gray-100 transition-colors"
               title="뷰킷 소개"
             >
