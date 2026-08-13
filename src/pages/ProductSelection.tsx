@@ -39,9 +39,6 @@ const lucideIconMap: Record<string, LucideIcon> = {
   Droplets,
 };
 
-// 대외비 제품 — SC(관리자) 및 KOR(유관부서) 계정에서만 노출
-const CONFIDENTIAL_PRODUCT_IDS = new Set(["bathair", "washcombo"]);
-const INTERNAL_STORE_SLUGS = new Set(["SC", "KOR"]);
 
 
 const ProductLucideIcon = ({ name, className }: { name: string; className?: string }) => {
@@ -136,7 +133,6 @@ const ProductSelection = () => {
     },
   };
   const currentSlug = (getCurrentStore()?.slug || "").toUpperCase();
-  const isInternalPreview = INTERNAL_STORE_SLUGS.has(currentSlug);
   const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")].map((p) => {
     const override = cardThumbnailOverrides[p.id];
     return override ? { ...p, ...override } : p;
