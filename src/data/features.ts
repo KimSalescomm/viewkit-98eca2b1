@@ -1539,7 +1539,7 @@ export const featuresMap: Record<string, Feature[]> = {
   bathair: [
     {
       id: "1",
-      title: "듀얼배기로 습기와 냄새를 더 빠르게 제거할 수 있을까요?",
+      title: "듀얼배기로 습기와 냄새\n를 더 빠르게 제거할 수 있을까요?",
       subtitle: "바스에어시스템과 배기팬이 함께 작동해\n환기 효과를 높이고 쾌적한 환경을 유지합니다.",
       icon: "Wind",
       tag: "듀얼 배기",
@@ -1556,7 +1556,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "온도·습도를 제어하여 사계절 내내 욕실을 쾌적하게 만들어줄까요?",
+      title: "온도·습도를 제어하여 사계절 내내\n욕실을 쾌적하게 만들어줄까요?",
       subtitle: "겨울엔 따뜻한 온풍으로, 여름엔 시원한 송풍으로\n편안한 욕실 환경을 경험해 보세요.",
       icon: "Flame",
       tag: "웜 & 프레시케어",
