@@ -2282,8 +2282,8 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/wash_combo_250804.mp4",
       descriptionTitle: "자세히 알아보기",
       description:
-        "세탁부터 건조까지 한 번에 올인원 워시콤보를 정기적인 전문 관리를 통해 더 깨끗하게!",
-      highlights: ["세탁+건조 올인원 케어", "정기적인 전문 관리", "구독으로 부담 없이 시작"],
+        "가전 케어 매니저가 정기적으로 소모품 교체부터 위생 관리까지 도와줘 편리해요.",
+      highlights: ["LG전자에서 연구한 전용 관리제 사용", "세제함, 필터 등을 스팀 케어", "필터 교체 주기에 맞춰 필터 교체"],
       disclaimers: [
         "소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
       ],
