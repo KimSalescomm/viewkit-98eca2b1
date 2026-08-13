@@ -2,6 +2,7 @@ import aircondAiSleepAsset from "@/assets/airconditioner-ai-sleep.png.asset.json
 import aircondRadarAsset from "@/assets/airconditioner-radar.png.asset.json";
 import aircondVoiceAsset from "@/assets/airconditioner-voice.png.asset.json";
 import washcomboAiTimeGuideAsset from "@/assets/washcombo-ai-time-guide.png.asset.json";
+import washcomboAiTimeSensingAsset from "@/assets/washcombo-ai-time-sensing.png.asset.json";
 import washcomboAutomaticAsset from "@/assets/washcombo-automatic.jpg.asset.json";
 
 
@@ -1912,6 +1913,8 @@ export const featuresMap: Record<string, Feature[]> = {
           title: "약 3초 만에 알려주는 세탁+건조 예상 시간",
           description:
             "세탁물을 투입 후 문을 닫고 시작 버튼을 누르면 무게를 감지해 약 3초 만에 예상 시간을 알려줍니다.\n세탁기 앞에서 오래 기다릴 필요가 없고, 코스 별 시간도 바로 확인할 수 있어 편리해요.",
+          mediaType: "image",
+          mediaUrl: washcomboAiTimeSensingAsset.url,
           disclaimers: [
             {
               title: "AI 타임 센싱",
