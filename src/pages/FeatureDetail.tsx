@@ -688,10 +688,10 @@ const FeatureDetail = () => {
                       type="button"
                       onClick={() => emblaApi?.scrollTo(index)}
                       className={`w-2 h-2 rounded-full transition-all ${
-                        index === courseIndex
-                          ? "bg-blue-600 w-4"
-                          : "bg-gray-300 hover:bg-gray-400"
+                        index === courseIndex ? "w-4" : "bg-gray-300 hover:bg-gray-400"
                       }`}
+                      style={index === courseIndex ? { backgroundColor: "hsl(var(--tab-accent))" } : undefined}
+
                       aria-label={`${index + 1}번째 코스로 이동`}
                     />
                   ))}
