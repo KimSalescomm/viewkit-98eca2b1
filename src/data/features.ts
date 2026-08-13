@@ -1869,7 +1869,7 @@ export const featuresMap: Record<string, Feature[]> = {
       id: "1",
       title: "빨래할 때마다 세탁, 건조 코스 직접 고르세요?",
       subtitle: "AI 기술로 세탁물의 무게와 재질을 감지해\n세탁하고 건조 시간까지 정확하게 알려줘요.",
-      icon: "Brain",
+      icon: "Cpu",
       tag: "AI 올인원 세탁+건조",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_04_ai_wash_dry_pc.mp4",
