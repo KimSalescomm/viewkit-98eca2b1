@@ -92,7 +92,7 @@ export const products: Product[] = [
     id: "bathair",
     name: "바스에어시스템",
     title: "바스에어시스템",
-    description: "습기·냄새·곰팡이 걱정 없는\n스마트 욕실 공기케어 (내부용)",
+    description: "듀얼배기로 완성하는 프리미엄 욕실 라이프",
     keyVisualImage: bathairHomepage,
     icon: "Droplets",
   },
