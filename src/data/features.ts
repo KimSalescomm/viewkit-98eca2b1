@@ -3,6 +3,8 @@ import aircondRadarAsset from "@/assets/airconditioner-radar.png.asset.json";
 import aircondVoiceAsset from "@/assets/airconditioner-voice.png.asset.json";
 import washcomboAiTimeGuideAsset from "@/assets/washcombo-ai-time-guide.png.asset.json";
 import washcomboAiTimeSensingAsset from "@/assets/washcombo-ai-time-sensing.png.asset.json";
+import washcomboAiTimeSensingWideAsset from "@/assets/washcombo-ai-time-sensing-wide.png.asset.json";
+import washcomboAiOptimizationRecordAsset from "@/assets/washcombo-ai-optimization-record.png.asset.json";
 import washcomboAutomaticAsset from "@/assets/washcombo-automatic.jpg.asset.json";
 
 
@@ -1919,7 +1921,7 @@ export const featuresMap: Record<string, Feature[]> = {
           description:
             "세탁물을 투입 후 문을 닫고 시작 버튼을 누르면 무게를 감지해 약 3초 만에 예상 시간을 알려줍니다.\n세탁기 앞에서 오래 기다릴 필요가 없고, 코스 별 시간도 바로 확인할 수 있어 편리해요.",
           mediaType: "image",
-          mediaUrl: washcomboAiTimeSensingAsset.url,
+          mediaUrl: washcomboAiTimeSensingWideAsset.url,
           disclaimers: [
             {
               title: "AI 타임 센싱",
@@ -1952,8 +1954,8 @@ export const featuresMap: Record<string, Feature[]> = {
           title: "세탁물의 특성에 맞춰 AI가 최적화한 세탁+건조 과정을 기록",
           description:
             "AI 세탁+건조 코스를 사용하면 옷감의 재질과 오염도를 분석해\n최적의 세탁+건조 조건을 설정하고 기록해요.\nAI 최적화 기록은 디스플레이에서 확인할 수 있어요.",
-          mediaType: "video",
-          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_07_ai_report.mp4",
+          mediaType: "image",
+          mediaUrl: washcomboAiOptimizationRecordAsset.url,
           disclaimers: [
             {
               title: "AI 최적화 기록",
