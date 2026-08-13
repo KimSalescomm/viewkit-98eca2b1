@@ -1,5 +1,7 @@
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import MediaViewer from "@/components/MediaViewer";
 import FeatureIcon from "@/components/FeatureIcon";
 import OrientationToggle from "@/components/OrientationToggle";
@@ -27,6 +29,33 @@ const FeatureDetail = () => {
 
   const [activeTab, setActiveTab] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  // 트루스팀 적용 코스 캐러셀
+  const [courseIndex, setCourseIndex] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+
+  const scrollCoursePrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollCourseNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  const onCourseSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCourseIndex(emblaApi.selectedScrollSnap());
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onCourseSelect();
+    emblaApi.on("select", onCourseSelect);
+    emblaApi.on("reInit", onCourseSelect);
+    return () => {
+      emblaApi.off("select", onCourseSelect);
+      emblaApi.off("reInit", onCourseSelect);
+    };
+  }, [emblaApi, onCourseSelect]);
 
   const renderMediaGallery = (images: GalleryImage[] | undefined) => {
     if (!images || images.length === 0) return null;
@@ -591,70 +620,119 @@ const FeatureDetail = () => {
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
               트루스팀 적용 코스
             </h2>
-            <div className="space-y-4 sm:space-y-5">
-              {feature.courses.map((course, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col md:flex-row"
-                >
-                  <div className="h-1 w-full bg-gradient-to-r from-blue-400 to-purple-400 md:hidden" />
-                  <div className="w-full md:w-3/5 bg-gray-50">
-                    <SafeImage
-                      src={course.imageUrl}
-                      alt={course.imageAlt || course.name}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-auto object-cover"
-                    />
-                  </div>
-                  <div className="hidden md:block w-1 bg-gradient-to-b from-blue-400 to-purple-400 flex-shrink-0" />
-                  <div className="w-full md:w-2/5 p-5 sm:p-6 flex flex-col justify-center">
-                    <span className="inline-block self-start mb-2 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-blue-50 text-blue-600">
-                      {course.type || "코스"}
-                    </span>
-                    <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
-                      {course.name}
-                    </h3>
-                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                      {course.description}
-                    </p>
+            <div className="relative group">
+              <div className="overflow-hidden rounded-2xl" ref={emblaRef}>
+                <div className="flex">
+                  {feature.courses.map((course, index) => (
+                    <div
+                      key={index}
+                      className="flex-[0_0_100%] min-w-0 pl-0"
+                    >
+                      <div className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col md:flex-row">
+                        <div className="h-1 w-full bg-gradient-to-r from-blue-400 to-purple-400 md:hidden" />
+                        <div className="w-full md:w-3/5 bg-gray-50">
+                          <SafeImage
+                            src={course.imageUrl}
+                            alt={course.imageAlt || course.name}
+                            loading="lazy"
+                            decoding="async"
+                            className="w-full h-auto object-cover"
+                          />
+                        </div>
+                        <div className="hidden md:block w-1 bg-gradient-to-b from-blue-400 to-purple-400 flex-shrink-0" />
+                        <div className="w-full md:w-2/5 p-5 sm:p-6 flex flex-col justify-center">
+                          <span className="inline-block self-start mb-2 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-blue-50 text-blue-600">
+                            {course.type || "코스"}
+                          </span>
+                          <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
+                            {course.name}
+                          </h3>
+                          <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                            {course.description}
+                          </p>
 
-                    {course.disclaimers && course.disclaimers.length > 0 && (
-                      <Accordion type="single" collapsible className="w-full mt-4">
-                        <AccordionItem
-                          value={`course-${index}-details`}
-                          className="border-b border-gray-100 last:border-b-0"
-                        >
-                          <AccordionTrigger className="py-2.5 hover:no-underline text-left text-xs sm:text-sm font-bold text-gray-700">
-                            세부정보
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-3 pt-1 pb-2">
-                              {course.disclaimers.map((disclaimer, dIndex) => (
-                                <div key={dIndex}>
-                                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-700 mb-1">
-                                    {disclaimer.title}
-                                  </h4>
-                                  <ul className="space-y-1">
-                                    {disclaimer.items.map((text, i) => (
-                                      <li
-                                        key={i}
-                                        className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed"
-                                      >
-                                        * {text}
-                                      </li>
+                          {course.disclaimers && course.disclaimers.length > 0 && (
+                            <Accordion type="single" collapsible className="w-full mt-4">
+                              <AccordionItem
+                                value={`course-${index}-details`}
+                                className="border-b border-gray-100 last:border-b-0"
+                              >
+                                <AccordionTrigger className="py-2.5 hover:no-underline text-left text-xs sm:text-sm font-bold text-gray-700">
+                                  세부정보
+                                </AccordionTrigger>
+                                <AccordionContent>
+                                  <div className="space-y-3 pt-1 pb-2">
+                                    {course.disclaimers.map((disclaimer, dIndex) => (
+                                      <div key={dIndex}>
+                                        <h4 className="text-[11px] sm:text-xs font-bold text-gray-700 mb-1">
+                                          {disclaimer.title}
+                                        </h4>
+                                        <ul className="space-y-1">
+                                          {disclaimer.items.map((text, i) => (
+                                            <li
+                                              key={i}
+                                              className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed"
+                                            >
+                                              * {text}
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
                                     ))}
-                                  </ul>
-                                </div>
-                              ))}
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    )}
-                  </div>
+                                  </div>
+                                </AccordionContent>
+                              </AccordionItem>
+                            </Accordion>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {/* Navigation */}
+              {feature.courses.length > 1 && (
+                <>
+                  <button
+                    type="button"
+                    onClick={scrollCoursePrev}
+                    disabled={!canScrollPrev}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 backdrop-blur shadow-md flex items-center justify-center text-gray-700 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white transition-colors"
+                    aria-label="이전 코스"
+                  >
+                    <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={scrollCourseNext}
+                    disabled={!canScrollNext}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 backdrop-blur shadow-md flex items-center justify-center text-gray-700 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white transition-colors"
+                    aria-label="다음 코스"
+                  >
+                    <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </button>
+                </>
+              )}
+
+              {/* Dots */}
+              {feature.courses.length > 1 && (
+                <div className="flex justify-center gap-2 mt-4">
+                  {feature.courses.map((_, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => emblaApi?.scrollTo(index)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        index === courseIndex
+                          ? "bg-blue-600 w-4"
+                          : "bg-gray-300 hover:bg-gray-400"
+                      }`}
+                      aria-label={`${index + 1}번째 코스로 이동`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </section>
         )}
