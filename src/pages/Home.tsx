@@ -80,10 +80,16 @@ const Home = () => {
 
             return displayImages.map((src, index) => {
               const isFirst = index === 0 && !product.keyVisualVideo;
+              // 청소로봇은 가로형에서 첫 번째(위) 이미지만 노출하고,
+              // 아래 추가 이미지는 세로형에서만 보이도록 제한
+              const isVacuumHiddenInLandscape = isVacuum && index > 0;
               return (
                 <div
                   key={src + index}
-                  className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white bg-gray-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] aspect-video"
+                  className={`
+                    relative rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white bg-gray-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] aspect-video
+                    ${isVacuumHiddenInLandscape ? "hidden sm:block" : ""}
+                  `}
                 >
                   {/* 블러 배경: 비율이 달라 생기는 여백을 자연스럽게 채움 */}
                   <SafeImage
