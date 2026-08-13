@@ -308,6 +308,30 @@ const FeatureDetail = () => {
           </p>
         </div>
 
+        {/* Tab-specific collapsible disclaimers */}
+        {activeTabData?.collapsibleDisclaimers && activeTabData.collapsibleDisclaimers.length > 0 && (
+          <div className="mb-6 sm:mb-8 px-1">
+            <Accordion type="multiple" className="w-full">
+              {activeTabData.collapsibleDisclaimers.map((item, index) => (
+                <AccordionItem key={index} value={`tab-disclaimer-${index}`} className="border-b border-gray-200">
+                  <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
+                    {item.title}
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <ol className="space-y-1 list-none pt-1 pb-2">
+                      {item.items.map((text, i) => (
+                        <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
+                          {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
+                        </li>
+                      ))}
+                    </ol>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        )}
+
 
         {/* 세부 기능 (메인 콘텐츠 하위 · 아코디언) */}
         {feature.subFeatures && feature.subFeatures.length > 0 && (!tabs || activeTab === 0) && (
