@@ -408,6 +408,38 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
       typeof img === "string" ? { url: img } : img
     );
 
+    // 2개 이미지는 나란히 정적 배치
+    if (normalizedImages.length === 2) {
+      return (
+        <div style={{ width: "100%" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 1fr)",
+              gap: "12px",
+              borderRadius: "16px",
+              overflow: "hidden",
+            }}
+          >
+            {normalizedImages.map((image, idx) => (
+              <div key={idx} style={{ minWidth: 0 }}>
+                <SafeImage
+                  src={image.url}
+                  alt={image.title || `${title} - 이미지 ${idx + 1}`}
+                  loading="lazy"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    display: "block",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
     const currentImage = normalizedImages[selectedIndex] ?? normalizedImages[0];
 
     return (
