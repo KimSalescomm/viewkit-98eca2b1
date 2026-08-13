@@ -8,6 +8,10 @@ import washcomboAiOptimizationRecordAsset from "@/assets/washcombo-ai-optimizati
 import washcomboAiTimeSensingDisplayAsset from "@/assets/washcombo-ai-time-sensing-display.png.asset.json";
 import washcomboAiReportWideAsset from "@/assets/washcombo-ai-report-wide.mp4.asset.json";
 import washcomboAutomaticAsset from "@/assets/washcombo-automatic.jpg.asset.json";
+import bathairHomepageAsset from "@/assets/bathair-homepage.jpg.asset.json";
+
+const bathairHomepageImage = bathairHomepageAsset.url;
+
 
 
 
@@ -1818,7 +1822,46 @@ export const featuresMap: Record<string, Feature[]> = {
         "바스에어시스템 프리미엄 듀얼 설치 시, 공기 흐름이 원활하도록 배기팬과 떨어뜨려 설치하는 것을 권장합니다.",
       ],
     },
+    {
+      id: "7",
+      title: "부담은 낮추고 관리는 맡기고,\n구독으로 시작해 볼까요?",
+      subtitle: "초기 구입 부담 없이 바스에어시스템을 사용하고, 케어 전문가의 정기 방문 관리까지 받아보세요.",
+      icon: "Waves",
+      tag: "구독",
+      mediaType: "image",
+      mediaUrl: bathairHomepageImage,
+      fullWidthMedia: true,
+      descriptionTitle: "자세히 알아보기",
+      description:
+        "바스에어시스템 구독은 한 번에 큰 비용을 들이지 않고 월 요금으로 이용하는 방식입니다.\n구독 기간 동안 6/12개월 주기 방문 케어와 필터 클리닝, 24개월 주기 필터 교체가 제공되며\n제품 이상 시 무상 A/S까지 지원되어 설치 후 관리 부담이 크게 줄어듭니다.",
+      highlights: [],
+      mediaDisclaimers: [
+        "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
+        "구독 요금 및 할인 조건은 판매처/지점 및 계약기간에 따라 상이할 수 있습니다.",
+      ],
+      mediaCollapsibleDisclaimers: [
+        {
+          title: "[케어 서비스]",
+          items: [
+            "바스에어시스템 케어서비스는 구독 계약 고객에 한해 제공됩니다.",
+            "6/12개월 마다 방문 관리 케어가 제공됩니다.",
+            "필터 클리닝은 6개월 또는 12개월 주기마다 제공하며, 24개월 주기마다 새 필터로 교체됩니다.",
+            "사용 환경 및 평소 관리 정도에 따라 오염도는 상이할 수 있습니다.",
+            "방문 일정은 상황에 따라 변경될 수 있으며 방문 전 케어 전문가가 사전 연락을 드립니다.",
+            "구독 케어 서비스와 무상 A/S는 가전 구독 고객에 한하며, 고객 과실로 인한 제품 고장은 제외됩니다.",
+            "자세한 내용은 LGE.COM 내 가전구독 제품별 상세 페이지를 참고해주세요.",
+            "판매처별 운영하는 제품 모델은 상이할 수 있습니다.",
+            "총 계약기간 동안 제품의 소유권은 회사에게 있으며, 재구독은 계약기간 이후에 가능합니다.",
+            "분실료 기준 : 제품판매가-{(제품판매가/총 계약기간(개월 수) X 사용 개월 수}, 파손의 경우 분실료의 50% 입니다.",
+            "의무 사용기간 내에 해지 시 위약금 등 비용이 발생할 수 있으며 의무 사용기간이 경과하였더라도, 계약기간 이내에 해지할 경우 철거료 등 부대비용이 일부 발생할 수 있습니다.",
+            "가전 구독 계약기간 종료 후에는 케어십을 이용하실 수 있습니다.",
+            "판매처별/지점별 판촉에 따라 할인적용 여부 및 적용가는 상이할 수 있습니다.",
+          ],
+        },
+      ],
+    },
   ],
+
 
   // 워시콤보 특장점 (대외비 · SC/KOR 계정 전용)
   washcombo: [
