@@ -1553,7 +1553,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_160CMH_pc.jpg",
       fullWidthMedia: true,
       description:
-        "최대 풍량 160CMH의 강력한 듀얼배기는\n욕실 내 습기를 16분 만에 60%까지 낮추고,\n습기 체류 시간을 단축시켜 보송한 욕실을 만들어줍니다.",
+        "최대 풍량 160CMH의 강력한 듀얼배기는 욕실 내 습기를 16분 만에 60%까지 낮추고, 습기 체류 시간을 단축시켜 보송한 욕실을 만들어줍니다.",
       highlights: [],
 
       mediaDisclaimers: [
