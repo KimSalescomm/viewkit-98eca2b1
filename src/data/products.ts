@@ -60,6 +60,7 @@ export const products: Product[] = [
     description: "지금까지 보지 못한 빛과 색을 깨운 올레드의 탄생",
     keyVisualImage: "https://static.lge.co.kr/kr/story/buying-guide/2025/img/tv/img_P14_001_10.png",
     icon: "Tv",
+    imageZoom: 1.1,
   },
   {
     id: "washer",
