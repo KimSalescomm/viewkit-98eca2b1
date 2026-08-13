@@ -1558,7 +1558,7 @@ export const featuresMap: Record<string, Feature[]> = {
   bathair: [
     {
       id: "1",
-      title: "듀얼배기로\n습기와 냄새를 더 빠르게 제거할 수 있어요",
+      title: "듀얼배기, 무엇이 좋을까요?",
       subtitle: "바스에어시스템과 배기팬이 함께 작동해서 환기 효과를 높이고 쾌적한 환경을 유지해요",
       icon: "Wind",
       tag: "듀얼 배기",
@@ -1591,7 +1591,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "온도·습도를 조절해서\n사계절 내내 욕실을 쾌적하게 만들어줘요",
+      title: "사계절 내내 욕실이 쾌적할 수 있는 이유!",
       subtitle: "겨울엔 따뜻한 온풍으로, 여름엔 시원한 송풍으로 편안한 욕실 환경을 경험해보세요",
       icon: "Flame",
       tag: "웜 & 프레시케어",
@@ -1690,7 +1690,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "눈에 보이지 않는 세균까지\n깨끗하게 관리돼요",
+      title: "물기 많은 욕실, 세균이 걱정된다면?",
       subtitle: "UV팬살균으로 내부 위생을 청결하게 유지하고\n전문 케어서비스로 제품을 깨끗하게 관리해요",
       icon: "Sparkles",
       tag: "클린케어",
@@ -1766,7 +1766,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "5",
-      title: "실제 설치 사례를 확인해 보세요",
+      title: "바스에어를 설치한 집은 어떨까?",
       subtitle: "고객 니즈와 현장 상황을 고려해서 최적의 위치에 설치해 드려요",
       icon: "Image",
       tag: "설치 사례",
@@ -1810,7 +1810,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "4",
-      title: "우리집 욕실에도 설치할 수 있어요",
+      title: "우리집 욕실에도 설치할 수 있나요?",
       subtitle: "미리 우리 집 설치 환경이 바스에어시스템 설치에 적합한지 확인해보세요",
       icon: "Wrench",
       tag: "설치 환경",
