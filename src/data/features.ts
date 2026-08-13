@@ -1852,15 +1852,10 @@ export const featuresMap: Record<string, Feature[]> = {
           highlights: [],
           collapsibleDisclaimers: [
             {
-              title: "AI 세탁",
+              title: "세부정보",
               items: [
                 "AI 세탁 코스는 최대용량 6kg 이하에서 동작하며, 실사용 환경 및 세탁물 종류에 따라 다를 수 있습니다.",
                 "AI 세탁은 딥러닝 AI 기술을 이용해 의류의 재질을 감지한 후 6모션 중 최적의 모션으로 세탁하며, 빅데이터 기반 환경에 맞춰 큰 진동을 미리 예측해 안정적으로 탈수 합니다.",
-              ],
-            },
-            {
-              title: "AI 건조",
-              items: [
                 "AI 건조 코스는 AI 타임 센싱 및 AI 시간 안내 기능이 적용되어 있습니다.",
                 "설치 조건 및 실사용 조건에 따라 시간은 달라질 수 있습니다.",
               ],
