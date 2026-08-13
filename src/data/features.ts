@@ -2011,7 +2011,7 @@ export const featuresMap: Record<string, Feature[]> = {
       descriptionTitle: "자세히 알아보기",
       description:
         "플랫 도어와 플랫 세제함을 적용해 세련되고 깔끔해진 디자인을 만나보세요. 고급스러운 색상을 취향에 맞게 선택해 인테리어를 완성할 수 있어요.",
-      highlights: ["모던하고 세련된 프리미엄 디자인", "한눈에 많은 정보를 확인 가능한 와이드 디스플레이"],
+      highlights: ["모던하고 세련된 프리미엄 디자인", "7인치 와이드 디스플레이", "워시콤보와 미니워시 통합 컨트롤"],
       tabsVariant: "underline",
       tabs: [
         {
