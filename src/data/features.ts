@@ -1793,12 +1793,7 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
       description:
         "다양한 욕실 구조와 공간에 맞춰 최적의 위치에 설치된 실제 사례를 확인해 보세요. 이제 사계절 쾌적한 프리미엄 욕실 라이프를 즐겨보세요.",
-      highlights: [
-        "욕조 위 설치",
-        "샤워 부스 내 설치",
-        "점검구 내 설치",
-        "아치형 천장 공간 활용",
-      ],
+      highlights: [],
     },
     {
       id: "4",
