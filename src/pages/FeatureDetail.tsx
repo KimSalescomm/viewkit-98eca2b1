@@ -409,9 +409,9 @@ const FeatureDetail = () => {
                           )}
                           <ol className="space-y-1 list-none">
                             {item.items.map((text, i) => (
-                              <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
-                                {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
-                              </li>
+                            <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
+                              {text}
+                            </li>
                             ))}
                           </ol>
                         </div>
@@ -695,9 +695,9 @@ const FeatureDetail = () => {
                           )}
                           <ol className="space-y-1 list-none">
                             {item.items.map((text, i) => (
-                              <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
-                                {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
-                              </li>
+                          <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
+                            {text}
+                          </li>
                             ))}
                           </ol>
                         </div>
