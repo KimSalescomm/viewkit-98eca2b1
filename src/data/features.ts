@@ -2196,7 +2196,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "6",
-      title: "적은 양의 빨래는 따로 세탁하길 원한다면?",
+      title: "워시콤보를 잘 사용하려면 어떻게 해야할까요?",
       subtitle: "워시콤보와 미니워시를 결합해\n동시세탁/분리세탁을 할 수 있어요.",
       icon: "Shirt",
       tag: "미니워시",
