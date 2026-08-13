@@ -38,12 +38,26 @@ export default function Guide() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[hsl(var(--manual-indigo-light))] to-white pb-20">
       {/* Top bar */}
-      <div className="sticky top-0 z-20 backdrop-blur bg-white/80 border-b border-[hsl(var(--manual-indigo-light))]">
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-3 flex items-center justify-between">
-          <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground">
-            <ArrowLeft className="w-4 h-4" /> 홈으로
+      <div className="sticky top-0 z-20 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 h-14 flex items-center justify-between">
+          <Link
+            to="/"
+            className="flex items-center gap-1.5 text-gray-500 hover:text-gray-900 transition-colors text-sm"
+          >
+            <ChevronLeft className="w-4 h-4" />
+            <span className="font-medium relative">
+              VIEW KIT
+              <span className="absolute -bottom-1 left-0 right-0 h-1 bg-yellow-400 rounded-full" />
+            </span>
           </Link>
-          <span className="text-xs font-semibold text-[hsl(var(--manual-indigo-dark))] tracking-wider">VIEW KIT 가이드</span>
+          <Link
+            to="/subscription"
+            className="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-bold rounded-full border"
+            style={{ color: "hsl(var(--brand))", backgroundColor: "hsl(var(--brand-soft))", borderColor: "#F5C9D5" }}
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            구독
+          </Link>
         </div>
       </div>
 
