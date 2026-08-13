@@ -28,6 +28,48 @@ const FeatureDetail = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
+  const renderMediaGallery = (images: GalleryImage[] | undefined) => {
+    if (!images || images.length === 0) return null;
+    const topRow = images.slice(0, 4);
+    const bottomRow = images.slice(4, 7);
+    return (
+      <section className="my-6 sm:my-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-3 sm:mb-4">
+          {topRow.map((img, idx) => (
+            <div key={idx} className="bg-white rounded-2xl overflow-hidden shadow-sm">
+              <SafeImage
+                src={img.url}
+                alt={img.title || `이미지 ${idx + 1}`}
+                loading="lazy"
+                className="w-full h-auto object-cover aspect-[4/3]"
+              />
+              <div className="p-2.5 sm:p-3">
+                {img.title && <h4 className="text-xs sm:text-sm font-bold text-gray-900 mb-1">{img.title}</h4>}
+                {img.description && <p className="text-[10px] sm:text-xs text-gray-500 leading-snug">{img.description}</p>}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+          {bottomRow.map((img, idx) => (
+            <div key={idx} className="bg-white rounded-2xl overflow-hidden shadow-sm">
+              <SafeImage
+                src={img.url}
+                alt={img.title || `이미지 ${idx + 5}`}
+                loading="lazy"
+                className="w-full h-auto object-cover aspect-[4/3]"
+              />
+              <div className="p-2.5 sm:p-3">
+                {img.title && <h4 className="text-xs sm:text-sm font-bold text-gray-900 mb-1">{img.title}</h4>}
+                {img.description && <p className="text-[10px] sm:text-xs text-gray-500 leading-snug">{img.description}</p>}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  };
+
   useEffect(() => {
     setActiveTab(0);
   }, [feature, tabs]);
