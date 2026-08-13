@@ -450,6 +450,34 @@ const FeatureDetail = () => {
                     <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                       {course.description}
                     </p>
+
+                    {course.disclaimers && course.disclaimers.length > 0 && (
+                      <Accordion type="multiple" className="w-full mt-4">
+                        {course.disclaimers.map((disclaimer, dIndex) => (
+                          <AccordionItem
+                            key={dIndex}
+                            value={`course-${index}-disclaimer-${dIndex}`}
+                            className="border-b border-gray-100 last:border-b-0"
+                          >
+                            <AccordionTrigger className="py-2.5 hover:no-underline text-left text-xs sm:text-sm font-bold text-gray-700">
+                              {disclaimer.title}
+                            </AccordionTrigger>
+                            <AccordionContent>
+                              <ul className="space-y-1 pt-1 pb-2">
+                                {disclaimer.items.map((text, i) => (
+                                  <li
+                                    key={i}
+                                    className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed"
+                                  >
+                                    * {text}
+                                  </li>
+                                ))}
+                              </ul>
+                            </AccordionContent>
+                          </AccordionItem>
+                        ))}
+                      </Accordion>
+                    )}
                   </div>
                 </div>
               ))}
