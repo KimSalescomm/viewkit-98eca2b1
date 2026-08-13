@@ -2072,7 +2072,7 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaUrl:
             "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_17_mini_wash_pc.jpg",
           description:
-            "분리 세탁이 필요한 아기 옷, 펫 용품, 양말, 속옷 등을 따로 세탭하거나 워시콤보로 세탁+건조하는 동안 동시 세탁도 할 수 있어 편리해요.",
+            "분리 세탁이 필요한 아기 옷, 펫 용품, 양말, 속옷 등을 따로 세탁하거나 워시콤보로 세탁+건조하는 동안 동시 세탁도 할 수 있어 편리해요.",
         },
         {
           label: "통합 컨트롤",
