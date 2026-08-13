@@ -7,6 +7,7 @@ import SafeImage from "@/components/SafeImage";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { useContent } from "@/contexts/ContentContext";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { GalleryImage } from "@/data/features";
 
 import {
   Accordion,
