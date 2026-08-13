@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Check, ArrowLeft, Sparkles, ImageIcon, X, Play } from "lucide-react";
+import { Check, Sparkles, ImageIcon, X, Play } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
+import BackButton from "@/components/BackButton";
 import FeatureTabs from "@/components/FeatureTabs";
 
 import FeatureLikeButton from "@/components/FeatureLikeButton";
@@ -352,22 +353,7 @@ const Subscription = () => {
       <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 h-14 flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <Link
-              to="/"
-              className="flex items-center gap-1.5 text-gray-500 hover:text-gray-900 transition-colors text-sm"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span className="font-medium">VIEW KIT</span>
-            </Link>
-            <nav className="flex items-center gap-1">
-              <span
-                className="px-3 py-1.5 text-sm font-bold rounded-full border inline-flex items-center gap-1"
-                style={{ color: "hsl(var(--brand))", backgroundColor: "hsl(var(--brand-soft))", borderColor: "#F5C9D5" }}
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                구독
-              </span>
-            </nav>
+            <BackButton />
           </div>
           <OrientationToggle />
         </div>
