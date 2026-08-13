@@ -182,6 +182,7 @@ const FeatureDetail = () => {
               isShorts={activeTabData?.isShorts ?? feature.isShorts}
               fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
               imagePosition={activeTabData?.imagePosition}
+              fullWidthMedia={feature.fullWidthMedia}
             />
           );
 
