@@ -1707,7 +1707,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "6",
       title: "여름철 습기와의 전쟁!\n욕실을 보송하게 바꾼 비결은?",
-      subtitle: "여름철 습기와의 전쟁!\n바스에어시스템 구독으로 해결해요",
+      subtitle: "구독하면 좋은 이유를 영상으로 확인하세요.",
       icon: "Monitor",
       tag: "영상",
       mediaType: "youtube",
