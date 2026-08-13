@@ -2170,7 +2170,7 @@ export const featuresMap: Record<string, Feature[]> = {
 
     {
       id: "5",
-      title: "모던하고 세련된 감성의 세탁실을 원한다면?",
+      title: "모던하고 세련된 인테리어를 원한다면?",
       subtitle: "와이드 디스플레이, 플랫 도어와 플랫 세제함을\n적용해 프리미엄 디자인을 완성했어요.",
       icon: "Monitor",
       tag: "All New Full 플랫 디자인",
