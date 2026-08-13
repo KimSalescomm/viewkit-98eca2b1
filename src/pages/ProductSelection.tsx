@@ -145,10 +145,11 @@ const ProductSelection = () => {
     .map((id) => allProducts.find((p) => p.id === id))
     .filter((p): p is (typeof allProducts)[number] => {
       if (!p) return false;
-      // 대외비 제품은 SC/KOR 계정에서만 카드 노출 (지점 계정에서는 아예 숨김)
-      if (CONFIDENTIAL_PRODUCT_IDS.has(p.id) && !isInternalPreview) return false;
-      return true;
+      // 노출 판정은 ContentContext 한 곳에서만 결정 (퍼블리시 스냅샷 기준).
+      // 대외비 제품도 관리자가 퍼블리시로 노출을 켰다면 지점 계정에 표시됩니다.
+      return isProductVisible(p.id);
     });
+
 
 
   const { trackProductClick } = useAnalyticsContext();
