@@ -1798,7 +1798,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "4",
       title: "우리 집 욕실에도\n설치될까요?",
-      subtitle: "사전에 우리 집 설치 환경이\n바스에어시스템 설치에 적합한지 확인해보세요",
+      subtitle: "사전에 우리 집 설치 환경이 바스에어시스템 설치에 적합한지 확인해보세요",
       icon: "Wrench",
       tag: "설치 환경",
       mediaType: "image",
