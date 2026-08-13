@@ -2055,6 +2055,16 @@ export const featuresMap: Record<string, Feature[]> = {
             "https://www.lge.co.kr/kr/images/washing-machines/md10810828/usp/FC4TC_01_minimal_pc.jpg",
           description:
             "AI 워시콤보에 딱 맞게 설계돼 맞춤 제작한 가구처럼 조화로워요.",
+          collapsibleDisclaimers: [
+            {
+              title: "유의사항",
+              items: [
+                "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
+                "워시콤보 단독 구매 시 미니워시는 별도 구매 제품 이오니, 미니워시 구매를 희망하신다면 미니워시 단독구매 또는 워시콤보+미니워시 세트 모델을 구매하세요.",
+                "워시콤보와 미니워시 구매 시, 반드시 모델명을 확인하여 제품 간 호환 여부를 확인해 주세요. FC4*** 미니워시 모델과 결합 가능한 워시콤보는 FC25*** 모델입니다.",
+              ],
+            },
+          ],
         },
         {
           label: "높아진 워시콤보 투입구",
@@ -2064,6 +2074,15 @@ export const featuresMap: Record<string, Feature[]> = {
             "/__l5e/assets-v1/0e4a9bd4-6d57-4b3e-acc8-844ff869e7db/washcombo-height-wide.jpg",
           description:
             "워시콤보 투입구를 30cm 높여 허리를 덜 숙여도 세탁물을 쉽게 넣고 뺄 수 있어요.",
+          collapsibleDisclaimers: [
+            {
+              title: "유의사항",
+              items: [
+                "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
+                "워시콤보와 미니워시 구매 시, 반드시 모델명을 확인하여 제품 간 호환 여부를 확인해 주세요. FC4*** 미니워시 모델과 결합 가능한 워시콤보는 FC25*** 모델입니다.",
+              ],
+            },
+          ],
         },
         {
           label: "동시세탁/분리세탁",
@@ -2073,6 +2092,16 @@ export const featuresMap: Record<string, Feature[]> = {
             "/__l5e/assets-v1/e8430f99-e478-43ca-aac6-e15af3cd688a/washcombo-miniwash-wide.jpg",
           description:
             "분리 세탁이 필요한 아기 옷, 펫 용품, 양말, 속옷 등을 따로 세탁하거나 워시콤보로 세탁+건조하는 동안 동시 세탁도 할 수 있어 편리해요.",
+          collapsibleDisclaimers: [
+            {
+              title: "유의사항",
+              items: [
+                "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
+                "워시콤보 단독 구매 시 미니워시는 별도 구매 제품 이오니, 미니워시 구매를 희망하신다면 미니워시 단독구매 또는 워시콤보+미니워시 세트 모델을 구매하세요.",
+                "워시콤보와 미니워시 구매 시, 반드시 모델명을 확인하여 제품 간 호환 여부를 확인해 주세요. FC4*** 미니워시 모델과 결합 가능한 워시콤보는 FC25*** 모델입니다.",
+              ],
+            },
+          ],
         },
         {
           label: "통합 컨트롤",
@@ -2081,6 +2110,16 @@ export const featuresMap: Record<string, Feature[]> = {
             "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_15_1_control_mo.mp4",
           description:
             "워시콤보 디스플레이 설정에서 미니워시를 연결하면 워시콤보 디스플레이에서 미니워시까지 컨트롤 할 수 있어요.",
+          collapsibleDisclaimers: [
+            {
+              title: "유의사항",
+              items: [
+                "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
+                "워시콤보와 미니워시 구매 시, 반드시 모델명을 확인하여 제품 간 호환 여부를 확인해 주세요. FC4*** 미니워시 모델과 결합 가능한 워시콤보는 FC25*** 모델입니다.",
+                "미니워시 통합 컨트롤을 위해서 미니워시와 연동이 필요합니다. 설정 > 기타 > 미니워시 연결 메뉴를 선택 후 미니워시의 '통살균' 버튼을 3초 동안 눌러 연결해주세요.",
+              ],
+            },
+          ],
         },
       ],
     },
