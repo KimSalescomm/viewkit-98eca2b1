@@ -5,6 +5,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import MediaViewer from "@/components/MediaViewer";
 import FeatureIcon from "@/components/FeatureIcon";
 import OrientationToggle from "@/components/OrientationToggle";
+import FeatureTabs from "@/components/FeatureTabs";
+
 import SafeImage from "@/components/SafeImage";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { useContent } from "@/contexts/ContentContext";
@@ -195,47 +197,9 @@ const FeatureDetail = () => {
         {/* Tabs (only when feature.tabs exists) */}
 
         {tabs && tabs.length > 0 && (
-          feature.tabsVariant === "underline" ? (
-            <div className="mb-4 sm:mb-5 flex w-full border-b border-gray-200">
-              {tabs.map((tab, idx) => {
-                const isActive = idx === activeTab;
-                return (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => setActiveTab(idx)}
-                    className={`flex-1 min-h-[44px] px-3 sm:px-4 text-sm sm:text-base transition-colors -mb-px border-b-2 ${
-                      isActive
-                        ? "font-bold text-[#A50034] border-[#A50034]"
-                        : "font-medium text-black border-transparent"
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                );
-              })}
-            </div>
-          ) : (
-            <div className="mb-4 sm:mb-5 flex flex-wrap gap-2 justify-center">
-              {tabs.map((tab, idx) => {
-                const isActive = idx === activeTab;
-                return (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveTab(idx)}
-                    className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-sm sm:text-base font-semibold transition-all ${
-                      isActive
-                        ? "bg-blue-600 text-white shadow-md"
-                        : "bg-white text-gray-700 border border-gray-200 hover:border-blue-400 hover:text-blue-600"
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                );
-              })}
-            </div>
-          )
+          <FeatureTabs tabs={tabs} activeIndex={activeTab} onChange={setActiveTab} />
         )}
+
 
         {(() => {
           const isUnderlineTabs = feature.tabsVariant === "underline" && tabs && tabs.length > 0;
@@ -724,10 +688,10 @@ const FeatureDetail = () => {
                       type="button"
                       onClick={() => emblaApi?.scrollTo(index)}
                       className={`w-2 h-2 rounded-full transition-all ${
-                        index === courseIndex
-                          ? "bg-blue-600 w-4"
-                          : "bg-gray-300 hover:bg-gray-400"
+                        index === courseIndex ? "w-4" : "bg-gray-300 hover:bg-gray-400"
                       }`}
+                      style={index === courseIndex ? { backgroundColor: "hsl(var(--tab-accent))" } : undefined}
+
                       aria-label={`${index + 1}번째 코스로 이동`}
                     />
                   ))}

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Check, ArrowLeft, Sparkles, ImageIcon, X, Play } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
+import FeatureTabs from "@/components/FeatureTabs";
+
 import FeatureLikeButton from "@/components/FeatureLikeButton";
 import { logFeatureReaction } from "@/utils/featureReactionLog";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
@@ -386,48 +388,18 @@ const Subscription = () => {
         </div>
 
         {/* Category buttons */}
-        <div className="-mx-5 sm:mx-0 mb-8">
-          <div className="flex sm:flex-wrap sm:justify-center gap-2 overflow-x-auto px-5 sm:px-0 pb-2 scrollbar-hide">
-            {subscriptionProducts.map((p) => {
-              const active = p.id === selectedId;
-              return (
-                <button
-                  key={p.id}
-                  onClick={() => handleTabClick(p.id, p.name)}
-                  className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${
-                    active
-                      ? "text-white shadow-md"
-                      : "bg-white text-gray-600 border-gray-200"
-                  }`}
-                  style={
-                    active
-                      ? {
-                          backgroundColor: "hsl(var(--brand))",
-                          borderColor: "hsl(var(--brand))",
-                          color: "#ffffff",
-                          boxShadow: "0 6px 16px -4px hsl(var(--brand)/0.35)",
-                        }
-                      : undefined
-                  }
-                  onMouseEnter={(e) => {
-                    if (!active) {
-                      e.currentTarget.style.borderColor = "hsl(var(--brand))";
-                      e.currentTarget.style.color = "hsl(var(--brand))";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!active) {
-                      e.currentTarget.style.borderColor = "";
-                      e.currentTarget.style.color = "";
-                    }
-                  }}
-                >
-                  {p.name}
-                </button>
-              );
-            })}
-          </div>
+        <div className="-mx-5 sm:mx-0 mb-8 px-5 sm:px-0">
+          <FeatureTabs
+            tabs={subscriptionProducts.map((p) => ({ label: p.name }))}
+            activeIndex={subscriptionProducts.findIndex((p) => p.id === selectedId)}
+            onChange={(idx) => {
+              const p = subscriptionProducts[idx];
+              if (p) handleTabClick(p.id, p.name);
+            }}
+            scrollable
+          />
         </div>
+
 
         {/* Section title */}
         {(() => {
