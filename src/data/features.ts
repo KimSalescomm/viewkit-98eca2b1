@@ -2274,8 +2274,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "7",
-      title: "세탁부터 건조까지 한 번에, 정기적인 관리도 필요할까요?",
-      subtitle: "올인원 워시콤보를 정기적인 전문 관리로 더 깨끗하고 오래 사용해요.",
+      title: "드럼 통이 2개라는 사실, 알고 계셨어요?",
+      subtitle: "가전 케어 매니저가 보이지 않는 부분까지 꼼꼼하게 관리해줘요.",
       icon: "Gift",
       tag: "가전 구독",
       mediaType: "video",
