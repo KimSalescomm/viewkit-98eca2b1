@@ -103,6 +103,7 @@ export const products: Product[] = [
     description: "듀얼배기로 완성하는 프리미엄 욕실 라이프",
     keyVisualImage: bathairHomepage,
     icon: "Droplets",
+    imageZoom: 1.1,
   },
   {
     id: "washcombo",
