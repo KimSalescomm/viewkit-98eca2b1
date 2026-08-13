@@ -31,6 +31,7 @@ export const products: Product[] = [
     description: "fresh sySTEM으로 완성되는 직수형 냉장고 STEM",
     keyVisualImage: "https://www.lge.co.kr/kr/story/buying-guide/img/lg-refrigerator-guide/keyvisual_02.jpg",
     icon: "Box",
+    imageZoom: 1.1,
   },
   {
     id: "vacuum",
@@ -41,6 +42,7 @@ export const products: Product[] = [
     keyVisualImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg",
     secondaryKeyVisualImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
     icon: "Sparkles",
+    imageZoom: 1.1,
 
 
   },
@@ -59,6 +61,7 @@ export const products: Product[] = [
     description: "지금까지 보지 못한 빛과 색을 깨운 올레드의 탄생",
     keyVisualImage: "https://static.lge.co.kr/kr/story/buying-guide/2025/img/tv/img_P14_001_10.png",
     icon: "Tv",
+    imageZoom: 1.1,
   },
   {
     id: "washer",
