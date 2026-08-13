@@ -131,7 +131,9 @@ const ProductSelection = () => {
       keyVisualImage: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_mo_01.jpg",
       secondaryKeyVisualImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_mo_01.jpg",
     },
-
+    washcombo: {
+      keyVisualImage: washcomboCardImage,
+    },
   };
   const currentSlug = (getCurrentStore()?.slug || "").toUpperCase();
   const isInternalPreview = INTERNAL_STORE_SLUGS.has(currentSlug);
