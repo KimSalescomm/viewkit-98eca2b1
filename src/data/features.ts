@@ -1641,113 +1641,6 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
     },
     {
-      id: "4",
-      title: "우리 집 욕실에도 설치될까요?",
-      subtitle: "사전에 우리 집 설치 환경이\n바스에어시스템 설치에 적합한지 확인해보세요",
-      icon: "Wrench",
-      tag: "설치 환경",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/common/pdp_multi_banner/images/bath-air-system/Banner_BathAir_InstallChk_B_PC_x2.png",
-      description:
-        "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 보다 원활한 설치가 가능합니다.",
-      highlights: [
-        "천장형 환풍기 위치 확인",
-        "본체 타공 405×260mm",
-        "천장 속 높이 최소 160mm",
-        "배기팬 별도 타공 225×225mm",
-      ],
-      collapsibleDisclaimers: [
-        {
-          title: "체크 1. 기존 환풍기 위치",
-          items: [
-            "천장에 환풍기가 있으면 설치 가능합니다.",
-            "벽면·창문형 환풍기는 설치할 수 없습니다.",
-            "벽면 환풍기더라도 천장 내 전원·덕트가 설치되어 있다면 가능합니다.",
-          ],
-        },
-        {
-          title: "체크 2. 멀티 배기형 여부",
-          items: [
-            "기존 환풍기가 멀티배기형 또는 덕트가 2개 이상인 경우 설치는 가능하지만, 다른 공간의 환기 기능은 지원되지 않습니다.",
-          ],
-        },
-        {
-          title: "체크 3. 천장 구조·재질",
-          items: [
-            "대부분 설치 가능합니다.",
-            "아치형 천장이더라도 타공 가능한 평면 공간이 있다면 설치할 수 있습니다.",
-            "얇은 특수 PVC 재질일 경우 설치 시 주의가 필요합니다.",
-          ],
-        },
-        {
-          title: "체크 4. 제품 설치 공간",
-          items: [
-            "본체 설치 시 405mm × 260mm의 타공이 필요합니다.",
-            "천장 속 높이가 160mm 이상이면 설치 가능합니다.",
-            "배기팬 설치를 희망할 경우 225mm × 225mm의 별도 타공 공간이 필요합니다.",
-            "점검구에도 제품 설치가 가능합니다.",
-          ],
-        },
-        {
-          title: "체크 5. 기타 주의사항",
-          items: [
-            "욕실 전등 스위치를 통해 환풍기가 같이 작동하는 경우 ThinQ 관련 기능 제한이 발생할 수 있습니다.",
-            "세대 월패드에서 환풍기 조작을 하는 경우 설치 가능하나, 월패드에서의 조작은 제한될 수 있습니다.",
-            "설치 환경에 따라 설치기사의 현장 확인 및 추가 비용이 발생할 수 있습니다.",
-          ],
-        },
-      ],
-    },
-    {
-      id: "5",
-      title: "실제 설치 사례를 확인해 보세요",
-      subtitle: "고객 니즈 및 현장 상황을 고려하여\n최적의 위치에 설치해 드립니다.",
-      icon: "Image",
-      tag: "설치 사례",
-      mediaType: "gallery",
-      mediaUrl: "",
-      galleryImages: [
-        {
-          url: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/bathair_review_01.jpg",
-          title: "욕조 위 설치",
-          description: "출처: 주니호맘",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/bathair_review_02.jpg",
-          title: "아치형 천장 부분 외 공간에 설치",
-          description: "출처: 밍주부",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/bathair_review_03.jpg",
-          title: "욕실 문 근처 설치",
-          description: "출처: 윤로그",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/bathair_review_04.jpg",
-          title: "샤워 부스 내 설치",
-          description: "출처: 현둥",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/bathair_review_05.jpg",
-          title: "거울 앞, 점검구 내 설치",
-          description: "출처: 알라코",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/bathair_review_06.jpg",
-          title: "샤워 부스–거울 사이 설치",
-          description: "출처: 비클레어",
-        },
-      ],
-      description:
-        "다양한 욕실 구조와 공간에 맞춰 최적의 위치에 설치된 실제 사례를 확인해 보세요. 이제 사계절 쾌적한 프리미엄 욕실 라이프를 즐겨보세요.",
-      highlights: [
-        "욕조 위 설치",
-        "샤워 부스 내 설치",
-        "점검구 내 설치",
-        "아치형 천장 공간 활용",
-      ],
-    },
-    {
       id: "6",
       title: "여름철 습기와의 전쟁!\n욕실을 보송하게 바꾼 비결은?",
       subtitle: "여름철 습기와의 전쟁!\n바스에어시스템 구독으로 해결",
@@ -1803,6 +1696,113 @@ export const featuresMap: Record<string, Feature[]> = {
           title: "[환기]",
           items: [
             "리모컨의 환기 버튼을 누르면 욕실 내 공기가 배기되어 공간을 쾌적하게 유지합니다.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "5",
+      title: "실제 설치 사례를 확인해 보세요",
+      subtitle: "고객 니즈 및 현장 상황을 고려하여\n최적의 위치에 설치해 드립니다.",
+      icon: "Image",
+      tag: "설치 사례",
+      mediaType: "gallery",
+      mediaUrl: "",
+      galleryImages: [
+        {
+          url: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/bathair_review_01.jpg",
+          title: "욕조 위 설치",
+          description: "출처: 주니호맘",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/bathair_review_02.jpg",
+          title: "아치형 천장 부분 외 공간에 설치",
+          description: "출처: 밍주부",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/bathair_review_03.jpg",
+          title: "욕실 문 근처 설치",
+          description: "출처: 윤로그",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/bathair_review_04.jpg",
+          title: "샤워 부스 내 설치",
+          description: "출처: 현둥",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/bathair_review_05.jpg",
+          title: "거울 앞, 점검구 내 설치",
+          description: "출처: 알라코",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/bathair_review_06.jpg",
+          title: "샤워 부스–거울 사이 설치",
+          description: "출처: 비클레어",
+        },
+      ],
+      description:
+        "다양한 욕실 구조와 공간에 맞춰 최적의 위치에 설치된 실제 사례를 확인해 보세요. 이제 사계절 쾌적한 프리미엄 욕실 라이프를 즐겨보세요.",
+      highlights: [
+        "욕조 위 설치",
+        "샤워 부스 내 설치",
+        "점검구 내 설치",
+        "아치형 천장 공간 활용",
+      ],
+    },
+    {
+      id: "4",
+      title: "우리 집 욕실에도 설치될까요?",
+      subtitle: "사전에 우리 집 설치 환경이\n바스에어시스템 설치에 적합한지 확인해보세요",
+      icon: "Wrench",
+      tag: "설치 환경",
+      mediaType: "image",
+      mediaUrl: "https://www.lge.co.kr/kr/images/common/pdp_multi_banner/images/bath-air-system/Banner_BathAir_InstallChk_B_PC_x2.png",
+      description:
+        "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 보다 원활한 설치가 가능합니다.",
+      highlights: [
+        "천장형 환풍기 위치 확인",
+        "본체 타공 405×260mm",
+        "천장 속 높이 최소 160mm",
+        "배기팬 별도 타공 225×225mm",
+      ],
+      collapsibleDisclaimers: [
+        {
+          title: "체크 1. 기존 환풍기 위치",
+          items: [
+            "천장에 환풍기가 있으면 설치 가능합니다.",
+            "벽면·창문형 환풍기는 설치할 수 없습니다.",
+            "벽면 환풍기더라도 천장 내 전원·덕트가 설치되어 있다면 가능합니다.",
+          ],
+        },
+        {
+          title: "체크 2. 멀티 배기형 여부",
+          items: [
+            "기존 환풍기가 멀티배기형 또는 덕트가 2개 이상인 경우 설치는 가능하지만, 다른 공간의 환기 기능은 지원되지 않습니다.",
+          ],
+        },
+        {
+          title: "체크 3. 천장 구조·재질",
+          items: [
+            "대부분 설치 가능합니다.",
+            "아치형 천장이더라도 타공 가능한 평면 공간이 있다면 설치할 수 있습니다.",
+            "얇은 특수 PVC 재질일 경우 설치 시 주의가 필요합니다.",
+          ],
+        },
+        {
+          title: "체크 4. 제품 설치 공간",
+          items: [
+            "본체 설치 시 405mm × 260mm의 타공이 필요합니다.",
+            "천장 속 높이가 160mm 이상이면 설치 가능합니다.",
+            "배기팬 설치를 희망할 경우 225mm × 225mm의 별도 타공 공간이 필요합니다.",
+            "점검구에도 제품 설치가 가능합니다.",
+          ],
+        },
+        {
+          title: "체크 5. 기타 주의사항",
+          items: [
+            "욕실 전등 스위치를 통해 환풍기가 같이 작동하는 경우 ThinQ 관련 기능 제한이 발생할 수 있습니다.",
+            "세대 월패드에서 환풍기 조작을 하는 경우 설치 가능하나, 월패드에서의 조작은 제한될 수 있습니다.",
+            "설치 환경에 따라 설치기사의 현장 확인 및 추가 비용이 발생할 수 있습니다.",
           ],
         },
       ],
