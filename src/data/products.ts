@@ -1,9 +1,11 @@
 import washerKeyVisualAsset from "@/assets/washer-keyvisual.png.asset.json";
 import stylerKeyVisualAsset from "@/assets/styler-keyvisual.png.asset.json";
+import bathairHomepageAsset from "@/assets/bathair-homepage.png.asset.json";
 
 // 퍼블리시 스냅샷에 안정적인 CDN URL을 저장하기 위해 자산 포인터의 url을 사용합니다.
 const washerKeyVisual = washerKeyVisualAsset.url;
 const stylerKeyVisual = stylerKeyVisualAsset.url;
+const bathairHomepage = bathairHomepageAsset.url;
 
 
 export interface Product {
@@ -91,7 +93,7 @@ export const products: Product[] = [
     name: "바스에어시스템",
     title: "바스에어시스템",
     description: "습기·냄새·곰팡이 걱정 없는\n스마트 욕실 공기케어 (내부용)",
-    keyVisualImage: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1600&h=1000&fit=crop",
+    keyVisualImage: bathairHomepage,
     icon: "Droplets",
   },
   {
