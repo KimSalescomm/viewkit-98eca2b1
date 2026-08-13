@@ -1762,7 +1762,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "5",
-      title: "실제 설치 사례를\n확인해 보세요",
+      title: "실제 설치 사례를 확인해 보세요",
       subtitle: "고객 니즈 및 현장 상황을 고려하여 최적의 위치에 설치해 드립니다.",
       icon: "Image",
       tag: "설치 사례",
@@ -1806,7 +1806,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "4",
-      title: "우리 집 욕실에도\n설치될까요?",
+      title: "우리집 욕실에도 설치될까요?",
       subtitle: "사전에 우리 집 설치 환경이 바스에어시스템 설치에 적합한지 확인해보세요",
       icon: "Wrench",
       tag: "설치 환경",
