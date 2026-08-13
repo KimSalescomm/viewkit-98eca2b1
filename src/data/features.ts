@@ -2367,6 +2367,11 @@ export const featuresMap: Record<string, Feature[]> = {
 export const featureIconNames: Record<string, string> = {
   Monitor: "Monitor",
   Cpu: "Cpu",
+  Brain: "Brain",
+  Expand: "Expand",
+  CloudFog: "CloudFog",
+  Beaker: "Beaker",
+  RectangleHorizontal: "RectangleHorizontal",
   Palette: "Palette",
   Volume2: "Volume2",
   Tv: "Tv",

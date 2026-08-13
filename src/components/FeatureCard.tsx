@@ -69,7 +69,7 @@ const FeatureCard = ({
       {/* Mobile layout: horizontal list with icon */}
       <div className="sm:hidden flex items-center gap-3">
         <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${color.gradient} flex items-center justify-center flex-shrink-0 shadow-sm`}>
-          <FeatureIcon iconKey={icon} className="text-white w-6 h-6" />
+          <FeatureIcon iconKey={icon} className="text-white w-7 h-7" />
         </div>
         <div className="flex-1 min-w-0">
           {tag && (
@@ -96,7 +96,7 @@ const FeatureCard = ({
           {likeButton("desktop")}
         </div>
         <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br ${color.gradient} flex items-center justify-center mx-auto mb-3 sm:mb-4`}>
-          <FeatureIcon iconKey={icon} className="text-white w-6 h-6 sm:w-8 sm:h-8" />
+          <FeatureIcon iconKey={icon} className="text-white w-7 h-7 sm:w-9 sm:h-9" />
         </div>
         {tag && (
           <span className="inline-block bg-brand-soft text-brand text-sm font-bold px-2.5 py-1 rounded-lg mb-2 sm:mb-3">
