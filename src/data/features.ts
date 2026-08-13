@@ -1591,15 +1591,15 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "온도·습도를 제어하여\n사계절 내내 욕실을 쾌적하게 만들어줄까요?",
-      subtitle: "겨울엔 따뜻한 온풍으로, 여름엔 시원한 송풍으로 편안한 욕실 환경을 경험해 보세요.",
+      title: "온도·습도를 조절해서\n사계절 내내 욕실을 쾌적하게 만들어줘요",
+      subtitle: "겨울엔 따뜻한 온풍으로, 여름엔 시원한 송풍으로 편안한 욕실 환경을 경험해보세요",
       icon: "Flame",
       tag: "웜 & 프레시케어",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_WarmNFresh_pc.jpg",
       fullWidthMedia: true,
       description:
-        "욕실의 온도와 습도를 자동으로 감지해 운전하는 공간케어와\n물기 없이 산뜻한 드라이를 제공하는 바디케어까지,\n최적의 욕실 컨디션을 만들어줍니다.",
+        "욕실 온도와 습도를 자동으로 감지해서 알아서 작동하는 공간케어와\n물기 없이 산뜻하게 말려주는 바디케어까지,\n최적의 욕실 컨디션을 만들어줘요.",
       highlights: [],
       mediaDisclaimers: [
         "소비자의 이해를 돕기 위해 연출된 영상 및 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
@@ -1660,28 +1660,28 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "온풍",
           description:
-            "샤워 전 욕실을 온풍으로 미리 데워 주고 사용 중에도 욕실 온도를 따뜻하게 유지해줍니다. 단 7분 만에 욕실 온도를 약 5℃ 높여 부드럽고 은은한 온풍을 고르게 순환시킵니다.",
+            "샤워 전 욕실을 온풍으로 미리 데워주고, 사용 중에도 욕실 온도를 따뜻하게 유지해줘요. 단 7분 만에 욕실 온도를 약 5℃ 높여서 부드럽고 은은한 온풍을 고르게 순환시켜줘요.",
           mediaType: "image",
           mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_Heating_pc.jpg",
         },
         {
           label: "송풍",
           description:
-            "더운 여름엔 4단계 송풍으로 욕실 공기를 상쾌하게, 1단계 부드러운 약풍부터 2단계 일반풍, 3단계 강풍, 4단계 터보풍까지 상황에 맞게 선택할 수 있어요.",
+            "더운 여름엔 4단계 송풍으로 욕실 공기를 상쾌하게 바꿔줘요. 1단계 부드러운 약풍부터 2단계 일반풍, 3단계 강풍, 4단계 터보풍까지 상황에 맞게 선택할 수 있어요.",
           mediaType: "image",
           mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_Fresh_pc.jpg",
         },
         {
           label: "공간케어",
           description:
-            "내장 센서가 욕실 상황에 맞는 운전 모드를 자동으로 선택해서 과도한 습기는 빠르게 제거하고, 차가운 공기는 부드럽게 데워 욕실 컨디션을 균형 있게 맞춰줍니다.",
+            "내장 센서가 욕실 상황에 맞는 운전 모드를 자동으로 선택해서 과도한 습기는 빠르게 제거하고, 차가운 공기는 부드럽게 데워 욕실 컨디션을 균형 있게 맞춰줘요.",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_SpaceCare_pc.mp4",
         },
         {
           label: "바디케어",
           description:
-            "남은 물기를 깔끔하게 말려주는 강력한 바디 드라이 기능으로 바쁜 아침에는 준비 시간을 단축해 여유를 더하고, 저녁에는 상쾌하고 기분 좋은 샤워의 마무리를 완성합니다.",
+            "남은 물기를 깔끔하게 말려주는 강력한 바디 드라이 기능으로 바쁜 아침에는 준비 시간을 단축해서 여유를 더하고, 저녁에는 상쾌하고 기분 좋은 샤워 마무리를 완성해줘요.",
           mediaType: "image",
           mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_BodyCare_pc.jpg",
         },
