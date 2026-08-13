@@ -5,6 +5,8 @@ import washcomboAiTimeGuideAsset from "@/assets/washcombo-ai-time-guide.png.asse
 import washcomboAiTimeSensingAsset from "@/assets/washcombo-ai-time-sensing.png.asset.json";
 import washcomboAiTimeSensingWideAsset from "@/assets/washcombo-ai-time-sensing-wide.png.asset.json";
 import washcomboAiOptimizationRecordAsset from "@/assets/washcombo-ai-optimization-record.png.asset.json";
+import washcomboAiTimeSensingDisplayAsset from "@/assets/washcombo-ai-time-sensing-display.png.asset.json";
+import washcomboAiReportWideAsset from "@/assets/washcombo-ai-report-wide.mp4.asset.json";
 import washcomboAutomaticAsset from "@/assets/washcombo-automatic.jpg.asset.json";
 
 
@@ -1880,7 +1882,7 @@ export const featuresMap: Record<string, Feature[]> = {
           description:
             "세탁물을 투입 후 문을 닫고 시작 버튼을 누르면 무게를 감지해 약 3초 만에 예상 시간을 알려줍니다.\n세탁기 앞에서 오래 기다릴 필요가 없고, 코스 별 시간도 바로 확인할 수 있어 편리해요.",
           mediaType: "image",
-          mediaUrl: washcomboAiTimeSensingWideAsset.url,
+          mediaUrl: washcomboAiTimeSensingDisplayAsset.url,
           disclaimers: [
             {
               title: "AI 타임 센싱",
@@ -1893,28 +1895,12 @@ export const featuresMap: Record<string, Feature[]> = {
           ],
         },
         {
-          label: "AI 시간 안내",
-          title: "더욱 정교화된 예상 건조 시간",
-          description: "사용하면 할수록 정확도 높은 예상 건조 시간을 알려줘요.",
-          mediaType: "image",
-          mediaUrl: washcomboAiTimeGuideAsset.url,
-          disclaimers: [
-            {
-              title: "AI 시간 안내",
-              items: [
-                "'AI 시간 안내'는 AI 건조 코스에 해당 되는 기능입니다.",
-                "자사시험결과 'AI 시간 안내' 기능 미적용 대비 제품 표시 시간과 실제 건조 동작 시간에 대한 시간 정확도가 개선 되었으며, 설치 조건 및 실사용 조건에 따라 달라질 수 있습니다.",
-              ],
-            },
-          ],
-        },
-        {
           label: "AI 최적화 기록",
           title: "세탁물의 특성에 맞춰 AI가 최적화한 세탁+건조 과정을 기록",
           description:
             "AI 세탁+건조 코스를 사용하면 옷감의 재질과 오염도를 분석해\n최적의 세탁+건조 조건을 설정하고 기록해요.\nAI 최적화 기록은 디스플레이에서 확인할 수 있어요.",
-          mediaType: "image",
-          mediaUrl: washcomboAiOptimizationRecordAsset.url,
+          mediaType: "video",
+          mediaUrl: washcomboAiReportWideAsset.url,
           disclaimers: [
             {
               title: "AI 최적화 기록",
