@@ -1558,15 +1558,15 @@ export const featuresMap: Record<string, Feature[]> = {
   bathair: [
     {
       id: "1",
-      title: "듀얼배기로\n습기와 냄새를 더 빠르게 제거할 수 있을까요?",
-      subtitle: "바스에어시스템과 배기팬이 함께 작동해 환기 효과를 높이고 쾌적한 환경을 유지합니다.",
+      title: "듀얼배기로\n습기와 냄새를 더 빠르게 제거할 수 있어요",
+      subtitle: "바스에어시스템과 배기팬이 함께 작동해서 환기 효과를 높이고 쾌적한 환경을 유지해요",
       icon: "Wind",
       tag: "듀얼 배기",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_160CMH_pc.jpg",
       fullWidthMedia: true,
       description:
-        "최대 풍량 160CMH의 강력한 듀얼배기는 욕실 내 습기를 16분 만에 60%까지 낮추고, 습기 체류 시간을 단축시켜 보송한 욕실을 만들어줍니다.",
+        "최대 풍량 160CMH의 강력한 듀얼배기가 욕실 습기를 16분 만에 60%까지 낮춰주고, 습기가 오래 머무는 시간도 줄여줘서 보송한 욕실을 만들어줘요.",
       highlights: [],
 
       mediaDisclaimers: [
@@ -1591,15 +1591,15 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "온도·습도를 제어하여\n사계절 내내 욕실을 쾌적하게 만들어줄까요?",
-      subtitle: "겨울엔 따뜻한 온풍으로, 여름엔 시원한 송풍으로 편안한 욕실 환경을 경험해 보세요.",
+      title: "온도·습도를 조절해서\n사계절 내내 욕실을 쾌적하게 만들어줘요",
+      subtitle: "겨울엔 따뜻한 온풍으로, 여름엔 시원한 송풍으로 편안한 욕실 환경을 경험해보세요",
       icon: "Flame",
       tag: "웜 & 프레시케어",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_WarmNFresh_pc.jpg",
       fullWidthMedia: true,
       description:
-        "욕실의 온도와 습도를 자동으로 감지해 운전하는 공간케어와\n물기 없이 산뜻한 드라이를 제공하는 바디케어까지,\n최적의 욕실 컨디션을 만들어줍니다.",
+        "욕실 온도와 습도를 자동으로 감지해서 알아서 작동하는 공간케어와\n물기 없이 산뜻하게 말려주는 바디케어까지,\n최적의 욕실 컨디션을 만들어줘요.",
       highlights: [],
       mediaDisclaimers: [
         "소비자의 이해를 돕기 위해 연출된 영상 및 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
@@ -1660,28 +1660,28 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "온풍",
           description:
-            "샤워 전 욕실을 온풍으로 미리 데워 주고 사용 중에도 욕실 온도를 따뜻하게 유지해줍니다. 단 7분 만에 욕실 온도를 약 5℃ 높여 부드럽고 은은한 온풍을 고르게 순환시킵니다.",
+            "샤워 전 욕실을 온풍으로 미리 데워주고, 사용 중에도 욕실 온도를 따뜻하게 유지해줘요. 단 7분 만에 욕실 온도를 약 5℃ 높여서 부드럽고 은은한 온풍을 고르게 순환시켜줘요.",
           mediaType: "image",
           mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_Heating_pc.jpg",
         },
         {
           label: "송풍",
           description:
-            "더운 여름엔 4단계 송풍으로 욕실 공기를 상쾌하게, 1단계 부드러운 약풍부터 2단계 일반풍, 3단계 강풍, 4단계 터보풍까지 상황에 맞게 선택할 수 있어요.",
+            "더운 여름엔 4단계 송풍으로 욕실 공기를 상쾌하게 바꿔줘요. 1단계 부드러운 약풍부터 2단계 일반풍, 3단계 강풍, 4단계 터보풍까지 상황에 맞게 선택할 수 있어요.",
           mediaType: "image",
           mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_Fresh_pc.jpg",
         },
         {
           label: "공간케어",
           description:
-            "내장 센서가 욕실 상황에 맞는 운전 모드를 자동으로 선택해서 과도한 습기는 빠르게 제거하고, 차가운 공기는 부드럽게 데워 욕실 컨디션을 균형 있게 맞춰줍니다.",
+            "내장 센서가 욕실 상황에 맞는 운전 모드를 자동으로 선택해서 과도한 습기는 빠르게 제거하고, 차가운 공기는 부드럽게 데워 욕실 컨디션을 균형 있게 맞춰줘요.",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_SpaceCare_pc.mp4",
         },
         {
           label: "바디케어",
           description:
-            "남은 물기를 깔끔하게 말려주는 강력한 바디 드라이 기능으로 바쁜 아침에는 준비 시간을 단축해 여유를 더하고, 저녁에는 상쾌하고 기분 좋은 샤워의 마무리를 완성합니다.",
+            "남은 물기를 깔끔하게 말려주는 강력한 바디 드라이 기능으로 바쁜 아침에는 준비 시간을 단축해서 여유를 더하고, 저녁에는 상쾌하고 기분 좋은 샤워 마무리를 완성해줘요.",
           mediaType: "image",
           mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_BodyCare_pc.jpg",
         },
@@ -1690,15 +1690,15 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "눈에 보이지 않는 세균까지\n깨끗하게 관리될까요?",
-      subtitle: "UV팬살균으로 내부 위생을 청결한 상태로 유지하고\n전문 케어서비스로 제품을 깨끗하게 관리합니다.",
+      title: "눈에 보이지 않는 세균까지\n깨끗하게 관리돼요",
+      subtitle: "UV팬살균으로 내부 위생을 청결하게 유지하고\n전문 케어서비스로 제품을 깨끗하게 관리해요",
       icon: "Sparkles",
       tag: "클린케어",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_CleanCare_pc.mp4",
       fullWidthMedia: true,
       description:
-        "UV-LED로 바람을 만들어내는 팬을 99.99% 살균하여 눈에 보이지 않는 곳까지 청결하게 유지합니다. 필터를 분리하여 셀프 케어가 가능하며, 전문 케어서비스로 제품을 위생적으로 관리할 수 있어요.",
+        "UV-LED로 바람을 만들어내는 팬을 99.99% 살균해서 눈에 보이지 않는 곳까지 청결하게 유지해요. 필터를 분리해서 셀프 케어가 가능하고, 전문 케어서비스로 제품을 위생적으로 관리할 수 있어요.",
       highlights: [],
       mediaDisclaimers: [
         "소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
@@ -1707,7 +1707,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "6",
       title: "여름철 습기와의 전쟁!\n욕실을 보송하게 바꾼 비결은?",
-      subtitle: "여름철 습기와의 전쟁!\n바스에어시스템 구독으로 해결",
+      subtitle: "여름철 습기와의 전쟁!\n바스에어시스템 구독으로 해결해요",
       icon: "Monitor",
       tag: "영상",
       mediaType: "youtube",
@@ -1715,7 +1715,7 @@ export const featuresMap: Record<string, Feature[]> = {
       isShorts: false,
       descriptionTitle: "자세히 알아보기",
       description:
-        "샤워하고 나와도 금세 끈적이는 몸, 습기 가득찬 욕실, 꿉꿉한 냄새...\n여름철 욕실 관리 때문에 스트레스 받지 마세요!\nLG전자 퓨리케어 바스에어시스템이 거울 김 서림부터\n축축한 바닥 습기까지 싹 잡아서 보송한 욕실을 만들어주니까요.",
+        "샤워하고 나와도 금세 끈적이는 몸, 습기 가득찬 욕실, 꿉꿉한 냄새...\n여름철 욕실 관리 때문에 스트레스 받지 마세요.\nLG전자 퓨리케어 바스에어시스템이 거울 김 서림부터\n축축한 바닥 습기까지 싹 잡아서 보송한 욕실을 만들어주니까요.",
       highlights: ["송풍", "환기모드", "케어 전문가", "분해 세척"],
       disclaimers: [],
       collapsibleDisclaimers: [
@@ -1759,7 +1759,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           title: "[환기]",
           items: [
-            "리모컨의 환기 버튼을 누르면 욕실 내 공기가 배기되어 공간을 쾌적하게 유지합니다.",
+            "리모컨의 환기 버튼을 누르면 욕실 내 공기가 배기되어 공간을 쾌적하게 유지해요.",
           ],
         },
       ],
@@ -1767,7 +1767,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "5",
       title: "실제 설치 사례를 확인해 보세요",
-      subtitle: "고객 니즈 및 현장 상황을 고려하여 최적의 위치에 설치해 드립니다.",
+      subtitle: "고객 니즈와 현장 상황을 고려해서 최적의 위치에 설치해 드려요",
       icon: "Image",
       tag: "설치 사례",
       mediaType: "gallery",
@@ -1805,13 +1805,13 @@ export const featuresMap: Record<string, Feature[]> = {
         },
       ],
       description:
-        "다양한 욕실 구조와 공간에 맞춰 최적의 위치에 설치된 실제 사례를 확인해 보세요. 이제 사계절 쾌적한 프리미엄 욕실 라이프를 즐겨보세요.",
+        "다양한 욕실 구조와 공간에 맞춰 최적의 위치에 설치된 실제 사례를 확인해 보세요. 이제 사계절 내내 쾌적한 프리미엄 욕실 라이프를 즐겨보세요.",
       highlights: [],
     },
     {
       id: "4",
-      title: "우리집 욕실에도 설치될까요?",
-      subtitle: "사전에 우리 집 설치 환경이 바스에어시스템 설치에 적합한지 확인해보세요",
+      title: "우리집 욕실에도 설치할 수 있어요",
+      subtitle: "미리 우리 집 설치 환경이 바스에어시스템 설치에 적합한지 확인해보세요",
       icon: "Wrench",
       tag: "설치 환경",
       mediaType: "image",
@@ -1819,7 +1819,7 @@ export const featuresMap: Record<string, Feature[]> = {
       fullWidthMedia: true,
       descriptionTitle: "자세히 알아보기",
       description:
-        "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 보다 원활한 설치가 가능합니다.",
+        "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 더 원활하게 설치할 수 있어요.",
       highlights: [],
       mediaDisclaimers: [
         "설치 환경에 따라 설치기사의 현장 확인 및 추가 비용이 발생할 수 있습니다.",
@@ -1829,7 +1829,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "7",
       title: "케어서비스를 확인해보세요",
-      subtitle: "체계적인 전문가 케어 프로세스를 통해 위생적으로 관리해드립니다",
+      subtitle: "체계적인 전문가 케어 프로세스를 통해 위생적으로 관리해 드려요",
       icon: "Waves",
       tag: "구독",
       mediaType: "video",
@@ -1837,7 +1837,7 @@ export const featuresMap: Record<string, Feature[]> = {
       fullWidthMedia: true,
       descriptionTitle: "자세히 알아보기",
       description:
-        "필터 교체부터 내 · 외부 클리닝, 위생 관리, 성능 점검까지 체계적인 전문가 케어 프로세스를 통해 바스에어시스템을 위생적으로 관리할 수 있어요.",
+        "필터 교체부터 내·외부 클리닝, 위생 관리, 성능 점검까지 체계적인 전문가 케어 프로세스로 바스에어시스템을 위생적으로 관리할 수 있어요.",
       highlights: [],
       mediaDisclaimers: [
         "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
