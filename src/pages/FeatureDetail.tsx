@@ -314,6 +314,7 @@ const FeatureDetail = () => {
                   )}
                 </figure>
               )}
+              {renderMediaGallery(activeTabData?.mediaGallery ?? feature.mediaGallery)}
             </>
           );
         })()}
