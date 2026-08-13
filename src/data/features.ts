@@ -1690,7 +1690,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "눈에 보이지 않는 팬은 어떻게 관리하죠?",
+      title: "눈에 보이지 않는 팬은\n어떻게 관리하죠?",
       subtitle: "UV-LED로 바람을 만들어내는 팬을 99.99% 살균해 걱정 없어요.",
       icon: "Sparkles",
       tag: "클린케어",
