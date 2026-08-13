@@ -1690,8 +1690,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "물기 많은 욕실, 세균이 걱정된다면?",
-      subtitle: "UV팬살균으로 내부 위생을 청결하게 유지하고\n전문 케어서비스로 제품을 깨끗하게 관리해요",
+      title: "눈에 보이지 않는 팬은 어떻게 관리하죠?",
+      subtitle: "UV-LED로 바람을 만들어내는 팬을 99.99% 살균해 걱정 없어요.",
       icon: "Sparkles",
       tag: "클린케어",
       mediaType: "video",
@@ -1766,8 +1766,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "5",
-      title: "바스에어를 설치한 집은 어떨까?",
-      subtitle: "고객 니즈와 현장 상황을 고려해서 최적의 위치에 설치해 드려요",
+      title: "바스에어시스템을 설치한 집이 궁금하시다면?",
+      subtitle: "실제 바스에어시스템을 설치한 사례를 알아보세요.",
       icon: "Image",
       tag: "설치 사례",
       mediaType: "gallery",
@@ -1811,7 +1811,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "4",
       title: "우리집 욕실에도 설치할 수 있나요?",
-      subtitle: "미리 우리 집 설치 환경이 바스에어시스템 설치에 적합한지 확인해보세요",
+      subtitle: "바스에어시스템 설치하기 전, 확인해야할 체크리스트!",
       icon: "Wrench",
       tag: "설치 환경",
       mediaType: "image",
@@ -1828,8 +1828,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "7",
-      title: "케어서비스를 확인해보세요",
-      subtitle: "체계적인 전문가 케어 프로세스를 통해 위생적으로 관리해 드려요",
+      title: "물기 많은 욕실, 세균이 걱정된다면?",
+      subtitle: "체계적인 전문가의 케어를 받으면 더욱 위생적으로 관리할 수 있어요.",
       icon: "Waves",
       tag: "구독",
       mediaType: "video",
