@@ -158,6 +158,44 @@ const Home = () => {
               />
             );
           })}
+
+          {productId === "bathair" && (
+            <Link
+              to="/subscription"
+              className="relative block bg-white border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 rounded-2xl sm:p-6 sm:text-center sm:hover:scale-[1.03] max-sm:px-4 max-sm:py-3.5 max-sm:active:scale-[0.99]"
+            >
+              {/* Mobile layout */}
+              <div className="sm:hidden flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand to-[#7A0026] flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <Waves className="text-white w-6 h-6" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <span className="inline-block bg-brand-soft text-brand text-[10px] font-bold px-1.5 py-0.5 rounded-md mb-1">
+                    케어 서비스
+                  </span>
+                  <h3 className="text-[15px] font-bold text-gray-900 leading-snug">구독</h3>
+                  <p className="text-[12px] text-gray-500 leading-snug line-clamp-2 mt-0.5">
+                    케어 전·후 비교로 한눈에 보는 케어 서비스
+                  </p>
+                </div>
+                <span className="text-gray-300 text-xl flex-shrink-0">›</span>
+              </div>
+
+              {/* Desktop / tablet layout */}
+              <div className="hidden sm:block">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand to-[#7A0026] flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <Waves className="text-white w-8 h-8" />
+                </div>
+                <span className="inline-block bg-brand-soft text-brand text-sm font-bold px-2.5 py-1 rounded-lg mb-2 sm:mb-3">
+                  케어 서비스
+                </span>
+                <h3 className="text-base sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">구독</h3>
+                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+                  케어 전·후 비교로 한눈에 보는 케어 서비스
+                </p>
+              </div>
+            </Link>
+          )}
         </div>
 
         {/* Other Products Button */}
