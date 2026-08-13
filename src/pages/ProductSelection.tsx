@@ -132,7 +132,6 @@ const ProductSelection = () => {
       keyVisualImage: washcomboCardImage,
     },
   };
-  const currentSlug = (getCurrentStore()?.slug || "").toUpperCase();
   const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")].map((p) => {
     const override = cardThumbnailOverrides[p.id];
     return override ? { ...p, ...override } : p;
