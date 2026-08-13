@@ -1837,7 +1837,6 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: [],
       mediaDisclaimers: [
         "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
-        "구독 요금 및 할인 조건은 판매처/지점 및 계약기간에 따라 상이할 수 있습니다.",
       ],
       mediaCollapsibleDisclaimers: [
         {
