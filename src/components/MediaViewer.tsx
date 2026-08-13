@@ -685,8 +685,8 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
     <div
       style={{
         width: "100%",
-        maxWidth: "600px",
-        margin: "0 auto",
+        maxWidth: fullWidthMedia ? "none" : "600px",
+        margin: fullWidthMedia ? 0 : "0 auto",
         borderRadius: "16px",
         overflow: "hidden",
         background: "#f3f4f6",
