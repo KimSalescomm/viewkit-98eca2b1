@@ -118,9 +118,15 @@ export interface Feature {
   isShorts?: boolean;
   disclaimers?: string[];
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
+  /** 메인 미디어 바로 아래 노출되는 일반 디스클레이머 */
+  mediaDisclaimers?: string[];
+  /** 메인 미디어 바로 아래 노출되는 접이식 디스클레이머 */
+  mediaCollapsibleDisclaimers?: CollapsibleDisclaimer[];
   tabs?: FeatureTab[];
   tabsVariant?: "pill" | "underline";
   showMainMedia?: boolean;
+  /** 메인 미디어 이미지를 컨텐츠 폭에 맞춰 꽉 채움 */
+  fullWidthMedia?: boolean;
   /** 메인 콘텐츠 하위 세부 기능 (아코디언) */
   subFeatures?: SubFeature[];
   /** 세부 기능 영역 제목/부제 */
