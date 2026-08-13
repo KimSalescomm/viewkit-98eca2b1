@@ -171,11 +171,11 @@ const Home = () => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <span className="inline-block bg-brand-soft text-brand text-[10px] font-bold px-1.5 py-0.5 rounded-md mb-1">
-                    케어 서비스
+                    구독
                   </span>
-                  <h3 className="text-[15px] font-bold text-gray-900 leading-snug">구독</h3>
+                  <h3 className="text-[15px] font-bold text-gray-900 leading-snug">프리미엄 듀얼 구독</h3>
                   <p className="text-[12px] text-gray-500 leading-snug line-clamp-2 mt-0.5">
-                    케어 전·후 비교로 한눈에 보는 케어 서비스
+                    듀얼배기와 웜·프레시케어로 완성하는 욕실 공기 케어
                   </p>
                 </div>
                 <span className="text-gray-300 text-xl flex-shrink-0">›</span>
