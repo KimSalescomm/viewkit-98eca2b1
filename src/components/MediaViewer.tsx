@@ -702,6 +702,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
           width: "100%",
           height: "auto",
           display: "block",
+          objectPosition: imagePosition,
         }}
       />
     </div>
