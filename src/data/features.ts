@@ -1545,15 +1545,15 @@ export const featuresMap: Record<string, Feature[]> = {
   bathair: [
     {
       id: "1",
-      title: "듀얼배기로 습기와 냄새를\n더 빠르게 제거할 수 있을까요?",
-      subtitle: "바스에어시스템과 배기팬이 함께 작동해 환기 효과를 높이고 쾌적한 환경을 유지합니다.",
+      title: "듀얼배기로\n습기와 냄새를 더 빠르게 제거할 수 있을까요?",
+      subtitle: "바스에어시스템과 배기팬이 함께 작동해\n환기 효과를 높이고 쾌적한 환경을 유지합니다.",
       icon: "Wind",
       tag: "듀얼 배기",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_160CMH_pc.jpg",
       fullWidthMedia: true,
       description:
-        "최대 풍량 160CMH의 강력한 듀얼배기는 욕실 내 습기를 16분 만에 60%까지 낮추고, 습기 체류 시간을 단축시켜 보송한 욕실을 만들어줍니다.",
+        "최대 풍량 160CMH의 강력한 듀얼배기는\n욕실 내 습기를 16분 만에 60%까지 낮추고,\n습기 체류 시간을 단축시켜 보송한 욕실을 만들어줍니다.",
       highlights: [],
 
       mediaDisclaimers: [
