@@ -1877,11 +1877,7 @@ export const featuresMap: Record<string, Feature[]> = {
       descriptionTitle: "자세히 알아보기",
       description:
         "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁+건조를 완성하고, 결과까지 확인할 수 있어요.",
-      highlights: [
-        "세탁+건조 모든 과정에 AI 기술 적용",
-        "AI DD 모터가 만드는 섬세한 6모션",
-        "6가지 손빨래 동작으로 정교하게 세탁, 바람을 본뜬 6가지 건조 모션으로 꼼꼼하게 건조",
-      ],
+      highlights: ["세탁+건조 모든 과정에 AI 기술 적용", "AI DD 모터가 만드는 섬세한 6모션"],
       tabs: [
         {
           label: "AI 세탁+건조",
