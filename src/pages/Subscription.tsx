@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Check, ArrowLeft, Sparkles, ImageIcon, X, Play } from "lucide-react";
+import { Check, Sparkles, ImageIcon, X, Play } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
+import BackButton from "@/components/BackButton";
 import FeatureTabs from "@/components/FeatureTabs";
 
 import FeatureLikeButton from "@/components/FeatureLikeButton";

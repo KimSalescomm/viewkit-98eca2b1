@@ -4,6 +4,7 @@ import FeatureCard from "@/components/FeatureCard";
 import SafeImage from "@/components/SafeImage";
 import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
 import OrientationToggle from "@/components/OrientationToggle";
+import BackButton from "@/components/BackButton";
 import { useContent } from "@/contexts/ContentContext";
 
 const Home = () => {
@@ -36,13 +37,7 @@ const Home = () => {
       <div className="max-w-xl mx-auto sm:max-w-4xl">
         {/* Top Bar */}
         <div className="flex items-center justify-between mb-6 sm:mb-8">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-xl border border-white/70 px-4 h-9 text-[13px] font-semibold text-gray-700 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:bg-white transition-colors"
-          >
-            <span className="text-base leading-none" aria-hidden="true">←</span>
-            <span>제품 선택</span>
-          </Link>
+          <BackButton />
           <div className="flex items-center gap-2">
             <OrientationToggle />
           </div>
