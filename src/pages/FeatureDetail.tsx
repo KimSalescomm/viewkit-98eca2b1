@@ -392,24 +392,52 @@ const FeatureDetail = () => {
         {/* Tab-specific collapsible disclaimers */}
         {activeTabData?.collapsibleDisclaimers && activeTabData.collapsibleDisclaimers.length > 0 && (
           <div className="mb-6 sm:mb-8 px-1">
-            <Accordion type="multiple" className="w-full" key={`tab-disclaimers-${activeTab}`}>
-              {activeTabData.collapsibleDisclaimers.map((item, index) => (
-                <AccordionItem key={index} value={`tab-${activeTab}-disclaimer-${index}`} className="border-b border-gray-200">
+            {productId === "washcombo" && id === "7" ? (
+              <Accordion type="single" collapsible className="w-full" key={`tab-disclaimers-${activeTab}`}>
+                <AccordionItem value={`tab-${activeTab}-disclaimer-all`} className="border-b border-gray-200">
                   <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
-                    {item.title}
+                    세부정보
                   </AccordionTrigger>
                   <AccordionContent>
-                    <ol className="space-y-1 list-none pt-1 pb-2">
-                      {item.items.map((text, i) => (
-                        <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
-                          {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
-                        </li>
+                    <div className="space-y-3 pt-1 pb-2">
+                      {activeTabData.collapsibleDisclaimers.map((item, index) => (
+                        <div key={index}>
+                          <h4 className="text-[11px] sm:text-xs font-bold text-gray-700 mb-1">
+                            {item.title}
+                          </h4>
+                          <ol className="space-y-1 list-none">
+                            {item.items.map((text, i) => (
+                              <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
+                                {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
+                              </li>
+                            ))}
+                          </ol>
+                        </div>
                       ))}
-                    </ol>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
-              ))}
-            </Accordion>
+              </Accordion>
+            ) : (
+              <Accordion type="multiple" className="w-full" key={`tab-disclaimers-${activeTab}`}>
+                {activeTabData.collapsibleDisclaimers.map((item, index) => (
+                  <AccordionItem key={index} value={`tab-${activeTab}-disclaimer-${index}`} className="border-b border-gray-200">
+                    <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
+                      {item.title}
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <ol className="space-y-1 list-none pt-1 pb-2">
+                        {item.items.map((text, i) => (
+                          <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
+                            {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
+                          </li>
+                        ))}
+                      </ol>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            )}
           </div>
         )}
 
@@ -648,24 +676,52 @@ const FeatureDetail = () => {
         {/* Disclaimers (collapsible accordion) */}
         {feature.collapsibleDisclaimers && feature.collapsibleDisclaimers.length > 0 && (
           <div className="mb-10 sm:mb-12 px-1">
-            <Accordion type="multiple" className="w-full">
-              {feature.collapsibleDisclaimers.map((item, index) => (
-                <AccordionItem key={index} value={`disclaimer-${index}`} className="border-b border-gray-200">
+            {productId === "washcombo" && id === "7" ? (
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="disclaimer-all" className="border-b border-gray-200">
                   <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
-                    {item.title}
+                    세부정보
                   </AccordionTrigger>
                   <AccordionContent>
-                    <ol className="space-y-1 list-none pt-1 pb-2">
-                      {item.items.map((text, i) => (
-                        <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
-                          {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
-                        </li>
+                    <div className="space-y-3 pt-1 pb-2">
+                      {feature.collapsibleDisclaimers.map((item, index) => (
+                        <div key={index}>
+                          <h4 className="text-[11px] sm:text-xs font-bold text-gray-700 mb-1">
+                            {item.title}
+                          </h4>
+                          <ol className="space-y-1 list-none">
+                            {item.items.map((text, i) => (
+                              <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
+                                {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
+                              </li>
+                            ))}
+                          </ol>
+                        </div>
                       ))}
-                    </ol>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
-              ))}
-            </Accordion>
+              </Accordion>
+            ) : (
+              <Accordion type="multiple" className="w-full">
+                {feature.collapsibleDisclaimers.map((item, index) => (
+                  <AccordionItem key={index} value={`disclaimer-${index}`} className="border-b border-gray-200">
+                    <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
+                      {item.title}
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <ol className="space-y-1 list-none pt-1 pb-2">
+                        {item.items.map((text, i) => (
+                          <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
+                            {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
+                          </li>
+                        ))}
+                      </ol>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            )}
           </div>
         )}
 
