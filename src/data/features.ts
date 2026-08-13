@@ -90,6 +90,8 @@ export interface SubFeature {
   mediaUrl?: string;
   isShorts?: boolean;
   fallbackUrl?: string;
+  /** 세부정보 토글에 노출할 디스클라이머 */
+  disclaimers?: TrueSteamCourseDisclaimer[];
 }
 
 
