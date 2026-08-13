@@ -19,6 +19,8 @@ export interface Product {
   secondaryKeyVisualImage?: string;
   keyVisualVideo?: string;
   icon: string;
+  /** 메인 이미지 확대 비율 (1 = 원본, 1.1 = 10% 확대) */
+  imageZoom?: number;
 }
 
 export const products: Product[] = [
@@ -73,6 +75,7 @@ export const products: Product[] = [
     description: "온도를 넘어 습도까지 완벽한 바람",
     keyVisualImage: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_TowerI_summary_beige_pc.jpg",
     icon: "Wind",
+    imageZoom: 1.1,
   },
   {
     id: "pc",

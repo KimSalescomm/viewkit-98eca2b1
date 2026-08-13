@@ -78,6 +78,9 @@ const Home = () => {
               ? images.filter((_, index) => index !== 0)
               : images;
 
+            const imageZoom = product.imageZoom ?? 1;
+            const isZoomed = imageZoom !== 1;
+
             return displayImages.map((src, index) => {
               const isFirst = index === 0 && !product.keyVisualVideo;
               // 청소로봇은 가로형에서 첫 번째(위) 이미지만 노출하고,
@@ -106,7 +109,8 @@ const Home = () => {
                     loading="eager"
                     fetchPriority={isFirst ? "high" : undefined}
                     decoding="async"
-                    className="relative w-full h-full object-contain object-center"
+                    className={`relative w-full h-full object-center ${isZoomed ? "object-cover" : "object-contain"}`}
+                    style={isZoomed ? { transform: `scale(${imageZoom})` } : undefined}
                   />
                 </div>
               );
