@@ -35,12 +35,18 @@ export interface CollapsibleDisclaimer {
   items: string[];
 }
 
+export interface TrueSteamCourseDisclaimer {
+  title: string;
+  items: string[];
+}
+
 export interface TrueSteamCourse {
   name: string;
   type?: string;
   description: string;
   imageUrl: string;
   imageAlt?: string;
+  disclaimers?: TrueSteamCourseDisclaimer[];
 }
 
 
