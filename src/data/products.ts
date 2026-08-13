@@ -42,6 +42,7 @@ export const products: Product[] = [
     keyVisualImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg",
     secondaryKeyVisualImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
     icon: "Sparkles",
+    imageZoom: 1.1,
 
 
   },
