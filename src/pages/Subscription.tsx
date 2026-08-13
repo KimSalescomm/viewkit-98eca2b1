@@ -348,18 +348,16 @@ const Subscription = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[hsl(220,20%,97%)]">
-      {/* GNB */}
-      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <BackButton />
+    <div className="min-h-screen bg-[#F3F4F6]">
+      <main className="max-w-6xl mx-auto px-5 py-8 sm:px-8 sm:py-12">
+        {/* Top Bar */}
+        <div className="flex items-center justify-between mb-6 sm:mb-8">
+          <BackButton />
+          <div className="flex items-center gap-2">
+            <OrientationToggle />
           </div>
-          <OrientationToggle />
         </div>
-      </header>
 
-      <main className="max-w-6xl mx-auto px-5 sm:px-8 py-8 sm:py-12">
         {/* Title */}
         <div className="mb-6 sm:mb-8 text-center">
           <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-2" style={{ color: "hsl(var(--brand))" }}>
