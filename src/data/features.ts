@@ -1824,8 +1824,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "7",
-      title: "부담은 낮추고 관리는 맡기고,\n구독으로 시작해 볼까요?",
-      subtitle: "초기 구입 부담 없이 바스에어시스템을 사용하고, 케어 전문가의 정기 방문 관리까지 받아보세요.",
+      title: "바스에어시스템 케어서비스를 확인해보세요",
+      subtitle: "",
       icon: "Waves",
       tag: "구독",
       mediaType: "image",
