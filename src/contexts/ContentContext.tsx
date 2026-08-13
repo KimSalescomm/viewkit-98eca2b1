@@ -65,9 +65,9 @@ interface ContentContextValue {
 }
 
 // 기본 노출 세트/필터 로직 변경 시 이전 지점 캐시가 남지 않도록 버전을 올립니다.
-const CACHE_KEY = "viewkit_visibility_snapshot_v3";
-// 캐시 유효 시간: 6시간 (오래된 캐시로 숨긴 제품이 계속 보이는 것을 방지)
-const CACHE_TTL_MS = 6 * 60 * 60 * 1000;
+const CACHE_KEY = "viewkit_visibility_snapshot_v4";
+// 캐시 유효 시간: 30분 (퍼블리시 변경이 빠르게 반영되도록)
+const CACHE_TTL_MS = 30 * 60 * 1000;
 
 const ContentContext = createContext<ContentContextValue | null>(null);
 

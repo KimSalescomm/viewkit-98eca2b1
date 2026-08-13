@@ -39,9 +39,6 @@ const lucideIconMap: Record<string, LucideIcon> = {
   Droplets,
 };
 
-// 대외비 제품 — SC(관리자) 및 KOR(유관부서) 계정에서만 노출
-const CONFIDENTIAL_PRODUCT_IDS = new Set(["bathair", "washcombo"]);
-const INTERNAL_STORE_SLUGS = new Set(["SC", "KOR"]);
 
 
 const ProductLucideIcon = ({ name, className }: { name: string; className?: string }) => {
@@ -135,20 +132,20 @@ const ProductSelection = () => {
       keyVisualImage: washcomboCardImage,
     },
   };
-  const currentSlug = (getCurrentStore()?.slug || "").toUpperCase();
-  const isInternalPreview = INTERNAL_STORE_SLUGS.has(currentSlug);
   const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")].map((p) => {
     const override = cardThumbnailOverrides[p.id];
+
     return override ? { ...p, ...override } : p;
   });
   const visibleProducts = desiredOrder
     .map((id) => allProducts.find((p) => p.id === id))
     .filter((p): p is (typeof allProducts)[number] => {
       if (!p) return false;
-      // 대외비 제품은 SC/KOR 계정에서만 카드 노출 (지점 계정에서는 아예 숨김)
-      if (CONFIDENTIAL_PRODUCT_IDS.has(p.id) && !isInternalPreview) return false;
-      return true;
+      // 노출 판정은 ContentContext 한 곳에서만 결정 (퍼블리시 스냅샷 기준).
+      // 대외비 제품도 관리자가 퍼블리시로 노출을 켰다면 지점 계정에 표시됩니다.
+      return isProductVisible(p.id);
     });
+
 
 
   const { trackProductClick } = useAnalyticsContext();
@@ -283,11 +280,10 @@ const ProductSelection = () => {
         <h2 className="sr-only">제품 선택</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
           {visibleProducts.map((product, index) => {
-            // 내부 계정(SC/KOR)은 대외비 제품도 항상 활성화, 그 외는 퍼블리시된 노출 목록 기준
-            // 노출 판정은 ContentContext 한 곳에서만 결정 (스냅샷/캐시 정합성 보장)
-            const isEnabled =
-              (isInternalPreview && CONFIDENTIAL_PRODUCT_IDS.has(product.id)) ||
-              isProductVisible(product.id);
+            // 노출 판정은 ContentContext 한 곳에서만 결정
+            const isEnabled = isProductVisible(product.id);
+
+
 
 
             const accent = productAccents[product.id] || {
