@@ -1766,8 +1766,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "5",
-      title: "바스에어를 설치한 집은 어떨까?",
-      subtitle: "고객 니즈와 현장 상황을 고려해서 최적의 위치에 설치해 드려요",
+      title: "바스에어시스템을 설치한 집이 궁금하시다면?",
+      subtitle: "실제 바스에어시스템을 설치한 사례를 알아보세요.",
       icon: "Image",
       tag: "설치 사례",
       mediaType: "gallery",
