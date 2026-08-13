@@ -65,6 +65,7 @@ export interface FeatureTab {
   belowMediaImage?: { url: string; alt?: string; caption?: string };
   frameBg?: string;
   imageFit?: "cover" | "contain";
+  imagePosition?: string;
 }
 
 export interface HighlightDetail {
