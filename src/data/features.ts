@@ -1810,8 +1810,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "4",
-      title: "우리집 욕실에도 설치될까요?",
-      subtitle: "사전에 우리 집 설치 환경이 바스에어시스템 설치에 적합한지 확인해보세요",
+      title: "우리집 욕실에도 설치할 수 있어요",
+      subtitle: "미리 우리 집 설치 환경이 바스에어시스템 설치에 적합한지 확인해보세요",
       icon: "Wrench",
       tag: "설치 환경",
       mediaType: "image",
@@ -1819,7 +1819,7 @@ export const featuresMap: Record<string, Feature[]> = {
       fullWidthMedia: true,
       descriptionTitle: "자세히 알아보기",
       description:
-        "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 보다 원활한 설치가 가능합니다.",
+        "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 더 원활하게 설치할 수 있어요.",
       highlights: [],
       mediaDisclaimers: [
         "설치 환경에 따라 설치기사의 현장 확인 및 추가 비용이 발생할 수 있습니다.",
