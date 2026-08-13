@@ -1767,7 +1767,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "5",
       title: "실제 설치 사례를 확인해 보세요",
-      subtitle: "고객 니즈 및 현장 상황을 고려하여 최적의 위치에 설치해 드립니다.",
+      subtitle: "고객 니즈와 현장 상황을 고려해서 최적의 위치에 설치해 드려요",
       icon: "Image",
       tag: "설치 사례",
       mediaType: "gallery",
@@ -1805,7 +1805,7 @@ export const featuresMap: Record<string, Feature[]> = {
         },
       ],
       description:
-        "다양한 욕실 구조와 공간에 맞춰 최적의 위치에 설치된 실제 사례를 확인해 보세요. 이제 사계절 쾌적한 프리미엄 욕실 라이프를 즐겨보세요.",
+        "다양한 욕실 구조와 공간에 맞춰 최적의 위치에 설치된 실제 사례를 확인해 보세요. 이제 사계절 내내 쾌적한 프리미엄 욕실 라이프를 즐겨보세요.",
       highlights: [],
     },
     {
