@@ -3,6 +3,7 @@ import {
   Armchair,
   Brush,
   Cable,
+  ClipboardCheck,
   Cpu,
   EyeOff,
   Flame,
