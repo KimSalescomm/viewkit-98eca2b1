@@ -311,9 +311,9 @@ const FeatureDetail = () => {
         {/* Tab-specific collapsible disclaimers */}
         {activeTabData?.collapsibleDisclaimers && activeTabData.collapsibleDisclaimers.length > 0 && (
           <div className="mb-6 sm:mb-8 px-1">
-            <Accordion type="multiple" className="w-full">
+            <Accordion type="multiple" className="w-full" key={`tab-disclaimers-${activeTab}`}>
               {activeTabData.collapsibleDisclaimers.map((item, index) => (
-                <AccordionItem key={index} value={`tab-disclaimer-${index}`} className="border-b border-gray-200">
+                <AccordionItem key={index} value={`tab-${activeTab}-disclaimer-${index}`} className="border-b border-gray-200">
                   <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
                     {item.title}
                   </AccordionTrigger>
