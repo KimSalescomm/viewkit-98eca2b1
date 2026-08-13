@@ -2047,17 +2047,16 @@ export const featuresMap: Record<string, Feature[]> = {
       tabs: [
         {
           label: "미니멀 플랫 디자인",
-          mediaType: "gallery",
-          galleryImages: [
+          mediaType: "image",
+          mediaUrl:
             "https://www.lge.co.kr/kr/images/washing-machines/md10810828/usp/FC4TC_01_minimal_pc.jpg",
-            "https://www.lge.co.kr/kr/images/washing-machines/md10810828/usp/FC4TC_01_minimal_pc.jpg",
-          ],
           description:
             "AI 워시콤보에 딱 맞게 설계돼 맞춤 제작한 가구처럼 조화로워요.",
         },
         {
           label: "공간절약",
           mediaType: "image",
+          imageFit: "cover",
           mediaUrl:
             "https://www.lge.co.kr/kr/images/washing-machines/md10810828/usp/FC4TC_02_space_saving.jpg",
           description:
@@ -2066,6 +2065,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "높아진 워시콤보 투입구",
           mediaType: "image",
+          imageFit: "cover",
           mediaUrl:
             "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_18_height.jpg",
           description:
