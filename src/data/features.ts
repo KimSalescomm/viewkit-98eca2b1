@@ -1829,7 +1829,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "7",
       title: "케어서비스를 확인해보세요",
-      subtitle: "체계적인 전문가 케어 프로세스를 통해 위생적으로 관리해드립니다",
+      subtitle: "체계적인 전문가 케어 프로세스를 통해 위생적으로 관리해 드려요",
       icon: "Waves",
       tag: "구독",
       mediaType: "video",
@@ -1837,7 +1837,7 @@ export const featuresMap: Record<string, Feature[]> = {
       fullWidthMedia: true,
       descriptionTitle: "자세히 알아보기",
       description:
-        "필터 교체부터 내 · 외부 클리닝, 위생 관리, 성능 점검까지 체계적인 전문가 케어 프로세스를 통해 바스에어시스템을 위생적으로 관리할 수 있어요.",
+        "필터 교체부터 내·외부 클리닝, 위생 관리, 성능 점검까지 체계적인 전문가 케어 프로세스로 바스에어시스템을 위생적으로 관리할 수 있어요.",
       highlights: [],
       mediaDisclaimers: [
         "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
