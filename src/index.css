@@ -279,10 +279,8 @@ All colors MUST be HSL.
     gap: 1.25rem;
   }
 
-  /* 키 비주얼 높이 축소(가로 화면이 짧음) */
-  html[data-orientation="landscape"] .sm\:h-\[480px\] {
-    height: 360px;
-  }
+  /* 키 비주얼: 가로 모드에서도 16:9 비율 고정 유지 (별도 높이 강제 없음) */
+
 
   /* FeatureDetail: 헤더+미디어 좌우 배치를 위한 여유 확보 */
   html[data-orientation="landscape"] .px-4.py-6.sm\:px-6.sm\:py-8 {

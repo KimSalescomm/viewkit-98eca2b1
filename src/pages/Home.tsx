@@ -83,31 +83,29 @@ const Home = () => {
               return (
                 <div
                   key={src + index}
-                  className="rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]"
+                  className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white bg-gray-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] aspect-video"
                 >
+                  {/* 블러 배경: 비율이 달라 생기는 여백을 자연스럽게 채움 */}
+                  <SafeImage
+                    src={src}
+                    alt=""
+                    aria-hidden="true"
+                    loading="eager"
+                    decoding="async"
+                    className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-60"
+                  />
                   <SafeImage
                     src={src}
                     alt={`LG ${product.name} ${isFirst ? "대표 이미지" : "추가 이미지"}`}
                     loading="eager"
                     fetchPriority={isFirst ? "high" : undefined}
                     decoding="async"
-                    className={`w-full ${
-                      productId === "airconditioner"
-                        ? "h-auto object-contain"
-                        : productId === "vacuum"
-                        ? "h-auto aspect-[138/67] object-cover object-center"
-                        : "h-[220px] sm:h-[480px] object-cover"
-                    } ${
-                      productId === "washer" && isFirst
-                        ? "object-[55%_center]"
-                        : productId === "airconditioner" || productId === "vacuum"
-                        ? ""
-                        : "object-center"
-                    }`}
+                    className="relative w-full h-full object-contain object-center"
                   />
                 </div>
               );
             });
+
           })()}
         </div>
 
