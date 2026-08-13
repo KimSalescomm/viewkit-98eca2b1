@@ -1836,7 +1836,7 @@ export const featuresMap: Record<string, Feature[]> = {
           imageUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_10_allergy_care.jpg",
           disclaimers: [
             {
-              title: "바이러스 제거-세탁",
+              title: "바이러스 제거",
               items: [
                 "시험 기관 : KATRI (한국의류시험연구원) / 시험 일자 : ‘26년 03월",
                 "시험 코스 : 알러지케어",
@@ -1850,7 +1850,7 @@ export const featuresMap: Record<string, Feature[]> = {
               ],
             },
             {
-              title: "유해세균 살균-세탁",
+              title: "유해세균 살균",
               items: [
                 "시험 기관 : Intertek / 시험 일자 : ‘26년 03월",
                 "시험 코스 : 알러지케어",
@@ -1863,7 +1863,7 @@ export const featuresMap: Record<string, Feature[]> = {
               ],
             },
             {
-              title: "알러지 유발물질 제거-세탁",
+              title: "알러지 유발물질 제거",
               items: [
                 "시험 기관 : Environmental Allergens Info and Care Inc.(일본소재) / 시험 일자 : ‘26년 03월",
                 "시험 코스 : 알러지케어",
@@ -1875,7 +1875,7 @@ export const featuresMap: Record<string, Feature[]> = {
               ],
             },
             {
-              title: "꽃가루 알레르겐 불활성화-세탁",
+              title: "꽃가루 알레르겐 불활성화",
               items: [
                 "시험 기관 : Environmental Allergens Info and Care Inc.(일본소재) / 시험 일자 : ‘26년 03월",
                 "시험 코스 : 알러지케어",
@@ -1895,7 +1895,7 @@ export const featuresMap: Record<string, Feature[]> = {
           imageUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_11_steam_sterilization.jpg",
           disclaimers: [
             {
-              title: "유해세균 살균-건조",
+              title: "유해세균 살균",
               items: [
                 "시험 기관 : KATRI (한국의류시험연구원) / 시험 일자 : ‘26년 03월",
                 "시험 코스 : 스팀살균",
@@ -1908,7 +1908,7 @@ export const featuresMap: Record<string, Feature[]> = {
               ],
             },
             {
-              title: "바이러스 제거-건조",
+              title: "바이러스 제거",
               items: [
                 "시험 기관 : KATRI (한국의류시험연구원) / 시험 일자 : ‘26년 03월",
                 "시험 코스 : 스팀살균",
@@ -1922,7 +1922,7 @@ export const featuresMap: Record<string, Feature[]> = {
               ],
             },
             {
-              title: "알러지 유발물질 제거-건조",
+              title: "알러지 유발물질 제거",
               items: [
                 "시험 기관 : Environmental Allergens Info and Care Inc.(일본소재) / 시험 일자 : ‘26년 03월",
                 "시험 코스 : 스팀살균",
@@ -1942,7 +1942,7 @@ export const featuresMap: Record<string, Feature[]> = {
           imageUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_12_steam_refresh.jpg",
           disclaimers: [
             {
-              title: "탈취-건조",
+              title: "탈취",
               items: [
                 "시험 기관 : KATRI (한국의류시험연구원) / 시험 일자 : ‘26년 03월",
                 "시험 코스 : 스팀리프레쉬",
@@ -1955,7 +1955,7 @@ export const featuresMap: Record<string, Feature[]> = {
               ],
             },
             {
-              title: "구김제거-건조",
+              title: "구김제거",
               items: [
                 "시험 기관 : KATRI (한국의류시험연구원) / 시험 일자 : ‘25년 03월",
                 "시험 코스 : 스팀리프레쉬",
