@@ -1811,7 +1811,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "4",
       title: "우리집 욕실에도 설치할 수 있나요?",
-      subtitle: "미리 우리 집 설치 환경이 바스에어시스템 설치에 적합한지 확인해보세요",
+      subtitle: "바스에어시스템 설치하기 전, 확인해야할 체크리스트!",
       icon: "Wrench",
       tag: "설치 환경",
       mediaType: "image",
