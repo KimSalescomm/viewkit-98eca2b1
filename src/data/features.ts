@@ -1828,8 +1828,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "7",
-      title: "케어서비스를 확인해보세요",
-      subtitle: "체계적인 전문가 케어 프로세스를 통해 위생적으로 관리해 드려요",
+      title: "물기 많은 욕실, 세균이 걱정된다면?",
+      subtitle: "체계적인 전문가의 케어를 받으면 더욱 위생적으로 관리할 수 있어요.",
       icon: "Waves",
       tag: "구독",
       mediaType: "video",
