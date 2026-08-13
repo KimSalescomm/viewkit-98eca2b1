@@ -2043,7 +2043,7 @@ export const featuresMap: Record<string, Feature[]> = {
       descriptionTitle: "자세히 알아보기",
       description:
         "워시콤보와 함께 미니워시를 연동하면 소량 세탁물이나 속옷, 운동화 같은 작은 아이템도 따로 관리할 수 있어요. 세탁물 종류에 맞춰 효율적으로 케어하세요.",
-      highlights: ["미니워시 연동", "소량 세탁", "속옷·운동화 케어"],
+      highlights: ["AI 워시콤에 딱 맞게 설계", "아기 옷, 속옷 등 분리/동시세탁", "워시콤보와 미니워시 통합컨트롤"],
       tabsVariant: "underline",
       tabs: [
         {
@@ -2054,15 +2054,6 @@ export const featuresMap: Record<string, Feature[]> = {
             "https://www.lge.co.kr/kr/images/washing-machines/md10810828/usp/FC4TC_01_minimal_pc.jpg",
           description:
             "AI 워시콤보에 딱 맞게 설계돼 맞춤 제작한 가구처럼 조화로워요.",
-        },
-        {
-          label: "공간절약",
-          mediaType: "image",
-          imageFit: "cover",
-          mediaUrl:
-            "https://www.lge.co.kr/kr/images/washing-machines/md10810828/usp/FC4TC_02_space_saving.jpg",
-          description:
-            "워시콤보 아래에 설치해 하부 공간을 효율적으로 활용할 수 있어요.",
         },
         {
           label: "높아진 워시콤보 투입구",
@@ -2081,7 +2072,15 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaUrl:
             "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_17_mini_wash_pc.jpg",
           description:
-            "분리 세탁이 필요한 아기 옷, 펫 용품, 양말, 속옷 등을 따로 세탁하거나 워시콤보로 세탁+건조하는 동안 동시 세탁도 할 수 있어 편리해요.",
+            "분리 세탁이 필요한 아기 옷, 펫 용품, 양말, 속옷 등을 따로 세탭하거나 워시콤보로 세탁+건조하는 동안 동시 세탁도 할 수 있어 편리해요.",
+        },
+        {
+          label: "통합 컨트롤",
+          mediaType: "video",
+          mediaUrl:
+            "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_15_1_control_mo.mp4",
+          description:
+            "워시콤보 디스플레이 설정에서 미니워시를 연결하면 워시콤보 디스플레이에서 미니워시까지 컨트롤 할 수 있어요.",
         },
       ],
     },
