@@ -115,6 +115,7 @@ const FeatureDetail = () => {
               galleryImages={feature.galleryImages}
               isShorts={feature.isShorts}
               fallbackUrl={feature.fallbackUrl}
+              fullWidthMedia={feature.fullWidthMedia}
             />
           </div>
         )}
