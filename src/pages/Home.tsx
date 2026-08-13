@@ -1,5 +1,5 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { Waves } from "lucide-react";
+
 import FeatureCard from "@/components/FeatureCard";
 import SafeImage from "@/components/SafeImage";
 import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
