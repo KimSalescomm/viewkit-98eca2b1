@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Sparkles, Image as ImageIcon, PlayCircle, FileText, Globe, MapPin, Award, ThumbsUp } from "lucide-react";
+import { ArrowLeft, Sparkles, Image as ImageIcon, PlayCircle, FileText, Globe, MapPin, Award, ThumbsUp, ChevronLeft } from "lucide-react";
 
 const Section = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
   <section className={`max-w-5xl mx-auto px-5 sm:px-8 py-12 sm:py-16 ${className}`}>{children}</section>
