@@ -174,12 +174,8 @@ const EventRankingModal = ({ open, onClose }: Props) => {
                   </span>
                 </span>
               </div>
-              <div className="text-right shrink-0">
-                <div className="text-[13px] font-extrabold text-brand tabular-nums">
-                  {rows[myRankIndex].sessions.toLocaleString()}
-                </div>
-                <div className="text-[10px] text-slate-400">접속</div>
-              </div>
+              {/* 접속 횟수 숨김 처리 */}
+              <div className="text-right shrink-0" aria-hidden="true" />
             </div>
           )}
         </div>
