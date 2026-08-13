@@ -31,6 +31,7 @@ export const products: Product[] = [
     description: "fresh sySTEM으로 완성되는 직수형 냉장고 STEM",
     keyVisualImage: "https://www.lge.co.kr/kr/story/buying-guide/img/lg-refrigerator-guide/keyvisual_02.jpg",
     icon: "Box",
+    imageZoom: 1.1,
   },
   {
     id: "vacuum",
