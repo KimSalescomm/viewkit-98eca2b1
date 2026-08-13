@@ -1607,7 +1607,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "눈에 보이지 않는 세균까지 깨끗하게 관리될까요?",
+      title: "눈에 보이지 않는 세균까지\n깨끗하게 관리될까요?",
       subtitle: "UV팬살균으로 내부 위생을 청결한 상태로 유지하고\n전문 케어서비스로 제품을 깨끗하게 관리합니다.",
       icon: "Sparkles",
       tag: "클린케어",
