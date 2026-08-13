@@ -1662,8 +1662,8 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "공간케어",
           description:
             "내장 센서가 욕실 상황에 맞는 운전 모드를 자동으로 선택해서 과도한 습기는 빠르게 제거하고, 차가운 공기는 부드럽게 데워 욕실 컨디션을 균형 있게 맞춰줍니다.",
-          mediaType: "image",
-          mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_WarmNFresh_pc.jpg",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_SpaceCare_pc.mp4",
         },
         {
           label: "바디케어",
