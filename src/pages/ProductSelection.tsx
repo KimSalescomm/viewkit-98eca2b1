@@ -250,14 +250,16 @@ const ProductSelection = () => {
               </button>
             )}
             <MobileAccessQR storeSlug={currentStore?.slug} variant="segment" />
-            <Link
-              to="/guide"
+            <a
+              href="https://viewkitup-showcase-pages.lovable.app"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-semibold text-gray-700 hover:bg-gray-100 transition-colors"
               title="뷰킷 소개"
             >
               <BookOpen className="w-3.5 h-3.5" />
               <span>뷰킷 소개</span>
-            </Link>
+            </a>
             <OrientationToggle variant="segment" />
             <ContentRequestButton variant="segment" />
           </div>
