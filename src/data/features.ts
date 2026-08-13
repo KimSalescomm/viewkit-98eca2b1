@@ -66,6 +66,7 @@ export interface FeatureTab {
   frameBg?: string;
   imageFit?: "cover" | "contain";
   imagePosition?: string;
+  collapsibleDisclaimers?: CollapsibleDisclaimer[];
 }
 
 export interface HighlightDetail {
