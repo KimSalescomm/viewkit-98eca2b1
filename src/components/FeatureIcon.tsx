@@ -3,6 +3,7 @@ import {
   Armchair,
   Brush,
   Cable,
+  ClipboardCheck,
   Cpu,
   EyeOff,
   Flame,
@@ -64,6 +65,7 @@ const featureIcons: Record<string, LucideIcon> = {
   ShieldCheck,
   Gift,
   Cable,
+  ClipboardCheck,
 };
 
 interface FeatureIconProps extends Omit<LucideProps, "ref"> {
