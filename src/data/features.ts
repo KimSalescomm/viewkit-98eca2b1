@@ -1690,8 +1690,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "3",
-      title: "물기 많은 욕실, 세균이 걱정된다면?",
-      subtitle: "UV팬살균으로 내부 위생을 청결하게 유지하고\n전문 케어서비스로 제품을 깨끗하게 관리해요",
+      title: "눈에 보이지 않는 팬은 어떻게 관리하죠?",
+      subtitle: "UV-LED로 바람을 만들어내는 팬을 99.99% 살균해 걱정 없어요.",
       icon: "Sparkles",
       tag: "클린케어",
       mediaType: "video",
