@@ -1832,6 +1832,15 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_04_ai_wash_dry_pc.mp4",
           highlights: ["세탁+건조 모든 과정에 AI 기술 적용"],
+          collapsibleDisclaimers: [
+            {
+              title: "세부정보",
+              items: [
+                "AI 세탁+건조 코스는 최대용량 5kg 이하에서 동작하며, 실사용 환경 및 세탁물 종류에 따라 다를 수 있습니다.",
+                "AI 세탁은 딥러닝 AI 기술을 이용해 의류의 재질을 감지한 후 6모션 중 최적의 모션으로 세탁하며, 빅데이터 기반 환경에 맞춰 큰 진동을 미리 예측해 안정적으로 탈수 하며, AI 세탁에서 센싱한 값으로 AI 건조까지 진행합니다.",
+              ],
+            },
+          ],
         },
         {
           label: "AI DD x 6모션",
@@ -1852,6 +1861,16 @@ export const featuresMap: Record<string, Feature[]> = {
             "세탁물을 투입 후 문을 닫고 시작 버튼을 누르면 무게를 감지해 약 3초 만에 예상 시간을 알려줍니다.\n세탁기 앞에서 오래 기다릴 필요가 없고, 코스 별 시간도 바로 확인할 수 있어 편리해요.",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_05_ai_time_sensing.mp4",
+          disclaimers: [
+            {
+              title: "AI 타임 센싱",
+              items: [
+                "AI 타임 센싱 3초 : 문을 닫은 후 전원 버튼을 누르고 웰컴 메시지가 나타난 이후 측정된 시간입니다.",
+                "마른 세탁물 기준 세탁물이 가득 찬 경우 최대 약 15초까지 소요될 수 있습니다.",
+                "세탁물의 종류나 사용 환경에 따라 센싱 시간은 달라질 수 있습니다.",
+              ],
+            },
+          ],
         },
         {
           label: "AI 시간 안내",
@@ -1859,6 +1878,15 @@ export const featuresMap: Record<string, Feature[]> = {
           description: "사용하면 할수록 정확도 높은 예상 건조 시간을 알려줘요.",
           mediaType: "image",
           mediaUrl: washcomboAiTimeGuideAsset.url,
+          disclaimers: [
+            {
+              title: "AI 시간 안내",
+              items: [
+                "'AI 시간 안내'는 AI 건조 코스에 해당 되는 기능입니다.",
+                "자사시험결과 'AI 시간 안내' 기능 미적용 대비 제품 표시 시간과 실제 건조 동작 시간에 대한 시간 정확도가 개선 되었으며, 설치 조건 및 실사용 조건에 따라 달라질 수 있습니다.",
+              ],
+            },
+          ],
         },
         {
           label: "AI 최적화 기록",
@@ -1867,40 +1895,18 @@ export const featuresMap: Record<string, Feature[]> = {
             "AI 세탁+건조 코스를 사용하면 옷감의 재질과 오염도를 분석해\n최적의 세탁+건조 조건을 설정하고 기록해요.\nAI 최적화 기록은 디스플레이에서 확인할 수 있어요.",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_07_ai_report.mp4",
+          disclaimers: [
+            {
+              title: "AI 최적화 기록",
+              items: [
+                "AI 최적화 기록은 AI 세탁 중 감지된 오염도에 따른 세탁 행정을 안내하는 기능으로, 세탁물의 종류나 사용환경에 따라 안내되는 문구는 차이가 있을 수 있습니다.",
+              ],
+            },
+          ],
         },
       ],
 
       disclaimers: ["본 페이지는 내부 검토용 대외비 자료입니다."],
-      collapsibleDisclaimers: [
-        {
-          title: "[AI 세탁+건조]",
-          items: [
-            "AI 세탁+건조 코스는 최대용량 5kg 이하에서 동작하며, 실사용 환경 및 세탁물 종류에 따라 다를 수 있습니다.",
-            "AI 세탁은 딥러닝 AI 기술을 이용해 의류의 재질을 감지한 후 6모션 중 최적의 모션으로 세탁하며, 빅데이터 기반 환경에 맞춰 큰 진동을 미리 예측해 안정적으로 탈수 하며, AI 세탁에서 센싱한 값으로 AI 건조까지 진행합니다.",
-          ],
-        },
-        {
-          title: "[AI 타임 센싱]",
-          items: [
-            "AI 타임 센싱 3초 : 문을 닫은 후 전원 버튼을 누르고 웰컴 메시지가 나타난 이후 측정된 시간입니다.",
-            "마른 세탁물 기준 세탁물이 가득 찬 경우 최대 약 15초까지 소요될 수 있습니다.",
-            "세탁물의 종류나 사용 환경에 따라 센싱 시간은 달라질 수 있습니다.",
-          ],
-        },
-        {
-          title: "[AI 시간 안내]",
-          items: [
-            "'AI 시간 안내'는 AI 건조 코스에 해당 되는 기능입니다.",
-            "자사시험결과 'AI 시간 안내' 기능 미적용 대비 제품 표시 시간과 실제 건조 동작 시간에 대한 시간 정확도가 개선 되었으며, 설치 조건 및 실사용 조건에 따라 달라질 수 있습니다.",
-          ],
-        },
-        {
-          title: "[AI 최적화 기록]",
-          items: [
-            "AI 최적화 기록은 AI 세탁 중 감지된 오염도에 따른 세탁 행정을 안내하는 기능으로, 세탁물의 종류나 사용환경에 따라 안내되는 문구는 차이가 있을 수 있습니다.",
-          ],
-        },
-      ],
     },
     {
       id: "2",
