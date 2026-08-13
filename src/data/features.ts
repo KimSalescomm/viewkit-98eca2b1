@@ -76,6 +76,8 @@ export interface FeatureTab {
   imageFit?: "cover" | "contain";
   imagePosition?: string;
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
+  /** 메인 미디어(영상) 아래에 표시할 이미지+설명 그리드 */
+  mediaGallery?: GalleryImage[];
 }
 
 export interface HighlightDetail {
