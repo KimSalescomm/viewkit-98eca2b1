@@ -59,6 +59,7 @@ export interface FeatureTab {
   fallbackUrl?: string;
   isShorts?: boolean;
   mediaSlides?: MediaSlide[];
+  galleryImages?: (string | GalleryImage)[];
   highlights?: string[];
   caption?: string;
   belowMediaImage?: { url: string; alt?: string; caption?: string };

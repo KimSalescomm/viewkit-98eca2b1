@@ -172,12 +172,12 @@ const FeatureDetail = () => {
           const mediaEl = (
             <MediaViewer
               key={tabs ? `tab-${activeTab}` : "main"}
-              mediaType={activeTabData?.mediaSlides ? "gallery" : activeTabData?.mediaType ?? feature.mediaType}
+              mediaType={activeTabData?.mediaSlides ? "gallery" : activeTabData?.galleryImages ? "gallery" : activeTabData?.mediaType ?? feature.mediaType}
               mediaUrl={activeTabData?.mediaUrl ?? feature.mediaUrl}
               mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
               title={feature.title}
               tableData={feature.tableData}
-              galleryImages={feature.galleryImages}
+              galleryImages={activeTabData?.galleryImages ?? feature.galleryImages}
               isShorts={activeTabData?.isShorts ?? feature.isShorts}
               fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
             />
