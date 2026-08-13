@@ -1889,7 +1889,10 @@ export const featuresMap: Record<string, Feature[]> = {
             "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁+건조를 완성하고, 결과까지 확인할 수 있어요.",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_04_ai_wash_dry_pc.mp4",
-          highlights: ["세탁+건조 모든 과정에 AI 기술 적용"],
+          highlights: [
+            "세탁+건조 모든 과정에 AI 기술 적용",
+            "6가지 손빨래 동작으로 정교하게 세탁, 바람을 본뜬 6가지 건조 모션으로 꼼꼼하게 건조",
+          ],
           collapsibleDisclaimers: [
             {
               title: "세부정보",
