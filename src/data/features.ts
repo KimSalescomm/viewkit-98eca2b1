@@ -1870,6 +1870,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "AI 올인원 세탁+건조",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_04_ai_wash_dry_pc.mp4",
+      showMainMedia: false,
       descriptionTitle: "자세히 알아보기",
       description:
         "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁+건조를 완성하고, 결과까지 확인할 수 있어요.",
