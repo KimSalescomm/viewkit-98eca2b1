@@ -1,9 +1,11 @@
 import washerKeyVisualAsset from "@/assets/washer-keyvisual.png.asset.json";
 import stylerKeyVisualAsset from "@/assets/styler-keyvisual.png.asset.json";
+import bathairHomepageAsset from "@/assets/bathair-homepage.png.asset.json";
 
 // 퍼블리시 스냅샷에 안정적인 CDN URL을 저장하기 위해 자산 포인터의 url을 사용합니다.
 const washerKeyVisual = washerKeyVisualAsset.url;
 const stylerKeyVisual = stylerKeyVisualAsset.url;
+const bathairHomepage = bathairHomepageAsset.url;
 
 
 export interface Product {
