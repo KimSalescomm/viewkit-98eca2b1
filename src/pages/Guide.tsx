@@ -42,13 +42,10 @@ export default function Guide() {
         <div className="max-w-5xl mx-auto px-5 sm:px-8 h-14 flex items-center justify-between">
           <Link
             to="/"
-            className="flex items-center gap-1.5 text-gray-500 hover:text-gray-900 transition-colors text-sm"
+            className="inline-flex items-center gap-1.5 rounded-full bg-white/90 backdrop-blur-xl border border-white/70 px-4 h-9 text-[13px] font-semibold text-gray-700 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:bg-white transition-colors"
           >
             <ChevronLeft className="w-4 h-4" />
-            <span className="font-medium relative">
-              VIEW KIT
-              <span className="absolute -bottom-1 left-0 right-0 h-1 bg-yellow-400 rounded-full" />
-            </span>
+            <span>홈으로</span>
           </Link>
           <Link
             to="/subscription"
