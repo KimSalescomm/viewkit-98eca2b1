@@ -180,6 +180,7 @@ const FeatureDetail = () => {
               galleryImages={activeTabData?.galleryImages ?? feature.galleryImages}
               isShorts={activeTabData?.isShorts ?? feature.isShorts}
               fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
+              imagePosition={activeTabData?.imagePosition}
             />
           );
 

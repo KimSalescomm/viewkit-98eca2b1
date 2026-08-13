@@ -15,9 +15,10 @@ interface MediaViewerProps {
   mediaSlides?: MediaSlide[];
   isShorts?: boolean;
   fallbackUrl?: string; // MP4 fallback URL for webOS compatibility
+  imagePosition?: string;
 }
 
-const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, mediaSlides, isShorts, fallbackUrl }: MediaViewerProps) => {
+const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, mediaSlides, isShorts, fallbackUrl, imagePosition }: MediaViewerProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     align: "start",
     containScroll: "trimSnaps",
@@ -701,6 +702,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
           width: "100%",
           height: "auto",
           display: "block",
+          objectPosition: imagePosition,
         }}
       />
     </div>
