@@ -2025,6 +2025,10 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_15_1_control_pc.mp4",
         },
       ],
+      disclaimers: [
+        "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
+        "워시콤보 단독 구매 시 미니워시는 별도 구매 제품 이오니, 미니워시 구매를 희망하신다면 미니워시 단독구매 또는 워시콤보+미니워시 세트 모델을 구매하세요.",
+      ],
     },
     {
       id: "6",
