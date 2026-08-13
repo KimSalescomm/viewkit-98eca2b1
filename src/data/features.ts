@@ -2058,19 +2058,18 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "높아진 워시콤보 투입구",
           mediaType: "image",
-          imageFit: "cover",
-          imagePosition: "center 35%",
+          imageFit: "contain",
           mediaUrl:
-            "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_18_height.jpg",
+            "/__l5e/assets-v1/0e4a9bd4-6d57-4b3e-acc8-844ff869e7db/washcombo-height-wide.jpg",
           description:
             "워시콤보 투입구를 30cm 높여 허리를 덜 숙여도 세탁물을 쉽게 넣고 뺄 수 있어요.",
         },
         {
           label: "동시세탁/분리세탁",
           mediaType: "image",
-          imageFit: "cover",
+          imageFit: "contain",
           mediaUrl:
-            "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_17_mini_wash_pc.jpg",
+            "/__l5e/assets-v1/e8430f99-e478-43ca-aac6-e15af3cd688a/washcombo-miniwash-wide.jpg",
           description:
             "분리 세탁이 필요한 아기 옷, 펫 용품, 양말, 속옷 등을 따로 세탁하거나 워시콤보로 세탁+건조하는 동안 동시 세탁도 할 수 있어 편리해요.",
         },
