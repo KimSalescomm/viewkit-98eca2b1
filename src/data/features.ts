@@ -1681,33 +1681,14 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "UV팬살균으로 내부 위생을 청결한 상태로 유지하고\n전문 케어서비스로 제품을 깨끗하게 관리합니다.",
       icon: "Sparkles",
       tag: "클린케어",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/bath_B_tab_on_01.jpg",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_CleanCare_pc.mp4",
+      fullWidthMedia: true,
       description:
         "UV-LED로 바람을 만들어내는 팬을 99.99% 살균하여 눈에 보이지 않는 곳까지 청결하게 유지합니다. 필터를 분리하여 셀프 케어가 가능하며, 전문 케어서비스로 제품을 위생적으로 관리할 수 있어요.",
-      highlights: [
-        "UV-LED 팬 99.99% 살균",
-        "필터 분리 셀프 케어",
-        "전문가 방문 케어서비스",
-        "필터 클리닝·교체",
-      ],
-      tabs: [
-        {
-          label: "UV팬살균",
-          description:
-            "UV-LED로 바람을 만들어내는 팬을 99.99% 살균하여 눈에 보이지 않는 곳까지 청결하게 유지합니다.",
-          mediaType: "image",
-          mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/bath_B_tab_on_01.jpg",
-          highlights: ["팬 99.99% 살균", "눈에 보이지 않는 곳까지 청결"],
-        },
-        {
-          label: "케어서비스",
-          description:
-            "필터 교체부터 내·외부 클리닝, 위생 관리, 성능 점검까지 체계적인 전문가 케어 프로세스를 통해 바스에어시스템을 위생적으로 관리할 수 있어요.",
-          mediaType: "image",
-          mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/bath_B_tab_on_04.jpg",
-          highlights: ["필터 교체·내·외부 클리닝", "성능 점검까지"],
-        },
+      highlights: [],
+      mediaDisclaimers: [
+        "소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
       ],
     },
     {
