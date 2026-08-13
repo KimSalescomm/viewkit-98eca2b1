@@ -1916,8 +1916,6 @@ export const featuresMap: Record<string, Feature[]> = {
           ],
         },
       ],
-
-      disclaimers: ["본 페이지는 내부 검토용 대외비 자료입니다."],
     },
     {
       id: "2",
