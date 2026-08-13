@@ -2049,6 +2049,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "미니멀 플랫 디자인",
           mediaType: "image",
+          imageFit: "cover",
           mediaUrl:
             "https://www.lge.co.kr/kr/images/washing-machines/md10810828/usp/FC4TC_01_minimal_pc.jpg",
           description:
@@ -2067,6 +2068,7 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "높아진 워시콤보 투입구",
           mediaType: "image",
           imageFit: "cover",
+          imagePosition: "center 35%",
           mediaUrl:
             "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_18_height.jpg",
           description:
@@ -2075,6 +2077,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "동시세탁/분리세탁",
           mediaType: "image",
+          imageFit: "cover",
           mediaUrl:
             "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_17_mini_wash_pc.jpg",
           description:
