@@ -1798,23 +1798,6 @@ export const featuresMap: Record<string, Feature[]> = {
         "다양한 욕실 구조와 공간에 맞춰 최적의 위치에 설치된 실제 사례를 확인해 보세요. 이제 사계절 쾌적한 프리미엄 욕실 라이프를 즐겨보세요.",
       highlights: [],
     },
-    {
-      id: "4",
-      title: "우리 집 욕실에도\n설치될까요?",
-      subtitle: "사전에 우리 집 설치 환경이 바스에어시스템 설치에 적합한지 확인해보세요",
-      icon: "Wrench",
-      tag: "설치 환경",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/common/pdp_multi_banner/images/bath-air-system/Banner_BathAir_InstallChk_B_PC_x2.png",
-      description:
-        "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 보다 원활한 설치가 가능합니다.",
-      highlights: [
-        "천장형 환풍기 위치 확인",
-        "본체 타공 405×260mm",
-        "천장 속 높이 최소 160mm",
-        "배기팬 별도 타공 225×225mm",
-      ],
-    },
   ],
 
   // 워시콤보 특장점 (대외비 · SC/KOR 계정 전용)
