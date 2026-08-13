@@ -2312,37 +2312,30 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_01_260724.jpg",
           title: "직수/고압 세척",
-          description: "100% 직수로 내통·외통까지 분해 세척하여 꼼꼼하게 관리합니다.",
         },
         {
           url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_02_260724.jpg",
           title: "드럼 케어",
-          description: "LG전자 전용 관리제와 전문가용 드럼 케어 코스로 확실히 세척합니다.",
         },
         {
           url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_08_260805.png",
           title: "UV/스팀케어",
-          description: "UV 망 고압 세척기로 드럼, 고무벌랜, 세제함 등 내·외부를 살균 관리합니다.",
         },
         {
           url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_03_260724.jpg",
           title: "내시경 카메라 점검",
-          description: "세척기 내부로 내시경 카메라를 연결해 케어 전·후를 직접 확인하실 수 있습니다.",
         },
         {
           url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_04_260724.jpg",
           title: "필터 세척 및 교체",
-          description: "배수호스·건조 필터를 주기적으로 세척하고 교체합니다.",
         },
         {
           url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washcombo_260805.png",
           title: "제품 점검",
-          description: "수행 및 부품의 기본적인 동작 상태를 점검합니다.",
         },
         {
           url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_07_260724.jpg",
           title: "무상 A/S",
-          description: "계약 기간 내 제품 고장 시 무상 A/S를 제공합니다.",
         },
       ],
     },
