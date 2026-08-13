@@ -1578,15 +1578,15 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "온도·습도를 제어하여 사계절 내내\n욕실을 쾌적하게 만들어줄까요?",
-      subtitle: "겨울엔 따뜻한 온풍으로, 여름엔 시원한 송풍으로 편안한 욕실 환경을 경험해 보세요.",
+      title: "온도·습도를 제어하여\n사계절 내내 욕실을 쾌적하게 만들어줄까요?",
+      subtitle: "겨울엔 따뜻한 온풍으로,\n여름엔 시원한 송풍으로 편안한 욕실 환경을 경험해 보세요.",
       icon: "Flame",
       tag: "웜 & 프레시케어",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_WarmNFresh_pc.jpg",
       fullWidthMedia: true,
       description:
-        "욕실의 온도와 습도를 자동으로 감지해 운전하는 공간케어와 물기 없이 산뜻한 드라이를 제공하는 바디케어까지, 최적의 욕실 컨디션을 만들어줍니다.",
+        "욕실의 온도와 습도를 자동으로 감지해 운전하는 공간케어와\n물기 없이 산뜻한 드라이를 제공하는 바디케어까지,\n최적의 욕실 컨디션을 만들어줍니다.",
       highlights: [],
       mediaDisclaimers: [
         "소비자의 이해를 돕기 위해 연출된 영상 및 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
