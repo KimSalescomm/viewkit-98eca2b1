@@ -1554,12 +1554,8 @@ export const featuresMap: Record<string, Feature[]> = {
       fullWidthMedia: true,
       description:
         "최대 풍량 160CMH의 강력한 듀얼배기는 욕실 내 습기를 16분 만에 60%까지 낮추고, 습기 체류 시간을 단축시켜 보송한 욕실을 만들어줍니다.",
-      highlights: [
-        "최대 풍량 160CMH",
-        "습도 90%→60% 도달 16분",
-        "바스에어+배기팬 동시 작동",
-        "빠른 습기·냄새 제거",
-      ],
+      highlights: [],
+
       mediaDisclaimers: [
         "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
         "듀얼배기 기능은 ‘프리미엄 듀얼’ 구입 시 이용가능합니다.",
