@@ -30,6 +30,33 @@ const FeatureDetail = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
+  // 트루스팀 적용 코스 캐러셀
+  const [courseIndex, setCourseIndex] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+
+  const scrollCoursePrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollCourseNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  const onCourseSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCourseIndex(emblaApi.selectedScrollSnap());
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onCourseSelect();
+    emblaApi.on("select", onCourseSelect);
+    emblaApi.on("reInit", onCourseSelect);
+    return () => {
+      emblaApi.off("select", onCourseSelect);
+      emblaApi.off("reInit", onCourseSelect);
+    };
+  }, [emblaApi, onCourseSelect]);
+
   const renderMediaGallery = (images: GalleryImage[] | undefined) => {
     if (!images || images.length === 0) return null;
     const topRow = images.slice(0, 4);
