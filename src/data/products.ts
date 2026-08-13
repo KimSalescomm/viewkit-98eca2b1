@@ -71,7 +71,7 @@ export const products: Product[] = [
     name: "에어컨",
     title: "LG 휘센 AI 오브제컬렉션",
     description: "온도를 넘어 습도까지 완벽한 바람",
-    keyVisualImage: "https://static.lge.co.kr/kr/images/air-conditioners/md10738836/gallery/large-interior-m01.jpg",
+    keyVisualImage: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_TowerI_summary_beige_pc.jpg",
     icon: "Wind",
   },
   {
