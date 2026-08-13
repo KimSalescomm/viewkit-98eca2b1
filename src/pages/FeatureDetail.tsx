@@ -389,6 +389,39 @@ const FeatureDetail = () => {
                         />
                       </div>
                     )}
+                    {sub.disclaimers && sub.disclaimers.length > 0 && (
+                      <Accordion type="single" collapsible className="w-full mt-4">
+                        <AccordionItem
+                          value={`sub-${index}-details`}
+                          className="border-b border-gray-100 last:border-b-0"
+                        >
+                          <AccordionTrigger className="py-2.5 hover:no-underline text-left text-xs sm:text-sm font-bold text-gray-700">
+                            세부정보
+                          </AccordionTrigger>
+                          <AccordionContent>
+                            <div className="space-y-3 pt-1 pb-2">
+                              {sub.disclaimers.map((disclaimer, dIndex) => (
+                                <div key={dIndex}>
+                                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-700 mb-1">
+                                    {disclaimer.title}
+                                  </h4>
+                                  <ul className="space-y-1">
+                                    {disclaimer.items.map((text, i) => (
+                                      <li
+                                        key={i}
+                                        className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed"
+                                      >
+                                        * {text}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          </AccordionContent>
+                        </AccordionItem>
+                      </Accordion>
+                    )}
                   </AccordionContent>
                 </AccordionItem>
               ))}
