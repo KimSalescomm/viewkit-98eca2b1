@@ -1,11 +1,13 @@
 import washerKeyVisualAsset from "@/assets/washer-keyvisual.png.asset.json";
 import stylerKeyVisualAsset from "@/assets/styler-keyvisual.png.asset.json";
 import bathairHomepageAsset from "@/assets/bathair-homepage.jpg.asset.json";
+import washcomboMainWideAsset from "@/assets/washcombo-main-wide.jpg.asset.json";
 
 // 퍼블리시 스냅샷에 안정적인 CDN URL을 저장하기 위해 자산 포인터의 url을 사용합니다.
 const washerKeyVisual = washerKeyVisualAsset.url;
 const stylerKeyVisual = stylerKeyVisualAsset.url;
 const bathairHomepage = bathairHomepageAsset.url;
+const washcomboMainWide = washcomboMainWideAsset.url;
 
 
 export interface Product {
@@ -101,7 +103,7 @@ export const products: Product[] = [
     name: "워시콤보",
     title: "AI 워시콤보",
     description: "하나의 통 안에서 세탁부터 건조까지 한 번에",
-    keyVisualImage: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo01.jpg",
+    keyVisualImage: washcomboMainWide,
     keyVisualVideo: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_02_all_in_one_pc.mp4",
     icon: "Waves",
   },
