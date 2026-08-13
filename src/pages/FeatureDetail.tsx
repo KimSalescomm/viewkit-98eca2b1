@@ -267,15 +267,16 @@ const FeatureDetail = () => {
                     {belowImg.caption && (
                       <figcaption className="mt-2 text-xs sm:text-sm text-gray-500 text-center leading-relaxed">
                         {belowImg.caption}
-                      </figcaption>
-                    )}
-                  </figure>
-                )}
-              </div>
-            );
-          }
+                    </figcaption>
+                  )}
+                </figure>
+              )}
+              {renderMediaGallery(activeTabData?.mediaGallery ?? feature.mediaGallery)}
+            </div>
+          );
+        }
 
-          return (
+        return (
             <>
               {feature.mediaSectionTitle && (
                 <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">
