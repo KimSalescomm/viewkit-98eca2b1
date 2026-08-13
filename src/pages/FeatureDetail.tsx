@@ -461,7 +461,6 @@ const FeatureDetail = () => {
             <Accordion
               type="single"
               collapsible
-              defaultValue="sub-0"
               className="w-full space-y-2 sm:space-y-3"
             >
               {feature.subFeatures.map((sub, index) => (
