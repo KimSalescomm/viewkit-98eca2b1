@@ -18,7 +18,8 @@ const aggregate = (rows: { store_id: string; store_name: string | null; session_
   for (const r of rows) {
     const id = (r.store_id || "").toUpperCase();
     if (!id || id === "SC" || id === "KOR") continue;
-    const name = cleanBranchName(r.store_name || getBranchNameByCode(id) || id);
+    // 정식 명칭은 코드 매핑이 우선 (DB의 store_name 불일치/코드값 저장 보정)
+    const name = cleanBranchName(getBranchNameByCode(id) || r.store_name || id);
     if (!map.has(id)) map.set(id, { name, sessions: new Set(), views: 0 });
     const entry = map.get(id)!;
     entry.sessions.add(r.session_id);
