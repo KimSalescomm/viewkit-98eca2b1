@@ -1685,7 +1685,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_CleanCare_pc.mp4",
       fullWidthMedia: true,
       description:
-        "UV-LED로 바람을 만들어내는 팬을 99.99% 살균하여 눈에 보이지 않는 곳까지 청결하게 유지합니다. 필터를 분리하여 셀프 케어가 가능하며, 전문 케어서비스로 제품을 위생적으로 관리할 수 있어요.",
+        "UV-LED로 바람을 만들어내는 팬을 99.99% 살균하여\n눈에 보이지 않는 곳까지 청결하게 유지합니다.\n필터를 분리하여 셀프 케어가 가능하며,\n전문 케어서비스로 제품을 위생적으로 관리할 수 있어요.",
       highlights: [],
       mediaDisclaimers: [
         "소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
@@ -1702,7 +1702,7 @@ export const featuresMap: Record<string, Feature[]> = {
       isShorts: false,
       descriptionTitle: "자세히 알아보기",
       description:
-        "샤워하고 나와도 금세 끈적이는 몸, 습기 가득찬 욕실, 꿉꿉한 냄새... 여름철 욕실 관리 때문에 스트레스 받지 마세요! LG전자 퓨리케어 바스에어시스템이 거울 김 서림부터 축축한 바닥 습기까지 싹 잡아서 보송한 욕실을 만들어주니까요.",
+        "샤워하고 나와도 금세 끈적이는 몸, 습기 가득찬 욕실, 꿉꿉한 냄새...\n여름철 욕실 관리 때문에 스트레스 받지 마세요!\nLG전자 퓨리케어 바스에어시스템이 거울 김 서림부터\n축축한 바닥 습기까지 싹 잡아서 보송한 욕실을 만들어주니까요.",
       highlights: ["송풍", "환기모드", "케어 전문가", "분해 세척"],
       disclaimers: [],
       collapsibleDisclaimers: [
@@ -1753,7 +1753,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "5",
-      title: "실제 설치 사례를 확인해 보세요",
+      title: "실제 설치 사례를\n확인해 보세요",
       subtitle: "고객 니즈 및 현장 상황을 고려하여\n최적의 위치에 설치해 드립니다.",
       icon: "Image",
       tag: "설치 사례",
@@ -1792,7 +1792,7 @@ export const featuresMap: Record<string, Feature[]> = {
         },
       ],
       description:
-        "다양한 욕실 구조와 공간에 맞춰 최적의 위치에 설치된 실제 사례를 확인해 보세요. 이제 사계절 쾌적한 프리미엄 욕실 라이프를 즐겨보세요.",
+        "다양한 욕실 구조와 공간에 맞춰\n최적의 위치에 설치된 실제 사례를 확인해 보세요.\n이제 사계절 쾌적한 프리미엄 욕실 라이프를 즐겨보세요.",
       highlights: [
         "욕조 위 설치",
         "샤워 부스 내 설치",
@@ -1802,14 +1802,14 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "4",
-      title: "우리 집 욕실에도 설치될까요?",
+      title: "우리 집 욕실에도\n설치될까요?",
       subtitle: "사전에 우리 집 설치 환경이\n바스에어시스템 설치에 적합한지 확인해보세요",
       icon: "Wrench",
       tag: "설치 환경",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/images/common/pdp_multi_banner/images/bath-air-system/Banner_BathAir_InstallChk_B_PC_x2.png",
       description:
-        "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 보다 원활한 설치가 가능합니다.",
+        "기존 환풍기 위치, 멀티 배기형 여부,\n천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면\n보다 원활한 설치가 가능합니다.",
       highlights: [
         "천장형 환풍기 위치 확인",
         "본체 타공 405×260mm",
