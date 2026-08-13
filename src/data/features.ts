@@ -8,6 +8,10 @@ import washcomboAiOptimizationRecordAsset from "@/assets/washcombo-ai-optimizati
 import washcomboAiTimeSensingDisplayAsset from "@/assets/washcombo-ai-time-sensing-display.png.asset.json";
 import washcomboAiReportWideAsset from "@/assets/washcombo-ai-report-wide.mp4.asset.json";
 import washcomboAutomaticAsset from "@/assets/washcombo-automatic.jpg.asset.json";
+import bathairHomepageAsset from "@/assets/bathair-homepage.jpg.asset.json";
+
+const bathairHomepageImage = bathairHomepageAsset.url;
+
 
 
 
