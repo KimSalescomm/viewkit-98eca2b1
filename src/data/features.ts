@@ -12,9 +12,6 @@ import bathairHomepageAsset from "@/assets/bathair-homepage.jpg.asset.json";
 
 const bathairHomepageImage = bathairHomepageAsset.url;
 
-
-
-
 export interface ProductComparisonTable {
   name: string;
   imageUrl: string;
@@ -57,7 +54,6 @@ export interface TrueSteamCourse {
   imageAlt?: string;
   disclaimers?: TrueSteamCourseDisclaimer[];
 }
-
 
 export interface FeatureTab {
   label: string;
@@ -105,7 +101,6 @@ export interface SubFeature {
   disclaimers?: TrueSteamCourseDisclaimer[];
 }
 
-
 export interface Feature {
   id: string;
   title: string;
@@ -126,7 +121,6 @@ export interface Feature {
   mediaSectionTitle?: string;
   /** 메인 미디어(영상) 아래에 표시할 이미지+설명 그리드 */
   mediaGallery?: GalleryImage[];
-
 
   isShorts?: boolean;
   disclaimers?: string[];
@@ -333,12 +327,8 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "갤러리 디자인",
       mediaType: "video",
       mediaUrl: "https://www.youtube.com/watch?v=-0RpTyUXChk",
-      description:
-        "전용 벽 밀착 브라켓으로 벽에 착 붙게 설치할 수 있어요.\n설치 방법을 영상으로 확인해보세요.",
-      highlights: [
-        "벽면에 착 붙는 디자인",
-        "전용 벽밀착 브라켓 사용",
-      ],
+      description: "전용 벽 밀착 브라켓으로 벽에 착 붙게 설치할 수 있어요.\n설치 방법을 영상으로 확인해보세요.",
+      highlights: ["벽면에 착 붙는 디자인", "전용 벽밀착 브라켓 사용"],
     },
     {
       id: "5",
@@ -350,8 +340,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "image",
       mediaUrl: "https://static.lge.co.kr/kr/images/common/pdp_lineup_compare/images/tvs/26_tvs_oled_line_up_pc.jpg",
       mediaSectionTitle: "LG 올레드 한눈에 비교하기",
-      description:
-        "올레드 라인업별 특장점과 핵심 기능, 주요 스펙을 비교해 나에게 맞는 올레드를 골라보세요.",
+      description: "올레드 라인업별 특장점과 핵심 기능, 주요 스펙을 비교해 나에게 맞는 올레드를 골라보세요.",
       highlights: [],
     },
   ],
@@ -366,7 +355,8 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "STEM이란?",
       mediaType: "video",
       mediaUrl: "https://static.lge.co.kr/kr/images/refrigerators/md10364835/M825_582_filter.mp4",
-      description: "STEM 냉장고는 고여 있는 물이 아닌, 흐르는 물로 얼음을 만드는 위생적인 제빙시스템을 갖추고 있어요. 게다가 매번 물을 채워 넣을 필요 없이 알아서 얼음이 만들어져 더 편리하게 시원한 시간을 누릴 수 있어요.",
+      description:
+        "STEM 냉장고는 고여 있는 물이 아닌, 흐르는 물로 얼음을 만드는 위생적인 제빙시스템을 갖추고 있어요. 게다가 매번 물을 채워 넣을 필요 없이 알아서 얼음이 만들어져 더 편리하게 시원한 시간을 누릴 수 있어요.",
       highlights: [
         "흐르는 물로 얼음을 만드는 제빙 시스템",
         "전문가가 꼼꼼하게 관리하는 케어 시스템",
@@ -388,7 +378,8 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "STEM 제품 비교",
       mediaType: "table",
       mediaUrl: "https://www.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/product_img01.png",
-      description: "STEM 얼음정수, STEM 베이직, STEM 베이직 Fit & Max의 냉장고 용량, 정수기 디스펜서, 얼음 종류, 정수 필터, 케어 서비스를 비교해보세요.",
+      description:
+        "STEM 얼음정수, STEM 베이직, STEM 베이직 Fit & Max의 냉장고 용량, 정수기 디스펜서, 얼음 종류, 정수 필터, 케어 서비스를 비교해보세요.",
       highlights: ["냉장고 용량", "정수기 디스펜서", "얼음 종류", "정수 필터", "케어 서비스"],
       tableData: [
         {
@@ -647,9 +638,7 @@ export const featuresMap: Record<string, Feature[]> = {
         },
         {
           title: "퓨어 프레시 필터 - 필터 크기",
-          items: [
-            "기존 크기 (100x30x7 mm) x 2개 / 신규 크기 : (150x70x8 mm) x 1개 비교 시",
-          ],
+          items: ["기존 크기 (100x30x7 mm) x 2개 / 신규 크기 : (150x70x8 mm) x 1개 비교 시"],
         },
         {
           title: "퓨어 프레시 필터 - 탈취 성능",
@@ -813,8 +802,8 @@ export const featuresMap: Record<string, Feature[]> = {
   airconditioner: [
     {
       id: "15",
-      title: "냉방을 틀면 꿉꿉하고,\n제습을 틀면 추우셨나요?",
-      subtitle: "원하는 온도와 습도를 동시에 설정\n춥지도 꿉꿉하지도 않은 쾌적함",
+      title: "콜드프리가 무엇인가요?",
+      subtitle: "온도와 습도를 모두 맞춰서\n춥지도 꿉꿉하지도 않아요.",
       icon: "Wind",
       tag: "AI 콜드프리",
       mediaType: "video",
@@ -822,7 +811,7 @@ export const featuresMap: Record<string, Feature[]> = {
         "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AI_coldfree_detail_01.mp4",
       descriptionTitle: "원하는 온도는 기본, 원하는 습도까지",
       description:
-        "냉방을 틀면 꿉꿉하고, 제습을 틀면 추우셨나요?\nAI콜드프리는 원하는 온도와 습도를 동시에 설정할 수 있어,\n장시간 운전에도 춥지도 꿉꿉하지도 않은 쾌적한 환경을 유지해줘요.",
+        "냉방을 틀면 꿉꿉하고, 제습을 틀면 추우셨나요?\nAI콜드프리는 원하는 온도와 습도를 모두 맞춰줘요.\n오래 켜놓아도 춥지도 꿉꿉하지도 않게, 쾌적하죠.",
       highlights: [],
       disclaimers: [
         "AI콜드프리 피부온도 측정 시험",
@@ -848,19 +837,15 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "에어컨 청소 지옥에서 탈출하는\n가장 쉬운 방법은?",
       subtitle: "매년 여름 반복되는 에어컨 청소고민\n구독으로 시원하게 해결",
       icon: "Sparkles",
-      tag: "구독",
+      tag: "영상",
       mediaType: "youtube",
       mediaUrl: "https://youtu.be/DRk0yXY8zPg",
       isShorts: false,
       descriptionTitle: "에어컨 청소 지옥에서 탈출하는 가장 쉬운 방법은?",
-      description:
-        `"사설 업체를 부를까?", "내가 직접 뜯어서 닦을까?" 매년 여름 반복되는 리얼한 에어컨 청소 고민! LG전자 에어컨 구독의 라이트 플러스 전문 케어 서비스(분해세척/UV&피톤치드 케어)로 시원하게 해결해드려요.`,
+      description: `"사설 업체를 부를까?", "내가 직접 뜯어서 닦을까?" 매년 여름 반복되는 리얼한 에어컨 청소 고민! LG전자 에어컨 구독의 라이트 플러스 전문 케어 서비스(분해세척/UV&피톤치드 케어)로 시원하게 해결해드려요.`,
 
       highlights: ["분해세척", "UV케어", "피톤치드케어", "케어전문가의 관리"],
-      disclaimers: [
-        "이 영상은 AI를 활용하여 제작되었습니다.",
-        "소비자의 이해를 돕기 위해 연출된 이미지 입니다.",
-      ],
+      disclaimers: ["이 영상은 AI를 활용하여 제작되었습니다.", "소비자의 이해를 돕기 위해 연출된 이미지 입니다."],
       collapsibleDisclaimers: [
         {
           title: "[분해 세척]",
@@ -895,21 +880,20 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "18",
-      title: "에어컨 바람, 늘 같은 방향이\n불편하지 않으세요?",
-      subtitle: "사용패턴과 공간을 분석해\n온도·기류를 알아서 맞춰주는 AI바람.",
+      title: "에어컨 바람,\n원하는대로 맞출 수 있다고요?",
+      subtitle: "AI가 사용 패턴과 공간을 분석해\n온도와 바람 방향까지 알아서 맞춰줘요.",
       icon: "Wind",
       tag: "AI바람",
       mediaType: "video",
-      mediaUrl:
-        "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_choice_02.mp4",
+      mediaUrl: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_choice_02.mp4",
       descriptionTitle: "원하는 온도는 기본, 나에게 맞는 기류까지",
       description:
-        "더울 때는 빠르고 강력한 바람으로 빠르고 시원하게,\n시원해지면 미세하고 조용한 한쪽바람, 소프트바람으로 부드럽게 유지해요.\n적정 온도에 맞춰 쾌적함을 자동으로 조절하고,\n사용 패턴을 학습해 사용자에게 맞는 온도, 습도, 기류를 알아서 찾아줍니다.",
+        "더울 때는 빠르고 강력한 바람으로 바로 시원하게,\n시원해지면 잔잔하고 조용한 한쪽바람, 소프트바람으로 쾌적하게 유지해요.\n적정 온도에 맞춰 자동으로 조절하고,\n사용 패턴을 학습해 온도, 습도, 기류를 알아서 찾아줍니다.",
       highlights: [
-        "공간·재실자 감지 맞춤 냉방",
+        "공간·사람 감지 맞춤 냉방",
         "더울 땐 빠르고 강력한 바람",
         "쾌적해지면 미세·조용한 소프트바람",
-        "적정 온도 자동 조절",
+        "알맞은 온도로 자동 조절",
       ],
       disclaimers: [
         "AI바람 세부 동작은 모델·설치 환경·설정 조건에 따라 달라질 수 있습니다.",
@@ -918,22 +902,16 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "19",
-      title: "에어컨, 이제 청정관리가 핵심입니다",
-      subtitle: "바람이 지나가는 길을 꼼꼼하게 케어하는\n휘센 청정관리 시스템",
+      title: "휘센, 깨끗한 바람의 비결은?",
+      subtitle: "바람이 지나가는 길을 꼼꼼하게 케어하는\n휘센 청정관리 시스템 덕분이죠",
       icon: "Sparkles",
       tag: "청정 · UVnano",
       mediaType: "video",
-      mediaUrl:
-        "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/25_Tower1_9s_Whisen_Detail_1.mp4",
-      descriptionTitle: "눈에 보이지 않는 곳까지 알아서 관리하여 언제나 깨끗한 바람을 선사합니다",
+      mediaUrl: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/25_Tower1_9s_Whisen_Detail_1.mp4",
+      descriptionTitle: "눈에 보이지 않는 곳까지 알아서 관리해 언제나 깨끗한 바람이 나와요",
       description:
-        "필터 클린봇이 극세필터의 먼지를 청소하고, UV-LED 팬살균, AI열교환기 세척과 AI건조 기능 등으로\n에어컨 내부를 위생적으로 관리해요.",
-      highlights: [
-        "필터 클린봇",
-        "알러지케어 공기청정",
-        "AI열교환기 세척",
-        "UV-LED 팬살균",
-      ],
+        "필터 클린봇이 극세필터의 먼지를 청소하고, UV-LED 팬살균, AI열교환기 세척과 AI건조 기능으로\n에어컨 속까지 위생적으로 관리해요.",
+      highlights: ["필터 클린봇", "알러지케어 공기청정", "AI열교환기 세척", "UV-LED 팬살균"],
       collapsibleDisclaimers: [
         {
           title: "필터 클린봇",
@@ -1017,8 +995,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "20",
-      title: "수면, 절전, 대화까지 나에게 맞춤",
-      subtitle: "AI수면·외출절전·홈모니터링·AI음성인식으로\n일상이 더 편리해집니다.",
+      title: "에어컨을 더 똑똑하게 사용하는 꿀팁!",
+      subtitle: "AI수면·외출절전·홈모니터링·AI음성인식으로\n알아서 맞춰주니까 편해져요",
       icon: "Sparkles",
       tag: "AI편의기능 · 절전",
       mediaType: "gallery",
@@ -1027,28 +1005,23 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           url: aircondAiSleepAsset.url,
           title: "AI수면",
-          description: "AI로 쾌적한 수면 환경 조성",
+          description: "잘 때도 춥거나 덥지 않게 알아서. 사용하면 할수록 나에게 맞춰지는 취침 온도",
         },
         {
           url: aircondRadarAsset.url,
           title: "외출 절전 (레이더)",
-          description: "외출 중 절전 및 모니터링",
+          description: "에어컨 끌까 고민 끝. 잠시 나갈 때에도 에너지 절약을 도와주는 절전 모드",
         },
         {
           url: aircondVoiceAsset.url,
           title: "AI음성인식",
-          description: "\"Hi LG\" 음성인식으로 간편한 사용",
+          description: '"Hi LG" 말 한마디로 편리하게 조작하는 음성인식',
         },
       ],
       descriptionTitle: "수면, 절전, 대화까지 나에게 맞춤",
       description:
         "AI수면은 편안한 밤을 위해 사용 패턴 기반 온도, 습도, 기류를 맞춰줘요.\n잠시 외출할 때 에너지 소비를 줄여주는 외출 절전 모드와\n집안의 움직임을 감지해 LG ThinQ 앱으로 알림을 발송해주는 홈모니터링 모드,\n내가 말하는 의도까지 파악해 운전해주는 AI음성인식으로 편리한 일상을 경험할 수 있어요.",
-      highlights: [
-        "AI수면",
-        "외출 절전",
-        "홈모니터링",
-        "AI음성인식",
-      ],
+      highlights: ["AI수면", "외출 절전", "홈모니터링", "AI음성인식"],
       collapsibleDisclaimers: [
         {
           title: "공통",
@@ -1064,7 +1037,7 @@ export const featuresMap: Record<string, Feature[]> = {
             "· 최초 사용 시 고객의 사용패턴 정보가 누적되기 전까지 설정된 희망온도와 습도 50%, 약풍 이하의 바람 세기로 운전됩니다.",
             "· 리모컨이나 LG ThinQ 앱으로 최대 12시간까지 설정 가능하며 최소는 30분이며 1시간부터 12시간까지는 1시간 단위로 예약이 가능합니다.",
             "· LG ThinQ 앱 내에 가전제품 등록을 위해서는 가정 내 무선 인터넷 환경이 필요합니다.",
-            "· ThinQ 기능 사용을 위해서는 스마트폰의 Google Play 스토어 또는 Apple App 스토어에서 \"LG ThinQ\" 앱을 설치하여 Wi-Fi에 연결해야 합니다. 자세한 사용 방법은 애플리케이션의 도움말을 참고해주세요.",
+            '· ThinQ 기능 사용을 위해서는 스마트폰의 Google Play 스토어 또는 Apple App 스토어에서 "LG ThinQ" 앱을 설치하여 Wi-Fi에 연결해야 합니다. 자세한 사용 방법은 애플리케이션의 도움말을 참고해주세요.',
           ],
         },
         {
@@ -1094,7 +1067,7 @@ export const featuresMap: Record<string, Feature[]> = {
           items: [
             "· 외출 절전 기능은 냉방 운전 중 레이더센서를 통해 재실자 부재 시 절전모드 또는 제품 운전을 종료하며, 재감지 시 이전 운전 모드로 복귀합니다. 단, 제품 운전이 종료된 경우에는 제품이 OFF 상태로 유지됩니다.",
             "· 최초 사용 시 LG ThinQ 앱을 통한 레이더센서 활성화가 필요하며, LG ThinQ 앱을 통해 운전 모드와 재실자 부재 시간(30분~120분, 10분 단위)을 설정할 수 있습니다.",
-            "· LG ThinQ 앱 내에 가전제품 등록을 위해서는 가정 내 무선 인터넷 환경이 필요합니다. ThinQ 기능 사용을 위해서는 스마트폰의 Google Play 스토어 또는 Apple App 스토어에서 \"LG ThinQ\" 앱을 설치하여 Wi-Fi에 연결해야 합니다. 자세한 사용 방법은 애플리케이션의 도움말을 참고해주세요.",
+            '· LG ThinQ 앱 내에 가전제품 등록을 위해서는 가정 내 무선 인터넷 환경이 필요합니다. ThinQ 기능 사용을 위해서는 스마트폰의 Google Play 스토어 또는 Apple App 스토어에서 "LG ThinQ" 앱을 설치하여 Wi-Fi에 연결해야 합니다. 자세한 사용 방법은 애플리케이션의 도움말을 참고해주세요.',
           ],
         },
         {
@@ -1129,7 +1102,7 @@ export const featuresMap: Record<string, Feature[]> = {
 
     {
       id: "21",
-      title: "어떤 휘센이 우리 집에 맞을까요?",
+      title: "어떤 에어컨이 우리 집에 필요할까요?",
       subtitle: "타워I·뷰I 프로 5개 모델을\n한눈에 비교해보세요.",
       icon: "Search",
       tag: "라인업 비교",
@@ -1153,7 +1126,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "22",
       title: "일상이 더 쾌적해지는 순간, TVCF 이야기",
-      subtitle: "혁신적인 기술이 완성한 쾌적함, 영상 속에서 그 차이를 확인하세요.",
+      subtitle: "휘센의 이야기를 TV CF로 확인해보세요.",
       icon: "Video",
       tag: "TVCF",
       mediaType: "youtube",
@@ -1163,10 +1136,6 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: [],
     },
   ],
-
-
-
-
 
   // 청소기 특장점
   vacuum: [
@@ -1178,7 +1147,8 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "스팀 물걸레",
       mediaType: "video",
       mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_02_moving_steam_pc.mp4",
-      description: "로니는 AI 오염 인식 결과를 바탕으로 마른 얼룩이 인식되면 자동으로 스팀 물걸레 청소를 시작할 수 있습니다.\n실시간으로 생성된 100°C 스팀을 물걸레에 직접 분사해 강력하게 청소하며 오염 정도에 따라 최대 2회까지 청소를 반복합니다.\n청소가 끝나면 LG ThinQ 앱에서 청소 전후를 사진으로 비교할 수 있습니다.",
+      description:
+        "로니는 AI 오염 인식 결과를 바탕으로 마른 얼룩이 인식되면 자동으로 스팀 물걸레 청소를 시작할 수 있습니다.\n실시간으로 생성된 100°C 스팀을 물걸레에 직접 분사해 강력하게 청소하며 오염 정도에 따라 최대 2회까지 청소를 반복합니다.\n청소가 끝나면 LG ThinQ 앱에서 청소 전후를 사진으로 비교할 수 있습니다.",
       highlights: ["AI로 바닥 오염물 인식", "100°C 스팀 물걸레 청소", "최대 2회 반복 청소", "ThinQ 전후 사진 비교"],
     },
     {
@@ -1202,25 +1172,15 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "강력한 30W 흡입력",
           description:
             "로니는 강력한 모터로 최대 30W의 흡입력을 제공합니다.\n머리카락 엉킴을 줄여주는 듀얼 엉킴 방지 브러시로 청소 효율을 높이고\n에지(Edge) 확장 사이드 브러시와 물걸레로 구석과 벽면까지 밀착 청소합니다.",
-          highlights: [
-            "30W 강력 흡입력",
-            "고성능 모터",
-            "무거운 이물질 흡입",
-            "바닥 먼지 완전 제거",
-          ],
+          highlights: ["30W 강력 흡입력", "고성능 모터", "무거운 이물질 흡입", "바닥 먼지 완전 제거"],
           mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
+          mediaUrl:
+            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
         },
         {
           label: "엣지 확장 브러시",
-          description:
-            "최대 46mm까지 확장되는 사이드 브러시와 물걸레로 모서리나 벽면에 밀착하여 청소합니다.",
-          highlights: [
-            "엣지 확장 브러시",
-            "벽면 가장자리 밀착 청소",
-            "청소 사각지대 해결",
-            "구석구석 꼼꼼 청소",
-          ],
+          description: "최대 46mm까지 확장되는 사이드 브러시와 물걸레로 모서리나 벽면에 밀착하여 청소합니다.",
+          highlights: ["엣지 확장 브러시", "벽면 가장자리 밀착 청소", "청소 사각지대 해결", "구석구석 꼼꼼 청소"],
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_10_edge_cleaning.mp4",
         },
@@ -1228,12 +1188,7 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "듀얼 엉킴 방지 브러시",
           description:
             "두 개의 브러시가 회전하며 머리카락을 가운데로 모아 엉킴을 방지합니다.\n모은 머리카락은 효율적으로 분리되어 먼지통으로 흡입합니다.",
-          highlights: [
-            "듀얼 엉킴 방지 브러시",
-            "머리카락 흡입구 자동 이동",
-            "엉킴 걱정 없이",
-            "꾸준한 청소 성능",
-          ],
+          highlights: ["듀얼 엉킴 방지 브러시", "머리카락 흡입구 자동 이동", "엉킴 걱정 없이", "꾸준한 청소 성능"],
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_11_anti_tangle.mp4",
         },
@@ -1268,11 +1223,16 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Navigation",
       tag: "AI 맞춤 청소",
       mediaType: "video",
-      mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_03_sensing_ai_driving_pc.mp4",
+      mediaUrl:
+        "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_03_sensing_ai_driving_pc.mp4",
       description:
         "RGB 카메라와 센서 기반 다양한 상황과 장애물을 섬세하게 인식하고 똑똑하게 판단합니다.\n헤매거나 바퀴가 들려 구속되었던 공간은 '고립 위험 영역'으로 인식하고 다음 청소에는 이를 회피하여 청소합니다.\n이후 해당 영역 내 장애물이 사라지면 청소를 재개해 진화하는 청소 경험을 제공합니다.",
-      highlights: ["복잡한 집안 구조와 장애물 똑똑하게 판단", "고립 위험 공간 스스로 학습해 안전 회피", "장애물 치워지면 놓친 곳까지 재청소", "쓸수록 진화하는 청소 편리함"],
-
+      highlights: [
+        "복잡한 집안 구조와 장애물 똑똑하게 판단",
+        "고립 위험 공간 스스로 학습해 안전 회피",
+        "장애물 치워지면 놓친 곳까지 재청소",
+        "쓸수록 진화하는 청소 편리함",
+      ],
     },
     {
       id: "3",
@@ -1289,31 +1249,38 @@ export const featuresMap: Record<string, Feature[]> = {
         },
         {
           mediaType: "image",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
+          mediaUrl:
+            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
         },
         {
           mediaType: "image",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_02.jpg",
+          mediaUrl:
+            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_02.jpg",
         },
         {
           mediaType: "image",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_01.jpg",
+          mediaUrl:
+            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_01.jpg",
         },
         {
           mediaType: "image",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_02.jpg",
+          mediaUrl:
+            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_02.jpg",
         },
         {
           mediaType: "image",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_03.jpg",
+          mediaUrl:
+            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_03.jpg",
         },
         {
           mediaType: "image",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_04.jpg",
+          mediaUrl:
+            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_04.jpg",
         },
         {
           mediaType: "image",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_05.jpg",
+          mediaUrl:
+            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_05.jpg",
         },
       ],
 
@@ -1330,65 +1297,74 @@ export const featuresMap: Record<string, Feature[]> = {
             "기존 수납 공간 그대로",
             "설치 부담을 줄인 디자인",
           ],
-
         },
         {
           label: "오브제스테이션",
           description:
             "공간 맞춤 디자인의 오브제스테이션을 거실 내 사이드 테이블로 자연스럽게 배치하세요.\n인테리어에 매끄럽게 스며들어 공간의 품격을 높여줍니다.",
 
-          highlights: [
-            "공간 맞춤 디자인",
-            "거실 사이드 테이블로 활용",
-            "소파 옆 간편 배치",
-            "인테리어 품격 UP",
-          ],
+          highlights: ["공간 맞춤 디자인", "거실 사이드 테이블로 활용", "소파 옆 간편 배치", "인테리어 품격 UP"],
 
           mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
+          mediaUrl:
+            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
           mediaSlides: [
             {
               mediaType: "video",
-              mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
+              mediaUrl:
+                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
             },
             {
               mediaType: "image",
-              mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg",
+              mediaUrl:
+                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg",
             },
             {
               mediaType: "image",
-              mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_02.jpg",
+              mediaUrl:
+                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_02.jpg",
             },
             {
               mediaType: "image",
-              mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_01.jpg",
+              mediaUrl:
+                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_01.jpg",
             },
             {
               mediaType: "image",
-              mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_02.jpg",
+              mediaUrl:
+                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_02.jpg",
             },
             {
               mediaType: "image",
-              mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_03.jpg",
+              mediaUrl:
+                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_03.jpg",
             },
             {
               mediaType: "image",
-              mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_04.jpg",
+              mediaUrl:
+                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_04.jpg",
             },
             {
               mediaType: "image",
-              mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_05.jpg",
+              mediaUrl:
+                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_05.jpg",
             },
             {
               mediaType: "image",
-              mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_06.jpg",
+              mediaUrl:
+                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_06.jpg",
             },
           ],
         },
       ],
       description:
         "보이지 않아도 완성되고, 보일수록 품격이 되는 히든스테이션과 오브제스테이션. 공간 성격에 맞춰 두 가지 디자인을 선택할 수 있어요.",
-      highlights: ["15cm 초슬림 히든스테이션", "싱크대 하부 걸레받이 설치", "보일수록 품격 오브제스테이션", "공간 성격에 맞춘 두 디자인"],
+      highlights: [
+        "15cm 초슬림 히든스테이션",
+        "싱크대 하부 걸레받이 설치",
+        "보일수록 품격 오브제스테이션",
+        "공간 성격에 맞춘 두 디자인",
+      ],
     },
     {
       id: "8",
@@ -1397,7 +1373,8 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Sparkles",
       tag: "위생&케어 솔루션",
       mediaType: "image",
-      mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
+      mediaUrl:
+        "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
       description:
         "청소로봇의 위생과 성능을 한 번에 관리하는 위생&케어 솔루션이에요. 케어 전문가가 정기 방문해 청소로봇의 내·외부 위생과 성능을 꼼꼼히 관리해드려요.",
       highlights: ["100℃ 살균 스팀", "스테이션 컨디셔닝", "무상 A/S 및 소모품 교체"],
@@ -1408,25 +1385,16 @@ export const featuresMap: Record<string, Feature[]> = {
             "로니는 냉온수 세척부터 100℃ 살균 스팀까지 맞춤 세척 솔루션입니다.\n끝난 후에는 약 40~60℃ 온풍으로 물걸레를 건조시켜 물걸레 속 유해균을 99.99% 제거합니다.",
           mediaType: "video",
           mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_12_mop_solution_pc.mp4",
-          highlights: [
-            "냉온수 맞춤 세척",
-            "100℃ 살균 스팀",
-            "약 40℃ 온풍 건조",
-            "유해균 99.99% 제거",
-          ],
-
+          highlights: ["냉온수 맞춤 세척", "100℃ 살균 스팀", "약 40℃ 온풍 건조", "유해균 99.99% 제거"],
         },
         {
           label: "스테이션 컨디셔닝",
           description:
             "히든스테이션 상부의 배기 팬이 제품 내부에서 발생할 수 있는 습증기를 외부로 배출해 스테이션 내부 관리에 대한 걱정과 부담을 덜어줍니다.",
           mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
-          highlights: [
-            "히든스테이션 상부 배기 팬",
-            "내부 습증기 외부 배출",
-            "히든 스테이션 내부 관리 부담 감소",
-          ],
+          mediaUrl:
+            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
+          highlights: ["히든스테이션 상부 배기 팬", "내부 습증기 외부 배출", "히든 스테이션 내부 관리 부담 감소"],
         },
       ],
     },
@@ -1443,12 +1411,12 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "보안 인증 & 개인정보 보호",
           mediaType: "image",
           mediaUrl: "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png",
-          description: "사용자의 데이터를 안전하게 지키는 LG Shield로 철저한 보안 리스크 관리가 가능하고 이에 대해 개인정보보호위원회로부터 PbD 인증도 부여받았습니다.\n또한 소중한 개인 정보가 국외 서버로 전송되는 것을 제한하며 개인 정보를 철저하게 보호합니다.",
+          description:
+            "사용자의 데이터를 안전하게 지키는 LG Shield로 철저한 보안 리스크 관리가 가능하고 이에 대해 개인정보보호위원회로부터 PbD 인증도 부여받았습니다.\n또한 소중한 개인 정보가 국외 서버로 전송되는 것을 제한하며 개인 정보를 철저하게 보호합니다.",
         },
         {
           label: "물리적 보안",
-          description:
-            "청소 후에는 자동 도어 닫힘 기능으로 카메라 노출 걱정까지 줄여 더욱 안심할 수 있습니다.",
+          description: "청소 후에는 자동 도어 닫힘 기능으로 카메라 노출 걱정까지 줄여 더욱 안심할 수 있습니다.",
           mediaType: "image",
           mediaUrl: "/__l5e/assets-v1/87dc63ce-7648-4fbf-9550-379990c2c0db/vacuum-physical-security-right-v2.png",
         },
@@ -1464,7 +1432,8 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Wrench",
       tag: "구독",
       mediaType: "image",
-      mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
+      mediaUrl:
+        "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
       description:
         "구독 기간 동안 무상 A/S는 기본, 케어 전문가가 정기 방문해 청소로봇의 내·외부 위생과 성능을 관리해드려요. 번거로운 소모품 교체까지 챙겨 더 편하게 사용할 수 있어요.",
       highlights: [
@@ -1479,7 +1448,8 @@ export const featuresMap: Record<string, Feature[]> = {
           description:
             "전용 관리제로 스테이션 내부 오수관을 세척하고\n물때와 세균 발생이 쉬운 급·배수통, 필터, 회전솔을 스팀으로 꼼꼼히 세척합니다.",
           mediaType: "image",
-          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
+          mediaUrl:
+            "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
           highlights: [],
         },
         {
@@ -1487,15 +1457,16 @@ export const featuresMap: Record<string, Feature[]> = {
           description:
             "먼지와 이물질이 쌓일 수 있는 흡입구와 먼지통, 회전솔 등을 꼼꼼히 관리하여\n청소 성능을 유지할 수 있도록 도와줍니다.",
           mediaType: "image",
-          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/792fb934-9d72-442d-8433-c950ecc722ec/vacuum-subscription-service-02.jpg",
+          mediaUrl:
+            "https://viewkit.lovable.app/__l5e/assets-v1/792fb934-9d72-442d-8433-c950ecc722ec/vacuum-subscription-service-02.jpg",
           highlights: [],
         },
         {
           label: "무상 A/S 및 소모품 교체",
-          description:
-            "계약기간 내내 무상 A/S 제공은 기본,\n소모품 정기 교체로 관리의 번거로움을 줄여줍니다.",
+          description: "계약기간 내내 무상 A/S 제공은 기본,\n소모품 정기 교체로 관리의 번거로움을 줄여줍니다.",
           mediaType: "image",
-          mediaUrl: "https://viewkit.lovable.app/__l5e/assets-v1/04011284-51c7-43a5-83c5-2ad70db02be6/vacuum-subscription-service-03.jpg",
+          mediaUrl:
+            "https://viewkit.lovable.app/__l5e/assets-v1/04011284-51c7-43a5-83c5-2ad70db02be6/vacuum-subscription-service-03.jpg",
           highlights: [],
         },
       ],
@@ -1686,7 +1657,6 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_BodyCare_pc.jpg",
         },
       ],
-
     },
     {
       id: "3",
@@ -1700,9 +1670,7 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "UV-LED로 바람을 만들어내는 팬을 99.99% 살균해서 눈에 보이지 않는 곳까지 청결하게 유지해요. 필터를 분리해서 셀프 케어가 가능하고, 전문 케어서비스로 제품을 위생적으로 관리할 수 있어요.",
       highlights: [],
-      mediaDisclaimers: [
-        "소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
-      ],
+      mediaDisclaimers: ["소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
     },
     {
       id: "6",
@@ -1758,9 +1726,7 @@ export const featuresMap: Record<string, Feature[]> = {
         },
         {
           title: "[환기]",
-          items: [
-            "리모컨의 환기 버튼을 누르면 욕실 내 공기가 배기되어 공간을 쾌적하게 유지해요.",
-          ],
+          items: ["리모컨의 환기 버튼을 누르면 욕실 내 공기가 배기되어 공간을 쾌적하게 유지해요."],
         },
       ],
     },
@@ -1815,7 +1781,8 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Wrench",
       tag: "설치 환경",
       mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/common/pdp_multi_banner/images/bath-air-system/Banner_BathAir_InstallChk_B_PC_x2.png",
+      mediaUrl:
+        "https://www.lge.co.kr/kr/images/common/pdp_multi_banner/images/bath-air-system/Banner_BathAir_InstallChk_B_PC_x2.png",
       fullWidthMedia: true,
       descriptionTitle: "자세히 알아보기",
       description:
@@ -1839,9 +1806,7 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "필터 교체부터 내·외부 클리닝, 위생 관리, 성능 점검까지 체계적인 전문가 케어 프로세스로 바스에어시스템을 위생적으로 관리할 수 있어요.",
       highlights: [],
-      mediaDisclaimers: [
-        "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
-      ],
+      mediaDisclaimers: ["소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
       mediaCollapsibleDisclaimers: [
         {
           title: "[케어서비스]",
@@ -1861,7 +1826,6 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
     },
   ],
-
 
   // 워시콤보 특장점 (대외비 · SC/KOR 계정 전용)
   washcombo: [
@@ -2134,7 +2098,6 @@ export const featuresMap: Record<string, Feature[]> = {
         },
       ],
       disclaimers: ["트루스팀 효과는 사용 조건 및 대상 세탁물에 따라 달라질 수 있습니다."],
-
     },
     {
       id: "4",
@@ -2212,10 +2175,8 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "높아진 워시콤보 투입구",
           mediaType: "image",
           imageFit: "contain",
-          mediaUrl:
-            "/__l5e/assets-v1/0e4a9bd4-6d57-4b3e-acc8-844ff869e7db/washcombo-height-wide.jpg",
-          description:
-            "워시콤보 투입구를 30cm 높여 허리를 덜 숙여도 세탁물을 쉽게 넣고 뺄 수 있어요.",
+          mediaUrl: "/__l5e/assets-v1/0e4a9bd4-6d57-4b3e-acc8-844ff869e7db/washcombo-height-wide.jpg",
+          description: "워시콤보 투입구를 30cm 높여 허리를 덜 숙여도 세탁물을 쉽게 넣고 뺄 수 있어요.",
           collapsibleDisclaimers: [
             {
               title: "유의사항",
@@ -2230,8 +2191,7 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "동시세탁/분리세탁",
           mediaType: "image",
           imageFit: "contain",
-          mediaUrl:
-            "/__l5e/assets-v1/e8430f99-e478-43ca-aac6-e15af3cd688a/washcombo-miniwash-wide.jpg",
+          mediaUrl: "/__l5e/assets-v1/e8430f99-e478-43ca-aac6-e15af3cd688a/washcombo-miniwash-wide.jpg",
           description:
             "분리 세탁이 필요한 아기 옷, 펫 용품, 양말, 속옷 등을 따로 세탁하거나 워시콤보로 세탁+건조하는 동안 동시 세탁도 할 수 있어 편리해요.",
           collapsibleDisclaimers: [
@@ -2248,8 +2208,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "통합 컨트롤",
           mediaType: "video",
-          mediaUrl:
-            "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_15_1_control_mo.mp4",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_15_1_control_mo.mp4",
           description:
             "워시콤보 디스플레이 설정에서 미니워시를 연결하면 워시콤보 디스플레이에서 미니워시까지 컨트롤 할 수 있어요.",
           collapsibleDisclaimers: [
@@ -2267,10 +2226,8 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "미니멀 플랫 디자인",
           mediaType: "image",
           imageFit: "cover",
-          mediaUrl:
-            "https://www.lge.co.kr/kr/images/washing-machines/md10810828/usp/FC4TC_01_minimal_pc.jpg",
-          description:
-            "AI 워시콤보에 딱 맞게 설계돼 맞춤 제작한 가구처럼 조화로워요.",
+          mediaUrl: "https://www.lge.co.kr/kr/images/washing-machines/md10810828/usp/FC4TC_01_minimal_pc.jpg",
+          description: "AI 워시콤보에 딱 맞게 설계돼 맞춤 제작한 가구처럼 조화로워요.",
           collapsibleDisclaimers: [
             {
               title: "유의사항",
@@ -2293,12 +2250,13 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/wash_combo_250804.mp4",
       descriptionTitle: "자세히 알아보기",
-      description:
-        "가전 케어 매니저가 정기적으로 소모품 교체부터 위생 관리까지 도와줘 편리해요.",
-      highlights: ["LG전자에서 연구한 전용 관리제 사용", "세제함, 필터 등을 스팀 케어", "필터 교체 주기에 맞춰 필터 교체"],
-      disclaimers: [
-        "소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
+      description: "가전 케어 매니저가 정기적으로 소모품 교체부터 위생 관리까지 도와줘 편리해요.",
+      highlights: [
+        "LG전자에서 연구한 전용 관리제 사용",
+        "세제함, 필터 등을 스팀 케어",
+        "필터 교체 주기에 맞춰 필터 교체",
       ],
+      disclaimers: ["소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
       collapsibleDisclaimers: [
         {
           title: "세부정보",
@@ -2364,11 +2322,7 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
     },
   ],
-
-
-
 };
-
 
 // Lucide icon name map – used by FeatureCard and FeatureDetail to render SVG icons
 // Keys must match the `icon` field in each Feature object
@@ -2413,7 +2367,6 @@ export const featureIconNames: Record<string, string> = {
   Droplets: "Droplets",
   ClipboardCheck: "ClipboardCheck",
 };
-
 
 // Keep legacy export for backwards compat (unused but safe)
 export const featureIconMap = featureIconNames;
