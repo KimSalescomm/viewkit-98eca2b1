@@ -402,9 +402,11 @@ const FeatureDetail = () => {
                     <div className="space-y-3 pt-1 pb-2">
                       {activeTabData.collapsibleDisclaimers.map((item, index) => (
                         <div key={index}>
-                          <h4 className="text-[11px] sm:text-xs font-bold text-gray-700 mb-1">
-                            {item.title}
-                          </h4>
+                          {item.title !== "세부정보" && (
+                            <h4 className="text-[11px] sm:text-xs font-bold text-gray-700 mb-1">
+                              {item.title}
+                            </h4>
+                          )}
                           <ol className="space-y-1 list-none">
                             {item.items.map((text, i) => (
                               <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
@@ -686,9 +688,11 @@ const FeatureDetail = () => {
                     <div className="space-y-3 pt-1 pb-2">
                       {feature.collapsibleDisclaimers.map((item, index) => (
                         <div key={index}>
-                          <h4 className="text-[11px] sm:text-xs font-bold text-gray-700 mb-1">
-                            {item.title}
-                          </h4>
+                          {item.title !== "세부정보" && (
+                            <h4 className="text-[11px] sm:text-xs font-bold text-gray-700 mb-1">
+                              {item.title}
+                            </h4>
+                          )}
                           <ol className="space-y-1 list-none">
                             {item.items.map((text, i) => (
                               <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
