@@ -115,6 +115,7 @@ const FeatureDetail = () => {
               galleryImages={feature.galleryImages}
               isShorts={feature.isShorts}
               fallbackUrl={feature.fallbackUrl}
+              fullWidthMedia={feature.fullWidthMedia}
             />
           </div>
         )}
@@ -181,6 +182,7 @@ const FeatureDetail = () => {
               isShorts={activeTabData?.isShorts ?? feature.isShorts}
               fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
               imagePosition={activeTabData?.imagePosition}
+              fullWidthMedia={feature.fullWidthMedia}
             />
           );
 
@@ -272,6 +274,40 @@ const FeatureDetail = () => {
           );
         })()}
 
+        {/* Media disclaimers (rendered directly below the main media) */}
+        {(feature.mediaDisclaimers || feature.mediaCollapsibleDisclaimers) && (
+          <div className="mb-4 sm:mb-6 px-1">
+            {feature.mediaDisclaimers && feature.mediaDisclaimers.length > 0 && (
+              <ul className="space-y-1 mb-2">
+                {feature.mediaDisclaimers.map((text, index) => (
+                  <li key={index} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed">
+                    * {text}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {feature.mediaCollapsibleDisclaimers && feature.mediaCollapsibleDisclaimers.length > 0 && (
+              <Accordion type="multiple" className="w-full">
+                {feature.mediaCollapsibleDisclaimers.map((item, index) => (
+                  <AccordionItem key={index} value={`media-disclaimer-${index}`} className="border-b border-gray-200">
+                    <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
+                      {item.title}
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <ol className="space-y-1 list-none pt-1 pb-2">
+                        {item.items.map((text, i) => (
+                          <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
+                            {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
+                          </li>
+                        ))}
+                      </ol>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            )}
+          </div>
+        )}
 
         {/* Lightbox for certification badges */}
         <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>

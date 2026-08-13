@@ -118,9 +118,15 @@ export interface Feature {
   isShorts?: boolean;
   disclaimers?: string[];
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
+  /** 메인 미디어 바로 아래 노출되는 일반 디스클레이머 */
+  mediaDisclaimers?: string[];
+  /** 메인 미디어 바로 아래 노출되는 접이식 디스클레이머 */
+  mediaCollapsibleDisclaimers?: CollapsibleDisclaimer[];
   tabs?: FeatureTab[];
   tabsVariant?: "pill" | "underline";
   showMainMedia?: boolean;
+  /** 메인 미디어 이미지를 컨텐츠 폭에 맞춰 꽉 채움 */
+  fullWidthMedia?: boolean;
   /** 메인 콘텐츠 하위 세부 기능 (아코디언) */
   subFeatures?: SubFeature[];
   /** 세부 기능 영역 제목/부제 */
@@ -1540,11 +1546,12 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "1",
       title: "듀얼배기로 습기와 냄새를\n더 빠르게 제거할 수 있을까요?",
-      subtitle: "바스에어시스템과 배기팬이 함께 작동해\n환기 효과를 높이고 쾌적한 환경을 유지합니다.",
+      subtitle: "바스에어시스템과 배기팬이 함께 작동해 환기 효과를 높이고 쾌적한 환경을 유지합니다.",
       icon: "Wind",
       tag: "듀얼 배기",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_160CMH_pc.jpg",
+      fullWidthMedia: true,
       description:
         "최대 풍량 160CMH의 강력한 듀얼배기는 욕실 내 습기를 16분 만에 60%까지 낮추고, 습기 체류 시간을 단축시켜 보송한 욕실을 만들어줍니다.",
       highlights: [
@@ -1552,6 +1559,25 @@ export const featuresMap: Record<string, Feature[]> = {
         "습도 90%→60% 도달 16분",
         "바스에어+배기팬 동시 작동",
         "빠른 습기·냄새 제거",
+      ],
+      mediaDisclaimers: [
+        "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
+        "듀얼배기 기능은 ‘프리미엄 듀얼’ 구입 시 이용가능합니다.",
+        "모델, 운전모드 및 실사용 환경에 따라 결과는 다를 수 있습니다.",
+      ],
+      mediaCollapsibleDisclaimers: [
+        {
+          title: "[듀얼배기]",
+          items: [
+            "시험 일시: 25. 12. 24",
+            "시험 기관: LG 전자 자체 시험",
+            "시험 대상: MX0120BAS*, M-X0120BAS*",
+            "시험 방법: LG전자 실험 챔버(W*D*H(m): 2.3x2.7x2.2)",
+            "프리미엄듀얼(MX0120BAS*): 풍량 160CMH, 외부온도 21℃, 외부 상대습도 40%, 실내 챔버 온도 21℃",
+            "프리미엄(M-X0120BAS*): 풍량 120CMH, 외부온도 21℃, 외부 습도 40%, 실내 챔버 온도 21℃ 실내 챔버 RH습도 90% → 습도 60% 도달시간",
+            "시험 결과: 챔버 RH습도 90% → 60% 도달시간 프리미엄듀얼(MX0120BAS*) 16분, 프리미엄(M-X0120BAS*) 22분",
+          ],
+        },
       ],
     },
     {
