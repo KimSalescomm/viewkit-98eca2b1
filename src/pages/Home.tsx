@@ -187,11 +187,11 @@ const Home = () => {
                   <Waves className="text-white w-8 h-8" />
                 </div>
                 <span className="inline-block bg-brand-soft text-brand text-sm font-bold px-2.5 py-1 rounded-lg mb-2 sm:mb-3">
-                  케어 서비스
+                  구독
                 </span>
-                <h3 className="text-base sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">구독</h3>
+                <h3 className="text-base sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">프리미엄 듀얼 구독</h3>
                 <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
-                  케어 전·후 비교로 한눈에 보는 케어 서비스
+                  듀얼배기와 웜·프레시케어로 완성하는 욕실 공기 케어
                 </p>
               </div>
             </Link>
