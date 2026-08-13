@@ -1808,14 +1808,11 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "설치 환경",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/images/common/pdp_multi_banner/images/bath-air-system/Banner_BathAir_InstallChk_B_PC_x2.png",
+      fullWidthMedia: true,
+      descriptionTitle: "자세히 알아보기",
       description:
         "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 보다 원활한 설치가 가능합니다.",
-      highlights: [
-        "천장형 환풍기 위치 확인",
-        "본체 타공 405×260mm",
-        "천장 속 높이 최소 160mm",
-        "배기팬 별도 타공 225×225mm",
-      ],
+      highlights: [],
     },
   ],
 
