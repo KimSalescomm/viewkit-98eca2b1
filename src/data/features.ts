@@ -2320,6 +2320,7 @@ export const featureIconNames: Record<string, string> = {
   Gift: "Gift",
   Cable: "Cable",
   Droplets: "Droplets",
+  ClipboardCheck: "ClipboardCheck",
 };
 
 
