@@ -801,7 +801,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "15",
       title: "콜드프리가 무엇인가요?",
-      subtitle: "온도와 습도를 모두 맞춰서\n춥지도 꿉꿉하지도 않아요.",
+      subtitle: "온도와 습도를 모두 맞춰주는 콜드프리.\n춥지도 꿉꿉하지도 않게 맞춰줘요",
       icon: "Wind",
       tag: "AI 콜드프리",
       mediaType: "video",
