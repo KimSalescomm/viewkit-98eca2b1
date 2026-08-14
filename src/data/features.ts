@@ -1748,7 +1748,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "7",
-      title: "물기 많은 욕실, 세균이 걱정된다면?",
+      title: "구독하면 어떤 케어서비스를 받을 수 있나요?",
       subtitle: "체계적인 전문가의 케어를 받으면 더욱 위생적으로 관리할 수 있어요.",
       icon: "Waves",
       tag: "바스에어 구독",
