@@ -835,9 +835,9 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "17",
       title: "에어컨 청소 지옥에서 탈출하는\n가장 쉬운 방법은?",
-      subtitle: "매년 여름 반복되는 에어컨 청소고민\n구독으로 시원하게 해결",
+      subtitle: "매년 여름 반복되는 에어컨 청소고민\n구독으로 시원하게 해결해요.",
       icon: "Sparkles",
-      tag: "영상",
+      tag: "엘숏츠",
       mediaType: "youtube",
       mediaUrl: "https://youtu.be/DRk0yXY8zPg",
       isShorts: false,
