@@ -336,7 +336,7 @@ const FeatureDetail = () => {
 
         {/* Description Card: active tab description takes precedence */}
         <div className="bg-white rounded-2xl p-5 sm:p-6 mb-4 sm:mb-6 shadow-md">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{activeTabData?.descriptionTitle ?? feature.descriptionTitle ?? "자세히 알아보기"}</h2>
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{activeTabData?.descriptionTitle ?? feature.descriptionTitle ?? "조금 더 자세히 볼까요?"}</h2>
           <p className="text-sm sm:text-base text-gray-600 leading-snug whitespace-pre-line">
             {activeTabData?.description ?? feature.description}
           </p>

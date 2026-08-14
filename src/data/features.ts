@@ -1635,7 +1635,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/watch?v=NOxxvC5cQFw",
       isShorts: false,
-      descriptionTitle: "자세히 알아보기",
+      descriptionTitle: "조금 더 자세히 볼까요?",
       description:
         "샤워하고 나와도 금세 끈적이는 몸, 습기 가득찬 욕실, 꿉꿉한 냄새...\n여름철 욕실 관리 때문에 스트레스 받지 마세요.\nLG전자 퓨리케어 바스에어시스템이 거울 김 서림부터\n축축한 바닥 습기까지 싹 잡아서 보송한 욕실을 만들어주니까요.",
       highlights: ["송풍", "환기모드", "케어 전문가", "분해 세척"],
@@ -1737,7 +1737,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl:
         "https://www.lge.co.kr/kr/images/common/pdp_multi_banner/images/bath-air-system/Banner_BathAir_InstallChk_B_PC_x2.png",
       fullWidthMedia: true,
-      descriptionTitle: "자세히 알아보기",
+      descriptionTitle: "조금 더 자세히 볼까요?",
       description:
         "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 더 원활하게 설치할 수 있어요.",
       highlights: [],
@@ -1755,7 +1755,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_CareService_pr.mp4",
       fullWidthMedia: true,
-      descriptionTitle: "자세히 알아보기",
+      descriptionTitle: "조금 더 자세히 볼까요?",
       description:
         "필터 교체부터 내·외부 클리닝, 위생 관리, 성능 점검까지 체계적인 전문가 케어 프로세스로 바스에어시스템을 위생적으로 관리할 수 있어요.",
       highlights: [],
@@ -1791,7 +1791,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_04_ai_wash_dry_pc.mp4",
       showMainMedia: false,
-      descriptionTitle: "자세히 알아보기",
+      descriptionTitle: "조금 더 자세히 볼까요?",
       description:
         "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁+건조를 완성하고, 결과까지 확인할 수 있어요.",
       highlights: [
@@ -1802,7 +1802,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tabs: [
         {
           label: "AI 세탁+건조",
-          descriptionTitle: "자세히 알아보기",
+          descriptionTitle: "조금 더 자세히 볼까요?",
           description:
             "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁+건조를 완성하고, 결과까지 확인할 수 있어요.",
           mediaType: "video",
@@ -1905,7 +1905,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "트루스팀",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_08_true_steam_pc.mp4",
-      descriptionTitle: "자세히 알아보기",
+      descriptionTitle: "조금 더 자세히 볼까요?",
       description:
         "물을 끓여 만든 트루스팀과 60℃ 이상 고온의 물로 의류를 살균 케어해요. 세탁부터 건조까지 스팀이 적용된 코스를 선택하거나 옵션 추가해 의류를 관리할 수 있어요.",
       highlights: ["유해세균 살균", "냄새와 구김 케어"],
@@ -2088,7 +2088,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "All New Full 플랫 디자인",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_14_design_pc.mp4",
-      descriptionTitle: "자세히 알아보기",
+      descriptionTitle: "조금 더 자세히 볼까요?",
       description:
         "플랫 도어와 플랫 세제함을 적용해 세련되고 깔끔해진 디자인을 만나보세요. 고급스러운 색상을 취향에 맞게 선택해 인테리어를 완성할 수 있어요.",
       highlights: ["모던하고 세련된 프리미엄 디자인", "7인치 와이드 디스플레이", "워시콤보와 미니워시 통합 컨트롤"],
@@ -2118,7 +2118,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "미니워시",
       mediaType: "image",
       mediaUrl: "",
-      descriptionTitle: "자세히 알아보기",
+      descriptionTitle: "조금 더 자세히 볼까요?",
       description:
         "워시콤보와 함께 미니워시를 연동하면 소량 세탁물이나 속옷, 운동화 같은 작은 아이템도 따로 관리할 수 있어요. 세탁물 종류에 맞춰 효율적으로 케어하세요.",
       highlights: ["AI 워시콤에 딱 맞게 설계", "아기 옷, 속옷 등 분리/동시세탁", "워시콤보와 미니워시 통합컨트롤"],
@@ -2202,7 +2202,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "가전 구독",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/wash_combo_250804.mp4",
-      descriptionTitle: "자세히 알아보기",
+      descriptionTitle: "조금 더 자세히 볼까요?",
       description: "가전 케어 매니저가 정기적으로 소모품 교체부터 위생 관리까지 도와줘 편리해요.",
       highlights: [
         "LG전자에서 연구한 전용 관리제 사용",
