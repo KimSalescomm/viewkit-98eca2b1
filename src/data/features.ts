@@ -1076,6 +1076,22 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
     },
     {
+      id: "23",
+      title: "잠들기 전, 습도까지 챙기는 에어컨이 있다면?",
+      subtitle: "AI 콜드프리의 매력을 짧은 영상으로 확인해보세요.",
+      icon: "Monitor",
+      tag: "엘숏츠",
+      mediaType: "youtube",
+      mediaUrl: "https://www.youtube.com/watch?v=ESXhMpHGyeo",
+      isShorts: false,
+      description:
+        "온도만 낮추면 시원한 듯 춥고 끈적했던 여름밤.\nAI 콜드프리는 온도와 습도를 함께 관리해 자는 동안에도 쾌적한 공기를 만들어줘요.",
+      highlights: ["AI 콜드프리", "정온 제습", "AI 수면", "쾌적한 여름밤"],
+      disclaimers: [
+        "소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
+      ],
+    },
+    {
       id: "22",
       title: "일상이 더 쾌적해지는 순간, TVCF 이야기",
       subtitle: "휘센의 이야기를 TV CF로 확인해보세요.",
