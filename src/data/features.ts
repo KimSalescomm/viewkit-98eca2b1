@@ -228,25 +228,23 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "자발광 올레드",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/story/user-guide/images/basic-spec-vocabulary/quality-list01.mp4",
-      tabsVariant: "underline",
       tabs: [
         {
           label: "LCD",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/story/user-guide/images/basic-spec-vocabulary/quality-list01.mp4",
-          caption:
-            "LCD는 뒤쪽 백라이트가 화면 전체를 비추는 방식이라, 어두운 장면에서도 빛이 새어 나와 화면이 회색빛으로 보여요. 백라이트, 광학시트, 편광판, TFT, 컬러필터 등 여러 겹의 패널이 겹쳐 있어 구조가 두껍습니다.",
+          description:
+            "LCD는 뒤쪽 백라이트가 화면 전체를 비추는 방식이에요. 어두운 장면에서도 빛이 새어 나와 화면이 회색빛으로 보이고, 백라이트·광학시트·편광판·TFT·컬러필터 등 여러 겹의 패널이 겹쳐 있어 구조가 두꺼워요.",
         },
         {
-          label: "OLED",
+          label: "올레드",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/story/user-guide/images/basic-spec-vocabulary/quality-list05.mp4",
-          caption:
-            "OLED는 약 800만 개의 픽셀이 하나하나 스스로 빛을 내고, 꺼질 땐 완전히 꺼져요. 백라이트가 필요 없어 패널이 얇고, 어느 각도에서 봐도 색이 왜곡되지 않으며, 검정은 진짜 검정으로 표현됩니다.",
+          description:
+            "OLED는 약 8백만 개의 픽셀 하나하나가 스스로 빛을 내는 방식이에요. 꺼질 땐 완전히 꺼져서 진짜 검정을 표현하고, 백라이트가 없어 패널이 얇고, 어느 각도에서 봐도 색 왜곡이 없어요.",
         },
       ],
-      description:
-        "LCD는 뒤에서 백라이트가 화면 전체를 비추는 방식이라, 검정을 표현할 때도 빛이 새어 나와 회색처럼 보여요. 반면 올레드(OLED)는 약 8백만 개의 픽셀 하나하나가 스스로 빛을 내고, 꺼질 땐 완전히 꺼져요.\n\n그래서 검정은 진짜 검정으로, 빛은 더 또렷하게 표현되죠. 백라이트가 없으니 패널도 얇고, 어느 각도에서 봐도 색 왜곡 없이 동일한 화질을 즐길 수 있어요.",
+      description: "",
       highlights: [
         "픽셀 단위 자발광 — 완벽한 명암비",
         "백라이트 없는 초슬림 패널",
