@@ -1077,54 +1077,6 @@ export const featuresMap: Record<string, Feature[]> = {
         "상세 사양은 LG전자 공식 홈페이지의 최신 정보를 기준으로 확인해주세요.",
       ],
     },
-
-    {
-      id: "17",
-      title: "에어컨 청소 지옥에서 탈출하는\n가장 쉬운 방법은?",
-      subtitle: "매년 여름 반복되는 에어컨 청소고민\n구독으로 시원하게 해결해요.",
-      icon: "Sparkles",
-      tag: "엘숏츠",
-      mediaType: "youtube",
-      mediaUrl: "https://youtu.be/DRk0yXY8zPg",
-      isShorts: false,
-      descriptionTitle: "에어컨 청소 지옥에서 탈출하는 가장 쉬운 방법은?",
-      description: `"사설 업체를 부를까?", "내가 직접 뜯어서 닦을까?" 매년 여름 반복되는 리얼한 에어컨 청소 고민! LG전자 에어컨 구독의 라이트 플러스 전문 케어 서비스(분해세척/UV&피톤치드 케어)로 시원하게 해결해드려요.`,
-
-      highlights: ["분해세척", "UV케어", "피톤치드케어", "케어전문가의 관리"],
-      disclaimers: ["이 영상은 AI를 활용하여 제작되었습니다.", "소비자의 이해를 돕기 위해 연출된 이미지 입니다."],
-      collapsibleDisclaimers: [
-        {
-          title: "[분해 세척]",
-          items: [
-            "프리미엄 케어 서비스 방문주기는 12개월 마다, 분해 케어는 36개월 마다 제공됩니다. 라이트플러스 케어 서비스 방문주기는 12개월 마다, 비분해 케어는 36개월 마다 제공됩니다.",
-            "전문 장비 및 케어제를 활용하여 열교환기, 냉방팬등 내외부를 케어해드립니다. (제공되는 서비스에 따라 케어방식은 상이할 수 있습니다.)",
-            "프리미엄은 1~3월 구매 시, 다음 해 3월 방문 / 4~6월 구매 시, 다음 해 4월 방문 / 7~8월 구매 시, 다음 해 5월 방문 / 9월 구매 시, 다음 해 9월 방문 / 10월 구매 시, 다음 해 10월 방문 / 11~12월 구매 시, 다음 해 11월 방문합니다.",
-            "라이트 플러스는 1~2월 구매시, 같은해 9월 방문 / 3월 구매시, 같은해 10월 방문/ 4월 구매시, 같은해 11월 방문 / 5월 구매시, 다음해 3월 방문 / 6월구매시, 다음해 4월 방문 / 7월 구매시, 다음해 5월 방문 / 8월구매시, 다음해 6월 방문 / 9월 구매시, 다음해 9월 방문 / 10월구매시 다음해 10월 방문 / 11~12월구매시, 다음해 11월 방문 합니다.",
-          ],
-        },
-        {
-          title: "[위생케어]",
-          items: [
-            "스팀케어의 경우, 프리미엄과 라이트 플러스 모두 36개월마다 서비스가 제공됩니다.",
-            "UV와 피톤치드 케어의 경우, 프리미엄의 36개월마다 라이트플러스는 12개월마다 서비스가 제공됩니다",
-            "사용 장비는 상이할 수 있습니다.",
-          ],
-        },
-        {
-          title: "[방문관리]",
-          items: [
-            "방문 관리는 사전 안내드리고 있으며, 고객 요청에 의해 협의된 일정으로 변경하실 수 있습니다. 또한 제품 설치 환경에 따라 추가 비용이 발생할 수 있으니 (예: 사다리차, 앵글 등) 관련 자세한 사항은 LG전자 고객센터(1544-7777)에 문의 바랍니다.",
-          ],
-        },
-        {
-          title: "[구독 비중]",
-          items: [
-            "RAC 구독 비중: '25년 전체 대형가전 RAC 구독 비중 45.3% 베스트샵(시판+전문점 유통 합계), 구독운영팀 자료 기준",
-          ],
-        },
-      ],
-    },
-
     {
       id: "22",
       title: "일상이 더 쾌적해지는 순간, TVCF 이야기",
@@ -1532,14 +1484,14 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "1",
       title: "듀얼배기, 무엇이 좋을까요?",
-      subtitle: "바스에어시스템과 배기팬이 함께 작동해서 환기 효과를 높이고 쾌적한 환경을 유지해요",
+      subtitle: "바스에어시스템과 배기팬이 함께 작동해\n 습기와 냄새를 빠르게 없애줘요.",
       icon: "Wind",
       tag: "듀얼 배기",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_160CMH_pc.jpg",
       fullWidthMedia: true,
       description:
-        "최대 풍량 160CMH의 강력한 듀얼배기가 욕실 습기를 16분 만에 60%까지 낮춰주고, 습기가 오래 머무는 시간도 줄여줘서 보송한 욕실을 만들어줘요.",
+        "강력한 듀얼배기로 욕실의 습기를 단 16분 만에 60%까지 낮춰요, 최대 풍량 160CMH로 빠르게 습기를 제거해 금방 보송해져요.",
       highlights: [],
 
       mediaDisclaimers: [
@@ -1572,7 +1524,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_WarmNFresh_pc.jpg",
       fullWidthMedia: true,
       description:
-        "욕실 온도와 습도를 자동으로 감지해서 알아서 작동하는 공간케어와\n물기 없이 산뜻하게 말려주는 바디케어까지,\n최적의 욕실 컨디션을 만들어줘요.",
+        "욕실의 온도와 습도를 자동으로 감지해 알아서 작동하는 공간케어와\n물기 없이 산뜻하게 말려주는 바디케어까지,\n쾌적한 공간을 만들어줘요.",
       highlights: [],
       mediaDisclaimers: [
         "소비자의 이해를 돕기 위해 연출된 영상 및 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
@@ -1633,7 +1585,7 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "온풍",
           description:
-            "샤워 전 욕실을 온풍으로 미리 데워주고, 사용 중에도 욕실 온도를 따뜻하게 유지해줘요. 단 7분 만에 욕실 온도를 약 5℃ 높여서 부드럽고 은은한 온풍을 고르게 순환시켜줘요.",
+            "샤워하기 전에 온풍으로 미리 데워주고, 샤워하는 내내 욕실 온도를 따뜻하게 유지해줘요. 단 7분 만에 욕실 온도를 약 5℃ 높이고, 따뜻한 바람을 고르게 순환시켜요.",
           mediaType: "image",
           mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_Heating_pc.jpg",
         },
@@ -1647,14 +1599,14 @@ export const featuresMap: Record<string, Feature[]> = {
         {
           label: "공간케어",
           description:
-            "내장 센서가 욕실 상황에 맞는 운전 모드를 자동으로 선택해서 과도한 습기는 빠르게 제거하고, 차가운 공기는 부드럽게 데워 욕실 컨디션을 균형 있게 맞춰줘요.",
+            "센서가 습도를 갑지해 욕실 상황에 맞는 모드를 자동으로 선택해요. 축축한 습기는 빠르게 제거하고, 차가운 공기는 부드럽게 데워 쾌적한 욕실을 만들어줘요.",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_SpaceCare_pc.mp4",
         },
         {
           label: "바디케어",
           description:
-            "남은 물기를 깔끔하게 말려주는 강력한 바디 드라이 기능으로 바쁜 아침에는 준비 시간을 단축해서 여유를 더하고, 저녁에는 상쾌하고 기분 좋은 샤워 마무리를 완성해줘요.",
+            "남은 물기를 깔끔하게 말려주는 강력한 바디 드라이! 바쁜 아침에는 준비 시간을 줄일 수 있고, 저녁에는 샤워하고난 뒤에도 상쾌하고 기분 좋게 샤워 마무리해줘요.",
           mediaType: "image",
           mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_BodyCare_pc.jpg",
         },
@@ -1679,7 +1631,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "여름철 습기와의 전쟁!\n욕실을 보송하게 바꾼 비결은?",
       subtitle: "구독하면 좋은 이유를 영상으로 확인하세요.",
       icon: "Monitor",
-      tag: "영상",
+      tag: "엘숏츠",
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/watch?v=NOxxvC5cQFw",
       isShorts: false,
@@ -1772,8 +1724,7 @@ export const featuresMap: Record<string, Feature[]> = {
           description: "출처: 비클레어",
         },
       ],
-      description:
-        "다양한 욕실 구조와 공간에 맞춰 최적의 위치에 설치된 실제 사례를 확인해 보세요. 이제 사계절 내내 쾌적한 프리미엄 욕실 라이프를 즐겨보세요.",
+      description: "다양한 욕실 구조와 공간에 맞춰 최적의 위치에 설치된 실제 사례를 확인해 보세요.",
       highlights: [],
     },
     {
@@ -1800,7 +1751,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "물기 많은 욕실, 세균이 걱정된다면?",
       subtitle: "체계적인 전문가의 케어를 받으면 더욱 위생적으로 관리할 수 있어요.",
       icon: "Waves",
-      tag: "구독",
+      tag: "바스에어 구독",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_CareService_pr.mp4",
       fullWidthMedia: true,
@@ -1811,7 +1762,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaDisclaimers: ["소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
       mediaCollapsibleDisclaimers: [
         {
-          title: "[케어서비스]",
+          title: "[케어 서비스]",
           items: [
             "바스에어시스템 케어서비스는 구독 계약 고객에 한해 제공되며 방문주기는 6/12개월 마다 방문 관리 케어를, 24개월마다 필터 교체가 제공됩니다.",
             "방문 일정은 상황에 따라 변경될 수 있으며 방문 전 케어 전문가가 사전 연락을 드립니다.",
