@@ -240,7 +240,10 @@ const FeatureDetail = () => {
 
         {/* Subscription service interactive section */}
         {feature.subscriptionServiceItems && feature.subscriptionServiceItems.length > 0 && (
-          <SubscriptionServiceSection items={feature.subscriptionServiceItems} />
+          <SubscriptionServiceSection
+            items={feature.subscriptionServiceItems}
+            mediaDisclaimers={feature.mediaDisclaimers}
+          />
         )}
 
         {/* Main media (kept visible above tabs when requested) */}
