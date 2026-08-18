@@ -107,6 +107,12 @@ const productAccents: Record<string, { gradient: string; tint: string; chip: str
     chip: "bg-teal-50 text-teal-600 border-teal-100",
     keywords: ["욕실 케어", "스마트 제습", "대외비"],
   },
+  washcombo: {
+    gradient: "from-[#A67B5B] to-[#8D6E63]",
+    tint: "from-amber-50/60 via-white to-white",
+    chip: "bg-amber-50 text-amber-700 border-amber-100",
+    keywords: ["올인원", "세탁+건조", "AI"],
+  },
 };
 
 
