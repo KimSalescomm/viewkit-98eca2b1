@@ -41,6 +41,13 @@ export interface CollapsibleDisclaimer {
   items: string[];
 }
 
+export interface SubscriptionServiceItem {
+  label: string;
+  imageUrl: string;
+  description: string;
+}
+
+
 export interface TrueSteamCourseDisclaimer {
   title: string;
   items: string[];
