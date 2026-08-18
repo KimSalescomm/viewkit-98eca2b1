@@ -118,6 +118,8 @@ export interface Feature {
   tag?: string;
   mediaType: "video" | "image" | "table" | "gallery" | "youtube";
   mediaUrl: string;
+  /** 외부 페이지를 인앱 iframe으로 임베드 (예: 고객 리뷰) */
+  embedUrl?: string;
   fallbackUrl?: string; // MP4 fallback URL for webOS compatibility
   description: string;
   descriptionTitle?: string;
