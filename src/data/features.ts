@@ -1460,53 +1460,28 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "위생 케어",
           imageUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_01.jpg",
           description: "스티머로 먼지통과 걸레세척판을 꼼꼼히 세척·살균해 위생적으로 관리해 드려요.",
-          details: [
-            "먼지통 분리 세척",
-            "걸레세척판 스팀 케어",
-            "내부 오염물 제거",
-          ],
         },
         {
           label: "로봇/오수관 클리닝",
           imageUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_02.jpg",
           description:
             "전용 관리제로 제품 안쪽 튜브까지 세척하고, 이물질이 쌓일 수 있는 먼지통과 회전솔 장착부를 꼼꼼하게 관리해요.",
-          details: [
-            "오수관 내부 세척",
-            "먼지통·회전솔 장착부 클리닝",
-            "전용 관리제 사용",
-          ],
         },
         {
           label: "급배수통 스팀 클리닝",
           imageUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_3.jpg",
           description: "스티머로 물때가 생기기 쉬운 급/배수통을 청소해 물길을 깨끗하게 유지해요.",
-          details: [
-            "급수통 스팀 세척",
-            "배수통 물때 제거",
-            "위생적인 물길 관리",
-          ],
         },
         {
           label: "소모품 7종 교체 및 배터리 교체",
           imageUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_04_v2.jpg",
           description:
             "청소 성능을 유지할 수 있도록 소모품을 무상으로 교체하고, 로니 본체와 충전대를 꼼꼼하게 클리닝해요.",
-          details: [
-            "소모품 7종 무상 교체",
-            "배터리 상태 점검·교체",
-            "본체·충전대 클리닝",
-          ],
         },
         {
           label: "무상 철거/재설치",
           imageUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_05.jpg",
           description: "이사할 때도 번거로움 없이 제품을 무상으로 철거·재설치해 드려요.",
-          details: [
-            "이사 시 무상 철거",
-            "새 공간 재설치 지원",
-            "케어 서비스 연계",
-          ],
         },
       ],
       mediaDisclaimers: [
