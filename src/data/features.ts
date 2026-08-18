@@ -45,6 +45,8 @@ export interface SubscriptionServiceItem {
   label: string;
   imageUrl: string;
   description: string;
+  /** 이미지 아래 bullet 형태의 세부 안내 */
+  details?: string[];
 }
 
 
