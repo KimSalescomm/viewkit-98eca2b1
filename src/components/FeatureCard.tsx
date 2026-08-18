@@ -23,6 +23,7 @@ interface FeatureCardProps {
   productName?: string;
   tag?: string;
   colorIndex?: number;
+  gradient?: string;
   variant?: "white" | "gray";
   bannerImage?: string;
   showLikeHint?: boolean;
