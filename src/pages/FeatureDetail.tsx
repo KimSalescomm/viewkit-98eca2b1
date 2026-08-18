@@ -413,51 +413,40 @@ const FeatureDetail = () => {
 
 
         {/* Description Card: active tab description takes precedence */}
-        <div className="bg-white rounded-2xl p-5 sm:p-6 mb-4 sm:mb-6 shadow-md">
-          {!feature.subscriptionServiceItems && (
-            <>
-              {(activeTabData?.descriptionTitle || feature.descriptionTitle) && (
-                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{activeTabData?.descriptionTitle ?? feature.descriptionTitle}</h2>
-              )}
-              <p className="text-sm sm:text-base text-gray-600 leading-snug whitespace-pre-line">
-                {activeTabData?.description ?? feature.description}
-              </p>
-            </>
-          )}
-          {feature.subscriptionServiceItems && (
-            <>
-              {feature.mediaDisclaimers && feature.mediaDisclaimers.length > 0 && (
-                <ul className="space-y-1 mb-2">
-                  {feature.mediaDisclaimers.map((text, index) => (
-                    <li key={index} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed">
-                      * {text}
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {feature.mediaCollapsibleDisclaimers && feature.mediaCollapsibleDisclaimers.length > 0 && (
-                <Accordion type="multiple" className="w-full">
-                  {feature.mediaCollapsibleDisclaimers.map((item, index) => (
-                    <AccordionItem key={index} value={`media-disclaimer-${index}`} className="border-b border-gray-200">
-                      <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
-                        {item.title}
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <ol className="space-y-1 list-none pt-1 pb-2">
-                          {item.items.map((text, i) => (
-                            <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
-                              {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
-                            </li>
-                          ))}
-                        </ol>
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              )}
-            </>
-          )}
-        </div>
+        {!feature.subscriptionServiceItems && (
+          <div className="bg-white rounded-2xl p-5 sm:p-6 mb-4 sm:mb-6 shadow-md">
+            {(activeTabData?.descriptionTitle || feature.descriptionTitle) && (
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{activeTabData?.descriptionTitle ?? feature.descriptionTitle}</h2>
+            )}
+            <p className="text-sm sm:text-base text-gray-600 leading-snug whitespace-pre-line">
+              {activeTabData?.description ?? feature.description}
+            </p>
+          </div>
+        )}
+
+        {/* Collapsible disclaimers for subscription service pages */}
+        {feature.subscriptionServiceItems && feature.mediaCollapsibleDisclaimers && feature.mediaCollapsibleDisclaimers.length > 0 && (
+          <div className="mb-4 sm:mb-6">
+            <Accordion type="multiple" className="w-full">
+              {feature.mediaCollapsibleDisclaimers.map((item, index) => (
+                <AccordionItem key={index} value={`media-disclaimer-${index}`} className="border-b border-gray-200">
+                  <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
+                    {item.title}
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <ol className="space-y-1 list-none pt-1 pb-2">
+                      {item.items.map((text, i) => (
+                        <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
+                          {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
+                        </li>
+                      ))}
+                    </ol>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        )}
 
         {/* Media disclaimers (rendered below the description card) */}
         {!feature.subscriptionServiceItems && (feature.mediaDisclaimers || feature.mediaCollapsibleDisclaimers) && (
