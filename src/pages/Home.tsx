@@ -147,6 +147,7 @@ const Home = () => {
                 productName={product.name}
                 tag={feature.tag}
                 colorIndex={index}
+                gradient={productId === "washcombo" ? "from-[#A67B5B] to-[#8D6E63]" : undefined}
                 variant={isFitMax ? "gray" : "white"}
                 bannerImage={bannerImage}
                 showLikeHint={index === 0}

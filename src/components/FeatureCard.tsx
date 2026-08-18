@@ -23,6 +23,7 @@ interface FeatureCardProps {
   productName?: string;
   tag?: string;
   colorIndex?: number;
+  gradient?: string;
   variant?: "white" | "gray";
   bannerImage?: string;
   showLikeHint?: boolean;
@@ -37,11 +38,12 @@ const FeatureCard = ({
   productName,
   tag,
   colorIndex = 0,
+  gradient,
   variant = "white",
   bannerImage,
   showLikeHint = false,
 }: FeatureCardProps) => {
-  const color = cardColors[colorIndex % cardColors.length];
+  const color = gradient ? { gradient } : cardColors[colorIndex % cardColors.length];
   const bgClass = variant === "gray" ? "bg-gray-50 border-gray-200" : "bg-white border-gray-100";
   const { trackFeatureClick } = useAnalyticsContext();
 
