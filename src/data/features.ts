@@ -1478,7 +1478,7 @@ export const featuresMap: Record<string, Feature[]> = {
           ],
         },
         {
-          label: "급배수통 스팀 클리리닝",
+          label: "급배수통 스팀 클리닝",
           imageUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_3.jpg",
           description: "스티머로 물때가 생기기 쉬운 급/배수통을 청소해 물길을 깨끗하게 유지해요.",
           details: [
