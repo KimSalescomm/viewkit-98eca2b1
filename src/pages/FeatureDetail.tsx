@@ -121,7 +121,7 @@ const FeatureDetail = () => {
               {selectedItem.label}
             </h3>
             <div className="w-7 h-[3px] bg-[#7F77DD] rounded-sm mb-4" />
-            <p className="text-gray-600 text-[13px] leading-relaxed mb-4">
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4">
               {selectedItem.description}
             </p>
             <div className="rounded-lg overflow-hidden">
@@ -142,10 +142,10 @@ const FeatureDetail = () => {
                   key={item.label}
                   type="button"
                   onClick={() => setSelectedIndex(idx)}
-                  className={`w-full text-left px-4 py-3 min-h-[52px] rounded-full transition-colors duration-200 text-sm ${
+                  className={`w-full text-left px-3.5 py-2.5 min-h-[44px] rounded-[999px] transition-colors duration-200 text-sm sm:text-base ${
                     selectedIndex === idx
                       ? "bg-[#7F77DD] text-white font-medium"
-                      : "bg-white text-gray-400 border-[0.5px] border-[hsl(var(--border))]"
+                      : "bg-transparent text-gray-900 font-normal border-none"
                   }`}
                 >
                   {item.label}
