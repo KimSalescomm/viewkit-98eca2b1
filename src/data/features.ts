@@ -150,11 +150,15 @@ export interface Feature {
   /** 트루스팀 등 실제 적용 코스 소개 카드 */
   courses?: TrueSteamCourse[];
 
+  /** 구독 케어 서비스 인터랙티브 항목 (이미지 + 설명 + 리스트) */
+  subscriptionServiceItems?: SubscriptionServiceItem[];
+
   disabled?: boolean;
 
   /** true면 SC(관리자) 계정에서만 노출, 매장 계정에서는 숨김 */
   scOnly?: boolean;
 }
+
 
 export const featuresMap: Record<string, Feature[]> = {
   // 스타일러 특장점
