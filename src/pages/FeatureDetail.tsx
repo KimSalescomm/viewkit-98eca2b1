@@ -102,7 +102,71 @@ const FeatureDetail = () => {
     );
   };
 
+  const SubscriptionServiceSection = ({ items }: { items: SubscriptionServiceItem[] }) => {
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [isFading, setIsFading] = useState(false);
+
+    const handleSelect = (index: number) => {
+      if (index === selectedIndex || isFading) return;
+      setIsFading(true);
+      setTimeout(() => {
+        setSelectedIndex(index);
+        setIsFading(false);
+      }, 200);
+    };
+
+    const selectedItem = items[selectedIndex];
+
+    return (
+      <div className="mb-6 sm:mb-8">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+          {/* Image area */}
+          <div className="w-full md:w-[70%]">
+            <div className="relative w-full aspect-video md:aspect-[16/10] rounded-2xl overflow-hidden bg-gray-100">
+              <SafeImage
+                src={selectedItem.imageUrl}
+                alt={selectedItem.label}
+                loading="lazy"
+                className={`w-full h-full object-cover transition-opacity duration-200 ease-in-out ${isFading ? "opacity-0" : "opacity-100"}`}
+              />
+            </div>
+          </div>
+
+          {/* List area */}
+          <div className="w-full md:w-[30%] flex flex-col justify-center">
+            {items.map((item, idx) => (
+              <button
+                key={item.label}
+                type="button"
+                onClick={() => handleSelect(idx)}
+                className={`text-left px-4 py-3 min-h-[48px] border-l-2 transition-all duration-200 ${
+                  selectedIndex === idx
+                    ? "border-blue-600 text-gray-900 font-bold bg-blue-50/30"
+                    : "border-transparent text-gray-400 font-medium hover:text-gray-600"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Description text */}
+        <div className="mt-4 md:mt-6">
+          <p
+            className={`text-sm sm:text-base text-gray-600 leading-relaxed transition-opacity duration-200 ease-in-out ${
+              isFading ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            {selectedItem.description}
+          </p>
+        </div>
+      </div>
+    );
+  };
+
   useEffect(() => {
+
     setActiveTab(0);
   }, [feature, tabs]);
 
