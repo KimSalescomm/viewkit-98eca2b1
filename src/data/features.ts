@@ -1473,7 +1473,7 @@ export const featuresMap: Record<string, Feature[]> = {
           description: "스티머로 물때가 생기기 쉬운 급/배수통을 청소해 물길을 깨끗하게 유지해요.",
         },
         {
-          label: "소모품 7종 교체 및 배터리 교체",
+          label: "소모품 7종 및 배터리 교체",
           imageUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_04_v2.jpg",
           description:
             "청소 성능을 유지할 수 있도록 소모품을 무상으로 교체하고, 로니 본체와 충전대를 꼼꼼하게 클리닝해요.",
