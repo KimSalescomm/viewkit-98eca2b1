@@ -235,7 +235,13 @@ const FeatureDetail = () => {
           </div>
         </div>
 
+        {/* Subscription service interactive section */}
+        {feature.subscriptionServiceItems && feature.subscriptionServiceItems.length > 0 && (
+          <SubscriptionServiceSection items={feature.subscriptionServiceItems} />
+        )}
+
         {/* Main media (kept visible above tabs when requested) */}
+
         {feature.showMainMedia && tabs && tabs.length > 0 && (
           <div className="mb-5 sm:mb-6">
             <MediaViewer
