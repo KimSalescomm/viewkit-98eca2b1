@@ -378,6 +378,7 @@ const FeatureDetail = () => {
           );
         })()}
 
+
         {/* Lightbox for certification badges */}
         <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
           <DialogContent className="max-w-5xl p-2 sm:p-4 bg-white">
