@@ -108,9 +108,9 @@ const productAccents: Record<string, { gradient: string; tint: string; chip: str
     keywords: ["욕실 케어", "스마트 제습", "대외비"],
   },
   washcombo: {
-    gradient: "from-[#A67B5B] to-[#8D6E63]",
-    tint: "from-amber-50/60 via-white to-white",
-    chip: "bg-amber-50 text-amber-700 border-amber-100",
+    gradient: "from-emerald-400 to-teal-500",
+    tint: "from-emerald-50 via-white to-white",
+    chip: "bg-emerald-50 text-emerald-600 border-emerald-100",
     keywords: ["올인원", "세탁+건조", "AI"],
   },
 };
@@ -127,7 +127,7 @@ const ProductSelection = () => {
     keyVisualImage: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_stove_03_250804.jpg",
     icon: "Waves",
   } as (typeof products)[number];
-  const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "styler", "tv", "cooking", "bathair", "washcombo"];
+  const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "washcombo", "styler", "tv", "cooking", "bathair"];
   // 제품 카드(홈) 전용 썸네일 오버라이드 — 다른 페이지의 키비주얼은 유지
   const cardThumbnailOverrides: Record<string, { keyVisualImage?: string; secondaryKeyVisualImage?: string }> = {
     vacuum: {
