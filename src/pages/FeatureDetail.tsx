@@ -266,8 +266,9 @@ const FeatureDetail = () => {
         )}
 
 
-        {(() => {
+        {!feature.subscriptionServiceItems && (() => {
           const isUnderlineTabs = feature.tabsVariant === "underline" && tabs && tabs.length > 0;
+
           const belowImg = activeTabData?.belowMediaImage ?? feature.belowMediaImage;
           const frameBg = activeTabData?.frameBg ?? "#e8dccb";
 
