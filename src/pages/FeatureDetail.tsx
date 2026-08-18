@@ -120,7 +120,7 @@ const FeatureDetail = () => {
             <h3 className="text-gray-900 text-xl font-bold mb-2">
               {selectedItem.label}
             </h3>
-            <div className="w-7 h-[3px] bg-[#7F77DD] rounded-sm mb-4" />
+            <div className="w-7 h-[3px] bg-[#534AB7] rounded-sm mb-4" />
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4">
               {selectedItem.description}
             </p>
@@ -135,16 +135,16 @@ const FeatureDetail = () => {
           </div>
 
           {/* Right block: category list */}
-          <div className="w-full md:w-[30%] p-4 md:pl-4 flex flex-col justify-center border-t md:border-t-0 md:border-l border-[hsl(var(--border))]">
+          <div className="w-full md:w-[30%] p-4 md:pl-4 flex flex-col justify-start border-t md:border-t-0 md:border-l border-[hsl(var(--border))]">
             <div className="flex flex-col gap-1.5">
               {items.map((item, idx) => (
                 <button
                   key={item.label}
                   type="button"
                   onClick={() => setSelectedIndex(idx)}
-                  className={`w-full text-left px-3.5 py-2.5 min-h-[44px] rounded-[999px] transition-colors duration-200 text-sm sm:text-base ${
+                  className={`w-full text-left px-3.5 py-2.5 min-h-[44px] rounded-[999px] transition-colors duration-200 text-xs ${
                     selectedIndex === idx
-                      ? "bg-[#7F77DD] text-white font-medium"
+                      ? "bg-[#534AB7] text-white font-medium"
                       : "bg-transparent text-gray-900 font-normal border-none"
                   }`}
                 >
