@@ -114,9 +114,9 @@ const FeatureDetail = () => {
 
     return (
       <div className="mb-6 sm:mb-8">
-        <div className="flex flex-col md:flex-row md:items-stretch bg-white rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.08)]">
+        <div className="flex flex-col md:flex-row md:items-stretch bg-white rounded-2xl overflow-hidden border-[0.5px] border-[hsl(var(--border))]">
           {/* Left block: category detail */}
-          <div className="w-full md:w-[70%] p-5 sm:p-6">
+          <div className="w-full md:w-[70%] p-5 sm:p-6 md:pr-4">
             <h3 className="text-gray-900 text-xl font-bold mb-2">
               {selectedItem.label}
             </h3>
@@ -135,21 +135,23 @@ const FeatureDetail = () => {
           </div>
 
           {/* Right block: category list */}
-          <div className="w-full md:w-[30%] p-2 sm:p-3 flex flex-col justify-center">
-            {items.map((item, idx) => (
-              <button
-                key={item.label}
-                type="button"
-                onClick={() => setSelectedIndex(idx)}
-                className={`text-left px-4 py-3 min-h-[52px] rounded-lg transition-colors duration-200 text-sm ${
-                  selectedIndex === idx
-                    ? "bg-[hsl(var(--surface-muted))] text-gray-900 font-medium"
-                    : "bg-transparent text-gray-500 hover:text-gray-700"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+          <div className="w-full md:w-[30%] p-4 md:pl-4 flex flex-col justify-center border-t md:border-t-0 md:border-l border-[hsl(var(--border))]">
+            <div className="flex flex-col gap-1.5">
+              {items.map((item, idx) => (
+                <button
+                  key={item.label}
+                  type="button"
+                  onClick={() => setSelectedIndex(idx)}
+                  className={`w-full text-left px-4 py-3 min-h-[52px] rounded-full transition-colors duration-200 text-sm ${
+                    selectedIndex === idx
+                      ? "bg-[#7F77DD] text-white font-medium"
+                      : "bg-white text-gray-400 border-[0.5px] border-[hsl(var(--border))]"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
