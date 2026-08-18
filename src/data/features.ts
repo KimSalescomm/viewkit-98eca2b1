@@ -118,6 +118,8 @@ export interface Feature {
   tag?: string;
   mediaType: "video" | "image" | "table" | "gallery" | "youtube";
   mediaUrl: string;
+  /** 외부 페이지를 인앱 iframe으로 임베드 (예: 고객 리뷰) */
+  embedUrl?: string;
   fallbackUrl?: string; // MP4 fallback URL for webOS compatibility
   description: string;
   descriptionTitle?: string;
@@ -342,6 +344,19 @@ export const featuresMap: Record<string, Feature[]> = {
       highlights: ["벽면에 착 붙는 디자인", "전용 벽밀착 브라켓 사용"],
     },
     {
+      id: "6",
+      title: "실제 사용자들은 어떻게 평가했을까요?",
+      subtitle: "LG 공식 홈페이지에 등록된 고객 리뷰를\n앱에서 바로 확인해보세요.",
+      icon: "Star",
+      tag: "고객 리뷰",
+      mediaType: "image",
+      mediaUrl: "https://static.lge.co.kr/kr/story/buying-guide/2025/img/tv/img_P14_001_10.png",
+      embedUrl: "https://www.lge.co.kr/mkt/review/MD10770835/pdpReviewListPopup",
+      description: "구매 고객이 직접 남긴 별점과 후기를 확인해보세요. 화질, 사운드, 설치 만족도까지 생생한 이야기가 담겨 있어요.",
+      highlights: [],
+    },
+    {
+
       id: "5",
       scOnly: true,
       title: "어떤 올레드가 나에게 맞을까?",
