@@ -1443,44 +1443,50 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "구독",
       mediaType: "image",
       mediaUrl:
-        "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
+        "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_01.jpg",
       description:
         "구독 기간 동안 무상 A/S는 기본, 케어 전문가가 정기 방문해 청소로봇의 내·외부 위생과 성능을 관리해드려요. 번거로운 소모품 교체까지 챙겨 더 편하게 사용할 수 있어요.",
       highlights: [
-        "급·배수통·필터·회전솔 스팀 세척",
-        "스테이션 내부 오수관 세척",
-        "흡입구·먼지통·회전솔 관리",
-        "무상 A/S 및 소모품 교체",
+        "위생 케어",
+        "로봇/오수관 클리닝",
+        "급배수통 스팀 클리닝",
+        "소모품 7종 교체 및 배터리 교체",
+        "무상 철거/재설치",
       ],
-      tabs: [
+      subscriptionServiceItems: [
         {
           label: "위생 케어",
-          description:
-            "전용 관리제로 스테이션 내부 오수관을 세척하고\n물때와 세균 발생이 쉬운 급·배수통, 필터, 회전솔을 스팀으로 꼼꼼히 세척합니다.",
-          mediaType: "image",
-          mediaUrl:
-            "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
-          highlights: [],
+          imageUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_01.jpg",
+          description: "스티머로 먼지통, 걸레세척판을 꼼꼼히 청소합니다.",
         },
         {
-          label: "성능 관리",
+          label: "로봇/오수관 클리닝",
+          imageUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_02.jpg",
           description:
-            "먼지와 이물질이 쌓일 수 있는 흡입구와 먼지통, 회전솔 등을 꼼꼼히 관리하여\n청소 성능을 유지할 수 있도록 도와줍니다.",
-          mediaType: "image",
-          mediaUrl:
-            "https://viewkit.lovable.app/__l5e/assets-v1/792fb934-9d72-442d-8433-c950ecc722ec/vacuum-subscription-service-02.jpg",
-          highlights: [],
+            "전용 관리제로 제품 안쪽의 튜브까지 세척합니다. 이물질이 쌓일 수 있는 먼지통과 회전솔 장착부를 꼼꼼하게 관리합니다.",
         },
         {
-          label: "무상 A/S 및 소모품 교체",
-          description: "계약기간 내내 무상 A/S 제공은 기본,\n소모품 정기 교체로 관리의 번거로움을 줄여줍니다.",
-          mediaType: "image",
-          mediaUrl:
-            "https://viewkit.lovable.app/__l5e/assets-v1/04011284-51c7-43a5-83c5-2ad70db02be6/vacuum-subscription-service-03.jpg",
-          highlights: [],
+          label: "급배수통 스팀 클리닝",
+          imageUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_3.jpg",
+          description: "스티머로 물때가 생기기 쉬운 급/배수통을 청소합니다.",
+        },
+        {
+          label: "소모품 7종 교체 및 배터리 교체",
+          imageUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_04_v2.jpg",
+          description:
+            "청소 성능을 유지할 수 있도록 소모품을 무상으로 교체하고, 로봇청소기 로니와 충전대를 꼼꼼하게 클리닝합니다.",
+        },
+        {
+          label: "무상 철거/재설치",
+          imageUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_05.jpg",
+          description: "이사할 때에도 번거로움 없이, 제품을 무상 철거/재설치해드립니다.",
         },
       ],
+      mediaDisclaimers: [
+        "방문 관리는 사전 안내드리고 있으며, 고객 요청에 의해 협의된 일정으로 변경하실 수 있습니다.",
+      ],
     },
+
   ],
 
   // PC 특장점
