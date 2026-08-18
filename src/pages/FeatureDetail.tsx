@@ -275,7 +275,34 @@ const FeatureDetail = () => {
         )}
 
 
-        {!feature.subscriptionServiceItems && (() => {
+        {/* 외부 페이지 인앱 임베드 (고객 리뷰 등) */}
+        {feature.embedUrl && (
+          <div className="mb-5 sm:mb-6">
+            <div className="rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm">
+              <iframe
+                src={feature.embedUrl}
+                title={`${feature.title} 리뷰`}
+                loading="lazy"
+                className="w-full h-[70vh] min-h-[520px] border-0"
+                referrerPolicy="no-referrer-when-downgrade"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+              />
+            </div>
+            <div className="mt-2 text-right">
+              <a
+                href={feature.embedUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-gray-400 hover:text-brand"
+              >
+                리뷰가 보이지 않으면 새 창에서 열기 ↗
+              </a>
+            </div>
+          </div>
+        )}
+
+        {!feature.subscriptionServiceItems && !feature.embedUrl && (() => {
+
           const isUnderlineTabs = feature.tabsVariant === "underline" && tabs && tabs.length > 0;
 
           const belowImg = activeTabData?.belowMediaImage ?? feature.belowMediaImage;
