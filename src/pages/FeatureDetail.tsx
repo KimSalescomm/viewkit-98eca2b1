@@ -114,27 +114,28 @@ const FeatureDetail = () => {
 
     return (
       <div className="mb-6 sm:mb-8">
-        <div className="flex flex-col md:flex-row md:items-stretch rounded-2xl overflow-hidden border-[0.5px] border-[#E8E5F9]">
+        <div className="flex flex-col md:flex-row md:items-stretch bg-white rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.08)]">
           {/* Left block: category detail */}
-          <div className="w-full md:w-[70%] bg-[#F5F4FC] p-5 sm:p-6">
-            <h3 className="text-gray-900 text-lg font-medium mb-2">
+          <div className="w-full md:w-[70%] p-5 sm:p-6">
+            <h3 className="text-gray-900 text-xl font-bold mb-2">
               {selectedItem.label}
             </h3>
+            <div className="w-7 h-[3px] bg-[#7F77DD] rounded-sm mb-4" />
             <p className="text-gray-600 text-[13px] leading-relaxed mb-4">
               {selectedItem.description}
             </p>
-            <div className="rounded-lg overflow-hidden border border-white/70 bg-white p-1">
+            <div className="rounded-lg overflow-hidden">
               <SafeImage
                 src={selectedItem.imageUrl}
                 alt={selectedItem.label}
                 loading="lazy"
-                className="w-full h-auto rounded-md object-cover aspect-[4/3]"
+                className="w-full h-auto object-cover aspect-[16/10]"
               />
             </div>
           </div>
 
           {/* Right block: category list */}
-          <div className="w-full md:w-[30%] bg-white p-2 sm:p-3 flex flex-col justify-center">
+          <div className="w-full md:w-[30%] p-2 sm:p-3 flex flex-col justify-center">
             {items.map((item, idx) => (
               <button
                 key={item.label}
@@ -142,7 +143,7 @@ const FeatureDetail = () => {
                 onClick={() => setSelectedIndex(idx)}
                 className={`text-left px-4 py-3 min-h-[52px] rounded-lg transition-colors duration-200 text-sm ${
                   selectedIndex === idx
-                    ? "bg-[#EEEDFE] text-gray-900 font-medium"
+                    ? "bg-[hsl(var(--surface-muted))] text-gray-900 font-medium"
                     : "bg-transparent text-gray-500 hover:text-gray-700"
                 }`}
               >
