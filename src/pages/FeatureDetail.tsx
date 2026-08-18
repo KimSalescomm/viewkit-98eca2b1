@@ -102,22 +102,28 @@ const FeatureDetail = () => {
     );
   };
 
-  const SubscriptionServiceSection = ({ items }: { items: SubscriptionServiceItem[] }) => {
+  const SubscriptionServiceSection = ({
+    items,
+    mediaDisclaimers,
+  }: {
+    items: SubscriptionServiceItem[];
+    mediaDisclaimers?: string[];
+  }) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const selectedItem = items[selectedIndex];
 
     return (
       <div className="mb-6 sm:mb-8">
-        <div className="flex flex-col md:flex-row rounded-2xl overflow-hidden border-[0.5px] border-[#E8E5F9]">
+        <div className="flex flex-col md:flex-row md:items-stretch rounded-2xl overflow-hidden border-[0.5px] border-[#E8E5F9]">
           {/* Left block: category detail */}
-          <div className="w-full md:w-1/2 bg-[#EEEDFE] p-5 sm:p-6">
-            <h3 className="text-[#3C3489] text-lg font-medium mb-2">
+          <div className="w-full md:w-[70%] bg-[#F5F4FC] p-5 sm:p-6">
+            <h3 className="text-gray-900 text-lg font-medium mb-2">
               {selectedItem.label}
             </h3>
-            <p className="text-[#534AB7] text-[13px] leading-relaxed mb-4">
+            <p className="text-gray-600 text-[13px] leading-relaxed mb-4">
               {selectedItem.description}
             </p>
-            <div className="rounded-lg overflow-hidden border border-white/70 bg-white p-1 mb-4">
+            <div className="rounded-lg overflow-hidden border border-white/70 bg-white p-1">
               <SafeImage
                 src={selectedItem.imageUrl}
                 alt={selectedItem.label}
@@ -125,23 +131,10 @@ const FeatureDetail = () => {
                 className="w-full h-auto rounded-md object-cover aspect-[4/3]"
               />
             </div>
-            {selectedItem.details && selectedItem.details.length > 0 && (
-              <ul className="space-y-1.5">
-                {selectedItem.details.map((detail, idx) => (
-                  <li
-                    key={idx}
-                    className="flex items-start gap-1.5 text-xs text-[#3C3489]/80 leading-snug"
-                  >
-                    <span className="mt-1 w-1 h-1 rounded-full bg-[#3C3489]/60 flex-shrink-0" />
-                    <span>{detail}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
           </div>
 
           {/* Right block: category list */}
-          <div className="w-full md:w-1/2 bg-white p-2 sm:p-3 flex flex-col justify-center">
+          <div className="w-full md:w-[30%] bg-white p-2 sm:p-3 flex flex-col justify-center">
             {items.map((item, idx) => (
               <button
                 key={item.label}
@@ -149,7 +142,7 @@ const FeatureDetail = () => {
                 onClick={() => setSelectedIndex(idx)}
                 className={`text-left px-4 py-3 min-h-[52px] rounded-lg transition-colors duration-200 text-sm ${
                   selectedIndex === idx
-                    ? "bg-[#EEEDFE] text-[#3C3489] font-medium"
+                    ? "bg-[#EEEDFE] text-gray-900 font-medium"
                     : "bg-transparent text-gray-500 hover:text-gray-700"
                 }`}
               >
@@ -158,6 +151,19 @@ const FeatureDetail = () => {
             ))}
           </div>
         </div>
+
+        {mediaDisclaimers && mediaDisclaimers.length > 0 && (
+          <ul className="mt-3 sm:mt-4 px-1 sm:px-2 space-y-1">
+            {mediaDisclaimers.map((text, index) => (
+              <li
+                key={index}
+                className="text-[11px] text-muted-foreground leading-relaxed"
+              >
+                * {text}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     );
   };
