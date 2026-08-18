@@ -142,9 +142,9 @@ const FeatureDetail = () => {
                   key={item.label}
                   type="button"
                   onClick={() => setSelectedIndex(idx)}
-                  className={`w-full text-left px-3.5 py-2.5 min-h-[44px] rounded-[999px] transition-colors duration-200 text-xs ${
+                  className={`w-full text-left px-3.5 py-2.5 min-h-[44px] rounded-[999px] transition-colors duration-200 text-sm sm:text-base ${
                     selectedIndex === idx
-                      ? "bg-[#534AB7] text-white font-medium"
+                      ? "bg-[#7842F5] text-white font-medium"
                       : "bg-transparent text-gray-900 font-normal border-none"
                   }`}
                 >
