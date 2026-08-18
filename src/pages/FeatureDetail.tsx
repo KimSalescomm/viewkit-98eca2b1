@@ -119,35 +119,37 @@ const FeatureDetail = () => {
 
     return (
       <div className="mb-6 sm:mb-8">
-        <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-          {/* Image area */}
-          <div className="w-full md:w-[70%]">
-            <div className="relative w-full aspect-video md:aspect-[16/10] rounded-2xl overflow-hidden bg-gray-100">
-              <SafeImage
-                src={selectedItem.imageUrl}
-                alt={selectedItem.label}
-                loading="lazy"
-                className={`w-full h-full object-cover transition-opacity duration-200 ease-in-out ${isFading ? "opacity-0" : "opacity-100"}`}
-              />
+        <div className="bg-white rounded-xl p-4 sm:p-5 shadow-sm">
+          <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+            {/* Image area */}
+            <div className="w-full md:w-[70%]">
+              <div className="relative w-full aspect-video md:aspect-[16/10] rounded-xl overflow-hidden bg-gray-100">
+                <SafeImage
+                  src={selectedItem.imageUrl}
+                  alt={selectedItem.label}
+                  loading="lazy"
+                  className={`w-full h-full object-cover transition-opacity duration-200 ease-in-out ${isFading ? "opacity-0" : "opacity-100"}`}
+                />
+              </div>
             </div>
-          </div>
 
-          {/* List area */}
-          <div className="w-full md:w-[30%] flex flex-col justify-center">
-            {items.map((item, idx) => (
-              <button
-                key={item.label}
-                type="button"
-                onClick={() => handleSelect(idx)}
-                className={`text-left px-4 py-3 min-h-[48px] border-l-2 transition-all duration-200 ${
-                  selectedIndex === idx
-                    ? "border-blue-600 text-gray-900 font-bold bg-blue-50/30"
-                    : "border-transparent text-gray-400 font-medium hover:text-gray-600"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+            {/* List area */}
+            <div className="w-full md:w-[30%] flex flex-col justify-center gap-1">
+              {items.map((item, idx) => (
+                <button
+                  key={item.label}
+                  type="button"
+                  onClick={() => handleSelect(idx)}
+                  className={`text-left px-4 py-3 min-h-[48px] rounded-lg transition-all duration-200 ${
+                    selectedIndex === idx
+                      ? "bg-[#EEEDFE] text-[#3C3489] font-medium"
+                      : "bg-transparent text-muted-foreground font-normal hover:text-foreground"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
