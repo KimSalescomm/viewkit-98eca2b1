@@ -289,20 +289,25 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   const [from, setFrom] = useState<string>("");
   const [to, setTo] = useState<string>("");
   const [visitsRange, setVisitsRange] = useState<VisitsRangeKey>("7d");
+  const [showAllBranches, setShowAllBranches] = useState(false);
+
 
 
   const branches = useMemo(() => [...new Set(sales.map((s) => s.branch))], [sales]);
   const productList = useMemo(() => [...new Set(sales.map((s) => s.product))], [sales]);
 
   const filtered = useMemo(() => {
+    // 시작일/종료일이 없으면 "접속기록 기간" 셀렉트를 판매 기록에도 동일 적용
+    const rangeFrom = from || (visitsRange === "all" ? "" : getVisitsSinceISO(visitsRange).slice(0, 10));
     return sales.filter((s) => {
       if (branchFilter !== "all" && s.branch !== branchFilter) return false;
       if (productFilter !== "all" && s.product !== productFilter) return false;
-      if (from && s.sold_at < from) return false;
+      if (rangeFrom && s.sold_at < rangeFrom) return false;
       if (to && s.sold_at > to) return false;
       return true;
     });
-  }, [sales, branchFilter, productFilter, from, to]);
+  }, [sales, branchFilter, productFilter, from, to, visitsRange]);
+
 
   const byBranch = useMemo(() => {
     const m = new Map<string, number>();
@@ -703,7 +708,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
                 <h2 className="text-sm font-semibold text-slate-900 mb-4">지점별 순위</h2>
                 <ul className="space-y-2.5">
-                  {byBranch.map(([name, count], i) => (
+                  {(showAllBranches ? byBranch : byBranch.slice(0, 10)).map(([name, count], i) => (
                     <li
                       key={name}
                       className="flex items-center justify-between rounded-xl bg-slate-50/70 px-3.5 py-2.5"
@@ -716,7 +721,17 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                     </li>
                   ))}
                 </ul>
+                {byBranch.length > 10 && (
+                  <button
+                    type="button"
+                    onClick={() => setShowAllBranches((v) => !v)}
+                    className="mt-3 w-full h-9 rounded-lg border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50 transition-colors"
+                  >
+                    {showAllBranches ? "접기" : `전체 보기 (${byBranch.length}개)`}
+                  </button>
+                )}
               </div>
+
 
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
                 <h2 className="text-sm font-semibold text-slate-900 mb-4">제품별 순위</h2>
