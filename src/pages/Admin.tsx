@@ -295,14 +295,17 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   const productList = useMemo(() => [...new Set(sales.map((s) => s.product))], [sales]);
 
   const filtered = useMemo(() => {
+    // 시작일/종료일이 없으면 "접속기록 기간" 셀렉트를 판매 기록에도 동일 적용
+    const rangeFrom = from || (visitsRange === "all" ? "" : getVisitsSinceISO(visitsRange).slice(0, 10));
     return sales.filter((s) => {
       if (branchFilter !== "all" && s.branch !== branchFilter) return false;
       if (productFilter !== "all" && s.product !== productFilter) return false;
-      if (from && s.sold_at < from) return false;
+      if (rangeFrom && s.sold_at < rangeFrom) return false;
       if (to && s.sold_at > to) return false;
       return true;
     });
-  }, [sales, branchFilter, productFilter, from, to]);
+  }, [sales, branchFilter, productFilter, from, to, visitsRange]);
+
 
   const byBranch = useMemo(() => {
     const m = new Map<string, number>();
