@@ -289,6 +289,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   const [from, setFrom] = useState<string>("");
   const [to, setTo] = useState<string>("");
   const [visitsRange, setVisitsRange] = useState<VisitsRangeKey>("7d");
+  const [showAllBranches, setShowAllBranches] = useState(false);
+
 
 
   const branches = useMemo(() => [...new Set(sales.map((s) => s.branch))], [sales]);
