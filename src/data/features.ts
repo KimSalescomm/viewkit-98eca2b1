@@ -49,7 +49,6 @@ export interface SubscriptionServiceItem {
   details?: string[];
 }
 
-
 export interface TrueSteamCourseDisclaimer {
   title: string;
   items: string[];
@@ -162,7 +161,6 @@ export interface Feature {
   /** true면 SC(관리자) 계정에서만 노출, 매장 계정에서는 숨김 */
   scOnly?: boolean;
 }
-
 
 export const featuresMap: Record<string, Feature[]> = {
   // 스타일러 특장점
@@ -345,18 +343,18 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "6",
-      title: "실제 사용자들은 어떻게 평가했을까요?",
-      subtitle: "LG 공식 홈페이지에 등록된 고객 리뷰를\n앱에서 바로 확인해보세요.",
+      title: "실제로 사용하는 고객들의 솔직 리뷰!",
+      subtitle: "LG전자 공식 홈페이지에 남겨둔 고객 리뷰를\n바로 확인해보세요.",
       icon: "Star",
       tag: "고객 리뷰",
       mediaType: "image",
       mediaUrl: "https://static.lge.co.kr/kr/story/buying-guide/2025/img/tv/img_P14_001_10.png",
       embedUrl: "https://www.lge.co.kr/mkt/review/MD10770835/pdpReviewListPopup",
-      description: "구매 고객이 직접 남긴 별점과 후기를 확인해보세요. 화질, 사운드, 설치 만족도까지 생생한 이야기가 담겨 있어요.",
+      description:
+        "구매 고객이 직접 남긴 별점과 후기를 확인해보세요. 화질, 사운드, 설치 만족도까지 생생한 이야기가 담겨 있어요.",
       highlights: [],
     },
     {
-
       id: "5",
       scOnly: true,
       title: "어떤 올레드가 나에게 맞을까?",
@@ -1459,8 +1457,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Wrench",
       tag: "구독",
       mediaType: "image",
-      mediaUrl:
-        "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_01.jpg",
+      mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_01.jpg",
       description:
         "구독 기간 동안 무상 A/S는 기본, 케어 전문가가 정기 방문해 청소로봇의 내·외부 위생과 성능을 관리해드려요. 번거로운 소모품 교체까지 챙겨 더 편하게 사용할 수 있어요.",
       highlights: [
@@ -1489,7 +1486,8 @@ export const featuresMap: Record<string, Feature[]> = {
         },
         {
           label: "소모품 7종 및 배터리 교체",
-          imageUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_04_v2.jpg",
+          imageUrl:
+            "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_04_v2.jpg",
           description:
             "청소 성능을 유지할 수 있도록 소모품을 무상으로 교체하고, 로니 본체와 충전대를 꼼꼼하게 클리닝해요.",
         },
@@ -1499,11 +1497,8 @@ export const featuresMap: Record<string, Feature[]> = {
           description: "이사할 때도 번거로움 없이 제품을 무상으로 철거·재설치해 드려요.",
         },
       ],
-      mediaDisclaimers: [
-        "방문 관리는 사전 안내드리고 있으며, 고객 요청에 의해 협의된 일정으로 변경하실 수 있습니다.",
-      ],
+      mediaDisclaimers: ["방문 관리는 사전 안내드리고 있으며, 고객 요청에 의해 협의된 일정으로 변경하실 수 있습니다."],
     },
-
   ],
 
   // PC 특장점
