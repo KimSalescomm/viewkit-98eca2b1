@@ -706,7 +706,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
                 <h2 className="text-sm font-semibold text-slate-900 mb-4">지점별 순위</h2>
                 <ul className="space-y-2.5">
-                  {byBranch.map(([name, count], i) => (
+                  {(showAllBranches ? byBranch : byBranch.slice(0, 10)).map(([name, count], i) => (
                     <li
                       key={name}
                       className="flex items-center justify-between rounded-xl bg-slate-50/70 px-3.5 py-2.5"
@@ -719,7 +719,17 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                     </li>
                   ))}
                 </ul>
+                {byBranch.length > 10 && (
+                  <button
+                    type="button"
+                    onClick={() => setShowAllBranches((v) => !v)}
+                    className="mt-3 w-full h-9 rounded-lg border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50 transition-colors"
+                  >
+                    {showAllBranches ? "접기" : `전체 보기 (${byBranch.length}개)`}
+                  </button>
+                )}
               </div>
+
 
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
                 <h2 className="text-sm font-semibold text-slate-900 mb-4">제품별 순위</h2>
