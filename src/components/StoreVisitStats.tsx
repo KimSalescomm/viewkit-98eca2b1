@@ -424,6 +424,9 @@ const StoreVisitStats = () => {
                       </div>
                     </td>
                     <td className="py-2.5 pr-4 text-right tabular-nums text-slate-600">{s.visits}</td>
+                    <td className="py-2.5 pr-4 text-right tabular-nums font-semibold text-violet-600">
+                      {s.visitsCapped}
+                    </td>
                     <td className="py-2.5 pr-2 text-xs tabular-nums text-slate-400">
                       {format(new Date(s.lastAt), "MM.dd HH:mm", { locale: ko })}
                     </td>
