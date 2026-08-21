@@ -24,18 +24,15 @@ import type { Feature } from "@/data/features";
 // 카드 노출 순서 (feature id 기준) — 첫 항목은 2칸 차지 가로형 카드
 const CARD_ORDER = ["4", "1", "2", "3", "8", "5", "7"];
 
-// 카드별 배경 톤 (브랜드 레드 패밀리 변주) + 상징 아이콘
-const CARD_STYLES: Record<
-  string,
-  { gradient: string; icon: React.ElementType }
-> = {
-  "4": { gradient: "bg-gradient-to-br from-rose-400 to-red-600", icon: Brain },
-  "1": { gradient: "bg-gradient-to-br from-red-400 to-rose-600", icon: Droplets },
-  "2": { gradient: "bg-gradient-to-br from-orange-400 to-red-500", icon: Wind },
-  "3": { gradient: "bg-gradient-to-br from-red-500 to-red-700", icon: Boxes },
-  "8": { gradient: "bg-gradient-to-br from-pink-500 to-rose-600", icon: Sparkles },
-  "5": { gradient: "bg-gradient-to-br from-red-700 to-rose-900", icon: ShieldCheck },
-  "7": { gradient: "bg-gradient-to-br from-amber-500 to-orange-600", icon: HeartHandshake },
+// 카드별 상징 아이콘
+const CARD_ICONS: Record<string, React.ElementType> = {
+  "4": Brain,
+  "1": Droplets,
+  "2": Wind,
+  "3": Boxes,
+  "8": Sparkles,
+  "5": ShieldCheck,
+  "7": HeartHandshake,
 };
 
 // 실제 수집 데이터가 없을 때 사용할 기본 좋아요 수
