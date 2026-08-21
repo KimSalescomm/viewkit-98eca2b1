@@ -81,6 +81,15 @@ const ProductSelection = () => {
     washcombo: {
       keyVisualImage: "https://static.lge.co.kr/kr/images/wash-combo/md10867827/gallery/medium03.jpg",
     },
+    styler: {
+      keyVisualImage: "https://static.lge.co.kr/kr/images/lg-styler/md10747827/gallery/medium-interior01.jpg",
+    },
+    tv: {
+      keyVisualImage: "https://static.lge.co.kr/kr/images/tvs/md10770832/gallery/medium-interior01.jpg",
+    },
+    cooking: {
+      keyVisualImage: "https://static.lge.co.kr/kr/images/dishwashers/md10491826/gallery/medium-interior01.jpg",
+    },
   };
 
   const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")].map((p) => {
