@@ -22,6 +22,7 @@ import OrientationToggle from "@/components/OrientationToggle";
 import StoreSetupModal from "@/components/StoreSetupModal";
 import MobileAccessQR from "@/components/MobileAccessQR";
 import ContentRequestButton from "@/components/ContentRequestButton";
+import { PopularContentSlider } from "@/components/PopularContentSlider";
 import { getCurrentStore, registerStore, getRegistry } from "@/utils/storeId";
 import washcomboCardImage from "@/assets/washcombo-card-lifestyle.jpg";
 
@@ -39,82 +40,12 @@ const lucideIconMap: Record<string, LucideIcon> = {
   Droplets,
 };
 
-
-
 const ProductLucideIcon = ({ name, className }: { name: string; className?: string }) => {
   const Icon = lucideIconMap[name] || Sparkles;
-  return <Icon className={className} strokeWidth={2.2} />;
+  return <Icon className={className} strokeWidth={2} />;
 };
 
-const productAccents: Record<string, { gradient: string; tint: string; chip: string; keywords: string[] }> = {
-  subscription: {
-    gradient: "from-brand to-[#7A0026]",
-    tint: "from-[#FFF5F8] via-white to-white",
-    chip: "bg-brand-soft text-brand border-[#F5C9D5]",
-    keywords: ["케어 서비스", "Before / After"],
-  },
-  refrigerator: {
-    gradient: "from-sky-400 to-blue-500",
-    tint: "from-sky-50 via-white to-white",
-    chip: "bg-sky-50 text-sky-600 border-sky-100",
-    keywords: ["Direct Feed", "fresh sySTEM", "STEM"],
-  },
-  washer: {
-    gradient: "from-emerald-400 to-teal-500",
-    tint: "from-emerald-50 via-white to-white",
-    chip: "bg-emerald-50 text-emerald-600 border-emerald-100",
-    keywords: ["6모션", "세탁+건조", "트루스팀"],
-  },
-  styler: {
-    gradient: "from-violet-400 to-purple-500",
-    tint: "from-violet-50 via-white to-white",
-    chip: "bg-violet-50 text-violet-600 border-violet-100",
-    keywords: ["스타일링", "건조", "제습"],
-  },
-  tv: {
-    gradient: "from-slate-700 to-slate-900",
-    tint: "from-slate-50 via-white to-white",
-    chip: "bg-slate-100 text-slate-600 border-slate-200",
-    keywords: ["올레드", "AI 화질", "초대형"],
-  },
-  vacuum: {
-    gradient: "from-amber-400 to-orange-500",
-    tint: "from-amber-50 via-white to-white",
-    chip: "bg-amber-50 text-amber-600 border-amber-100",
-    keywords: ["무선", "강력 흡입"],
-  },
-  airconditioner: {
-    gradient: "from-cyan-400 to-sky-500",
-    tint: "from-cyan-50 via-white to-white",
-    chip: "bg-cyan-50 text-cyan-600 border-cyan-100",
-    keywords: ["공기 관리", "절전"],
-  },
-  pc: {
-    gradient: "from-rose-400 to-pink-500",
-    tint: "from-rose-50 via-white to-white",
-    chip: "bg-rose-50 text-rose-600 border-rose-100",
-    keywords: ["고성능", "게이밍"],
-  },
-  cooking: {
-    gradient: "from-lime-400 to-green-500",
-    tint: "from-lime-50 via-white to-white",
-    chip: "bg-lime-50 text-lime-600 border-lime-100",
-    keywords: ["편리함", "위생"],
-  },
-  bathair: {
-    gradient: "from-teal-400 to-cyan-500",
-    tint: "from-teal-50 via-white to-white",
-    chip: "bg-teal-50 text-teal-600 border-teal-100",
-    keywords: ["욕실 케어", "스마트 제습", "대외비"],
-  },
-  washcombo: {
-    gradient: "from-emerald-400 via-teal-400 to-cyan-400",
-    tint: "from-emerald-50 via-cyan-50/30 to-white",
-    chip: "bg-emerald-50 text-emerald-600 border-emerald-100",
-    keywords: ["올인원", "세탁+건조", "AI"],
-  },
-};
-
+const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "washcombo", "styler", "tv", "cooking", "bathair"];
 
 const ProductSelection = () => {
   const { products, isProductVisible } = useContent();
@@ -127,7 +58,7 @@ const ProductSelection = () => {
     keyVisualImage: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/img_stove_03_250804.jpg",
     icon: "Waves",
   } as (typeof products)[number];
-  const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "washcombo", "styler", "tv", "cooking", "bathair"];
+
   // 제품 카드(홈) 전용 썸네일 오버라이드 — 다른 페이지의 키비주얼은 유지
   const cardThumbnailOverrides: Record<string, { keyVisualImage?: string; secondaryKeyVisualImage?: string }> = {
     vacuum: {
@@ -138,21 +69,18 @@ const ProductSelection = () => {
       keyVisualImage: washcomboCardImage,
     },
   };
+
   const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")].map((p) => {
     const override = cardThumbnailOverrides[p.id];
-
     return override ? { ...p, ...override } : p;
   });
+
   const visibleProducts = desiredOrder
     .map((id) => allProducts.find((p) => p.id === id))
     .filter((p): p is (typeof allProducts)[number] => {
       if (!p) return false;
-      // 노출 판정은 ContentContext 한 곳에서만 결정 (퍼블리시 스냅샷 기준).
-      // 대외비 제품도 관리자가 퍼블리시로 노출을 켰다면 지점 계정에 표시됩니다.
       return isProductVisible(p.id);
     });
-
-
 
   const { trackProductClick } = useAnalyticsContext();
   const navigate = useNavigate();
@@ -161,12 +89,12 @@ const ProductSelection = () => {
   const [currentStore, setCurrentStore] = useState<{ name: string; slug: string } | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalDismissible, setModalDismissible] = useState(false);
+
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const urlStore = params.get("store_id")?.toUpperCase().trim();
     const saved = getCurrentStore();
 
-    // 1) URL 코드가 최우선 — 어느 기기든 같은 코드면 동일 매장으로 인식
     if (urlStore) {
       const registry = getRegistry();
       const matchedName = Object.entries(registry).find(([, s]) => s === urlStore)?.[0];
@@ -181,7 +109,6 @@ const ProductSelection = () => {
       return;
     }
 
-    // 2) URL 없음 + 로컬 저장 있음 → 저장값을 URL에 반영
     if (saved) {
       setCurrentStore(saved);
       params.set("store_id", saved.slug);
@@ -189,9 +116,6 @@ const ProductSelection = () => {
       return;
     }
 
-    // 3) 둘 다 없음 → 최초 진입
-    // 이벤트 랭킹 팝업(BEST 5)이 오늘 노출 예정이면 먼저 보여주고,
-    // 팝업이 닫힌 뒤 지점 설정 모달을 띄운다.
     setModalDismissible(false);
     const today = (() => {
       const d = new Date();
@@ -207,7 +131,6 @@ const ProductSelection = () => {
         window.removeEventListener("viewkit:ranking-popup-closed", onClosed);
       };
       window.addEventListener("viewkit:ranking-popup-closed", onClosed);
-      // 안전장치: 팝업이 어떤 이유로든 뜨지 않으면 6초 후 모달 표시
       const fallback = window.setTimeout(() => {
         window.removeEventListener("viewkit:ranking-popup-closed", onClosed);
         setModalOpen((prev) => prev || true);
@@ -228,7 +151,7 @@ const ProductSelection = () => {
   };
 
   return (
-    <main className="min-h-screen bg-[#F3F4F6] px-5 py-12 sm:px-8 sm:py-16">
+    <main className="h-[100dvh] overflow-hidden bg-white flex flex-col">
       <StoreSetupModal
         open={modalOpen}
         initialName={currentStore?.name}
@@ -236,167 +159,148 @@ const ProductSelection = () => {
         onClose={() => setModalOpen(false)}
         dismissible={modalDismissible}
       />
-      <div className="max-w-xl mx-auto sm:max-w-5xl">
 
-        {/* Top Segmented Controls — centered */}
-        <div className="flex justify-center items-center gap-2 mb-12 sm:mb-16">
-          <div className="flex items-center bg-white/90 backdrop-blur-xl border border-white/70 rounded-full p-1.5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)]">
-            {currentStore && (
-              <button
-                type="button"
-                onClick={() => {
-                  setModalDismissible(true);
-                  setModalOpen(true);
-                }}
-                className="inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-semibold bg-brand text-white hover:bg-brand-dark transition-colors shadow-sm"
-                title="지점 변경"
-              >
-                <Store className="w-3.5 h-3.5" />
-                <span>{currentStore.slug}</span>
-              </button>
-            )}
-            <MobileAccessQR storeSlug={currentStore?.slug} variant="segment" />
-            <Link
-              to="/homepage/guide"
-              className="inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-semibold text-gray-700 hover:bg-gray-100 transition-colors"
-              title="뷰킷 소개"
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>뷰킷 소개</span>
-            </Link>
-            <OrientationToggle variant="segment" />
-            <ContentRequestButton variant="segment" />
+      {/* Header */}
+      <header className="shrink-0 px-6 sm:px-10 py-5 sm:py-6 flex items-center justify-between border-b border-gray-100">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-accent flex items-center justify-center">
+            <span className="text-white text-xl sm:text-2xl font-semibold leading-none">V</span>
+          </div>
+          <div className="leading-none">
+            <div className="text-[22px] sm:text-[26px] font-semibold tracking-[-0.03em] text-brand-accent">VIEW KIT</div>
+            <div className="text-[11px] sm:text-xs font-medium tracking-[0.22em] text-gray-400 mt-0.5">LG HOME APPLIANCE</div>
           </div>
         </div>
 
-        {/* Header Section */}
-        <div className="text-center mb-12 sm:mb-16 space-y-3">
-          <p className="text-[11px] sm:text-[12px] font-black tracking-[0.3em] uppercase text-brand">
-            VIEW KIT
-          </p>
-          <h1 className="text-[32px] sm:text-[44px] font-extrabold tracking-tight text-[#111111] leading-tight">
-            어떤 제품부터 보시겠어요?
-          </h1>
-          <p className="text-base sm:text-xl text-gray-500 font-medium">
-            선택하신 제품부터 차근차근 이해하기 쉽게 설명드릴게요.
-          </p>
-        </div>
+        <nav className="flex items-center gap-1.5 sm:gap-2">
+          {currentStore && (
+            <button
+              type="button"
+              onClick={() => {
+                setModalDismissible(true);
+                setModalOpen(true);
+              }}
+              className="inline-flex h-8 sm:h-9 items-center gap-1.5 rounded-full px-3 sm:px-4 text-xs sm:text-[13px] font-medium bg-brand-accent text-white hover:opacity-90 transition-opacity"
+              title="지점 변경"
+            >
+              <Store className="w-3.5 h-3.5" />
+              <span>{currentStore.slug}</span>
+            </button>
+          )}
+          <MobileAccessQR storeSlug={currentStore?.slug} variant="segment" />
+          <Link
+            to="/homepage/guide"
+            className="hidden sm:inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-medium text-gray-600 hover:bg-gray-100 transition-colors"
+            title="뷰킷 소개"
+          >
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>뷰킷 소개</span>
+          </Link>
+          <OrientationToggle variant="segment" />
+          <ContentRequestButton variant="segment" />
+        </nav>
+      </header>
 
-        {/* Card Grid */}
-        <h2 className="sr-only">제품 선택</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
-          {visibleProducts.map((product, index) => {
-            // 노출 판정은 ContentContext 한 곳에서만 결정
-            const isEnabled = isProductVisible(product.id);
+      {/* Hero */}
+      <section className="shrink-0 px-6 sm:px-10 pt-6 sm:pt-8 pb-5 sm:pb-6">
+        <h1 className="text-[28px] sm:text-[40px] font-semibold tracking-tight text-gray-900 leading-[1.15]">
+          어떤 제품부터 보시겠어요?
+        </h1>
+        <p className="text-base sm:text-lg text-gray-500 font-normal mt-2 sm:mt-3">
+          선택하신 제품부터 차근차근 이해하기 쉽게 설명드릴게요.
+        </p>
+      </section>
 
+      {/* Popular Content */}
+      <PopularContentSlider days={30} limit={5} />
 
+      {/* Product Grid */}
+      <section className="flex-1 min-h-0 px-6 sm:px-10 pb-6 sm:pb-8 flex flex-col">
+        <div className="max-w-6xl mx-auto w-full flex flex-col h-full">
+          <div className="flex items-center justify-between mb-4 sm:mb-5 shrink-0">
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-900 tracking-tight">제품별 특장점</h2>
+            <span className="text-xs sm:text-sm text-gray-400 font-normal">총 {visibleProducts.length}개 제품</span>
+          </div>
 
-
-            const accent = productAccents[product.id] || {
-              gradient: "from-gray-300 to-gray-400",
-              tint: "from-gray-50 via-white to-white",
-              chip: "bg-gray-50 text-gray-500 border-gray-200",
-              keywords: [],
-            };
-
-            const cardContent = (
-              <div
-                className={`
-                  group relative bg-white rounded-[32px] sm:rounded-[40px] overflow-hidden border border-white
-                  transition-all duration-500
-                  ${isEnabled
-                    ? "shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-1.5 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)]"
-                    : "shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)] opacity-70"
-                  }
-                `}
-              >
-                {/* Top accent bar */}
-                <div className={`h-2.5 w-full bg-gradient-to-r ${accent.gradient} ${isEnabled ? "" : "opacity-40"}`} />
-
-                {/* Image */}
-                <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
-                  {isEnabled ? (
-                    product.id === "vacuum" && product.secondaryKeyVisualImage ? (
-                      <div className="grid grid-cols-2 h-full w-full">
-                        <SafeImage
-                          src={product.secondaryKeyVisualImage}
-                          alt={`LG ${product.name} 히든스테이션`}
-                          loading={index < 2 ? "eager" : "lazy"}
-                          fetchPriority={index < 2 ? "high" : undefined}
-                          decoding="async"
-                          className="w-full h-full object-cover object-[60%_center] transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-y-0 left-1/2 w-px bg-white/40 z-10" />
-                        <SafeImage
-                          src={product.keyVisualImage}
-                          alt={`LG ${product.name} 오브제스테이션`}
-                          loading={index < 2 ? "eager" : "lazy"}
-                          decoding="async"
-                          className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </div>
-                    ) : (
-                      <SafeImage
-                        src={product.keyVisualImage}
-                        alt={`LG ${product.name} 대표 이미지`}
-                        loading={index < 2 ? "eager" : "lazy"}
-                        fetchPriority={index < 2 ? "high" : undefined}
-                        decoding="async"
-                        className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${
-                          product.id === "tv" ? "object-center" :
-                          product.id === "airconditioner" ? "object-top" :
-                          "object-center"
-                        }`}
-                      />
-                    )
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-gray-50">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-gray-200 bg-white shadow-sm">
-                        <ProductLucideIcon name={product.icon} className="w-7 h-7 text-gray-400" />
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Body */}
-                <div className="p-6 sm:p-8 flex items-start gap-4 sm:gap-5">
+          <div className="flex-1 min-h-0 overflow-y-auto nb">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 pb-4">
+              {visibleProducts.map((product, index) => {
+                const cardContent = (
                   <div
                     className={`
-                      w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-2xl flex items-center justify-center
-                      ${isEnabled
-                        ? `bg-gradient-to-br ${accent.gradient} text-white shadow-lg`
-                        : "bg-gray-200 text-gray-400"
-                      }
+                      group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-100
+                      transition-all duration-500
+                      shadow-[0_8px_30px_-12px_rgba(0,0,0,0.08)]
+                      hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)]
                     `}
                   >
-                    <ProductLucideIcon name={product.icon} className="w-6 h-6 sm:w-7 sm:h-7" />
-                  </div>
-                  <div className="min-w-0 flex-1 space-y-1.5">
-                    <h3 className={`text-xl sm:text-2xl font-extrabold tracking-tight leading-tight ${isEnabled ? "text-gray-900" : "text-gray-400"}`}>
-                      {product.name}
-                    </h3>
-                    <p className={`text-sm sm:text-[15px] leading-relaxed font-medium whitespace-pre-line ${isEnabled ? "text-gray-500" : "text-gray-300"}`}>
-                      {product.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
+                    <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
+                      {product.id === "vacuum" && product.secondaryKeyVisualImage ? (
+                        <div className="grid grid-cols-2 h-full w-full">
+                          <SafeImage
+                            src={product.secondaryKeyVisualImage}
+                            alt={`LG ${product.name} 히든스테이션`}
+                            loading={index < 4 ? "eager" : "lazy"}
+                            fetchPriority={index < 4 ? "high" : undefined}
+                            decoding="async"
+                            className="w-full h-full object-cover object-[60%_center] transition-transform duration-700 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-y-0 left-1/2 w-px bg-white/40 z-10" />
+                          <SafeImage
+                            src={product.keyVisualImage}
+                            alt={`LG ${product.name} 오브제스테이션`}
+                            loading={index < 4 ? "eager" : "lazy"}
+                            decoding="async"
+                            className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                          />
+                        </div>
+                      ) : (
+                        <SafeImage
+                          src={product.keyVisualImage}
+                          alt={`LG ${product.name} 대표 이미지`}
+                          loading={index < 4 ? "eager" : "lazy"}
+                          fetchPriority={index < 4 ? "high" : undefined}
+                          decoding="async"
+                          className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${
+                            product.id === "tv" ? "object-center" :
+                            product.id === "airconditioner" ? "object-top" :
+                            "object-center"
+                          }`}
+                        />
+                      )}
+                    </div>
 
-            if (!isEnabled) return null;
-            return (
-              <Link
-                key={product.id}
-                to={product.id === "subscription" ? "/subscription" : `/product/${product.id}`}
-                className="block"
-                onClick={() => trackProductClick(product.name)}
-              >
-                {cardContent}
-              </Link>
-            );
-          })}
+                    <div className="p-4 sm:p-5 flex items-start gap-3 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl sm:rounded-2xl bg-gray-100 text-gray-600 flex items-center justify-center">
+                        <ProductLucideIcon name={product.icon} className="w-5 h-5 sm:w-6 sm:h-6" />
+                      </div>
+                      <div className="min-w-0 flex-1 space-y-0.5">
+                        <h3 className="text-base sm:text-lg font-semibold tracking-tight leading-tight text-gray-900">
+                          {product.name}
+                        </h3>
+                        <p className="text-xs sm:text-sm leading-relaxed font-normal text-gray-500 line-clamp-2">
+                          {product.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+
+                return (
+                  <Link
+                    key={product.id}
+                    to={product.id === "subscription" ? "/subscription" : `/product/${product.id}`}
+                    className="block"
+                    onClick={() => trackProductClick(product.name)}
+                  >
+                    {cardContent}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 };
