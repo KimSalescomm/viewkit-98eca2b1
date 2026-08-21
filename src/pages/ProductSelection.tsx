@@ -204,7 +204,7 @@ const ProductSelection = () => {
       {/* Hero */}
       <section className="shrink-0 px-5 sm:px-10 pt-6 pb-4 sm:pt-10 sm:pb-6 text-center">
         <h1 className="text-[32px] sm:text-[44px] font-extrabold tracking-[-0.02em] text-gray-900 leading-[1.2]">
-          어떤 제품부터 보시겠어요?
+          어떤 제품이 궁금하신가요?
         </h1>
         <p className="text-[16px] sm:text-[18px] font-normal leading-[1.5] text-gray-500 mt-2 tracking-[-0.02em]">
           선택하신 제품부터 차근차근 이해하기 쉽게 설명드릴게요.
@@ -219,9 +219,8 @@ const ProductSelection = () => {
       {/* Product Grid */}
       <section className="px-5 sm:px-10 pt-6 pb-8 sm:pt-8 sm:pb-12">
         <div className="max-w-5xl mx-auto w-full">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-[20px] sm:text-[24px] font-semibold text-gray-900 tracking-[-0.02em] leading-tight">제품별 특장점</h2>
-            <span className="text-[14px] sm:text-[16px] text-gray-500 font-normal tracking-[-0.02em]">총 {visibleProducts.length}개 제품</span>
+          <div className="mb-4">
+            <h2 className="text-[20px] sm:text-[24px] font-semibold text-gray-900 tracking-[-0.02em] leading-tight">제품을 선택하세요</h2>
           </div>
 
           <div className="grid grid-cols-3 gap-2.5 sm:gap-4">
@@ -229,7 +228,7 @@ const ProductSelection = () => {
               const cardContent = (
                 <div
                   className="
-                    group relative flex h-[120px] sm:h-[152px] flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white
+                    group relative flex h-[104px] sm:h-[136px] flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white
                     transition-all duration-300
                     shadow-[0_4px_16px_-10px_rgba(0,0,0,0.08)]
                     hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-12px_rgba(0,0,0,0.12)]
@@ -243,14 +242,11 @@ const ProductSelection = () => {
                     />
                   </div>
 
-                  {/* 텍스트: 제품명 1줄 + 특장점 1줄 */}
-                  <div className="flex flex-col gap-0.5 px-3 py-2.5">
+                  {/* 텍스트: 제품명 1줄 */}
+                  <div className="flex items-center justify-center px-3 py-2.5">
                     <h3 className="truncate text-[15px] sm:text-[17px] font-semibold leading-tight tracking-[-0.02em] text-gray-900">
                       {product.name}
                     </h3>
-                    <p className="truncate text-[12px] sm:text-[14px] font-normal leading-tight text-gray-500 tracking-[-0.02em]">
-                      {product.description}
-                    </p>
                   </div>
                 </div>
               );
