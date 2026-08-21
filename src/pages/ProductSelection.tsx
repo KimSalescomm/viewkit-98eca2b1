@@ -228,22 +228,23 @@ const ProductSelection = () => {
               const cardContent = (
                 <div
                   className="
-                    group relative flex h-[104px] sm:h-[136px] flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white
-                    transition-all duration-300
-                    shadow-[0_4px_16px_-10px_rgba(0,0,0,0.08)]
-                    hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-12px_rgba(0,0,0,0.12)]
+                    group relative flex h-[104px] sm:h-[136px] flex-col overflow-hidden rounded-[20px] bg-white p-1.5 sm:p-2
+                    ring-1 ring-gray-100 transition-all duration-300
+                    shadow-[0_6px_20px_-14px_rgba(0,0,0,0.14)]
+                    hover:-translate-y-1 hover:ring-brand-accent/25 hover:shadow-[0_18px_38px_-16px_rgba(0,0,0,0.18)]
                   "
                 >
-                  {/* 아이콘 영역 */}
-                  <div className="flex flex-1 items-center justify-center bg-gray-50">
-                    <ProductLucideIcon
-                      name={product.icon}
-                      className="h-9 w-9 sm:h-11 sm:w-11 text-brand-accent transition-transform duration-500 group-hover:scale-110"
+                  {/* 통일된 배경박스 + 미니 목업 (박스 대비 세로 65%) */}
+                  <div className="relative flex flex-1 items-center justify-center overflow-hidden rounded-[14px] bg-[#F5F4F0]">
+                    <div className="pointer-events-none absolute inset-x-3 bottom-2 h-2 rounded-full bg-black/5 blur-[3px]" />
+                    <ProductMockup
+                      productId={product.id}
+                      className="relative h-[65%] w-auto transition-transform duration-500 group-hover:scale-[1.06]"
                     />
                   </div>
 
                   {/* 텍스트: 제품명 1줄 */}
-                  <div className="flex items-center justify-center px-3 py-2.5">
+                  <div className="flex items-center justify-center px-2 pt-2 pb-1">
                     <h3 className="truncate text-[15px] sm:text-[17px] font-semibold leading-tight tracking-[-0.02em] text-gray-900">
                       {product.name}
                     </h3>
