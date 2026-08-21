@@ -202,11 +202,11 @@ const ProductSelection = () => {
       </header>
 
       {/* Hero */}
-      <section className="shrink-0 px-6 sm:px-10 pt-6 sm:pt-8 pb-5 sm:pb-6">
-        <h1 className="text-[28px] sm:text-[40px] font-semibold tracking-tight text-gray-900 leading-[1.15]">
+      <section className="shrink-0 px-6 sm:px-10 pt-5 sm:pt-6 pb-4 sm:pb-5">
+        <h1 className="text-[26px] sm:text-[36px] font-semibold tracking-tight text-gray-900 leading-[1.15]">
           어떤 제품부터 보시겠어요?
         </h1>
-        <p className="text-base sm:text-lg text-gray-500 font-normal mt-2 sm:mt-3">
+        <p className="text-sm sm:text-base text-gray-500 font-normal mt-1.5 sm:mt-2">
           선택하신 제품부터 차근차근 이해하기 쉽게 설명드릴게요.
         </p>
       </section>
