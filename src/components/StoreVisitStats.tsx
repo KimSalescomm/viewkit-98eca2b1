@@ -156,16 +156,27 @@ const StoreVisitStats = () => {
   const stats = useMemo(() => {
     const map = new Map<
       string,
-      { store_id: string; store_name: string; views: number; sessions: Set<string>; lastAt: string }
+      {
+        store_id: string;
+        store_name: string;
+        views: number;
+        sessions: Set<string>;
+        // 날짜(KST) → 해당 일자의 고유 세션 집합 (일일 상한 보정용)
+        daily: Map<string, Set<string>>;
+        lastAt: string;
+      }
     >();
     filteredRows.forEach((r) => {
       const key = r.store_id;
       // 정식 명칭은 코드 매핑이 우선 (DB의 store_name 불일치 보정)
       const canonicalName = CODE_TO_NAME[r.store_id] || r.store_name || r.store_id;
+      const day = kstDayKey(r.created_at);
       const cur = map.get(key);
       if (cur) {
         cur.views += 1;
         cur.sessions.add(r.session_id);
+        if (!cur.daily.has(day)) cur.daily.set(day, new Set());
+        cur.daily.get(day)!.add(r.session_id);
         if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
         cur.store_name = canonicalName;
       } else {
@@ -174,6 +185,7 @@ const StoreVisitStats = () => {
           store_name: canonicalName,
           views: 1,
           sessions: new Set([r.session_id]),
+          daily: new Map([[day, new Set([r.session_id])]]),
           lastAt: r.created_at,
         });
       }
@@ -184,6 +196,11 @@ const StoreVisitStats = () => {
         store_name: v.store_name,
         views: v.views,
         visits: v.sessions.size,
+        // 매장당 하루 최대 DAILY_VISIT_CAP회까지만 인정한 보정 방문 수
+        visitsCapped: [...v.daily.values()].reduce(
+          (sum, set) => sum + Math.min(set.size, DAILY_VISIT_CAP),
+          0,
+        ),
         lastAt: v.lastAt,
       }))
       .sort((a, b) => b.views - a.views);
@@ -194,6 +211,7 @@ const StoreVisitStats = () => {
     return {
       views: filteredRows.length,
       visits: sessions.size,
+      visitsCapped: stats.reduce((sum, s) => sum + s.visitsCapped, 0),
       stores: stats.length,
     };
   }, [filteredRows, stats]);
