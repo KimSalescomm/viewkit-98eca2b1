@@ -54,12 +54,12 @@ const Home = () => {
           <>
             {/* Hero: 제품명 중앙 강조 */}
             <div
-              className="relative overflow-hidden rounded-[14px] h-[20vh] min-h-[140px] max-h-[220px] mb-5 sm:mb-6 bg-[#F5F4F0] shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] flex flex-col items-center justify-center text-center px-4 sm:px-6 py-3"
+              className="relative h-[20vh] min-h-[140px] max-h-[220px] mb-5 sm:mb-6 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-3"
             >
               <p className="text-[11px] sm:text-[12px] font-bold tracking-[0.18em] uppercase text-brand mb-2">
                 VIEW KIT · {product.name}
               </p>
-              <h1 className="text-[28px] sm:text-[36px] font-medium leading-tight text-[#111111]">
+              <h1 className="text-[28px] sm:text-[36px] font-extrabold leading-tight text-[#111111]">
                 {product.title}
               </h1>
               <p className="mt-1 text-[13px] sm:text-[14px] leading-snug text-gray-500 max-w-md">
