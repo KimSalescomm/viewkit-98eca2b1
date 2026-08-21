@@ -144,11 +144,12 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                     </div>
                   </div>
                   <div className="min-w-0 flex-1 flex flex-col justify-center py-0.5">
-                    <p className="text-brand-accent text-[11px] font-medium mb-0.5">{item.product.name}</p>
-                    <h3 className="text-white text-[13px] sm:text-sm font-medium leading-snug line-clamp-2">
+                    <p className="text-brand-accent text-[15px] font-medium mb-1">{item.product.name}</p>
+                    <h3 className="text-white text-[18px] font-medium leading-[1.4] line-clamp-2">
                       {item.feature.title}
                     </h3>
                   </div>
+
                 </div>
               </Link>
             ))}
