@@ -21,13 +21,13 @@ const CARD_ORDER = ["4", "1", "2", "3", "8", "5", "7"];
 // 카드별 배경 사진. 아직 전용 촬영컷이 없는 항목은 주석으로 필요한 이미지를 명시.
 const CARD_IMAGES: Record<string, string> = {
   /* image: ai-obstacle-avoid.jpg - 로봇청소기가 장애물을 피해 이동하는 장면 (임시: 리빙 라이프스타일 컷) */
-  "4": "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
+  "4": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
   /* image: steam-mop-cleaning.jpg - 스팀 물걸레로 바닥 얼룩을 닦는 클로즈업 (임시: 인테리어 컷) */
-  "1": "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_01.jpg",
+  "1": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_01.jpg",
   /* image: suction-hair-pickup.jpg - 먼지·머리카락을 흡입하는 장면 (임시: 인테리어 컷) */
-  "2": "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_02.jpg",
+  "2": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_02.jpg",
   // 거실/주방 공간에 놓인 스테이션 제품 컷
-  "3": "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_02.jpg",
+  "3": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_02.jpg",
   // 스팀 살균·건조 케어 장면
   "8": "https://viewkit.lovable.app/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
   // 보안 인증 관련 이미지
