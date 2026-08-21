@@ -353,7 +353,7 @@ const StoreVisitStats = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-3 mb-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
         <div className="rounded-xl bg-slate-50/70 px-4 py-3">
           <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mb-1">
             <Eye className="w-3 h-3" /> 총 페이지뷰
@@ -365,6 +365,15 @@ const StoreVisitStats = () => {
             <Users className="w-3 h-3" /> 총 방문(세션)
           </div>
           <div className="text-xl font-bold text-slate-900 tabular-nums">{totals.visits.toLocaleString()}</div>
+        </div>
+        <div className="rounded-xl bg-violet-50/70 px-4 py-3">
+          <div className="flex items-center gap-1.5 text-[11px] text-violet-600 mb-1">
+            <Users className="w-3 h-3" /> 방문(보정)
+          </div>
+          <div className="text-xl font-bold text-violet-700 tabular-nums">
+            {totals.visitsCapped.toLocaleString()}
+          </div>
+          <div className="text-[10px] text-violet-500 mt-0.5">지점당 1일 최대 {DAILY_VISIT_CAP}회</div>
         </div>
         <div className="rounded-xl bg-slate-50/70 px-4 py-3">
           <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mb-1">
