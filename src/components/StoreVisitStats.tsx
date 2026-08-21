@@ -398,6 +398,7 @@ const StoreVisitStats = () => {
                 <th className="py-2 pr-4 font-medium">코드</th>
                 <th className="py-2 pr-4 font-medium text-right">페이지뷰</th>
                 <th className="py-2 pr-4 font-medium text-right">방문</th>
+                <th className="py-2 pr-4 font-medium text-right text-violet-500">방문(보정)</th>
                 <th className="py-2 pr-2 font-medium">최근 접속</th>
               </tr>
             </thead>
