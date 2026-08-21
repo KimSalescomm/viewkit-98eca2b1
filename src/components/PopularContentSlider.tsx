@@ -91,16 +91,21 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
   if (visibleItems.length < 3) return null;
 
   return (
-    <section className="bg-[#F3F4F6] px-6 sm:px-10 py-6 sm:py-8 shrink-0">
+    <section className="bg-gray-900 px-6 sm:px-10 py-5 sm:py-6 shrink-0">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-end justify-between mb-4 sm:mb-5">
-          <h2 className="text-lg sm:text-xl font-semibold text-gray-900 tracking-tight">요즘 많이 본 콘텐츠</h2>
+        <div className="flex items-end justify-between mb-3 sm:mb-4">
+          <div className="flex items-center gap-2.5">
+            <span className="inline-flex items-center rounded-full bg-brand-accent px-2.5 py-1 text-[10px] sm:text-[11px] font-semibold text-white tracking-wide">
+              HOT
+            </span>
+            <h2 className="text-base sm:text-lg font-semibold text-white tracking-tight">요즘 많이 본 콘텐츠</h2>
+          </div>
           <div className="flex items-center gap-1.5">
             <button
               type="button"
               onClick={scrollPrev}
               disabled={!canScrollPrev}
-              className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-700 disabled:text-gray-300 hover:bg-gray-50 transition-colors"
+              className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white disabled:text-white/30 hover:bg-white/20 transition-colors"
               aria-label="이전"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -109,7 +114,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
               type="button"
               onClick={scrollNext}
               disabled={!canScrollNext}
-              className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-700 disabled:text-gray-300 hover:bg-gray-50 transition-colors"
+              className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white disabled:text-white/30 hover:bg-white/20 transition-colors"
               aria-label="다음"
             >
               <ChevronRight className="w-4 h-4" />
@@ -126,20 +131,21 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                 onClick={() => trackProductClick(item.product.name)}
                 className="flex-[0_0_calc(33.333%-0.75rem)] sm:flex-[0_0_calc(33.333%-1rem)] min-w-0 group"
               >
-                <div className="relative h-36 sm:h-48 rounded-2xl sm:rounded-3xl overflow-hidden bg-gray-800 shadow-sm">
-                  <SafeImage
-                    src={item.thumbnail}
-                    alt={`${item.product.name} ${item.feature.title}`}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading={index < 3 ? "eager" : "lazy"}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
-                  <div className="absolute top-3 left-3 w-7 h-7 rounded-lg bg-brand-accent text-white text-xs font-semibold flex items-center justify-center shadow-sm">
-                    {index + 1}
+                <div className="flex items-stretch gap-3 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors p-2">
+                  <div className="relative w-20 h-16 sm:w-28 sm:h-20 shrink-0 rounded-lg overflow-hidden bg-gray-800">
+                    <SafeImage
+                      src={item.thumbnail}
+                      alt={`${item.product.name} ${item.feature.title}`}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading={index < 3 ? "eager" : "lazy"}
+                    />
+                    <div className="absolute top-1 left-1 w-5 h-5 rounded-md bg-brand-accent text-white text-[10px] font-semibold flex items-center justify-center">
+                      {index + 1}
+                    </div>
                   </div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <p className="text-brand-accent text-[11px] sm:text-xs font-medium mb-0.5">{item.product.name}</p>
-                    <h3 className="text-white text-sm sm:text-base font-semibold leading-snug line-clamp-2">
+                  <div className="min-w-0 flex-1 flex flex-col justify-center py-0.5">
+                    <p className="text-brand-accent text-[11px] font-medium mb-0.5">{item.product.name}</p>
+                    <h3 className="text-white text-[13px] sm:text-sm font-medium leading-snug line-clamp-2">
                       {item.feature.title}
                     </h3>
                   </div>
@@ -148,6 +154,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
             ))}
           </div>
         </div>
+
 
         {visibleItems.length > 3 && (
           <div className="flex justify-center gap-1.5 mt-3">
