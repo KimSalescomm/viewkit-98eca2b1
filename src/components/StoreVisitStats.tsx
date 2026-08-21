@@ -230,7 +230,16 @@ const StoreVisitStats = () => {
     const categoryLabel = CATEGORIES.find((c) => c.key === category)?.label || category;
     const catToLabel = (c: StoreCategory) =>
       c === "specialty" ? "전문점" : c === "hiplaza" ? "하이프라자" : "미분류";
-    const header = ["순위", "구분", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"];
+    const header = [
+      "순위",
+      "구분",
+      "지점",
+      "코드",
+      "페이지뷰",
+      "방문(세션)",
+      `방문(보정, 일 최대 ${DAILY_VISIT_CAP})`,
+      "최근 접속",
+    ];
     const lines = stats.map((s, i) => [
       i + 1,
       catToLabel(getCategoryByCode(s.store_id)),
@@ -238,6 +247,7 @@ const StoreVisitStats = () => {
       s.store_id,
       s.views,
       s.visits,
+      s.visitsCapped,
       format(new Date(s.lastAt), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
     ]);
     const summary = [
