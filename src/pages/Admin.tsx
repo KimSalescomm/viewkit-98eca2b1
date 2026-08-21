@@ -51,9 +51,18 @@ const fetchAllPageViews = async (sinceISO: string, untilISO?: string) => {
   return all;
 };
 
+// 매장당 1일 방문(세션) 인정 상한 (StoreVisitStats와 동일)
+const DAILY_VISIT_CAP = 20;
+// created_at(UTC ISO) → KST 기준 날짜 키
+const kstDayKey = (iso: string): string =>
+  new Date(new Date(iso).getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+
 // 접속 통계 집계 (SC/KOR 제외, 지점 코드 기준)
 const aggregateVisits = (rows: PV[]) => {
-  const map = new Map<string, { name: string; views: number; sessions: Set<string>; lastAt: string }>();
+  const map = new Map<
+    string,
+    { name: string; views: number; sessions: Set<string>; daily: Map<string, Set<string>>; lastAt: string }
+  >();
   rows
     .filter((r) => {
       const sid = (r.store_id || "").toUpperCase();
@@ -61,10 +70,13 @@ const aggregateVisits = (rows: PV[]) => {
     })
     .forEach((r) => {
       const canonicalName = CODE_TO_NAME[r.store_id] || r.store_name || r.store_id;
+      const day = kstDayKey(r.created_at);
       const cur = map.get(r.store_id);
       if (cur) {
         cur.views += 1;
         cur.sessions.add(r.session_id);
+        if (!cur.daily.has(day)) cur.daily.set(day, new Set());
+        cur.daily.get(day)!.add(r.session_id);
         if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
         cur.name = canonicalName;
       } else {
@@ -72,12 +84,20 @@ const aggregateVisits = (rows: PV[]) => {
           name: canonicalName,
           views: 1,
           sessions: new Set([r.session_id]),
+          daily: new Map([[day, new Set([r.session_id])]]),
           lastAt: r.created_at,
         });
       }
     });
   return [...map.entries()]
-    .map(([code, v]) => ({ code, name: v.name, views: v.views, visits: v.sessions.size, lastAt: v.lastAt }))
+    .map(([code, v]) => ({
+      code,
+      name: v.name,
+      views: v.views,
+      visits: v.sessions.size,
+      visitsCapped: [...v.daily.values()].reduce((sum, set) => sum + Math.min(set.size, DAILY_VISIT_CAP), 0),
+      lastAt: v.lastAt,
+    }))
     .sort((a, b) => b.views - a.views);
 };
 
@@ -443,10 +463,15 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       sections.push(toRow(["판매 기록 총건수(전체 DB)", sales.length]));
       sections.push(toRow(["판매 기록 필터 결과 건수", filtered.length]));
       sections.push(toRow(["접속 통계 기간", rangeLabel]));
+      sections.push(toRow(["총 페이지뷰", visitStats.reduce((a, s2) => a + s2.views, 0)]));
+      sections.push(toRow(["총 방문(세션)", visitStats.reduce((a, s2) => a + s2.visits, 0)]));
+      sections.push(
+        toRow([`총 방문(보정, 일 최대 ${DAILY_VISIT_CAP})`, visitStats.reduce((a, s2) => a + s2.visitsCapped, 0)]),
+      );
       sections.push("");
 
       sections.push(toRow([`[1] 지점별 접속 통계 (기간: ${rangeLabel})`]));
-      sections.push(toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"]));
+      sections.push(toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", `방문(보정, 일 최대 ${DAILY_VISIT_CAP})`, "최근 접속"]));
       visitStats.forEach((s, i) =>
         sections.push(
           toRow([
@@ -455,6 +480,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
             s.code,
             s.views,
             s.visits,
+            s.visitsCapped,
             format(new Date(s.lastAt), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
           ]),
         ),
@@ -512,7 +538,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       const stats = aggregateVisits(data);
       const lines = [
         toRow([`접속기록 CSV (기간: ${rangeLabel})`]),
-        toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"]),
+        toRow(["순위", "지점", "코드", "페이지뷰", "방문(세션)", `방문(보정, 일 최대 ${DAILY_VISIT_CAP})`, "최근 접속"]),
         ...stats.map((s, i) =>
           toRow([
             i + 1,
@@ -520,6 +546,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
             s.code,
             s.views,
             s.visits,
+            s.visitsCapped,
             format(new Date(s.lastAt), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
           ]),
         ),
