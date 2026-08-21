@@ -178,7 +178,7 @@ const ProductSelection = () => {
   };
 
   return (
-    <main className="min-h-[100dvh] bg-white flex flex-col">
+    <main className="min-h-[100dvh] bg-white flex flex-col tracking-[-0.02em]">
       <StoreSetupModal
         open={modalOpen}
         initialName={currentStore?.name}
@@ -215,6 +215,7 @@ const ProductSelection = () => {
             </button>
           )}
           <ContentRequestButton variant="segment" />
+          <OrientationToggle variant="icon" />
 
           <button
             type="button"
@@ -230,24 +231,17 @@ const ProductSelection = () => {
 
       {/* Inline dropdown menu (헤더 바로 아래, 딤 없음) */}
       {menuOpen && (
-        <div className="shrink-0 border-b border-gray-100 bg-white px-5 sm:px-10 py-5">
-          <div className="max-w-5xl mx-auto w-full flex flex-col gap-4">
+        <div className="shrink-0 border-b border-gray-100 bg-white px-5 sm:px-10 py-2">
+          <div className="max-w-5xl mx-auto w-full flex flex-col">
             <Link
               to="/homepage/guide"
               onClick={() => setMenuOpen(false)}
-              className="inline-flex items-center gap-3 rounded-2xl bg-gray-50 px-4 py-4 text-[18px] font-medium text-gray-800 hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center gap-3 rounded-xl px-4 py-3 text-[16px] font-medium text-gray-800 hover:bg-gray-50 transition-colors"
             >
-              <BookOpen className="w-5 h-5" />
+              <BookOpen className="w-5 h-5 text-gray-500" />
               <span>뷰킷 소개</span>
             </Link>
-            <div>
-              <p className="text-[15px] font-medium text-gray-500 mb-2">모바일에서 보기</p>
-              <MobileAccessQR storeSlug={currentStore?.slug} variant="segment" />
-            </div>
-            <div>
-              <p className="text-[15px] font-medium text-gray-500 mb-2">화면 방향</p>
-              <OrientationToggle variant="segment" />
-            </div>
+            <MobileAccessQR storeSlug={currentStore?.slug} variant="simple" onClick={() => setMenuOpen(false)} />
           </div>
         </div>
       )}
@@ -255,10 +249,10 @@ const ProductSelection = () => {
 
       {/* Hero */}
       <section className="shrink-0 px-5 sm:px-10 pt-10 pb-8 sm:pt-12 sm:pb-10 text-center">
-        <h1 className="text-[30px] sm:text-[40px] font-semibold tracking-tight text-gray-900 leading-[1.2]">
+        <h1 className="text-[36px] font-extrabold tracking-[-0.02em] text-gray-900 leading-[1.25]">
           어떤 제품부터 보시겠어요?
         </h1>
-        <p className="text-[18px] sm:text-[20px] text-gray-600 font-normal mt-3">
+        <p className="text-[16px] sm:text-[18px] font-normal leading-[1.6] text-gray-500 mt-3 tracking-[-0.02em]">
           선택하신 제품부터 차근차근 이해하기 쉽게 설명드릴게요.
         </p>
       </section>
@@ -273,8 +267,8 @@ const ProductSelection = () => {
       <section className="px-5 sm:px-10 pt-10 pb-16 sm:pt-12 sm:pb-20">
         <div className="max-w-5xl mx-auto w-full">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-[24px] sm:text-[26px] font-semibold text-gray-900 tracking-tight">제품별 특장점</h2>
-            <span className="text-[16px] text-gray-600 font-normal">총 {visibleProducts.length}개 제품</span>
+            <h2 className="text-[24px] sm:text-[26px] font-semibold text-gray-900 tracking-[-0.02em] leading-tight">제품별 특장점</h2>
+            <span className="text-[16px] text-gray-500 font-normal tracking-[-0.02em]">총 {visibleProducts.length}개 제품</span>
           </div>
 
           <div className="grid grid-cols-3 gap-3 sm:gap-4">
@@ -305,10 +299,10 @@ const ProductSelection = () => {
 
                   {/* 텍스트: 제품명 1줄 + 특장점 1줄 */}
                   <div className="flex flex-col gap-1 px-3 py-3">
-                    <h3 className="truncate text-[18px] font-semibold leading-tight tracking-tight text-gray-900">
+                    <h3 className="truncate text-[18px] font-semibold leading-tight tracking-[-0.02em] text-gray-900">
                       {product.name}
                     </h3>
-                    <p className="truncate text-[16px] font-normal leading-tight text-gray-600">
+                    <p className="truncate text-[14px] sm:text-[15px] font-normal leading-tight text-gray-500 tracking-[-0.02em]">
                       {product.description}
                     </p>
                   </div>
