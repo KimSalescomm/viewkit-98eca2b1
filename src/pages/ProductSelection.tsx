@@ -161,8 +161,9 @@ const ProductSelection = () => {
       />
 
       {/* Header */}
-      <header className="shrink-0 px-6 sm:px-10 py-5 sm:py-6 flex items-center justify-between border-b border-gray-100">
-        <div className="flex items-center gap-3">
+      <header className="shrink-0 px-6 sm:px-10 py-4 sm:py-5 grid grid-cols-[1fr_auto_1fr] items-center border-b border-gray-100">
+        <span aria-hidden className="hidden sm:block" />
+        <div className="flex items-center gap-3 justify-self-start sm:justify-self-center">
           <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-accent flex items-center justify-center">
             <span className="text-white text-xl sm:text-2xl font-semibold leading-none">V</span>
           </div>
@@ -172,7 +173,8 @@ const ProductSelection = () => {
           </div>
         </div>
 
-        <nav className="flex items-center gap-1.5 sm:gap-2">
+        <nav className="justify-self-end flex items-center gap-1.5 sm:gap-2">
+
           {currentStore && (
             <button
               type="button"
@@ -202,8 +204,8 @@ const ProductSelection = () => {
       </header>
 
       {/* Hero */}
-      <section className="shrink-0 px-6 sm:px-10 pt-5 sm:pt-6 pb-4 sm:pb-5">
-        <h1 className="text-[26px] sm:text-[36px] font-semibold tracking-tight text-gray-900 leading-[1.15]">
+      <section className="shrink-0 px-6 sm:px-10 pt-4 sm:pt-5 pb-3 sm:pb-4 text-center">
+        <h1 className="text-[24px] sm:text-[34px] font-semibold tracking-tight text-gray-900 leading-[1.15]">
           어떤 제품부터 보시겠어요?
         </h1>
         <p className="text-sm sm:text-base text-gray-500 font-normal mt-1.5 sm:mt-2">
@@ -215,15 +217,17 @@ const ProductSelection = () => {
       <PopularContentSlider days={30} limit={5} />
 
       {/* Product Grid */}
-      <section className="flex-1 min-h-0 px-6 sm:px-10 pb-5 sm:pb-6 flex flex-col">
-        <div className="max-w-6xl mx-auto w-full flex flex-col h-full">
-          <div className="flex items-center justify-between mb-3 sm:mb-4 shrink-0">
+      <section className="flex-1 min-h-0 px-6 sm:px-10 pt-3 sm:pt-4 pb-4 sm:pb-5 flex flex-col">
+        <div className="max-w-6xl mx-auto w-full flex flex-col h-full min-h-0">
+          <div className="flex items-center justify-between mb-2.5 sm:mb-3 shrink-0">
             <h2 className="text-base sm:text-lg font-semibold text-gray-900 tracking-tight">제품별 특장점</h2>
             <span className="text-[11px] sm:text-xs text-gray-400 font-normal">총 {visibleProducts.length}개 제품</span>
           </div>
 
-          <div className="flex-1 min-h-0">
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 h-full content-start">
+          <div className="flex-1 min-h-0 overflow-y-auto">
+            <div className="grid grid-cols-2 lg:grid-cols-3 grid-rows-5 lg:grid-rows-4 gap-2.5 sm:gap-3 h-full min-h-[420px]">
+
+
               {visibleProducts.map((product, index) => {
                 const cardContent = (
                   <div
