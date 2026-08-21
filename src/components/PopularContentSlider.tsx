@@ -131,14 +131,47 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
           )}
         </div>
 
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-3 sm:gap-4">
+        {visibleItems.length > 3 ? (
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-3 sm:gap-4">
+              {visibleItems.map((item, index) => (
+                <Link
+                  key={item.path}
+                  to={item.product.id === "subscription" ? "/subscription" : `/product/${item.product.id}/feature/${item.feature.id}`}
+                  onClick={() => trackProductClick(item.product.name)}
+                  className="flex-[0_0_calc(33.333%-0.75rem)] sm:flex-[0_0_calc(33.333%-1rem)] min-w-0 group"
+                >
+                  <div className="flex items-stretch gap-3 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors p-2">
+                    <div className="relative w-20 h-16 sm:w-28 sm:h-20 shrink-0 rounded-lg overflow-hidden bg-gray-800">
+                      <SafeImage
+                        src={item.thumbnail}
+                        alt={`${item.product.name} ${item.feature.title}`}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        loading={index < 3 ? "eager" : "lazy"}
+                      />
+                      <div className="absolute top-1 left-1 w-5 h-5 rounded-md bg-brand-accent text-white text-[10px] font-semibold flex items-center justify-center">
+                        {index + 1}
+                      </div>
+                    </div>
+                    <div className="min-w-0 flex-1 flex flex-col justify-center py-0.5">
+                      <p className="text-brand-accent text-[15px] font-medium mb-1">{item.product.name}</p>
+                      <h3 className="text-white text-[18px] font-medium leading-[1.4] line-clamp-2">
+                        {item.feature.title}
+                      </h3>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-3 gap-3 sm:gap-4">
             {visibleItems.map((item, index) => (
               <Link
                 key={item.path}
                 to={item.product.id === "subscription" ? "/subscription" : `/product/${item.product.id}/feature/${item.feature.id}`}
                 onClick={() => trackProductClick(item.product.name)}
-                className="flex-[0_0_calc(33.333%-0.75rem)] sm:flex-[0_0_calc(33.333%-1rem)] min-w-0 group"
+                className="min-w-0 group"
               >
                 <div className="flex items-stretch gap-3 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors p-2">
                   <div className="relative w-20 h-16 sm:w-28 sm:h-20 shrink-0 rounded-lg overflow-hidden bg-gray-800">
@@ -146,7 +179,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                       src={item.thumbnail}
                       alt={`${item.product.name} ${item.feature.title}`}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading={index < 3 ? "eager" : "lazy"}
+                      loading="eager"
                     />
                     <div className="absolute top-1 left-1 w-5 h-5 rounded-md bg-brand-accent text-white text-[10px] font-semibold flex items-center justify-center">
                       {index + 1}
@@ -158,12 +191,11 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                       {item.feature.title}
                     </h3>
                   </div>
-
                 </div>
               </Link>
             ))}
           </div>
-        </div>
+        )}
 
 
         {visibleItems.length > 3 && (
