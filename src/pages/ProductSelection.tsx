@@ -223,7 +223,7 @@ const ProductSelection = () => {
       <section className="px-5 sm:px-10 pt-6 pb-8 sm:pt-8 sm:pb-12">
         <div className="max-w-5xl mx-auto w-full">
           <div className="mb-4">
-            <h2 className="text-[20px] sm:text-[24px] font-semibold text-gray-900 tracking-[-0.02em] leading-tight">제품을 선택하세요</h2>
+            <h2 className="text-[20px] sm:text-[24px] font-semibold text-gray-900 tracking-[-0.02em] leading-tight">제품을 선택해보세요</h2>
           </div>
 
           <div className="grid grid-cols-3 gap-2.5 sm:gap-4">
