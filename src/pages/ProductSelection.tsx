@@ -224,8 +224,9 @@ const ProductSelection = () => {
             <span className="text-[11px] sm:text-xs text-gray-400 font-normal">총 {visibleProducts.length}개 제품</span>
           </div>
 
-          <div className="flex-1 min-h-0">
-            <div className="grid grid-cols-2 lg:grid-cols-3 grid-rows-5 lg:grid-rows-4 gap-2.5 sm:gap-3 h-full">
+          <div className="flex-1 min-h-0 overflow-y-auto">
+            <div className="grid grid-cols-2 lg:grid-cols-3 grid-rows-5 lg:grid-rows-4 gap-2.5 sm:gap-3 h-full min-h-[420px]">
+
 
               {visibleProducts.map((product, index) => {
                 const cardContent = (
