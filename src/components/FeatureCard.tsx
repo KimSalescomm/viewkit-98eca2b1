@@ -27,6 +27,7 @@ interface FeatureCardProps {
   variant?: "white" | "gray";
   bannerImage?: string;
   showLikeHint?: boolean;
+  compact?: boolean;
 }
 
 const FeatureCard = ({
@@ -42,6 +43,7 @@ const FeatureCard = ({
   variant = "white",
   bannerImage,
   showLikeHint = false,
+  compact = false,
 }: FeatureCardProps) => {
   const color = gradient ? { gradient } : cardColors[colorIndex % cardColors.length];
   const bgClass = variant === "gray" ? "bg-gray-50 border-gray-200" : "bg-white border-gray-100";
@@ -58,6 +60,35 @@ const FeatureCard = ({
       className={extraClass}
     />
   );
+
+  if (compact) {
+    return (
+      <Link
+        to={`/product/${productId}/feature/${id}`}
+        onClick={() => trackFeatureClick(productName || productId, title)}
+        className="group relative flex items-center gap-3 rounded-[18px] bg-white border border-surface-border/60 shadow-sm
+          px-3 py-2.5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:border-brand/25 active:scale-[0.99]"
+      >
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-muted text-gray-600 transition-colors duration-300 group-hover:bg-brand-soft group-hover:text-brand">
+          <FeatureIcon iconKey={icon} className="w-6 h-6" />
+        </div>
+        <div className="min-w-0 flex-1">
+          {tag && (
+            <span className="mb-0.5 inline-block rounded-md bg-brand-soft px-1.5 py-0.5 text-[11px] font-bold leading-tight text-brand">
+              {tag}
+            </span>
+          )}
+          <h3 className="line-clamp-2 text-[15px] font-semibold leading-snug tracking-[-0.02em] text-gray-900 whitespace-pre-line">
+            {title}
+          </h3>
+        </div>
+        <div className="flex shrink-0 items-center gap-1">
+          {likeButton("mobile")}
+          <span className="text-lg text-gray-300">›</span>
+        </div>
+      </Link>
+    );
+  }
 
   return (
     <Link
