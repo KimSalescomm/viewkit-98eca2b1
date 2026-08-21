@@ -146,6 +146,7 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
                     handleLike(e as unknown as React.MouseEvent, feature);
                 }}
                 className="absolute right-3 top-3 z-10 inline-flex items-center gap-1 text-gray-400"
+              >
                 <Heart className="h-4 w-4" strokeWidth={2} />
                 <span className="text-[13px] font-medium tabular-nums text-gray-500">{likeCount(feature.id)}</span>
               </span>
