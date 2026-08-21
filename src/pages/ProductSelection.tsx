@@ -189,14 +189,8 @@ const ProductSelection = () => {
 
       {/* Header */}
       <header className="sticky top-0 z-30 shrink-0 px-5 sm:px-10 py-4 sm:py-5 flex items-center justify-between gap-3 border-b border-gray-100 bg-white/95 backdrop-blur">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-brand-accent flex items-center justify-center">
-            <span className="text-white text-2xl font-semibold leading-none">V</span>
-          </div>
-          <div className="leading-none">
-            <div className="text-[24px] sm:text-[28px] font-semibold tracking-[-0.03em] text-brand-accent">VIEW KIT</div>
-            <div className="text-[12px] sm:text-[13px] font-medium tracking-[0.22em] text-gray-500 mt-1">LG HOME APPLIANCE</div>
-          </div>
+        <div className="flex items-center">
+          <div className="text-[24px] sm:text-[28px] font-semibold tracking-[-0.03em] text-brand-accent leading-none">VIEW KIT</div>
         </div>
 
         <nav className="flex items-center gap-2">
