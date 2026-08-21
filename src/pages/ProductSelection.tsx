@@ -239,34 +239,34 @@ const ProductSelection = () => {
           <ContentRequestButton variant="segment" />
           <OrientationToggle variant="icon" />
 
-          <button
-            type="button"
-            aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((v) => !v)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:bg-gray-100 transition-colors"
-          >
-            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="relative">
+            <button
+              type="button"
+              aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:bg-gray-100 transition-colors"
+            >
+              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+
+            {/* Dropdown menu: 햄버거 아이콘 기준 우측 정렬, 헤더 고정 위치에 항상 노출 */}
+            {menuOpen && (
+              <div className="absolute right-0 top-full mt-2 w-56 rounded-2xl border border-gray-100 bg-white shadow-[0_8px_32px_-12px_rgba(0,0,0,0.16)] p-2 z-50">
+                <Link
+                  to="/homepage/guide"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center gap-3 rounded-xl px-4 py-3 text-[16px] font-medium text-gray-800 hover:bg-gray-50 transition-colors"
+                >
+                  <BookOpen className="w-5 h-5 text-gray-500" />
+                  <span>뷰킷 소개</span>
+                </Link>
+                <MobileAccessQR storeSlug={currentStore?.slug} variant="simple" onClick={() => setMenuOpen(false)} />
+              </div>
+            )}
+          </div>
         </nav>
       </header>
-
-      {/* Inline dropdown menu (헤더 바로 아래, 딤 없음) */}
-      {menuOpen && (
-        <div className="shrink-0 border-b border-gray-100 bg-white px-5 sm:px-10 py-2">
-          <div className="max-w-5xl mx-auto w-full flex flex-col">
-            <Link
-              to="/homepage/guide"
-              onClick={() => setMenuOpen(false)}
-              className="inline-flex items-center gap-3 rounded-xl px-4 py-3 text-[16px] font-medium text-gray-800 hover:bg-gray-50 transition-colors"
-            >
-              <BookOpen className="w-5 h-5 text-gray-500" />
-              <span>뷰킷 소개</span>
-            </Link>
-            <MobileAccessQR storeSlug={currentStore?.slug} variant="simple" onClick={() => setMenuOpen(false)} />
-          </div>
-        </div>
-      )}
 
 
       {/* Hero */}
