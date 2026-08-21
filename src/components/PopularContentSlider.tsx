@@ -91,14 +91,15 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
   if (visibleItems.length < 3) return null;
 
   return (
-    <section className="bg-gray-900 px-6 sm:px-10 py-5 sm:py-6 shrink-0">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex items-end justify-between mb-3 sm:mb-4">
+    <section className="bg-gray-900 px-5 sm:px-10 py-10 sm:py-12">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex items-end justify-between mb-5">
           <div className="flex items-center gap-2.5">
-            <span className="inline-flex items-center rounded-full bg-brand-accent px-2.5 py-1 text-[10px] sm:text-[11px] font-semibold text-white tracking-wide">
+            <span className="inline-flex items-center rounded-full bg-brand-accent px-3 py-1 text-[13px] font-semibold text-white tracking-wide">
+
               HOT
             </span>
-            <h2 className="text-base sm:text-lg font-semibold text-white tracking-tight">요즘 많이 본 콘텐츠</h2>
+            <h2 className="text-[24px] sm:text-[26px] font-semibold text-white tracking-tight">요즘 많이 본 콘텐츠</h2>
           </div>
           <div className="flex items-center gap-1.5">
             <button
@@ -144,11 +145,12 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                     </div>
                   </div>
                   <div className="min-w-0 flex-1 flex flex-col justify-center py-0.5">
-                    <p className="text-brand-accent text-[11px] font-medium mb-0.5">{item.product.name}</p>
-                    <h3 className="text-white text-[13px] sm:text-sm font-medium leading-snug line-clamp-2">
+                    <p className="text-brand-accent text-[15px] font-medium mb-1">{item.product.name}</p>
+                    <h3 className="text-white text-[18px] font-medium leading-[1.4] line-clamp-2">
                       {item.feature.title}
                     </h3>
                   </div>
+
                 </div>
               </Link>
             ))}
