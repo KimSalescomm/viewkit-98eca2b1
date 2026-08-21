@@ -29,6 +29,8 @@ export default {
           soft: "hsl(var(--brand-soft) / <alpha-value>)",
           muted: "hsl(var(--brand-muted) / <alpha-value>)",
           dark: "hsl(var(--lg-red-dark) / <alpha-value>)",
+          accent: "hsl(var(--brand-accent) / <alpha-value>)",
+          "accent-foreground": "hsl(var(--brand-accent-foreground) / <alpha-value>)",
         },
         surface: {
           DEFAULT: "hsl(var(--surface) / <alpha-value>)",
