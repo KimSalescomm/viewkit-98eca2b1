@@ -161,7 +161,7 @@ const ProductSelection = () => {
       />
 
       {/* Header */}
-      <header className="relative shrink-0 px-6 sm:px-10 py-4 sm:py-5 flex items-center justify-center border-b border-gray-100">
+      <header className="shrink-0 px-6 sm:px-10 py-4 sm:py-5 grid grid-cols-[1fr_auto_1fr] items-center border-b border-gray-100">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-accent flex items-center justify-center">
             <span className="text-white text-xl sm:text-2xl font-semibold leading-none">V</span>
