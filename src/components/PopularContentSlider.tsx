@@ -67,7 +67,9 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
         (typeof feature.belowMediaImage === "object" && feature.belowMediaImage?.url) ||
         feature.galleryImages?.[0] ||
         product.keyVisualImage;
-      const thumbnail = isImageUrl(feature.mediaUrl) ? feature.mediaUrl : (isImageUrl(String(fallbackImage)) ? String(fallbackImage) : product.keyVisualImage);
+      const autoThumbnail = isImageUrl(feature.mediaUrl) ? feature.mediaUrl : (isImageUrl(String(fallbackImage)) ? String(fallbackImage) : product.keyVisualImage);
+      const overrideKey = `/product/${item.productId}/feature/${item.featureId}`;
+      const thumbnail = THUMBNAIL_OVERRIDES[overrideKey] || autoThumbnail;
 
       return {
         ...item,
