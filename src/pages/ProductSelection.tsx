@@ -194,42 +194,42 @@ const ProductSelection = () => {
           )}
           <ContentRequestButton variant="segment" />
 
-          <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-            <SheetTrigger asChild>
-              <button
-                type="button"
-                aria-label="메뉴 열기"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:bg-gray-100 transition-colors"
-              >
-                <Menu className="w-6 h-6" />
-              </button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[320px] sm:w-[380px]">
-              <SheetHeader>
-                <SheetTitle className="text-[22px] font-semibold tracking-tight">메뉴</SheetTitle>
-              </SheetHeader>
-              <div className="mt-8 flex flex-col gap-4">
-                <Link
-                  to="/homepage/guide"
-                  onClick={() => setMenuOpen(false)}
-                  className="inline-flex items-center gap-3 rounded-2xl px-4 py-4 text-[18px] font-medium text-gray-800 hover:bg-gray-100 transition-colors"
-                >
-                  <BookOpen className="w-5 h-5" />
-                  <span>뷰킷 소개</span>
-                </Link>
-                <div className="px-1">
-                  <p className="text-[15px] font-medium text-gray-500 mb-2">모바일에서 보기</p>
-                  <MobileAccessQR storeSlug={currentStore?.slug} variant="segment" />
-                </div>
-                <div className="px-1">
-                  <p className="text-[15px] font-medium text-gray-500 mb-2">화면 방향</p>
-                  <OrientationToggle variant="segment" />
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+          <button
+            type="button"
+            aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:bg-gray-100 transition-colors"
+          >
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </nav>
       </header>
+
+      {/* Inline dropdown menu (헤더 바로 아래, 딤 없음) */}
+      {menuOpen && (
+        <div className="shrink-0 border-b border-gray-100 bg-white px-5 sm:px-10 py-5">
+          <div className="max-w-5xl mx-auto w-full flex flex-col gap-4">
+            <Link
+              to="/homepage/guide"
+              onClick={() => setMenuOpen(false)}
+              className="inline-flex items-center gap-3 rounded-2xl bg-gray-50 px-4 py-4 text-[18px] font-medium text-gray-800 hover:bg-gray-100 transition-colors"
+            >
+              <BookOpen className="w-5 h-5" />
+              <span>뷰킷 소개</span>
+            </Link>
+            <div>
+              <p className="text-[15px] font-medium text-gray-500 mb-2">모바일에서 보기</p>
+              <MobileAccessQR storeSlug={currentStore?.slug} variant="segment" />
+            </div>
+            <div>
+              <p className="text-[15px] font-medium text-gray-500 mb-2">화면 방향</p>
+              <OrientationToggle variant="segment" />
+            </div>
+          </div>
+        </div>
+      )}
+
 
       {/* Hero */}
       <section className="shrink-0 px-5 sm:px-10 pt-10 pb-8 sm:pt-12 sm:pb-10 text-center">
