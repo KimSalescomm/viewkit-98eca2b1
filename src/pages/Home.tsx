@@ -52,19 +52,34 @@ const Home = () => {
 
         {isSample ? (
           <>
-            {/* Hero: 제품명 중앙 강조 */}
-            <div
-              className="relative h-[20vh] min-h-[140px] max-h-[220px] mb-5 sm:mb-6 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-3"
-            >
-              <p className="text-[11px] sm:text-[12px] font-bold tracking-[0.18em] uppercase text-brand mb-2">
-                VIEW KIT · {product.name}
-              </p>
-              <h1 className="text-[28px] sm:text-[36px] font-extrabold leading-tight text-[#111111]">
-                {product.title}
-              </h1>
-              <p className="mt-1 text-[13px] sm:text-[14px] leading-snug text-gray-500 max-w-md">
-                {product.description}
-              </p>
+            {/* Hero: 인테리어컷 배경 + 다크 그라디언트 오버레이 */}
+            <div className="relative h-[22vh] min-h-[160px] max-h-[260px] mb-5 sm:mb-6 overflow-hidden rounded-[14px]">
+              <SafeImage
+                src={product.keyVisualImage}
+                alt={`LG ${product.name} 인테리어컷`}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.75) 100%)",
+                }}
+              />
+              <div className="absolute inset-0 flex flex-col justify-end px-4 sm:px-6 py-4 sm:py-5">
+                <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-brand mb-1">
+                  VIEW KIT · {product.name}
+                </p>
+                <h1 className="text-[22px] sm:text-[26px] font-medium leading-tight text-white">
+                  {product.title}
+                </h1>
+                <p className="mt-1 text-[12px] leading-snug text-white/70">
+                  {product.description}
+                </p>
+              </div>
             </div>
 
             {/* 키비주얼 영상 (있는 경우) */}
