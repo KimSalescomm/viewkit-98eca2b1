@@ -5,15 +5,12 @@ import SafeImage from "@/components/SafeImage";
 import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
 import OrientationToggle from "@/components/OrientationToggle";
 import BackButton from "@/components/BackButton";
-import ProductBentoDetail from "@/components/ProductBentoDetail";
 import { useContent } from "@/contexts/ContentContext";
 
 const Home = () => {
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
   const { getProductById, getFeaturesByProductId, isProductVisible } = useContent();
-
-  const isCompact = productId === "vacuum"; // 샘플: 청소로봇만 신규 디자인 적용
 
   const product = getProductById(productId || "");
   const features = getFeaturesByProductId(productId || "");
@@ -116,7 +113,6 @@ const Home = () => {
                 variant={isFitMax ? "gray" : "white"}
                 bannerImage={bannerImage}
                 showLikeHint={index === 0}
-                compact={isCompact}
               />
             );
           })}
@@ -127,9 +123,7 @@ const Home = () => {
         <div className="text-center">
           <button
             onClick={() => navigate("/")}
-            className={`inline-flex items-center justify-center gap-2 rounded-full bg-white border border-surface-border text-gray-800 font-semibold shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:border-brand hover:text-brand transition-colors ${
-              isCompact ? "h-11 px-7 text-[15px]" : "h-12 sm:h-14 px-8 sm:px-10 text-base sm:text-lg"
-            }`}
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-surface-border text-gray-800 font-semibold shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:border-brand hover:text-brand transition-colors h-12 sm:h-14 px-8 sm:px-10 text-base sm:text-lg"
           >
             <span aria-hidden="true">←</span>
             <span>다른 제품 보기</span>
