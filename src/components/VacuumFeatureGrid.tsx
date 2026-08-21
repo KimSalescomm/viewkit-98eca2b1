@@ -110,27 +110,32 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
               {/* 좌측 텍스트 영역 */}
               <div className="relative z-10 flex h-full w-[65%] flex-col justify-center px-4 py-3">
                 {feature.tag && (
-                  <span className="mb-2 w-fit rounded-full bg-brand-accent px-2 py-[3px] text-[11px] font-semibold text-white">
+                  <span className="mb-2 w-fit rounded-full bg-gray-100 px-2 py-[3px] text-[11px] font-semibold text-gray-600">
                     {feature.tag}
                   </span>
                 )}
                 <h3
                   className={`font-semibold text-gray-900 leading-tight ${
-                    isLarge ? "text-[20px]" : "text-[16px]"
+                    isLarge ? "text-[22px]" : "text-[18px]"
                   }`}
                 >
                   {feature.title}
                 </h3>
+                {(feature.subtitle || feature.description) && (
+                  <p className="mt-1 line-clamp-2 text-[13px] leading-snug text-gray-500">
+                    {feature.subtitle || feature.description}
+                  </p>
+                )}
               </div>
 
-              {/* 우측 메인페이지 톤 아이콘: 그레이 배경 + 레드 라인 아이콘 */}
+              {/* 우측 메인페이지 톤 아이콘: 그레이 배경 + 그레이톤 아이콘 */}
               <div
                 className={`absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full bg-muted ${
                   isLarge ? "h-14 w-14" : "h-12 w-12"
                 }`}
               >
                 <Icon
-                  className={`text-brand-accent ${isLarge ? "h-7 w-7" : "h-6 w-6"}`}
+                  className={`text-gray-500 ${isLarge ? "h-7 w-7" : "h-6 w-6"}`}
                   strokeWidth={1.8}
                 />
               </div>
