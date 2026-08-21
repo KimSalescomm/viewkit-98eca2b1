@@ -24,18 +24,15 @@ import type { Feature } from "@/data/features";
 // 카드 노출 순서 (feature id 기준) — 첫 항목은 2칸 차지 가로형 카드
 const CARD_ORDER = ["4", "1", "2", "3", "8", "5", "7"];
 
-// 카드별 배경 톤 (브랜드 레드 패밀리 변주) + 상징 아이콘
-const CARD_STYLES: Record<
-  string,
-  { gradient: string; icon: React.ElementType }
-> = {
-  "4": { gradient: "bg-gradient-to-br from-rose-400 to-red-600", icon: Brain },
-  "1": { gradient: "bg-gradient-to-br from-red-400 to-rose-600", icon: Droplets },
-  "2": { gradient: "bg-gradient-to-br from-orange-400 to-red-500", icon: Wind },
-  "3": { gradient: "bg-gradient-to-br from-red-500 to-red-700", icon: Boxes },
-  "8": { gradient: "bg-gradient-to-br from-pink-500 to-rose-600", icon: Sparkles },
-  "5": { gradient: "bg-gradient-to-br from-red-700 to-rose-900", icon: ShieldCheck },
-  "7": { gradient: "bg-gradient-to-br from-amber-500 to-orange-600", icon: HeartHandshake },
+// 카드별 상징 아이콘
+const CARD_ICONS: Record<string, React.ElementType> = {
+  "4": Brain,
+  "1": Droplets,
+  "2": Wind,
+  "3": Boxes,
+  "8": Sparkles,
+  "5": ShieldCheck,
+  "7": HeartHandshake,
 };
 
 // 실제 수집 데이터가 없을 때 사용할 기본 좋아요 수
@@ -97,11 +94,7 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
       <div className="grid grid-cols-2 gap-3">
         {ordered.map((feature, index) => {
           const isLarge = index === 0;
-          const style = CARD_STYLES[feature.id] ?? {
-            gradient: "bg-gradient-to-br from-red-400 to-red-600",
-            icon: Sparkles,
-          };
-          const Icon = style.icon;
+          const Icon = CARD_ICONS[feature.id] ?? Sparkles;
           return (
             <button
               key={feature.id}
@@ -110,33 +103,37 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
                 setActiveId(feature.id);
                 trackFeatureClick(productName || productId, feature.title);
               }}
-              className={`relative h-36 overflow-hidden rounded-[14px] ${style.gradient} text-left transition-transform duration-100 active:scale-[0.97] ${
+              className={`relative h-36 overflow-hidden rounded-[12px] bg-white text-left shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] transition-transform duration-100 active:scale-[0.97] ${
                 isLarge ? "col-span-2" : ""
               }`}
             >
               {/* 좌측 텍스트 영역 */}
-              <div className="relative z-10 flex h-full w-[70%] flex-col justify-center px-4 py-3">
+              <div className="relative z-10 flex h-full w-[65%] flex-col justify-center px-4 py-3">
                 {feature.tag && (
-                  <span className="mb-2 w-fit rounded-full bg-white/25 px-2 py-[3px] text-[12px] font-medium text-white">
+                  <span className="mb-2 w-fit rounded-full bg-[#FAECE7] px-2 py-[3px] text-[11px] font-semibold text-[#993C1D]">
                     {feature.tag}
                   </span>
                 )}
                 <h3
-                  className={`font-semibold text-white leading-tight ${
-                    isLarge ? "text-[22px]" : "text-[18px]"
+                  className={`font-semibold text-gray-900 leading-tight ${
+                    isLarge ? "text-[20px]" : "text-[16px]"
                   }`}
                 >
                   {feature.title}
                 </h3>
               </div>
 
-              {/* 우측 아이콘 실루엣 */}
-              <Icon
-                className={`absolute right-3 top-1/2 -translate-y-1/2 text-white opacity-90 ${
-                  isLarge ? "h-20 w-20" : "h-16 w-16"
+              {/* 우측 레드 포인트 아이콘 */}
+              <div
+                className={`absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full bg-[#FAECE7] ${
+                  isLarge ? "h-14 w-14" : "h-12 w-12"
                 }`}
-                strokeWidth={1.5}
-              />
+              >
+                <Icon
+                  className={`text-[#993C1D] ${isLarge ? "h-7 w-7" : "h-6 w-6"}`}
+                  strokeWidth={1.8}
+                />
+              </div>
 
               {/* 좋아요 */}
               <span
@@ -148,10 +145,10 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
                   if (e.key === "Enter" || e.key === " ")
                     handleLike(e as unknown as React.MouseEvent, feature);
                 }}
-                className="absolute right-3 top-3 z-10 inline-flex items-center gap-1 text-white"
+                className="absolute right-3 top-3 z-10 inline-flex items-center gap-1 text-gray-400"
               >
                 <Heart className="h-4 w-4" strokeWidth={2} />
-                <span className="text-[13px] font-medium tabular-nums">{likeCount(feature.id)}</span>
+                <span className="text-[13px] font-medium tabular-nums text-gray-500">{likeCount(feature.id)}</span>
               </span>
             </button>
           );
