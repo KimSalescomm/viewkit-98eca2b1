@@ -5,6 +5,7 @@ import SafeImage from "@/components/SafeImage";
 import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
 import OrientationToggle from "@/components/OrientationToggle";
 import BackButton from "@/components/BackButton";
+import VacuumFeatureGrid from "@/components/VacuumFeatureGrid";
 import { useContent } from "@/contexts/ContentContext";
 
 const Home = () => {
@@ -153,10 +154,17 @@ const Home = () => {
         {/* Features Section Title */}
         <div className={isSample ? "text-center mb-4 sm:mb-6" : "text-center mb-6 sm:mb-8"}>
           <p className="text-[11px] font-black tracking-[0.25em] uppercase text-gray-400 mb-2">FEATURES</p>
-          <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111111]">주요 특장점</h3>
+          <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111111]">
+            {isSample ? "특장점을 선택해보세요" : "주요 특장점"}
+          </h3>
         </div>
 
         {/* Features Grid */}
+        {isSample ? (
+          <div className="mb-10 sm:mb-12">
+            <VacuumFeatureGrid productId={productId || ""} productName={product.name} features={features} />
+          </div>
+        ) : (
         <div
           className={
             isSample
@@ -197,6 +205,7 @@ const Home = () => {
             );
           })}
         </div>
+        )}
 
         {/* Other Products Button */}
         <div className="text-center">
