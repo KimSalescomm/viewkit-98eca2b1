@@ -230,24 +230,24 @@ const ProductSelection = () => {
               const cardContent = (
                 <div
                   className="
-                    group relative flex h-[120px] flex-col overflow-hidden rounded-[20px] bg-white p-2
+                    group relative flex h-[144px] flex-col overflow-hidden rounded-[20px] bg-white p-2
                     border border-surface-border/60 shadow-sm transition-all duration-300
                     hover:-translate-y-1 hover:shadow-xl hover:border-brand/25
                   "
                 >
                   {/* 라인 아이콘 (연한 배경박스) */}
                   <div className="relative flex min-h-0 flex-1 items-center justify-center">
-                    <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-muted text-gray-600 transition-colors duration-300 group-hover:bg-brand-soft group-hover:text-brand">
+                    <div className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-muted text-gray-600 transition-colors duration-300 group-hover:bg-brand-soft group-hover:text-brand">
                       <ProductMockup
                         productId={product.id}
-                        className="h-8 w-8 sm:h-9 sm:w-9 shrink-0 transition-transform duration-300 group-hover:scale-105"
+                        className="h-9 w-9 sm:h-10 sm:w-10 shrink-0 transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
                   </div>
 
                   {/* 텍스트: 제품명 1줄 */}
                   <div className="flex items-center justify-center px-2 pt-2 pb-1">
-                    <h3 className="truncate text-[15px] sm:text-[17px] font-semibold leading-tight tracking-[-0.02em] text-gray-900">
+                    <h3 className="truncate text-[17px] sm:text-[19px] font-semibold leading-tight tracking-[-0.02em] text-gray-900">
                       {product.name}
                     </h3>
                   </div>
