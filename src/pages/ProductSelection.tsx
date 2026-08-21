@@ -140,7 +140,7 @@ const ProductSelection = () => {
   };
 
   return (
-    <main className="min-h-[100dvh] bg-white flex flex-col tracking-[-0.02em]">
+    <main className="min-h-[100dvh] bg-surface-muted flex flex-col tracking-[-0.02em]">
       <StoreSetupModal
         open={modalOpen}
         initialName={currentStore?.name}
