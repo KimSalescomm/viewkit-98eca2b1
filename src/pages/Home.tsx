@@ -87,13 +87,8 @@ const Home = () => {
 
 
         {/* Features Grid */}
-        <div
-          className={
-            isCompact
-              ? "grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 mb-6"
-              : "grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-12 sm:mb-16"
-          }
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-10 sm:mb-12">
+
           {features.map((feature, index) => {
             const isFitMax = productId === "refrigerator" && (feature.id === "11" || feature.id === "12");
 
