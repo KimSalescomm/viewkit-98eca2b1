@@ -463,6 +463,11 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
       sections.push(toRow(["판매 기록 총건수(전체 DB)", sales.length]));
       sections.push(toRow(["판매 기록 필터 결과 건수", filtered.length]));
       sections.push(toRow(["접속 통계 기간", rangeLabel]));
+      sections.push(toRow(["총 페이지뷰", visitStats.reduce((a, s2) => a + s2.views, 0)]));
+      sections.push(toRow(["총 방문(세션)", visitStats.reduce((a, s2) => a + s2.visits, 0)]));
+      sections.push(
+        toRow([`총 방문(보정, 일 최대 ${DAILY_VISIT_CAP})`, visitStats.reduce((a, s2) => a + s2.visitsCapped, 0)]),
+      );
       sections.push("");
 
       sections.push(toRow([`[1] 지점별 접속 통계 (기간: ${rangeLabel})`]));
