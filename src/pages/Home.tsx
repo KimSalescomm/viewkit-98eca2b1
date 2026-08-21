@@ -5,6 +5,7 @@ import SafeImage from "@/components/SafeImage";
 import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
 import OrientationToggle from "@/components/OrientationToggle";
 import BackButton from "@/components/BackButton";
+import ProductBentoDetail from "@/components/ProductBentoDetail";
 import { useContent } from "@/contexts/ContentContext";
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
 
   const product = getProductById(productId || "");
   const features = getFeaturesByProductId(productId || "");
+
 
   // 노출 설정에서 제외된 제품은 지점 계정에서 직접 URL 접근도 차단
   if (!product || !isProductVisible(productId || "")) {
