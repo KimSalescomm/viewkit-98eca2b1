@@ -79,14 +79,13 @@ const Vacuum = (p: Props) => (
   </Svg>
 );
 
-/** 에어컨 — 사각 타워형 스탠드 + 벽걸이 */
+/** 에어컨 — 사각 타워형 스탠드 */
 const AirConditioner = (p: Props) => (
   <Svg {...p}>
-    <rect x="18" y="14" width="24" height="74" rx="4" />
-    <circle cx="30" cy="32" r="6" />
-    <line x1="24" y1="56" x2="36" y2="56" />
-    <rect x="56" y="34" width="30" height="14" rx="4" />
-    <line x1="60" y1="56" x2="82" y2="56" />
+    <rect x="28" y="12" width="28" height="76" rx="4" />
+    <circle cx="42" cy="30" r="6" />
+    <line x1="36" y1="52" x2="48" y2="52" />
+    <line x1="36" y1="60" x2="48" y2="60" />
   </Svg>
 );
 
