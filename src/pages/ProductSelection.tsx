@@ -215,15 +215,15 @@ const ProductSelection = () => {
       <PopularContentSlider days={30} limit={5} />
 
       {/* Product Grid */}
-      <section className="flex-1 min-h-0 px-6 sm:px-10 pb-6 sm:pb-8 flex flex-col">
+      <section className="flex-1 min-h-0 px-6 sm:px-10 pb-5 sm:pb-6 flex flex-col">
         <div className="max-w-6xl mx-auto w-full flex flex-col h-full">
-          <div className="flex items-center justify-between mb-4 sm:mb-5 shrink-0">
-            <h2 className="text-lg sm:text-xl font-semibold text-gray-900 tracking-tight">제품별 특장점</h2>
-            <span className="text-xs sm:text-sm text-gray-400 font-normal">총 {visibleProducts.length}개 제품</span>
+          <div className="flex items-center justify-between mb-3 sm:mb-4 shrink-0">
+            <h2 className="text-base sm:text-lg font-semibold text-gray-900 tracking-tight">제품별 특장점</h2>
+            <span className="text-[11px] sm:text-xs text-gray-400 font-normal">총 {visibleProducts.length}개 제품</span>
           </div>
 
-          <div className="flex-1 min-h-0 overflow-y-auto nb">
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 pb-4">
+          <div className="flex-1 min-h-0">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 h-full content-start">
               {visibleProducts.map((product, index) => {
                 const cardContent = (
                   <div
