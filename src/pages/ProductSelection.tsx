@@ -312,7 +312,7 @@ const ProductSelection = () => {
                       loading={index < 6 ? "eager" : "lazy"}
                       fetchPriority={index < 6 ? "high" : undefined}
                       decoding="async"
-                      className="h-full w-full object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+                      className={`h-full w-full object-contain transition-transform duration-500 group-hover:scale-105 ${imagePaddingMap[product.id] || "p-4 sm:p-5"}`}
                     />
                     <div className="absolute left-2 top-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white/85 text-brand-accent shadow-sm backdrop-blur-sm">
                       <ProductLucideIcon name={product.icon} className="h-4 w-4" />
