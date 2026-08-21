@@ -229,20 +229,19 @@ const ProductSelection = () => {
               const cardContent = (
                 <div
                   className="
-                    group relative flex h-[104px] sm:h-[136px] flex-col overflow-hidden rounded-[20px] bg-white p-1.5 sm:p-2
+                    group relative flex h-[120px] flex-col overflow-hidden rounded-[20px] bg-white p-2
                     ring-1 ring-gray-100 transition-all duration-300
-                    shadow-[0_6px_20px_-14px_rgba(0,0,0,0.14)]
-                    hover:-translate-y-1 hover:ring-brand-accent/25 hover:shadow-[0_18px_38px_-16px_rgba(0,0,0,0.18)]
+                    hover:-translate-y-1 hover:ring-brand-accent/25
                   "
                 >
-                  {/* 통일된 배경박스 + 미니 목업 (박스 대비 세로 65%) */}
-                  <div className="relative flex flex-1 items-center justify-center overflow-hidden rounded-[14px] bg-[#F5F4F0]">
-                    <div className="pointer-events-none absolute inset-x-[38%] bottom-2 h-1.5 rounded-full bg-black/5 blur-[3px]" />
+                  {/* 라인 아이콘 (배경박스 없음) */}
+                  <div className="relative flex flex-1 items-center justify-center">
                     <ProductMockup
                       productId={product.id}
-                      className="relative h-[70%] w-auto transition-transform duration-500 group-hover:scale-[1.06]"
+                      className="h-[56%] w-auto text-gray-700 transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
+
 
                   {/* 텍스트: 제품명 1줄 */}
                   <div className="flex items-center justify-center px-2 pt-2 pb-1">
