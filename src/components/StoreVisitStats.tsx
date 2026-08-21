@@ -59,6 +59,15 @@ const getSince = (key: RangeKey): string | null => {
   return d.toISOString();
 };
 
+// 매장당 1일 방문(세션) 인정 상한
+const DAILY_VISIT_CAP = 20;
+
+// created_at(UTC ISO) → KST 기준 날짜 키(yyyy-MM-dd)
+const kstDayKey = (iso: string): string =>
+  new Date(new Date(iso).getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+
+
+
 const StoreVisitStats = () => {
   const [range, setRange] = useState<RangeKey>("7d");
   const [category, setCategory] = useState<CategoryKey>("all");
@@ -156,16 +165,27 @@ const StoreVisitStats = () => {
   const stats = useMemo(() => {
     const map = new Map<
       string,
-      { store_id: string; store_name: string; views: number; sessions: Set<string>; lastAt: string }
+      {
+        store_id: string;
+        store_name: string;
+        views: number;
+        sessions: Set<string>;
+        // 날짜(KST) → 해당 일자의 고유 세션 집합 (일일 상한 보정용)
+        daily: Map<string, Set<string>>;
+        lastAt: string;
+      }
     >();
     filteredRows.forEach((r) => {
       const key = r.store_id;
       // 정식 명칭은 코드 매핑이 우선 (DB의 store_name 불일치 보정)
       const canonicalName = CODE_TO_NAME[r.store_id] || r.store_name || r.store_id;
+      const day = kstDayKey(r.created_at);
       const cur = map.get(key);
       if (cur) {
         cur.views += 1;
         cur.sessions.add(r.session_id);
+        if (!cur.daily.has(day)) cur.daily.set(day, new Set());
+        cur.daily.get(day)!.add(r.session_id);
         if (r.created_at > cur.lastAt) cur.lastAt = r.created_at;
         cur.store_name = canonicalName;
       } else {
@@ -174,6 +194,7 @@ const StoreVisitStats = () => {
           store_name: canonicalName,
           views: 1,
           sessions: new Set([r.session_id]),
+          daily: new Map([[day, new Set([r.session_id])]]),
           lastAt: r.created_at,
         });
       }
@@ -184,6 +205,11 @@ const StoreVisitStats = () => {
         store_name: v.store_name,
         views: v.views,
         visits: v.sessions.size,
+        // 매장당 하루 최대 DAILY_VISIT_CAP회까지만 인정한 보정 방문 수
+        visitsCapped: [...v.daily.values()].reduce(
+          (sum, set) => sum + Math.min(set.size, DAILY_VISIT_CAP),
+          0,
+        ),
         lastAt: v.lastAt,
       }))
       .sort((a, b) => b.views - a.views);
@@ -194,6 +220,7 @@ const StoreVisitStats = () => {
     return {
       views: filteredRows.length,
       visits: sessions.size,
+      visitsCapped: stats.reduce((sum, s) => sum + s.visitsCapped, 0),
       stores: stats.length,
     };
   }, [filteredRows, stats]);
@@ -203,7 +230,16 @@ const StoreVisitStats = () => {
     const categoryLabel = CATEGORIES.find((c) => c.key === category)?.label || category;
     const catToLabel = (c: StoreCategory) =>
       c === "specialty" ? "전문점" : c === "hiplaza" ? "하이프라자" : "미분류";
-    const header = ["순위", "구분", "지점", "코드", "페이지뷰", "방문(세션)", "최근 접속"];
+    const header = [
+      "순위",
+      "구분",
+      "지점",
+      "코드",
+      "페이지뷰",
+      "방문(세션)",
+      `방문(보정, 일 최대 ${DAILY_VISIT_CAP})`,
+      "최근 접속",
+    ];
     const lines = stats.map((s, i) => [
       i + 1,
       catToLabel(getCategoryByCode(s.store_id)),
@@ -211,6 +247,7 @@ const StoreVisitStats = () => {
       s.store_id,
       s.views,
       s.visits,
+      s.visitsCapped,
       format(new Date(s.lastAt), "yyyy-MM-dd HH:mm:ss", { locale: ko }),
     ]);
     const summary = [
@@ -218,6 +255,7 @@ const StoreVisitStats = () => {
       ["필터", categoryLabel],
       ["총 페이지뷰", totals.views],
       ["총 방문(세션)", totals.visits],
+      [`총 방문(보정, 일 최대 ${DAILY_VISIT_CAP})`, totals.visitsCapped],
       ["활성 지점", totals.stores],
       [],
       header,
@@ -315,7 +353,7 @@ const StoreVisitStats = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-3 mb-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
         <div className="rounded-xl bg-slate-50/70 px-4 py-3">
           <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mb-1">
             <Eye className="w-3 h-3" /> 총 페이지뷰
@@ -327,6 +365,15 @@ const StoreVisitStats = () => {
             <Users className="w-3 h-3" /> 총 방문(세션)
           </div>
           <div className="text-xl font-bold text-slate-900 tabular-nums">{totals.visits.toLocaleString()}</div>
+        </div>
+        <div className="rounded-xl bg-violet-50/70 px-4 py-3">
+          <div className="flex items-center gap-1.5 text-[11px] text-violet-600 mb-1">
+            <Users className="w-3 h-3" /> 방문(보정)
+          </div>
+          <div className="text-xl font-bold text-violet-700 tabular-nums">
+            {totals.visitsCapped.toLocaleString()}
+          </div>
+          <div className="text-[10px] text-violet-500 mt-0.5">지점당 1일 최대 {DAILY_VISIT_CAP}회</div>
         </div>
         <div className="rounded-xl bg-slate-50/70 px-4 py-3">
           <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mb-1">
@@ -351,6 +398,7 @@ const StoreVisitStats = () => {
                 <th className="py-2 pr-4 font-medium">코드</th>
                 <th className="py-2 pr-4 font-medium text-right">페이지뷰</th>
                 <th className="py-2 pr-4 font-medium text-right">방문</th>
+                <th className="py-2 pr-4 font-medium text-right text-violet-500">방문(보정)</th>
                 <th className="py-2 pr-2 font-medium">최근 접속</th>
               </tr>
             </thead>
@@ -376,6 +424,9 @@ const StoreVisitStats = () => {
                       </div>
                     </td>
                     <td className="py-2.5 pr-4 text-right tabular-nums text-slate-600">{s.visits}</td>
+                    <td className="py-2.5 pr-4 text-right tabular-nums font-semibold text-violet-600">
+                      {s.visitsCapped}
+                    </td>
                     <td className="py-2.5 pr-2 text-xs tabular-nums text-slate-400">
                       {format(new Date(s.lastAt), "MM.dd HH:mm", { locale: ko })}
                     </td>
