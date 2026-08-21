@@ -91,42 +91,42 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
   if (visibleItems.length < 3) return null;
 
   return (
-    <section className="bg-[#F3F4F6] px-6 sm:px-10 py-10 sm:py-12 shrink-0">
+    <section className="bg-[#F3F4F6] px-6 sm:px-10 py-6 sm:py-8 shrink-0">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-end justify-between mb-6 sm:mb-8">
-          <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 tracking-tight">요즘 많이 본 콘텐츠</h2>
-          <div className="flex items-center gap-2">
+        <div className="flex items-end justify-between mb-4 sm:mb-5">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-900 tracking-tight">요즘 많이 본 콘텐츠</h2>
+          <div className="flex items-center gap-1.5">
             <button
               type="button"
               onClick={scrollPrev}
               disabled={!canScrollPrev}
-              className="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-700 disabled:text-gray-300 hover:bg-gray-50 transition-colors"
+              className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-700 disabled:text-gray-300 hover:bg-gray-50 transition-colors"
               aria-label="이전"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               type="button"
               onClick={scrollNext}
               disabled={!canScrollNext}
-              className="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-700 disabled:text-gray-300 hover:bg-gray-50 transition-colors"
+              className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-700 disabled:text-gray-300 hover:bg-gray-50 transition-colors"
               aria-label="다음"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
 
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-4 sm:gap-6">
+          <div className="flex gap-3 sm:gap-4">
             {visibleItems.map((item, index) => (
               <Link
                 key={item.path}
                 to={item.product.id === "subscription" ? "/subscription" : `/product/${item.product.id}/feature/${item.feature.id}`}
                 onClick={() => trackProductClick(item.product.name)}
-                className="flex-[0_0_calc(33.333%-1rem)] sm:flex-[0_0_calc(33.333%-1.5rem)] min-w-0 group"
+                className="flex-[0_0_calc(33.333%-0.75rem)] sm:flex-[0_0_calc(33.333%-1rem)] min-w-0 group"
               >
-                <div className="relative h-48 sm:h-64 rounded-3xl overflow-hidden bg-gray-800 shadow-sm">
+                <div className="relative h-36 sm:h-48 rounded-2xl sm:rounded-3xl overflow-hidden bg-gray-800 shadow-sm">
                   <SafeImage
                     src={item.thumbnail}
                     alt={`${item.product.name} ${item.feature.title}`}
@@ -134,12 +134,12 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                     loading={index < 3 ? "eager" : "lazy"}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
-                  <div className="absolute top-4 left-4 w-8 h-8 rounded-xl bg-brand-accent text-white text-sm font-semibold flex items-center justify-center shadow-sm">
+                  <div className="absolute top-3 left-3 w-7 h-7 rounded-lg bg-brand-accent text-white text-xs font-semibold flex items-center justify-center shadow-sm">
                     {index + 1}
                   </div>
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <p className="text-brand-accent text-xs sm:text-sm font-medium mb-1">{item.product.name}</p>
-                    <h3 className="text-white text-base sm:text-lg font-semibold leading-snug line-clamp-2">
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <p className="text-brand-accent text-[11px] sm:text-xs font-medium mb-0.5">{item.product.name}</p>
+                    <h3 className="text-white text-sm sm:text-base font-semibold leading-snug line-clamp-2">
                       {item.feature.title}
                     </h3>
                   </div>
@@ -150,11 +150,11 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
         </div>
 
         {visibleItems.length > 3 && (
-          <div className="flex justify-center gap-2 mt-5">
+          <div className="flex justify-center gap-1.5 mt-3">
             {visibleItems.map((_, index) => (
               <span
                 key={index}
-                className={`w-2 h-2 rounded-full transition-colors ${
+                className={`w-1.5 h-1.5 rounded-full transition-colors ${
                   index === selectedIndex ? "bg-brand-accent" : "bg-gray-300"
                 }`}
               />
