@@ -274,7 +274,7 @@ const SalesCertBadge = () => {
                     }}
                   >
                     <SelectTrigger className={fieldClass}>
-                      <SelectValue placeholder="제품을 선택하세요" />
+                      <SelectValue placeholder="제품을 선택해보세요" />
                     </SelectTrigger>
                     <SelectContent className="bg-white border border-slate-200 rounded-xl text-slate-800">
                       {PRODUCT_OPTIONS.map((p) => (
