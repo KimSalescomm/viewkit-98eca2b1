@@ -14,8 +14,11 @@ import {
   UtensilsCrossed,
   Droplets,
   BookOpen,
+  Menu,
   type LucideIcon,
 } from "lucide-react";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+
 
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import OrientationToggle from "@/components/OrientationToggle";
