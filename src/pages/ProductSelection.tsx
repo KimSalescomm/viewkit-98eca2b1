@@ -235,12 +235,13 @@ const ProductSelection = () => {
                   "
                 >
                   {/* 라인 아이콘 (배경박스 없음) */}
-                  <div className="relative flex flex-1 items-center justify-center">
+                  <div className="relative flex min-h-0 flex-1 items-center justify-center">
                     <ProductMockup
                       productId={product.id}
-                      className="h-[56%] w-auto text-gray-700 transition-transform duration-300 group-hover:scale-105"
+                      className="h-10 w-10 shrink-0 text-gray-700 transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
+
 
 
                   {/* 텍스트: 제품명 1줄 */}
