@@ -237,10 +237,10 @@ const ProductSelection = () => {
                 >
                   {/* 통일된 배경박스 + 미니 목업 (박스 대비 세로 65%) */}
                   <div className="relative flex flex-1 items-center justify-center overflow-hidden rounded-[14px] bg-[#F5F4F0]">
-                    <div className="pointer-events-none absolute inset-x-3 bottom-2 h-2 rounded-full bg-black/5 blur-[3px]" />
+                    <div className="pointer-events-none absolute inset-x-[38%] bottom-2 h-1.5 rounded-full bg-black/5 blur-[3px]" />
                     <ProductMockup
                       productId={product.id}
-                      className="relative h-[65%] w-auto transition-transform duration-500 group-hover:scale-[1.06]"
+                      className="relative h-[70%] w-auto transition-transform duration-500 group-hover:scale-[1.06]"
                     />
                   </div>
 
