@@ -225,7 +225,7 @@ const ProductSelection = () => {
           </div>
 
           <div className="flex-1 min-h-0">
-            <div className="grid grid-cols-4 xl:grid-cols-6 gap-2.5 sm:gap-3">
+            <div className="grid grid-cols-4 2xl:grid-cols-6 gap-2.5 sm:gap-3">
               {visibleProducts.map((product, index) => {
                 const cardContent = (
                   <div
