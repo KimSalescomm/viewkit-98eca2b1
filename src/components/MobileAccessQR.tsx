@@ -5,10 +5,11 @@ import { QrCode, Smartphone, X, Copy, Check } from "lucide-react";
 
 interface MobileAccessQRProps {
   storeSlug?: string;
-  variant?: "pill" | "segment";
+  variant?: "pill" | "segment" | "simple";
+  onClick?: () => void;
 }
 
-const MobileAccessQR = ({ storeSlug, variant = "pill" }: MobileAccessQRProps) => {
+const MobileAccessQR = ({ storeSlug, variant = "pill", onClick }: MobileAccessQRProps) => {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -35,20 +36,28 @@ const MobileAccessQR = ({ storeSlug, variant = "pill" }: MobileAccessQRProps) =>
     }
   };
 
+  const handleOpen = () => {
+    setOpen(true);
+    onClick?.();
+  };
+
   return (
     <>
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={handleOpen}
         className={
           variant === "segment"
             ? "inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+            : variant === "simple"
+            ? "inline-flex w-full items-center gap-3 rounded-xl px-4 py-3 text-[16px] font-medium text-gray-800 hover:bg-gray-50 transition-colors"
             : "inline-flex h-8 items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 hover:border-brand hover:text-brand transition-colors shadow-sm"
         }
         title="모바일에서 보기"
       >
-        <QrCode className="w-3.5 h-3.5" />
-        <span>모바일에서 보기</span>
+        <QrCode className={variant === "simple" ? "w-5 h-5 text-gray-500" : "w-3.5 h-3.5"} />
+        {variant !== "simple" && <span>모바일에서 보기</span>}
+        {variant === "simple" && <span>모바일에서 보기</span>}
       </button>
 
       {open && typeof document !== "undefined" && createPortal(
