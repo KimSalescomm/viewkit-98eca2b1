@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useContent } from "@/contexts/ContentContext";
-import SafeImage from "@/components/SafeImage";
 import {
   Store,
   Tv,
@@ -19,8 +18,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-
-
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import OrientationToggle from "@/components/OrientationToggle";
 import StoreSetupModal from "@/components/StoreSetupModal";
@@ -28,7 +25,6 @@ import MobileAccessQR from "@/components/MobileAccessQR";
 import ContentRequestButton from "@/components/ContentRequestButton";
 import { PopularContentSlider } from "@/components/PopularContentSlider";
 import { getCurrentStore, registerStore, getRegistry } from "@/utils/storeId";
-import washcomboCardImage from "@/assets/washcombo-card-lifestyle.jpg";
 
 // webOS(StandByMe) 등 컬러 이모지 폰트가 없는 환경에서 아이콘이 검정으로 보이는 이슈 방지
 // → 모든 카드 아이콘을 Lucide SVG 컴포넌트로 렌더링
