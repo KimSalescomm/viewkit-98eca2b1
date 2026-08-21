@@ -160,11 +160,12 @@ const ProductBentoDetail = ({ product, features }: ProductBentoDetailProps) => {
                 key={feature.id}
                 type="button"
                 onClick={() => setSelectedId(feature.id)}
-                className="flex h-full min-h-0 flex-col items-start gap-2 rounded-[12px] bg-white p-3 text-left transition-transform active:scale-[0.99]"
+                className="flex h-full min-h-0 flex-col items-center justify-center gap-3 rounded-[12px] bg-white p-3 text-center transition-transform active:scale-[0.99]"
                 style={{ boxShadow: TILE_SHADOW }}
               >
                 {iconBox(feature.icon, 36, "h-[44px] w-[44px]")}
-                <h3 className="line-clamp-3 whitespace-pre-line text-[13px] font-semibold leading-snug text-gray-900">
+                <h3 className="line-clamp-3 whitespace-pre-line text-[14px] font-semibold leading-snug text-gray-900">
+
                   {feature.title}
                 </h3>
               </button>
