@@ -12,6 +12,11 @@ interface PopularContentSliderProps {
   limit?: number;
 }
 
+// 요즘 많이 본 콘텐츠 썸네일: 특정 콘텐츠의 대표 이미지를 강제로 교체
+const THUMBNAIL_OVERRIDES: Record<string, string> = {
+  "/product/vacuum/feature/1": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/gallery/medium01.jpg",
+};
+
 export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSliderProps) => {
   const { items, loading } = usePopularFeatures({ days, limit });
   const { getProductById, getFeatureById, isProductVisible } = useContent();
