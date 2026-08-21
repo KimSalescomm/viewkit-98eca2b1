@@ -4,15 +4,16 @@ import FeatureLikeButton from "@/components/FeatureLikeButton";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 
 const cardColors = [
-  { gradient: "from-blue-500 to-cyan-400" },
-  { gradient: "from-purple-500 to-pink-400" },
-  { gradient: "from-emerald-500 to-teal-400" },
-  { gradient: "from-orange-500 to-amber-400" },
-  { gradient: "from-rose-500 to-red-400" },
-  { gradient: "from-indigo-500 to-violet-400" },
-  { gradient: "from-sky-500 to-blue-400" },
-  { gradient: "from-fuchsia-500 to-purple-400" },
+  { gradient: "from-brand to-brand-accent" },
+  { gradient: "from-brand-accent to-brand" },
+  { gradient: "from-brand to-brand/70" },
+  { gradient: "from-brand-accent to-brand-accent/70" },
+  { gradient: "from-brand/90 to-brand-accent/80" },
+  { gradient: "from-brand-accent/90 to-brand/80" },
+  { gradient: "from-brand to-brand-accent/60" },
+  { gradient: "from-brand-accent to-brand/60" },
 ];
+
 
 interface FeatureCardProps {
   id: string;
@@ -96,7 +97,7 @@ const FeatureCard = ({
       onClick={() => trackFeatureClick(productName || productId, title)}
       className={`relative block ${bgClass} border shadow-md hover:shadow-xl transition-all duration-300
         rounded-2xl
-        sm:p-6 sm:text-center sm:hover:scale-[1.03]
+        sm:h-[144px] sm:p-4 sm:text-center sm:hover:scale-[1.02]
         max-sm:px-4 max-sm:py-3.5 max-sm:active:scale-[0.99]`}
     >
       {/* Mobile layout: horizontal list with icon */}
@@ -123,28 +124,29 @@ const FeatureCard = ({
         </div>
       </div>
 
-      {/* Desktop / tablet layout: square card */}
-      <div className="hidden sm:block">
-        <div className="absolute top-4 right-4 z-10">
+      {/* Desktop / tablet layout: square card, fixed 144px height */}
+      <div className="hidden sm:flex h-full flex-col items-center justify-center">
+        <div className="absolute top-3 right-3 z-10">
           {likeButton("desktop")}
         </div>
-        <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br ${color.gradient} flex items-center justify-center mx-auto mb-3 sm:mb-4`}>
-          <FeatureIcon iconKey={icon} className="text-white w-7 h-7 sm:w-9 sm:h-9" />
+        <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${color.gradient} flex items-center justify-center mb-1.5`}>
+          <FeatureIcon iconKey={icon} className="text-white w-6 h-6" />
         </div>
         {tag && (
-          <span className="inline-block bg-brand-soft text-brand text-sm font-bold px-2.5 py-1 rounded-lg mb-2 sm:mb-3">
+          <span className="inline-block bg-brand-soft text-brand text-[11px] font-bold px-2 py-0.5 rounded-md mb-1">
             {tag}
           </span>
         )}
-        <h3 className="text-base sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2 whitespace-pre-line">
+        <h3 className="text-[15px] font-bold text-gray-900 leading-snug whitespace-pre-line line-clamp-2">
           {title}
         </h3>
-        <p className="text-xs sm:text-sm text-gray-500 whitespace-pre-line leading-relaxed">
+        <p className="text-[12px] text-gray-500 whitespace-pre-line leading-snug line-clamp-1 mt-0.5">
           {subtitle}
         </p>
       </div>
     </Link>
   );
+
 };
 
 export default FeatureCard;
