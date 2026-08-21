@@ -52,31 +52,19 @@ const Home = () => {
 
         {isSample ? (
           <>
-            {/* Hero: 제품 누끼컷 + 깨끗한 카드형 프레임 */}
+            {/* Hero: 제품명 중앙 강조 */}
             <div
-              className="relative overflow-hidden rounded-[14px] h-[20vh] min-h-[140px] max-h-[220px] mb-5 sm:mb-6 bg-[#F5F4F0] shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] flex items-center justify-between px-4 sm:px-6 py-3"
+              className="relative overflow-hidden rounded-[14px] h-[20vh] min-h-[140px] max-h-[220px] mb-5 sm:mb-6 bg-[#F5F4F0] shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] flex flex-col items-center justify-center text-center px-4 sm:px-6 py-3"
             >
-              <div className="flex h-full w-[52%] items-center justify-center">
-                <SafeImage
-                  src="https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/gallery/medium01.jpg"
-                  alt={`LG ${product.name} 제품 이미지`}
-                  loading="eager"
-                  fetchPriority="high"
-                  decoding="async"
-                  className="h-[60%] sm:h-[70%] w-auto object-contain"
-                />
-              </div>
-              <div className="flex h-full w-[48%] flex-col justify-center pr-1">
-                <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-brand mb-1">
-                  VIEW KIT · {product.name}
-                </p>
-                <h1 className="text-[20px] sm:text-[22px] font-medium leading-tight text-[#111111]">
-                  {product.title}
-                </h1>
-                <p className="mt-1 text-[13px] leading-snug text-gray-500 line-clamp-2">
-                  {product.description}
-                </p>
-              </div>
+              <p className="text-[11px] sm:text-[12px] font-bold tracking-[0.18em] uppercase text-brand mb-2">
+                VIEW KIT · {product.name}
+              </p>
+              <h1 className="text-[28px] sm:text-[36px] font-medium leading-tight text-[#111111]">
+                {product.title}
+              </h1>
+              <p className="mt-1 text-[13px] sm:text-[14px] leading-snug text-gray-500 max-w-md">
+                {product.description}
+              </p>
             </div>
 
             {/* 키비주얼 영상 (있는 경우) */}
@@ -155,7 +143,7 @@ const Home = () => {
         {/* Features Section Title */}
         <div className={isSample ? "text-center mb-4 sm:mb-6" : "text-center mb-6 sm:mb-8"}>
           <p className="text-[11px] font-black tracking-[0.25em] uppercase text-gray-400 mb-2">FEATURES</p>
-          <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111111]">
+          <h3 className="text-[20px] sm:text-[24px] font-semibold text-gray-900 tracking-[-0.02em] leading-tight">
             {isSample ? "특장점을 선택해보세요" : "주요 특장점"}
           </h3>
         </div>
