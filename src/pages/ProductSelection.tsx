@@ -24,6 +24,7 @@ import StoreSetupModal from "@/components/StoreSetupModal";
 import MobileAccessQR from "@/components/MobileAccessQR";
 import ContentRequestButton from "@/components/ContentRequestButton";
 import { PopularContentSlider } from "@/components/PopularContentSlider";
+import ProductMockup from "@/components/ProductMockup";
 import { getCurrentStore, registerStore, getRegistry } from "@/utils/storeId";
 
 // webOS(StandByMe) 등 컬러 이모지 폰트가 없는 환경에서 아이콘이 검정으로 보이는 이슈 방지
