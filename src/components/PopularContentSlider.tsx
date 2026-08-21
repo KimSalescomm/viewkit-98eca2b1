@@ -99,7 +99,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
 
               HOT
             </span>
-            <h2 className="text-base sm:text-lg font-semibold text-white tracking-tight">요즘 많이 본 콘텐츠</h2>
+            <h2 className="text-[24px] sm:text-[26px] font-semibold text-white tracking-tight">요즘 많이 본 콘텐츠</h2>
           </div>
           <div className="flex items-center gap-1.5">
             <button
