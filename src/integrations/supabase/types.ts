@@ -199,7 +199,13 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_popular_features: {
+        Args: { days_back?: number; limit_count?: number }
+        Returns: {
+          path: string
+          views: number
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
