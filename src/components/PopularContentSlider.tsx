@@ -98,36 +98,37 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
   if (visibleItems.length < 3) return null;
 
   return (
-    <section className="bg-gray-900 px-5 sm:px-10 py-10 sm:py-12">
+    <section className="bg-gray-900 px-5 sm:px-10 py-6 sm:py-8">
       <div className="max-w-5xl mx-auto">
-        <div className="flex items-end justify-between mb-5">
+        <div className="flex items-end justify-between mb-4">
           <div className="flex items-center gap-2.5">
             <span className="inline-flex items-center rounded-full bg-brand-accent px-3 py-1 text-[13px] font-semibold text-white tracking-wide">
-
               HOT
             </span>
-            <h2 className="text-[24px] sm:text-[26px] font-semibold text-white tracking-tight">요즘 많이 본 콘텐츠</h2>
+            <h2 className="text-[20px] sm:text-[24px] font-semibold text-white tracking-tight">요즘 많이 본 콘텐츠</h2>
           </div>
-          <div className="flex items-center gap-1.5">
-            <button
-              type="button"
-              onClick={scrollPrev}
-              disabled={!canScrollPrev}
-              className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white disabled:text-white/30 hover:bg-white/20 transition-colors"
-              aria-label="이전"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              type="button"
-              onClick={scrollNext}
-              disabled={!canScrollNext}
-              className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white disabled:text-white/30 hover:bg-white/20 transition-colors"
-              aria-label="다음"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
+          {visibleItems.length > 3 && (
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={scrollPrev}
+                disabled={!canScrollPrev}
+                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white disabled:text-white/30 hover:bg-white/20 transition-colors"
+                aria-label="이전"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={scrollNext}
+                disabled={!canScrollNext}
+                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white disabled:text-white/30 hover:bg-white/20 transition-colors"
+                aria-label="다음"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="overflow-hidden" ref={emblaRef}>
