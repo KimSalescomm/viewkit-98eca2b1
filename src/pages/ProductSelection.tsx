@@ -224,22 +224,20 @@ const ProductSelection = () => {
             <span className="text-[11px] sm:text-xs text-gray-400 font-normal">총 {visibleProducts.length}개 제품</span>
           </div>
 
-          <div className="flex-1 min-h-0 overflow-y-auto">
-            <div className="grid grid-cols-2 lg:grid-cols-3 grid-rows-5 lg:grid-rows-4 gap-2.5 sm:gap-3 h-full min-h-[420px]">
-
-
+          <div className="flex-1 min-h-0">
+            <div className="grid grid-cols-4 2xl:grid-cols-6 gap-2.5 sm:gap-3">
               {visibleProducts.map((product, index) => {
                 const cardContent = (
                   <div
                     className={`
-                      group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-100
+                      group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-100
                       transition-all duration-500
                       shadow-[0_6px_20px_-10px_rgba(0,0,0,0.08)]
                       hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.12)]
-                      h-full flex flex-col
+                      aspect-square
                     `}
                   >
-                    <div className="relative flex-1 min-h-0 bg-gray-100 overflow-hidden">
+                    <div className="absolute inset-0 bg-gray-100 overflow-hidden">
                       {product.id === "vacuum" && product.secondaryKeyVisualImage ? (
                         <div className="grid grid-cols-2 h-full w-full">
                           <SafeImage
@@ -275,17 +273,19 @@ const ProductSelection = () => {
                       )}
                     </div>
 
-                    <div className="p-3 sm:p-4 flex items-center gap-2.5 sm:gap-3 shrink-0">
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 rounded-lg sm:rounded-xl bg-gray-100 text-gray-600 flex items-center justify-center">
-                        <ProductLucideIcon name={product.icon} className="w-4 h-4 sm:w-5 sm:h-5" />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <h3 className="text-sm sm:text-base font-semibold tracking-tight leading-tight text-gray-900">
-                          {product.name}
-                        </h3>
-                        <p className="text-[11px] sm:text-xs leading-relaxed font-normal text-gray-500 line-clamp-1 sm:line-clamp-2">
-                          {product.description}
-                        </p>
+                    <div className="absolute inset-x-0 bottom-0 p-2.5 sm:p-3 bg-gradient-to-t from-black/70 via-black/35 to-transparent">
+                      <div className="flex items-end gap-2">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-lg bg-white/20 backdrop-blur-sm text-white flex items-center justify-center">
+                          <ProductLucideIcon name={product.icon} className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                        </div>
+                        <div className="min-w-0 flex-1 pb-0.5">
+                          <h3 className="text-sm sm:text-[15px] font-semibold tracking-tight leading-tight text-white">
+                            {product.name}
+                          </h3>
+                          <p className="text-[11px] sm:text-xs leading-relaxed font-normal text-white/80 line-clamp-1">
+                            {product.description}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
