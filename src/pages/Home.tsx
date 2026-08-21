@@ -35,6 +35,11 @@ const Home = () => {
     );
   }
 
+  // 청소로봇: 스탠바이미2 세로형 한 화면 벤토 레이아웃
+  if (isCompact) {
+    return <ProductBentoDetail product={product} features={features} />;
+  }
+
 
   return (
     <main
