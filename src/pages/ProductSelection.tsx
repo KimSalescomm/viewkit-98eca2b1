@@ -230,11 +230,12 @@ const ProductSelection = () => {
                     className={`
                       group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-100
                       transition-all duration-500
-                      shadow-[0_8px_30px_-12px_rgba(0,0,0,0.08)]
-                      hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)]
+                      shadow-[0_6px_20px_-10px_rgba(0,0,0,0.08)]
+                      hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.12)]
+                      h-full flex flex-col
                     `}
                   >
-                    <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
+                    <div className="relative flex-1 min-h-0 bg-gray-100 overflow-hidden">
                       {product.id === "vacuum" && product.secondaryKeyVisualImage ? (
                         <div className="grid grid-cols-2 h-full w-full">
                           <SafeImage
