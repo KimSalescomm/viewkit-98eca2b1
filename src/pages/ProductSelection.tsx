@@ -140,7 +140,7 @@ const ProductSelection = () => {
   };
 
   return (
-    <main className="min-h-[100dvh] bg-white flex flex-col tracking-[-0.02em]">
+    <main className="min-h-[100dvh] bg-surface-muted flex flex-col tracking-[-0.02em]">
       <StoreSetupModal
         open={modalOpen}
         initialName={currentStore?.name}
@@ -231,19 +231,19 @@ const ProductSelection = () => {
                 <div
                   className="
                     group relative flex h-[120px] flex-col overflow-hidden rounded-[20px] bg-white p-2
-                    ring-1 ring-gray-100 transition-all duration-300
-                    hover:-translate-y-1 hover:ring-brand-accent/25
+                    border border-surface-border/60 shadow-sm transition-all duration-300
+                    hover:-translate-y-1 hover:shadow-xl hover:border-brand/25
                   "
                 >
-                  {/* 라인 아이콘 (배경박스 없음) */}
+                  {/* 라인 아이콘 (연한 배경박스) */}
                   <div className="relative flex min-h-0 flex-1 items-center justify-center">
-                    <ProductMockup
-                      productId={product.id}
-                      className="h-10 w-10 shrink-0 text-gray-700 transition-transform duration-300 group-hover:scale-105"
-                    />
+                    <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-muted text-gray-600 transition-colors duration-300 group-hover:bg-brand-soft group-hover:text-brand">
+                      <ProductMockup
+                        productId={product.id}
+                        className="h-8 w-8 sm:h-9 sm:w-9 shrink-0 transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
                   </div>
-
-
 
                   {/* 텍스트: 제품명 1줄 */}
                   <div className="flex items-center justify-center px-2 pt-2 pb-1">
