@@ -52,29 +52,30 @@ const Home = () => {
 
         {isSample ? (
           <>
-            {/* Hero: 인테리어컷 배경 + 다크 그라디언트 + 텍스트 오버레이 */}
-            <div className="relative overflow-hidden rounded-[14px] h-[22vh] min-h-[150px] max-h-[25vh] mb-5 sm:mb-6 bg-gray-200">
-              <SafeImage
-                src={product.keyVisualImage}
-                alt={`LG ${product.name} 대표 이미지`}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.75) 100%)",
-                }}
-              />
-              <div className="absolute bottom-0 left-0 p-4 sm:p-5">
-                <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-brand-accent mb-1">
+            {/* Hero: 제품 누끼컷 + 깨끗한 카드형 프레임 */}
+            <div
+              className="relative overflow-hidden rounded-[14px] h-[20vh] min-h-[140px] max-h-[220px] mb-5 sm:mb-6 bg-[#F5F4F0] shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] flex items-center justify-between px-4 sm:px-6 py-3"
+            >
+              <div className="flex h-full w-[52%] items-center justify-center">
+                <SafeImage
+                  src="https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/gallery/medium01.jpg"
+                  alt={`LG ${product.name} 제품 이미지`}
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  className="h-[60%] sm:h-[70%] w-auto object-contain"
+                />
+              </div>
+              <div className="flex h-full w-[48%] flex-col justify-center pr-1">
+                <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-brand mb-1">
                   VIEW KIT · {product.name}
                 </p>
-                <h1 className="text-[22px] font-medium leading-tight text-white">{product.title}</h1>
-                <p className="mt-1 text-[13px] leading-snug text-white/70">{product.description}</p>
+                <h1 className="text-[20px] sm:text-[22px] font-medium leading-tight text-[#111111]">
+                  {product.title}
+                </h1>
+                <p className="mt-1 text-[13px] leading-snug text-gray-500 line-clamp-2">
+                  {product.description}
+                </p>
               </div>
             </div>
 
