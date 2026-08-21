@@ -255,6 +255,7 @@ const StoreVisitStats = () => {
       ["필터", categoryLabel],
       ["총 페이지뷰", totals.views],
       ["총 방문(세션)", totals.visits],
+      [`총 방문(보정, 일 최대 ${DAILY_VISIT_CAP})`, totals.visitsCapped],
       ["활성 지점", totals.stores],
       [],
       header,
