@@ -12,6 +12,8 @@ const Home = () => {
   const navigate = useNavigate();
   const { getProductById, getFeaturesByProductId, isProductVisible } = useContent();
 
+  const isCompact = productId === "vacuum"; // 샘플: 청소로봇만 신규 디자인 적용
+
   const product = getProductById(productId || "");
   const features = getFeaturesByProductId(productId || "");
 
@@ -33,10 +35,14 @@ const Home = () => {
 
 
   return (
-    <main className="min-h-screen bg-[#F3F4F6] px-5 py-8 sm:px-8 sm:py-12">
+    <main
+      className={`min-h-screen tracking-[-0.02em] ${
+        isCompact ? "bg-surface-muted px-5 py-5 sm:px-8 sm:py-6" : "bg-[#F3F4F6] px-5 py-8 sm:px-8 sm:py-12"
+      }`}
+    >
       <div className="max-w-xl mx-auto sm:max-w-4xl">
         {/* Top Bar */}
-        <div className="flex items-center justify-between mb-6 sm:mb-8">
+        <div className={`flex items-center justify-between ${isCompact ? "mb-3" : "mb-6 sm:mb-8"}`}>
           <BackButton />
           <div className="flex items-center gap-2">
             <OrientationToggle />
@@ -44,20 +50,40 @@ const Home = () => {
         </div>
 
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-10 space-y-3">
-          <p className="text-[11px] sm:text-[12px] font-black tracking-[0.3em] uppercase text-brand">
+        <div className={isCompact ? "text-center mb-4 space-y-1" : "text-center mb-8 sm:mb-10 space-y-3"}>
+          <p
+            className={
+              isCompact
+                ? "text-[12px] font-semibold tracking-[0.18em] uppercase text-brand-accent"
+                : "text-[11px] sm:text-[12px] font-black tracking-[0.3em] uppercase text-brand"
+            }
+          >
             VIEW KIT · {product.name}
           </p>
-          <h1 className="text-[28px] sm:text-[40px] font-extrabold tracking-tight text-[#111111] leading-tight">
+          <h1
+            className={
+              isCompact
+                ? "text-[26px] sm:text-[32px] font-extrabold tracking-[-0.02em] text-gray-900 leading-[1.25]"
+                : "text-[28px] sm:text-[40px] font-extrabold tracking-tight text-[#111111] leading-tight"
+            }
+          >
             {product.title}
           </h1>
-          <p className="text-base sm:text-lg text-gray-500 font-medium">{product.description}</p>
+          <p className={isCompact ? "text-[15px] sm:text-[16px] text-gray-500" : "text-base sm:text-lg text-gray-500 font-medium"}>
+            {product.description}
+          </p>
         </div>
 
         {/* Key Visual */}
-        <div className="mb-10 sm:mb-14 space-y-4 sm:space-y-5">
+        <div className={isCompact ? "mb-5 space-y-3" : "mb-10 sm:mb-14 space-y-4 sm:space-y-5"}>
           {product.keyVisualVideo && (
-            <div className="rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]">
+            <div
+              className={`overflow-hidden bg-white ${
+                isCompact
+                  ? "rounded-[20px] border border-surface-border/60 shadow-sm max-h-[34vh]"
+                  : "rounded-[28px] sm:rounded-[36px] border border-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]"
+              }`}
+            >
               <WebOSVideoPlayer mediaUrl={product.keyVisualVideo} />
             </div>
           )}
@@ -86,7 +112,12 @@ const Home = () => {
                 <div
                   key={src + index}
                   className={`
-                    relative rounded-[28px] sm:rounded-[36px] overflow-hidden border border-white bg-gray-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] aspect-video
+                    relative overflow-hidden bg-gray-100 aspect-video
+                    ${
+                      isCompact
+                        ? "rounded-[20px] border border-surface-border/60 shadow-sm max-h-[30vh]"
+                        : "rounded-[28px] sm:rounded-[36px] border border-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]"
+                    }
                     ${isVacuumHiddenInLandscape ? "block sm:hidden" : ""}
                   `}
                 >
@@ -116,13 +147,27 @@ const Home = () => {
         </div>
 
         {/* Features Section Title */}
-        <div className="text-center mb-6 sm:mb-8">
-          <p className="text-[11px] font-black tracking-[0.25em] uppercase text-gray-400 mb-2">FEATURES</p>
-          <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111111]">주요 특장점</h3>
-        </div>
+        {isCompact ? (
+          <div className="mb-3">
+            <h2 className="text-[20px] sm:text-[22px] font-semibold tracking-[-0.02em] text-gray-900 leading-tight">
+              특장점을 선택해보세요
+            </h2>
+          </div>
+        ) : (
+          <div className="text-center mb-6 sm:mb-8">
+            <p className="text-[11px] font-black tracking-[0.25em] uppercase text-gray-400 mb-2">FEATURES</p>
+            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111111]">주요 특장점</h3>
+          </div>
+        )}
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-12 sm:mb-16">
+        <div
+          className={
+            isCompact
+              ? "grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 mb-6"
+              : "grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-12 sm:mb-16"
+          }
+        >
           {features.map((feature, index) => {
             const isFitMax = productId === "refrigerator" && (feature.id === "11" || feature.id === "12");
 
@@ -150,6 +195,7 @@ const Home = () => {
                 variant={isFitMax ? "gray" : "white"}
                 bannerImage={bannerImage}
                 showLikeHint={index === 0}
+                compact={isCompact}
               />
             );
           })}
@@ -160,7 +206,9 @@ const Home = () => {
         <div className="text-center">
           <button
             onClick={() => navigate("/")}
-            className="inline-flex items-center justify-center gap-2 h-12 sm:h-14 px-8 sm:px-10 rounded-full bg-white border border-gray-200 text-gray-800 text-base sm:text-lg font-semibold shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:border-brand hover:text-brand transition-colors"
+            className={`inline-flex items-center justify-center gap-2 rounded-full bg-white border border-surface-border text-gray-800 font-semibold shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:border-brand hover:text-brand transition-colors ${
+              isCompact ? "h-11 px-7 text-[15px]" : "h-12 sm:h-14 px-8 sm:px-10 text-base sm:text-lg"
+            }`}
           >
             <span aria-hidden="true">←</span>
             <span>다른 제품 보기</span>
