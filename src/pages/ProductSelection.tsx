@@ -202,61 +202,53 @@ const ProductSelection = () => {
 
 
       {/* Hero */}
-      <section className="shrink-0 px-5 sm:px-10 pt-10 pb-8 sm:pt-12 sm:pb-10 text-center">
-        <h1 className="text-[44px] sm:text-[52px] font-extrabold tracking-[-0.02em] text-gray-900 leading-[1.2]">
+      <section className="shrink-0 px-5 sm:px-10 pt-6 pb-4 sm:pt-10 sm:pb-6 text-center">
+        <h1 className="text-[32px] sm:text-[44px] font-extrabold tracking-[-0.02em] text-gray-900 leading-[1.2]">
           어떤 제품부터 보시겠어요?
         </h1>
-        <p className="text-[18px] sm:text-[20px] font-normal leading-[1.6] text-gray-500 mt-3 tracking-[-0.02em]">
+        <p className="text-[16px] sm:text-[18px] font-normal leading-[1.5] text-gray-500 mt-2 tracking-[-0.02em]">
           선택하신 제품부터 차근차근 이해하기 쉽게 설명드릴게요.
         </p>
       </section>
 
-      {/* Popular Content */}
-      <div className="py-6 sm:py-8">
-        <PopularContentSlider days={30} limit={5} />
+      {/* Popular Content: 베스트 3만 노출 */}
+      <div className="py-4 sm:py-6">
+        <PopularContentSlider days={30} limit={3} />
       </div>
 
-
       {/* Product Grid */}
-      <section className="px-5 sm:px-10 pt-10 pb-16 sm:pt-12 sm:pb-20">
+      <section className="px-5 sm:px-10 pt-6 pb-8 sm:pt-8 sm:pb-12">
         <div className="max-w-5xl mx-auto w-full">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-[24px] sm:text-[26px] font-semibold text-gray-900 tracking-[-0.02em] leading-tight">제품별 특장점</h2>
-            <span className="text-[16px] text-gray-500 font-normal tracking-[-0.02em]">총 {visibleProducts.length}개 제품</span>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-[20px] sm:text-[24px] font-semibold text-gray-900 tracking-[-0.02em] leading-tight">제품별 특장점</h2>
+            <span className="text-[14px] sm:text-[16px] text-gray-500 font-normal tracking-[-0.02em]">총 {visibleProducts.length}개 제품</span>
           </div>
 
-          <div className="grid grid-cols-3 gap-3 sm:gap-4">
-            {visibleProducts.map((product, index) => {
+          <div className="grid grid-cols-3 gap-2.5 sm:gap-4">
+            {visibleProducts.map((product) => {
               const cardContent = (
                 <div
                   className="
-                    group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white
+                    group relative flex h-[120px] sm:h-[152px] flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white
                     transition-all duration-300
                     shadow-[0_4px_16px_-10px_rgba(0,0,0,0.08)]
                     hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-12px_rgba(0,0,0,0.12)]
                   "
                 >
-                  {/* 제품 단독 이미지 영역 (라이트 배경) */}
-                  <div className="relative aspect-square w-full overflow-hidden bg-gray-50">
-                    <SafeImage
-                      src={product.keyVisualImage}
-                      alt={`LG ${product.name} 제품 이미지`}
-                      loading={index < 6 ? "eager" : "lazy"}
-                      fetchPriority={index < 6 ? "high" : undefined}
-                      decoding="async"
-                      className={`h-full w-full object-contain transition-transform duration-500 group-hover:scale-105 ${imagePaddingMap[product.id] || "p-4 sm:p-5"}`}
+                  {/* 아이콘 영역 */}
+                  <div className="flex flex-1 items-center justify-center bg-gray-50">
+                    <ProductLucideIcon
+                      name={product.icon}
+                      className="h-9 w-9 sm:h-11 sm:w-11 text-brand-accent transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute left-2 top-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white/85 text-brand-accent shadow-sm backdrop-blur-sm">
-                      <ProductLucideIcon name={product.icon} className="h-4 w-4" />
-                    </div>
                   </div>
 
                   {/* 텍스트: 제품명 1줄 + 특장점 1줄 */}
-                  <div className="flex flex-col gap-1 px-3 py-3">
-                    <h3 className="truncate text-[18px] font-semibold leading-tight tracking-[-0.02em] text-gray-900">
+                  <div className="flex flex-col gap-0.5 px-3 py-2.5">
+                    <h3 className="truncate text-[15px] sm:text-[17px] font-semibold leading-tight tracking-[-0.02em] text-gray-900">
                       {product.name}
                     </h3>
-                    <p className="truncate text-[14px] sm:text-[15px] font-normal leading-tight text-gray-500 tracking-[-0.02em]">
+                    <p className="truncate text-[12px] sm:text-[14px] font-normal leading-tight text-gray-500 tracking-[-0.02em]">
                       {product.description}
                     </p>
                   </div>
