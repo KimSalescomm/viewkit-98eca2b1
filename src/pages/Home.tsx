@@ -70,7 +70,7 @@ const Home = () => {
                 }}
               />
               <div className="absolute inset-0 flex flex-col justify-end px-4 sm:px-6 py-4 sm:py-5">
-                <p className="text-[13px] font-bold tracking-[0.18em] uppercase text-brand-accent mb-1">
+                <p className="text-[13px] font-bold tracking-[0.18em] uppercase text-white/80 mb-1">
                   VIEW KIT · {product.name}
                 </p>
                 <h1 className="text-[26px] sm:text-[31px] font-medium leading-tight text-white">
