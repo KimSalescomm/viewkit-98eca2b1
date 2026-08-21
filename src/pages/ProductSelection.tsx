@@ -271,15 +271,15 @@ const ProductSelection = () => {
                       )}
                     </div>
 
-                    <div className="p-4 sm:p-5 flex items-start gap-3 sm:gap-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl sm:rounded-2xl bg-gray-100 text-gray-600 flex items-center justify-center">
-                        <ProductLucideIcon name={product.icon} className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <div className="p-3 sm:p-4 flex items-center gap-2.5 sm:gap-3 shrink-0">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 rounded-lg sm:rounded-xl bg-gray-100 text-gray-600 flex items-center justify-center">
+                        <ProductLucideIcon name={product.icon} className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
-                      <div className="min-w-0 flex-1 space-y-0.5">
-                        <h3 className="text-base sm:text-lg font-semibold tracking-tight leading-tight text-gray-900">
+                      <div className="min-w-0 flex-1">
+                        <h3 className="text-sm sm:text-base font-semibold tracking-tight leading-tight text-gray-900">
                           {product.name}
                         </h3>
-                        <p className="text-xs sm:text-sm leading-relaxed font-normal text-gray-500 line-clamp-2">
+                        <p className="text-[11px] sm:text-xs leading-relaxed font-normal text-gray-500 line-clamp-1 sm:line-clamp-2">
                           {product.description}
                         </p>
                       </div>
