@@ -202,11 +202,11 @@ const ProductSelection = () => {
       </header>
 
       {/* Hero */}
-      <section className="shrink-0 px-6 sm:px-10 pt-6 sm:pt-8 pb-5 sm:pb-6">
-        <h1 className="text-[28px] sm:text-[40px] font-semibold tracking-tight text-gray-900 leading-[1.15]">
+      <section className="shrink-0 px-6 sm:px-10 pt-5 sm:pt-6 pb-4 sm:pb-5">
+        <h1 className="text-[26px] sm:text-[36px] font-semibold tracking-tight text-gray-900 leading-[1.15]">
           어떤 제품부터 보시겠어요?
         </h1>
-        <p className="text-base sm:text-lg text-gray-500 font-normal mt-2 sm:mt-3">
+        <p className="text-sm sm:text-base text-gray-500 font-normal mt-1.5 sm:mt-2">
           선택하신 제품부터 차근차근 이해하기 쉽게 설명드릴게요.
         </p>
       </section>
@@ -215,26 +215,27 @@ const ProductSelection = () => {
       <PopularContentSlider days={30} limit={5} />
 
       {/* Product Grid */}
-      <section className="flex-1 min-h-0 px-6 sm:px-10 pb-6 sm:pb-8 flex flex-col">
+      <section className="flex-1 min-h-0 px-6 sm:px-10 pb-5 sm:pb-6 flex flex-col">
         <div className="max-w-6xl mx-auto w-full flex flex-col h-full">
-          <div className="flex items-center justify-between mb-4 sm:mb-5 shrink-0">
-            <h2 className="text-lg sm:text-xl font-semibold text-gray-900 tracking-tight">제품별 특장점</h2>
-            <span className="text-xs sm:text-sm text-gray-400 font-normal">총 {visibleProducts.length}개 제품</span>
+          <div className="flex items-center justify-between mb-3 sm:mb-4 shrink-0">
+            <h2 className="text-base sm:text-lg font-semibold text-gray-900 tracking-tight">제품별 특장점</h2>
+            <span className="text-[11px] sm:text-xs text-gray-400 font-normal">총 {visibleProducts.length}개 제품</span>
           </div>
 
-          <div className="flex-1 min-h-0 overflow-y-auto nb">
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 pb-4">
+          <div className="flex-1 min-h-0">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 h-full content-start">
               {visibleProducts.map((product, index) => {
                 const cardContent = (
                   <div
                     className={`
                       group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-100
                       transition-all duration-500
-                      shadow-[0_8px_30px_-12px_rgba(0,0,0,0.08)]
-                      hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)]
+                      shadow-[0_6px_20px_-10px_rgba(0,0,0,0.08)]
+                      hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.12)]
+                      h-full flex flex-col
                     `}
                   >
-                    <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden">
+                    <div className="relative flex-1 min-h-0 bg-gray-100 overflow-hidden">
                       {product.id === "vacuum" && product.secondaryKeyVisualImage ? (
                         <div className="grid grid-cols-2 h-full w-full">
                           <SafeImage
@@ -270,15 +271,15 @@ const ProductSelection = () => {
                       )}
                     </div>
 
-                    <div className="p-4 sm:p-5 flex items-start gap-3 sm:gap-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl sm:rounded-2xl bg-gray-100 text-gray-600 flex items-center justify-center">
-                        <ProductLucideIcon name={product.icon} className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <div className="p-3 sm:p-4 flex items-center gap-2.5 sm:gap-3 shrink-0">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 rounded-lg sm:rounded-xl bg-gray-100 text-gray-600 flex items-center justify-center">
+                        <ProductLucideIcon name={product.icon} className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
-                      <div className="min-w-0 flex-1 space-y-0.5">
-                        <h3 className="text-base sm:text-lg font-semibold tracking-tight leading-tight text-gray-900">
+                      <div className="min-w-0 flex-1">
+                        <h3 className="text-sm sm:text-base font-semibold tracking-tight leading-tight text-gray-900">
                           {product.name}
                         </h3>
-                        <p className="text-xs sm:text-sm leading-relaxed font-normal text-gray-500 line-clamp-2">
+                        <p className="text-[11px] sm:text-xs leading-relaxed font-normal text-gray-500 line-clamp-1 sm:line-clamp-2">
                           {product.description}
                         </p>
                       </div>
