@@ -95,6 +95,34 @@ const ProductSelection = () => {
     },
   };
 
+  // 제품별 이미지 여백: 실제 제품 물리적 크기와 무관하게 그리드 내 시각적 볼륨감 통일
+  // - 세로형 제품군: 세로 방향 여백 기준 통일
+  // - 가로형/저상형 제품군: 가로 방향 여백 기준 통일
+  // - 다중 제품 구성(에어컨 등): 별도 그룹 내 비율 통일
+  const imagePaddingMap: Record<string, string> = {
+    // 세로형 제품군 — 기준 여백 유지
+    refrigerator: "p-4 sm:p-5",
+    washer: "p-4 sm:p-5",
+    styler: "p-4 sm:p-5",
+    // 세로형이지만 현재 이미지가 프레임에 과도하게 꽉 참 → 여백 증가
+    washcombo: "p-5 sm:p-6",
+
+    // 가로형/저상형 제품군
+    tv: "p-4 sm:p-5",
+    // 저상형이며 현재 이미지가 프레임에 과도하게 꽉 참 → 여백 증가
+    cooking: "p-5 sm:p-6",
+
+    // 다중 제품 구성(실내기+실외기) — 기준 여백 유지
+    airconditioner: "p-4 sm:p-5",
+
+    // 콤팩트/라운드 제품 — 현재 이미지가 프레임에 과도하게 꽉 참 → 여백 증가
+    vacuum: "p-5 sm:p-6",
+
+    // 기타
+    bathair: "p-4 sm:p-5",
+    subscription: "p-3 sm:p-4",
+  };
+
   const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")].map((p) => {
     const override = cardThumbnailOverrides[p.id];
     return override ? { ...p, ...override } : p;
@@ -284,7 +312,7 @@ const ProductSelection = () => {
                       loading={index < 6 ? "eager" : "lazy"}
                       fetchPriority={index < 6 ? "high" : undefined}
                       decoding="async"
-                      className="h-full w-full object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+                      className={`h-full w-full object-contain transition-transform duration-500 group-hover:scale-105 ${imagePaddingMap[product.id] || "p-4 sm:p-5"}`}
                     />
                     <div className="absolute left-2 top-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white/85 text-brand-accent shadow-sm backdrop-blur-sm">
                       <ProductLucideIcon name={product.icon} className="h-4 w-4" />
