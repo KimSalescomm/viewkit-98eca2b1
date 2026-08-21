@@ -47,6 +47,10 @@ All colors MUST be HSL.
     --brand-soft: var(--lg-red-soft);
     --brand-muted: 342 38% 97%;
 
+    /* Homepage accent red (#FD312E) — 쿠폰/홈페스타 레드 */
+    --brand-accent: 1 98% 59%;
+    --brand-accent-foreground: 0 0% 100%;
+
     /* 공통 탭(필 버튼) 강조 색상 - 전 제품 페이지 통일 */
     --tab-accent: 258 90% 61%;
 
