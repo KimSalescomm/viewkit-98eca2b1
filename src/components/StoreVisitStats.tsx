@@ -59,6 +59,15 @@ const getSince = (key: RangeKey): string | null => {
   return d.toISOString();
 };
 
+// 매장당 1일 방문(세션) 인정 상한
+const DAILY_VISIT_CAP = 20;
+
+// created_at(UTC ISO) → KST 기준 날짜 키(yyyy-MM-dd)
+const kstDayKey = (iso: string): string =>
+  new Date(new Date(iso).getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+
+
+
 const StoreVisitStats = () => {
   const [range, setRange] = useState<RangeKey>("7d");
   const [category, setCategory] = useState<CategoryKey>("all");
