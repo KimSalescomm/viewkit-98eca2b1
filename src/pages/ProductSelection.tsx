@@ -15,9 +15,10 @@ import {
   Droplets,
   BookOpen,
   Menu,
+  X,
   type LucideIcon,
 } from "lucide-react";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+
 
 
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
@@ -194,42 +195,42 @@ const ProductSelection = () => {
           )}
           <ContentRequestButton variant="segment" />
 
-          <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-            <SheetTrigger asChild>
-              <button
-                type="button"
-                aria-label="메뉴 열기"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:bg-gray-100 transition-colors"
-              >
-                <Menu className="w-6 h-6" />
-              </button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[320px] sm:w-[380px]">
-              <SheetHeader>
-                <SheetTitle className="text-[22px] font-semibold tracking-tight">메뉴</SheetTitle>
-              </SheetHeader>
-              <div className="mt-8 flex flex-col gap-4">
-                <Link
-                  to="/homepage/guide"
-                  onClick={() => setMenuOpen(false)}
-                  className="inline-flex items-center gap-3 rounded-2xl px-4 py-4 text-[18px] font-medium text-gray-800 hover:bg-gray-100 transition-colors"
-                >
-                  <BookOpen className="w-5 h-5" />
-                  <span>뷰킷 소개</span>
-                </Link>
-                <div className="px-1">
-                  <p className="text-[15px] font-medium text-gray-500 mb-2">모바일에서 보기</p>
-                  <MobileAccessQR storeSlug={currentStore?.slug} variant="segment" />
-                </div>
-                <div className="px-1">
-                  <p className="text-[15px] font-medium text-gray-500 mb-2">화면 방향</p>
-                  <OrientationToggle variant="segment" />
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+          <button
+            type="button"
+            aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:bg-gray-100 transition-colors"
+          >
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </nav>
       </header>
+
+      {/* Inline dropdown menu (헤더 바로 아래, 딤 없음) */}
+      {menuOpen && (
+        <div className="shrink-0 border-b border-gray-100 bg-white px-5 sm:px-10 py-5">
+          <div className="max-w-5xl mx-auto w-full flex flex-col gap-4">
+            <Link
+              to="/homepage/guide"
+              onClick={() => setMenuOpen(false)}
+              className="inline-flex items-center gap-3 rounded-2xl bg-gray-50 px-4 py-4 text-[18px] font-medium text-gray-800 hover:bg-gray-100 transition-colors"
+            >
+              <BookOpen className="w-5 h-5" />
+              <span>뷰킷 소개</span>
+            </Link>
+            <div>
+              <p className="text-[15px] font-medium text-gray-500 mb-2">모바일에서 보기</p>
+              <MobileAccessQR storeSlug={currentStore?.slug} variant="segment" />
+            </div>
+            <div>
+              <p className="text-[15px] font-medium text-gray-500 mb-2">화면 방향</p>
+              <OrientationToggle variant="segment" />
+            </div>
+          </div>
+        </div>
+      )}
+
 
       {/* Hero */}
       <section className="shrink-0 px-5 sm:px-10 pt-10 pb-8 sm:pt-12 sm:pb-10 text-center">
@@ -255,66 +256,40 @@ const ProductSelection = () => {
             <span className="text-[16px] text-gray-600 font-normal">총 {visibleProducts.length}개 제품</span>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 sm:gap-6">
+          <div className="grid grid-cols-3 gap-3 sm:gap-4">
             {visibleProducts.map((product, index) => {
               const cardContent = (
                 <div
-                  className={`
-                    group relative bg-white rounded-3xl overflow-hidden border border-gray-100
-                    transition-all duration-500
-                    shadow-[0_6px_20px_-10px_rgba(0,0,0,0.08)]
-                    hover:-translate-y-1 hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.12)]
-                    aspect-[3/4]
-                  `}
+                  className="
+                    group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white
+                    transition-all duration-300
+                    shadow-[0_4px_16px_-10px_rgba(0,0,0,0.08)]
+                    hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-12px_rgba(0,0,0,0.12)]
+                  "
                 >
-                  <div className="absolute inset-0 bg-gray-100 overflow-hidden">
-                    {product.id === "vacuum" && product.secondaryKeyVisualImage ? (
-                      <div className="grid grid-cols-2 h-full w-full">
-                        <SafeImage
-                          src={product.secondaryKeyVisualImage}
-                          alt={`LG ${product.name} 히든스테이션`}
-                          loading={index < 4 ? "eager" : "lazy"}
-                          fetchPriority={index < 4 ? "high" : undefined}
-                          decoding="async"
-                          className="w-full h-full object-cover object-[60%_center] transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-y-0 left-1/2 w-px bg-white/40 z-10" />
-                        <SafeImage
-                          src={product.keyVisualImage}
-                          alt={`LG ${product.name} 오브제스테이션`}
-                          loading={index < 4 ? "eager" : "lazy"}
-                          decoding="async"
-                          className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </div>
-                    ) : (
-                      <SafeImage
-                        src={product.keyVisualImage}
-                        alt={`LG ${product.name} 대표 이미지`}
-                        loading={index < 4 ? "eager" : "lazy"}
-                        fetchPriority={index < 4 ? "high" : undefined}
-                        decoding="async"
-                        className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${
-                          product.id === "airconditioner" ? "object-top" : "object-center"
-                        }`}
-                      />
-                    )}
+                  {/* 제품 단독 이미지 영역 (라이트 배경) */}
+                  <div className="relative aspect-square w-full overflow-hidden bg-gray-50">
+                    <SafeImage
+                      src={product.keyVisualImage}
+                      alt={`LG ${product.name} 제품 이미지`}
+                      loading={index < 6 ? "eager" : "lazy"}
+                      fetchPriority={index < 6 ? "high" : undefined}
+                      decoding="async"
+                      className="h-full w-full object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute left-2 top-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white/85 text-brand-accent shadow-sm backdrop-blur-sm">
+                      <ProductLucideIcon name={product.icon} className="h-4 w-4" />
+                    </div>
                   </div>
 
-                  <div className="absolute inset-x-0 bottom-0 pt-14 px-4 pb-4 sm:px-5 sm:pb-5 bg-gradient-to-t from-black/90 via-black/70 to-transparent">
-                    <div className="flex items-start gap-3">
-                      <div className="w-11 h-11 sm:w-12 sm:h-12 shrink-0 rounded-xl bg-white/25 backdrop-blur-sm text-white flex items-center justify-center">
-                        <ProductLucideIcon name={product.icon} className="w-6 h-6" />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <h3 className="text-[22px] sm:text-[24px] font-semibold tracking-tight leading-tight text-white">
-                          {product.name}
-                        </h3>
-                        <p className="text-[18px] leading-[1.45] font-normal text-white mt-1 line-clamp-2">
-                          {product.description}
-                        </p>
-                      </div>
-                    </div>
+                  {/* 텍스트: 제품명 1줄 + 특장점 1줄 */}
+                  <div className="flex flex-col gap-1 px-3 py-3">
+                    <h3 className="truncate text-[18px] font-semibold leading-tight tracking-tight text-gray-900">
+                      {product.name}
+                    </h3>
+                    <p className="truncate text-[16px] font-normal leading-tight text-gray-600">
+                      {product.description}
+                    </p>
                   </div>
                 </div>
               );
@@ -331,6 +306,7 @@ const ProductSelection = () => {
               );
             })}
           </div>
+
         </div>
       </section>
     </main>
