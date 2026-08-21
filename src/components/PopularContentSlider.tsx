@@ -54,11 +54,21 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
       const product = getProductById(item.productId);
       const feature = getFeatureById(item.productId, item.featureId);
       if (!product || !feature || !isProductVisible(product.id)) return null;
+
+      // 영상/유튜브 URL은 썸네일로 부적합 → 제품 키비주얼 또는 갤러리/아래 이미지로 폴백
+      const isImageUrl = (url?: string) =>
+        !!url && (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png") || url.endsWith(".webp"));
+      const fallbackImage =
+        (typeof feature.belowMediaImage === "object" && feature.belowMediaImage?.url) ||
+        feature.galleryImages?.[0] ||
+        product.keyVisualImage;
+      const thumbnail = isImageUrl(feature.mediaUrl) ? feature.mediaUrl : (isImageUrl(String(fallbackImage)) ? String(fallbackImage) : product.keyVisualImage);
+
       return {
         ...item,
         product,
         feature,
-        thumbnail: feature.mediaUrl || product.keyVisualImage,
+        thumbnail,
       };
     })
     .filter((item): item is NonNullable<typeof item> => item !== null);
