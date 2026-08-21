@@ -4,15 +4,16 @@ import FeatureLikeButton from "@/components/FeatureLikeButton";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 
 const cardColors = [
-  { gradient: "from-blue-500 to-cyan-400" },
-  { gradient: "from-purple-500 to-pink-400" },
-  { gradient: "from-emerald-500 to-teal-400" },
-  { gradient: "from-orange-500 to-amber-400" },
-  { gradient: "from-rose-500 to-red-400" },
-  { gradient: "from-indigo-500 to-violet-400" },
-  { gradient: "from-sky-500 to-blue-400" },
-  { gradient: "from-fuchsia-500 to-purple-400" },
+  { gradient: "from-brand to-brand-accent" },
+  { gradient: "from-brand-accent to-brand" },
+  { gradient: "from-brand to-brand/70" },
+  { gradient: "from-brand-accent to-brand-accent/70" },
+  { gradient: "from-brand/90 to-brand-accent/80" },
+  { gradient: "from-brand-accent/90 to-brand/80" },
+  { gradient: "from-brand to-brand-accent/60" },
+  { gradient: "from-brand-accent to-brand/60" },
 ];
+
 
 interface FeatureCardProps {
   id: string;
