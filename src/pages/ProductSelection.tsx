@@ -242,9 +242,10 @@ const ProductSelection = () => {
       </section>
 
       {/* Popular Content */}
-      <div className="py-10 sm:py-12">
+      <div className="py-6 sm:py-8">
         <PopularContentSlider days={30} limit={5} />
       </div>
+
 
       {/* Product Grid */}
       <section className="px-5 sm:px-10 pt-10 pb-16 sm:pt-12 sm:pb-20">
