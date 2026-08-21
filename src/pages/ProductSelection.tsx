@@ -26,6 +26,7 @@ import ContentRequestButton from "@/components/ContentRequestButton";
 import { PopularContentSlider } from "@/components/PopularContentSlider";
 import ProductMockup from "@/components/ProductMockup";
 import { getCurrentStore, registerStore, getRegistry } from "@/utils/storeId";
+import { isNewProduct } from "@/utils/newBadge";
 
 // webOS(StandByMe) 등 컬러 이모지 폰트가 없는 환경에서 아이콘이 검정으로 보이는 이슈 방지
 // → 모든 카드 아이콘을 Lucide SVG 컴포넌트로 렌더링
@@ -227,6 +228,7 @@ const ProductSelection = () => {
 
           <div className="grid grid-cols-3 gap-2.5 sm:gap-4">
             {visibleProducts.map((product) => {
+              const showNewBadge = isNewProduct(product.id);
               const cardContent = (
                 <div
                   className="
@@ -235,6 +237,12 @@ const ProductSelection = () => {
                     hover:-translate-y-1 hover:shadow-xl hover:border-brand/25
                   "
                 >
+                  {showNewBadge && (
+                    <span className="absolute right-2 top-2 z-10 rounded-full bg-brand-accent px-2 py-0.5 text-[11px] sm:text-[12px] font-bold leading-tight tracking-[0.02em] text-white shadow-sm">
+                      NEW
+                    </span>
+                  )}
+
                   {/* 라인 아이콘 (연한 배경박스) */}
                   <div className="relative flex min-h-0 flex-1 items-center justify-center">
                     <div className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-muted text-gray-600 transition-colors duration-300 group-hover:bg-brand-soft group-hover:text-brand">
