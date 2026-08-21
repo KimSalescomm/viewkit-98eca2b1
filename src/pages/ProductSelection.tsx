@@ -66,7 +66,7 @@ const ProductSelection = () => {
   // 제품 카드(홈) 전용 썸네일 오버라이드 — 다른 페이지의 키비주얼은 유지
   const cardThumbnailOverrides: Record<string, { keyVisualImage?: string; secondaryKeyVisualImage?: string }> = {
     vacuum: {
-      keyVisualImage: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_mo_01.jpg",
+      keyVisualImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/gallery/medium01.jpg",
       secondaryKeyVisualImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_mo_01.jpg",
     },
     refrigerator: {
@@ -82,13 +82,16 @@ const ProductSelection = () => {
       keyVisualImage: "https://static.lge.co.kr/kr/images/wash-combo/md10867827/gallery/medium03.jpg",
     },
     styler: {
-      keyVisualImage: "https://static.lge.co.kr/kr/images/lg-styler/md10747827/gallery/medium-interior01.jpg",
+      keyVisualImage: "https://static.lge.co.kr/kr/images/lg-styler/md10747827/gallery/medium11.jpg",
     },
     tv: {
-      keyVisualImage: "https://static.lge.co.kr/kr/images/tvs/md10770832/gallery/medium-interior01.jpg",
+      keyVisualImage: "https://static.lge.co.kr/kr/images/tvs/md10770832/gallery/medium01.jpg",
     },
     cooking: {
-      keyVisualImage: "https://static.lge.co.kr/kr/images/dishwashers/md10491826/gallery/medium-interior01.jpg",
+      keyVisualImage: "https://static.lge.co.kr/kr/images/dishwashers/md10492835/gallery/medium01.jpg",
+    },
+    bathair: {
+      keyVisualImage: "https://static.lge.co.kr/kr/images/bath-air-system/md10753826/gallery/medium01.jpg",
     },
   };
 
