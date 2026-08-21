@@ -55,74 +55,10 @@ const ProductSelection = () => {
     name: "구독",
     title: "구독 케어",
     description: "케어 전·후 비교로 한눈에 보는 케어 서비스",
-    keyVisualImage: "https://static.lge.co.kr/kr/story/buying-guide/img/air-conditioners-care-solutions/img_swiper_3.png",
     icon: "Waves",
   } as (typeof products)[number];
 
-  // 제품 카드(홈) 전용 썸네일 오버라이드 — 다른 페이지의 키비주얼은 유지
-  const cardThumbnailOverrides: Record<string, { keyVisualImage?: string; secondaryKeyVisualImage?: string }> = {
-    vacuum: {
-      keyVisualImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/gallery/medium01.jpg",
-      secondaryKeyVisualImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_mo_01.jpg",
-    },
-    refrigerator: {
-      keyVisualImage: "https://static.lge.co.kr/kr/images/refrigerators/md10780840/gallery/medium01.jpg",
-    },
-    airconditioner: {
-      keyVisualImage: "https://static.lge.co.kr/kr/images/air-conditioners/md10738836/gallery/medium01.jpg",
-    },
-    washer: {
-      keyVisualImage: "https://static.lge.co.kr/kr/images/wash-tower/md09155834/gallery/medium01.jpg",
-    },
-    washcombo: {
-      keyVisualImage: "https://static.lge.co.kr/kr/images/wash-combo/md10867827/gallery/medium03.jpg",
-    },
-    styler: {
-      keyVisualImage: "https://static.lge.co.kr/kr/images/lg-styler/md10747827/gallery/medium11.jpg",
-    },
-    tv: {
-      keyVisualImage: "https://static.lge.co.kr/kr/images/tvs/md10770832/gallery/medium01.jpg",
-    },
-    cooking: {
-      keyVisualImage: "https://static.lge.co.kr/kr/images/dishwashers/md10492835/gallery/medium01.jpg",
-    },
-    bathair: {
-      keyVisualImage: "https://static.lge.co.kr/kr/images/bath-air-system/md10753826/gallery/medium01.jpg",
-    },
-  };
-
-  // 제품별 이미지 여백: 실제 제품 물리적 크기와 무관하게 그리드 내 시각적 볼륨감 통일
-  // - 세로형 제품군: 세로 방향 여백 기준 통일
-  // - 가로형/저상형 제품군: 가로 방향 여백 기준 통일
-  // - 다중 제품 구성(에어컨 등): 별도 그룹 내 비율 통일
-  const imagePaddingMap: Record<string, string> = {
-    // 세로형 제품군 — 기준 여백 유지
-    refrigerator: "p-4 sm:p-5",
-    washer: "p-4 sm:p-5",
-    styler: "p-4 sm:p-5",
-    // 세로형이지만 현재 이미지가 프레임에 과도하게 꽉 참 → 여백 증가
-    washcombo: "p-5 sm:p-6",
-
-    // 가로형/저상형 제품군
-    tv: "p-4 sm:p-5",
-    // 저상형이며 현재 이미지가 프레임에 과도하게 꽉 참 → 여백 증가
-    cooking: "p-5 sm:p-6",
-
-    // 다중 제품 구성(실내기+실외기) — 기준 여백 유지
-    airconditioner: "p-4 sm:p-5",
-
-    // 콤팩트/라운드 제품 — 현재 이미지가 프레임에 과도하게 꽉 참 → 여백 증가
-    vacuum: "p-5 sm:p-6",
-
-    // 기타
-    bathair: "p-4 sm:p-5",
-    subscription: "p-3 sm:p-4",
-  };
-
-  const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")].map((p) => {
-    const override = cardThumbnailOverrides[p.id];
-    return override ? { ...p, ...override } : p;
-  });
+  const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")];
 
   const visibleProducts = desiredOrder
     .map((id) => allProducts.find((p) => p.id === id))
