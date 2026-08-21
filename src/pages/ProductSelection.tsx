@@ -59,7 +59,7 @@ const ProductSelection = () => {
     name: "구독",
     title: "구독 케어",
     description: "케어 전·후 비교로 한눈에 보는 케어 서비스",
-    keyVisualImage: "https://static.lge.co.kr/kr/Caresolution/images/air-conditioners/img-air-conditioners-stand01.jpg",
+    keyVisualImage: "https://static.lge.co.kr/kr/story/buying-guide/img/air-conditioners-care-solutions/img_swiper_3.png",
     icon: "Waves",
   } as (typeof products)[number];
 
