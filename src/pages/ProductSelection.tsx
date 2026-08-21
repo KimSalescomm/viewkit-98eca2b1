@@ -162,7 +162,8 @@ const ProductSelection = () => {
 
       {/* Header */}
       <header className="shrink-0 px-6 sm:px-10 py-4 sm:py-5 grid grid-cols-[1fr_auto_1fr] items-center border-b border-gray-100">
-        <div className="flex items-center gap-3">
+        <span aria-hidden className="hidden sm:block" />
+        <div className="flex items-center gap-3 justify-self-start sm:justify-self-center">
           <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-accent flex items-center justify-center">
             <span className="text-white text-xl sm:text-2xl font-semibold leading-none">V</span>
           </div>
@@ -172,7 +173,8 @@ const ProductSelection = () => {
           </div>
         </div>
 
-        <nav className="absolute right-6 sm:right-10 top-1/2 -translate-y-1/2 flex items-center gap-1.5 sm:gap-2">
+        <nav className="justify-self-end flex items-center gap-1.5 sm:gap-2">
+
           {currentStore && (
             <button
               type="button"
