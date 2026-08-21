@@ -53,11 +53,12 @@ const ProductSelection = () => {
 
   const subscriptionCard = {
     id: "subscription",
-    name: "구독",
+    name: "가전 구독",
     title: "구독 케어",
     description: "케어 전·후 비교로 한눈에 보는 케어 서비스",
     icon: "Waves",
   } as (typeof products)[number];
+
 
   const allProducts = [subscriptionCard, ...products.filter((product) => product.id !== "pc")];
 
