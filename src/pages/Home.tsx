@@ -154,12 +154,23 @@ const Home = () => {
         )}
 
         {/* Features Section Title */}
-        <div className={isSample ? "text-center mb-4 sm:mb-6" : "text-center mb-6 sm:mb-8"}>
-          <p className="text-[11px] font-black tracking-[0.25em] uppercase text-gray-400 mb-2">FEATURES</p>
-          <h3 className="text-[20px] sm:text-[24px] font-semibold text-gray-900 tracking-[-0.02em] leading-tight">
-            {isSample ? "특장점을 선택해보세요" : "주요 특장점"}
-          </h3>
-        </div>
+        {isSample ? (
+          <div className="mb-4 flex items-center gap-3 sm:mb-6">
+            <span className="h-px flex-1 bg-gray-200" />
+            <h3 className="text-[17px] font-semibold leading-tight tracking-[-0.02em] text-gray-900 sm:text-[20px]">
+              궁금한 기능을 선택해보세요
+            </h3>
+            <span className="h-px flex-1 bg-gray-200" />
+          </div>
+        ) : (
+          <div className="text-center mb-6 sm:mb-8">
+            <p className="text-[11px] font-black tracking-[0.25em] uppercase text-gray-400 mb-2">FEATURES</p>
+            <h3 className="text-[20px] sm:text-[24px] font-semibold text-gray-900 tracking-[-0.02em] leading-tight">
+              주요 특장점
+            </h3>
+          </div>
+        )}
+
 
         {/* Features Grid */}
         {isSample ? (
