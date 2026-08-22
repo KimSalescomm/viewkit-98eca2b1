@@ -7,6 +7,8 @@ import OrientationToggle from "@/components/OrientationToggle";
 import BackButton from "@/components/BackButton";
 import VacuumFeatureGrid from "@/components/VacuumFeatureGrid";
 import { useContent } from "@/contexts/ContentContext";
+import vacuumCutout from "@/assets/vacuum-cutout.png.asset.json";
+
 
 const Home = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -52,34 +54,29 @@ const Home = () => {
 
         {isSample ? (
           <>
-            {/* Hero: 인테리어컷 배경 + 다크 그라디언트 오버레이 */}
-            <div className="relative h-[22vh] min-h-[160px] max-h-[260px] mb-5 sm:mb-6 overflow-hidden rounded-[14px]">
-              <SafeImage
-                src={product.keyVisualImage}
-                alt={`LG ${product.name} 인테리어컷`}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.75) 100%)",
-                }}
-              />
-              <div className="absolute inset-0 flex flex-col justify-end px-4 sm:px-6 py-4 sm:py-5">
-                <p className="text-[13px] font-bold tracking-[0.18em] uppercase text-white/80 mb-1">
-                  VIEW KIT · {product.name}
+            {/* Hero: 좌측 제품명 + 우측 누끼 이미지 */}
+            <div className="mb-5 flex items-center gap-3 overflow-hidden rounded-[14px] bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.06)] sm:mb-6 sm:px-7 sm:py-6">
+              <div className="min-w-0 flex-1">
+                <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400">
+                  VIEW KIT
                 </p>
-                <h1 className="text-[26px] sm:text-[31px] font-medium leading-tight text-white">
-                  {product.title}
+                <h1 className="text-[30px] font-semibold leading-tight text-gray-900 sm:text-[38px]">
+                  {product.name}
                 </h1>
-                <p className="mt-1 text-[14px] sm:text-[15px] leading-snug text-white/70">
+                <p className="mt-1 text-[13px] leading-snug text-gray-500 sm:text-[15px]">
                   {product.description}
                 </p>
               </div>
+              <SafeImage
+                src={vacuumCutout.url}
+                alt={`LG ${product.name} 제품 이미지`}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                width={1024}
+                height={1024}
+                className="h-[130px] w-[130px] shrink-0 object-contain sm:h-[180px] sm:w-[180px]"
+              />
             </div>
 
             {/* 키비주얼 영상 (있는 경우) */}
@@ -89,6 +86,7 @@ const Home = () => {
               </div>
             )}
           </>
+
         ) : (
           <>
             {/* Header (기존 버전) */}
@@ -156,12 +154,23 @@ const Home = () => {
         )}
 
         {/* Features Section Title */}
-        <div className={isSample ? "text-center mb-4 sm:mb-6" : "text-center mb-6 sm:mb-8"}>
-          <p className="text-[11px] font-black tracking-[0.25em] uppercase text-gray-400 mb-2">FEATURES</p>
-          <h3 className="text-[20px] sm:text-[24px] font-semibold text-gray-900 tracking-[-0.02em] leading-tight">
-            {isSample ? "특장점을 선택해보세요" : "주요 특장점"}
-          </h3>
-        </div>
+        {isSample ? (
+          <div className="mb-4 flex items-center gap-3 sm:mb-6">
+            <span className="h-px flex-1 bg-gray-200" />
+            <h3 className="text-[17px] font-semibold leading-tight tracking-[-0.02em] text-gray-900 sm:text-[20px]">
+              궁금한 기능을 선택해보세요
+            </h3>
+            <span className="h-px flex-1 bg-gray-200" />
+          </div>
+        ) : (
+          <div className="text-center mb-6 sm:mb-8">
+            <p className="text-[11px] font-black tracking-[0.25em] uppercase text-gray-400 mb-2">FEATURES</p>
+            <h3 className="text-[20px] sm:text-[24px] font-semibold text-gray-900 tracking-[-0.02em] leading-tight">
+              주요 특장점
+            </h3>
+          </div>
+        )}
+
 
         {/* Features Grid */}
         {isSample ? (

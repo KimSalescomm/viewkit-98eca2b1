@@ -2,15 +2,17 @@ import { useCallback, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Heart,
-  Brain,
-  Droplets,
-  Wind,
-  Boxes,
+  Play,
   Sparkles,
-  ShieldCheck,
-  HeartHandshake,
+  Wind,
+  Flame,
+  Navigation,
+  Armchair,
+  Shield,
+  Wrench,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import SafeImage from "@/components/SafeImage";
 import { useFeatureLikeCounts } from "@/hooks/useFeatureLikeCounts";
 import { logFeatureReaction } from "@/utils/featureReactionLog";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
@@ -18,21 +20,31 @@ import type { Feature } from "@/data/features";
 
 /**
  * 청소로봇 상세페이지 전용 특장점 그리드.
- * 사진 배경 대신 브랜드 레드 패밀리 컬러 블록 + 화이트 실루엣 아이콘 조합.
+ * 카드 = 실사 이미지 + 아이콘 배지 + 카피 + 재생 버튼 (LG 공홈 톤)
  */
 
-// 카드 노출 순서 (feature id 기준) — 첫 항목은 2칸 차지 가로형 카드
-const CARD_ORDER = ["4", "1", "2", "3", "8", "5", "7"];
+// 카드 노출 순서 (feature id 기준)
+const CARD_ORDER = ["1", "2", "8", "4", "3", "5", "7"];
 
-// 카드별 상징 아이콘
 const CARD_ICONS: Record<string, React.ElementType> = {
-  "4": Brain,
-  "1": Droplets,
+  "1": Sparkles,
   "2": Wind,
-  "3": Boxes,
-  "8": Sparkles,
-  "5": ShieldCheck,
-  "7": HeartHandshake,
+  "8": Flame,
+  "4": Navigation,
+  "3": Armchair,
+  "5": Shield,
+  "7": Wrench,
+};
+
+// 상세페이지에서 이미 사용 중인 이미지 중에서 카드별로 선택
+const CARD_IMAGES: Record<string, string> = {
+  "1": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_01.jpg",
+  "2": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_02.jpg",
+  "8": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_01.jpg",
+  "4": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg",
+  "3": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
+  "5": "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png",
+  "7": "/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
 };
 
 // 실제 수집 데이터가 없을 때 사용할 기본 좋아요 수
@@ -91,10 +103,11 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-3">
-        {ordered.map((feature, index) => {
-          const isLarge = index === 0;
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+        {ordered.map((feature) => {
           const Icon = CARD_ICONS[feature.id] ?? Sparkles;
+          const image = CARD_IMAGES[feature.id];
+          const sub = feature.subtitle || feature.description;
           return (
             <button
               key={feature.id}
@@ -103,62 +116,62 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
                 setActiveId(feature.id);
                 trackFeatureClick(productName || productId, feature.title);
               }}
-              className={`relative h-36 overflow-hidden rounded-[12px] bg-white text-left shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] transition-transform duration-100 active:scale-[0.97] ${
-                isLarge ? "col-span-2" : ""
-              }`}
+              className="group relative flex flex-col overflow-hidden rounded-[12px] bg-white text-left shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] transition-transform duration-100 active:scale-[0.98]"
             >
-              {/* 좌측 텍스트 영역 */}
-              <div className="relative z-10 flex h-full w-[65%] flex-col justify-center px-4 py-3">
-                {feature.tag && (
-                  <span className="mb-2 w-fit rounded-full bg-gray-100 px-2 py-[3px] text-[11px] font-semibold text-gray-600">
-                    {feature.tag}
-                  </span>
+              {/* 이미지 영역 */}
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
+                {image && (
+                  <SafeImage
+                    src={image}
+                    alt={`${feature.title} 이미지`}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
                 )}
-                <h3
-                  className={`font-semibold text-gray-900 leading-tight ${
-                    isLarge ? "text-[22px]" : "text-[18px]"
-                  }`}
+                {/* 아이콘 배지 */}
+                <span className="absolute left-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 shadow-sm">
+                  <Icon className="h-4 w-4 text-brand-accent" strokeWidth={1.8} />
+                </span>
+                {/* 좋아요 */}
+                <span
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`${feature.title} 관심 표시`}
+                  onClick={(e) => handleLike(e, feature)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ")
+                      handleLike(e as unknown as React.MouseEvent, feature);
+                  }}
+                  className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-white/90 px-2 py-1 shadow-sm"
                 >
+                  <Heart className="h-3.5 w-3.5 text-gray-400" strokeWidth={2} />
+                  <span className="text-[11px] font-medium tabular-nums text-gray-600">
+                    {likeCount(feature.id)}
+                  </span>
+                </span>
+              </div>
+
+              {/* 카피 + 재생 버튼 */}
+              <div className="relative flex flex-1 flex-col px-3 pb-3 pt-3">
+                <h3 className="pr-9 text-[15px] font-semibold leading-snug text-gray-900">
                   {feature.title}
                 </h3>
-                {(feature.subtitle || feature.description) && (
-                  <p className="mt-1 line-clamp-2 text-[13px] leading-snug text-gray-500">
-                    {feature.subtitle || feature.description}
+                {sub && (
+                  <p className="mt-1 line-clamp-2 pr-9 text-[12px] leading-snug text-gray-500">
+                    {sub}
                   </p>
                 )}
+                <span className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-brand-accent shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
+                  <Play className="h-3.5 w-3.5 fill-white text-white" />
+                </span>
               </div>
-
-              {/* 우측 메인페이지 톤 아이콘: 그레이 배경 + 그레이톤 아이콘 */}
-              <div
-                className={`absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full bg-muted ${
-                  isLarge ? "h-14 w-14" : "h-12 w-12"
-                }`}
-              >
-                <Icon
-                  className={`text-gray-500 ${isLarge ? "h-7 w-7" : "h-6 w-6"}`}
-                  strokeWidth={1.8}
-                />
-              </div>
-
-              {/* 좋아요 */}
-              <span
-                role="button"
-                tabIndex={0}
-                aria-label={`${feature.title} 관심 표시`}
-                onClick={(e) => handleLike(e, feature)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ")
-                    handleLike(e as unknown as React.MouseEvent, feature);
-                }}
-                className="absolute right-3 top-3 z-10 inline-flex items-center gap-1 text-gray-400"
-              >
-                <Heart className="h-4 w-4" strokeWidth={2} />
-                <span className="text-[13px] font-medium tabular-nums text-gray-500">{likeCount(feature.id)}</span>
-              </span>
             </button>
           );
         })}
       </div>
+
+      <p className="mt-4 text-center text-[12px] text-gray-400">
+        각 기능을 선택하면 자세한 영상과 설명을 확인할 수 있습니다.
+      </p>
 
       {/* 탭 시 확장 상세 설명 */}
       <Dialog open={!!active} onOpenChange={(open) => !open && setActiveId(null)}>
