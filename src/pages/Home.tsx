@@ -7,6 +7,8 @@ import OrientationToggle from "@/components/OrientationToggle";
 import BackButton from "@/components/BackButton";
 import VacuumFeatureGrid from "@/components/VacuumFeatureGrid";
 import { useContent } from "@/contexts/ContentContext";
+import vacuumCutout from "@/assets/vacuum-cutout.png.asset.json";
+
 
 const Home = () => {
   const { productId } = useParams<{ productId: string }>();
