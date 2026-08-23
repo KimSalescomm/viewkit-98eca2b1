@@ -1179,7 +1179,7 @@ export const featuresMap: Record<string, Feature[]> = {
     {
       id: "2",
       title: "흡입력, \n어디까지 강해질까요?",
-      subtitle: "최대 30W의 강력한 흡입력과 엉킴 방지 브러시 청소가 더 편해져요",
+      subtitle: "최대 30W의 강력한 흡입력과 엉킴 방지 브러시로 청소가 더 편해져요",
       icon: "Zap",
       tag: "흡입 청소",
       mediaType: "video",
