@@ -183,11 +183,12 @@ const useAuth = () => {
       if (error || !data?.ok) return false;
       try {
         sessionStorage.setItem(AUTH_KEY, "1");
-        sessionStorage.setItem(AUTH_CODE_KEY, trimmed);
       } catch {
         /* noop */
       }
+      setAdminPasscode(trimmed);
       setAuthed(true);
+
       return true;
     } catch {
       return false;
@@ -196,11 +197,12 @@ const useAuth = () => {
   const logout = () => {
     try {
       sessionStorage.removeItem(AUTH_KEY);
-      sessionStorage.removeItem(AUTH_CODE_KEY);
     } catch {
       /* noop */
     }
+    clearAdminPasscode();
     setAuthed(false);
+
   };
   return { authed, login, logout };
 };
@@ -360,23 +362,10 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   };
   const clearSelection = () => setSelected(new Set());
 
-  // 삭제 시 관리자 패스코드 재확인 (로그인 시 저장된 값 우선 사용)
-  const promptPasscode = (): string | null => {
-    try {
-      const cached = sessionStorage.getItem(AUTH_CODE_KEY);
-      if (cached && cached.trim()) return cached.trim();
-    } catch {
-      /* noop */
-    }
-    const code = window.prompt("삭제하려면 관리자 패스코드를 다시 입력해 주세요.");
-    if (code === null) return null;
-    const trimmed = code.trim();
-    if (!trimmed) {
-      alert("패스코드가 입력되지 않았습니다.");
-      return null;
-    }
-    return trimmed;
-  };
+  // 삭제 시 관리자 패스코드 재확인 (메모리에 없으면 재입력 요청)
+  const promptPasscode = (): string | null =>
+    requireAdminPasscode("삭제하려면 관리자 패스코드를 다시 입력해 주세요.");
+
 
   const handleDeleteOne = async (id?: string) => {
     if (!id) return;
