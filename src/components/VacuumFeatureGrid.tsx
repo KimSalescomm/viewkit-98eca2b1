@@ -1,7 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Heart, Play } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import SafeImage from "@/components/SafeImage";
 import { useFeatureLikeCounts } from "@/hooks/useFeatureLikeCounts";
 import { logFeatureReaction } from "@/utils/featureReactionLog";
@@ -19,7 +18,7 @@ const CARDS: { featureId: string; image: string; eyebrow: string }[] = [
   { featureId: "1", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/mainpoint_N95THO_pc.jpg", eyebrow: "스팀 물걸레" },          // 1번
   { featureId: "2", image: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_11_anti_tangle_03.jpg", eyebrow: "강력한 흡입력" }, // 2번
   { featureId: "8", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/subpointA_N95THO_pc.jpg", eyebrow: "물걸레 관리 솔루션" },      // 3번
-  { featureId: "4", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg", eyebrow: "AI 맞춤 청소" }, // 4번
+  { featureId: "4", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/gallery/medium-interior01.jpg", eyebrow: "AI 맞춤 청소" }, // 4번
   { featureId: "3", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg", eyebrow: "오브제/히든스테이션" }, // 5번
   { featureId: "5", image: "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png", eyebrow: "" },                              // 6번
   { featureId: "7", image: "/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg", eyebrow: "" },                            // 7번
@@ -49,7 +48,7 @@ interface VacuumFeatureGridProps {
 const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGridProps) => {
   const { counts } = useFeatureLikeCounts(productId);
   const { trackEvent, trackFeatureClick } = useAnalyticsContext();
-  const [activeId, setActiveId] = useState<string | null>(null);
+  const navigate = useNavigate();
   const [localLikes, setLocalLikes] = useState<Record<string, number>>({});
 
   const ordered = useMemo(() => {
@@ -81,7 +80,13 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
     [productId, productName, trackEvent],
   );
 
-  const active = ordered.find((f) => f.id === activeId) || null;
+  const handleCardClick = useCallback(
+    (feature: Feature) => {
+      trackFeatureClick(productName || productId, feature.title);
+      navigate(`/product/${productId}/feature/${feature.id}`);
+    },
+    [navigate, productId, productName, trackFeatureClick],
+  );
 
   return (
     <>
@@ -91,12 +96,13 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
           
           return (
 
-            <button
+            <div
               key={feature.id}
-              type="button"
-              onClick={() => {
-                setActiveId(feature.id);
-                trackFeatureClick(productName || productId, feature.title);
+              role="button"
+              tabIndex={0}
+              onClick={() => handleCardClick(feature)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") handleCardClick(feature);
               }}
               className="group relative flex flex-col overflow-hidden rounded-[12px] bg-white text-left shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] transition-transform duration-100 active:scale-[0.98]"
             >
@@ -143,46 +149,10 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
                 </span>
               </div>
 
-            </button>
+            </div>
           );
         })}
       </div>
-
-
-      {/* 탭 시 확장 상세 설명 */}
-      <Dialog open={!!active} onOpenChange={(open) => !open && setActiveId(null)}>
-        <DialogContent className="max-w-md">
-          {active && (
-            <>
-              <DialogHeader>
-                {active.tag && (
-                  <span className="mb-1 inline-block w-fit rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-bold text-gray-600">
-                    {active.tag}
-                  </span>
-                )}
-                <DialogTitle className="text-left text-[19px] font-semibold leading-snug">
-                  {active.title}
-                </DialogTitle>
-              </DialogHeader>
-              <p className="whitespace-pre-line text-[14px] leading-relaxed text-gray-600">
-                {active.description || active.subtitle}
-              </p>
-              <div className="flex items-center justify-between pt-1">
-                <span className="inline-flex items-center gap-1 text-[13px] text-gray-500">
-                  <Heart className="h-4 w-4 text-gray-400" strokeWidth={2} />
-                  <span className="tabular-nums">{likeCount(active.id)}</span>
-                </span>
-                <Link
-                  to={`/product/${productId}/feature/${active.id}`}
-                  className="rounded-full bg-gray-700 px-4 py-2 text-[14px] font-semibold text-white"
-                >
-                  조금 더 자세히 볼까요?
-                </Link>
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
     </>
   );
 };
