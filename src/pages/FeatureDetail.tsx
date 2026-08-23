@@ -1008,6 +1008,7 @@ const FeatureDetail = () => {
           </Link>
         </div>
       </div>
+      )}
     </div>
   );
 };
