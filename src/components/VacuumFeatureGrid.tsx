@@ -129,10 +129,15 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
 
               {/* 카피 + 재생 버튼 */}
               <div className="relative flex flex-1 flex-col px-3 pb-10 pt-3">
+                {feature.id === "1" && feature.tag && (
+                  <span className="mb-1 w-fit text-[12px] font-bold tracking-[-0.01em] text-brand-accent">
+                    {feature.tag}
+                  </span>
+                )}
                 <h3 className="pr-9 text-[17px] font-bold leading-snug tracking-[-0.02em] text-gray-900 sm:text-[18px]">
                   {feature.title}
                 </h3>
-                {sub && (
+                {sub && feature.id !== "1" && (
                   <p className="mt-1 line-clamp-2 pr-9 text-[13px] leading-snug text-gray-500">
                     {sub}
                   </p>
