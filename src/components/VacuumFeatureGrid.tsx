@@ -18,7 +18,7 @@ const CARDS: { featureId: string; image: string; eyebrow: string }[] = [
   { featureId: "1", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/mainpoint_N95THO_pc.jpg", eyebrow: "스팀 물걸레" },          // 1번
   { featureId: "2", image: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_11_anti_tangle_03.jpg", eyebrow: "강력한 흡입력" }, // 2번
   { featureId: "8", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/subpointA_N95THO_pc.jpg", eyebrow: "물걸레 관리 솔루션" },      // 3번
-  { featureId: "4", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg", eyebrow: "AI 맞춤 청소" }, // 4번
+  { featureId: "4", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/gallery/medium-interior01.jpg", eyebrow: "AI 맞춤 청소" }, // 4번
   { featureId: "3", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg", eyebrow: "오브제/히든스테이션" }, // 5번
   { featureId: "5", image: "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png", eyebrow: "" },                              // 6번
   { featureId: "7", image: "/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg", eyebrow: "" },                            // 7번
