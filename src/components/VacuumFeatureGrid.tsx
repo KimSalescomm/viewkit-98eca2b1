@@ -28,6 +28,15 @@ const CARD_IMAGES: Record<string, string> = {
   "7": "/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
 };
 
+// 카드 순서대로 노출할 아이브로우 카피
+const CARD_EYEBROWS: Record<string, string> = {
+  "1": "스팀 물걸레",
+  "2": "흡입 청소",
+  "8": "AI 맞춤 청소",
+  "4": "공간 맞춤 솔루션",
+  "3": "구독",
+};
+
 // 실제 수집 데이터가 없을 때 사용할 기본 좋아요 수
 const FALLBACK_LIKES: Record<string, number> = {
   "4": 48,
@@ -129,19 +138,14 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
 
               {/* 카피 + 재생 버튼 */}
               <div className="relative flex flex-1 flex-col px-3 pb-10 pt-3">
-                {feature.id === "1" && feature.tag && (
+                {(CARD_EYEBROWS[feature.id] || feature.tag) && (
                   <span className="mb-1 w-fit text-[12px] font-bold tracking-[-0.01em] text-brand-accent">
-                    {feature.tag}
+                    {CARD_EYEBROWS[feature.id] || feature.tag}
                   </span>
                 )}
                 <h3 className="pr-9 text-[17px] font-bold leading-snug tracking-[-0.02em] text-gray-900 sm:text-[18px]">
                   {feature.title}
                 </h3>
-                {sub && feature.id !== "1" && (
-                  <p className="mt-1 line-clamp-2 pr-9 text-[13px] leading-snug text-gray-500">
-                    {sub}
-                  </p>
-                )}
                 <span className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-brand-accent shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
                   <Play className="h-3.5 w-3.5 fill-white text-white" />
                 </span>
