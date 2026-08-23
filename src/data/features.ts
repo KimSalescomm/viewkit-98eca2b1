@@ -1166,8 +1166,8 @@ export const featuresMap: Record<string, Feature[]> = {
   vacuum: [
     {
       id: "1",
-      title: "바닥 얼룩, AI가 알아서 닦아줄까요?",
-      subtitle: "",
+      title: "바닥얼룩, AI가 알아서 닦아줄까요?",
+      subtitle: "오염을 인식해 바닥 오염과 기름때까지 보다 말끔하게 청소해요.",
       icon: "Flame",
       tag: "스팀 물걸레",
       mediaType: "video",
