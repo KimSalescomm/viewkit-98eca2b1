@@ -156,13 +156,12 @@ const Home = () => {
 
         {/* Features Section Title */}
         {isSample ? (
-          <div className="mb-5 sm:mb-6">
-            <h3 className="text-[22px] font-bold leading-tight tracking-[-0.03em] text-gray-900 sm:text-[26px]">
-              바닥 얼룩, AI가 알아서 닦아줄까요?
+          <div className="mb-4 flex items-center gap-3 sm:mb-6">
+            <span className="h-px flex-1 bg-gray-200" />
+            <h3 className="text-[17px] font-semibold leading-tight tracking-[-0.02em] text-gray-900 sm:text-[20px]">
+              궁금한 내용을 확인해보세요
             </h3>
-            <p className="mt-1 text-[14px] leading-snug text-gray-500 sm:text-[15px]">
-              AI 오염 인식으로 상황에 맞게 알아서 청소
-            </p>
+            <span className="h-px flex-1 bg-gray-200" />
           </div>
 
         ) : (
