@@ -96,7 +96,7 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
         {ordered.map((feature) => {
           const image = CARD_IMAGES[feature.id];
-          const sub = feature.subtitle || feature.description;
+          
           return (
 
             <button
@@ -156,9 +156,6 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
         })}
       </div>
 
-      <p className="mt-4 text-center text-[12px] text-gray-400">
-        각 기능을 선택하면 자세한 영상과 설명을 확인할 수 있습니다.
-      </p>
 
       {/* 탭 시 확장 상세 설명 */}
       <Dialog open={!!active} onOpenChange={(open) => !open && setActiveId(null)}>
