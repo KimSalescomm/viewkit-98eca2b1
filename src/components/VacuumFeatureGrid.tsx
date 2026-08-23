@@ -17,7 +17,7 @@ import type { Feature } from "@/data/features";
 // 인덱스 0 = 1번 카드, 인덱스 1 = 2번 카드 ... 순서대로 노출됩니다.
 const CARDS: { featureId: string; image: string; eyebrow: string }[] = [
   { featureId: "1", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/mainpoint_N95THO_pc.jpg", eyebrow: "스팀 물걸레" },          // 1번
-  { featureId: "2", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_02.jpg", eyebrow: "흡입 청소" }, // 2번
+  { featureId: "2", image: "https://www.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_11_anti_tangle_03.jpg", eyebrow: "강력한 흡입력" }, // 2번
   { featureId: "8", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/subpointA_N95THO_pc.jpg", eyebrow: "물걸레 관리 솔루션" },      // 3번
   { featureId: "4", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg", eyebrow: "AI 맞춤 청소" }, // 4번
   { featureId: "3", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg", eyebrow: "오브제/히든스테이션" }, // 5번
