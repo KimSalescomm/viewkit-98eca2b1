@@ -1,16 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  Heart,
-  Play,
-  Sparkles,
-  Wind,
-  Flame,
-  Navigation,
-  Armchair,
-  Shield,
-  Wrench,
-} from "lucide-react";
+import { Heart, Play } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import SafeImage from "@/components/SafeImage";
 import { useFeatureLikeCounts } from "@/hooks/useFeatureLikeCounts";
@@ -20,23 +10,14 @@ import type { Feature } from "@/data/features";
 
 /**
  * 청소로봇 상세페이지 전용 특장점 그리드.
- * 카드 = 실사 이미지 + 아이콘 배지 + 카피 + 재생 버튼 (LG 공홈 톤)
+ * 카드 = 실사 이미지 + 카피 + 재생 버튼 (LG 공홈 톤)
  */
 
 // 카드 노출 순서 (feature id 기준)
 const CARD_ORDER = ["1", "2", "8", "4", "3", "5", "7"];
 
-const CARD_ICONS: Record<string, React.ElementType> = {
-  "1": Sparkles,
-  "2": Wind,
-  "8": Flame,
-  "4": Navigation,
-  "3": Armchair,
-  "5": Shield,
-  "7": Wrench,
-};
-
 // 상세페이지에서 이미 사용 중인 이미지 중에서 카드별로 선택
+
 const CARD_IMAGES: Record<string, string> = {
   "1": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_01.jpg",
   "2": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_02.jpg",
@@ -105,10 +86,10 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
     <>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
         {ordered.map((feature) => {
-          const Icon = CARD_ICONS[feature.id] ?? Sparkles;
           const image = CARD_IMAGES[feature.id];
           const sub = feature.subtitle || feature.description;
           return (
+
             <button
               key={feature.id}
               type="button"
@@ -127,10 +108,6 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                 )}
-                {/* 아이콘 배지 */}
-                <span className="absolute left-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 shadow-sm">
-                  <Icon className="h-4 w-4 text-brand-accent" strokeWidth={1.8} />
-                </span>
                 {/* 좋아요 */}
                 <span
                   role="button"
@@ -151,12 +128,12 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
               </div>
 
               {/* 카피 + 재생 버튼 */}
-              <div className="relative flex flex-1 flex-col px-3 pb-3 pt-3">
-                <h3 className="pr-9 text-[15px] font-semibold leading-snug text-gray-900">
+              <div className="relative flex flex-1 flex-col px-3 pb-10 pt-3">
+                <h3 className="pr-9 text-[17px] font-bold leading-snug tracking-[-0.02em] text-gray-900 sm:text-[18px]">
                   {feature.title}
                 </h3>
                 {sub && (
-                  <p className="mt-1 line-clamp-2 pr-9 text-[12px] leading-snug text-gray-500">
+                  <p className="mt-1 line-clamp-2 pr-9 text-[13px] leading-snug text-gray-500">
                     {sub}
                   </p>
                 )}
@@ -164,6 +141,7 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
                   <Play className="h-3.5 w-3.5 fill-white text-white" />
                 </span>
               </div>
+
             </button>
           );
         })}
