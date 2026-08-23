@@ -292,21 +292,23 @@ const FeatureDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
-      {/* Sticky Header */}
-      <div className="sticky top-0 bg-white/90 backdrop-blur-md border-b border-gray-200 px-4 py-3 sm:px-6 sm:py-4 z-50">
-        <div className="max-w-xl mx-auto sm:max-w-4xl">
-          <div className="flex items-center justify-between">
-            <BackButton to={`/product/${productId}`} label={`${product.name} 특장점`} />
-            <OrientationToggle />
-          </div>
-          <div className="text-center mt-1 sm:mt-2">
-            <span className="text-lg sm:text-2xl font-black tracking-wider uppercase text-gray-800">
-              VIEW KIT
-            </span>
+    <div className={isVacuumSample ? "min-h-screen bg-[#F3F4F6]" : "min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50"}>
+      {!isVacuumSample && (
+        /* Sticky Header */
+        <div className="sticky top-0 bg-white/90 backdrop-blur-md border-b border-gray-200 px-4 py-3 sm:px-6 sm:py-4 z-50">
+          <div className="max-w-xl mx-auto sm:max-w-4xl">
+            <div className="flex items-center justify-between">
+              <BackButton to={`/product/${productId}`} label={`${product.name} 특장점`} />
+              <OrientationToggle />
+            </div>
+            <div className="text-center mt-1 sm:mt-2">
+              <span className="text-lg sm:text-2xl font-black tracking-wider uppercase text-gray-800">
+                VIEW KIT
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Content */}
       <div className="px-4 py-6 sm:px-6 sm:py-8 max-w-xl mx-auto sm:max-w-4xl">
