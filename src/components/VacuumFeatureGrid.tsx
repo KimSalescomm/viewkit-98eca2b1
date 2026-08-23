@@ -13,29 +13,21 @@ import type { Feature } from "@/data/features";
  * 카드 = 실사 이미지 + 카피 + 재생 버튼 (LG 공홈 톤)
  */
 
-// 카드 노출 순서 (feature id 기준)
-const CARD_ORDER = ["1", "2", "8", "4", "3", "5", "7"];
+// 청소로봇 상세페이지 카드 설정
+// 인덱스 0 = 1번 카드, 인덱스 1 = 2번 카드 ... 순서대로 노출됩니다.
+const CARDS: { featureId: string; image: string; eyebrow: string }[] = [
+  { featureId: "1", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/mainpoint_N95THO_pc.jpg", eyebrow: "스팀 물걸레" },          // 1번
+  { featureId: "2", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_02.jpg", eyebrow: "흡입 청소" }, // 2번
+  { featureId: "8", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/subpointA_N95THO_pc.jpg", eyebrow: "물걸레 관리 솔루션" },      // 3번
+  { featureId: "4", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg", eyebrow: "AI 맞춤 청소" }, // 4번
+  { featureId: "3", image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg", eyebrow: "오브제/히든스테이션" }, // 5번
+  { featureId: "5", image: "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png", eyebrow: "" },                              // 6번
+  { featureId: "7", image: "/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg", eyebrow: "" },                            // 7번
+];
 
-// 상세페이지에서 이미 사용 중인 이미지 중에서 카드별로 선택
-
-const CARD_IMAGES: Record<string, string> = {
-  "1": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/mainpoint_N95THO_pc.jpg",
-  "2": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_02.jpg",
-  "8": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/subpointA_N95THO_pc.jpg",
-  "4": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg",
-  "3": "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
-  "5": "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png",
-  "7": "/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
-};
-
-// 카드 순서대로 노출할 아이브로우 카피
-const CARD_EYEBROWS: Record<string, string> = {
-  "1": "스팀 물걸레",
-  "2": "흡입 청소",
-  "8": "물걸레 관리 솔루션",
-  "4": "AI 맞춤 청소",
-  "3": "오브제/히든스테이션",
-};
+const CARD_ORDER = CARDS.map((c) => c.featureId);
+const CARD_IMAGES: Record<string, string> = Object.fromEntries(CARDS.map((c) => [c.featureId, c.image]));
+const CARD_EYEBROWS: Record<string, string> = Object.fromEntries(CARDS.map((c) => [c.featureId, c.eyebrow]));
 
 // 실제 수집 데이터가 없을 때 사용할 기본 좋아요 수
 const FALLBACK_LIKES: Record<string, number> = {
