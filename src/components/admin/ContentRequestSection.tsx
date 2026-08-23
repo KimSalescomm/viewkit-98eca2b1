@@ -33,13 +33,9 @@ const ContentRequestSection = () => {
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
 
-  const getCode = () => {
-    try {
-      return sessionStorage.getItem("viewkit_admin_code")?.trim() || "";
-    } catch {
-      return "";
-    }
-  };
+  const getCode = () =>
+    requireAdminPasscode("관리자 패스코드를 입력해 주세요.") ?? "";
+
 
   const load = async () => {
     setLoading(true);

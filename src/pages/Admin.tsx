@@ -21,6 +21,12 @@ import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { cn } from "@/lib/utils";
 import { BRANCH_CODE_MAP } from "@/data/branches";
+import {
+  clearAdminPasscode,
+  requireAdminPasscode,
+  setAdminPasscode,
+} from "@/utils/adminPasscode";
+
 
 // 코드(store_id) → 정식 지점명 역매핑 (DB의 store_name 불일치 보정용)
 const CODE_TO_NAME: Record<string, string> = Object.fromEntries(
