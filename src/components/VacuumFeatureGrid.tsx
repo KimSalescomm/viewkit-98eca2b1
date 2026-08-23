@@ -96,12 +96,13 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
           
           return (
 
-            <button
+            <div
               key={feature.id}
-              type="button"
-              onClick={() => {
-                setActiveId(feature.id);
-                trackFeatureClick(productName || productId, feature.title);
+              role="button"
+              tabIndex={0}
+              onClick={() => handleCardClick(feature)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") handleCardClick(feature);
               }}
               className="group relative flex flex-col overflow-hidden rounded-[12px] bg-white text-left shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] transition-transform duration-100 active:scale-[0.98]"
             >
