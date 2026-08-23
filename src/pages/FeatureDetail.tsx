@@ -192,6 +192,92 @@ const FeatureDetail = () => {
     }
   };
 
+  const isVacuumSample = productId === "vacuum" && id === "1";
+
+  const VacuumSampleLayout = ({
+    feature,
+    product,
+    productId,
+    onVideoClick,
+  }: {
+    feature: Feature;
+    product: { name: string };
+    productId: string;
+    onVideoClick: () => void;
+  }) => {
+    const highlights = feature.highlights || [];
+    return (
+      <div className="px-5 py-6 sm:px-8 sm:py-8 max-w-xl mx-auto sm:max-w-4xl">
+        <div className="flex items-center justify-between mb-5 sm:mb-6">
+          <BackButton to={`/product/${productId}`} label={`${product.name} 특장점`} />
+          <OrientationToggle />
+        </div>
+
+        <div className="mb-4 flex items-start gap-4 overflow-hidden rounded-[14px] bg-white px-5 py-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
+          <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-gray-100">
+            <FeatureIcon iconKey={feature.icon} className="h-8 w-8 text-brand-accent" />
+          </div>
+          <div className="min-w-0">
+            {feature.tag && (
+              <span className="mb-1 inline-block text-[12px] font-bold tracking-[-0.01em] text-brand-accent">
+                {feature.tag}
+              </span>
+            )}
+            <h1 className="text-[22px] font-bold leading-tight tracking-[-0.02em] text-gray-900 sm:text-[28px]">
+              {feature.title}
+            </h1>
+            <p className="mt-1 text-[14px] leading-snug text-gray-600 sm:text-[16px]">
+              {feature.subtitle}
+            </p>
+          </div>
+        </div>
+
+        <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
+          <div onClick={onVideoClick}>
+            <MediaViewer
+              mediaType={feature.mediaType}
+              mediaUrl={feature.mediaUrl}
+              title={feature.title}
+              isShorts={feature.isShorts}
+              fallbackUrl={feature.fallbackUrl}
+            />
+          </div>
+        </div>
+
+        <div className="mb-4 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
+          <p className="text-[15px] leading-relaxed text-gray-700 whitespace-pre-line">
+            {feature.description}
+          </p>
+        </div>
+
+        <div className="mb-8 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-10">
+          <h2 className="mb-4 text-lg font-bold text-gray-900">핵심만 쏙</h2>
+          <div className="grid grid-cols-2 gap-3">
+            {highlights.map((highlight, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-2 rounded-xl bg-gray-50 p-3"
+              >
+                <Check className="h-5 w-5 flex-shrink-0 text-brand-accent" />
+                <span className="text-sm font-medium text-gray-800">{highlight}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="text-center">
+          <Link
+            to={`/product/${productId}`}
+            className="inline-flex items-center gap-2 rounded-xl bg-brand-accent px-6 py-3 text-base font-semibold text-white shadow-[0_4px_14px_rgba(0,0,0,0.12)]"
+          >
+            <span>←</span>
+            <span>전체 특장점으로 돌아가기</span>
+          </Link>
+        </div>
+      </div>
+    );
+  };
+
   if (!feature || !product || !isProductVisible(productId || "")) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
