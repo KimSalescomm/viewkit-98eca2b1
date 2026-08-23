@@ -311,6 +311,14 @@ const FeatureDetail = () => {
       )}
 
       {/* Content */}
+      {isVacuumSample ? (
+        <VacuumSampleLayout
+          feature={feature}
+          product={product}
+          productId={productId || ""}
+          onVideoClick={handleVideoClick}
+        />
+      ) : (
       <div className="px-4 py-6 sm:px-6 sm:py-8 max-w-xl mx-auto sm:max-w-4xl">
         {/* Feature Header */}
         <div className="flex items-start gap-3 sm:gap-6 mb-6 sm:mb-8">
