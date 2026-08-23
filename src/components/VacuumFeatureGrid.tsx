@@ -1,7 +1,6 @@
-import { useCallback, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useCallback, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { Heart, Play } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import SafeImage from "@/components/SafeImage";
 import { useFeatureLikeCounts } from "@/hooks/useFeatureLikeCounts";
 import { logFeatureReaction } from "@/utils/featureReactionLog";
