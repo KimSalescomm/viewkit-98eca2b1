@@ -68,7 +68,7 @@ const Home = () => {
                 </p>
               </div>
               <SafeImage
-                src="https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_summary_pc.jpg"
+                src="https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/gallery/medium05.jpg"
                 alt={`LG ${product.name} 제품 이미지`}
                 loading="eager"
                 fetchPriority="high"
