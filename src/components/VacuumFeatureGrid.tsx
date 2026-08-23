@@ -149,46 +149,10 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
                 </span>
               </div>
 
-            </button>
+            </div>
           );
         })}
       </div>
-
-
-      {/* 탭 시 확장 상세 설명 */}
-      <Dialog open={!!active} onOpenChange={(open) => !open && setActiveId(null)}>
-        <DialogContent className="max-w-md">
-          {active && (
-            <>
-              <DialogHeader>
-                {active.tag && (
-                  <span className="mb-1 inline-block w-fit rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-bold text-gray-600">
-                    {active.tag}
-                  </span>
-                )}
-                <DialogTitle className="text-left text-[19px] font-semibold leading-snug">
-                  {active.title}
-                </DialogTitle>
-              </DialogHeader>
-              <p className="whitespace-pre-line text-[14px] leading-relaxed text-gray-600">
-                {active.description || active.subtitle}
-              </p>
-              <div className="flex items-center justify-between pt-1">
-                <span className="inline-flex items-center gap-1 text-[13px] text-gray-500">
-                  <Heart className="h-4 w-4 text-gray-400" strokeWidth={2} />
-                  <span className="tabular-nums">{likeCount(active.id)}</span>
-                </span>
-                <Link
-                  to={`/product/${productId}/feature/${active.id}`}
-                  className="rounded-full bg-gray-700 px-4 py-2 text-[14px] font-semibold text-white"
-                >
-                  조금 더 자세히 볼까요?
-                </Link>
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
     </>
   );
 };
