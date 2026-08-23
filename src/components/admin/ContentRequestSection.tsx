@@ -3,6 +3,8 @@ import { Download, Inbox, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { REQUEST_CATEGORIES } from "@/components/ContentRequestButton";
+import { requireAdminPasscode } from "@/utils/adminPasscode";
+
 
 const STATUSES = ["대기", "처리중", "완료"] as const;
 
