@@ -32,9 +32,9 @@ const CARD_IMAGES: Record<string, string> = {
 const CARD_EYEBROWS: Record<string, string> = {
   "1": "스팀 물걸레",
   "2": "흡입 청소",
-  "8": "AI 맞춤 청소",
-  "4": "공간 맞춤 솔루션",
-  "3": "구독",
+  "8": "물걸레 관리 솔루션",
+  "4": "AI 맞춤 청소",
+  "3": "오브제/히든스테이션",
 };
 
 // 실제 수집 데이터가 없을 때 사용할 기본 좋아요 수
