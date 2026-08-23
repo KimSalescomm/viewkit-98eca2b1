@@ -48,7 +48,7 @@ interface VacuumFeatureGridProps {
 const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGridProps) => {
   const { counts } = useFeatureLikeCounts(productId);
   const { trackEvent, trackFeatureClick } = useAnalyticsContext();
-  const [activeId, setActiveId] = useState<string | null>(null);
+  const navigate = useNavigate();
   const [localLikes, setLocalLikes] = useState<Record<string, number>>({});
 
   const ordered = useMemo(() => {
@@ -80,7 +80,13 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
     [productId, productName, trackEvent],
   );
 
-  const active = ordered.find((f) => f.id === activeId) || null;
+  const handleCardClick = useCallback(
+    (feature: Feature) => {
+      trackFeatureClick(productName || productId, feature.title);
+      navigate(`/product/${productId}/feature/${feature.id}`);
+    },
+    [navigate, productId, productName, trackFeatureClick],
+  );
 
   return (
     <>
