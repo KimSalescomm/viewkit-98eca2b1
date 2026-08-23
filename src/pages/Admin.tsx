@@ -21,6 +21,12 @@ import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { cn } from "@/lib/utils";
 import { BRANCH_CODE_MAP } from "@/data/branches";
+import {
+  clearAdminPasscode,
+  requireAdminPasscode,
+  setAdminPasscode,
+} from "@/utils/adminPasscode";
+
 
 // 코드(store_id) → 정식 지점명 역매핑 (DB의 store_name 불일치 보정용)
 const CODE_TO_NAME: Record<string, string> = Object.fromEntries(
@@ -126,8 +132,9 @@ const getVisitsSinceISO = (key: VisitsRangeKey): string => {
 
 
 // 패스코드는 서버(Edge Function: admin-login)에서 검증합니다.
+// 패스코드 원문은 저장하지 않고 메모리에만 보관합니다. (adminPasscode 유틸)
 const AUTH_KEY = "viewkit_admin_auth";
-const AUTH_CODE_KEY = "viewkit_admin_code";
+
 
 // 모바일 브라우저(특히 iOS Safari)에서도 안정적으로 동작하는 CSV 다운로드 헬퍼
 const downloadCsv = async (csv: string, filename: string) => {
@@ -182,11 +189,12 @@ const useAuth = () => {
       if (error || !data?.ok) return false;
       try {
         sessionStorage.setItem(AUTH_KEY, "1");
-        sessionStorage.setItem(AUTH_CODE_KEY, trimmed);
       } catch {
         /* noop */
       }
+      setAdminPasscode(trimmed);
       setAuthed(true);
+
       return true;
     } catch {
       return false;
@@ -195,11 +203,12 @@ const useAuth = () => {
   const logout = () => {
     try {
       sessionStorage.removeItem(AUTH_KEY);
-      sessionStorage.removeItem(AUTH_CODE_KEY);
     } catch {
       /* noop */
     }
+    clearAdminPasscode();
     setAuthed(false);
+
   };
   return { authed, login, logout };
 };
@@ -359,23 +368,10 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   };
   const clearSelection = () => setSelected(new Set());
 
-  // 삭제 시 관리자 패스코드 재확인 (로그인 시 저장된 값 우선 사용)
-  const promptPasscode = (): string | null => {
-    try {
-      const cached = sessionStorage.getItem(AUTH_CODE_KEY);
-      if (cached && cached.trim()) return cached.trim();
-    } catch {
-      /* noop */
-    }
-    const code = window.prompt("삭제하려면 관리자 패스코드를 다시 입력해 주세요.");
-    if (code === null) return null;
-    const trimmed = code.trim();
-    if (!trimmed) {
-      alert("패스코드가 입력되지 않았습니다.");
-      return null;
-    }
-    return trimmed;
-  };
+  // 삭제 시 관리자 패스코드 재확인 (메모리에 없으면 재입력 요청)
+  const promptPasscode = (): string | null =>
+    requireAdminPasscode("삭제하려면 관리자 패스코드를 다시 입력해 주세요.");
+
 
   const handleDeleteOne = async (id?: string) => {
     if (!id) return;

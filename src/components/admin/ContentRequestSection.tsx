@@ -3,6 +3,8 @@ import { Download, Inbox, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { REQUEST_CATEGORIES } from "@/components/ContentRequestButton";
+import { requireAdminPasscode } from "@/utils/adminPasscode";
+
 
 const STATUSES = ["대기", "처리중", "완료"] as const;
 
@@ -33,13 +35,9 @@ const ContentRequestSection = () => {
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
 
-  const getCode = () => {
-    try {
-      return sessionStorage.getItem("viewkit_admin_code")?.trim() || "";
-    } catch {
-      return "";
-    }
-  };
+  const getCode = () =>
+    requireAdminPasscode("관리자 패스코드를 입력해 주세요.") ?? "";
+
 
   const load = async () => {
     setLoading(true);
