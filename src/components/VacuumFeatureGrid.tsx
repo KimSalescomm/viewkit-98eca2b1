@@ -127,10 +127,6 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                 )}
-                {/* 아이콘 배지 */}
-                <span className="absolute left-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 shadow-sm">
-                  <Icon className="h-4 w-4 text-brand-accent" strokeWidth={1.8} />
-                </span>
                 {/* 좋아요 */}
                 <span
                   role="button"
@@ -151,12 +147,12 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
               </div>
 
               {/* 카피 + 재생 버튼 */}
-              <div className="relative flex flex-1 flex-col px-3 pb-3 pt-3">
-                <h3 className="pr-9 text-[15px] font-semibold leading-snug text-gray-900">
+              <div className="relative flex flex-1 flex-col px-3 pb-10 pt-3">
+                <h3 className="pr-9 text-[17px] font-bold leading-snug tracking-[-0.02em] text-gray-900 sm:text-[18px]">
                   {feature.title}
                 </h3>
                 {sub && (
-                  <p className="mt-1 line-clamp-2 pr-9 text-[12px] leading-snug text-gray-500">
+                  <p className="mt-1 line-clamp-2 pr-9 text-[13px] leading-snug text-gray-500">
                     {sub}
                   </p>
                 )}
@@ -164,6 +160,7 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
                   <Play className="h-3.5 w-3.5 fill-white text-white" />
                 </span>
               </div>
+
             </button>
           );
         })}
