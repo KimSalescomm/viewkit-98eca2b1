@@ -12,7 +12,7 @@ import SafeImage from "@/components/SafeImage";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { useContent } from "@/contexts/ContentContext";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { GalleryImage, SubscriptionServiceItem } from "@/data/features";
+import { GalleryImage, SubscriptionServiceItem, type Feature } from "@/data/features";
 
 import {
   Accordion,
