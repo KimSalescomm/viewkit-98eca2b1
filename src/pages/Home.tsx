@@ -158,12 +158,13 @@ const Home = () => {
         {isSample ? (
           <div className="mb-5 sm:mb-6">
             <h3 className="text-[22px] font-bold leading-tight tracking-[-0.03em] text-gray-900 sm:text-[26px]">
-              청소로봇, 어떤 기능이 궁금하신가요?
+              바닥 얼룩, AI가 알아서 닦아줄까요?
             </h3>
             <p className="mt-1 text-[14px] leading-snug text-gray-500 sm:text-[15px]">
-              원하는 기능을 선택해보세요
+              AI 오염 인식으로 상황에 맞게 알아서 청소
             </p>
           </div>
+
         ) : (
           <div className="text-center mb-6 sm:mb-8">
             <p className="text-[11px] font-black tracking-[0.25em] uppercase text-gray-400 mb-2">FEATURES</p>
