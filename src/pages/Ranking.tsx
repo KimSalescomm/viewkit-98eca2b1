@@ -200,7 +200,7 @@ const Ranking = () => {
         <p className="text-[11px] text-slate-400 mt-6 text-center">
           ※ 데이터는 Lovable Cloud에 누적 저장되며 SC 관리자 계정에서는 절대 삭제되지 않습니다.
         </p>
-      </div>
+      </PageContainer>
     </div>
   );
 };
