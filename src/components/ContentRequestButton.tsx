@@ -90,7 +90,7 @@ const ContentRequestButton = ({ variant = "pill" }: ContentRequestButtonProps) =
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="inline-flex h-11 items-center gap-2 rounded-full px-4 text-[15px] font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+          className="inline-flex h-11 items-center gap-2 rounded-full px-4 text-[13px] font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
           title="필요한 콘텐츠 요청하기"
         >
           <MessageSquarePlus className="w-[18px] h-[18px] text-[#A50034]" />

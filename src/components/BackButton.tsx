@@ -15,7 +15,7 @@ interface BackButtonProps {
 const BackButton = ({ to = "/", label = "제품 선택", className = "" }: BackButtonProps) => (
   <Link
     to={to}
-    className={`inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-xl border border-white/70 px-4 h-11 text-[15px] font-semibold text-gray-700 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:bg-white transition-colors ${className}`}
+    className={`inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-xl border border-white/70 px-4 h-11 text-[13px] font-semibold text-gray-700 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:bg-white transition-colors ${className}`}
   >
     <span className="text-base leading-none" aria-hidden="true">←</span>
     <span>{label}</span>
