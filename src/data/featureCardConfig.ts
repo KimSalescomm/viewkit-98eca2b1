@@ -118,6 +118,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     cards: {
       "3": {
         image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_B_pc.jpg",
+        objectPositionClass: "object-[center_65%]",
       },
       "4": {
         image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_mainpoint_pc.png",
