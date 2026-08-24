@@ -1455,7 +1455,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "구독, \n더 편해질까요?",
       subtitle: "구독으로 편하게,\n전문가가 관리해요",
       icon: "Wrench",
-      tag: "구독",
+      tag: "가전 구독",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/robot-cleaners_roni_01.jpg",
       description:
