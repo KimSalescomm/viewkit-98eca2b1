@@ -115,8 +115,7 @@ export const products: Product[] = [
     name: "워시콤보",
     title: "AI 워시콤보",
     description: "하나의 통 안에서 세탁부터 건조까지 한 번에",
-    keyVisualImage: washcomboMainWide,
-    keyVisualVideo: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_02_all_in_one_pc.mp4",
+    keyVisualImage: "https://static.lge.co.kr/kr/images/wash-combo/md10867827/gallery/medium01.jpg",
     icon: "Waves",
   },
 
