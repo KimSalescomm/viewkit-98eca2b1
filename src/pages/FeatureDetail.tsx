@@ -78,8 +78,8 @@ const FeatureDetail = () => {
                 radiusClassName="rounded-2xl rounded-b-none"
               />
               <div className="p-2.5 sm:p-3">
-                {img.title && <h4 className="text-xs sm:text-sm font-bold text-gray-900 mb-1">{img.title}</h4>}
-                {img.description && <p className="text-[10px] sm:text-xs text-gray-500 leading-snug">{img.description}</p>}
+                {img.title && <h4 className="text-[14px] font-bold text-gray-900 mb-1">{img.title}</h4>}
+                {img.description && <p className="text-[12px] text-gray-500 leading-snug">{img.description}</p>}
               </div>
             </div>
           ))}
@@ -94,8 +94,8 @@ const FeatureDetail = () => {
                 radiusClassName="rounded-2xl rounded-b-none"
               />
               <div className="p-2.5 sm:p-3">
-                {img.title && <h4 className="text-xs sm:text-sm font-bold text-gray-900 mb-1">{img.title}</h4>}
-                {img.description && <p className="text-[10px] sm:text-xs text-gray-500 leading-snug">{img.description}</p>}
+                {img.title && <h4 className="text-[14px] font-bold text-gray-900 mb-1">{img.title}</h4>}
+                {img.description && <p className="text-[12px] text-gray-500 leading-snug">{img.description}</p>}
               </div>
             </div>
           ))}
@@ -165,7 +165,7 @@ const FeatureDetail = () => {
             {mediaDisclaimers.map((text, index) => (
               <li
                 key={index}
-                className="text-[11px] text-muted-foreground leading-relaxed"
+                className="text-[12px] text-muted-foreground leading-relaxed"
               >
                 * {text}
               </li>
@@ -237,7 +237,7 @@ const FeatureDetail = () => {
                       )}
                       <ol className="list-none space-y-1">
                         {item.items.map((text, i) => (
-                          <li key={i} className="text-[11px] leading-relaxed text-muted-foreground whitespace-pre-line">
+                          <li key={i} className="text-[12px] leading-relaxed text-muted-foreground whitespace-pre-line">
                             {text}
                           </li>
                         ))}
@@ -260,7 +260,7 @@ const FeatureDetail = () => {
               <AccordionContent>
                 <ol className="list-none space-y-1 pb-2 pt-1">
                   {item.items.map((text, i) => (
-                    <li key={i} className="text-[11px] leading-relaxed text-muted-foreground whitespace-pre-line">
+                    <li key={i} className="text-[12px] leading-relaxed text-muted-foreground whitespace-pre-line">
                       {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
                     </li>
                   ))}
@@ -276,7 +276,7 @@ const FeatureDetail = () => {
       items && items.length > 0 ? (
         <ul className="mb-2 space-y-1">
           {items.map((text, index) => (
-            <li key={index} className="text-[11px] leading-relaxed text-muted-foreground">
+            <li key={index} className="text-[12px] leading-relaxed text-muted-foreground">
               * {text}
             </li>
           ))}
@@ -297,7 +297,7 @@ const FeatureDetail = () => {
           </div>
           <div className="min-w-0">
             {feature.tag && (
-              <span className="mb-1 inline-block text-[13px] font-bold tracking-[-0.01em] text-brand-accent">
+              <span className="mb-1 inline-block text-[12px] font-bold tracking-[0.12em] uppercase text-brand-accent">
                 {feature.tag}
               </span>
             )}
@@ -435,7 +435,7 @@ const FeatureDetail = () => {
               />
             </button>
             {belowImg.caption && (
-              <figcaption className="mt-2 text-center text-xs leading-relaxed text-gray-500 sm:text-sm">
+              <figcaption className="mt-2 text-center text-[12px] leading-relaxed text-gray-500">
                 {belowImg.caption}
               </figcaption>
             )}
@@ -484,7 +484,7 @@ const FeatureDetail = () => {
               {feature.subFeaturesTitle || "세부 기능"}
             </h2>
             {feature.subFeaturesSubtitle && (
-              <p className="mb-3 text-[13px] leading-relaxed text-gray-500 whitespace-pre-line">
+              <p className="mb-3 text-[14px] leading-relaxed text-gray-500 whitespace-pre-line">
                 {feature.subFeaturesSubtitle}
               </p>
             )}
@@ -494,7 +494,7 @@ const FeatureDetail = () => {
                   <AccordionTrigger className="py-3 text-left hover:no-underline">
                     <span className="flex min-w-0 items-center gap-2.5">
                       {sub.step && (
-                        <span className="flex-shrink-0 rounded-full bg-gray-100 px-2.5 py-1 text-[11px] font-bold text-brand-accent">
+                        <span className="flex-shrink-0 rounded-full bg-gray-100 px-2.5 py-1 text-[12px] font-bold text-brand-accent">
                           {sub.step}
                         </span>
                       )}
@@ -555,7 +555,7 @@ const FeatureDetail = () => {
                         </div>
                         <div className="hidden w-1 flex-shrink-0 bg-brand-accent md:block" />
                         <div className="flex w-full flex-col justify-center p-5 sm:p-6 md:w-2/5">
-                          <span className="mb-2 inline-block self-start rounded-full bg-gray-100 px-2.5 py-1 text-[11px] font-bold text-brand-accent">
+                          <span className="mb-2 inline-block self-start rounded-full bg-gray-100 px-2.5 py-1 text-[12px] font-bold text-brand-accent">
                             {course.type || "코스"}
                           </span>
                           <h3 className="mb-2 text-base font-bold text-gray-900 sm:text-lg">

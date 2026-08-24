@@ -31,7 +31,7 @@ const FeatureTabs = ({ tabs, activeIndex, onChange, className = "", scrollable =
             role="tab"
             aria-selected={isActive}
             onClick={() => onChange(idx)}
-            className={`min-h-[44px] whitespace-nowrap rounded-full px-4 sm:px-5 text-sm sm:text-base font-semibold border transition-colors ${
+            className={`min-h-[44px] whitespace-nowrap rounded-full px-4 sm:px-5 text-[14px] font-medium border transition-colors ${
               isActive
                 ? "text-white border-transparent shadow-sm"
                 : "bg-white text-gray-800 border-gray-200"
