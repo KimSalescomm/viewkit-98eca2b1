@@ -249,29 +249,37 @@ const FeatureDetail = () => {
           </div>
         )}
 
-        <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
-          <div onClick={onVideoClick}>
-            <MediaViewer
-              key={tabs ? `tab-${activeTab}` : "main"}
-              mediaType={
-                activeTabData?.mediaSlides || activeTabData?.galleryImages
-                  ? "gallery"
-                  : activeTabData?.mediaType ?? feature.mediaType
-              }
-              mediaUrl={activeTabData?.mediaUrl ?? feature.mediaUrl}
-              mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
-              title={feature.title}
-              tableData={feature.tableData}
-              galleryImages={activeTabData?.galleryImages ?? feature.galleryImages}
-              isShorts={activeTabData?.isShorts ?? feature.isShorts}
-              fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
-              imagePosition={activeTabData?.imagePosition}
-              fullWidthMedia={feature.fullWidthMedia}
-            />
+        {/* 구독 케어처럼 하위 이미지 섹션이 있으면 상단 메인 미디어는 생략 (중복 방지) */}
+        {!hasSubscriptionService && (
+          <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
+            <div onClick={onVideoClick}>
+              <MediaViewer
+                key={tabs ? `tab-${activeTab}` : "main"}
+                mediaType={
+                  activeTabData?.mediaSlides || activeTabData?.galleryImages
+                    ? "gallery"
+                    : activeTabData?.mediaType ?? feature.mediaType
+                }
+                mediaUrl={activeTabData?.mediaUrl ?? feature.mediaUrl}
+                mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
+                title={feature.title}
+                tableData={feature.tableData}
+                galleryImages={activeTabData?.galleryImages ?? feature.galleryImages}
+                isShorts={activeTabData?.isShorts ?? feature.isShorts}
+                fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
+                imagePosition={activeTabData?.imagePosition}
+                fullWidthMedia={feature.fullWidthMedia}
+              />
+            </div>
           </div>
-        </div>
+        )}
 
         {renderMediaGallery(activeTabData?.mediaGallery ?? feature.mediaGallery)}
+
+        {/* 구독 케어 서비스 (이미지 + 설명) */}
+        {hasSubscriptionService && (
+          <SubscriptionServiceSection items={feature.subscriptionServiceItems!} accent="brand" />
+        )}
 
         {(activeTabData?.caption || activeTabData?.description || feature.description) && (
           <div className="mb-4 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
@@ -286,10 +294,6 @@ const FeatureDetail = () => {
           </div>
         )}
 
-        {/* 구독 케어 서비스 (이미지 + 설명) */}
-        {feature.subscriptionServiceItems && feature.subscriptionServiceItems.length > 0 && (
-          <SubscriptionServiceSection items={feature.subscriptionServiceItems} accent="brand" />
-        )}
 
 
 
