@@ -304,3 +304,37 @@ All colors MUST be HSL.
   }
 }
 
+/* ============================================================
+   Portrait Mode (스탠바이미 세로 1080x1920)
+   - 세로 모드에서 콘텐츠가 너무 넓게 펼쳐지지 않도록 폭 제한
+   - 카드/히어로가 한 화면에 배치될 수 있도록 여백 조정
+   ============================================================ */
+@media (min-width: 980px) {
+  html[data-orientation="portrait"] body {
+    --vk-container-max: 900px;
+  }
+
+  /* 공통 컨테이너 폭 제한: 세로 모드에서 풀브leed 방지 */
+  html[data-orientation="portrait"] .max-w-xl,
+  html[data-orientation="portrait"] .sm\:max-w-4xl,
+  html[data-orientation="portrait"] .lg\:max-w-6xl {
+    max-width: 900px;
+  }
+
+  /* 청소로봇 USP 그리드: gap 축소 */
+  html[data-orientation="portrait"] .vk-vacuum-grid {
+    gap: 1rem;
+  }
+
+  /* 청소로봇 샘플 히어로: 세로 모드에서 높이/여백 축소 */
+  html[data-orientation="portrait"] .vk-sample-hero {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  html[data-orientation="portrait"] .vk-sample-hero img {
+    max-height: 150px;
+  }
+}
+
