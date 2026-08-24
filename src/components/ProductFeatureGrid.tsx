@@ -133,13 +133,21 @@ const ProductFeatureGrid = ({
           >
             {/* 이미지 영역 */}
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
+              {image && cardConfig?.fit === "contain" && (
+                <SafeImage
+                  src={image}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full scale-110 object-cover blur-xl"
+                />
+              )}
               {image && (
                 <SafeImage
                   src={image}
                   alt={`${feature.title} 이미지`}
-                  className={`absolute inset-0 h-full w-full object-cover ${
-                    cardConfig?.objectPositionClass ?? ""
-                  }`}
+                  className={`absolute inset-0 h-full w-full ${
+                    cardConfig?.fit === "contain" ? "object-contain" : "object-cover"
+                  } ${cardConfig?.objectPositionClass ?? ""}`}
                 />
               )}
               {/* 좋아요 */}
