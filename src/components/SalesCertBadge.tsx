@@ -331,17 +331,21 @@ const SalesCertBadge = () => {
                   </Popover>
                 </div>
 
-                <div className="space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <label className="text-[11px] font-semibold tracking-wide text-slate-700">
-                      뷰킷을 사용하며 가장 도움이 되었던 부분은 무엇인가요?{" "}
-                      <span className="text-brand">*</span>
-                    </label>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] text-slate-400">
-                      구체적인 사용 경험을 30자 이상 작성해 주세요.
-                    </span>
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <label className="text-[11px] font-semibold tracking-wide text-slate-700">
+                    뷰킷을 사용하며 가장 도움이 되었던 부분은 무엇인가요?{" "}
+                    <span className="text-brand">*</span>
+                  </label>
+                </div>
+                <div className="pt-1 flex items-center gap-1 text-[11px] font-medium text-brand">
+                  <AlertCircle className="w-3.5 h-3.5" />
+                  <span>진짜 경험이 담긴 판매 사례를 남겨주세요.</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] text-slate-400">
+                    구체적인 사용 경험을 30자 이상 작성해 주세요.
+                  </span>
                     <span
                       className={cn(
                         "text-[11px] font-medium transition-colors",
