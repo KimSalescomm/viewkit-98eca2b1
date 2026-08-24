@@ -15,6 +15,8 @@
 
 export const typeDisplay = "text-[28px] font-bold leading-tight tracking-[-0.02em]";
 export const typeHeading = "text-[18px] font-bold leading-snug tracking-[-0.01em]";
+/** 섹션 대제목 (예: "세탁기 케어서비스") */
+export const typeSectionTitle = "text-[22px] sm:text-[24px] font-bold leading-snug tracking-[-0.02em]";
 export const typeBody = "text-[14px] font-normal leading-relaxed";
 export const typeBodyMedium = "text-[14px] font-medium leading-relaxed";
 export const typeBodySemibold = "text-[14px] font-semibold leading-relaxed";
