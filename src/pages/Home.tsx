@@ -55,7 +55,7 @@ const Home = () => {
             <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] text-gray-500">
               VIEW KIT
             </p>
-            <h1 className="text-[30px] font-semibold leading-tight text-gray-900 sm:text-[38px]">
+            <h1 className="text-[30px] font-extrabold tracking-[-0.02em] leading-[1.2] text-gray-900 sm:text-[38px]">
               {product.name}
             </h1>
             <p className="mt-1 text-[13px] font-semibold leading-snug text-gray-700 sm:text-[15px]">
