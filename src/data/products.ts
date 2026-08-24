@@ -32,6 +32,7 @@ export const products: Product[] = [
     title: "DIOS 냉장고",
     description: "fresh sySTEM으로 완성되는 직수형 냉장고 STEM",
     keyVisualImage: "https://www.lge.co.kr/kr/story/buying-guide/img/lg-refrigerator-guide/keyvisual_02.jpg",
+    heroImage: "https://static.lge.co.kr/kr/images/refrigerators/md10604864/gallery/medium01.jpg",
     icon: "Box",
     imageZoom: 1.1,
   },
