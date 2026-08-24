@@ -301,11 +301,11 @@ const FeatureDetail = () => {
                 {feature.tag}
               </span>
             )}
-            <h1 className="whitespace-pre-line text-[26px] font-extrabold leading-[1.2] tracking-[-0.02em] text-gray-900 sm:text-[32px]">
-              {feature.title}
+            <h1 className="text-[26px] font-extrabold leading-[1.2] tracking-[-0.02em] text-gray-900 sm:text-[32px]">
+              {feature.title.replace(/\n/g, " ")}
             </h1>
-            <p className="mt-1 text-[15px] leading-snug text-gray-600 whitespace-pre-line sm:text-[17px]">
-              {feature.subtitle}
+            <p className="mt-1 text-[15px] leading-snug text-gray-600 sm:text-[17px]">
+              {feature.subtitle.replace(/\n/g, " ")}
             </p>
           </div>
         </div>
