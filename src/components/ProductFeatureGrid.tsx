@@ -24,9 +24,16 @@ interface ProductFeatureGridProps {
   fallbackImage?: string;
 }
 
+/** 유튜브 URL에서 썸네일 추출 */
+const youtubeThumb = (url?: string): string | undefined => {
+  if (!url) return undefined;
+  const match = url.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);
+  return match ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : undefined;
+};
+
 const deriveImage = (feature: Feature): string | undefined => {
-  if (feature.mediaType === "image" || feature.mediaType === "table") {
-    if (feature.mediaUrl) return feature.mediaUrl;
+  if ((feature.mediaType === "image" || feature.mediaType === "table") && feature.mediaUrl) {
+    return feature.mediaUrl;
   }
   if (feature.galleryImages?.length) {
     const first = feature.galleryImages[0];
@@ -37,7 +44,13 @@ const deriveImage = (feature: Feature): string | undefined => {
   if (slide) return slide.mediaUrl;
   const tabImage = feature.tabs?.find((t) => t.mediaType === "image" && t.mediaUrl)?.mediaUrl;
   if (tabImage) return tabImage;
-  if (feature.mediaType === "image" && feature.mediaUrl) return feature.mediaUrl;
+  if (feature.belowMediaImage?.url) return feature.belowMediaImage.url;
+  // 유튜브 특장점은 영상 썸네일을 사용
+  if (feature.mediaType === "youtube") return youtubeThumb(feature.mediaUrl);
+  const tabYoutube = feature.tabs?.find((t) => t.mediaType === "youtube" && t.mediaUrl)?.mediaUrl;
+  if (tabYoutube) return youtubeThumb(tabYoutube);
+  const slideYoutube = feature.mediaSlides?.find((s) => s.mediaType === "youtube")?.mediaUrl;
+  if (slideYoutube) return youtubeThumb(slideYoutube);
   return undefined;
 };
 
