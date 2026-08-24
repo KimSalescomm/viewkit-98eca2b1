@@ -6,7 +6,10 @@
  * - `fallbackLikes`: 수집 데이터가 아직 없을 때 표시할 기본 좋아요 수.
  *
  * 설정이 없는 제품도 정상 동작합니다.
- * (이미지 = 특장점의 mediaUrl/갤러리 첫 장/제품 키비주얼, 아이브로우 = feature.tag)
+ * (이미지 = 특장점의 mediaUrl/갤러리 첫 장/제품 키비주얼)
+ *
+ * NOTE: 아이브로우는 가능한 이 파일에 명시적으로 기재합니다.
+ *       eyebrow가 비어있으면 ProductFeatureGrid에서 feature.tag를 폴백으로 사용합니다.
  */
 
 export interface FeatureCardConfig {
@@ -60,7 +63,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       },
       "7": {
         image: "/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
-        eyebrow: "가전구독 케어",
+        eyebrow: "가전 구독",
       },
     },
     fallbackLikes: {
@@ -81,15 +84,19 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       },
       "8": {
         image: "/__l5e/assets-v1/5c91565e-d004-4833-9be9-da696f378141/refrigerator-stem-vs-comparison.png",
+        eyebrow: "STEM 제품 비교",
       },
       "10": {
         image: "https://static.lge.co.kr/kr/images/refrigerators/md10781901/refrigerator-lg-dios-ai-objet-d646-071-04-reason-direct-water-pc.jpg",
+        eyebrow: "구독 전문케어",
       },
       "9": {
         image: "https://c29ebf32-471f-4991-a656-57585c8d8b56.lovableproject.com/images/installation-step1.jpeg",
+        eyebrow: "설치 체크",
       },
       "13": {
         image: "https://static.lge.co.kr/kr/images/refrigerators/md10781898/refrigerator-lg-dios-ai-objet-d646-091-01-reason-dual-fresh-pc.jpg",
+        eyebrow: "프리미엄 기능",
         objectPositionClass: "object-right-bottom",
       },
     },
@@ -99,20 +106,25 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     cards: {
       "15": {
         image: "https://www.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AI_coldfree_detail_03.jpg",
+        eyebrow: "AI 콜드프리",
       },
       "18": {
         image: "https://www.lge.co.kr/kr/usp_dcr/air-conditioner/2025/25_Tower1/03.soft-wind/25_Tower1_9s_soft-wind_Detail.jpg",
+        eyebrow: "AI바람",
       },
       "19": {
         image: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_specialized_wind_cover.jpg",
+        eyebrow: "청정 · UVnano",
         objectPositionClass: "object-top",
       },
       "20": {
         image: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AI_radar_cover.jpg",
+        eyebrow: "AI편의기능 · 절전",
         objectPositionClass: "object-top",
       },
       "21": {
         image: "https://www.lge.co.kr/kr/images/common/gallery_list/images/air-conditioners/25_tower_9s_08.png",
+        eyebrow: "라인업 비교",
       },
     },
   },
@@ -121,21 +133,26 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     cards: {
       "1": {
         image: "https://static.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_00_01_pc.jpg",
+        eyebrow: "자발광 올레드",
         objectPositionClass: "object-bottom",
       },
       "2": {
         image: "https://static.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_00_03_pc.jpg",
+        eyebrow: "AI 화질 엔진",
         objectPositionClass: "object-bottom",
       },
       "3": {
         image: "https://static.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_00_02_pc.jpg",
+        eyebrow: "퍼펙트 블랙 & 퍼펙트 컬러",
         objectPositionClass: "object-bottom",
       },
       "6": {
         image: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_02_04_pc_b.jpg",
+        eyebrow: "고객 리뷰",
       },
       "5": {
         image: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_07_01_pc.jpg",
+        eyebrow: "라인업 비교",
       },
     },
   },
@@ -143,10 +160,12 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     cards: {
       "3": {
         image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_B_pc.jpg",
+        eyebrow: "AI DD x 6모션",
         objectPositionClass: "object-[center_65%]",
       },
       "4": {
         image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_mainpoint_pc.png",
+        eyebrow: "콘덴서 자동세척",
       },
     },
   },
@@ -154,21 +173,26 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     cards: {
       "1": {
         image: "https://static.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_mainpoint_pc.png",
+        eyebrow: "AI 올인원 세탁+건조",
       },
       "2": {
         image: "https://static.lge.co.kr/kr/images/wash-combo/md10867827/gallery/medium05.jpg",
+        eyebrow: "국내 최대 25kg 세탁 + 21kg 건조",
         fit: "contain",
         containBackground: "white",
       },
       "3": {
         image: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_11_steam_sterilization.jpg",
+        eyebrow: "트루스팀",
       },
       "4": {
         image: "/__l5e/assets-v1/1435d98b-daea-4b7b-a191-f282c8380294/washcombo-automatic.jpg",
+        eyebrow: "플랫세제함(자동세제)",
         fit: "contain",
       },
       "5": {
         image: "https://static.lge.co.kr/kr/images/wash-combo/md10867827/gallery/medium-interior01.jpg",
+        eyebrow: "All New Full 플랫 디자인",
         fit: "contain",
       },
     },
