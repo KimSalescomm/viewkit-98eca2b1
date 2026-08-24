@@ -211,6 +211,8 @@ const FeatureDetail = () => {
     onVideoClick: () => void;
   }) => {
     const highlights = activeTabData?.highlights ?? feature.highlights ?? [];
+    const hasSubscriptionService =
+      !!feature.subscriptionServiceItems && feature.subscriptionServiceItems.length > 0;
     return (
       <div className="px-5 py-6 sm:px-8 sm:py-8 max-w-xl mx-auto sm:max-w-4xl">
         <div className="flex items-center justify-between mb-5 sm:mb-6">
