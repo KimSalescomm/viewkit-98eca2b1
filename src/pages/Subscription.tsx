@@ -540,17 +540,13 @@ const Subscription = () => {
             {/* Care Process */}
             <div className="px-5 py-5 border-t border-gray-50">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4" style={{ color: "hsl(var(--brand-accent))" }} />
+                <h3 className={`${typeHeading} text-gray-900 flex items-center gap-1.5`}>
+                  <Sparkles className="w-4 h-4 text-brand-accent" />
                   {selected.name} 케어 과정
                 </h3>
                 {hasAnyImage && (
-                  <span
-                    className="text-[11px] font-semibold inline-flex items-center gap-1 px-2 py-0.5 rounded-full"
-                    style={{ color: "hsl(var(--brand-accent))", backgroundColor: "hsl(var(--brand-accent)/0.1)" }}
-                  >
-                    <ImageIcon className="w-3 h-3" />
-                    이미지 클릭
+                  <span className={actionIconPill} aria-label="이미지를 클릭하면 케어 사진을 볼 수 있습니다" title="이미지 보기">
+                    <ImageIcon className={actionIconSize} />
                   </span>
                 )}
               </div>
@@ -563,44 +559,32 @@ const Subscription = () => {
                         <button
                           type="button"
                           onClick={() => setPreviewStep(step)}
-                          className="group w-full text-left flex items-center gap-2.5 leading-relaxed rounded-lg px-2.5 py-2 -mx-2.5 border transition-all duration-200 hover:-translate-y-px"
-                          style={{
-                            backgroundColor: "#FFF5F8",
-                            borderColor: "#F5C9D5",
-                          }}
+                          className="group w-full text-left flex items-center gap-2.5 rounded-lg px-2.5 py-2 -mx-2.5 border border-gray-100 bg-white transition-all duration-200 hover:-translate-y-px hover:border-gray-200"
                         >
-                          <span
-                            className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
-                            style={{ backgroundColor: "hsl(var(--brand-accent))", color: "#fff" }}
-                          >
+                          <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-brand-accent text-white">
                             <Check className="w-3 h-3" strokeWidth={3} />
                           </span>
-                          <span
-                            className="text-[15px] font-semibold flex-1"
-                            style={{ color: "#7A0026" }}
-                          >
+                          <span className={`${typeBodyMedium} text-gray-900 flex-1`}>
                             {step.label}
                           </span>
-                          <span
-                            className="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full transition-colors group-hover:brightness-110"
-                            style={{ backgroundColor: "hsl(var(--brand-accent))", color: "#fff" }}
-                          >
-                            <ImageIcon className="w-3 h-3" />
+                          <span className={`${actionPill} group-hover:brightness-110`}>
+                            <ImageIcon className={actionIconSize} />
                             보기
                           </span>
                         </button>
                       ) : (
-                        <div className="flex items-center gap-2.5 leading-relaxed px-2.5 py-1.5 -mx-2.5">
-                          <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-gray-100 text-gray-400">
+                        <div className="flex items-center gap-2.5 px-2.5 py-2 -mx-2.5 border border-transparent">
+                          <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-brand-accent text-white">
                             <Check className="w-3 h-3" strokeWidth={3} />
                           </span>
-                          <span className="text-[15px] text-gray-500">
+                          <span className={`${typeBodyMedium} text-gray-900 flex-1`}>
                             {step.label}
                           </span>
                         </div>
                       )}
                     </li>
                   );
+
                 })}
               </ul>
             </div>
