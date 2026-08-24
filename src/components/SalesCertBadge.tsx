@@ -194,7 +194,7 @@ const SalesCertBadge = () => {
         className={cn(
           "group fixed bottom-5 right-5 z-40 isolate",
           "inline-flex items-center gap-2",
-          "h-12 pl-4 pr-4 rounded-full",
+          "h-11 px-4 rounded-full",
           "text-white",
           "bg-gradient-to-r from-[#FF4D6D] via-brand to-[#FF8A3D]",
           "shadow-[0_10px_30px_-6px_hsl(var(--brand)/0.45)]",
@@ -204,12 +204,12 @@ const SalesCertBadge = () => {
         )}
       >
         <span className="relative flex items-center justify-center">
-          <Trophy className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]" strokeWidth={2.6} />
+          <Trophy className="w-[18px] h-[18px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]" strokeWidth={2.4} />
         </span>
-        <span className="text-[13px] font-extrabold tracking-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+        <span className="text-[15px] font-semibold tracking-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
           판매 인증
         </span>
-        <span className="ml-0.5 text-[10px] px-1.5 py-0.5 rounded-full bg-white text-brand font-black tracking-wider shadow-sm">
+        <span className="ml-0.5 text-[11px] px-2 py-0.5 rounded-full bg-white text-brand font-bold tracking-wide shadow-sm">
           매장 전용
         </span>
       </button>

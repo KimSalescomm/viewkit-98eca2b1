@@ -141,7 +141,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                   onClick={() => trackProductClick(item.product.name)}
                   className="flex-[0_0_calc(33.333%-0.75rem)] sm:flex-[0_0_calc(33.333%-1rem)] min-w-0 group"
                 >
-                  <div className="flex items-stretch rounded-xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors p-2 overflow-hidden">
+                  <div className="flex items-stretch rounded-xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors px-3 py-4 sm:py-[18px] overflow-hidden">
                     <div className="relative flex items-center justify-center w-12 sm:w-14 shrink-0 select-none">
                       <span
                         className="text-[56px] sm:text-[68px] font-extrabold leading-none tracking-tighter"
@@ -155,7 +155,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                       </span>
                     </div>
                     <div className="flex-1 flex items-center gap-3 min-w-0">
-                      <div className="relative w-20 h-16 sm:w-28 sm:h-20 shrink-0 rounded-lg overflow-hidden bg-gray-800">
+                      <div className="relative w-20 h-[72px] sm:w-28 sm:h-[88px] shrink-0 rounded-lg overflow-hidden bg-gray-800">
                         <SafeImage
                           src={item.thumbnail}
                           alt={`${item.product.name} ${item.feature.title}`}
@@ -163,7 +163,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                           loading={index < 3 ? "eager" : "lazy"}
                         />
                       </div>
-                      <div className="min-w-0 flex flex-col justify-center py-0.5">
+                      <div className="min-w-0 flex flex-col justify-center">
                         <p className="text-brand-accent text-[15px] font-medium mb-1">{item.product.name}</p>
                         <h3 className="text-white text-[18px] font-medium leading-[1.4] line-clamp-2">
                           {item.feature.title}
@@ -184,7 +184,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                 onClick={() => trackProductClick(item.product.name)}
                 className="min-w-0 group"
               >
-                <div className="flex items-stretch rounded-xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors p-2 overflow-hidden">
+                <div className="flex items-stretch rounded-xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors px-3 py-4 sm:py-[18px] overflow-hidden">
                   <div className="relative flex items-center justify-center w-12 sm:w-14 shrink-0 select-none">
                     <span
                       className="text-[56px] sm:text-[68px] font-extrabold leading-none tracking-tighter"
@@ -198,7 +198,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                     </span>
                   </div>
                   <div className="flex-1 flex items-center gap-3 min-w-0">
-                    <div className="relative w-20 h-16 sm:w-28 sm:h-20 shrink-0 rounded-lg overflow-hidden bg-gray-800">
+                    <div className="relative w-20 h-[72px] sm:w-28 sm:h-[88px] shrink-0 rounded-lg overflow-hidden bg-gray-800">
                       <SafeImage
                         src={item.thumbnail}
                         alt={`${item.product.name} ${item.feature.title}`}
@@ -206,7 +206,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                         loading="eager"
                       />
                     </div>
-                    <div className="min-w-0 flex flex-col justify-center py-0.5">
+                    <div className="min-w-0 flex flex-col justify-center">
                       <p className="text-brand-accent text-[15px] font-medium mb-1">{item.product.name}</p>
                       <h3 className="text-white text-[18px] font-medium leading-[1.4] line-clamp-2">
                         {item.feature.title}
