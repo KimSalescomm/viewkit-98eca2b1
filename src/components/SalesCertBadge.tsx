@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { Trophy, CalendarIcon, CheckCircle2, Home, Store } from "lucide-react";
+import { Trophy, CalendarIcon, CheckCircle2, Home, Store, AlertCircle } from "lucide-react";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import {
