@@ -112,7 +112,11 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
                   <SafeImage
                     src={image}
                     alt={`${feature.title} 이미지`}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className={`absolute inset-0 h-full w-full object-cover ${
+                      feature.id === "5"
+                        ? "object-top scale-[0.78]"
+                        : ""
+                    }`}
                   />
                 )}
                 {/* 좋아요 */}
