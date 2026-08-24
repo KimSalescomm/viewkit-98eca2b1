@@ -212,7 +212,7 @@ const Home = () => {
                 bannerImage={bannerImage}
                 showLikeHint={index === 0}
                 dense={isSample}
-                redTheme={isSample}
+                redTheme
               />
             );
           })}
