@@ -15,18 +15,26 @@ export interface SaleRecord {
 }
 
 export const getSales = async (): Promise<SaleRecord[]> => {
-  const { data, error } = await supabase
-    .from("sales_certifications")
-    .select("id, branch, product, subcategory, memo, sold_at, created_at")
-    .gte("created_at", `${SITE_OPEN_DATE}T00:00:00Z`)
-    .order("created_at", { ascending: true })
-    .limit(5000);
-  if (error) {
-    console.warn("[salesLog] fetch failed", error);
-    return [];
+  const PAGE = 1000;
+  const all: SaleRecord[] = [];
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await supabase
+      .from("sales_certifications")
+      .select("id, branch, product, subcategory, memo, sold_at, created_at")
+      .gte("created_at", `${SITE_OPEN_DATE}T00:00:00Z`)
+      .order("created_at", { ascending: true })
+      .range(from, from + PAGE - 1);
+    if (error) {
+      console.warn("[salesLog] fetch failed", error);
+      break;
+    }
+    const rows = (data ?? []) as SaleRecord[];
+    all.push(...rows);
+    if (rows.length < PAGE || all.length >= 50000) break;
   }
-  return (data ?? []) as SaleRecord[];
+  return all;
 };
+
 
 export const appendSale = async (
   input: Omit<SaleRecord, "created_at" | "id">,
