@@ -1166,7 +1166,7 @@ export const featuresMap: Record<string, Feature[]> = {
   vacuum: [
     {
       id: "1",
-      title: "바닥얼룩, AI가 알아서 닦아줄까요?",
+      title: "바닥 얼룩,\nAI가 알아서 닦아줄까요?",
       subtitle: "오염을 인식해 바닥 오염과 기름때까지 보다 말끔하게 청소해요.",
       icon: "Flame",
       tag: "스팀 물걸레",
@@ -1178,7 +1178,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "흡입력, \n어디까지 강해질까요?",
+      title: "흡입력,\n어디까지 강해질까요?",
       subtitle: "최대 30W의 강력한 흡입력과 엉킴 방지 브러시로 청소가 더 편해져요",
       icon: "Zap",
       tag: "흡입 청소",
@@ -1393,7 +1393,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "8",
-      title: "위생 케어, 손 안 대고도 깨끗할까요?",
+      title: "위생케어,\n손 안대고도 깨끗할까요?",
       subtitle: "물걸레 냄새와 빨래 번거로움 없이 100℃ 스팀 살균과 온풍 건조로 더 위생적인 케어 솔루션을 경험해보세요.",
       icon: "Sparkles",
       tag: "위생&케어 솔루션",
