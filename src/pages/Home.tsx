@@ -156,7 +156,7 @@ const Home = () => {
 
         {/* Features Section Title */}
         {isSample ? (
-          <div className="mb-4 flex items-center gap-3 sm:mb-6 lg:mb-2">
+          <div className="mt-7 mb-6 flex items-center gap-3 sm:mt-9 sm:mb-8">
             <span className="h-px flex-1 bg-gray-200" />
             <h3 className="text-[17px] font-semibold leading-tight tracking-[-0.02em] text-gray-900 sm:text-[20px]">
               궁금한 내용을 확인해보세요
