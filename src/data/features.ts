@@ -144,6 +144,8 @@ export interface Feature {
   showMainMedia?: boolean;
   /** 메인 미디어 이미지를 컨텐츠 폭에 맞춰 꽉 채움 */
   fullWidthMedia?: boolean;
+  /** 메인 미디어 이미지 표시 방식: original = 원본 비율 유지, 블러 없음 */
+  imageFit?: "cover" | "contain" | "original";
   /** 메인 콘텐츠 하위 세부 기능 (아코디언) */
   subFeatures?: SubFeature[];
   /** 세부 기능 영역 제목/부제 */
