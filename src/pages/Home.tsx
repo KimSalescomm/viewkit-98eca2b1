@@ -226,7 +226,7 @@ const Home = () => {
         <div className="text-center">
           <button
             onClick={() => navigate("/")}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-surface-border text-gray-800 font-semibold shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:border-brand hover:text-brand transition-colors h-12 sm:h-14 px-8 sm:px-10 text-base sm:text-lg"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-surface-border text-gray-800 font-semibold shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:border-brand hover:text-brand transition-colors h-12 sm:h-14 lg:h-11 px-8 sm:px-10 text-base sm:text-lg lg:text-[15px]"
           >
             <span aria-hidden="true">←</span>
             <span>다른 제품 보기</span>
