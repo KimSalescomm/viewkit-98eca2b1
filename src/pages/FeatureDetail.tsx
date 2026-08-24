@@ -1175,7 +1175,7 @@ const FeatureDetail = () => {
             <span>전체 특장점으로 돌아가기</span>
           </Link>
         </div>
-      </div>
+      </PageContainer>
       )}
     </div>
   );
