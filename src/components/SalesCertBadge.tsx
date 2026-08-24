@@ -222,7 +222,9 @@ const SalesCertBadge = () => {
         </span>
       </button>
 
-      <Dialog open={open} onOpenChange={handleOpenChange}>
+      {open && (
+        <Dialog open={open} onOpenChange={handleOpenChange}>
+
         <DialogContent
           className={cn(
             "sm:max-w-md p-0 gap-0 rounded-2xl border border-slate-200",
@@ -428,7 +430,9 @@ const SalesCertBadge = () => {
           )}
         </DialogContent>
       </Dialog>
+      )}
     </>
+
   );
 };
 
