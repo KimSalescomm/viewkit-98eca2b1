@@ -18,6 +18,8 @@ export interface Product {
   keyVisualImage: string;
   secondaryKeyVisualImage?: string;
   keyVisualVideo?: string;
+  /** 상세(특장점 목록) 페이지 히어로 우측 제품컷. 미지정 시 keyVisualImage 사용 */
+  heroImage?: string;
   icon: string;
   /** 메인 이미지 확대 비율 (1 = 원본, 1.1 = 10% 확대) */
   imageZoom?: number;
