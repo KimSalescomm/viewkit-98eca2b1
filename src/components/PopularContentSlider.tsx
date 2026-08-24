@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import SafeImage from "@/components/SafeImage";
 import { usePopularFeatures } from "@/hooks/usePopularFeatures";
 import { useContent } from "@/contexts/ContentContext";
@@ -82,12 +82,26 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
 
   if (loading && items.length === 0) {
     return (
-      <section className="bg-[#F3F4F6] px-6 sm:px-10 py-10 sm:py-12">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">요즘 많이 본 콘텐츠</h2>
-          <div className="flex gap-4 overflow-hidden">
+      <section className="bg-gray-900 px-5 sm:px-10 py-6 sm:py-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-end justify-between mb-4">
+            <div className="flex items-center gap-2.5">
+              <span className="inline-flex items-center rounded-full bg-brand-accent px-3 py-1 text-[13px] font-semibold text-white tracking-wide">
+                HOT
+              </span>
+              <h2 className="text-[20px] sm:text-[24px] font-semibold text-white tracking-tight">요즘 많이 본 콘텐츠</h2>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-3 sm:gap-4">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="flex-[0_0_33.333%] min-w-0 rounded-3xl bg-gray-200 h-48 sm:h-64 animate-pulse" />
+              <div key={i} className="min-w-0 rounded-2xl bg-white/[0.06] overflow-hidden animate-pulse">
+                <div className="h-[130px] sm:h-[140px] bg-gray-800" />
+                <div className="p-3 space-y-2">
+                  <div className="h-4 w-16 rounded bg-gray-700" />
+                  <div className="h-4 w-full rounded bg-gray-700" />
+                  <div className="h-4 w-2/3 rounded bg-gray-700" />
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -96,6 +110,45 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
   }
 
   if (visibleItems.length < 3) return null;
+
+  type VisibleItem = typeof visibleItems[number];
+
+  const Card = ({ item, index, eager }: { item: VisibleItem; index: number; eager?: boolean }) => (
+    <Link
+      to={item.product.id === "subscription" ? "/subscription" : `/product/${item.product.id}/feature/${item.feature.id}`}
+      onClick={() => trackProductClick(item.product.name)}
+      className="min-w-0 group block"
+    >
+      <div className="rounded-2xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors overflow-hidden">
+        <div className="relative h-[130px] sm:h-[140px] bg-gray-800 overflow-hidden">
+          <SafeImage
+            src={item.thumbnail}
+            alt={`${item.product.name} ${item.feature.title}`}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading={eager ? "eager" : "lazy"}
+          />
+          <span
+            className="absolute top-2 left-2 text-[26px] font-extrabold leading-none text-white/80 select-none"
+            style={{ textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}
+            aria-hidden="true"
+          >
+            {index + 1}
+          </span>
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-9 h-9 rounded-full bg-white/70 flex items-center justify-center text-black transition-transform duration-300 group-hover:scale-105">
+              <Play className="w-4 h-4" fill="black" />
+            </div>
+          </div>
+        </div>
+        <div className="p-3">
+          <p className="text-brand-accent text-[13px] font-semibold mb-1">{item.product.name}</p>
+          <h3 className="text-white text-[13px] font-medium leading-[1.35] line-clamp-2">
+            {item.feature.title}
+          </h3>
+        </div>
+      </div>
+    </Link>
+  );
 
   return (
     <section className="bg-gray-900 px-5 sm:px-10 py-6 sm:py-8">
@@ -135,90 +188,19 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex gap-3 sm:gap-4">
               {visibleItems.map((item, index) => (
-                <Link
-                  key={item.path}
-                  to={item.product.id === "subscription" ? "/subscription" : `/product/${item.product.id}/feature/${item.feature.id}`}
-                  onClick={() => trackProductClick(item.product.name)}
-                  className="flex-[0_0_calc(33.333%-0.75rem)] sm:flex-[0_0_calc(33.333%-1rem)] min-w-0 group"
-                >
-                  <div className="flex items-center gap-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors px-3 py-3.5 sm:py-4 overflow-hidden">
-                    <div className="relative flex items-center justify-center w-10 sm:w-12 shrink-0 select-none">
-                      <span
-                        className="text-[40px] sm:text-[48px] font-extrabold leading-none tracking-tighter"
-                        style={{
-                          WebkitTextStroke: "1.5px rgba(255,255,255,0.18)",
-                          color: "transparent",
-                        }}
-                        aria-hidden="true"
-                      >
-                        {index + 1}
-                      </span>
-                    </div>
-                    <div className="flex-1 flex items-center gap-2.5 min-w-0">
-                      <div className="relative w-16 h-[56px] sm:w-20 sm:h-[68px] shrink-0 rounded-lg overflow-hidden bg-gray-800">
-                        <SafeImage
-                          src={item.thumbnail}
-                          alt={`${item.product.name} ${item.feature.title}`}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          loading={index < 3 ? "eager" : "lazy"}
-                        />
-                      </div>
-                      <div className="min-w-0 flex flex-col justify-center">
-                        <p className="text-brand-accent text-[13px] font-medium mb-0.5">{item.product.name}</p>
-                        <h3 className="text-white text-[15px] sm:text-[16px] font-medium leading-[1.35] line-clamp-2">
-                          {item.feature.title}
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
+                <div key={item.path} className="flex-[0_0_calc(33.333%-0.75rem)] sm:flex-[0_0_calc(33.333%-1rem)] min-w-0">
+                  <Card item={item} index={index} eager={index < 3} />
+                </div>
               ))}
             </div>
           </div>
         ) : (
           <div className="grid grid-cols-3 gap-3 sm:gap-4">
             {visibleItems.map((item, index) => (
-              <Link
-                key={item.path}
-                to={item.product.id === "subscription" ? "/subscription" : `/product/${item.product.id}/feature/${item.feature.id}`}
-                onClick={() => trackProductClick(item.product.name)}
-                className="min-w-0 group"
-              >
-                <div className="flex items-center gap-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors px-3 py-3.5 sm:py-4 overflow-hidden">
-                  <div className="relative flex items-center justify-center w-10 sm:w-12 shrink-0 select-none">
-                    <span
-                      className="text-[40px] sm:text-[48px] font-extrabold leading-none tracking-tighter"
-                      style={{
-                        WebkitTextStroke: "1.5px rgba(255,255,255,0.18)",
-                        color: "transparent",
-                      }}
-                      aria-hidden="true"
-                    >
-                      {index + 1}
-                    </span>
-                  </div>
-                  <div className="flex-1 flex items-center gap-2.5 min-w-0">
-                    <div className="relative w-16 h-[56px] sm:w-20 sm:h-[68px] shrink-0 rounded-lg overflow-hidden bg-gray-800">
-                      <SafeImage
-                        src={item.thumbnail}
-                        alt={`${item.product.name} ${item.feature.title}`}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        loading="eager"
-                      />
-                    </div>
-                    <div className="min-w-0 flex flex-col justify-center">
-                      <p className="text-brand-accent text-[13px] font-medium mb-0.5">{item.product.name}</p>
-                      <h3 className="text-white text-[15px] sm:text-[16px] font-medium leading-[1.35] line-clamp-2">
-                        {item.feature.title}
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </Link>
+              <Card key={item.path} item={item} index={index} eager />
             ))}
           </div>
         )}
-
 
         {visibleItems.length > 3 && (
           <div className="flex justify-center gap-1.5 mt-3">
