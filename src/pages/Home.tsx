@@ -52,7 +52,7 @@ const Home = () => {
         {isSample ? (
           <>
             {/* Hero: 좌측 제품명 + 우측 요약 이미지 */}
-            <div className="mb-5 flex items-center gap-3 overflow-hidden rounded-[14px] bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.06)] sm:mb-7 sm:px-7 sm:py-6">
+            <div className="vk-sample-hero mb-5 flex items-center gap-3 overflow-hidden rounded-[14px] bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.06)] sm:mb-7 sm:px-7 sm:py-6">
               <div className="min-w-0 flex-1">
                 <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] text-gray-500">
                   VIEW KIT
