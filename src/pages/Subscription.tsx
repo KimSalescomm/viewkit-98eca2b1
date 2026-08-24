@@ -602,7 +602,7 @@ const Subscription = () => {
           >
             <Sparkles className="w-4 h-4" />
           </span>
-          <p className="text-[14px] sm:text-[15px] font-semibold leading-relaxed" style={{ color: "#374151" }}>
+          <p className={`${typeBodyMedium} text-gray-700`}>
             분해세척 제공 여부 등은 상세 내용은 '보기' 버튼을 클릭하면 확인할 수 있습니다. 이하 제공되는 서비스의 유무는 제품별 구독 타입(프리미엄, 라이트 플러스, 라이트 등) 및 구독 모델, 시점에 따라 다를 수 있으므로, 자세한 내용은 구독 계약할 때 반드시 다시 확인해 주세요.
           </p>
         </div>
