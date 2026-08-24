@@ -90,7 +90,7 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+      <div className="vk-vacuum-grid grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-3 lg:gap-6">
         {ordered.map((feature) => {
           const image = CARD_IMAGES[feature.id];
           
