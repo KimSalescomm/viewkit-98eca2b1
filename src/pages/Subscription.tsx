@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Check, Sparkles, ImageIcon, X, Play } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
 import BackButton from "@/components/BackButton";
+import PageContainer from "@/components/PageContainer";
 import FeatureTabs from "@/components/FeatureTabs";
 
 import FeatureLikeButton from "@/components/FeatureLikeButton";
@@ -349,7 +350,7 @@ const Subscription = () => {
 
   return (
     <div className="min-h-screen bg-[#F3F4F6]">
-      <PageContainer as-main className="py-8 sm:py-12">
+      <PageContainer as="main" verticalPadding="py-8 sm:py-12">
         {/* Top Bar */}
         <div className="flex items-center justify-between mb-6 sm:mb-8">
           <BackButton />
@@ -613,7 +614,7 @@ const Subscription = () => {
             <li>* 방문 관리는 사전 안내하며, 고객 요청 시 협의된 일정으로 변경할 수 있습니다.</li>
           </ul>
         </div>
-      </main>
+      </PageContainer>
 
       {/* Lightbox modal */}
       {previewStep?.image && (
