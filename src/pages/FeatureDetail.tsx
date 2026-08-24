@@ -9,6 +9,7 @@ import BackButton from "@/components/BackButton";
 import FeatureTabs from "@/components/FeatureTabs";
 
 import SafeImage from "@/components/SafeImage";
+import BlurMediaFrame from "@/components/BlurMediaFrame";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { useContent } from "@/contexts/ContentContext";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
@@ -69,11 +70,11 @@ const FeatureDetail = () => {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-3 sm:mb-4">
           {topRow.map((img, idx) => (
             <div key={idx} className="bg-white rounded-2xl overflow-hidden shadow-sm">
-              <SafeImage
+              <BlurMediaFrame
                 src={img.url}
                 alt={img.title || `이미지 ${idx + 1}`}
-                loading="lazy"
-                className="w-full h-auto object-cover aspect-[4/3]"
+                aspectClassName="aspect-[4/3]"
+                radiusClassName="rounded-2xl rounded-b-none"
               />
               <div className="p-2.5 sm:p-3">
                 {img.title && <h4 className="text-xs sm:text-sm font-bold text-gray-900 mb-1">{img.title}</h4>}
@@ -85,11 +86,11 @@ const FeatureDetail = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
           {bottomRow.map((img, idx) => (
             <div key={idx} className="bg-white rounded-2xl overflow-hidden shadow-sm">
-              <SafeImage
+              <BlurMediaFrame
                 src={img.url}
                 alt={img.title || `이미지 ${idx + 5}`}
-                loading="lazy"
-                className="w-full h-auto object-cover aspect-[4/3]"
+                aspectClassName="aspect-[4/3]"
+                radiusClassName="rounded-2xl rounded-b-none"
               />
               <div className="p-2.5 sm:p-3">
                 {img.title && <h4 className="text-xs sm:text-sm font-bold text-gray-900 mb-1">{img.title}</h4>}
@@ -129,14 +130,12 @@ const FeatureDetail = () => {
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4">
               {selectedItem.description}
             </p>
-            <div className="rounded-lg overflow-hidden">
-              <SafeImage
-                src={selectedItem.imageUrl}
-                alt={selectedItem.label}
-                loading="lazy"
-                className="w-full h-auto object-cover aspect-[16/10]"
-              />
-            </div>
+            <BlurMediaFrame
+              src={selectedItem.imageUrl}
+              alt={selectedItem.label}
+              aspectClassName="aspect-[16/10]"
+              radiusClassName="rounded-lg"
+            />
           </div>
 
           {/* Right block: category list */}
