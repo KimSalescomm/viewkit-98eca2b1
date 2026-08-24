@@ -474,7 +474,7 @@ const FeatureDetail = () => {
                 VIEW KIT
               </span>
             </div>
-          </div>
+          </PageContainer>
         </div>
       )}
 
