@@ -486,10 +486,11 @@ const Subscription = () => {
           {/* After + Care Steps */}
           <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
             <div className="px-5 pt-4 pb-3 flex items-center justify-between">
-              <span className="text-xs font-bold tracking-wider uppercase" style={{ color: "hsl(var(--brand-accent))" }}>
+              <span className={`${typeCaptionBold} tracking-wider uppercase text-brand-accent`}>
                 After
               </span>
-              <span className="text-xs font-medium" style={{ color: "hsl(var(--brand-accent))" }}>케어 후</span>
+              <span className={`${typeCaption} text-brand-accent`}>케어 후</span>
+
             </div>
             <div className="relative aspect-[4/3] bg-gray-100">
               {selected.careVideo ? (
