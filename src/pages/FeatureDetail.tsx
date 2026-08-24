@@ -392,6 +392,7 @@ const FeatureDetail = () => {
                     aspectClassName="aspect-[4/3] sm:aspect-[16/10]"
                     radiusClassName="rounded-[14px]"
                     objectPosition={activeTabData?.imagePosition}
+                    imageFit={activeTabData?.imageFit ?? feature.imageFit ?? "cover"}
                   />
                 </div>
               ) : (

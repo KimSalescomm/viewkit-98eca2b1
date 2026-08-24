@@ -77,7 +77,7 @@ export interface FeatureTab {
   caption?: string;
   belowMediaImage?: { url: string; alt?: string; caption?: string };
   frameBg?: string;
-  imageFit?: "cover" | "contain";
+  imageFit?: "cover" | "contain" | "original";
   imagePosition?: string;
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
   /** 메인 미디어(영상) 아래에 표시할 이미지+설명 그리드 */
@@ -144,6 +144,8 @@ export interface Feature {
   showMainMedia?: boolean;
   /** 메인 미디어 이미지를 컨텐츠 폭에 맞춰 꽉 채움 */
   fullWidthMedia?: boolean;
+  /** 메인 미디어 이미지 표시 방식: original = 원본 비율 유지, 블러 없음 */
+  imageFit?: "cover" | "contain" | "original";
   /** 메인 콘텐츠 하위 세부 기능 (아코디언) */
   subFeatures?: SubFeature[];
   /** 세부 기능 영역 제목/부제 */
@@ -1810,6 +1812,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl:
         "https://www.lge.co.kr/kr/images/common/pdp_multi_banner/images/bath-air-system/Banner_BathAir_InstallChk_B_PC_x2.png",
       fullWidthMedia: true,
+      imageFit: "original",
       description:
         "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 더 원활하게 설치할 수 있어요.",
       highlights: [],
