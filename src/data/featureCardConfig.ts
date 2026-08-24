@@ -106,7 +106,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
         objectPositionClass: "object-top",
       },
       "20": {
-        image: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_pleasant_cover.jpg",
+        image: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AI_radar_cover.jpg",
         objectPositionClass: "object-top",
       },
       "21": {
