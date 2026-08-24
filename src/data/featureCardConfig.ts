@@ -81,14 +81,14 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
         image: "/__l5e/assets-v1/5c91565e-d004-4833-9be9-da696f378141/refrigerator-stem-vs-comparison.png",
       },
       "10": {
-        image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator07.png",
+        image: "https://static.lge.co.kr/kr/images/refrigerators/md10781901/refrigerator-lg-dios-ai-objet-d646-071-04-reason-direct-water-pc.jpg",
       },
       "9": {
         image: "https://c29ebf32-471f-4991-a656-57585c8d8b56.lovableproject.com/images/installation-step1.jpeg",
       },
       "13": {
-        image: "https://static.lge.co.kr/kr/images/CNT-1008/usp-asset-08-mo.jpg",
-        objectPositionClass: "object-top",
+        image: "https://static.lge.co.kr/kr/images/refrigerators/md10781898/refrigerator-lg-dios-ai-objet-d646-091-01-reason-dual-fresh-pc.jpg",
+        objectPositionClass: "object-right-bottom",
       },
     },
   },
