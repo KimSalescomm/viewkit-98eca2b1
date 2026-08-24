@@ -460,24 +460,7 @@ const FeatureDetail = () => {
   }
 
   return (
-    <div className={isVacuumSample ? "min-h-screen bg-[#F3F4F6]" : "min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50"}>
-      {!isVacuumSample && (
-        /* Sticky Header */
-        <div className="sticky top-0 bg-white/90 backdrop-blur-md border-b border-gray-200 px-4 py-3 sm:px-6 sm:py-4 z-50">
-          <PageContainer bare className="px-0 sm:px-0">
-            <div className="flex items-center justify-between">
-              <BackButton to={`/product/${productId}`} label={`${product.name} 특장점`} />
-              <OrientationToggle />
-            </div>
-            <div className="text-center mt-1 sm:mt-2">
-              <span className="text-lg sm:text-2xl font-black tracking-wider uppercase text-gray-800">
-                VIEW KIT
-              </span>
-            </div>
-          </PageContainer>
-        </div>
-      )}
-
+    <div className="min-h-screen bg-[#F3F4F6]">
       {/* Content */}
       {isVacuumSample ? (
         <VacuumSampleLayout
@@ -488,22 +471,33 @@ const FeatureDetail = () => {
         />
       ) : (
       <PageContainer>
+        <div className="flex items-center justify-between mb-5 sm:mb-6">
+          <BackButton to={`/product/${productId}`} label={`${product.name} 특장점`} />
+          <OrientationToggle />
+        </div>
+
         {/* Feature Header */}
-        <div className="flex items-start gap-3 sm:gap-6 mb-6 sm:mb-8">
-          <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center flex-shrink-0">
-            <FeatureIcon iconKey={feature.icon} className="text-white w-8 h-8 sm:w-12 sm:h-12" />
+        <div className="mb-5 flex items-center gap-4 border-b border-gray-200 pb-5 sm:mb-6 sm:gap-5 sm:pb-6">
+          <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gray-200/70 sm:h-16 sm:w-16">
+            <FeatureIcon iconKey={feature.icon} className="h-7 w-7 text-brand-accent sm:h-8 sm:w-8" />
           </div>
           <div className="min-w-0">
+            {feature.tag && (
+              <span className="mb-1 inline-block text-[13px] font-bold tracking-[-0.01em] text-brand-accent">
+                {feature.tag}
+              </span>
+            )}
             {feature.title && (
-              <h1 className="text-xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">
+              <h1 className="text-[26px] font-bold leading-tight tracking-[-0.02em] text-gray-900 sm:text-[32px]">
                 {feature.title}
               </h1>
             )}
-            <p className="text-sm sm:text-lg text-gray-500 whitespace-pre-line leading-relaxed">
+            <p className="mt-1 text-[15px] leading-snug text-gray-600 whitespace-pre-line sm:text-[17px]">
               {feature.subtitle}
             </p>
           </div>
         </div>
+
 
         {/* Subscription service interactive section */}
         {feature.subscriptionServiceItems && feature.subscriptionServiceItems.length > 0 && (
