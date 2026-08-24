@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useContent } from "@/contexts/ContentContext";
+import { cn } from "@/lib/utils";
 import {
   Store,
   Tv,
@@ -47,7 +48,8 @@ const ProductLucideIcon = ({ name, className }: { name: string; className?: stri
   return <Icon className={className} strokeWidth={2} />;
 };
 
-const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "washcombo", "styler", "tv", "cooking", "bathair"];
+const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "washcombo", "tv", "bathair", "styler", "cooking"];
+const disabledProductIds = ["styler", "cooking"];
 
 const ProductSelection = () => {
   const { products, isProductVisible } = useContent();
@@ -229,13 +231,16 @@ const ProductSelection = () => {
           <div className="grid grid-cols-3 gap-2.5 sm:gap-4">
             {visibleProducts.map((product) => {
               const showNewBadge = isNewProduct(product.id);
+              const isDisabled = disabledProductIds.includes(product.id);
               const cardContent = (
                 <div
-                  className="
-                    group relative flex h-[144px] flex-col overflow-hidden rounded-[20px] bg-white p-2
-                    border border-surface-border/60 shadow-sm transition-all duration-300
-                    hover:-translate-y-1 hover:shadow-xl hover:border-brand/25
-                  "
+                  className={cn(
+                    "group relative flex h-[144px] flex-col overflow-hidden rounded-[20px] bg-white p-2",
+                    "border border-surface-border/60 shadow-sm transition-all duration-300",
+                    !isDisabled && "hover:-translate-y-1 hover:shadow-xl hover:border-brand/25",
+                    isDisabled && "opacity-40 pointer-events-none select-none"
+                  )}
+                  aria-disabled={isDisabled}
                 >
                   {showNewBadge && (
                     <span className="absolute right-2 top-2 z-10 rounded-full bg-brand-accent px-2 py-0.5 text-[11px] sm:text-[12px] font-bold leading-tight tracking-[0.02em] text-white shadow-sm">
@@ -245,10 +250,16 @@ const ProductSelection = () => {
 
                   {/* 라인 아이콘 (연한 배경박스) */}
                   <div className="relative flex min-h-0 flex-1 items-center justify-center">
-                    <div className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-muted text-gray-600 transition-colors duration-300 group-hover:bg-brand-soft group-hover:text-brand">
+                    <div className={cn(
+                      "flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-muted text-gray-600 transition-colors duration-300",
+                      !isDisabled && "group-hover:bg-brand-soft group-hover:text-brand"
+                    )}>
                       <ProductMockup
                         productId={product.id}
-                        className="h-9 w-9 sm:h-10 sm:w-10 shrink-0 transition-transform duration-300 group-hover:scale-105"
+                        className={cn(
+                          "h-9 w-9 sm:h-10 sm:w-10 shrink-0 transition-transform duration-300",
+                          !isDisabled && "group-hover:scale-105"
+                        )}
                       />
                     </div>
                   </div>
@@ -261,6 +272,14 @@ const ProductSelection = () => {
                   </div>
                 </div>
               );
+
+              if (isDisabled) {
+                return (
+                  <div key={product.id} className="block">
+                    {cardContent}
+                  </div>
+                );
+              }
 
               return (
                 <Link
