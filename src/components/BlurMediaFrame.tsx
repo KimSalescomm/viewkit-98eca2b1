@@ -34,7 +34,7 @@ const BlurMediaFrame = ({
 
   return (
     <div
-      className={`w-full overflow-hidden bg-muted ${isOriginal ? "" : aspectClassName} ${radiusClassName} ${className}`}
+      className={`relative w-full overflow-hidden bg-muted ${isOriginal ? "" : aspectClassName} ${radiusClassName} ${className}`}
     >
       {/* 확대 + 블러 배경 (original일 때는 제거) */}
       {!isOriginal && (
