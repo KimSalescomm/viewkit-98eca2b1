@@ -430,7 +430,9 @@ const SalesCertBadge = () => {
           )}
         </DialogContent>
       </Dialog>
+      )}
     </>
+
   );
 };
 
