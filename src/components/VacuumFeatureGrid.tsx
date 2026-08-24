@@ -137,18 +137,22 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
               </div>
 
               {/* 카피 + 재생 버튼 */}
-              <div className="relative flex flex-1 flex-col px-3 pb-10 pt-3">
+              <div className="flex flex-1 flex-col px-3 pb-3 pt-3">
                 {(CARD_EYEBROWS[feature.id] || feature.tag) && (
                   <span className="mb-1 w-fit text-[12px] font-bold tracking-[-0.01em] text-brand-accent">
                     {CARD_EYEBROWS[feature.id] || feature.tag}
                   </span>
                 )}
-                <h3 className="pr-9 text-[17px] font-bold leading-snug tracking-[-0.02em] text-gray-900 sm:text-[18px]">
-                  {feature.title}
-                </h3>
-                <span className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-brand-accent shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
-                  <Play className="h-3.5 w-3.5 fill-white text-white" />
-                </span>
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="text-[17px] font-bold leading-snug tracking-[-0.02em] text-gray-900 sm:text-[18px]">
+                    {feature.title}
+                  </h3>
+                  {feature.mediaType === "video" && (
+                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-accent shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
+                      <Play className="h-3.5 w-3.5 fill-white text-white" />
+                    </span>
+                  )}
+                </div>
               </div>
 
             </div>
