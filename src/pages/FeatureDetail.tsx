@@ -259,8 +259,8 @@ const FeatureDetail = () => {
                 key={index}
                 className="flex items-center gap-2 rounded-xl bg-gray-50 p-3"
               >
-                <Check className="h-5 w-5 flex-shrink-0 text-brand-accent" />
-                <span className="text-sm font-medium text-gray-800">{highlight}</span>
+                <Check className="h-[22px] w-[22px] flex-shrink-0 text-brand-accent" />
+                <span className="text-[15.4px] font-medium leading-snug text-gray-800">{highlight}</span>
               </div>
             ))}
           </div>
