@@ -141,12 +141,12 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                   onClick={() => trackProductClick(item.product.name)}
                   className="flex-[0_0_calc(33.333%-0.75rem)] sm:flex-[0_0_calc(33.333%-1rem)] min-w-0 group"
                 >
-                  <div className="flex items-stretch rounded-xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors px-3 py-4 sm:py-[18px] overflow-hidden">
-                    <div className="relative flex items-center justify-center w-12 sm:w-14 shrink-0 select-none">
+                  <div className="flex items-center gap-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors px-3 py-3.5 sm:py-4 overflow-hidden">
+                    <div className="relative flex items-center justify-center w-10 sm:w-12 shrink-0 select-none">
                       <span
-                        className="text-[56px] sm:text-[68px] font-extrabold leading-none tracking-tighter"
+                        className="text-[40px] sm:text-[48px] font-extrabold leading-none tracking-tighter"
                         style={{
-                          WebkitTextStroke: "2px rgba(255,255,255,0.18)",
+                          WebkitTextStroke: "1.5px rgba(255,255,255,0.18)",
                           color: "transparent",
                         }}
                         aria-hidden="true"
@@ -154,8 +154,8 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                         {index + 1}
                       </span>
                     </div>
-                    <div className="flex-1 flex items-center gap-3 min-w-0">
-                      <div className="relative w-20 h-[72px] sm:w-28 sm:h-[88px] shrink-0 rounded-lg overflow-hidden bg-gray-800">
+                    <div className="flex-1 flex items-center gap-2.5 min-w-0">
+                      <div className="relative w-16 h-[56px] sm:w-20 sm:h-[68px] shrink-0 rounded-lg overflow-hidden bg-gray-800">
                         <SafeImage
                           src={item.thumbnail}
                           alt={`${item.product.name} ${item.feature.title}`}
@@ -164,8 +164,8 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                         />
                       </div>
                       <div className="min-w-0 flex flex-col justify-center">
-                        <p className="text-brand-accent text-[15px] font-medium mb-1">{item.product.name}</p>
-                        <h3 className="text-white text-[18px] font-medium leading-[1.4] line-clamp-2">
+                        <p className="text-brand-accent text-[13px] font-medium mb-0.5">{item.product.name}</p>
+                        <h3 className="text-white text-[15px] sm:text-[16px] font-medium leading-[1.35] line-clamp-2">
                           {item.feature.title}
                         </h3>
                       </div>
@@ -184,12 +184,12 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                 onClick={() => trackProductClick(item.product.name)}
                 className="min-w-0 group"
               >
-                <div className="flex items-stretch rounded-xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors px-3 py-4 sm:py-[18px] overflow-hidden">
-                  <div className="relative flex items-center justify-center w-12 sm:w-14 shrink-0 select-none">
+                <div className="flex items-center gap-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors px-3 py-3.5 sm:py-4 overflow-hidden">
+                  <div className="relative flex items-center justify-center w-10 sm:w-12 shrink-0 select-none">
                     <span
-                      className="text-[56px] sm:text-[68px] font-extrabold leading-none tracking-tighter"
+                      className="text-[40px] sm:text-[48px] font-extrabold leading-none tracking-tighter"
                       style={{
-                        WebkitTextStroke: "2px rgba(255,255,255,0.18)",
+                        WebkitTextStroke: "1.5px rgba(255,255,255,0.18)",
                         color: "transparent",
                       }}
                       aria-hidden="true"
@@ -197,8 +197,8 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                       {index + 1}
                     </span>
                   </div>
-                  <div className="flex-1 flex items-center gap-3 min-w-0">
-                    <div className="relative w-20 h-[72px] sm:w-28 sm:h-[88px] shrink-0 rounded-lg overflow-hidden bg-gray-800">
+                  <div className="flex-1 flex items-center gap-2.5 min-w-0">
+                    <div className="relative w-16 h-[56px] sm:w-20 sm:h-[68px] shrink-0 rounded-lg overflow-hidden bg-gray-800">
                       <SafeImage
                         src={item.thumbnail}
                         alt={`${item.product.name} ${item.feature.title}`}
@@ -207,8 +207,8 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
                       />
                     </div>
                     <div className="min-w-0 flex flex-col justify-center">
-                      <p className="text-brand-accent text-[15px] font-medium mb-1">{item.product.name}</p>
-                      <h3 className="text-white text-[18px] font-medium leading-[1.4] line-clamp-2">
+                      <p className="text-brand-accent text-[13px] font-medium mb-0.5">{item.product.name}</p>
+                      <h3 className="text-white text-[15px] sm:text-[16px] font-medium leading-[1.35] line-clamp-2">
                         {item.feature.title}
                       </h3>
                     </div>
