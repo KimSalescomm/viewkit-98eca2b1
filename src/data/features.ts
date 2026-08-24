@@ -77,7 +77,7 @@ export interface FeatureTab {
   caption?: string;
   belowMediaImage?: { url: string; alt?: string; caption?: string };
   frameBg?: string;
-  imageFit?: "cover" | "contain";
+  imageFit?: "cover" | "contain" | "original";
   imagePosition?: string;
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
   /** 메인 미디어(영상) 아래에 표시할 이미지+설명 그리드 */
