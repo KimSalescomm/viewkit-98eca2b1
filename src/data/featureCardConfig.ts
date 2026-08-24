@@ -114,4 +114,14 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       },
     },
   },
+  washer: {
+    cards: {
+      "3": {
+        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_B_pc.jpg",
+      },
+      "4": {
+        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_mainpoint_pc.png",
+      },
+    },
+  },
 };
