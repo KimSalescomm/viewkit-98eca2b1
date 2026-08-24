@@ -55,12 +55,12 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       },
       "5": {
         image: "/__l5e/assets-v1/8fe1dd11-6cb7-465a-a9ea-57e5e0e11c19/vacuum-security-cert-left.png",
-        eyebrow: "",
+        eyebrow: "체계적인 보안 솔루션",
         objectPositionClass: "object-[center_20%]",
       },
       "7": {
         image: "/__l5e/assets-v1/d226a096-c139-4360-ac26-3392dec78942/vacuum-subscription-service-01.jpg",
-        eyebrow: "",
+        eyebrow: "가전구독 케어",
       },
     },
     fallbackLikes: {

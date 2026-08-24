@@ -118,7 +118,8 @@ const ProductFeatureGrid = ({
       {ordered.map((feature) => {
         const cardConfig = config.cards?.[feature.id];
         const image = cardConfig?.image ?? deriveImage(feature) ?? fallbackImage;
-        const eyebrow = cardConfig?.eyebrow ?? feature.tag;
+        // 아이브로우는 모든 카드에 항상 노출 (빈 값이면 feature.tag로 대체)
+        const eyebrow = cardConfig?.eyebrow?.trim() || feature.tag;
 
         return (
           <div
