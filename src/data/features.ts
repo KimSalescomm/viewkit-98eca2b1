@@ -1812,6 +1812,7 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl:
         "https://www.lge.co.kr/kr/images/common/pdp_multi_banner/images/bath-air-system/Banner_BathAir_InstallChk_B_PC_x2.png",
       fullWidthMedia: true,
+      imageFit: "original",
       description:
         "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 더 원활하게 설치할 수 있어요.",
       highlights: [],
