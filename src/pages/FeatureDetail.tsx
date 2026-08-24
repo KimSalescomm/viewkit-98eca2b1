@@ -281,6 +281,13 @@ const FeatureDetail = () => {
           </div>
         )}
 
+        {/* 구독 케어 서비스 (이미지 + 설명) */}
+        {feature.subscriptionServiceItems && feature.subscriptionServiceItems.length > 0 && (
+          <SubscriptionServiceSection items={feature.subscriptionServiceItems} />
+        )}
+
+
+
         {/* 세부 기능 (아코디언) */}
         {feature.subFeatures && feature.subFeatures.length > 0 && (!tabs || activeTab === 0) && (
           <div className="mb-4 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
