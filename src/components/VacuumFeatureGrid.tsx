@@ -90,7 +90,7 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 lg:gap-3">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-3 lg:gap-6">
         {ordered.map((feature) => {
           const image = CARD_IMAGES[feature.id];
           
@@ -107,7 +107,7 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
               className="group relative flex flex-col overflow-hidden rounded-[12px] bg-white text-left shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] transition-transform duration-100 active:scale-[0.98]"
             >
               {/* 이미지 영역 */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100 lg:aspect-[16/9]">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
                 {image && (
                   <SafeImage
                     src={image}
@@ -137,16 +137,16 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
               </div>
 
               {/* 카피 + 재생 버튼 */}
-              <div className="relative flex flex-1 flex-col px-3 pb-10 pt-3 lg:px-3 lg:pb-8 lg:pt-2">
+              <div className="relative flex flex-1 flex-col px-3 pb-10 pt-3">
                 {(CARD_EYEBROWS[feature.id] || feature.tag) && (
-                  <span className="mb-1 w-fit text-[12px] font-bold tracking-[-0.01em] text-brand-accent lg:text-[11px]">
+                  <span className="mb-1 w-fit text-[12px] font-bold tracking-[-0.01em] text-brand-accent">
                     {CARD_EYEBROWS[feature.id] || feature.tag}
                   </span>
                 )}
-                <h3 className="pr-9 text-[17px] font-bold leading-snug tracking-[-0.02em] text-gray-900 sm:text-[18px] lg:text-[15px]">
+                <h3 className="pr-9 text-[17px] font-bold leading-snug tracking-[-0.02em] text-gray-900 sm:text-[18px]">
                   {feature.title}
                 </h3>
-                <span className="absolute bottom-3 right-3 flex h-8 w-8 lg:h-7 lg:w-7 items-center justify-center rounded-full bg-brand-accent shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
+                <span className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-brand-accent shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
                   <Play className="h-3.5 w-3.5 fill-white text-white" />
                 </span>
               </div>
