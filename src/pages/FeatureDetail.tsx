@@ -9,6 +9,7 @@ import BackButton from "@/components/BackButton";
 import FeatureTabs from "@/components/FeatureTabs";
 
 import SafeImage from "@/components/SafeImage";
+import BlurMediaFrame from "@/components/BlurMediaFrame";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { useContent } from "@/contexts/ContentContext";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
@@ -69,11 +70,11 @@ const FeatureDetail = () => {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-3 sm:mb-4">
           {topRow.map((img, idx) => (
             <div key={idx} className="bg-white rounded-2xl overflow-hidden shadow-sm">
-              <SafeImage
+              <BlurMediaFrame
                 src={img.url}
                 alt={img.title || `이미지 ${idx + 1}`}
-                loading="lazy"
-                className="w-full h-auto object-cover aspect-[4/3]"
+                aspectClassName="aspect-[4/3]"
+                radiusClassName="rounded-2xl rounded-b-none"
               />
               <div className="p-2.5 sm:p-3">
                 {img.title && <h4 className="text-xs sm:text-sm font-bold text-gray-900 mb-1">{img.title}</h4>}
@@ -85,11 +86,11 @@ const FeatureDetail = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
           {bottomRow.map((img, idx) => (
             <div key={idx} className="bg-white rounded-2xl overflow-hidden shadow-sm">
-              <SafeImage
+              <BlurMediaFrame
                 src={img.url}
                 alt={img.title || `이미지 ${idx + 5}`}
-                loading="lazy"
-                className="w-full h-auto object-cover aspect-[4/3]"
+                aspectClassName="aspect-[4/3]"
+                radiusClassName="rounded-2xl rounded-b-none"
               />
               <div className="p-2.5 sm:p-3">
                 {img.title && <h4 className="text-xs sm:text-sm font-bold text-gray-900 mb-1">{img.title}</h4>}
@@ -129,14 +130,12 @@ const FeatureDetail = () => {
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4">
               {selectedItem.description}
             </p>
-            <div className="rounded-lg overflow-hidden">
-              <SafeImage
-                src={selectedItem.imageUrl}
-                alt={selectedItem.label}
-                loading="lazy"
-                className="w-full h-auto object-cover aspect-[16/10]"
-              />
-            </div>
+            <BlurMediaFrame
+              src={selectedItem.imageUrl}
+              alt={selectedItem.label}
+              aspectClassName="aspect-[16/10]"
+              radiusClassName="rounded-lg"
+            />
           </div>
 
           {/* Right block: category list */}
@@ -252,29 +251,51 @@ const FeatureDetail = () => {
         )}
 
         {/* 구독 케어처럼 하위 이미지 섹션이 있으면 상단 메인 미디어는 생략 (중복 방지) */}
-        {!hasSubscriptionService && (
-          <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
-            <div onClick={onVideoClick}>
-              <MediaViewer
-                key={tabs ? `tab-${activeTab}` : "main"}
-                mediaType={
-                  activeTabData?.mediaSlides || activeTabData?.galleryImages
-                    ? "gallery"
-                    : activeTabData?.mediaType ?? feature.mediaType
-                }
-                mediaUrl={activeTabData?.mediaUrl ?? feature.mediaUrl}
-                mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
-                title={feature.title}
-                tableData={feature.tableData}
-                galleryImages={activeTabData?.galleryImages ?? feature.galleryImages}
-                isShorts={activeTabData?.isShorts ?? feature.isShorts}
-                fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
-                imagePosition={activeTabData?.imagePosition}
-                fullWidthMedia={feature.fullWidthMedia}
-              />
+        {!hasSubscriptionService && (() => {
+          const mainType =
+            activeTabData?.mediaSlides || activeTabData?.galleryImages
+              ? "gallery"
+              : activeTabData?.mediaType ?? feature.mediaType;
+          const mainUrl = activeTabData?.mediaUrl ?? feature.mediaUrl;
+
+          // 이미지: 블러 확장 배경 프레임 (액자 스타일 대신)
+          if (mainType === "image" && mainUrl) {
+            return (
+              <div className="mb-4 sm:mb-5" onClick={onVideoClick}>
+                <BlurMediaFrame
+                  key={tabs ? `tab-${activeTab}` : "main"}
+                  src={mainUrl}
+                  alt={feature.title}
+                  loading="eager"
+                  aspectClassName="aspect-[4/3] sm:aspect-[16/10]"
+                  radiusClassName="rounded-[14px]"
+                  objectPosition={activeTabData?.imagePosition}
+                />
+              </div>
+            );
+          }
+
+          return (
+            <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
+              <div onClick={onVideoClick}>
+                <MediaViewer
+                  key={tabs ? `tab-${activeTab}` : "main"}
+                  mediaType={mainType}
+                  mediaUrl={mainUrl}
+                  mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
+                  title={feature.title}
+                  tableData={feature.tableData}
+                  galleryImages={activeTabData?.galleryImages ?? feature.galleryImages}
+                  isShorts={activeTabData?.isShorts ?? feature.isShorts}
+                  fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
+                  imagePosition={activeTabData?.imagePosition}
+                  fullWidthMedia={feature.fullWidthMedia}
+                />
+              </div>
             </div>
-          </div>
-        )}
+          );
+        })()}
+
 
         {renderMediaGallery(activeTabData?.mediaGallery ?? feature.mediaGallery)}
 
