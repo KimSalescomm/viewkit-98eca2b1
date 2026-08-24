@@ -349,11 +349,11 @@ const SalesCertBadge = () => {
                     <span className="text-brand">*</span>
                   </label>
                 </div>
-                <div
-                  key={`warning-${animationKey}`}
-                  className="flex items-center justify-between text-[12px] font-medium text-brand animate-fade-in-warning"
-                >
-                  <div className="flex items-center gap-1">
+                <div className="flex items-center justify-between text-[12px]">
+                  <div
+                    key={`warning-${animationKey}`}
+                    className="flex items-center gap-1 font-medium text-brand animate-fade-in-warning"
+                  >
                     <AlertCircle className="w-3.5 h-3.5" />
                     <span>진짜 경험이 담긴 사례를 30자 이상 구체적으로 남겨주세요.</span>
                   </div>

@@ -202,7 +202,7 @@ All colors MUST be HSL.
 
   /* Sales certification warning reveal */
   .animate-fade-in-warning {
-    animation: revealFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: revealFromLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   @keyframes revealFromLeft {
