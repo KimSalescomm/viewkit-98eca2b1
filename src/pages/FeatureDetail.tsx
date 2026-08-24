@@ -197,9 +197,7 @@ const FeatureDetail = () => {
     }
   };
 
-  const isVacuumSample = productId === "vacuum";
-
-  const VacuumSampleLayout = ({
+  const FeatureDetailLayout = ({
     feature,
     product,
     productId,
@@ -213,13 +211,86 @@ const FeatureDetail = () => {
     const highlights = activeTabData?.highlights ?? feature.highlights ?? [];
     const hasSubscriptionService =
       !!feature.subscriptionServiceItems && feature.subscriptionServiceItems.length > 0;
+    const belowImg = activeTabData?.belowMediaImage ?? feature.belowMediaImage;
+    const groupedDisclaimers = productId === "washcombo" && id === "7";
+
+    /** 접이식 디스클레이머 블록 (세부정보) */
+    const renderCollapsible = (
+      items: { title: string; items: string[] }[],
+      keyPrefix: string,
+      grouped = false,
+    ) => {
+      if (!items || items.length === 0) return null;
+      if (grouped) {
+        return (
+          <Accordion type="single" collapsible className="w-full" key={`${keyPrefix}-grouped`}>
+            <AccordionItem value={`${keyPrefix}-all`} className="border-b border-gray-200">
+              <AccordionTrigger className="py-3 text-left text-xs font-bold text-muted-foreground hover:no-underline">
+                세부정보
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="space-y-3 pb-2 pt-1">
+                  {items.map((item, index) => (
+                    <div key={index}>
+                      {item.title !== "세부정보" && (
+                        <h4 className="mb-1 text-[11px] font-bold text-gray-700 sm:text-xs">{item.title}</h4>
+                      )}
+                      <ol className="list-none space-y-1">
+                        {item.items.map((text, i) => (
+                          <li key={i} className="text-[11px] leading-relaxed text-muted-foreground whitespace-pre-line">
+                            {text}
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        );
+      }
+      return (
+        <Accordion type="multiple" className="w-full" key={`${keyPrefix}-${activeTab}`}>
+          {items.map((item, index) => (
+            <AccordionItem key={index} value={`${keyPrefix}-${index}`} className="border-b border-gray-200">
+              <AccordionTrigger className="py-3 text-left text-xs font-bold text-muted-foreground hover:no-underline">
+                {item.title}
+              </AccordionTrigger>
+              <AccordionContent>
+                <ol className="list-none space-y-1 pb-2 pt-1">
+                  {item.items.map((text, i) => (
+                    <li key={i} className="text-[11px] leading-relaxed text-muted-foreground whitespace-pre-line">
+                      {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
+                    </li>
+                  ))}
+                </ol>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      );
+    };
+
+    const renderFlat = (items?: string[]) =>
+      items && items.length > 0 ? (
+        <ul className="mb-2 space-y-1">
+          {items.map((text, index) => (
+            <li key={index} className="text-[11px] leading-relaxed text-muted-foreground">
+              * {text}
+            </li>
+          ))}
+        </ul>
+      ) : null;
+
     return (
       <PageContainer>
-        <div className="flex items-center justify-between mb-5 sm:mb-6">
+        <div className="mb-5 flex items-center justify-between sm:mb-6">
           <BackButton to={`/product/${productId}`} label={`${product.name} 특장점`} />
           <OrientationToggle />
         </div>
 
+        {/* Feature Header */}
         <div className="mb-5 flex items-center gap-4 border-b border-gray-200 pb-5 sm:mb-6 sm:gap-5 sm:pb-6">
           <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gray-200/70 sm:h-16 sm:w-16">
             <FeatureIcon iconKey={feature.icon} className="h-7 w-7 text-brand-accent sm:h-8 sm:w-8" />
@@ -233,70 +304,157 @@ const FeatureDetail = () => {
             <h1 className="text-[26px] font-bold leading-tight tracking-[-0.02em] text-gray-900 sm:text-[32px]">
               {feature.title}
             </h1>
-            <p className="mt-1 text-[15px] leading-snug text-gray-600 sm:text-[17px]">
+            <p className="mt-1 text-[15px] leading-snug text-gray-600 whitespace-pre-line sm:text-[17px]">
               {feature.subtitle}
             </p>
           </div>
         </div>
 
-        {/* 선택 탭 (히든스테이션/오브제스테이션 등) */}
-        {tabs && tabs.length > 0 && (
-          <div style={{ ["--tab-accent" as any]: "0 72% 50%" }}>
-            <FeatureTabs
-              tabs={tabs}
-              activeIndex={activeTab}
-              onChange={setActiveTab}
-              scrollable={tabs.length > 3}
-            />
+        {/* 탭보다 위에 메인 미디어를 유지해야 하는 경우 */}
+        {feature.showMainMedia && tabs && tabs.length > 0 && (
+          <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
+            <div onClick={onVideoClick}>
+              <MediaViewer
+                key="main-media"
+                mediaType={feature.mediaSlides ? "gallery" : feature.mediaType}
+                mediaUrl={feature.mediaUrl}
+                mediaSlides={feature.mediaSlides}
+                title={feature.title}
+                tableData={feature.tableData}
+                galleryImages={feature.galleryImages}
+                isShorts={feature.isShorts}
+                fallbackUrl={feature.fallbackUrl}
+                fullWidthMedia={feature.fullWidthMedia}
+              />
+            </div>
           </div>
         )}
 
-        {/* 구독 케어처럼 하위 이미지 섹션이 있으면 상단 메인 미디어는 생략 (중복 방지) */}
-        {!hasSubscriptionService && (() => {
+        {/* 선택 탭 */}
+        {tabs && tabs.length > 0 && (
+          <FeatureTabs
+            tabs={tabs}
+            activeIndex={activeTab}
+            onChange={setActiveTab}
+            scrollable={tabs.length > 3}
+          />
+        )}
+
+        {/* 외부 페이지 인앱 임베드 (고객 리뷰 등) */}
+        {feature.embedUrl && (
+          <div className="mb-4 sm:mb-5">
+            <div className="overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)]">
+              <iframe
+                src={feature.embedUrl}
+                title={`${feature.title} 리뷰`}
+                loading="lazy"
+                className="h-[70vh] min-h-[520px] w-full border-0"
+                referrerPolicy="no-referrer-when-downgrade"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+              />
+            </div>
+            <div className="mt-2 text-right">
+              <a
+                href={feature.embedUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-gray-400 hover:text-brand-accent"
+              >
+                리뷰가 보이지 않으면 새 창에서 열기 ↗
+              </a>
+            </div>
+          </div>
+        )}
+
+        {/* 메인 미디어 (구독 케어처럼 하위 이미지 섹션이 있으면 중복 방지를 위해 생략) */}
+        {!hasSubscriptionService && !feature.embedUrl && !feature.showMainMedia && (() => {
           const mainType =
             activeTabData?.mediaSlides || activeTabData?.galleryImages
               ? "gallery"
               : activeTabData?.mediaType ?? feature.mediaType;
           const mainUrl = activeTabData?.mediaUrl ?? feature.mediaUrl;
 
-          // 이미지: 블러 확장 배경 프레임 (액자 스타일 대신)
-          if (mainType === "image" && mainUrl) {
-            return (
-              <div className="mb-4 sm:mb-5" onClick={onVideoClick}>
-                <BlurMediaFrame
-                  key={tabs ? `tab-${activeTab}` : "main"}
-                  src={mainUrl}
-                  alt={feature.title}
-                  loading="eager"
-                  aspectClassName="aspect-[4/3] sm:aspect-[16/10]"
-                  radiusClassName="rounded-[14px]"
-                  objectPosition={activeTabData?.imagePosition}
-                />
-              </div>
-            );
-          }
-
           return (
-            <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
-              <div onClick={onVideoClick}>
-                <MediaViewer
-                  key={tabs ? `tab-${activeTab}` : "main"}
-                  mediaType={mainType}
-                  mediaUrl={mainUrl}
-                  mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
-                  title={feature.title}
-                  tableData={feature.tableData}
-                  galleryImages={activeTabData?.galleryImages ?? feature.galleryImages}
-                  isShorts={activeTabData?.isShorts ?? feature.isShorts}
-                  fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
-                  imagePosition={activeTabData?.imagePosition}
-                  fullWidthMedia={feature.fullWidthMedia}
-                />
-              </div>
-            </div>
+            <>
+              {feature.mediaSectionTitle && (
+                <h2 className="mb-3 text-lg font-bold text-gray-900 sm:text-xl">
+                  {feature.mediaSectionTitle}
+                </h2>
+              )}
+              {mainType === "image" && mainUrl ? (
+                /* 이미지: 블러 확장 배경 프레임 */
+                <div className="mb-4 sm:mb-5" onClick={onVideoClick}>
+                  <BlurMediaFrame
+                    key={tabs ? `tab-${activeTab}` : "main"}
+                    src={mainUrl}
+                    alt={feature.title}
+                    loading="eager"
+                    aspectClassName="aspect-[4/3] sm:aspect-[16/10]"
+                    radiusClassName="rounded-[14px]"
+                    objectPosition={activeTabData?.imagePosition}
+                  />
+                </div>
+              ) : (
+                <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
+                  <div onClick={onVideoClick}>
+                    <MediaViewer
+                      key={tabs ? `tab-${activeTab}` : "main"}
+                      mediaType={mainType}
+                      mediaUrl={mainUrl}
+                      mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
+                      title={feature.title}
+                      tableData={feature.tableData}
+                      galleryImages={activeTabData?.galleryImages ?? feature.galleryImages}
+                      isShorts={activeTabData?.isShorts ?? feature.isShorts}
+                      fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
+                      imagePosition={activeTabData?.imagePosition}
+                      fullWidthMedia={feature.fullWidthMedia}
+                    />
+                  </div>
+                </div>
+              )}
+            </>
           );
         })()}
 
+        {/* 미디어 하단 이미지 (인증 마크 등) */}
+        {belowImg && (
+          <figure className="mb-4 sm:mb-5">
+            <button
+              type="button"
+              onClick={() => setLightboxOpen(true)}
+              aria-label={`${belowImg.alt || "인증 마크"} 확대 보기`}
+              className="block w-full cursor-zoom-in overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] transition-transform duration-200 hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-brand-accent"
+            >
+              <img
+                src={belowImg.url}
+                alt={belowImg.alt || ""}
+                loading="lazy"
+                decoding="async"
+                className="h-auto w-full object-contain"
+              />
+            </button>
+            {belowImg.caption && (
+              <figcaption className="mt-2 text-center text-xs leading-relaxed text-gray-500 sm:text-sm">
+                {belowImg.caption}
+              </figcaption>
+            )}
+          </figure>
+        )}
+
+        {/* 인증 마크 확대 보기 */}
+        <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
+          <DialogContent className="max-w-5xl bg-white p-2 sm:p-4">
+            <DialogTitle className="sr-only">인증 마크 확대 보기</DialogTitle>
+            {belowImg && (
+              <img
+                src={belowImg.url}
+                alt={belowImg.alt || ""}
+                className="h-auto w-full rounded-lg object-contain"
+              />
+            )}
+          </DialogContent>
+        </Dialog>
 
         {renderMediaGallery(activeTabData?.mediaGallery ?? feature.mediaGallery)}
 
@@ -305,6 +463,7 @@ const FeatureDetail = () => {
           <SubscriptionServiceSection items={feature.subscriptionServiceItems!} accent="brand" />
         )}
 
+        {/* 설명 카드 */}
         {(activeTabData?.caption || activeTabData?.description || feature.description) && (
           <div className="mb-4 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
             {(activeTabData?.descriptionTitle || feature.descriptionTitle) && (
@@ -317,9 +476,6 @@ const FeatureDetail = () => {
             </p>
           </div>
         )}
-
-
-
 
         {/* 세부 기능 (아코디언) */}
         {feature.subFeatures && feature.subFeatures.length > 0 && (!tabs || activeTab === 0) && (
@@ -363,6 +519,11 @@ const FeatureDetail = () => {
                         />
                       </div>
                     )}
+                    {sub.disclaimers && sub.disclaimers.length > 0 && (
+                      <div className="mt-4">
+                        {renderCollapsible(sub.disclaimers, `v-sub-${index}-disc`, true)}
+                      </div>
+                    )}
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -370,68 +531,146 @@ const FeatureDetail = () => {
           </div>
         )}
 
-        {highlights.length > 0 && (
-        <div className="mb-8 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-10">
-          <h2 className="mb-4 text-lg font-bold text-gray-900">핵심만 쏙</h2>
-          <div className="grid grid-cols-2 gap-3">
-            {highlights.map((highlight, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2 rounded-xl bg-gray-50 p-3"
-              >
-                <Check className="h-[22px] w-[22px] flex-shrink-0 text-brand-accent" />
-                <span className="text-[15.4px] font-medium leading-snug text-gray-800">{highlight}</span>
+        {/* 적용 코스 캐러셀 */}
+        {feature.courses && feature.courses.length > 0 && (
+          <section className="mb-6 sm:mb-8">
+            <h2 className="mb-3 text-lg font-bold text-gray-900 sm:mb-4">
+              트루스팀 적용 코스
+            </h2>
+            <div className="group relative">
+              <div className="overflow-hidden rounded-[14px]" ref={emblaRef}>
+                <div className="flex">
+                  {feature.courses.map((course, index) => (
+                    <div key={index} className="min-w-0 flex-[0_0_100%] pl-0">
+                      <div className="flex flex-col overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] md:flex-row">
+                        <div className="h-1 w-full bg-brand-accent md:hidden" />
+                        <div className="w-full bg-gray-50 md:w-3/5">
+                          <SafeImage
+                            src={course.imageUrl}
+                            alt={course.imageAlt || course.name}
+                            loading="lazy"
+                            decoding="async"
+                            className="h-auto w-full object-cover"
+                          />
+                        </div>
+                        <div className="hidden w-1 flex-shrink-0 bg-brand-accent md:block" />
+                        <div className="flex w-full flex-col justify-center p-5 sm:p-6 md:w-2/5">
+                          <span className="mb-2 inline-block self-start rounded-full bg-gray-100 px-2.5 py-1 text-[11px] font-bold text-brand-accent">
+                            {course.type || "코스"}
+                          </span>
+                          <h3 className="mb-2 text-base font-bold text-gray-900 sm:text-lg">
+                            {course.name}
+                          </h3>
+                          <p className="text-[15px] leading-relaxed text-gray-600">
+                            {course.description}
+                          </p>
+                          {course.disclaimers && course.disclaimers.length > 0 && (
+                            <div className="mt-4">
+                              {renderCollapsible(course.disclaimers, `course-${index}-disc`, true)}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
+
+              {feature.courses.length > 1 && (
+                <>
+                  <button
+                    type="button"
+                    onClick={scrollCoursePrev}
+                    disabled={!canScrollPrev}
+                    className="absolute left-2 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gray-700 shadow-md backdrop-blur transition-colors hover:bg-white disabled:cursor-not-allowed disabled:opacity-30 sm:h-10 sm:w-10"
+                    aria-label="이전 코스"
+                  >
+                    <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={scrollCourseNext}
+                    disabled={!canScrollNext}
+                    className="absolute right-2 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gray-700 shadow-md backdrop-blur transition-colors hover:bg-white disabled:cursor-not-allowed disabled:opacity-30 sm:h-10 sm:w-10"
+                    aria-label="다음 코스"
+                  >
+                    <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+                  </button>
+                  <div className="mt-4 flex justify-center gap-2">
+                    {feature.courses.map((_, index) => (
+                      <button
+                        key={index}
+                        type="button"
+                        onClick={() => emblaApi?.scrollTo(index)}
+                        className={`h-2 rounded-full transition-all ${
+                          index === courseIndex ? "w-4 bg-brand-accent" : "w-2 bg-gray-300 hover:bg-gray-400"
+                        }`}
+                        aria-label={`${index + 1}번째 코스로 이동`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          </section>
         )}
 
-        {/* 세부정보 (토글형 디스클레이머) */}
+        {/* 핵심만 쏙 */}
+        {highlights.length > 0 && (
+          <div className="mb-8 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-10">
+            <h2 className="mb-4 text-lg font-bold text-gray-900">핵심만 쏙</h2>
+            <div className="grid grid-cols-2 gap-3">
+              {highlights.map((highlight, index) => {
+                const detail = feature.highlightDetails?.[highlight];
+                if (detail) {
+                  return (
+                    <div key={index} className="col-span-2 overflow-hidden rounded-xl bg-gray-50 p-4 sm:p-5">
+                      <h3 className="mb-2 text-base font-bold text-gray-900 sm:text-lg">{detail.title}</h3>
+                      <p className="mb-3 text-[15px] leading-relaxed text-gray-600 whitespace-pre-line sm:mb-4">
+                        {detail.description}
+                      </p>
+                      <div className="overflow-hidden rounded-xl bg-black" onClick={onVideoClick}>
+                        <MediaViewer
+                          mediaType={detail.mediaType}
+                          mediaUrl={detail.mediaUrl}
+                          title={detail.title}
+                          isShorts={detail.isShorts}
+                          fallbackUrl={detail.fallbackUrl}
+                        />
+                      </div>
+                    </div>
+                  );
+                }
+                return (
+                  <div key={index} className="flex items-center gap-2 rounded-xl bg-gray-50 p-3">
+                    <Check className="h-[22px] w-[22px] flex-shrink-0 text-brand-accent" />
+                    <span className="text-[15.4px] font-medium leading-snug text-gray-800">{highlight}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* 세부정보 / 디스클레이머 */}
         {(() => {
           const collapsible = [
             ...(activeTabData?.collapsibleDisclaimers ?? []),
             ...(feature.mediaCollapsibleDisclaimers ?? []),
+            ...(feature.collapsibleDisclaimers ?? []),
           ];
           const flat = [
             ...(feature.mediaDisclaimers ?? []),
+            ...(feature.disclaimers ?? []),
           ];
           if (collapsible.length === 0 && flat.length === 0) return null;
           return (
             <div className="mb-8 px-1 sm:mb-10">
-              {flat.length > 0 && (
-                <ul className="mb-2 space-y-1">
-                  {flat.map((text, index) => (
-                    <li key={index} className="text-[11px] leading-relaxed text-muted-foreground">
-                      * {text}
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {collapsible.length > 0 && (
-                <Accordion type="multiple" className="w-full" key={`v-disc-${activeTab}`}>
-                  {collapsible.map((item, index) => (
-                    <AccordionItem key={index} value={`v-disc-${index}`} className="border-b border-gray-200">
-                      <AccordionTrigger className="py-3 text-left text-xs font-bold text-muted-foreground hover:no-underline">
-                        {item.title}
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <ol className="list-none space-y-1 pb-2 pt-1">
-                          {item.items.map((text, i) => (
-                            <li key={i} className="text-[11px] leading-relaxed text-muted-foreground whitespace-pre-line">
-                              {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
-                            </li>
-                          ))}
-                        </ol>
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              )}
+              {renderFlat(flat)}
+              {renderCollapsible(collapsible, "v-disc", groupedDisclaimers)}
             </div>
           );
         })()}
-
 
         <div className="text-center">
           <Link
@@ -461,716 +700,12 @@ const FeatureDetail = () => {
 
   return (
     <div className="min-h-screen bg-[#F3F4F6]">
-      {/* Content */}
-      {isVacuumSample ? (
-        <VacuumSampleLayout
-          feature={feature}
-          product={product}
-          productId={productId || ""}
-          onVideoClick={handleVideoClick}
-        />
-      ) : (
-      <PageContainer>
-        <div className="flex items-center justify-between mb-5 sm:mb-6">
-          <BackButton to={`/product/${productId}`} label={`${product.name} 특장점`} />
-          <OrientationToggle />
-        </div>
-
-        {/* Feature Header */}
-        <div className="mb-5 flex items-center gap-4 border-b border-gray-200 pb-5 sm:mb-6 sm:gap-5 sm:pb-6">
-          <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gray-200/70 sm:h-16 sm:w-16">
-            <FeatureIcon iconKey={feature.icon} className="h-7 w-7 text-brand-accent sm:h-8 sm:w-8" />
-          </div>
-          <div className="min-w-0">
-            {feature.tag && (
-              <span className="mb-1 inline-block text-[13px] font-bold tracking-[-0.01em] text-brand-accent">
-                {feature.tag}
-              </span>
-            )}
-            {feature.title && (
-              <h1 className="text-[26px] font-bold leading-tight tracking-[-0.02em] text-gray-900 sm:text-[32px]">
-                {feature.title}
-              </h1>
-            )}
-            <p className="mt-1 text-[15px] leading-snug text-gray-600 whitespace-pre-line sm:text-[17px]">
-              {feature.subtitle}
-            </p>
-          </div>
-        </div>
-
-
-        {/* Subscription service interactive section */}
-        {feature.subscriptionServiceItems && feature.subscriptionServiceItems.length > 0 && (
-          <SubscriptionServiceSection
-            items={feature.subscriptionServiceItems}
-            mediaDisclaimers={feature.mediaDisclaimers}
-          />
-        )}
-
-        {/* Main media (kept visible above tabs when requested) */}
-
-        {feature.showMainMedia && tabs && tabs.length > 0 && (
-          <div className="mb-5 sm:mb-6">
-            <MediaViewer
-              key="main-media"
-              mediaType={feature.mediaSlides ? "gallery" : feature.mediaType}
-              mediaUrl={feature.mediaUrl}
-              mediaSlides={feature.mediaSlides}
-              title={feature.title}
-              tableData={feature.tableData}
-              galleryImages={feature.galleryImages}
-              isShorts={feature.isShorts}
-              fallbackUrl={feature.fallbackUrl}
-              fullWidthMedia={feature.fullWidthMedia}
-            />
-          </div>
-        )}
-
-        {/* Tabs (only when feature.tabs exists) */}
-
-        {tabs && tabs.length > 0 && (
-          <FeatureTabs tabs={tabs} activeIndex={activeTab} onChange={setActiveTab} />
-        )}
-
-
-        {/* 외부 페이지 인앱 임베드 (고객 리뷰 등) */}
-        {feature.embedUrl && (
-          <div className="mb-5 sm:mb-6">
-            <div className="rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm">
-              <iframe
-                src={feature.embedUrl}
-                title={`${feature.title} 리뷰`}
-                loading="lazy"
-                className="w-full h-[70vh] min-h-[520px] border-0"
-                referrerPolicy="no-referrer-when-downgrade"
-                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-              />
-            </div>
-            <div className="mt-2 text-right">
-              <a
-                href={feature.embedUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-gray-400 hover:text-brand"
-              >
-                리뷰가 보이지 않으면 새 창에서 열기 ↗
-              </a>
-            </div>
-          </div>
-        )}
-
-        {!feature.subscriptionServiceItems && !feature.embedUrl && (() => {
-
-          const isUnderlineTabs = feature.tabsVariant === "underline" && tabs && tabs.length > 0;
-
-          const belowImg = activeTabData?.belowMediaImage ?? feature.belowMediaImage;
-          const frameBg = activeTabData?.frameBg ?? "#e8dccb";
-
-          const mediaEl = (
-            <MediaViewer
-              key={tabs ? `tab-${activeTab}` : "main"}
-              mediaType={activeTabData?.mediaSlides ? "gallery" : activeTabData?.galleryImages ? "gallery" : activeTabData?.mediaType ?? feature.mediaType}
-              mediaUrl={activeTabData?.mediaUrl ?? feature.mediaUrl}
-              mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
-              title={feature.title}
-              tableData={feature.tableData}
-              galleryImages={activeTabData?.galleryImages ?? feature.galleryImages}
-              isShorts={activeTabData?.isShorts ?? feature.isShorts}
-              fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
-              imagePosition={activeTabData?.imagePosition}
-              fullWidthMedia={feature.fullWidthMedia}
-            />
-          );
-
-          if (isUnderlineTabs) {
-            const imageFit = activeTabData?.imageFit ?? "contain";
-            const imgFitClass = imageFit === "cover" ? "[&_img]:!object-cover" : "[&_img]:!object-contain";
-
-            return (
-              <div className="mb-6 sm:mb-8">
-                {/* Media frame - fixed aspect ratio, transparent outer, black letterbox */}
-                <div
-                  className="relative w-full rounded-2xl overflow-hidden bg-transparent"
-                  onClick={handleVideoClick}
-                >
-                  <div
-                    className={`relative w-full aspect-video overflow-hidden rounded-2xl bg-black ${imgFitClass} [&_video]:!w-full [&_video]:!h-full [&_video]:!object-contain [&_img]:!w-full [&_img]:!h-full [&>div]:!h-full [&>div>div]:!h-full [&>div]:!bg-black [&>div]:!max-w-none`}
-                  >
-                    {mediaEl}
-                  </div>
-                </div>
-
-                {/* Certification badges - full-width row below media */}
-                {belowImg && (
-                  <figure className="mt-3 sm:mt-4 m-0">
-                    <button
-                      type="button"
-                      onClick={() => setLightboxOpen(true)}
-                      aria-label={`${belowImg.alt || "인증 마크"} 확대 보기`}
-                      className="block w-full rounded-2xl overflow-hidden bg-white shadow-md transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-brand-accent cursor-zoom-in"
-                    >
-                      <img
-                        src={belowImg.url}
-                        alt={belowImg.alt || ""}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-auto object-contain"
-                      />
-                    </button>
-                    {belowImg.caption && (
-                      <figcaption className="mt-2 text-xs sm:text-sm text-gray-500 text-center leading-relaxed">
-                        {belowImg.caption}
-                    </figcaption>
-                  )}
-                </figure>
-              )}
-              {renderMediaGallery(activeTabData?.mediaGallery ?? feature.mediaGallery)}
-            </div>
-          );
-        }
-
-        return (
-            <>
-              {feature.mediaSectionTitle && (
-                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">
-                  {feature.mediaSectionTitle}
-                </h2>
-              )}
-              <div
-                className={`mb-3 sm:mb-4 relative ${feature.mediaSectionTitle ? "[&>div]:!max-w-none [&>div]:!bg-transparent [&>div]:!rounded-none" : ""}`}
-                onClick={handleVideoClick}
-              >
-                {mediaEl}
-              </div>
-
-
-              {belowImg && (
-                <figure className="mb-6 sm:mb-8">
-                  <button
-                    type="button"
-                    onClick={() => setLightboxOpen(true)}
-                    aria-label={`${belowImg.alt || "인증 마크"} 확대 보기`}
-                    className="block w-full rounded-2xl overflow-hidden bg-white shadow-md transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-brand-accent cursor-zoom-in"
-                  >
-                    <img
-                      src={belowImg.url}
-                      alt={belowImg.alt || ""}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-auto object-contain"
-                    />
-                  </button>
-                  {belowImg.caption && (
-                    <figcaption className="mt-2 text-xs sm:text-sm text-gray-500 text-center leading-relaxed">
-                      {belowImg.caption}
-                    </figcaption>
-                  )}
-                </figure>
-              )}
-              {renderMediaGallery(activeTabData?.mediaGallery ?? feature.mediaGallery)}
-            </>
-          );
-        })()}
-
-
-        {/* Lightbox for certification badges */}
-        <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
-          <DialogContent className="max-w-5xl p-2 sm:p-4 bg-white">
-            <DialogTitle className="sr-only">인증 마크 확대 보기</DialogTitle>
-            {(() => {
-              const belowImg = activeTabData?.belowMediaImage ?? feature.belowMediaImage;
-              if (!belowImg) return null;
-              return (
-                <img
-                  src={belowImg.url}
-                  alt={belowImg.alt || ""}
-                  className="w-full h-auto object-contain rounded-lg"
-                />
-              );
-            })()}
-          </DialogContent>
-        </Dialog>
-
-
-        {/* Tab caption (underline variant) */}
-        {activeTabData?.caption && (
-          <p className="mb-6 sm:mb-8 text-sm sm:text-base text-gray-600 leading-relaxed whitespace-pre-line">
-            {activeTabData.caption}
-          </p>
-        )}
-
-
-        {/* Description Card: active tab description takes precedence */}
-        {!feature.subscriptionServiceItems && (
-          <div className="bg-white rounded-[14px] p-5 sm:p-6 mb-4 sm:mb-6 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)]">
-            {(activeTabData?.descriptionTitle || feature.descriptionTitle) && (
-              <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{activeTabData?.descriptionTitle ?? feature.descriptionTitle}</h2>
-            )}
-            <p className="text-sm sm:text-base text-gray-600 leading-snug whitespace-pre-line">
-              {activeTabData?.description ?? feature.description}
-            </p>
-          </div>
-        )}
-
-        {/* Collapsible disclaimers for subscription service pages */}
-        {feature.subscriptionServiceItems && feature.mediaCollapsibleDisclaimers && feature.mediaCollapsibleDisclaimers.length > 0 && (
-          <div className="mb-4 sm:mb-6">
-            <Accordion type="multiple" className="w-full">
-              {feature.mediaCollapsibleDisclaimers.map((item, index) => (
-                <AccordionItem key={index} value={`media-disclaimer-${index}`} className="border-b border-gray-200">
-                  <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
-                    {item.title}
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <ol className="space-y-1 list-none pt-1 pb-2">
-                      {item.items.map((text, i) => (
-                        <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
-                          {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
-                        </li>
-                      ))}
-                    </ol>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        )}
-
-        {/* Media disclaimers (rendered below the description card) */}
-        {!feature.subscriptionServiceItems && (feature.mediaDisclaimers || feature.mediaCollapsibleDisclaimers) && (
-          <div className="mb-4 sm:mb-6 px-1">
-            {feature.mediaDisclaimers && feature.mediaDisclaimers.length > 0 && (
-              <ul className="space-y-1 mb-2">
-                {feature.mediaDisclaimers.map((text, index) => (
-                  <li key={index} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed">
-                    * {text}
-                  </li>
-                ))}
-              </ul>
-            )}
-            {feature.mediaCollapsibleDisclaimers && feature.mediaCollapsibleDisclaimers.length > 0 && (
-              <Accordion type="multiple" className="w-full">
-                {feature.mediaCollapsibleDisclaimers.map((item, index) => (
-                  <AccordionItem key={index} value={`media-disclaimer-${index}`} className="border-b border-gray-200">
-                    <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
-                      {item.title}
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <ol className="space-y-1 list-none pt-1 pb-2">
-                        {item.items.map((text, i) => (
-                          <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
-                            {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
-                          </li>
-                        ))}
-                      </ol>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            )}
-          </div>
-        )}
-
-        {/* Tab-specific collapsible disclaimers */}
-        {activeTabData?.collapsibleDisclaimers && activeTabData.collapsibleDisclaimers.length > 0 && (
-          <div className="mb-6 sm:mb-8 px-1">
-            {productId === "washcombo" && id === "7" ? (
-              <Accordion type="single" collapsible className="w-full" key={`tab-disclaimers-${activeTab}`}>
-                <AccordionItem value={`tab-${activeTab}-disclaimer-all`} className="border-b border-gray-200">
-                  <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
-                    세부정보
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="space-y-3 pt-1 pb-2">
-                      {activeTabData.collapsibleDisclaimers.map((item, index) => (
-                        <div key={index}>
-                          {item.title !== "세부정보" && (
-                            <h4 className="text-[11px] sm:text-xs font-bold text-gray-700 mb-1">
-                              {item.title}
-                            </h4>
-                          )}
-                          <ol className="space-y-1 list-none">
-                            {item.items.map((text, i) => (
-                            <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
-                              {text}
-                            </li>
-                            ))}
-                          </ol>
-                        </div>
-                      ))}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            ) : (
-              <Accordion type="multiple" className="w-full" key={`tab-disclaimers-${activeTab}`}>
-                {activeTabData.collapsibleDisclaimers.map((item, index) => (
-                  <AccordionItem key={index} value={`tab-${activeTab}-disclaimer-${index}`} className="border-b border-gray-200">
-                    <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
-                      {item.title}
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <ol className="space-y-1 list-none pt-1 pb-2">
-                        {item.items.map((text, i) => (
-                          <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
-                            {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
-                          </li>
-                        ))}
-                      </ol>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            )}
-          </div>
-        )}
-
-
-        {/* 세부 기능 (메인 콘텐츠 하위 · 아코디언) */}
-        {feature.subFeatures && feature.subFeatures.length > 0 && (!tabs || activeTab === 0) && (
-          <section className="mb-10 sm:mb-12">
-            <div className="mb-3 sm:mb-4 pl-3 border-l-4 border-brand-accent">
-              <h2 className="text-base sm:text-lg font-bold text-gray-900">
-                {feature.subFeaturesTitle || "세부 기능"}
-              </h2>
-              {feature.subFeaturesSubtitle && (
-                <p className="mt-1 text-xs sm:text-sm text-gray-500 leading-relaxed whitespace-pre-line">
-                  {feature.subFeaturesSubtitle}
-                </p>
-              )}
-            </div>
-
-            <Accordion
-              type="single"
-              collapsible
-              className="w-full space-y-2 sm:space-y-3"
-            >
-              {feature.subFeatures.map((sub, index) => (
-                <AccordionItem
-                  key={index}
-                  value={`sub-${index}`}
-                  className="border border-gray-200 rounded-2xl bg-white shadow-sm overflow-hidden"
-                >
-                  <AccordionTrigger className="px-4 sm:px-5 py-3.5 sm:py-4 hover:no-underline text-left">
-                    <span className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-                      {sub.step && (
-                        <span className="flex-shrink-0 text-[10px] sm:text-xs font-bold text-brand-accent bg-gray-100 rounded-full px-2.5 py-1">
-                          {sub.step}
-                        </span>
-                      )}
-                      <span className="text-sm sm:text-base font-semibold text-gray-900">
-                        {sub.label}
-                      </span>
-                    </span>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-4 sm:px-5 pb-4 sm:pb-5">
-                    <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-1.5">
-                      {sub.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed whitespace-pre-line mb-3">
-                      {sub.description}
-                    </p>
-                    {sub.mediaUrl && (
-                      <div className="rounded-xl overflow-hidden bg-black" onClick={handleVideoClick}>
-                        <MediaViewer
-                          mediaType={sub.mediaType || "video"}
-                          mediaUrl={sub.mediaUrl}
-                          title={sub.title}
-                          isShorts={sub.isShorts}
-                          fallbackUrl={sub.fallbackUrl}
-                        />
-                      </div>
-                    )}
-                    {sub.disclaimers && sub.disclaimers.length > 0 && (
-                      <Accordion type="single" collapsible className="w-full mt-4">
-                        <AccordionItem
-                          value={`sub-${index}-details`}
-                          className="border-b border-gray-100 last:border-b-0"
-                        >
-                          <AccordionTrigger className="py-2.5 hover:no-underline text-left text-xs sm:text-sm font-bold text-gray-700">
-                            세부정보
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-3 pt-1 pb-2">
-                              {sub.disclaimers.map((disclaimer, dIndex) => (
-                                <div key={dIndex}>
-                                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-700 mb-1">
-                                    {disclaimer.title}
-                                  </h4>
-                                  <ul className="space-y-1">
-                                    {disclaimer.items.map((text, i) => (
-                                      <li
-                                        key={i}
-                                        className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed"
-                                      >
-                                        * {text}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              ))}
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    )}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </section>
-        )}
-
-        {/* Highlights Card: active tab highlights take precedence */}
-        {(activeTabData?.highlights ?? feature.highlights) && (activeTabData?.highlights ?? feature.highlights)?.length > 0 && (
-          <div className="bg-white rounded-[14px] p-5 sm:p-6 mb-10 sm:mb-12 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)]">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">핵심만 쏙</h2>
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {(activeTabData?.highlights ?? feature.highlights).map((highlight, index) => {
-                const detail = feature.highlightDetails?.[highlight];
-                if (detail) {
-                  return (
-                    <div key={index} className="col-span-2 bg-gray-50 rounded-xl p-4 sm:p-5 overflow-hidden">
-                      <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
-                        {detail.title}
-                      </h3>
-                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed whitespace-pre-line mb-3 sm:mb-4">
-                        {detail.description}
-                      </p>
-                      <div
-                        className="rounded-xl overflow-hidden bg-black"
-                        onClick={handleVideoClick}
-                      >
-                        <MediaViewer
-                          mediaType={detail.mediaType}
-                          mediaUrl={detail.mediaUrl}
-                          title={detail.title}
-                          isShorts={detail.isShorts}
-                          fallbackUrl={detail.fallbackUrl}
-                        />
-                      </div>
-                    </div>
-                  );
-                }
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 bg-gray-50 rounded-xl"
-                  >
-                    <span className="text-brand-accent font-bold text-base sm:text-lg">✓</span>
-                    <span className="text-sm sm:text-base text-gray-800 font-medium">{highlight}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-
-        {/* 트루스팀 적용 코스 */}
-        {feature.courses && feature.courses.length > 0 && (
-          <section className="mb-10 sm:mb-12">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
-              트루스팀 적용 코스
-            </h2>
-            <div className="relative group">
-              <div className="overflow-hidden rounded-2xl" ref={emblaRef}>
-                <div className="flex">
-                  {feature.courses.map((course, index) => (
-                    <div
-                      key={index}
-                      className="flex-[0_0_100%] min-w-0 pl-0"
-                    >
-                      <div className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col md:flex-row">
-                        <div className="h-1 w-full bg-brand-accent md:hidden" />
-                        <div className="w-full md:w-3/5 bg-gray-50">
-                          <SafeImage
-                            src={course.imageUrl}
-                            alt={course.imageAlt || course.name}
-                            loading="lazy"
-                            decoding="async"
-                            className="w-full h-auto object-cover"
-                          />
-                        </div>
-                        <div className="hidden md:block w-1 bg-brand-accent flex-shrink-0" />
-                        <div className="w-full md:w-2/5 p-5 sm:p-6 flex flex-col justify-center">
-                          <span className="inline-block self-start mb-2 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-gray-100 text-brand-accent">
-                            {course.type || "코스"}
-                          </span>
-                          <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
-                            {course.name}
-                          </h3>
-                          <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                            {course.description}
-                          </p>
-
-                          {course.disclaimers && course.disclaimers.length > 0 && (
-                            <Accordion type="single" collapsible className="w-full mt-4">
-                              <AccordionItem
-                                value={`course-${index}-details`}
-                                className="border-b border-gray-100 last:border-b-0"
-                              >
-                                <AccordionTrigger className="py-2.5 hover:no-underline text-left text-xs sm:text-sm font-bold text-gray-700">
-                                  세부정보
-                                </AccordionTrigger>
-                                <AccordionContent>
-                                  <div className="space-y-3 pt-1 pb-2">
-                                    {course.disclaimers.map((disclaimer, dIndex) => (
-                                      <div key={dIndex}>
-                                        <h4 className="text-[11px] sm:text-xs font-bold text-gray-700 mb-1">
-                                          {disclaimer.title}
-                                        </h4>
-                                        <ul className="space-y-1">
-                                          {disclaimer.items.map((text, i) => (
-                                            <li
-                                              key={i}
-                                              className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed"
-                                            >
-                                              * {text}
-                                            </li>
-                                          ))}
-                                        </ul>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </AccordionContent>
-                              </AccordionItem>
-                            </Accordion>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Navigation */}
-              {feature.courses.length > 1 && (
-                <>
-                  <button
-                    type="button"
-                    onClick={scrollCoursePrev}
-                    disabled={!canScrollPrev}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 backdrop-blur shadow-md flex items-center justify-center text-gray-700 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white transition-colors"
-                    aria-label="이전 코스"
-                  >
-                    <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={scrollCourseNext}
-                    disabled={!canScrollNext}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 backdrop-blur shadow-md flex items-center justify-center text-gray-700 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white transition-colors"
-                    aria-label="다음 코스"
-                  >
-                    <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </button>
-                </>
-              )}
-
-              {/* Dots */}
-              {feature.courses.length > 1 && (
-                <div className="flex justify-center gap-2 mt-4">
-                  {feature.courses.map((_, index) => (
-                    <button
-                      key={index}
-                      type="button"
-                      onClick={() => emblaApi?.scrollTo(index)}
-                      className={`w-2 h-2 rounded-full transition-all ${
-                        index === courseIndex ? "w-4" : "bg-gray-300 hover:bg-gray-400"
-                      }`}
-                      style={index === courseIndex ? { backgroundColor: "hsl(var(--tab-accent))" } : undefined}
-
-                      aria-label={`${index + 1}번째 코스로 이동`}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-          </section>
-        )}
-
-
-        {/* Disclaimers */}
-
-        {feature.disclaimers && feature.disclaimers.length > 0 && (
-          <div className="mb-4 sm:mb-6 px-1">
-            <ul className="space-y-1">
-              {feature.disclaimers.map((text, index) => (
-                <li key={index} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed">
-                  * {text}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* Disclaimers (collapsible accordion) */}
-        {feature.collapsibleDisclaimers && feature.collapsibleDisclaimers.length > 0 && (
-          <div className="mb-10 sm:mb-12 px-1">
-            {productId === "washcombo" && id === "7" ? (
-              <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="disclaimer-all" className="border-b border-gray-200">
-                  <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
-                    세부정보
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="space-y-3 pt-1 pb-2">
-                      {feature.collapsibleDisclaimers.map((item, index) => (
-                        <div key={index}>
-                          {item.title !== "세부정보" && (
-                            <h4 className="text-[11px] sm:text-xs font-bold text-gray-700 mb-1">
-                              {item.title}
-                            </h4>
-                          )}
-                          <ol className="space-y-1 list-none">
-                            {item.items.map((text, i) => (
-                          <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
-                            {text}
-                          </li>
-                            ))}
-                          </ol>
-                        </div>
-                      ))}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            ) : (
-              <Accordion type="multiple" className="w-full">
-                {feature.collapsibleDisclaimers.map((item, index) => (
-                  <AccordionItem key={index} value={`disclaimer-${index}`} className="border-b border-gray-200">
-                    <AccordionTrigger className="text-[11px] sm:text-xs text-muted-foreground font-bold py-3 hover:no-underline text-left">
-                      {item.title}
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <ol className="space-y-1 list-none pt-1 pb-2">
-                        {item.items.map((text, i) => (
-                          <li key={i} className="text-[10px] sm:text-[11px] text-muted-foreground leading-relaxed whitespace-pre-line">
-                            {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
-                          </li>
-                        ))}
-                      </ol>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            )}
-          </div>
-        )}
-
-        {/* Back Button */}
-        <div className="text-center">
-          <Link
-            to={`/product/${productId}`}
-            className="inline-flex items-center gap-2 bg-brand-accent hover:brightness-95 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
-          >
-            <span>←</span>
-            <span>전체 특장점으로 돌아가기</span>
-          </Link>
-        </div>
-      </PageContainer>
-      )}
+      <FeatureDetailLayout
+        feature={feature}
+        product={product}
+        productId={productId || ""}
+        onVideoClick={handleVideoClick}
+      />
     </div>
   );
 };
