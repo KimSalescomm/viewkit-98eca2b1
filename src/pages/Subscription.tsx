@@ -13,6 +13,7 @@ import { convertToEmbedUrl } from "@/utils/videoUtils";
 import {
   typeDisplay,
   typeHeading,
+  typeSectionTitle,
   typeBody,
   typeBodyMedium,
   typeBodySemibold,
