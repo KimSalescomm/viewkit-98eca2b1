@@ -346,29 +346,21 @@ const SalesCertBadge = () => {
                     <span className="text-brand">*</span>
                   </label>
                 </div>
-                <div className="pt-1 flex items-center gap-1 text-[11px] font-medium text-brand">
-                  <AlertCircle className="w-3.5 h-3.5" />
-                  <span>진짜 경험이 담긴 판매 사례를 남겨주세요.</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] text-slate-400">
-                    구체적인 사용 경험을 30자 이상 작성해 주세요.
-                  </span>
-                    <span
-                      className={cn(
-                        "text-[11px] font-medium transition-colors",
-                        memo.length < MEMO_MIN
-                          ? memo.length === 0
-                            ? "text-slate-400"
-                            : "text-orange-500"
-                          : "text-[#A50034]",
-                      )}
-                    >
-                      {memo.length < MEMO_MIN
-                        ? `${memo.length}/${MEMO_MIN}자 (${MEMO_MIN - memo.length}자 더 작성해 주세요)`
-                        : `✓ ${memo.length}/${MEMO_MAX}`}
-                    </span>
+                <div
+                  key={`warning-${animationKey}`}
+                  className="flex items-center justify-between text-[12px] font-medium text-brand animate-fade-in-warning"
+                >
+                  <div className="flex items-center gap-1">
+                    <AlertCircle className="w-3.5 h-3.5" />
+                    <span>진짜 경험이 담긴 사례를 30자 이상 구체적으로 남겨주세요.</span>
                   </div>
+                  <span className="text-muted-foreground">
+                    {memo.length < MEMO_MIN
+                      ? `${memo.length}/${MEMO_MIN}자`
+                      : `✓ ${memo.length}/${MEMO_MAX}`}
+                  </span>
+                </div>
+
                   <textarea
                     value={memo}
                     onChange={(e) => setMemo(e.target.value.slice(0, MEMO_MAX))}
