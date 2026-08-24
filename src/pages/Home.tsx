@@ -43,7 +43,7 @@ const Home = () => {
         isSample ? "px-5 py-6 sm:px-8 sm:py-8" : "px-5 py-8 sm:px-8 sm:py-12"
       }`}
     >
-      <div className={`max-w-xl mx-auto sm:max-w-4xl ${isSample ? "lg:max-w-6xl" : ""}`}>
+      <PageContainer bare className="px-0 sm:px-0">
         {/* Top Bar */}
         <div className={`flex items-center justify-between ${isSample ? "mb-5 sm:mb-6" : "mb-6 sm:mb-8"}`}>
           <BackButton />
