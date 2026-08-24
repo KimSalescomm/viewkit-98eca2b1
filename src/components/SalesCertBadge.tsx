@@ -340,7 +340,7 @@ const SalesCertBadge = () => {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] text-slate-400">
-                      구체적인 사용 경험을 20자 이상 작성해 주세요.
+                      구체적인 사용 경험을 30자 이상 작성해 주세요.
                     </span>
                     <span
                       className={cn(
