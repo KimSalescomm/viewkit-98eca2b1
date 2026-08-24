@@ -6,6 +6,7 @@ import MediaViewer from "@/components/MediaViewer";
 import FeatureIcon from "@/components/FeatureIcon";
 import OrientationToggle from "@/components/OrientationToggle";
 import BackButton from "@/components/BackButton";
+import PageContainer from "@/components/PageContainer";
 import FeatureTabs from "@/components/FeatureTabs";
 
 import SafeImage from "@/components/SafeImage";
