@@ -220,6 +220,7 @@ const SalesCertBadge = () => {
             "sm:max-w-md p-0 gap-0 rounded-2xl border border-slate-200",
             "bg-white text-slate-800",
             "shadow-[0_20px_60px_-15px_rgba(15,23,42,0.25)]",
+            "animate-in fade-in duration-300",
           )}
         >
           {!submitted ? (
