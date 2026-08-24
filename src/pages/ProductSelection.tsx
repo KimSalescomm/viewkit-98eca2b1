@@ -172,7 +172,7 @@ const ProductSelection = () => {
             </button>
           )}
           <ContentRequestButton variant="segment" />
-          <OrientationToggle variant="icon" />
+          <OrientationToggle variant="pill" />
 
           <div className="relative">
             <button
