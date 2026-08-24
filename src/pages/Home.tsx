@@ -232,7 +232,7 @@ const Home = () => {
             <span>다른 제품 보기</span>
           </button>
         </div>
-      </div>
+      </PageContainer>
     </main>
   );
 };
