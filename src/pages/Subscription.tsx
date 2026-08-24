@@ -515,10 +515,11 @@ const Subscription = () => {
                   />
                   {/* (Center play button removed — image-first display) */}
                   {/* Hint chip */}
-                  <div className="absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-white/95 shadow-md" style={{ color: "hsl(var(--brand-accent))" }}>
-                    <Play className="w-3 h-3" fill="currentColor" />
+                  <div className={`absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 h-7 rounded-lg ${typeCaptionBold} bg-brand-accent text-white shadow-md`}>
+                    <Play className={actionIconSize} fill="currentColor" />
                     케어 영상 보기
                   </div>
+
                 </button>
               ) : (
                 <div className="overflow-hidden w-full h-full">
