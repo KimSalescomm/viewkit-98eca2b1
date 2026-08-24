@@ -1,23 +1,21 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 
-import FeatureCard from "@/components/FeatureCard";
 import SafeImage from "@/components/SafeImage";
 import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
 import OrientationToggle from "@/components/OrientationToggle";
 import BackButton from "@/components/BackButton";
 import PageContainer from "@/components/PageContainer";
-import VacuumFeatureGrid from "@/components/VacuumFeatureGrid";
+import ProductFeatureGrid from "@/components/ProductFeatureGrid";
 import { useContent } from "@/contexts/ContentContext";
-import vacuumCutout from "@/assets/vacuum-cutout.png.asset.json";
 
-
+/**
+ * 제품 상세(특장점 목록) 페이지.
+ * 디자인 규칙은 docs/design-guide.md 참고 — 모든 제품군에 동일하게 적용됩니다.
+ */
 const Home = () => {
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
   const { getProductById, getFeaturesByProductId, isProductVisible } = useContent();
-
-  // 샘플: 청소로봇 상세페이지만 신규 디자인(히어로 오버레이 + 144px 레드 카드) 적용
-  const isSample = productId === "vacuum";
 
   const product = getProductById(productId || "");
   const features = getFeaturesByProductId(productId || "");
@@ -38,186 +36,71 @@ const Home = () => {
     );
   }
 
+  const heroImage = product.heroImage || product.keyVisualImage;
+
   return (
     <main className="min-h-screen tracking-[-0.02em] bg-[#F3F4F6]">
-      <PageContainer verticalPadding={isSample ? "py-6 sm:py-8" : "py-8 sm:py-12"}>
+      <PageContainer verticalPadding="py-6 sm:py-8">
         {/* Top Bar */}
-        <div className={`flex items-center justify-between ${isSample ? "mb-5 sm:mb-6" : "mb-6 sm:mb-8"}`}>
+        <div className="mb-5 flex items-center justify-between sm:mb-6">
           <BackButton />
           <div className="flex items-center gap-2">
             <OrientationToggle />
           </div>
         </div>
 
-        {isSample ? (
-          <>
-            {/* Hero: 좌측 제품명 + 우측 요약 이미지 */}
-            <div className="vk-sample-hero mb-5 flex items-center gap-3 overflow-hidden rounded-[14px] bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.06)] sm:mb-7 sm:px-7 sm:py-6">
-              <div className="min-w-0 flex-1">
-                <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] text-gray-500">
-                  VIEW KIT
-                </p>
-                <h1 className="text-[30px] font-semibold leading-tight text-gray-900 sm:text-[38px]">
-                  {product.name}
-                </h1>
-                <p className="mt-1 text-[13px] font-semibold leading-snug text-gray-700 sm:text-[15px]">
-                  {product.description}
-                </p>
-              </div>
-              <SafeImage
-                src="https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/gallery/medium05.jpg"
-                alt={`LG ${product.name} 제품 이미지`}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                width={1024}
-                height={1024}
-                className="h-[130px] w-auto max-w-[55%] shrink-0 object-contain sm:h-[180px]"
-              />
-            </div>
+        {/* Hero: 좌측 제품명 + 우측 제품 이미지 */}
+        <div className="vk-sample-hero mb-5 flex items-center gap-3 overflow-hidden rounded-[14px] bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.06)] sm:mb-7 sm:px-7 sm:py-6">
+          <div className="min-w-0 flex-1">
+            <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] text-gray-500">
+              VIEW KIT
+            </p>
+            <h1 className="text-[30px] font-semibold leading-tight text-gray-900 sm:text-[38px]">
+              {product.name}
+            </h1>
+            <p className="mt-1 text-[13px] font-semibold leading-snug text-gray-700 sm:text-[15px]">
+              {product.description}
+            </p>
+          </div>
+          {heroImage && (
+            <SafeImage
+              src={heroImage}
+              alt={`LG ${product.name} 제품 이미지`}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              width={1024}
+              height={1024}
+              className="h-[130px] w-auto max-w-[55%] shrink-0 object-contain sm:h-[180px]"
+            />
+          )}
+        </div>
 
-            {/* 키비주얼 영상 (있는 경우) */}
-            {product.keyVisualVideo && (
-              <div className="mb-6 overflow-hidden rounded-[14px] border border-white bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]">
-                <WebOSVideoPlayer mediaUrl={product.keyVisualVideo} />
-              </div>
-            )}
-          </>
-
-
-        ) : (
-          <>
-            {/* Header (기존 버전) */}
-            <div className="text-center mb-8 sm:mb-10 space-y-3">
-              <p className="text-[11px] sm:text-[12px] font-black tracking-[0.3em] uppercase text-brand">
-                VIEW KIT · {product.name}
-              </p>
-              <h1 className="text-[28px] sm:text-[40px] font-extrabold tracking-tight text-[#111111] leading-tight">
-                {product.title}
-              </h1>
-              <p className="text-base sm:text-lg text-gray-500 font-medium">{product.description}</p>
-            </div>
-
-            {/* Key Visual (기존 버전) */}
-            <div className="mb-10 sm:mb-14 space-y-4 sm:space-y-5">
-              {product.keyVisualVideo && (
-                <div className="overflow-hidden bg-white rounded-[28px] sm:rounded-[36px] border border-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]">
-                  <WebOSVideoPlayer mediaUrl={product.keyVisualVideo} />
-                </div>
-              )}
-              {(() => {
-                const images = product.secondaryKeyVisualImage
-                  ? [product.keyVisualImage, product.secondaryKeyVisualImage]
-                  : [product.keyVisualImage];
-
-                // 동영상 키비주얼이 있으면 첫 번째 이미지는 이미 영상으로 노출되므로 제외
-                const displayImages = product.keyVisualVideo
-                  ? images.filter((_, index) => index !== 0)
-                  : images;
-
-                const imageZoom = product.imageZoom ?? 1;
-                const isZoomed = imageZoom !== 1;
-
-                return displayImages.map((src, index) => {
-                  const isFirst = index === 0 && !product.keyVisualVideo;
-                  return (
-                    <div
-                      key={src + index}
-                      className="relative overflow-hidden bg-gray-100 aspect-video rounded-[28px] sm:rounded-[36px] border border-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]"
-                    >
-                      {/* 블러 배경: 비율이 달라 생기는 여백을 자연스럽게 채움 */}
-                      <SafeImage
-                        src={src}
-                        alt=""
-                        aria-hidden="true"
-                        loading="eager"
-                        decoding="async"
-                        className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-60"
-                      />
-                      <SafeImage
-                        src={src}
-                        alt={`LG ${product.name} ${isFirst ? "대표 이미지" : "추가 이미지"}`}
-                        loading="eager"
-                        fetchPriority={isFirst ? "high" : undefined}
-                        decoding="async"
-                        className={`relative w-full h-full object-center ${isZoomed ? "object-cover" : "object-contain"}`}
-                        style={isZoomed ? { transform: `scale(${imageZoom})` } : undefined}
-                      />
-                    </div>
-                  );
-                });
-              })()}
-            </div>
-          </>
+        {/* 키비주얼 영상 (있는 경우) */}
+        {product.keyVisualVideo && (
+          <div className="mb-6 overflow-hidden rounded-[14px] border border-white bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]">
+            <WebOSVideoPlayer mediaUrl={product.keyVisualVideo} />
+          </div>
         )}
 
         {/* Features Section Title */}
-        {isSample ? (
-          <div className="mt-7 mb-6 flex items-center gap-3 sm:mt-9 sm:mb-8">
-            <span className="h-px flex-1 bg-gray-200" />
-            <h3 className="text-[17px] font-semibold leading-tight tracking-[-0.02em] text-gray-900 sm:text-[20px]">
-              궁금한 내용을 확인해보세요
-            </h3>
-            <span className="h-px flex-1 bg-gray-200" />
-          </div>
-
-        ) : (
-          <div className="text-center mb-6 sm:mb-8">
-            <p className="text-[11px] font-black tracking-[0.25em] uppercase text-gray-400 mb-2">FEATURES</p>
-            <h3 className="text-[20px] sm:text-[24px] font-semibold text-gray-900 tracking-[-0.02em] leading-tight">
-              주요 특장점
-            </h3>
-          </div>
-        )}
-
+        <div className="mt-7 mb-6 flex items-center gap-3 sm:mt-9 sm:mb-8">
+          <span className="h-px flex-1 bg-gray-200" />
+          <h3 className="text-[17px] font-semibold leading-tight tracking-[-0.02em] text-gray-900 sm:text-[20px]">
+            궁금한 내용을 확인해보세요
+          </h3>
+          <span className="h-px flex-1 bg-gray-200" />
+        </div>
 
         {/* Features Grid */}
-        {isSample ? (
-          <div className="mb-10 sm:mb-12">
-            <VacuumFeatureGrid productId={productId || ""} productName={product.name} features={features} />
-          </div>
-        ) : (
-        <div
-          className={
-            isSample
-              ? "grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-10 sm:mb-12"
-              : "grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-12 sm:mb-16"
-          }
-        >
-          {features.map((feature, index) => {
-            const isFitMax = productId === "refrigerator" && (feature.id === "11" || feature.id === "12");
-
-            // Derive a banner image for the mobile layout
-            let bannerImage: string | undefined;
-            if (feature.mediaType === "image" || feature.mediaType === "table") {
-              bannerImage = feature.mediaUrl;
-            } else if (feature.mediaType === "gallery" && feature.galleryImages?.length) {
-              const first = feature.galleryImages[0];
-              bannerImage = typeof first === "string" ? first : first.url;
-            }
-            if (!bannerImage) bannerImage = product.keyVisualImage;
-
-            return (
-              <FeatureCard
-                key={feature.id}
-                id={feature.id}
-                title={feature.title}
-                subtitle={feature.subtitle}
-                icon={feature.icon}
-                productId={productId || ""}
-                productName={product.name}
-                tag={feature.tag}
-                colorIndex={index}
-                variant={isFitMax ? "gray" : "white"}
-                bannerImage={bannerImage}
-                showLikeHint={index === 0}
-                dense={isSample}
-                redTheme
-              />
-            );
-          })}
+        <div className="mb-10 sm:mb-12">
+          <ProductFeatureGrid
+            productId={productId || ""}
+            productName={product.name}
+            features={features}
+            fallbackImage={product.keyVisualImage}
+          />
         </div>
-        )}
 
         {/* Other Products Button */}
         <div className="text-center">
