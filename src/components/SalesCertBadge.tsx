@@ -114,10 +114,14 @@ const SalesCertBadge = () => {
 
   const handleOpenChange = (next: boolean) => {
     setOpen(next);
+    if (next) {
+      setAnimationKey((k) => k + 1);
+    }
     if (!next) {
       setTimeout(resetForm, 200);
     }
   };
+
 
   const subcategoryOptions = product ? SUBCATEGORY_MAP[product] : undefined;
   const needsSubcategory = !!subcategoryOptions && subcategoryOptions.length > 0;
