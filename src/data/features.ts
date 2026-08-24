@@ -594,9 +594,9 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "더 좋은 프리미엄 기능들이\n궁금하다면?",
       subtitle: "신선한 보관은 기본, 사용하면서 느끼는\n편리함까지 생각한 프리미엄 기능을 확인해보세요.",
       icon: "Sparkles",
-      tag: "26년 STEM Fit&Max",
-      mediaType: "image",
-      mediaUrl: "",
+      tag: "프리미엄 기능",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10604864/M876_181_aicare_pc.mp4",
       description:
         "신선한 보관은 기본, 사용하면서 느끼는 편리함까지 생각한 26년형 STEM Fit & Max의 프리미엄 기능을 확인해보세요.",
       highlights: [
