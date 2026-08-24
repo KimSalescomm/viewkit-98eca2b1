@@ -125,4 +125,11 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       },
     },
   },
+  washcombo: {
+    cards: {
+      "3": {
+        image: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_11_steam_sterilization.jpg",
+      },
+    },
+  },
 };
