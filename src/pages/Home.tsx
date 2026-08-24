@@ -5,6 +5,7 @@ import SafeImage from "@/components/SafeImage";
 import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
 import OrientationToggle from "@/components/OrientationToggle";
 import BackButton from "@/components/BackButton";
+import PageContainer from "@/components/PageContainer";
 import VacuumFeatureGrid from "@/components/VacuumFeatureGrid";
 import { useContent } from "@/contexts/ContentContext";
 import vacuumCutout from "@/assets/vacuum-cutout.png.asset.json";
