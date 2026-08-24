@@ -252,29 +252,51 @@ const FeatureDetail = () => {
         )}
 
         {/* 구독 케어처럼 하위 이미지 섹션이 있으면 상단 메인 미디어는 생략 (중복 방지) */}
-        {!hasSubscriptionService && (
-          <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
-            <div onClick={onVideoClick}>
-              <MediaViewer
-                key={tabs ? `tab-${activeTab}` : "main"}
-                mediaType={
-                  activeTabData?.mediaSlides || activeTabData?.galleryImages
-                    ? "gallery"
-                    : activeTabData?.mediaType ?? feature.mediaType
-                }
-                mediaUrl={activeTabData?.mediaUrl ?? feature.mediaUrl}
-                mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
-                title={feature.title}
-                tableData={feature.tableData}
-                galleryImages={activeTabData?.galleryImages ?? feature.galleryImages}
-                isShorts={activeTabData?.isShorts ?? feature.isShorts}
-                fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
-                imagePosition={activeTabData?.imagePosition}
-                fullWidthMedia={feature.fullWidthMedia}
-              />
+        {!hasSubscriptionService && (() => {
+          const mainType =
+            activeTabData?.mediaSlides || activeTabData?.galleryImages
+              ? "gallery"
+              : activeTabData?.mediaType ?? feature.mediaType;
+          const mainUrl = activeTabData?.mediaUrl ?? feature.mediaUrl;
+
+          // 이미지: 블러 확장 배경 프레임 (액자 스타일 대신)
+          if (mainType === "image" && mainUrl) {
+            return (
+              <div className="mb-4 sm:mb-5" onClick={onVideoClick}>
+                <BlurMediaFrame
+                  key={tabs ? `tab-${activeTab}` : "main"}
+                  src={mainUrl}
+                  alt={feature.title}
+                  loading="eager"
+                  aspectClassName="aspect-[4/3] sm:aspect-[16/10]"
+                  radiusClassName="rounded-[14px]"
+                  objectPosition={activeTabData?.imagePosition}
+                />
+              </div>
+            );
+          }
+
+          return (
+            <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
+              <div onClick={onVideoClick}>
+                <MediaViewer
+                  key={tabs ? `tab-${activeTab}` : "main"}
+                  mediaType={mainType}
+                  mediaUrl={mainUrl}
+                  mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
+                  title={feature.title}
+                  tableData={feature.tableData}
+                  galleryImages={activeTabData?.galleryImages ?? feature.galleryImages}
+                  isShorts={activeTabData?.isShorts ?? feature.isShorts}
+                  fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
+                  imagePosition={activeTabData?.imagePosition}
+                  fullWidthMedia={feature.fullWidthMedia}
+                />
+              </div>
             </div>
-          </div>
-        )}
+          );
+        })()}
+
 
         {renderMediaGallery(activeTabData?.mediaGallery ?? feature.mediaGallery)}
 
