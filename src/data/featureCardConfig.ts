@@ -131,7 +131,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
         image: "https://static.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_mainpoint_pc.png",
       },
       "2": {
-        image: "https://www.lge.co.kr/kr/event/2026/08/01_ai_wash_combo/resources/wash-combo-cont02-slide_02.png",
+        image: "https://static.lge.co.kr/kr/images/wash-combo/md10867827/gallery/medium05.jpg",
       },
       "3": {
         image: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_11_steam_sterilization.jpg",
