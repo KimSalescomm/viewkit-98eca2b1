@@ -10,6 +10,20 @@ import FeatureLikeButton from "@/components/FeatureLikeButton";
 import { logFeatureReaction } from "@/utils/featureReactionLog";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { convertToEmbedUrl } from "@/utils/videoUtils";
+import {
+  typeDisplay,
+  typeHeading,
+  typeBody,
+  typeBodyMedium,
+  typeBodySemibold,
+  typeCaption,
+  typeCaptionBold,
+  labelEyebrow,
+  actionPill,
+  actionIconPill,
+  actionIconSize,
+} from "@/styles/typeScale";
+
 import washerCareSteamUvAsset from "@/assets/washer-care-steam-uv.png.asset.json";
 import washcomboBefore from "@/assets/tower-before.png";
 import washcomboAfter from "@/assets/tower-after.png";
@@ -361,16 +375,17 @@ const Subscription = () => {
 
         {/* Title */}
         <div className="mb-6 sm:mb-8 text-center">
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-2" style={{ color: "hsl(var(--brand-accent))" }}>
+          <p className={`${labelEyebrow} mb-2`}>
             CARE SERVICE
           </p>
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight">
+          <h1 className={`${typeDisplay} text-gray-900`}>
             구독 케어 전·후 비교
           </h1>
-          <p className="text-sm sm:text-base text-gray-500 mt-2">
+          <p className={`${typeBody} text-gray-500 mt-2`}>
             제품을 선택하면 케어 전·후 변화와 케어 과정을 확인할 수 있습니다.
           </p>
         </div>
+
 
         {/* Category buttons */}
         <div className="-mx-5 sm:mx-0 mb-8 px-5 sm:px-0">
@@ -403,7 +418,7 @@ const Subscription = () => {
           if (!title) return null;
           return (
             <div className="mb-4 sm:mb-5 flex items-start justify-between gap-3">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-tight flex items-center gap-3">
+              <h2 className={`${typeHeading} text-gray-900 flex items-center gap-3`}>
                 <span
                   aria-hidden="true"
                   className="inline-block w-1 sm:w-1.5 h-5 sm:h-6 rounded-sm"
@@ -428,10 +443,11 @@ const Subscription = () => {
           {/* Before */}
           <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)] flex flex-col h-full">
             <div className="px-5 pt-4 pb-3 flex items-center justify-between">
-              <span className="text-xs font-bold tracking-wider uppercase text-gray-400">
+              <span className={`${typeCaptionBold} tracking-wider uppercase text-gray-400`}>
                 Before
               </span>
-              <span className="text-xs font-medium text-gray-500">케어 전</span>
+              <span className={`${typeCaption} text-gray-500`}>케어 전</span>
+
             </div>
             <div className="relative overflow-hidden aspect-[4/3] bg-gray-100">
               <img
@@ -461,7 +477,7 @@ const Subscription = () => {
               if (!label) return null;
               return (
                 <div className="bg-white border-t border-gray-50 flex-1 flex items-center justify-center px-5 py-6 min-h-[56px]">
-                  <span className="text-sm font-bold text-gray-700 text-center">{label}</span>
+                  <span className={`${typeCaption} text-gray-500 text-center`}>{label}</span>
                 </div>
               );
             })()}
@@ -470,10 +486,11 @@ const Subscription = () => {
           {/* After + Care Steps */}
           <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
             <div className="px-5 pt-4 pb-3 flex items-center justify-between">
-              <span className="text-xs font-bold tracking-wider uppercase" style={{ color: "hsl(var(--brand-accent))" }}>
+              <span className={`${typeCaptionBold} tracking-wider uppercase text-brand-accent`}>
                 After
               </span>
-              <span className="text-xs font-medium" style={{ color: "hsl(var(--brand-accent))" }}>케어 후</span>
+              <span className={`${typeCaption} text-brand-accent`}>케어 후</span>
+
             </div>
             <div className="relative aspect-[4/3] bg-gray-100">
               {selected.careVideo ? (
@@ -498,10 +515,11 @@ const Subscription = () => {
                   />
                   {/* (Center play button removed — image-first display) */}
                   {/* Hint chip */}
-                  <div className="absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-white/95 shadow-md" style={{ color: "hsl(var(--brand-accent))" }}>
-                    <Play className="w-3 h-3" fill="currentColor" />
+                  <div className={`absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 h-7 rounded-lg ${typeCaptionBold} bg-brand-accent text-white shadow-md`}>
+                    <Play className={actionIconSize} fill="currentColor" />
                     케어 영상 보기
                   </div>
+
                 </button>
               ) : (
                 <div className="overflow-hidden w-full h-full">
@@ -522,17 +540,13 @@ const Subscription = () => {
             {/* Care Process */}
             <div className="px-5 py-5 border-t border-gray-50">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4" style={{ color: "hsl(var(--brand-accent))" }} />
+                <h3 className={`${typeHeading} text-gray-900 flex items-center gap-1.5`}>
+                  <Sparkles className="w-4 h-4 text-brand-accent" />
                   {selected.name} 케어 과정
                 </h3>
                 {hasAnyImage && (
-                  <span
-                    className="text-[11px] font-semibold inline-flex items-center gap-1 px-2 py-0.5 rounded-full"
-                    style={{ color: "hsl(var(--brand-accent))", backgroundColor: "hsl(var(--brand-accent)/0.1)" }}
-                  >
-                    <ImageIcon className="w-3 h-3" />
-                    이미지 클릭
+                  <span className={actionIconPill} aria-label="이미지를 클릭하면 케어 사진을 볼 수 있습니다" title="이미지 보기">
+                    <ImageIcon className={actionIconSize} />
                   </span>
                 )}
               </div>
@@ -545,44 +559,32 @@ const Subscription = () => {
                         <button
                           type="button"
                           onClick={() => setPreviewStep(step)}
-                          className="group w-full text-left flex items-center gap-2.5 leading-relaxed rounded-lg px-2.5 py-2 -mx-2.5 border transition-all duration-200 hover:-translate-y-px"
-                          style={{
-                            backgroundColor: "#FFF5F8",
-                            borderColor: "#F5C9D5",
-                          }}
+                          className="group w-full text-left flex items-center gap-2.5 rounded-lg px-2.5 py-2 -mx-2.5 border border-gray-100 bg-white transition-all duration-200 hover:-translate-y-px hover:border-gray-200"
                         >
-                          <span
-                            className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
-                            style={{ backgroundColor: "hsl(var(--brand-accent))", color: "#fff" }}
-                          >
+                          <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-brand-accent text-white">
                             <Check className="w-3 h-3" strokeWidth={3} />
                           </span>
-                          <span
-                            className="text-[15px] font-semibold flex-1"
-                            style={{ color: "#7A0026" }}
-                          >
+                          <span className={`${typeBodyMedium} text-gray-900 flex-1`}>
                             {step.label}
                           </span>
-                          <span
-                            className="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full transition-colors group-hover:brightness-110"
-                            style={{ backgroundColor: "hsl(var(--brand-accent))", color: "#fff" }}
-                          >
-                            <ImageIcon className="w-3 h-3" />
+                          <span className={`${actionPill} group-hover:brightness-110`}>
+                            <ImageIcon className={actionIconSize} />
                             보기
                           </span>
                         </button>
                       ) : (
-                        <div className="flex items-center gap-2.5 leading-relaxed px-2.5 py-1.5 -mx-2.5">
-                          <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-gray-100 text-gray-400">
+                        <div className="flex items-center gap-2.5 px-2.5 py-2 -mx-2.5 border border-transparent">
+                          <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-brand-accent text-white">
                             <Check className="w-3 h-3" strokeWidth={3} />
                           </span>
-                          <span className="text-[15px] text-gray-500">
+                          <span className={`${typeBodyMedium} text-gray-900 flex-1`}>
                             {step.label}
                           </span>
                         </div>
                       )}
                     </li>
                   );
+
                 })}
               </ul>
             </div>
@@ -600,7 +602,7 @@ const Subscription = () => {
           >
             <Sparkles className="w-4 h-4" />
           </span>
-          <p className="text-[14px] sm:text-[15px] font-semibold leading-relaxed" style={{ color: "#374151" }}>
+          <p className={`${typeBodyMedium} text-gray-700`}>
             분해세척 제공 여부 등은 상세 내용은 '보기' 버튼을 클릭하면 확인할 수 있습니다. 이하 제공되는 서비스의 유무는 제품별 구독 타입(프리미엄, 라이트 플러스, 라이트 등) 및 구독 모델, 시점에 따라 다를 수 있으므로, 자세한 내용은 구독 계약할 때 반드시 다시 확인해 주세요.
           </p>
         </div>
@@ -634,7 +636,7 @@ const Subscription = () => {
                 >
                   <Check className="w-3.5 h-3.5" strokeWidth={3} />
                 </span>
-                <h4 className="text-base font-bold text-gray-900 flex items-baseline gap-2 flex-wrap">
+                <h4 className={`${typeHeading} text-gray-900 flex items-baseline gap-2 flex-wrap`}>
                   <span>{previewStep.label}{previewStep.titleSuffix ? ` (${previewStep.titleSuffix})` : ""}</span>
                   {previewStep.disclaimer?.startsWith("프리미엄") && (
                     <span className="text-[70%] font-normal text-gray-400">
