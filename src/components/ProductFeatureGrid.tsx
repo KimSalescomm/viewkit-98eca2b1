@@ -147,7 +147,7 @@ const ProductFeatureGrid = ({
                   alt={`${feature.title} 이미지`}
                   className={`absolute inset-0 h-full w-full ${
                     cardConfig?.fit === "contain" ? "object-contain" : "object-cover"
-                  } ${cardConfig?.objectPositionClass ?? ""}`}
+                  } ${cardConfig?.objectPositionClass ?? ""} ${cardConfig?.scaleClass ?? ""}`}
                 />
               )}
               {/* 좋아요 */}
