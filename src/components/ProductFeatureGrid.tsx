@@ -185,7 +185,7 @@ const ProductFeatureGrid = ({
                 </span>
               )}
               <div className="flex items-start justify-between gap-2">
-                <h3 className="text-[17px] font-bold leading-snug tracking-[-0.02em] text-gray-900 sm:text-[18px]">
+                <h3 className="whitespace-pre-line text-[17px] font-bold leading-snug tracking-[-0.02em] text-gray-900 sm:text-[18px]">
                   {feature.title}
                 </h3>
                 {hasVideoSource(feature) && (
