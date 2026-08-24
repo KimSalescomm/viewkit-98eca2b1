@@ -78,9 +78,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
         eyebrow: "STEM이란?",
       },
       "8": {
-        image: "https://static.lge.co.kr/kr/upload/admin/storyThumbnail/640_800_MainThumbnail_%E1%84%89%E1%85%A5%E1%86%AB%E1%84%90%E1%85%A2%E1%86%A8%E1%84%8B%E1%85%B4%E1%84%80%E1%85%A1%E1%86%AF%E1%84%85%E1%85%B5%E1%86%B7%E1%84%80%E1%85%B5%E1%86%AF_Fit%20&%20Max%E1%84%91%E1%85%A7%E1%86%AB_20260127_152537.jpg",
-        objectPositionClass: "object-[center_40%]",
-        scaleClass: "scale-[1.14]",
+        image: "/__l5e/assets-v1/5c91565e-d004-4833-9be9-da696f378141/refrigerator-stem-vs-comparison.png",
       },
       "10": {
         image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator07.png",
