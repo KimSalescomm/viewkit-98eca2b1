@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { BRANCH_GROUPS, getManagerByBranch, isAdminStore } from "@/data/branches";
 import { getCurrentStore } from "@/utils/storeId";
+import PageContainer from "@/components/PageContainer";
 
 const Ranking = () => {
   const [sales, setSales] = useState<SaleRecord[]>([]);
