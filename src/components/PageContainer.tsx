@@ -12,10 +12,12 @@ export const PAGE_CONTENT_PADDING = "px-5 sm:px-8";
 interface PageContainerProps {
   children: React.ReactNode;
   className?: string;
-  /** 세로 padding (기본값 사용 안 할 때 지정) */
+  /** 세로 padding (기본값 대신 지정 가능) */
   verticalPadding?: string;
   /** true면 세로 padding 없이 폭/좌우 여백만 적용 (sticky 헤더 내부 등) */
   bare?: boolean;
+  /** 렌더링할 엘리먼트 (기본 div) */
+  as?: "div" | "main" | "section";
 }
 
 const PageContainer = ({
@@ -23,8 +25,9 @@ const PageContainer = ({
   className,
   verticalPadding = "py-6 sm:py-8",
   bare = false,
+  as: Tag = "div",
 }: PageContainerProps) => (
-  <div
+  <Tag
     className={cn(
       PAGE_CONTENT_PADDING,
       !bare && verticalPadding,
@@ -33,7 +36,7 @@ const PageContainer = ({
     )}
   >
     {children}
-  </div>
+  </Tag>
 );
 
 export default PageContainer;
