@@ -86,9 +86,6 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       "9": {
         image: "https://c29ebf32-471f-4991-a656-57585c8d8b56.lovableproject.com/images/installation-step1.jpeg",
       },
-      "10": {
-        image: "https://static.lge.co.kr/kr/images/refrigerators/md10781901/refrigerator-lg-dios-ai-objet-d646-071-04-reason-direct-water-pc.jpg",
-      },
       "13": {
         image: "https://static.lge.co.kr/kr/images/refrigerators/md10781898/refrigerator-lg-dios-ai-objet-d646-091-01-reason-dual-fresh-pc.jpg",
         objectPositionClass: "object-right-bottom",
