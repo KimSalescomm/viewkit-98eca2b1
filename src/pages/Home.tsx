@@ -156,7 +156,7 @@ const Home = () => {
 
         {/* Features Section Title */}
         {isSample ? (
-          <div className="mb-4 flex items-center gap-3 sm:mb-6 lg:mb-3">
+          <div className="mb-4 flex items-center gap-3 sm:mb-6 lg:mb-2">
             <span className="h-px flex-1 bg-gray-200" />
             <h3 className="text-[17px] font-semibold leading-tight tracking-[-0.02em] text-gray-900 sm:text-[20px]">
               궁금한 내용을 확인해보세요
@@ -176,7 +176,7 @@ const Home = () => {
 
         {/* Features Grid */}
         {isSample ? (
-          <div className="mb-10 sm:mb-12 lg:mb-4">
+          <div className="mb-10 sm:mb-12 lg:mb-2">
             <VacuumFeatureGrid productId={productId || ""} productName={product.name} features={features} />
           </div>
         ) : (

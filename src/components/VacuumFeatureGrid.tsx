@@ -137,7 +137,7 @@ const VacuumFeatureGrid = ({ productId, productName, features }: VacuumFeatureGr
               </div>
 
               {/* 카피 + 재생 버튼 */}
-              <div className="relative flex flex-1 flex-col px-3 pb-10 pt-3 lg:px-3 lg:pb-9 lg:pt-2.5">
+              <div className="relative flex flex-1 flex-col px-3 pb-10 pt-3 lg:px-3 lg:pb-8 lg:pt-2">
                 {(CARD_EYEBROWS[feature.id] || feature.tag) && (
                   <span className="mb-1 w-fit text-[12px] font-bold tracking-[-0.01em] text-brand-accent lg:text-[11px]">
                     {CARD_EYEBROWS[feature.id] || feature.tag}
