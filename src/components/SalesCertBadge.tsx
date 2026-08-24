@@ -52,10 +52,10 @@ const SUBCATEGORY_MAP: Record<string, string[]> = {
 };
 
 const MEMO_PLACEHOLDER =
-  "뷰킷을 사용해 판매한 스토리를 들려주세요\n예) 구독 전/후 비교를 보여주며 구독을 자신있게 설명할 수 있었어요.\n예) 제품 원리를 설명할 때 뷰킷 화면을 보여주니 이해를 잘했어요.";
+  "뷰킷업을 사용해 판매한 스토리를 들려주세요.\n예) \"음정수기냉장고의 케어 서비스 내용을 일일이 말로 설명해야 했던 상담을, 뷰킷업의 정확한 문구와 영상으로 대체하니 고객 이해도가 높아지고 구독의 장점을 효과적으로 소구할 수 있어 판매로 이어졌습니다.";
 
 
-const MEMO_MIN = 20;
+const MEMO_MIN = 30;
 const MEMO_MAX = 200;
 
 const SalesCertBadge = () => {
