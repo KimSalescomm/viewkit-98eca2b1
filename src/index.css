@@ -199,7 +199,18 @@ All colors MUST be HSL.
     overflow-wrap: normal;
     white-space: pre;
   }
+
+  /* Sales certification warning fade-in */
+  .animate-fade-in-warning {
+    animation: fadeInWarning 0.4s ease-out;
+  }
+
+  @keyframes fadeInWarning {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 }
+
 
 @layer components {
   .surface-card {
