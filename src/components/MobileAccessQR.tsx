@@ -48,7 +48,7 @@ const MobileAccessQR = ({ storeSlug, variant = "pill", onClick }: MobileAccessQR
         onClick={handleOpen}
         className={
           variant === "segment"
-            ? "inline-flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+            ? "inline-flex h-11 items-center gap-2 rounded-full px-4 text-[15px] font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
             : variant === "simple"
             ? "inline-flex w-full items-center gap-3 rounded-xl px-4 py-3 text-[16px] font-medium text-gray-800 hover:bg-gray-50 transition-colors"
             : "inline-flex h-8 items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 hover:border-brand hover:text-brand transition-colors shadow-sm"
