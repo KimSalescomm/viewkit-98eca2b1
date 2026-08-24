@@ -16,6 +16,8 @@ export interface FeatureCardConfig {
   objectPositionClass?: string;
   /** "contain" = 잘림 없이 전체 노출(뒤에 블러 배경으로 카드를 가득 채움) */
   fit?: "cover" | "contain";
+  /** 추가 확대 (tailwind scale 클래스) */
+  scaleClass?: string;
 }
 
 export interface ProductCardConfig {
@@ -77,7 +79,8 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       },
       "8": {
         image: "https://static.lge.co.kr/kr/upload/admin/storyThumbnail/640_800_MainThumbnail_%E1%84%89%E1%85%A5%E1%86%AB%E1%84%90%E1%85%A2%E1%86%A8%E1%84%8B%E1%85%B4%E1%84%80%E1%85%A1%E1%86%AF%E1%84%85%E1%85%B5%E1%86%B7%E1%84%80%E1%85%B5%E1%86%AF_Fit%20&%20Max%E1%84%91%E1%85%A7%E1%86%AB_20260127_152537.jpg",
-        fit: "contain",
+        objectPositionClass: "object-[center_32%]",
+        scaleClass: "scale-[1.18]",
       },
       "10": {
         image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/25rental-refrigerator07.png",
