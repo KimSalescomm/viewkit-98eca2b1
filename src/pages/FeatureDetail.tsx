@@ -192,7 +192,7 @@ const FeatureDetail = () => {
     }
   };
 
-  const isVacuumSample = productId === "vacuum" && id === "1";
+  const isVacuumSample = productId === "vacuum";
 
   const VacuumSampleLayout = ({
     feature,
