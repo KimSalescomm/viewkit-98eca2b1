@@ -213,24 +213,25 @@ const FeatureDetail = () => {
           <OrientationToggle />
         </div>
 
-        <div className="mb-4 flex items-start gap-4 overflow-hidden rounded-[14px] bg-white px-5 py-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
-          <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-gray-100">
-            <FeatureIcon iconKey={feature.icon} className="h-8 w-8 text-brand-accent" />
+        <div className="mb-5 flex items-center gap-4 border-b border-gray-200 pb-5 sm:mb-6 sm:gap-5 sm:pb-6">
+          <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gray-200/70 sm:h-16 sm:w-16">
+            <FeatureIcon iconKey={feature.icon} className="h-7 w-7 text-brand-accent sm:h-8 sm:w-8" />
           </div>
           <div className="min-w-0">
             {feature.tag && (
-              <span className="mb-1 inline-block text-[12px] font-bold tracking-[-0.01em] text-brand-accent">
+              <span className="mb-1 inline-block text-[13px] font-bold tracking-[-0.01em] text-brand-accent">
                 {feature.tag}
               </span>
             )}
-            <h1 className="text-[22px] font-bold leading-tight tracking-[-0.02em] text-gray-900 sm:text-[28px]">
+            <h1 className="text-[26px] font-bold leading-tight tracking-[-0.02em] text-gray-900 sm:text-[32px]">
               {feature.title}
             </h1>
-            <p className="mt-1 text-[14px] leading-snug text-gray-600 sm:text-[16px]">
+            <p className="mt-1 text-[15px] leading-snug text-gray-600 sm:text-[17px]">
               {feature.subtitle}
             </p>
           </div>
         </div>
+
 
         <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
           <div onClick={onVideoClick}>
