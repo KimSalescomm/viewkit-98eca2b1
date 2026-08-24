@@ -105,12 +105,17 @@ const FeatureDetail = () => {
   const SubscriptionServiceSection = ({
     items,
     mediaDisclaimers,
+    accent = "purple",
   }: {
     items: SubscriptionServiceItem[];
     mediaDisclaimers?: string[];
+    accent?: "purple" | "brand";
   }) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const selectedItem = items[selectedIndex];
+    const barClass = accent === "brand" ? "bg-brand-accent" : "bg-[#534AB7]";
+    const activeClass = accent === "brand" ? "bg-brand-accent text-white font-medium" : "bg-[#7842F5] text-white font-medium";
+
 
     return (
       <div className="mb-6 sm:mb-8">
