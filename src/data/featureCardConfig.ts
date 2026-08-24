@@ -143,7 +143,6 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       "4": {
         image: "/__l5e/assets-v1/1435d98b-daea-4b7b-a191-f282c8380294/washcombo-automatic.jpg",
         fit: "contain",
-        containBackground: "white",
       },
       "5": {
         image: "https://static.lge.co.kr/kr/images/wash-combo/md10867827/gallery/medium-interior01.jpg",
