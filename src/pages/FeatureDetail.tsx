@@ -232,25 +232,105 @@ const FeatureDetail = () => {
           </div>
         </div>
 
+        {/* 선택 탭 (히든스테이션/오브제스테이션 등) */}
+        {tabs && tabs.length > 0 && (
+          <div style={{ ["--tab-accent" as any]: "0 72% 50%" }}>
+            <FeatureTabs
+              tabs={tabs}
+              activeIndex={activeTab}
+              onChange={setActiveTab}
+              scrollable={tabs.length > 3}
+            />
+          </div>
+        )}
 
         <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
           <div onClick={onVideoClick}>
             <MediaViewer
-              mediaType={feature.mediaType}
-              mediaUrl={feature.mediaUrl}
+              key={tabs ? `tab-${activeTab}` : "main"}
+              mediaType={
+                activeTabData?.mediaSlides || activeTabData?.galleryImages
+                  ? "gallery"
+                  : activeTabData?.mediaType ?? feature.mediaType
+              }
+              mediaUrl={activeTabData?.mediaUrl ?? feature.mediaUrl}
+              mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
               title={feature.title}
-              isShorts={feature.isShorts}
-              fallbackUrl={feature.fallbackUrl}
+              tableData={feature.tableData}
+              galleryImages={activeTabData?.galleryImages ?? feature.galleryImages}
+              isShorts={activeTabData?.isShorts ?? feature.isShorts}
+              fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
+              imagePosition={activeTabData?.imagePosition}
+              fullWidthMedia={feature.fullWidthMedia}
             />
           </div>
         </div>
 
-        <div className="mb-4 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
-          <p className="text-[15px] leading-relaxed text-gray-700 whitespace-pre-line">
-            {feature.description}
-          </p>
-        </div>
+        {renderMediaGallery(activeTabData?.mediaGallery ?? feature.mediaGallery)}
 
+        {(activeTabData?.caption || activeTabData?.description || feature.description) && (
+          <div className="mb-4 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
+            {(activeTabData?.descriptionTitle || feature.descriptionTitle) && (
+              <h2 className="mb-2 text-lg font-bold text-gray-900">
+                {activeTabData?.descriptionTitle ?? feature.descriptionTitle}
+              </h2>
+            )}
+            <p className="text-[15px] leading-relaxed text-gray-700 whitespace-pre-line">
+              {activeTabData?.description ?? activeTabData?.caption ?? feature.description}
+            </p>
+          </div>
+        )}
+
+        {/* 세부 기능 (아코디언) */}
+        {feature.subFeatures && feature.subFeatures.length > 0 && (!tabs || activeTab === 0) && (
+          <div className="mb-4 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
+            <h2 className="mb-1 text-lg font-bold text-gray-900">
+              {feature.subFeaturesTitle || "세부 기능"}
+            </h2>
+            {feature.subFeaturesSubtitle && (
+              <p className="mb-3 text-[13px] leading-relaxed text-gray-500 whitespace-pre-line">
+                {feature.subFeaturesSubtitle}
+              </p>
+            )}
+            <Accordion type="single" collapsible className="w-full">
+              {feature.subFeatures.map((sub, index) => (
+                <AccordionItem key={index} value={`v-sub-${index}`} className="border-b border-gray-100">
+                  <AccordionTrigger className="py-3 text-left hover:no-underline">
+                    <span className="flex min-w-0 items-center gap-2.5">
+                      {sub.step && (
+                        <span className="flex-shrink-0 rounded-full bg-gray-100 px-2.5 py-1 text-[11px] font-bold text-brand-accent">
+                          {sub.step}
+                        </span>
+                      )}
+                      <span className="text-[15px] font-semibold text-gray-900">{sub.label}</span>
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-4">
+                    {sub.title && (
+                      <h3 className="mb-1.5 text-[15px] font-bold text-gray-900">{sub.title}</h3>
+                    )}
+                    <p className="mb-3 text-[14px] leading-relaxed text-gray-600 whitespace-pre-line">
+                      {sub.description}
+                    </p>
+                    {sub.mediaUrl && (
+                      <div className="overflow-hidden rounded-xl bg-black" onClick={onVideoClick}>
+                        <MediaViewer
+                          mediaType={sub.mediaType || "video"}
+                          mediaUrl={sub.mediaUrl}
+                          title={sub.title}
+                          isShorts={sub.isShorts}
+                          fallbackUrl={sub.fallbackUrl}
+                        />
+                      </div>
+                    )}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        )}
+
+        {highlights.length > 0 && (
         <div className="mb-8 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-10">
           <h2 className="mb-4 text-lg font-bold text-gray-900">핵심만 쏙</h2>
           <div className="grid grid-cols-2 gap-3">
@@ -265,6 +345,54 @@ const FeatureDetail = () => {
             ))}
           </div>
         </div>
+        )}
+
+        {/* 세부정보 (토글형 디스클레이머) */}
+        {(() => {
+          const collapsible = [
+            ...(activeTabData?.collapsibleDisclaimers ?? []),
+            ...(feature.mediaCollapsibleDisclaimers ?? []),
+          ];
+          const flat = [
+            ...(activeTabData?.disclaimers ?? []),
+            ...(feature.mediaDisclaimers ?? []),
+          ];
+          if (collapsible.length === 0 && flat.length === 0) return null;
+          return (
+            <div className="mb-8 px-1 sm:mb-10">
+              {flat.length > 0 && (
+                <ul className="mb-2 space-y-1">
+                  {flat.map((text, index) => (
+                    <li key={index} className="text-[11px] leading-relaxed text-muted-foreground">
+                      * {text}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {collapsible.length > 0 && (
+                <Accordion type="multiple" className="w-full" key={`v-disc-${activeTab}`}>
+                  {collapsible.map((item, index) => (
+                    <AccordionItem key={index} value={`v-disc-${index}`} className="border-b border-gray-200">
+                      <AccordionTrigger className="py-3 text-left text-xs font-bold text-muted-foreground hover:no-underline">
+                        {item.title}
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <ol className="list-none space-y-1 pb-2 pt-1">
+                          {item.items.map((text, i) => (
+                            <li key={i} className="text-[11px] leading-relaxed text-muted-foreground whitespace-pre-line">
+                              {"①②③④⑤⑥⑦⑧⑨⑩"[i] || `${i + 1}.`} {text}
+                            </li>
+                          ))}
+                        </ol>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              )}
+            </div>
+          );
+        })()}
+
 
         <div className="text-center">
           <Link
