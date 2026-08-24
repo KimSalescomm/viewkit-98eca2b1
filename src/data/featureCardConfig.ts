@@ -16,6 +16,8 @@ export interface FeatureCardConfig {
   objectPositionClass?: string;
   /** "contain" = 잘림 없이 전체 노출(뒤에 블러 배경으로 카드를 가득 채움) */
   fit?: "cover" | "contain";
+  /** 추가 확대 (tailwind scale 클래스) */
+  scaleClass?: string;
 }
 
 export interface ProductCardConfig {
