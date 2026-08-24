@@ -443,10 +443,11 @@ const Subscription = () => {
           {/* Before */}
           <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)] flex flex-col h-full">
             <div className="px-5 pt-4 pb-3 flex items-center justify-between">
-              <span className="text-xs font-bold tracking-wider uppercase text-gray-400">
+              <span className={`${typeCaptionBold} tracking-wider uppercase text-gray-400`}>
                 Before
               </span>
-              <span className="text-xs font-medium text-gray-500">케어 전</span>
+              <span className={`${typeCaption} text-gray-500`}>케어 전</span>
+
             </div>
             <div className="relative overflow-hidden aspect-[4/3] bg-gray-100">
               <img
