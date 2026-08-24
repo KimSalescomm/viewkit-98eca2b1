@@ -18,6 +18,8 @@ export interface FeatureCardConfig {
   fit?: "cover" | "contain";
   /** 추가 확대 (tailwind scale 클래스) */
   scaleClass?: string;
+  /** contain 사용 시 뒷배경 스타일. 기본 blur */
+  containBackground?: "blur" | "white";
 }
 
 export interface ProductCardConfig {
