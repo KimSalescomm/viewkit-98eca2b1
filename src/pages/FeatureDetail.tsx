@@ -107,7 +107,7 @@ const FeatureDetail = () => {
   const SubscriptionServiceSection = ({
     items,
     mediaDisclaimers,
-    accent = "purple",
+    accent = "brand",
   }: {
     items: SubscriptionServiceItem[];
     mediaDisclaimers?: string[];
@@ -448,10 +448,10 @@ const FeatureDetail = () => {
 
   if (!feature || !product || !isProductVisible(productId || "")) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
+      <div className="min-h-screen flex items-center justify-center bg-[#F3F4F6]">
         <div className="text-center">
           <h1 className="text-xl text-gray-900 mb-4">특장점을 찾을 수 없습니다</h1>
-          <Link to={`/product/${productId}`} className="text-blue-600 font-medium">
+          <Link to={`/product/${productId}`} className="text-brand-accent font-medium">
             ← 특장점 목록으로 돌아가기
           </Link>
         </div>
@@ -607,7 +607,7 @@ const FeatureDetail = () => {
                       type="button"
                       onClick={() => setLightboxOpen(true)}
                       aria-label={`${belowImg.alt || "인증 마크"} 확대 보기`}
-                      className="block w-full rounded-2xl overflow-hidden bg-white shadow-md transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-zoom-in"
+                      className="block w-full rounded-2xl overflow-hidden bg-white shadow-md transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-brand-accent cursor-zoom-in"
                     >
                       <img
                         src={belowImg.url}
@@ -650,7 +650,7 @@ const FeatureDetail = () => {
                     type="button"
                     onClick={() => setLightboxOpen(true)}
                     aria-label={`${belowImg.alt || "인증 마크"} 확대 보기`}
-                    className="block w-full rounded-2xl overflow-hidden bg-white shadow-md transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-zoom-in"
+                    className="block w-full rounded-2xl overflow-hidden bg-white shadow-md transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-brand-accent cursor-zoom-in"
                   >
                     <img
                       src={belowImg.url}
@@ -702,7 +702,7 @@ const FeatureDetail = () => {
 
         {/* Description Card: active tab description takes precedence */}
         {!feature.subscriptionServiceItems && (
-          <div className="bg-white rounded-2xl p-5 sm:p-6 mb-4 sm:mb-6 shadow-md">
+          <div className="bg-white rounded-[14px] p-5 sm:p-6 mb-4 sm:mb-6 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)]">
             {(activeTabData?.descriptionTitle || feature.descriptionTitle) && (
               <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{activeTabData?.descriptionTitle ?? feature.descriptionTitle}</h2>
             )}
@@ -829,7 +829,7 @@ const FeatureDetail = () => {
         {/* 세부 기능 (메인 콘텐츠 하위 · 아코디언) */}
         {feature.subFeatures && feature.subFeatures.length > 0 && (!tabs || activeTab === 0) && (
           <section className="mb-10 sm:mb-12">
-            <div className="mb-3 sm:mb-4 pl-3 border-l-4 border-blue-600">
+            <div className="mb-3 sm:mb-4 pl-3 border-l-4 border-brand-accent">
               <h2 className="text-base sm:text-lg font-bold text-gray-900">
                 {feature.subFeaturesTitle || "세부 기능"}
               </h2>
@@ -854,7 +854,7 @@ const FeatureDetail = () => {
                   <AccordionTrigger className="px-4 sm:px-5 py-3.5 sm:py-4 hover:no-underline text-left">
                     <span className="flex items-center gap-2.5 sm:gap-3 min-w-0">
                       {sub.step && (
-                        <span className="flex-shrink-0 text-[10px] sm:text-xs font-bold text-blue-600 bg-blue-50 rounded-full px-2.5 py-1">
+                        <span className="flex-shrink-0 text-[10px] sm:text-xs font-bold text-brand-accent bg-gray-100 rounded-full px-2.5 py-1">
                           {sub.step}
                         </span>
                       )}
@@ -923,14 +923,14 @@ const FeatureDetail = () => {
 
         {/* Highlights Card: active tab highlights take precedence */}
         {(activeTabData?.highlights ?? feature.highlights) && (activeTabData?.highlights ?? feature.highlights)?.length > 0 && (
-          <div className="bg-white rounded-2xl p-5 sm:p-6 mb-10 sm:mb-12 shadow-md">
+          <div className="bg-white rounded-[14px] p-5 sm:p-6 mb-10 sm:mb-12 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)]">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">핵심만 쏙</h2>
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {(activeTabData?.highlights ?? feature.highlights).map((highlight, index) => {
                 const detail = feature.highlightDetails?.[highlight];
                 if (detail) {
                   return (
-                    <div key={index} className="col-span-2 bg-blue-50 rounded-xl p-4 sm:p-5 overflow-hidden">
+                    <div key={index} className="col-span-2 bg-gray-50 rounded-xl p-4 sm:p-5 overflow-hidden">
                       <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
                         {detail.title}
                       </h3>
@@ -955,9 +955,9 @@ const FeatureDetail = () => {
                 return (
                   <div
                     key={index}
-                    className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 bg-blue-50 rounded-xl"
+                    className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 bg-gray-50 rounded-xl"
                   >
-                    <span className="text-blue-600 font-bold text-base sm:text-lg">✓</span>
+                    <span className="text-brand-accent font-bold text-base sm:text-lg">✓</span>
                     <span className="text-sm sm:text-base text-gray-800 font-medium">{highlight}</span>
                   </div>
                 );
@@ -982,7 +982,7 @@ const FeatureDetail = () => {
                       className="flex-[0_0_100%] min-w-0 pl-0"
                     >
                       <div className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col md:flex-row">
-                        <div className="h-1 w-full bg-gradient-to-r from-blue-400 to-purple-400 md:hidden" />
+                        <div className="h-1 w-full bg-brand-accent md:hidden" />
                         <div className="w-full md:w-3/5 bg-gray-50">
                           <SafeImage
                             src={course.imageUrl}
@@ -992,9 +992,9 @@ const FeatureDetail = () => {
                             className="w-full h-auto object-cover"
                           />
                         </div>
-                        <div className="hidden md:block w-1 bg-gradient-to-b from-blue-400 to-purple-400 flex-shrink-0" />
+                        <div className="hidden md:block w-1 bg-brand-accent flex-shrink-0" />
                         <div className="w-full md:w-2/5 p-5 sm:p-6 flex flex-col justify-center">
-                          <span className="inline-block self-start mb-2 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-blue-50 text-blue-600">
+                          <span className="inline-block self-start mb-2 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-gray-100 text-brand-accent">
                             {course.type || "코스"}
                           </span>
                           <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
@@ -1163,7 +1163,7 @@ const FeatureDetail = () => {
         <div className="text-center">
           <Link
             to={`/product/${productId}`}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+            className="inline-flex items-center gap-2 bg-brand-accent hover:brightness-95 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
           >
             <span>←</span>
             <span>전체 특장점으로 돌아가기</span>
