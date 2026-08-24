@@ -361,16 +361,17 @@ const Subscription = () => {
 
         {/* Title */}
         <div className="mb-6 sm:mb-8 text-center">
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-2" style={{ color: "hsl(var(--brand-accent))" }}>
+          <p className={`${labelEyebrow} mb-2`}>
             CARE SERVICE
           </p>
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight">
+          <h1 className={`${typeDisplay} text-gray-900`}>
             구독 케어 전·후 비교
           </h1>
-          <p className="text-sm sm:text-base text-gray-500 mt-2">
+          <p className={`${typeBody} text-gray-500 mt-2`}>
             제품을 선택하면 케어 전·후 변화와 케어 과정을 확인할 수 있습니다.
           </p>
         </div>
+
 
         {/* Category buttons */}
         <div className="-mx-5 sm:mx-0 mb-8 px-5 sm:px-0">
