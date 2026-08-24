@@ -135,6 +135,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       "2": {
         image: "https://static.lge.co.kr/kr/images/wash-combo/md10867827/gallery/medium05.jpg",
         fit: "contain",
+        containBackground: "white",
       },
       "3": {
         image: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_11_steam_sterilization.jpg",
