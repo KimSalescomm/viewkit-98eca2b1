@@ -116,6 +116,29 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       },
     },
   },
+  tv: {
+    order: ["1", "2", "3", "4", "6", "5"],
+    cards: {
+      "1": {
+        image: "https://static.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_00_01_pc.jpg",
+        objectPositionClass: "object-bottom",
+      },
+      "2": {
+        image: "https://static.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_00_03_pc.jpg",
+        objectPositionClass: "object-bottom",
+      },
+      "3": {
+        image: "https://static.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_00_02_pc.jpg",
+        objectPositionClass: "object-bottom",
+      },
+      "6": {
+        image: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_02_04_pc_b.jpg",
+      },
+      "5": {
+        image: "https://www.lge.co.kr/kr/images/tvs/2026/G6/OLEDG6_07_01_pc.jpg",
+      },
+    },
+  },
   washer: {
     cards: {
       "3": {

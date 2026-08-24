@@ -65,6 +65,7 @@ export const products: Product[] = [
     title: "The Next 올레드",
     description: "지금까지 보지 못한 빛과 색을 깨운 올레드의 탄생",
     keyVisualImage: "https://static.lge.co.kr/kr/story/buying-guide/2025/img/tv/img_P14_001_10.png",
+    heroImage: "https://static.lge.co.kr/kr/images/tvs/md10770829/gallery/medium01.jpg",
     icon: "Tv",
     imageZoom: 1.1,
   },
