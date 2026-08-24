@@ -349,7 +349,7 @@ const Subscription = () => {
 
   return (
     <div className="min-h-screen bg-[#F3F4F6]">
-      <main className="max-w-6xl mx-auto px-5 py-8 sm:px-8 sm:py-12">
+      <PageContainer as-main className="py-8 sm:py-12">
         {/* Top Bar */}
         <div className="flex items-center justify-between mb-6 sm:mb-8">
           <BackButton />
