@@ -105,12 +105,17 @@ const FeatureDetail = () => {
   const SubscriptionServiceSection = ({
     items,
     mediaDisclaimers,
+    accent = "purple",
   }: {
     items: SubscriptionServiceItem[];
     mediaDisclaimers?: string[];
+    accent?: "purple" | "brand";
   }) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const selectedItem = items[selectedIndex];
+    const barClass = accent === "brand" ? "bg-brand-accent" : "bg-[#534AB7]";
+    const activeClass = accent === "brand" ? "bg-brand-accent text-white font-medium" : "bg-[#7842F5] text-white font-medium";
+
 
     return (
       <div className="mb-6 sm:mb-8">
@@ -120,7 +125,7 @@ const FeatureDetail = () => {
             <h3 className="text-gray-900 text-xl font-bold mb-2">
               {selectedItem.label}
             </h3>
-            <div className="w-7 h-[3px] bg-[#534AB7] rounded-sm mb-4" />
+            <div className={`w-7 h-[3px] rounded-sm mb-4 ${barClass}`} />
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4">
               {selectedItem.description}
             </p>
@@ -144,7 +149,7 @@ const FeatureDetail = () => {
                   onClick={() => setSelectedIndex(idx)}
                   className={`w-full text-left px-3.5 py-2.5 min-h-[44px] rounded-[999px] transition-colors duration-200 text-sm sm:text-base ${
                     selectedIndex === idx
-                      ? "bg-[#7842F5] text-white font-medium"
+                      ? activeClass
                       : "bg-transparent text-gray-900 font-normal border-none"
                   }`}
                 >
@@ -280,6 +285,13 @@ const FeatureDetail = () => {
             </p>
           </div>
         )}
+
+        {/* 구독 케어 서비스 (이미지 + 설명) */}
+        {feature.subscriptionServiceItems && feature.subscriptionServiceItems.length > 0 && (
+          <SubscriptionServiceSection items={feature.subscriptionServiceItems} accent="brand" />
+        )}
+
+
 
         {/* 세부 기능 (아코디언) */}
         {feature.subFeatures && feature.subFeatures.length > 0 && (!tabs || activeTab === 0) && (
