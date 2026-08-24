@@ -13,6 +13,7 @@ import { convertToEmbedUrl } from "@/utils/videoUtils";
 import {
   typeDisplay,
   typeHeading,
+  typeSectionTitle,
   typeBody,
   typeBodyMedium,
   typeBodySemibold,
@@ -418,7 +419,7 @@ const Subscription = () => {
           if (!title) return null;
           return (
             <div className="mb-4 sm:mb-5 flex items-start justify-between gap-3">
-              <h2 className={`${typeHeading} text-gray-900 flex items-center gap-3`}>
+              <h2 className={`${typeSectionTitle} text-gray-900 flex items-center gap-3`}>
                 <span
                   aria-hidden="true"
                   className="inline-block w-1 sm:w-1.5 h-5 sm:h-6 rounded-sm"
@@ -477,7 +478,7 @@ const Subscription = () => {
               if (!label) return null;
               return (
                 <div className="bg-white border-t border-gray-50 flex-1 flex items-center justify-center px-5 py-6 min-h-[56px]">
-                  <span className={`${typeCaption} text-gray-500 text-center`}>{label}</span>
+                  <span className={`${typeBodyMedium} text-gray-900 text-center`}>{label}</span>
                 </div>
               );
             })()}
@@ -544,11 +545,6 @@ const Subscription = () => {
                   <Sparkles className="w-4 h-4 text-brand-accent" />
                   {selected.name} 케어 과정
                 </h3>
-                {hasAnyImage && (
-                  <span className={actionIconPill} aria-label="이미지를 클릭하면 케어 사진을 볼 수 있습니다" title="이미지 보기">
-                    <ImageIcon className={actionIconSize} />
-                  </span>
-                )}
               </div>
               <ul className="space-y-2">
                 {selected.careSteps.map((step, i) => {
