@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { BRANCH_GROUPS, getManagerByBranch, isAdminStore } from "@/data/branches";
 import { getCurrentStore } from "@/utils/storeId";
+import PageContainer from "@/components/PageContainer";
 
 const Ranking = () => {
   const [sales, setSales] = useState<SaleRecord[]>([]);
@@ -68,7 +69,7 @@ const Ranking = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white">
-      <div className="max-w-4xl mx-auto px-5 py-8">
+      <PageContainer verticalPadding="py-8">
         <div className="flex items-center justify-between mb-6">
           <Link
             to="/"
@@ -200,7 +201,7 @@ const Ranking = () => {
         <p className="text-[11px] text-slate-400 mt-6 text-center">
           ※ 데이터는 Lovable Cloud에 누적 저장되며 SC 관리자 계정에서는 절대 삭제되지 않습니다.
         </p>
-      </div>
+      </PageContainer>
     </div>
   );
 };

@@ -6,6 +6,7 @@ import MediaViewer from "@/components/MediaViewer";
 import FeatureIcon from "@/components/FeatureIcon";
 import OrientationToggle from "@/components/OrientationToggle";
 import BackButton from "@/components/BackButton";
+import PageContainer from "@/components/PageContainer";
 import FeatureTabs from "@/components/FeatureTabs";
 
 import SafeImage from "@/components/SafeImage";
@@ -213,7 +214,7 @@ const FeatureDetail = () => {
     const hasSubscriptionService =
       !!feature.subscriptionServiceItems && feature.subscriptionServiceItems.length > 0;
     return (
-      <div className="px-5 py-6 sm:px-8 sm:py-8 max-w-xl mx-auto sm:max-w-4xl">
+      <PageContainer>
         <div className="flex items-center justify-between mb-5 sm:mb-6">
           <BackButton to={`/product/${productId}`} label={`${product.name} 특장점`} />
           <OrientationToggle />
@@ -441,7 +442,7 @@ const FeatureDetail = () => {
             <span>전체 특장점으로 돌아가기</span>
           </Link>
         </div>
-      </div>
+      </PageContainer>
     );
   };
 
@@ -463,7 +464,7 @@ const FeatureDetail = () => {
       {!isVacuumSample && (
         /* Sticky Header */
         <div className="sticky top-0 bg-white/90 backdrop-blur-md border-b border-gray-200 px-4 py-3 sm:px-6 sm:py-4 z-50">
-          <div className="max-w-xl mx-auto sm:max-w-4xl">
+          <PageContainer bare className="px-0 sm:px-0">
             <div className="flex items-center justify-between">
               <BackButton to={`/product/${productId}`} label={`${product.name} 특장점`} />
               <OrientationToggle />
@@ -473,7 +474,7 @@ const FeatureDetail = () => {
                 VIEW KIT
               </span>
             </div>
-          </div>
+          </PageContainer>
         </div>
       )}
 
@@ -486,7 +487,7 @@ const FeatureDetail = () => {
           onVideoClick={handleVideoClick}
         />
       ) : (
-      <div className="px-4 py-6 sm:px-6 sm:py-8 max-w-xl mx-auto sm:max-w-4xl">
+      <PageContainer>
         {/* Feature Header */}
         <div className="flex items-start gap-3 sm:gap-6 mb-6 sm:mb-8">
           <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center flex-shrink-0">
@@ -1174,7 +1175,7 @@ const FeatureDetail = () => {
             <span>전체 특장점으로 돌아가기</span>
           </Link>
         </div>
-      </div>
+      </PageContainer>
       )}
     </div>
   );

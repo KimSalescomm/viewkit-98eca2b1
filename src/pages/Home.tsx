@@ -5,6 +5,7 @@ import SafeImage from "@/components/SafeImage";
 import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
 import OrientationToggle from "@/components/OrientationToggle";
 import BackButton from "@/components/BackButton";
+import PageContainer from "@/components/PageContainer";
 import VacuumFeatureGrid from "@/components/VacuumFeatureGrid";
 import { useContent } from "@/contexts/ContentContext";
 import vacuumCutout from "@/assets/vacuum-cutout.png.asset.json";
@@ -38,12 +39,8 @@ const Home = () => {
   }
 
   return (
-    <main
-      className={`min-h-screen tracking-[-0.02em] bg-[#F3F4F6] ${
-        isSample ? "px-5 py-6 sm:px-8 sm:py-8" : "px-5 py-8 sm:px-8 sm:py-12"
-      }`}
-    >
-      <div className={`max-w-xl mx-auto sm:max-w-4xl ${isSample ? "lg:max-w-6xl" : ""}`}>
+    <main className="min-h-screen tracking-[-0.02em] bg-[#F3F4F6]">
+      <PageContainer verticalPadding={isSample ? "py-6 sm:py-8" : "py-8 sm:py-12"}>
         {/* Top Bar */}
         <div className={`flex items-center justify-between ${isSample ? "mb-5 sm:mb-6" : "mb-6 sm:mb-8"}`}>
           <BackButton />
@@ -232,7 +229,7 @@ const Home = () => {
             <span>다른 제품 보기</span>
           </button>
         </div>
-      </div>
+      </PageContainer>
     </main>
   );
 };
