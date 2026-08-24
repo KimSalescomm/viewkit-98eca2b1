@@ -202,7 +202,7 @@ All colors MUST be HSL.
 
   /* Sales certification warning blink (3회 깜빡임 후 정지, 1회만 실행) */
   .animate-blink-warning {
-    animation: blinkThrice 1s ease-in-out;
+    animation: blinkThrice 2.5s ease-in-out;
     animation-iteration-count: 1;
   }
 
