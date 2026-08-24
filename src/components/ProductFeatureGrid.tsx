@@ -132,15 +132,23 @@ const ProductFeatureGrid = ({
             className="group relative flex flex-col overflow-hidden rounded-[12px] bg-white text-left shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] transition-transform duration-100 active:scale-[0.98]"
           >
             {/* 이미지 영역 */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
-              {image && cardConfig?.fit === "contain" && (
-                <SafeImage
-                  src={image}
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute inset-0 h-full w-full scale-110 object-cover blur-xl"
-                />
-              )}
+            <div
+              className={`relative aspect-[4/3] w-full overflow-hidden ${
+                cardConfig?.fit === "contain" && cardConfig?.containBackground === "white"
+                  ? "bg-white"
+                  : "bg-gray-100"
+              }`}
+            >
+              {image &&
+                cardConfig?.fit === "contain" &&
+                cardConfig?.containBackground !== "white" && (
+                  <SafeImage
+                    src={image}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full scale-110 object-cover blur-xl"
+                  />
+                )}
               {image && (
                 <SafeImage
                   src={image}
