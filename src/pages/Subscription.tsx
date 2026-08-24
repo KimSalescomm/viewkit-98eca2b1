@@ -476,7 +476,7 @@ const Subscription = () => {
               if (!label) return null;
               return (
                 <div className="bg-white border-t border-gray-50 flex-1 flex items-center justify-center px-5 py-6 min-h-[56px]">
-                  <span className="text-sm font-bold text-gray-700 text-center">{label}</span>
+                  <span className={`${typeCaption} text-gray-500 text-center`}>{label}</span>
                 </div>
               );
             })()}
