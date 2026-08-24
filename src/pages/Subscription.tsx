@@ -10,6 +10,20 @@ import FeatureLikeButton from "@/components/FeatureLikeButton";
 import { logFeatureReaction } from "@/utils/featureReactionLog";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { convertToEmbedUrl } from "@/utils/videoUtils";
+import {
+  typeDisplay,
+  typeHeading,
+  typeBody,
+  typeBodyMedium,
+  typeBodySemibold,
+  typeCaption,
+  typeCaptionBold,
+  labelEyebrow,
+  actionPill,
+  actionIconPill,
+  actionIconSize,
+} from "@/styles/typeScale";
+
 import washerCareSteamUvAsset from "@/assets/washer-care-steam-uv.png.asset.json";
 import washcomboBefore from "@/assets/tower-before.png";
 import washcomboAfter from "@/assets/tower-after.png";
