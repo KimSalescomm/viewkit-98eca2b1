@@ -119,26 +119,28 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
       onClick={() => trackProductClick(item.product.name)}
       className="min-w-0 group block"
     >
-      <div className="rounded-2xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors overflow-hidden">
-        <div className="relative h-[130px] sm:h-[140px] bg-gray-800 overflow-hidden">
-          <SafeImage
-            src={item.thumbnail}
-            alt={`${item.product.name} ${item.feature.title}`}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading={eager ? "eager" : "lazy"}
-          />
+      <div className="rounded-2xl bg-white/[0.06] hover:bg-white/[0.12] transition-colors">
+        <div className="relative overflow-visible ml-5">
+          <div className="relative h-[130px] sm:h-[140px] bg-gray-800 overflow-hidden rounded-2xl rounded-b-none">
+            <SafeImage
+              src={item.thumbnail}
+              alt={`${item.product.name} ${item.feature.title}`}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading={eager ? "eager" : "lazy"}
+            />
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-9 h-9 rounded-full bg-white/70 flex items-center justify-center text-black transition-transform duration-300 group-hover:scale-105">
+                <Play className="w-4 h-4" fill="black" />
+              </div>
+            </div>
+          </div>
           <span
-            className="absolute top-2 left-2 text-[26px] font-extrabold leading-none text-white/80 select-none"
-            style={{ textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}
+            className="absolute left-[-6px] bottom-[-14px] text-[64px] font-bold leading-none select-none z-10"
+            style={{ color: "transparent", WebkitTextStroke: "2px rgba(255,255,255,0.9)" }}
             aria-hidden="true"
           >
             {index + 1}
           </span>
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-9 h-9 rounded-full bg-white/70 flex items-center justify-center text-black transition-transform duration-300 group-hover:scale-105">
-              <Play className="w-4 h-4" fill="black" />
-            </div>
-          </div>
         </div>
         <div className="p-3">
           <p className="text-brand-accent text-[13px] font-semibold mb-1">{item.product.name}</p>
