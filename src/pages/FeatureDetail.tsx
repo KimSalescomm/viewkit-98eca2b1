@@ -205,7 +205,7 @@ const FeatureDetail = () => {
     productId: string;
     onVideoClick: () => void;
   }) => {
-    const highlights = feature.highlights || [];
+    const highlights = activeTabData?.highlights ?? feature.highlights ?? [];
     return (
       <div className="px-5 py-6 sm:px-8 sm:py-8 max-w-xl mx-auto sm:max-w-4xl">
         <div className="flex items-center justify-between mb-5 sm:mb-6">
@@ -354,7 +354,6 @@ const FeatureDetail = () => {
             ...(feature.mediaCollapsibleDisclaimers ?? []),
           ];
           const flat = [
-            ...(activeTabData?.disclaimers ?? []),
             ...(feature.mediaDisclaimers ?? []),
           ];
           if (collapsible.length === 0 && flat.length === 0) return null;
