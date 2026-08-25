@@ -1809,8 +1809,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Wrench",
       tag: "설치 환경",
       mediaType: "image",
-      mediaUrl:
-        "https://www.lge.co.kr/kr/images/common/pdp_multi_banner/images/bath-air-system/Banner_BathAir_InstallChk_B_PC_x2.png",
+      mediaUrl: "/__l5e/assets-v1/ef0cc59e-c910-415e-90d8-d87525609aac/bathair-install-cropped.png",
       fullWidthMedia: true,
       imageFit: "original",
       description:
