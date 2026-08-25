@@ -6,6 +6,8 @@ import SafeImage from "@/components/SafeImage";
 import { usePopularFeatures } from "@/hooks/usePopularFeatures";
 import { useContent } from "@/contexts/ContentContext";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
+import { subscriptionProducts } from "@/pages/Subscription";
+import type { Feature, Product } from "@/data/products";
 
 interface PopularContentSliderProps {
   days?: number;
