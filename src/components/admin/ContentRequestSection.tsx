@@ -40,9 +40,15 @@ const ContentRequestSection = () => {
 
 
   const load = async () => {
+    const code = getCode();
+    if (!code) {
+      setLoading(false);
+      toast.error("관리자 패스코드가 필요합니다");
+      return;
+    }
     setLoading(true);
     const { data, error } = await supabase.functions.invoke("content-requests-admin", {
-      body: { code: getCode(), mode: "list" },
+      body: { code, mode: "list" },
     });
     setLoading(false);
     if (error || !data?.ok) {
@@ -52,6 +58,7 @@ const ContentRequestSection = () => {
     }
     setRows((data.rows ?? []) as RequestRow[]);
   };
+
 
   useEffect(() => {
     load();
