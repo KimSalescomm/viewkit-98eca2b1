@@ -33,27 +33,46 @@ export const usePopularFeatures = (options: UsePopularFeaturesOptions = {}) => {
       setLoading(true);
       setError(null);
       try {
-        const { data, error: rpcError } = await supabase.rpc("get_popular_features", {
-          days_back: days,
-          limit_count: limit,
-        });
+        const [
+          { data: viewData, error: viewError },
+          { data: likeData, error: likeError },
+        ] = await Promise.all([
+          supabase.rpc("get_popular_features", {
+            days_back: days,
+            limit_count: limit,
+          }),
+          supabase.rpc("get_top_liked_features", {
+            days_back: days,
+            limit_count: 2,
+          }),
+        ]);
 
-        if (rpcError) throw rpcError;
+        if (viewError) throw viewError;
+        if (likeError) throw likeError;
 
-        const parsed = (data || [])
-          .map((row: { path: string; views: number }) => {
-            const match = row.path.match(PATH_REGEX);
-            if (!match) return null;
-            return {
-              path: row.path,
-              views: Number(row.views),
-              productId: match[1],
-              featureId: match[2],
-            };
-          })
-          .filter((item): item is PopularFeature => item !== null);
+        const parseRows = (rows: { path: string; views?: number; likes?: number }[]) =>
+          (rows || [])
+            .map((row) => {
+              const match = row.path.match(PATH_REGEX);
+              if (!match) return null;
+              return {
+                path: row.path,
+                views: Number(row.views ?? 0),
+                productId: match[1],
+                featureId: match[2],
+              };
+            })
+            .filter((item): item is PopularFeature => item !== null);
 
-        if (!cancelled) setItems(parsed);
+        const liked = parseRows(likeData || []);
+        const viewed = parseRows(viewData || []);
+
+        const likedPaths = new Set(liked.map((item) => item.path));
+        const remaining = viewed.filter((item) => !likedPaths.has(item.path));
+
+        const combined = [...liked, ...remaining].slice(0, limit);
+
+        if (!cancelled) setItems(combined);
       } catch (err) {
         if (!cancelled) setError(err instanceof Error ? err : new Error(String(err)));
       } finally {

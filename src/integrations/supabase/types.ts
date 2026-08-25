@@ -206,6 +206,13 @@ export type Database = {
           views: number
         }[]
       }
+      get_top_liked_features: {
+        Args: { days_back: number; limit_count: number }
+        Returns: {
+          likes: number
+          path: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never

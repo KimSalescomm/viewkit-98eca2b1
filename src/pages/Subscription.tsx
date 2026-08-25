@@ -61,7 +61,7 @@ interface SubscriptionProduct {
   careSteps: CareStep[];
 }
 
-const subscriptionProducts: SubscriptionProduct[] = [
+export const subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "washer",
     name: "세탁기",
