@@ -233,7 +233,9 @@ const ProductSelection = () => {
           <div className="grid grid-cols-3 gap-2.5 sm:gap-4">
             {visibleProducts.map((product) => {
               const showNewBadge = isNewProduct(product.id);
-              const isDisabled = disabledProductIds.includes(product.id);
+              // 비활성 제품은 일반 매장에서는 목록에서 제거되고,
+              // SC/KOR 내부 계정에 노출될 때는 작업할 수 있도록 정상 활성화합니다.
+              const isDisabled = disabledProductIds.includes(product.id) && !isInternal;
               const cardContent = (
                 <div
                   className={cn(
