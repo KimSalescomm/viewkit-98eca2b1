@@ -300,6 +300,7 @@ export const subscriptionProducts: SubscriptionProduct[] = [
 ];
 
 const Subscription = () => {
+  const [searchParams] = useSearchParams();
   const [selectedId, setSelectedId] = useState<string>("washer");
   const { trackEvent } = useAnalyticsContext();
   const handleTabClick = (productId: string, productName: string) => {
