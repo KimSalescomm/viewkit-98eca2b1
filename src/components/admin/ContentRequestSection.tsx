@@ -40,9 +40,15 @@ const ContentRequestSection = () => {
 
 
   const load = async () => {
+    const code = getCode();
+    if (!code) {
+      setLoading(false);
+      toast.error("관리자 패스코드가 필요합니다");
+      return;
+    }
     setLoading(true);
     const { data, error } = await supabase.functions.invoke("content-requests-admin", {
-      body: { code: getCode(), mode: "list" },
+      body: { code, mode: "list" },
     });
     setLoading(false);
     if (error || !data?.ok) {
@@ -52,6 +58,7 @@ const ContentRequestSection = () => {
     }
     setRows((data.rows ?? []) as RequestRow[]);
   };
+
 
   useEffect(() => {
     load();
@@ -71,11 +78,17 @@ const ContentRequestSection = () => {
   }, [rows, keyword, categoryFilter, statusFilter]);
 
   const updateStatus = async (id: string, status: string) => {
+    const code = getCode();
+    if (!code) {
+      toast.error("관리자 패스코드가 필요합니다");
+      return;
+    }
     const prev = rows;
     setRows((rs) => rs.map((r) => (r.id === id ? { ...r, status } : r)));
     const { data, error } = await supabase.functions.invoke("content-requests-admin", {
-      body: { code: getCode(), mode: "status", id, status },
+      body: { code, mode: "status", id, status },
     });
+
     if (error || !data?.ok) {
       setRows(prev);
       toast.error("상태 변경에 실패했습니다");
