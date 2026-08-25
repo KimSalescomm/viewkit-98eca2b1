@@ -1826,8 +1826,8 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "체계적인 전문가의 케어를 받으면 더욱 위생적으로 관리할 수 있어요.",
       icon: "Waves",
       tag: "바스에어 구독",
-      mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_CareService_pr.mp4",
+      mediaType: "image",
+      mediaUrl: "https://static.lge.co.kr/kr/Caresolution/images/bath-air-system/img-bath-air-system04.jpg",
       fullWidthMedia: true,
       description:
         "필터 교체부터 내·외부 클리닝, 위생 관리, 성능 점검까지 체계적인 전문가 케어 프로세스로 바스에어시스템을 위생적으로 관리할 수 있어요.",
