@@ -479,14 +479,16 @@ const FeatureDetail = () => {
             className="max-w-[96vw] border-0 bg-white p-3 [&>button.absolute]:hidden sm:max-w-5xl sm:p-4"
           >
             <DialogTitle className="sr-only">이미지 확대 보기</DialogTitle>
+            <div className="absolute right-3 top-3 z-10">
             <button
               type="button"
               onClick={() => setZoomUrl(null)}
-              className="absolute right-3 top-3 z-10 flex items-center gap-1 rounded-full bg-gray-900/80 px-3 py-1.5 text-[12px] font-semibold text-white transition-colors hover:bg-gray-900"
+              className=" flex items-center gap-1 rounded-full bg-gray-900/80 px-3 py-1.5 text-[12px] font-semibold text-white transition-colors hover:bg-gray-900"
             >
               <X className="h-3.5 w-3.5" />
               닫기
             </button>
+            </div>
             {zoomUrl && (
               <img
                 src={zoomUrl}
