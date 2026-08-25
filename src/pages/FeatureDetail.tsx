@@ -382,20 +382,35 @@ const FeatureDetail = () => {
                 </h2>
               )}
               {mainType === "image" && mainUrl ? (
-                /* 이미지: 블러 확장 배경 프레임 */
-                <div className="mb-4 sm:mb-5" onClick={onVideoClick}>
-                  <BlurMediaFrame
-                    key={tabs ? `tab-${activeTab}` : "main"}
-                    src={mainUrl}
-                    alt={feature.title}
-                    loading="eager"
-                    aspectClassName="aspect-[4/3] sm:aspect-[16/10]"
-                    radiusClassName="rounded-[14px]"
-                    objectPosition={activeTabData?.imagePosition}
-                    imageFit={activeTabData?.imageFit ?? feature.imageFit ?? "cover"}
-                  />
+                /* 이미지: 블러 확장 배경 프레임 (클릭 시 확대) */
+                <div className="group relative mb-4 sm:mb-5">
+                  <button
+                    type="button"
+                    aria-label="이미지 크게 보기"
+                    onClick={() => {
+                      onVideoClick();
+                      setZoomUrl(mainUrl);
+                    }}
+                    className="block w-full cursor-zoom-in rounded-[14px] text-left transition-transform duration-200 hover:scale-[1.005] focus:outline-none focus:ring-2 focus:ring-brand-accent"
+                  >
+                    <BlurMediaFrame
+                      key={tabs ? `tab-${activeTab}` : "main"}
+                      src={mainUrl}
+                      alt={feature.title}
+                      loading="eager"
+                      aspectClassName="aspect-[4/3] sm:aspect-[16/10]"
+                      radiusClassName="rounded-[14px]"
+                      objectPosition={activeTabData?.imagePosition}
+                      imageFit={activeTabData?.imageFit ?? feature.imageFit ?? "cover"}
+                    />
+                  </button>
+                  <span className="pointer-events-none absolute bottom-3 right-3 flex items-center gap-1 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-sm">
+                    <Maximize2 className="h-3 w-3" />
+                    클릭하면 크게 보기
+                  </span>
                 </div>
               ) : (
+
                 <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
                   <div onClick={onVideoClick}>
                     <MediaViewer
