@@ -7,7 +7,8 @@ import { usePopularFeatures } from "@/hooks/usePopularFeatures";
 import { useContent } from "@/contexts/ContentContext";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { subscriptionProducts } from "@/pages/Subscription";
-import type { Feature, Product } from "@/data/products";
+import type { Product } from "@/data/products";
+import type { Feature } from "@/data/features";
 
 interface PopularContentSliderProps {
   days?: number;
