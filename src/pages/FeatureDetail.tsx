@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { Check, ChevronLeft, ChevronRight } from "lucide-react";
+import { Check, ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
 import MediaViewer from "@/components/MediaViewer";
 import FeatureIcon from "@/components/FeatureIcon";
 import OrientationToggle from "@/components/OrientationToggle";
@@ -34,6 +34,7 @@ const FeatureDetail = () => {
 
   const [activeTab, setActiveTab] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [zoomUrl, setZoomUrl] = useState<string | null>(null);
 
   // 트루스팀 적용 코스 캐러셀
   const [courseIndex, setCourseIndex] = useState(0);
@@ -382,20 +383,35 @@ const FeatureDetail = () => {
                 </h2>
               )}
               {mainType === "image" && mainUrl ? (
-                /* 이미지: 블러 확장 배경 프레임 */
-                <div className="mb-4 sm:mb-5" onClick={onVideoClick}>
-                  <BlurMediaFrame
-                    key={tabs ? `tab-${activeTab}` : "main"}
-                    src={mainUrl}
-                    alt={feature.title}
-                    loading="eager"
-                    aspectClassName="aspect-[4/3] sm:aspect-[16/10]"
-                    radiusClassName="rounded-[14px]"
-                    objectPosition={activeTabData?.imagePosition}
-                    imageFit={activeTabData?.imageFit ?? feature.imageFit ?? "cover"}
-                  />
+                /* 이미지: 블러 확장 배경 프레임 (클릭 시 확대) */
+                <div className="group relative mb-4 sm:mb-5">
+                  <button
+                    type="button"
+                    aria-label="이미지 크게 보기"
+                    onClick={() => {
+                      onVideoClick();
+                      setZoomUrl(mainUrl);
+                    }}
+                    className="block w-full cursor-zoom-in rounded-[14px] text-left transition-transform duration-200 hover:scale-[1.005] focus:outline-none focus:ring-2 focus:ring-brand-accent"
+                  >
+                    <BlurMediaFrame
+                      key={tabs ? `tab-${activeTab}` : "main"}
+                      src={mainUrl}
+                      alt={feature.title}
+                      loading="eager"
+                      aspectClassName="aspect-[4/3] sm:aspect-[16/10]"
+                      radiusClassName="rounded-[14px]"
+                      objectPosition={activeTabData?.imagePosition}
+                      imageFit={activeTabData?.imageFit ?? feature.imageFit ?? "cover"}
+                    />
+                  </button>
+                  <span className="pointer-events-none absolute bottom-3 right-3 flex items-center gap-1 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-sm">
+                    <Maximize2 className="h-3 w-3" />
+                    클릭하면 크게 보기
+                  </span>
                 </div>
               ) : (
+
                 <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
                   <div onClick={onVideoClick}>
                     <MediaViewer
@@ -452,6 +468,32 @@ const FeatureDetail = () => {
                 src={belowImg.url}
                 alt={belowImg.alt || ""}
                 className="h-auto w-full rounded-lg object-contain"
+              />
+            )}
+          </DialogContent>
+        </Dialog>
+
+        {/* 이미지 확대 보기 */}
+        <Dialog open={!!zoomUrl} onOpenChange={(open) => !open && setZoomUrl(null)}>
+          <DialogContent
+            className="max-w-[96vw] border-0 bg-white p-3 [&>button.absolute]:hidden sm:max-w-5xl sm:p-4"
+          >
+            <DialogTitle className="sr-only">이미지 확대 보기</DialogTitle>
+            <div className="absolute right-3 top-3 z-10">
+            <button
+              type="button"
+              onClick={() => setZoomUrl(null)}
+              className=" flex items-center gap-1 rounded-full bg-gray-900/80 px-3 py-1.5 text-[12px] font-semibold text-white transition-colors hover:bg-gray-900"
+            >
+              <X className="h-3.5 w-3.5" />
+              닫기
+            </button>
+            </div>
+            {zoomUrl && (
+              <img
+                src={zoomUrl}
+                alt={feature.title}
+                className="max-h-[85vh] w-full rounded-lg object-contain"
               />
             )}
           </DialogContent>
