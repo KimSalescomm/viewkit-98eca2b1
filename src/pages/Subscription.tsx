@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Check, Sparkles, ImageIcon, X, Play } from "lucide-react";
 import OrientationToggle from "@/components/OrientationToggle";
 import BackButton from "@/components/BackButton";
@@ -300,6 +300,7 @@ export const subscriptionProducts: SubscriptionProduct[] = [
 ];
 
 const Subscription = () => {
+  const [searchParams] = useSearchParams();
   const [selectedId, setSelectedId] = useState<string>("washer");
   const { trackEvent } = useAnalyticsContext();
   const handleTabClick = (productId: string, productName: string) => {
@@ -328,40 +329,14 @@ const Subscription = () => {
     });
   }, []);
 
-  // Auto-rotate tabs after 30s of user inactivity
+  // URL 쿼리(?tab=productId)로 진입 시 해당 제품 탭 선택
   useEffect(() => {
-    const IDLE_MS = 30000;
-    let timer: ReturnType<typeof setTimeout>;
+    const tab = searchParams.get("tab");
+    if (tab && subscriptionProducts.some((p) => p.id === tab)) {
+      setSelectedId(tab);
+    }
+  }, [searchParams]);
 
-    const advance = () => {
-      setSelectedId((current) => {
-        const idx = subscriptionProducts.findIndex((p) => p.id === current);
-        const next = subscriptionProducts[(idx + 1) % subscriptionProducts.length];
-        return next.id;
-      });
-    };
-
-    const reset = () => {
-      clearTimeout(timer);
-      timer = setTimeout(advance, IDLE_MS);
-    };
-
-    const events: (keyof WindowEventMap)[] = [
-      "pointerdown",
-      "pointermove",
-      "keydown",
-      "wheel",
-      "touchstart",
-      "scroll",
-    ];
-    events.forEach((e) => window.addEventListener(e, reset, { passive: true }));
-    reset();
-
-    return () => {
-      clearTimeout(timer);
-      events.forEach((e) => window.removeEventListener(e, reset));
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-[#F3F4F6]">
