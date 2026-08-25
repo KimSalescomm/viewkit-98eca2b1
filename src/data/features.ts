@@ -1694,13 +1694,13 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "UV-LED로 바람을 만들어내는 팬을 99.99% 살균해 걱정 없어요.",
       icon: "Sparkles",
       tag: "클린케어",
-      mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_CleanCare_pc.mp4",
+      mediaType: "image",
+      mediaUrl: "/__l5e/assets-v1/df5bc023-5dd7-480a-81d2-4333f119d537/bathair-cleancare-edited.png",
       fullWidthMedia: true,
       description:
         "UV-LED로 바람을 만들어내는 팬을 99.99% 살균해서 눈에 보이지 않는 곳까지 청결하게 유지해요. 필터를 분리해서 셀프 케어가 가능하고, 전문 케어서비스로 제품을 위생적으로 관리할 수 있어요.",
       highlights: [],
-      mediaDisclaimers: ["소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
+      mediaDisclaimers: ["소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
     },
     {
       id: "6",
