@@ -476,8 +476,7 @@ const FeatureDetail = () => {
         {/* 이미지 확대 보기 */}
         <Dialog open={!!zoomUrl} onOpenChange={(open) => !open && setZoomUrl(null)}>
           <DialogContent
-            hideClose
-            className="max-w-[96vw] border-0 bg-white p-3 sm:max-w-5xl sm:p-4"
+            className="max-w-[96vw] border-0 bg-white p-3 [&>button.absolute]:hidden sm:max-w-5xl sm:p-4"
           >
             <DialogTitle className="sr-only">이미지 확대 보기</DialogTitle>
             <button
