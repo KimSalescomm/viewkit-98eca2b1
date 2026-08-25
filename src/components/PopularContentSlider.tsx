@@ -59,20 +59,52 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
 
   const visibleItems = items
     .map((item) => {
-      const product = getProductById(item.productId);
-      const feature = getFeatureById(item.productId, item.featureId);
-      if (!product || !feature || !isProductVisible(product.id)) return null;
+      const isSubscription = item.productId === "subscription";
+      const subProduct = isSubscription
+        ? subscriptionProducts.find((p) => p.id === item.featureId.replace("tab_", ""))
+        : undefined;
 
-      // 영상/유튜브 URL은 썸네일로 부적합 → 제품 키비주얼 또는 갤러리/아래 이미지로 폴백
-      const isImageUrl = (url?: string) =>
-        !!url && (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png") || url.endsWith(".webp"));
-      const fallbackImage =
-        (typeof feature.belowMediaImage === "object" && feature.belowMediaImage?.url) ||
-        feature.galleryImages?.[0] ||
-        product.keyVisualImage;
-      const autoThumbnail = isImageUrl(feature.mediaUrl) ? feature.mediaUrl : (isImageUrl(String(fallbackImage)) ? String(fallbackImage) : product.keyVisualImage);
-      const overrideKey = `/product/${item.productId}/feature/${item.featureId}`;
-      const thumbnail = THUMBNAIL_OVERRIDES[overrideKey] || autoThumbnail;
+      let product: Product | undefined;
+      let feature: Feature | undefined;
+      let thumbnail: string | undefined;
+
+      if (isSubscription && subProduct) {
+        product = {
+          id: "subscription",
+          name: "가전 구독",
+          title: "가전 구독",
+          description: "가전 구독 케어",
+          keyVisualImage: subProduct.afterImage,
+          icon: "Calendar",
+        };
+        feature = {
+          id: item.featureId,
+          title: `${subProduct.name} 구독 전/후 비교`,
+          subtitle: "",
+          icon: "Calendar",
+          tag: "가전 구독",
+          mediaType: "image",
+          mediaUrl: subProduct.afterImage,
+        } as Feature;
+        thumbnail = subProduct.afterImage;
+      } else {
+        product = getProductById(item.productId);
+        feature = getFeatureById(item.productId, item.featureId);
+        if (!product || !feature || !isProductVisible(product.id)) return null;
+
+        // 영상/유튜브 URL은 썸네일로 부적합 → 제품 키비주얼 또는 갤러리/아래 이미지로 폴백
+        const isImageUrl = (url?: string) =>
+          !!url && (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png") || url.endsWith(".webp"));
+        const fallbackImage =
+          (typeof feature.belowMediaImage === "object" && feature.belowMediaImage?.url) ||
+          feature.galleryImages?.[0] ||
+          product.keyVisualImage;
+        const autoThumbnail = isImageUrl(feature.mediaUrl) ? feature.mediaUrl : (isImageUrl(String(fallbackImage)) ? String(fallbackImage) : product.keyVisualImage);
+        const overrideKey = `/product/${item.productId}/feature/${item.featureId}`;
+        thumbnail = THUMBNAIL_OVERRIDES[overrideKey] || autoThumbnail;
+      }
+
+      if (!product || !feature || !thumbnail || !isProductVisible(product.id)) return null;
 
       return {
         ...item,
