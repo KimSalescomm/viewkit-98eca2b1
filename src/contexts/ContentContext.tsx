@@ -59,6 +59,8 @@ interface ContentContextValue {
   visibleProductIds: string[];
   /** 해당 제품을 현재 계정에서 열어볼 수 있는지 (지점 계정은 노출 목록 기준) */
   isProductVisible: (productId: string) => boolean;
+  /** 내부 계정(SC/KOR) 여부 — 비활성 제품 카드 노출 판단에 사용 */
+  isInternal: boolean;
   source: "draft" | "published" | "fallback";
   publishedAt: string | null;
   ready: boolean;
@@ -95,6 +97,7 @@ const buildValue = (
       isAdmin ||
       visible.includes(productId) ||
       (isInternal && CONFIDENTIAL_PRODUCT_IDS.has(productId)),
+    isInternal,
     source,
     publishedAt,
     ready,

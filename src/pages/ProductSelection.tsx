@@ -52,7 +52,7 @@ const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner"
 const disabledProductIds = ["styler", "cooking"];
 
 const ProductSelection = () => {
-  const { products, isProductVisible } = useContent();
+  const { products, isProductVisible, isInternal } = useContent();
 
   const subscriptionCard = {
     id: "subscription",
@@ -69,6 +69,8 @@ const ProductSelection = () => {
     .map((id) => allProducts.find((p) => p.id === id))
     .filter((p): p is (typeof allProducts)[number] => {
       if (!p) return false;
+      // 비활성 제품(의류관리기·식기세척기)은 내부 계정(SC/KOR)에서만 카드 노출
+      if (disabledProductIds.includes(p.id)) return isInternal;
       return isProductVisible(p.id);
     });
 
