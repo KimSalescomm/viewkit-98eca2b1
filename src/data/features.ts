@@ -1820,6 +1820,26 @@ export const featuresMap: Record<string, Feature[]> = {
         "설치 환경에 따라 설치기사의 현장 확인 및 추가 비용이 발생할 수 있습니다.",
         "바스에어시스템 프리미엄 듀얼 설치 시, 공기 흐름이 원활하도록 배기팬과 떨어뜨려 설치하는 것을 권장합니다.",
       ],
+      tabs: [
+        {
+          label: "설치 체크리스트",
+          description:
+            "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 더 원활하게 설치할 수 있어요.",
+          mediaType: "image",
+          mediaUrl:
+            "https://www.lge.co.kr/kr/images/common/pdp_multi_banner/images/bath-air-system/Banner_BathAir_InstallChk_B_PC_x2.png",
+          imageFit: "original",
+        },
+        {
+          label: "추가 설치 비용",
+          description:
+            "기본 설치 비용은 제품 가격에 포함되어 있어요. 다만 타공, 덕트 연장, 콘센트 설치처럼 욕실 환경에 따라 추가 작업이 필요한 경우에는 아래 항목별 비용이 발생할 수 있어요.",
+          mediaType: "image",
+          mediaUrl: "/__l5e/assets-v1/6234ad47-4be2-4560-9908-9adc3359716f/bathair-install-cost.png",
+          imageFit: "original",
+        },
+      ],
+
     },
     {
       id: "7",
