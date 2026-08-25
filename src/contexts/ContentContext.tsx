@@ -95,6 +95,7 @@ const buildValue = (
     visibleProductIds: visible,
     isProductVisible: (productId) =>
       isAdmin ||
+      isInternal ||
       visible.includes(productId) ||
       (isInternal && CONFIDENTIAL_PRODUCT_IDS.has(productId)),
     isInternal,
