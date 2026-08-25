@@ -150,7 +150,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
 
   const Card = ({ item, index, eager }: { item: VisibleItem; index: number; eager?: boolean }) => (
     <Link
-      to={item.product.id === "subscription" ? "/subscription" : `/product/${item.product.id}/feature/${item.feature.id}`}
+      to={item.product.id === "subscription" ? `/subscription?tab=${item.feature.id.replace("tab_", "")}` : `/product/${item.product.id}/feature/${item.feature.id}`}
       onClick={() => trackProductClick(item.product.name)}
       className="min-w-0 group block"
     >
