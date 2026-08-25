@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { Check, ChevronLeft, ChevronRight } from "lucide-react";
+import { Check, ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
 import MediaViewer from "@/components/MediaViewer";
 import FeatureIcon from "@/components/FeatureIcon";
 import OrientationToggle from "@/components/OrientationToggle";
@@ -34,6 +34,7 @@ const FeatureDetail = () => {
 
   const [activeTab, setActiveTab] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [zoomUrl, setZoomUrl] = useState<string | null>(null);
 
   // 트루스팀 적용 코스 캐러셀
   const [courseIndex, setCourseIndex] = useState(0);
@@ -467,6 +468,31 @@ const FeatureDetail = () => {
                 src={belowImg.url}
                 alt={belowImg.alt || ""}
                 className="h-auto w-full rounded-lg object-contain"
+              />
+            )}
+          </DialogContent>
+        </Dialog>
+
+        {/* 이미지 확대 보기 */}
+        <Dialog open={!!zoomUrl} onOpenChange={(open) => !open && setZoomUrl(null)}>
+          <DialogContent
+            hideClose
+            className="max-w-[96vw] border-0 bg-white p-3 sm:max-w-5xl sm:p-4"
+          >
+            <DialogTitle className="sr-only">이미지 확대 보기</DialogTitle>
+            <button
+              type="button"
+              onClick={() => setZoomUrl(null)}
+              className="absolute right-3 top-3 z-10 flex items-center gap-1 rounded-full bg-gray-900/80 px-3 py-1.5 text-[12px] font-semibold text-white transition-colors hover:bg-gray-900"
+            >
+              <X className="h-3.5 w-3.5" />
+              닫기
+            </button>
+            {zoomUrl && (
+              <img
+                src={zoomUrl}
+                alt={feature.title}
+                className="max-h-[85vh] w-full rounded-lg object-contain"
               />
             )}
           </DialogContent>
