@@ -108,6 +108,7 @@ export const products: Product[] = [
     title: "바스에어시스템",
     description: "듀얼배기로 완성하는 프리미엄 욕실 라이프",
     keyVisualImage: bathairHomepage,
+    heroImage: "https://static.lge.co.kr/kr/images/bath-air-system/md10753826/gallery/MX0120BASV_f02_2g.jpg",
     icon: "Droplets",
     imageZoom: 1.1,
   },
