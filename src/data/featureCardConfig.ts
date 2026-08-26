@@ -107,7 +107,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
         eyebrow: "구독 전문케어",
       },
       "9": {
-        image: "https://c29ebf32-471f-4991-a656-57585c8d8b56.lovableproject.com/images/installation-step1.jpeg",
+        image: "https://www.lge.co.kr/kr/bestcare/service-installation-removal/images/img-refrigerators-step02.jpg",
         eyebrow: "설치 체크",
       },
       "13": {
