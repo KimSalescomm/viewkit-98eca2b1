@@ -199,8 +199,9 @@ const SalesCertBadge = () => {
         onPointerLeave={cancelLongPress}
         onPointerCancel={cancelLongPress}
         onContextMenu={(e) => e.preventDefault()}
+        style={{ bottom: "calc(1rem + env(safe-area-inset-bottom, 0px))" }}
         className={cn(
-          "group fixed bottom-5 right-5 z-40 isolate",
+          "group fixed right-4 sm:right-5 z-50 isolate",
           "inline-flex items-center gap-2",
           "h-11 px-4 rounded-full",
           "text-white",
@@ -210,6 +211,7 @@ const SalesCertBadge = () => {
           "hover:scale-105 hover:-translate-y-0.5",
           "transition-transform duration-200",
         )}
+
       >
         <span className="relative flex items-center justify-center">
           <Trophy className="w-[18px] h-[18px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]" strokeWidth={2.4} />

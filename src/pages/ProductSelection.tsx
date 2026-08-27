@@ -155,12 +155,12 @@ const ProductSelection = () => {
       />
 
       {/* Header */}
-      <header className="sticky top-0 z-30 shrink-0 px-5 sm:px-10 py-4 sm:py-5 flex items-center justify-between gap-3 border-b border-gray-100 bg-white/95 backdrop-blur">
-        <div className="flex items-center">
-          <div className="text-[24px] sm:text-[28px] font-semibold tracking-[-0.03em] text-brand-accent leading-none">VIEW KIT</div>
+      <header className="sticky top-0 z-30 shrink-0 px-4 sm:px-10 py-3 sm:py-5 flex items-center justify-between gap-2 border-b border-gray-100 bg-white/95 backdrop-blur">
+        <div className="flex shrink-0 items-center">
+          <div className="whitespace-nowrap text-[20px] sm:text-[28px] font-semibold tracking-[-0.03em] text-brand-accent leading-none">VIEW KIT</div>
         </div>
 
-        <nav className="flex items-center gap-2">
+        <nav className="flex min-w-0 items-center gap-1.5 sm:gap-2">
           {currentStore && (
             <button
               type="button"
@@ -168,11 +168,11 @@ const ProductSelection = () => {
                 setModalDismissible(true);
                 setModalOpen(true);
               }}
-              className="inline-flex h-11 items-center gap-2 rounded-full px-4 sm:px-5 text-[13px] font-semibold bg-brand-accent text-white hover:opacity-90 transition-opacity"
+              className="inline-flex h-9 sm:h-11 shrink-0 items-center gap-1.5 sm:gap-2 rounded-full px-3 sm:px-5 text-[13px] font-semibold bg-brand-accent text-white hover:opacity-90 transition-opacity"
               title="지점 변경"
             >
-              <Store className="w-[18px] h-[18px]" />
-              <span>{currentStore.slug}</span>
+              <Store className="w-[18px] h-[18px] shrink-0" />
+              <span className="whitespace-nowrap">{currentStore.slug}</span>
             </button>
           )}
           <ContentRequestButton variant="segment" />
@@ -184,9 +184,9 @@ const ProductSelection = () => {
               aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"}
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((v) => !v)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:bg-gray-100 transition-colors"
+              className="inline-flex h-9 w-9 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:bg-gray-100 transition-colors"
             >
-              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {menuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
 
             {/* Dropdown menu: 햄버거 아이콘 기준 우측 정렬, 헤더 고정 위치에 항상 노출 */}
@@ -209,7 +209,7 @@ const ProductSelection = () => {
 
 
       {/* Hero */}
-      <section className="shrink-0 px-5 sm:px-10 pt-6 pb-4 sm:pt-10 sm:pb-6 text-center">
+      <section className="shrink-0 px-4 sm:px-10 pt-6 pb-4 sm:pt-10 sm:pb-6 text-center">
         <h1 className="text-[32px] sm:text-[44px] font-extrabold tracking-[-0.02em] text-gray-900 leading-[1.2]">
           어떤 제품이 궁금하신가요?
         </h1>
@@ -224,7 +224,7 @@ const ProductSelection = () => {
       </div>
 
       {/* Product Grid */}
-      <section className="px-5 sm:px-10 pt-6 pb-8 sm:pt-8 sm:pb-12">
+      <section className="px-4 sm:px-10 pt-6 pb-24 sm:pt-8 sm:pb-12">
         <div className="max-w-5xl mx-auto w-full">
           <div className="mb-4">
             <h2 className="text-[20px] sm:text-[24px] font-semibold text-gray-900 tracking-[-0.02em] leading-tight">제품을 선택해보세요</h2>
@@ -247,7 +247,7 @@ const ProductSelection = () => {
                   aria-disabled={isDisabled}
                 >
                   {showNewBadge && (
-                    <span className="absolute right-2 top-2 z-10 rounded-full bg-brand-accent px-2 py-0.5 text-[11px] sm:text-[12px] font-bold leading-tight tracking-[0.02em] text-white shadow-sm">
+                    <span className="absolute right-2.5 top-2.5 z-10 rounded-full bg-brand-accent px-1.5 py-0.5 text-[10px] sm:text-[12px] font-bold leading-tight tracking-[0.02em] text-white shadow-sm">
                       NEW
                     </span>
                   )}
