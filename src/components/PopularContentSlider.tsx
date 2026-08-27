@@ -117,7 +117,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
 
   if (loading && items.length === 0) {
     return (
-      <section className="bg-gray-900 px-5 sm:px-10 py-6 sm:py-8">
+      <section className="bg-gray-900 px-4 sm:px-10 py-6 sm:py-8">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-end justify-between mb-4">
             <div className="flex items-center gap-2.5">
@@ -127,10 +127,10 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
               <h2 className="text-[20px] sm:text-[24px] font-semibold text-white tracking-tight">요즘 많이 본 콘텐츠</h2>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-3 gap-2.5 sm:gap-4">
             {[1, 2, 3].map((i) => (
               <div key={i} className="min-w-0 rounded-2xl bg-white/[0.06] overflow-hidden animate-pulse">
-                <div className="h-[130px] sm:h-[140px] bg-gray-800" />
+                <div className="h-[110px] sm:h-[140px] bg-gray-800" />
                 <div className="p-3 space-y-2">
                   <div className="h-4 w-16 rounded bg-gray-700" />
                   <div className="h-4 w-full rounded bg-gray-700" />
@@ -188,7 +188,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
   );
 
   return (
-    <section className="bg-gray-900 px-5 sm:px-10 py-6 sm:py-8">
+    <section className="bg-gray-900 px-4 sm:px-10 py-6 sm:py-8">
       <div className="max-w-5xl mx-auto">
         <div className="flex items-end justify-between mb-4">
           <div className="flex items-center gap-2.5">
@@ -223,16 +223,16 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
 
         {visibleItems.length > 3 ? (
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-3 sm:gap-4">
+            <div className="flex gap-2.5 sm:gap-4">
               {visibleItems.map((item, index) => (
-                <div key={item.path} className="flex-[0_0_calc(33.333%-0.75rem)] sm:flex-[0_0_calc(33.333%-1rem)] min-w-0">
+                <div key={item.path} className="flex-[0_0_calc(33.333%-0.625rem)] sm:flex-[0_0_calc(33.333%-1rem)] min-w-0">
                   <Card item={item} index={index} eager={index < 3} />
                 </div>
               ))}
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-3 gap-2.5 sm:gap-4">
             {visibleItems.map((item, index) => (
               <Card key={item.path} item={item} index={index} eager />
             ))}
