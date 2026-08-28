@@ -510,6 +510,53 @@ export const featuresMap: Record<string, Feature[]> = {
             "Case3,4처럼 수도관이 밖으로 이어지는 경우에는 주방 가구 컬러에 맞춘 몰딩 부자재로 숨김 처리를 해드려요.",
         },
       ],
+      tabs: [
+        {
+          label: "사진으로 보기",
+          mediaType: "gallery",
+          description:
+            "수도관 매립 여부, 냉장고와 싱크대의 거리 등 환경에 따라 STEM 설치는 달라져요. 가구색과 유사한 몰딩을 이용해 수도관이 드러나지 않도록 깔끔하게 마감해요.",
+          galleryImages: [
+            {
+              url: "/images/installation-step1.jpeg",
+              title: "1.냉장고장에 수도관이 매립되어 있나요?",
+              description:
+                "냉장고 장에 수도관이 있다면 STEM을 설치하기 가장 좋은 환경이에요! 깔끔하게 수도관을 연결할 수 있어요.",
+            },
+            {
+              url: "/images/installation-step2.jpeg",
+              title: "2.싱크대 거리가 가깝고, 싱크대 타공이 가능한가요?",
+              description:
+                "매립된 수도관이 없다면, 싱크대 옆면에 수도관을 꺼낼만큼 구멍을 내어 수도관이 밖으로 드러나지 않게 설치할 수 있어요.",
+            },
+            {
+              url: "/images/installation-step3.jpeg",
+              title: "3.싱크대 거리가 가깝지만, 싱크대 타공을 할 수 없다면?",
+              description:
+                "싱크대 아래 걸레받이 틈으로 수도관을 꺼내 연결할 수 있어요. 가구색과 가장 유사항 몰딩으로 깔끔하게 마무리 해드려요.",
+            },
+            {
+              url: "/images/installation-step4.jpeg",
+              title: "4.싱크대가 냉장고를 놓을 위치와 다소 떨어져 있나요?",
+              description:
+                "싱크대와 냉장고 사이를 잇는 수도관을 벽면에 가깝게 붙여 설치해요. 가구색과 가장 유사한 몰딩으로 깔끔하게 마무리 해드려요",
+            },
+            {
+              url: "/images/installation-step5.jpeg",
+              title: "인테리어에 맞춘 몰딩 부자재",
+              description:
+                "Case3,4처럼 수도관이 밖으로 이어지는 경우에는 주방 가구 컬러에 맞춘 몰딩 부자재로 숨김 처리를 해드려요.",
+            },
+          ],
+        },
+        {
+          label: "영상으로 보기",
+          mediaType: "video",
+          mediaUrl: "https://static.lge.co.kr/kr/story/trend/lg-refrigerators-dios-stem/stem_install.webm",
+          description:
+            "설치 과정을 영상으로 확인해보세요. 수도관 연결부터 몰딩 마감까지 실제 설치 흐름을 한눈에 볼 수 있어요.",
+        },
+      ],
       disclaimers: [
         "본 페이지의 내용은 설치 환경의 이해를 돕기 위해 연출된 이미지입니다. 실제 설치 완료 이미지는 설치 장소의 구조, 상황에 따라 다를 수 있습니다.",
         "LG 디오스 STEM 베이직은 급/배수관 연결이 필수입니다. 연결이 안되는 경우 설치가 불가능합니다.",
