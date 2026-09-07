@@ -219,7 +219,7 @@ const ProductVisitStats = () => {
         row
           .map((cell) => {
             const v = String(cell ?? "");
-            return /[",\n]/.test(v) ? `"${v.replace(/"/g, """)}"` : v;
+            return /[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v;
           })
           .join(","),
       )
