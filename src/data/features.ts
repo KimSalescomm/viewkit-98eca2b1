@@ -1220,7 +1220,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Flame",
       tag: "스팀 물걸레",
       mediaType: "video",
-      mediaUrl: "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_02_moving_steam_pc.mp4",
+      mediaUrl: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_02_moving_steam_pc.mp4",
       description:
         "로니는 AI 오염을 알아서 인식해 마른 얼룩이 인식되면 자동으로 스팀 물걸레 청소를 시작할 수 있습니다.\n실시간으로 생성된 100°C 스팀을 물걸레에 직접 분사해 강력하게 청소하며 오염 정도에 따라 최대 2회까지 청소를 반복합니다.\n청소가 끝나면 LG ThinQ 앱에서 청소 전후를 사진으로 비교할 수 있습니다.",
       highlights: ["AI로 바닥 오염물 인식", "100°C 스팀 물걸레 청소", "최대 2회 반복 청소", "ThinQ 전후 사진 비교"],
@@ -1232,7 +1232,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Zap",
       tag: "흡입 청소",
       mediaType: "video",
-      mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
+      mediaUrl: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
       description:
         "강력한 30W 흡입력으로 카펫 속 숨어 있는 먼지까지 흡입하고, 벽·모서리 먼지는 엣지 확장 브러시로, 머리카락과 반려동물 털은 듀얼 엉킴 방지 브러시로 한 번에 해결해요.",
       highlights: [
@@ -1249,14 +1249,14 @@ export const featuresMap: Record<string, Feature[]> = {
           highlights: ["30W 강력 흡입력", "고성능 모터", "무거운 이물질 흡입", "바닥 먼지 완전 제거"],
           mediaType: "video",
           mediaUrl:
-            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
+            "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_09_powerful_suction_pc.mp4",
         },
         {
           label: "엣지 확장 브러시",
           description: "최대 46mm까지 확장되는 사이드 브러시와 물걸레로 모서리나 벽면에 밀착하여 청소합니다.",
           highlights: ["엣지 확장 브러시", "벽면 가장자리 밀착 청소", "청소 사각지대 해결", "구석구석 꼼꼼 청소"],
           mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_10_edge_cleaning.mp4",
+          mediaUrl: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_10_edge_cleaning.mp4",
         },
         {
           label: "듀얼 엉킴 방지 브러시",
@@ -1264,7 +1264,7 @@ export const featuresMap: Record<string, Feature[]> = {
             "두 개의 브러시가 회전하며 머리카락을 가운데로 모아 엉킴을 방지합니다.\n모은 머리카락은 효율적으로 분리되어 먼지통으로 흡입합니다.",
           highlights: ["듀얼 엉킴 방지 브러시", "머리카락 흡입구 자동 이동", "엉킴 걱정 없이", "꾸준한 청소 성능"],
           mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_11_anti_tangle.mp4",
+          mediaUrl: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_11_anti_tangle.mp4",
         },
       ],
       disclaimers: [
@@ -1298,7 +1298,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "AI 맞춤 청소",
       mediaType: "video",
       mediaUrl:
-        "https://static-stg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_03_sensing_ai_driving_pc.mp4",
+        "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_03_sensing_ai_driving_pc.mp4",
       description:
         "RGB 카메라와 센서 기반 다양한 상황과 장애물을 섬세하게 인식하고 똑똑하게 판단합니다.\n헤매거나 바퀴가 들려 구속되었던 공간은 '고립 위험 영역'으로 인식하고 다음 청소에는 이를 회피하여 청소합니다.\n이후 해당 영역 내 장애물이 사라지면 청소를 재개해 진화하는 청소 경험을 제공합니다.",
       highlights: [
@@ -1315,46 +1315,46 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Armchair",
       tag: "공간 맞춤 솔루션",
       mediaType: "video",
-      mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
+      mediaUrl: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
       mediaSlides: [
         {
           mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
+          mediaUrl: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
         },
         {
           mediaType: "image",
           mediaUrl:
-            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
+            "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
         },
         {
           mediaType: "image",
           mediaUrl:
-            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_02.jpg",
+            "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_02.jpg",
         },
         {
           mediaType: "image",
           mediaUrl:
-            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_01.jpg",
+            "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_01.jpg",
         },
         {
           mediaType: "image",
           mediaUrl:
-            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_02.jpg",
+            "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_02.jpg",
         },
         {
           mediaType: "image",
           mediaUrl:
-            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_03.jpg",
+            "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_03.jpg",
         },
         {
           mediaType: "image",
           mediaUrl:
-            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_04.jpg",
+            "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_04.jpg",
         },
         {
           mediaType: "image",
           mediaUrl:
-            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_05.jpg",
+            "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_interior_kitchen_pc_05.jpg",
         },
       ],
 
@@ -1364,7 +1364,7 @@ export const featuresMap: Record<string, Feature[]> = {
           description:
             "약 15cm 초슬림 히든스테이션은 주방의 숨겨진 공간을 가치 있는 공간으로 바꿉니다.\n별도 전용 수납장을 마련할 필요 없이 싱크대 하단 걸레받이에 설치 가능해\n기존 수납 공간도 그대로 활용할 수 있습니다.",
           mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
+          mediaUrl: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/n95twu_keyvideo_kitchen_pc.mp4",
           highlights: [
             "15cm 초슬림 히든스테이션",
             "싱크대 하부 걸레받이 설치",
@@ -1381,52 +1381,52 @@ export const featuresMap: Record<string, Feature[]> = {
 
           mediaType: "video",
           mediaUrl:
-            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
+            "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
           mediaSlides: [
             {
               mediaType: "video",
               mediaUrl:
-                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
+                "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/n95tho_keyvideo_living-room_pc.mp4",
             },
             {
               mediaType: "image",
               mediaUrl:
-                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg",
+                "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg",
             },
             {
               mediaType: "image",
               mediaUrl:
-                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_02.jpg",
+                "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_02.jpg",
             },
             {
               mediaType: "image",
               mediaUrl:
-                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_01.jpg",
+                "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_01.jpg",
             },
             {
               mediaType: "image",
               mediaUrl:
-                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_02.jpg",
+                "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_02.jpg",
             },
             {
               mediaType: "image",
               mediaUrl:
-                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_03.jpg",
+                "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_03.jpg",
             },
             {
               mediaType: "image",
               mediaUrl:
-                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_04.jpg",
+                "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_04.jpg",
             },
             {
               mediaType: "image",
               mediaUrl:
-                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_05.jpg",
+                "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_05.jpg",
             },
             {
               mediaType: "image",
               mediaUrl:
-                "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_06.jpg",
+                "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_interior_livingroom_pc_06.jpg",
             },
           ],
         },
@@ -1458,7 +1458,7 @@ export const featuresMap: Record<string, Feature[]> = {
           description:
             "로니는 냉온수 세척부터 100℃ 살균 스팀까지 맞춤 세척 솔루션입니다.\n끝난 후에는 약 40~60℃ 온풍으로 물걸레를 건조시켜 물걸레 속 유해균을 99.99% 제거합니다.",
           mediaType: "video",
-          mediaUrl: "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_12_mop_solution_pc.mp4",
+          mediaUrl: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_12_mop_solution_pc.mp4",
           highlights: ["냉온수 맞춤 세척", "100℃ 살균 스팀", "약 40℃ 온풍 건조", "유해균 99.99% 제거"],
         },
         {
@@ -1467,7 +1467,7 @@ export const featuresMap: Record<string, Feature[]> = {
             "히든스테이션 상부의 배기 팬이 제품 내부에서 발생할 수 있는 습증기를 외부로 배출해 스테이션 내부 관리에 대한 걱정과 부담을 덜어줍니다.",
           mediaType: "video",
           mediaUrl:
-            "https://wwwstg.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
+            "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_13_station_conditioning_pc.mp4",
           highlights: ["히든스테이션 상부 배기 팬", "내부 습증기 외부 배출", "히든 스테이션 내부 관리 부담 감소"],
         },
       ],
