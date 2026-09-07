@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { getSales, clearAllSales, deleteSale, deleteSalesByIds, SaleRecord } from "@/utils/salesLog";
 import StoreVisitStats from "@/components/StoreVisitStats";
+import ProductVisitStats from "@/components/ProductVisitStats";
 import ScreensaverManager from "@/components/ScreensaverManager";
 import FeaturePreferenceSection from "@/components/admin/FeaturePreferenceSection";
 import ContentRequestSection from "@/components/admin/ContentRequestSection";
@@ -712,7 +713,12 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
 
 
 
-        {tab === "visits" && <StoreVisitStats />}
+        {tab === "visits" && (
+          <>
+            <StoreVisitStats />
+            <ProductVisitStats />
+          </>
+        )}
 
         {tab === "content" && <FeaturePreferenceSection />}
 
