@@ -1,10 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Layers, Users, Eye, Download, RefreshCw } from "lucide-react";
+import { Layers, Users, Eye, Download, RefreshCw, CalendarIcon } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { cn } from "@/lib/utils";
 import { products } from "@/data/products";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 type Row = {
   store_id: string;
@@ -13,7 +16,7 @@ type Row = {
   created_at: string;
 };
 
-type RangeKey = "today" | "7d" | "14d" | "30d" | "all";
+type RangeKey = "today" | "7d" | "14d" | "30d" | "all" | "custom";
 
 const RANGES: { key: RangeKey; label: string }[] = [
   { key: "today", label: "오늘" },
@@ -21,17 +24,36 @@ const RANGES: { key: RangeKey; label: string }[] = [
   { key: "14d", label: "14일" },
   { key: "30d", label: "30일" },
   { key: "all", label: "전체" },
+  { key: "custom", label: "직접" },
 ];
 
 const SITE_OPEN = "2026-06-08T00:00:00Z";
+const SITE_OPEN_DATE = new Date(SITE_OPEN);
 
-const getSince = (key: RangeKey): string | null => {
-  if (key === "all") return null;
-  const d = new Date();
-  if (key === "today") d.setHours(0, 0, 0, 0);
-  else d.setDate(d.getDate() - (key === "7d" ? 7 : key === "14d" ? 14 : 30));
-  return d.toISOString();
+const startOfDayLocal = (d: Date): Date => {
+  const n = new Date(d);
+  n.setHours(0, 0, 0, 0);
+  return n;
 };
+
+const getPresetDates = (key: Exclude<RangeKey, "all" | "custom">): [Date, Date] => {
+  const end = startOfDayLocal(new Date());
+  const start = startOfDayLocal(new Date());
+  if (key === "today") {
+    return [start, end];
+  }
+  const days = key === "7d" ? 7 : key === "14d" ? 14 : 30;
+  start.setDate(start.getDate() - days);
+  return [start, end];
+};
+
+const getEndExclusive = (d: Date): string => {
+  const next = startOfDayLocal(new Date(d));
+  next.setDate(next.getDate() + 1);
+  return next.toISOString();
+};
+
+const normalizeDate = (d: Date): number => startOfDayLocal(d).getTime();
 
 const PRODUCT_NAMES: Record<string, string> = Object.fromEntries(
   products.map((p) => [p.id, p.name]),
@@ -57,6 +79,8 @@ const classify = (path: string): { key: string; label: string } | null => {
 
 const ProductVisitStats = () => {
   const [range, setRange] = useState<RangeKey>("30d");
+  const [startDate, setStartDate] = useState<Date>(() => getPresetDates("30d")[0]);
+  const [endDate, setEndDate] = useState<Date>(() => getPresetDates("30d")[1]);
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
   const [reloadKey, setReloadKey] = useState(0);
@@ -65,25 +89,29 @@ const ProductVisitStats = () => {
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
-    const since = getSince(range);
-    const effectiveSince = since && since > SITE_OPEN ? since : SITE_OPEN;
+
+    const since = range === "all" ? SITE_OPEN : startDate.toISOString();
+    const effectiveSince = since > SITE_OPEN ? since : SITE_OPEN;
+    const until = range === "all" ? null : getEndExclusive(endDate);
     const PAGE_SIZE = 1000;
 
     const fetchAll = async () => {
-      const { count } = await supabase
-        .from("page_views")
-        .select("id", { count: "exact", head: true })
-        .gte("created_at", effectiveSince);
+      let countQ = supabase.from("page_views").select("id", { count: "exact", head: true }).gte("created_at", effectiveSince);
+      if (until) countQ = countQ.lt("created_at", until);
+      const { count } = await countQ;
+
       const all: Row[] = [];
       const maxPages = Math.max(1, Math.ceil((count ?? 100000) / PAGE_SIZE));
       for (let page = 0; page < maxPages; page++) {
         const from = page * PAGE_SIZE;
-        const { data, error } = await supabase
+        let q = supabase
           .from("page_views")
           .select("store_id, path, session_id, created_at")
           .gte("created_at", effectiveSince)
           .order("created_at", { ascending: false })
           .range(from, from + PAGE_SIZE - 1);
+        if (until) q = q.lt("created_at", until);
+        const { data, error } = await q;
         if (error || !data || data.length === 0) break;
         all.push(...(data as Row[]));
         if (data.length < PAGE_SIZE) break;
@@ -105,7 +133,7 @@ const ProductVisitStats = () => {
     return () => {
       cancelled = true;
     };
-  }, [range, reloadKey]);
+  }, [range, startDate, endDate, reloadKey]);
 
   const stats = useMemo(() => {
     const map = new Map<
@@ -143,8 +171,41 @@ const ProductVisitStats = () => {
     [rows],
   );
 
+  const handleRangeChange = (key: RangeKey) => {
+    setRange(key);
+    if (key === "all") {
+      setStartDate(SITE_OPEN_DATE);
+      setEndDate(startOfDayLocal(new Date()));
+    } else if (key !== "custom") {
+      const [start, end] = getPresetDates(key);
+      setStartDate(start);
+      setEndDate(end);
+    }
+  };
+
+  const handleStartSelect = (date: Date | undefined) => {
+    if (!date) return;
+    if (normalizeDate(date) > normalizeDate(endDate)) {
+      setEndDate(date);
+    }
+    setStartDate(date);
+    setRange("custom");
+  };
+
+  const handleEndSelect = (date: Date | undefined) => {
+    if (!date) return;
+    if (normalizeDate(date) < normalizeDate(startDate)) {
+      setStartDate(date);
+    }
+    setEndDate(date);
+    setRange("custom");
+  };
+
   const handleExport = () => {
-    const rangeLabel = RANGES.find((r) => r.key === range)?.label || range;
+    const rangeLabel =
+      range === "custom"
+        ? `${format(startDate, "yyyy.MM.dd")}~${format(endDate, "yyyy.MM.dd")}`
+        : RANGES.find((r) => r.key === range)?.label || range;
     const table = [
       ["기간", rangeLabel],
       ["총 페이지뷰", totals.views],
@@ -174,6 +235,9 @@ const ProductVisitStats = () => {
     URL.revokeObjectURL(url);
   };
 
+  const today = startOfDayLocal(new Date());
+  const datePickerDisabled = range === "all";
+
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5 mb-6">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
@@ -189,7 +253,7 @@ const ProductVisitStats = () => {
               <button
                 key={r.key}
                 type="button"
-                onClick={() => setRange(r.key)}
+                onClick={() => handleRangeChange(r.key)}
                 className={cn(
                   "px-3 h-7 rounded-md text-xs font-medium transition-colors",
                   range === r.key
@@ -201,6 +265,72 @@ const ProductVisitStats = () => {
               </button>
             ))}
           </div>
+
+          <div className="hidden sm:block w-px h-5 bg-slate-200" />
+
+          <div className="flex items-center gap-2">
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled={datePickerDisabled}
+                  className={cn(
+                    "h-7 px-2 text-xs justify-start gap-1 w-[110px] sm:w-[130px] font-normal",
+                    !startDate && "text-muted-foreground",
+                    datePickerDisabled && "opacity-60 cursor-not-allowed",
+                  )}
+                >
+                  <CalendarIcon className="w-3 h-3 shrink-0" />
+                  {startDate ? format(startDate, "yyyy.MM.dd") : <span>시작일</span>}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  mode="single"
+                  selected={startDate}
+                  onSelect={handleStartSelect}
+                  disabled={(date) => normalizeDate(date) > normalizeDate(endDate)}
+                  initialFocus
+                  locale={ko}
+                  className={cn("p-3 pointer-events-auto")}
+                />
+              </PopoverContent>
+            </Popover>
+            <span className="text-xs text-slate-400">~</span>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled={datePickerDisabled}
+                  className={cn(
+                    "h-7 px-2 text-xs justify-start gap-1 w-[110px] sm:w-[130px] font-normal",
+                    !endDate && "text-muted-foreground",
+                    datePickerDisabled && "opacity-60 cursor-not-allowed",
+                  )}
+                >
+                  <CalendarIcon className="w-3 h-3 shrink-0" />
+                  {endDate ? format(endDate, "yyyy.MM.dd") : <span>종료일</span>}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  mode="single"
+                  selected={endDate}
+                  onSelect={handleEndSelect}
+                  disabled={(date) => {
+                    const t = normalizeDate(date);
+                    return t < normalizeDate(startDate) || t > normalizeDate(today);
+                  }}
+                  initialFocus
+                  locale={ko}
+                  className={cn("p-3 pointer-events-auto")}
+                />
+              </PopoverContent>
+            </Popover>
+          </div>
+
           <button
             type="button"
             onClick={refetch}
