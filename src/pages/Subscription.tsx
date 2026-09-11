@@ -357,6 +357,65 @@ export const airconPlanContents: AirconPlanContent[] = [
   },
 ];
 
+/**
+ * 세탁기 요금제(프리미엄 / 라이트플러스)별 케어서비스 콘텐츠.
+ * 라이트플러스는 단계별 이미지 자료가 없어 영상 1개 + 체크리스트만 노출합니다.
+ */
+type WasherPlanId = "premium" | "litePlus";
+
+interface WasherPlanStep {
+  label: string;
+  hasDetailLink: boolean;
+  detailUrl?: string;
+}
+
+interface WasherPlanContent {
+  plan: WasherPlanId;
+  planLabel: string;
+  title: string;
+  badge: string;
+  badgeClassName: string;
+  beforeAfterImages?: { before: string; after: string };
+  videoUrl?: string;
+  videoCaption?: string;
+  steps: WasherPlanStep[];
+}
+
+export const washerPlanContents: WasherPlanContent[] = [
+  {
+    plan: "premium",
+    planLabel: "프리미엄",
+    title: "세탁기 케어서비스 (분해세척)",
+    badge: "완전분해세척 · 고무패킹 교체",
+    badgeClassName: "bg-blue-50 text-blue-700 border-blue-100",
+    beforeAfterImages: { before: washerBefore, after: washerAfter },
+    steps: [
+      { label: "분해세척", hasDetailLink: true },
+      { label: "세탁조 스팀 & UV 관리", hasDetailLink: true },
+      { label: "고무패킹 교체", hasDetailLink: true },
+      { label: "급/배수 필터 세척", hasDetailLink: false },
+      { label: "배수 필터 교체", hasDetailLink: false },
+      { label: "세탁조 클리너 제공", hasDetailLink: false },
+      { label: "제품 성능 점검", hasDetailLink: false },
+      { label: "토탈 클리닝", hasDetailLink: false },
+    ],
+  },
+  {
+    plan: "litePlus",
+    planLabel: "라이트플러스",
+    title: "세탁기 케어서비스 (부분분해세척)",
+    badge: "부분분해세척 · 세탁조 클리닝",
+    badgeClassName: "bg-emerald-50 text-emerald-700 border-emerald-100",
+    videoUrl: "https://youtu.be/x1dF8E81q0U",
+    videoCaption: "세탁조 클리닝 과정",
+    steps: [
+      { label: "부분분해세척 (세탁조)", hasDetailLink: false },
+      { label: "세탁조 스팀 & UV 관리", hasDetailLink: false },
+      { label: "필터 세척 및 교체", hasDetailLink: false },
+    ],
+  },
+];
+
 const youtubeThumbnail = (url: string): string => {
   const m = url.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);
   return m ? `https://img.youtube.com/vi/${m[1]}/hqdefault.jpg` : "";
@@ -387,10 +446,18 @@ const Subscription = () => {
     ? airconPlanContents.find((p) => p.plan === airconPlanId)
     : undefined;
   const isAirconLite = isAircon && airconPlanId === "litePlus";
+
+  const [washerPlanId, setWasherPlanId] = useState<WasherPlanId>("premium");
+  const isWasher = selected.id === "washer";
+  const washerPlan = isWasher
+    ? washerPlanContents.find((p) => p.plan === washerPlanId)
+    : undefined;
+  const isWasherLite = isWasher && washerPlanId === "litePlus";
+
   const [litePlaying, setLitePlaying] = useState(false);
   useEffect(() => {
     setLitePlaying(false);
-  }, [airconPlanId, selectedId]);
+  }, [airconPlanId, washerPlanId, selectedId]);
 
   // Preload all before/after images on mount so tab switching is instant
   useEffect(() => {
@@ -463,7 +530,12 @@ const Subscription = () => {
             dishwasher: "식기세척기 케어서비스 (내부 세척)",
             oven: "광파오븐 케어서비스 (내부 클리닝)",
           };
-          const title = isAircon && airconPlan ? airconPlan.title : sectionTitles[selected.id];
+          const title =
+            isAircon && airconPlan
+              ? airconPlan.title
+              : isWasher && washerPlan
+              ? washerPlan.title
+              : sectionTitles[selected.id];
           if (!title) return null;
           return (
             <div className="mb-4 sm:mb-5 flex flex-wrap items-center justify-between gap-3">
@@ -476,21 +548,27 @@ const Subscription = () => {
                 {title}
               </h2>
               <div className="flex items-center gap-3">
-                {isAircon && (
+                {(isAircon || isWasher) && (
                   <div
                     role="tablist"
-                    aria-label="에어컨 요금제 선택"
+                    aria-label={isAircon ? "에어컨 요금제 선택" : "세탁기 요금제 선택"}
                     className="inline-flex items-center rounded-full border border-gray-200 bg-white p-0.5"
                   >
-                    {airconPlanContents.map((p) => {
-                      const active = p.plan === airconPlanId;
+                    {(isAircon ? airconPlanContents : washerPlanContents).map((p) => {
+                      const active = isAircon
+                        ? p.plan === airconPlanId
+                        : p.plan === washerPlanId;
                       return (
                         <button
                           key={p.plan}
                           type="button"
                           role="tab"
                           aria-selected={active}
-                          onClick={() => setAirconPlanId(p.plan)}
+                          onClick={() =>
+                            isAircon
+                              ? setAirconPlanId(p.plan as AirconPlanId)
+                              : setWasherPlanId(p.plan as WasherPlanId)
+                          }
                           className={`rounded-full px-3 h-7 text-[12px] font-semibold transition-colors ${
                             active ? "bg-gray-900 text-white" : "bg-transparent text-gray-500"
                           }`}
@@ -504,7 +582,9 @@ const Subscription = () => {
                 <FeatureLikeButton
                   productId="subscription"
                   productName="구독 케어"
-                  featureId={`care-before-after:${selected.id}${isAircon ? `:${airconPlanId}` : ""}`}
+                  featureId={`care-before-after:${selected.id}${
+                    isAircon ? `:${airconPlanId}` : isWasher ? `:${washerPlanId}` : ""
+                  }`}
                   featureTitle={title}
                   variant="desktop"
                   className="shrink-0"
@@ -514,19 +594,21 @@ const Subscription = () => {
           );
         })()}
 
-        {/* 에어컨 요금제 배지 */}
-        {isAircon && airconPlan && (
+        {/* 요금제 배지 */}
+        {((isAircon && airconPlan) || (isWasher && washerPlan)) && (
           <div className="mb-4 sm:mb-5">
             <span
-              className={`inline-flex items-center rounded-full border px-3 h-7 ${typeCaptionBold} ${airconPlan.badgeClassName}`}
+              className={`inline-flex items-center rounded-full border px-3 h-7 ${typeCaptionBold} ${
+                isAircon && airconPlan ? airconPlan.badgeClassName : washerPlan!.badgeClassName
+              }`}
             >
-              {airconPlan.badge}
+              {isAircon && airconPlan ? airconPlan.badge : washerPlan!.badge}
             </span>
           </div>
         )}
 
         {/* Before / After */}
-        {!isAirconLite && (
+        {!isAirconLite && !isWasherLite && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {/* Before */}
           <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)] flex flex-col h-full">
@@ -676,60 +758,67 @@ const Subscription = () => {
         )}
 
         {/* 라이트플러스: 케어 영상 + 체크리스트 */}
-        {isAirconLite && airconPlan && (
-          <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
-            {litePlaying ? (
-              <div className="relative aspect-video bg-black">
-                <iframe
-                  src="https://www.youtube.com/embed/t7DwsspCwuM?autoplay=1&mute=1&rel=0&playsinline=1"
-                  title="라이트플러스 부분분해세척 케어 영상"
-                  className="absolute inset-0 w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
-              </div>
-            ) : (
-              <button
-                type="button"
-                onClick={() => setLitePlaying(true)}
-                className="group block w-full relative aspect-video bg-gray-100 overflow-hidden"
-                aria-label="라이트플러스 케어 영상 재생"
-              >
-                <img
-                  src={youtubeThumbnail(airconPlan.videoUrl!)}
-                  alt="라이트플러스 부분분해세척 케어 영상"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05) 45%, transparent)" }}
-                />
-                <div className={`absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 h-7 rounded-lg ${typeCaptionBold} bg-brand-accent text-white shadow-md`}>
-                  <Play className={actionIconSize} fill="currentColor" />
-                  케어 영상 보기
+        {(isAirconLite || isWasherLite) && (
+          (() => {
+            const plan = isAirconLite ? airconPlan! : washerPlan!;
+            const productName = isAirconLite ? "스탠드 에어컨" : "세탁기";
+            const { embedUrl } = plan.videoUrl ? convertToEmbedUrl(plan.videoUrl) : { embedUrl: "" };
+            return (
+              <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
+                {litePlaying && embedUrl ? (
+                  <div className="relative aspect-video bg-black">
+                    <iframe
+                      src={`${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1&mute=1&rel=0&playsinline=1`}
+                      title={`${productName} 라이트플러스 케어 영상`}
+                      className="absolute inset-0 w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setLitePlaying(true)}
+                    className="group block w-full relative aspect-video bg-gray-100 overflow-hidden"
+                    aria-label={`${productName} 라이트플러스 케어 영상 재생`}
+                  >
+                    <img
+                      src={youtubeThumbnail(plan.videoUrl!)}
+                      alt={`${productName} 라이트플러스 케어 영상`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05) 45%, transparent)" }}
+                    />
+                    <div className={`absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 h-7 rounded-lg ${typeCaptionBold} bg-brand-accent text-white shadow-md`}>
+                      <Play className={actionIconSize} fill="currentColor" />
+                      케어 영상 보기
+                    </div>
+                  </button>
+                )}
+                <div className="px-5 py-3 border-t border-gray-50">
+                  <p className={`${typeCaption} text-gray-500`}>{plan.videoCaption}</p>
                 </div>
-              </button>
-            )}
-            <div className="px-5 py-3 border-t border-gray-50">
-              <p className={`${typeCaption} text-gray-500`}>{airconPlan.videoCaption}</p>
-            </div>
-            <div className="px-5 py-5 border-t border-gray-50">
-              <h3 className={`${typeHeading} text-gray-900 flex items-center gap-1.5 mb-3`}>
-                <Sparkles className="w-4 h-4 text-brand-accent" />
-                스탠드 에어컨 케어 과정
-              </h3>
-              <ul className="space-y-2">
-                {airconPlan.steps.map((step) => (
-                  <li key={step.label} className="flex items-center gap-2.5 px-2.5 py-2 -mx-2.5">
-                    <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-brand-accent text-white">
-                      <Check className="w-3 h-3" strokeWidth={3} />
-                    </span>
-                    <span className={`${typeBodyMedium} text-gray-900 flex-1`}>{step.label}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+                <div className="px-5 py-5 border-t border-gray-50">
+                  <h3 className={`${typeHeading} text-gray-900 flex items-center gap-1.5 mb-3`}>
+                    <Sparkles className="w-4 h-4 text-brand-accent" />
+                    {productName} 케어 과정
+                  </h3>
+                  <ul className="space-y-2">
+                    {plan.steps.map((step) => (
+                      <li key={step.label} className="flex items-center gap-2.5 px-2.5 py-2 -mx-2.5">
+                        <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-brand-accent text-white">
+                          <Check className="w-3 h-3" strokeWidth={3} />
+                        </span>
+                        <span className={`${typeBodyMedium} text-gray-900 flex-1`}>{step.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            );
+          })()
         )}
 
         {/* Highlight banner */}
