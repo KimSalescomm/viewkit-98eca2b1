@@ -44,6 +44,8 @@ import dishBefore from "@/assets/dishB.png";
 import dishAfter from "@/assets/dishA.jpg";
 import bathairHomepageAsset from "@/assets/bathair-homepage.jpg.asset.json";
 
+const bathairHomepageImage = bathairHomepageAsset.url;
+
 interface CareStep {
   label: string;
   image?: string;
