@@ -374,11 +374,12 @@ export const airconPlanContents: AirconPlanContent[] = [
     badge: "부분분해세척 · 전면 커버 분리",
     badgeClassName: "bg-emerald-50 text-emerald-700 border-emerald-100",
     videoUrl: "https://youtu.be/t7DwsspCwuM",
-    videoCaption: "전면 커버 분리 후 부분분해세척 과정",
     steps: [
-      { label: "부분분해세척 (전면 커버)", hasDetailLink: false },
-      { label: "위생케어 (UV, 피톤치드 · 12개월)", hasDetailLink: false },
-      { label: "필터 세척 및 교체", hasDetailLink: false },
+      { label: "기본 세척(커버 분리)", hasDetailLink: false },
+      { label: "위생케어(피톤치드, UV케어)", hasDetailLink: false },
+      { label: "필터세척 & 교체", hasDetailLink: false },
+      { label: "제품 성능 점검", hasDetailLink: false },
+      { label: "무상 A/S", hasDetailLink: false },
     ],
   },
 ];
