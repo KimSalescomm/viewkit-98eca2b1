@@ -675,7 +675,6 @@ const Subscription = () => {
                 washer: "세탁기 분해세척 전",
                 refrigerator: "기계실 세척 전",
                 stem: "기계실 세척 전",
-                washcombo: "스팀케어 전",
                 airconditioner: "열교환기 세척 전",
                 airpurifier: "필터 교체 & 클리닝 전",
                 cooktop: "코팅 및 광택 서비스 전",
