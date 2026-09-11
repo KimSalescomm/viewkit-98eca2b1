@@ -388,6 +388,9 @@ const Subscription = () => {
     : undefined;
   const isAirconLite = isAircon && airconPlanId === "litePlus";
   const [litePlaying, setLitePlaying] = useState(false);
+  useEffect(() => {
+    setLitePlaying(false);
+  }, [airconPlanId, selectedId]);
 
   // Preload all before/after images on mount so tab switching is instant
   useEffect(() => {
