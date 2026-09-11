@@ -330,7 +330,7 @@ export const airconPlanContents: AirconPlanContent[] = [
     plan: "premium",
     planLabel: "프리미엄",
     title: "스탠드 에어컨 케어서비스 (분해세척)",
-    badge: "완전분해세척 · 열교환기 제외 부품",
+    badge: "완전분해세척 · 열교환기 고압 세척",
     badgeClassName: "bg-blue-50 text-blue-700 border-blue-100",
     beforeAfterImages: { before: airconBefore, after: airconAfter },
     steps: [
