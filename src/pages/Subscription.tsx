@@ -42,6 +42,7 @@ import ovenBefore from "@/assets/ovenB.png";
 import ovenAfter from "@/assets/ovenA.png";
 import dishBefore from "@/assets/dishB.png";
 import dishAfter from "@/assets/dishA.jpg";
+import bathairHomepageAsset from "@/assets/bathair-homepage.jpg.asset.json";
 
 interface CareStep {
   label: string;
