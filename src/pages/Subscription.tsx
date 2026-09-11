@@ -433,11 +433,13 @@ export const washerPlanContents: WasherPlanContent[] = [
     badge: "부분분해세척 · 세탁조 클리닝",
     badgeClassName: "bg-emerald-50 text-emerald-700 border-emerald-100",
     videoUrl: "https://youtu.be/x1dF8E81q0U",
-    videoCaption: "세탁조 클리닝 과정",
     steps: [
-      { label: "부분분해세척 (세탁조)", hasDetailLink: false },
-      { label: "세탁조 스팀 & UV 관리", hasDetailLink: false },
-      { label: "필터 세척 및 교체", hasDetailLink: false },
+      { label: "드럼케어", hasDetailLink: false },
+      { label: "스팀케어", hasDetailLink: false },
+      { label: "토탈 클리닝", hasDetailLink: false },
+      { label: "성능점검", hasDetailLink: false },
+      { label: "정기적인 소모품 교체", hasDetailLink: false },
+      { label: "무상 A/S", hasDetailLink: false },
     ],
   },
 ];
