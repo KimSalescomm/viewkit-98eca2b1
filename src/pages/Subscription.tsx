@@ -594,19 +594,21 @@ const Subscription = () => {
           );
         })()}
 
-        {/* 에어컨 요금제 배지 */}
-        {isAircon && airconPlan && (
+        {/* 요금제 배지 */}
+        {((isAircon && airconPlan) || (isWasher && washerPlan)) && (
           <div className="mb-4 sm:mb-5">
             <span
-              className={`inline-flex items-center rounded-full border px-3 h-7 ${typeCaptionBold} ${airconPlan.badgeClassName}`}
+              className={`inline-flex items-center rounded-full border px-3 h-7 ${typeCaptionBold} ${
+                isAircon && airconPlan ? airconPlan.badgeClassName : washerPlan!.badgeClassName
+              }`}
             >
-              {airconPlan.badge}
+              {isAircon && airconPlan ? airconPlan.badge : washerPlan!.badge}
             </span>
           </div>
         )}
 
         {/* Before / After */}
-        {!isAirconLite && (
+        {!isAirconLite && !isWasherLite && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {/* Before */}
           <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)] flex flex-col h-full">
