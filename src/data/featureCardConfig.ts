@@ -33,18 +33,19 @@ export interface ProductCardConfig {
 
 export const productCardConfig: Record<string, ProductCardConfig> = {
   bathair: {
+    order: ["7", "5", "4", "1", "2", "6"],
     cards: {
-      "3": {
-        image: "/__l5e/assets-v1/df5bc023-5dd7-480a-81d2-4333f119d537/bathair-cleancare-edited.png",
-        eyebrow: "클린케어",
-      },
       "4": {
         image: "/__l5e/assets-v1/ef0cc59e-c910-415e-90d8-d87525609aac/bathair-install-cropped.png",
         eyebrow: "설치 환경",
       },
+      "5": {
+        image: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/bathair_review_01.jpg",
+        eyebrow: "설치 사례",
+      },
       "7": {
         image: "https://static.lge.co.kr/kr/Caresolution/images/bath-air-system/img-bath-air-system04.jpg",
-        eyebrow: "바스에어 구독",
+        eyebrow: "가전구독",
       },
     },
   },
