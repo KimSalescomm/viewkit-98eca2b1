@@ -333,6 +333,7 @@ const SUBSCRIPTION_PRODUCT_ORDER = [
   "cooktop",
   "oven",
   "dishwasher",
+  "bathair",
 ];
 
 export const subscriptionProducts: SubscriptionProduct[] = [..._subscriptionProducts].sort(
