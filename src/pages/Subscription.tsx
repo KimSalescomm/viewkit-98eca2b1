@@ -624,6 +624,53 @@ const Subscription = () => {
             </div>
           </div>
         </div>
+        )}
+
+        {/* 라이트플러스: 케어 영상 + 체크리스트 */}
+        {isAirconLite && airconPlan && (
+          <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
+            <a
+              href={airconPlan.videoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="group block relative aspect-video bg-gray-100 overflow-hidden"
+              aria-label="라이트플러스 케어 영상 보기"
+            >
+              <img
+                src={youtubeThumbnail(airconPlan.videoUrl!)}
+                alt="라이트플러스 부분분해세척 케어 영상"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05) 45%, transparent)" }}
+              />
+              <div className={`absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 h-7 rounded-lg ${typeCaptionBold} bg-brand-accent text-white shadow-md`}>
+                <Play className={actionIconSize} fill="currentColor" />
+                케어 영상 보기
+              </div>
+            </a>
+            <div className="px-5 py-3 border-t border-gray-50">
+              <p className={`${typeCaption} text-gray-500`}>{airconPlan.videoCaption}</p>
+            </div>
+            <div className="px-5 py-5 border-t border-gray-50">
+              <h3 className={`${typeHeading} text-gray-900 flex items-center gap-1.5 mb-3`}>
+                <Sparkles className="w-4 h-4 text-brand-accent" />
+                스탠드 에어컨 케어 과정
+              </h3>
+              <ul className="space-y-2">
+                {airconPlan.steps.map((step) => (
+                  <li key={step.label} className="flex items-center gap-2.5 px-2.5 py-2 -mx-2.5">
+                    <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-brand-accent text-white">
+                      <Check className="w-3 h-3" strokeWidth={3} />
+                    </span>
+                    <span className={`${typeBodyMedium} text-gray-900 flex-1`}>{step.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
 
         {/* Highlight banner */}
         <div
