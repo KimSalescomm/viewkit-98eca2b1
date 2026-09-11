@@ -570,6 +570,7 @@ const Subscription = () => {
             cooktop: "전기레인지 케어서비스 (코팅 및 광택)",
             dishwasher: "식기세척기 케어서비스 (내부 세척)",
             oven: "광파오븐 케어서비스 (내부 클리닝)",
+            bathair: "바스에어시스템 케어서비스 (팬분해세척)",
           };
           const title =
             isAircon && airconPlan
