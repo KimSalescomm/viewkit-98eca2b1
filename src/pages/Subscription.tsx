@@ -314,12 +314,12 @@ const SUBSCRIPTION_PRODUCT_ORDER = [
   "washcombo",
   "airconditioner",
   "airpurifier",
+  "bathair",
   "refrigerator",
   "stem",
   "cooktop",
   "oven",
   "dishwasher",
-  "bathair",
 ];
 
 export const subscriptionProducts: SubscriptionProduct[] = [..._subscriptionProducts].sort(
