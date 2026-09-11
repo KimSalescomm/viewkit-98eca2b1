@@ -118,8 +118,12 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     },
   },
   airconditioner: {
-    order: ["15", "18", "19", "20", "21", "17", "22"],
+    order: ["23", "15", "18", "19", "20", "21", "17", "22"],
     cards: {
+      "23": {
+        image: "https://img.youtube.com/vi/t7DwsspCwuM/hqdefault.jpg",
+        eyebrow: "가전구독",
+      },
       "15": {
         image: "https://www.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AI_coldfree_detail_03.jpg",
         eyebrow: "AI 콜드프리",
