@@ -239,6 +239,7 @@ const _subscriptionProducts: SubscriptionProduct[] = [
       { label: "드럼 케어", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_02_260724.jpg" },
       { label: "UV/스팀 케어", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_08_260805.png" },
       { label: "내시경 카메라 점검", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_03_260724.jpg" },
+      { label: "정기적인 소모품 교체" },
       { label: "무상 A/S" },
     ],
   },
