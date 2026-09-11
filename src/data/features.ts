@@ -874,6 +874,38 @@ export const featuresMap: Record<string, Feature[]> = {
   // 에어컨 특장점
   airconditioner: [
     {
+      id: "23",
+      title: "에어컨 구독은 왜 좋을까요?",
+      subtitle: "라이트플러스와 프리미엄 케어를\n영상으로 비교해 보세요.",
+      icon: "Gift",
+      tag: "가전구독",
+      mediaType: "youtube",
+      mediaUrl: "https://youtu.be/t7DwsspCwuM",
+      description:
+        "에어컨도 가전 구독으로 관리하면 정기적인 전문 케어와 무상 A/S까지 받을 수 있어요. 라이트플러스와 프리미엄의 차이를 영상으로 확인해 보세요.",
+      highlights: ["라이트플러스 구독", "프리미엄 구독", "영상으로 한눈에 비교"],
+      tabs: [
+        {
+          label: "라이트플러스",
+          mediaType: "youtube",
+          mediaUrl: "https://youtu.be/t7DwsspCwuM",
+          description:
+            "필터 클린봇과 UV 케어, 기본 분해 세척까지 포함된 실속형 구독 케어 서비스입니다.",
+        },
+        {
+          label: "프리미엄",
+          mediaType: "youtube",
+          mediaUrl: "https://youtu.be/iD6698HS-BY",
+          description:
+            "더 꼼꼼한 분해 세척과 피톤치드, UV 케어까지 제공되는 프리미엄 구독 케어 서비스입니다.",
+        },
+      ],
+      disclaimers: [
+        "제공되는 서비스 내용은 상품 및 계약 조건에 따라 상이할 수 있습니다.",
+        "자세한 사항은 LG전자 가전구독 상세 페이지를 참고해주세요.",
+      ],
+    },
+    {
       id: "15",
       title: "콜드프리가 무엇인가요?",
       subtitle: "온도와 습도를 모두 맞춰주는 콜드프리.\n춥지도 꿉꿉하지도 않게 맞춰줘요",
