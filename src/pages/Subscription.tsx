@@ -446,10 +446,18 @@ const Subscription = () => {
     ? airconPlanContents.find((p) => p.plan === airconPlanId)
     : undefined;
   const isAirconLite = isAircon && airconPlanId === "litePlus";
+
+  const [washerPlanId, setWasherPlanId] = useState<WasherPlanId>("premium");
+  const isWasher = selected.id === "washer";
+  const washerPlan = isWasher
+    ? washerPlanContents.find((p) => p.plan === washerPlanId)
+    : undefined;
+  const isWasherLite = isWasher && washerPlanId === "litePlus";
+
   const [litePlaying, setLitePlaying] = useState(false);
   useEffect(() => {
     setLitePlaying(false);
-  }, [airconPlanId, selectedId]);
+  }, [airconPlanId, washerPlanId, selectedId]);
 
   // Preload all before/after images on mount so tab switching is instant
   useEffect(() => {
