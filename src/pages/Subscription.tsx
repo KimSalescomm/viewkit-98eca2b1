@@ -478,6 +478,7 @@ const Subscription = () => {
         })()}
 
         {/* Before / After */}
+        {!isAirconLite && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {/* Before */}
           <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)] flex flex-col h-full">
