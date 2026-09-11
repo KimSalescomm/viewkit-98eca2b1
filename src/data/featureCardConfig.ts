@@ -50,7 +50,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
   },
   vacuum: {
     // 화면 노출 순서 = 아래 배열 순서
-    order: ["1", "2", "8", "4", "3", "5", "7"],
+    order: ["7", "3", "1", "2", "8", "4", "5"],
     cards: {
       "1": {
         image: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/mainpoint_N95THO_pc.jpg",
