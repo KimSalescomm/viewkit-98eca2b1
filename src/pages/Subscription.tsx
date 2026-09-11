@@ -61,7 +61,7 @@ interface SubscriptionProduct {
   careSteps: CareStep[];
 }
 
-export const subscriptionProducts: SubscriptionProduct[] = [
+const _subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "washer",
     name: "세탁기",
@@ -298,6 +298,22 @@ export const subscriptionProducts: SubscriptionProduct[] = [
     ],
   },
 ];
+
+const SUBSCRIPTION_PRODUCT_ORDER = [
+  "washer",
+  "washcombo",
+  "airconditioner",
+  "airpurifier",
+  "refrigerator",
+  "stem",
+  "cooktop",
+  "oven",
+  "dishwasher",
+];
+
+export const subscriptionProducts: SubscriptionProduct[] = [..._subscriptionProducts].sort(
+  (a, b) => SUBSCRIPTION_PRODUCT_ORDER.indexOf(a.id) - SUBSCRIPTION_PRODUCT_ORDER.indexOf(b.id)
+);
 
 /**
  * 스탠드 에어컨 요금제(프리미엄 / 라이트플러스)별 케어서비스 콘텐츠.
