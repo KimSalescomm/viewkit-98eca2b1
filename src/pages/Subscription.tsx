@@ -231,29 +231,15 @@ const _subscriptionProducts: SubscriptionProduct[] = [
   },
   {
     id: "washcombo",
-    name: "워시타워",
+    name: "워시콤보",
     beforeImage: washcomboBefore,
     afterImage: washcomboAfter,
-    careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/wash_tower_250804.mp4",
     careSteps: [
-      { label: "드럼케어", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo01.jpg", notes: ["드럼/스팀케어는 25년 4월 이후 구독 고객부터 이용할 수 있음"] },
-      { label: "고무패킹 클리닝" },
-      { label: "스팀케어", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2024/s-common/img_washcombo03.jpg", notes: ["드럼/스팀케어는 25년 4월 이후 구독 고객부터 이용할 수 있음"] },
-      { label: "2중 안심필터 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_washtower05.jpg", notes: ["2중 안심필터는 첫 방문시 1회 증정"] },
-      { label: "배수 필터 거름망 클리닝 & 교체", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2022/s-common/img_washtower02.jpg", notes: ["배수필터는 24개월마다 교체"] },
-      { label: "외관 클리닝" },
+      { label: "직수/고압 세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_01_260724.jpg" },
+      { label: "드럼 케어", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_02_260724.jpg" },
+      { label: "UV/스팀 케어", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_08_260805.png" },
+      { label: "내시경 카메라 점검", image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_03_260724.jpg" },
       { label: "무상 A/S" },
-      {
-        label: "무상 철거 및 재설치",
-        image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/new_img_washtower.jpg",
-        notes: [
-          "워시타워는 무상 철거 및 재설치 서비스 이용할 수 있음",
-          "가전 구독 고객에 한하여 계약기간 내 1회 해당",
-          "운송비는 유상이며, 거리에 따라 비용이 다름",
-          "제품 설치 환경에 따라 추가 비용이 발생할 수 있음",
-          "추가 비용 관련 자세한 사항은 LG전자 고객센터(1544-7777)에서 안내받을 수 있음",
-        ],
-      },
     ],
   },
   {
@@ -328,12 +314,12 @@ const SUBSCRIPTION_PRODUCT_ORDER = [
   "washcombo",
   "airconditioner",
   "airpurifier",
+  "bathair",
   "refrigerator",
   "stem",
   "cooktop",
   "oven",
   "dishwasher",
-  "bathair",
 ];
 
 export const subscriptionProducts: SubscriptionProduct[] = [..._subscriptionProducts].sort(
@@ -497,11 +483,14 @@ const Subscription = () => {
 
   const isBathair = selected.id === "bathair";
   const [bathairPlaying, setBathairPlaying] = useState(false);
+  const isWashcombo = selected.id === "washcombo";
+  const [washcomboPlaying, setWashcomboPlaying] = useState(false);
 
   const [litePlaying, setLitePlaying] = useState(false);
   useEffect(() => {
     setLitePlaying(false);
     setBathairPlaying(false);
+    setWashcomboPlaying(false);
   }, [airconPlanId, washerPlanId, selectedId]);
 
   // Preload all before/after images on mount so tab switching is instant
@@ -566,7 +555,7 @@ const Subscription = () => {
         {(() => {
           const sectionTitles: Record<string, string> = {
             washer: "세탁기 케어서비스 (분해세척)",
-            washcombo: "워시타워 케어서비스 (스팀케어)",
+            washcombo: "워시콤보 케어서비스 (분해세척)",
             refrigerator: "냉장고 케어서비스 (기계실 세척)",
             stem: "STEM 냉장고 케어서비스 (기계실 세척)",
             airconditioner: "스탠드 에어컨 케어서비스 (분해세척)",
@@ -658,7 +647,7 @@ const Subscription = () => {
         )}
 
         {/* Before / After */}
-        {!isAirconLite && !isWasherLite && !isBathair && (
+        {!isAirconLite && !isWasherLite && !isBathair && !isWashcombo && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {/* Before */}
           <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)] flex flex-col h-full">
@@ -686,7 +675,6 @@ const Subscription = () => {
                 washer: "세탁기 분해세척 전",
                 refrigerator: "기계실 세척 전",
                 stem: "기계실 세척 전",
-                washcombo: "스팀케어 전",
                 airconditioner: "열교환기 세척 전",
                 airpurifier: "필터 교체 & 클리닝 전",
                 cooktop: "코팅 및 광택 서비스 전",
@@ -917,6 +905,95 @@ const Subscription = () => {
                   <h3 className={`${typeHeading} text-gray-900 flex items-center gap-1.5 mb-3`}>
                     <Sparkles className="w-4 h-4 text-brand-accent" />
                     바스에어시스템 케어 과정
+                  </h3>
+                  <ul className="space-y-2">
+                    {selected.careSteps.map((step, i) => {
+                      const clickable = !!step.image;
+                      return (
+                        <li key={i}>
+                          {clickable ? (
+                            <button
+                              type="button"
+                              onClick={() => setPreviewStep(step)}
+                              className="group w-full text-left flex items-center gap-2.5 rounded-lg px-2.5 py-2 -mx-2.5 border border-gray-100 bg-white transition-all duration-200 hover:-translate-y-px hover:border-gray-200"
+                            >
+                              <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-brand-accent text-white">
+                                <Check className="w-3 h-3" strokeWidth={3} />
+                              </span>
+                              <span className={`${typeBodyMedium} text-gray-900 flex-1`}>
+                                {step.label}
+                              </span>
+                              <span className={`${actionPill} group-hover:brightness-110`}>
+                                <ImageIcon className={actionIconSize} />
+                                보기
+                              </span>
+                            </button>
+                          ) : (
+                            <div className="flex items-center gap-2.5 px-2.5 py-2 -mx-2.5 border border-transparent">
+                              <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-brand-accent text-white">
+                                <Check className="w-3 h-3" strokeWidth={3} />
+                              </span>
+                              <span className={`${typeBodyMedium} text-gray-900 flex-1`}>
+                                {step.label}
+                              </span>
+                            </div>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            );
+          })()
+        )}
+
+        {/* 워시콤보: 영상 히어로 + 케어 과정 체크리스트 */}
+        {isWashcombo && (
+          (() => {
+            const washcomboVideoUrl = "https://youtu.be/pT9yzJUopzA";
+            const { embedUrl } = convertToEmbedUrl(washcomboVideoUrl);
+            return (
+              <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
+                {washcomboPlaying && embedUrl ? (
+                  <div className="relative aspect-video bg-black">
+                    <iframe
+                      src={`${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1&mute=1&rel=0&playsinline=1`}
+                      title="워시콤보 케어 영상"
+                      className="absolute inset-0 w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setWashcomboPlaying(true)}
+                    className="group block w-full relative aspect-video bg-gray-100 overflow-hidden"
+                    aria-label="워시콤보 케어 영상 재생"
+                  >
+                    <img
+                      src={youtubeThumbnail(washcomboVideoUrl)}
+                      alt="워시콤보 케어 영상"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05) 45%, transparent)" }}
+                    />
+                    <div className={`absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 h-7 rounded-lg ${typeCaptionBold} bg-brand-accent text-white shadow-md`}>
+                      <Play className={actionIconSize} fill="currentColor" />
+                      케어 영상 보기
+                    </div>
+                  </button>
+                )}
+                <div className="px-5 py-3 border-t border-gray-50">
+                  <p className={`${typeCaption} text-gray-500`}>직수/고압 세척부터 내시경 카메라 점검까지 전체 과정</p>
+                </div>
+                <div className="px-5 py-5 border-t border-gray-50">
+                  <h3 className={`${typeHeading} text-gray-900 flex items-center gap-1.5 mb-3`}>
+                    <Sparkles className="w-4 h-4 text-brand-accent" />
+                    워시콤보 케어 과정
                   </h3>
                   <ul className="space-y-2">
                     {selected.careSteps.map((step, i) => {
