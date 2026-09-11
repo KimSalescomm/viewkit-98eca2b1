@@ -898,9 +898,6 @@ const Subscription = () => {
                     </div>
                   </button>
                 )}
-                <div className="px-5 py-3 border-t border-gray-50">
-                  <p className={`${typeCaption} text-gray-500`}>팬 분해세척부터 위생케어까지 전체 과정</p>
-                </div>
                 <div className="px-5 py-5 border-t border-gray-50">
                   <h3 className={`${typeHeading} text-gray-900 flex items-center gap-1.5 mb-3`}>
                     <Sparkles className="w-4 h-4 text-brand-accent" />
@@ -987,9 +984,6 @@ const Subscription = () => {
                     </div>
                   </button>
                 )}
-                <div className="px-5 py-3 border-t border-gray-50">
-                  <p className={`${typeCaption} text-gray-500`}>직수/고압 세척부터 내시경 카메라 점검까지 전체 과정</p>
-                </div>
                 <div className="px-5 py-5 border-t border-gray-50">
                   <h3 className={`${typeHeading} text-gray-900 flex items-center gap-1.5 mb-3`}>
                     <Sparkles className="w-4 h-4 text-brand-accent" />
