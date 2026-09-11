@@ -867,6 +867,95 @@ const Subscription = () => {
           })()
         )}
 
+        {/* 바스에어시스템: 영상 히어로 + 케어 과정 체크리스트 */}
+        {isBathair && (
+          (() => {
+            const bathairVideoUrl = "https://youtu.be/HkCNqxdZ5bs";
+            const { embedUrl } = convertToEmbedUrl(bathairVideoUrl);
+            return (
+              <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
+                {bathairPlaying && embedUrl ? (
+                  <div className="relative aspect-video bg-black">
+                    <iframe
+                      src={`${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1&mute=1&rel=0&playsinline=1`}
+                      title="바스에어시스템 케어 영상"
+                      className="absolute inset-0 w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setBathairPlaying(true)}
+                    className="group block w-full relative aspect-video bg-gray-100 overflow-hidden"
+                    aria-label="바스에어시스템 케어 영상 재생"
+                  >
+                    <img
+                      src={youtubeThumbnail(bathairVideoUrl)}
+                      alt="바스에어시스템 케어 영상"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05) 45%, transparent)" }}
+                    />
+                    <div className={`absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 h-7 rounded-lg ${typeCaptionBold} bg-brand-accent text-white shadow-md`}>
+                      <Play className={actionIconSize} fill="currentColor" />
+                      케어 영상 보기
+                    </div>
+                  </button>
+                )}
+                <div className="px-5 py-3 border-t border-gray-50">
+                  <p className={`${typeCaption} text-gray-500`}>팬 분해세척부터 위생케어까지 전체 과정</p>
+                </div>
+                <div className="px-5 py-5 border-t border-gray-50">
+                  <h3 className={`${typeHeading} text-gray-900 flex items-center gap-1.5 mb-3`}>
+                    <Sparkles className="w-4 h-4 text-brand-accent" />
+                    바스에어시스템 케어 과정
+                  </h3>
+                  <ul className="space-y-2">
+                    {selected.careSteps.map((step, i) => {
+                      const clickable = !!step.image;
+                      return (
+                        <li key={i}>
+                          {clickable ? (
+                            <button
+                              type="button"
+                              onClick={() => setPreviewStep(step)}
+                              className="group w-full text-left flex items-center gap-2.5 rounded-lg px-2.5 py-2 -mx-2.5 border border-gray-100 bg-white transition-all duration-200 hover:-translate-y-px hover:border-gray-200"
+                            >
+                              <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-brand-accent text-white">
+                                <Check className="w-3 h-3" strokeWidth={3} />
+                              </span>
+                              <span className={`${typeBodyMedium} text-gray-900 flex-1`}>
+                                {step.label}
+                              </span>
+                              <span className={`${actionPill} group-hover:brightness-110`}>
+                                <ImageIcon className={actionIconSize} />
+                                보기
+                              </span>
+                            </button>
+                          ) : (
+                            <div className="flex items-center gap-2.5 px-2.5 py-2 -mx-2.5 border border-transparent">
+                              <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-brand-accent text-white">
+                                <Check className="w-3 h-3" strokeWidth={3} />
+                              </span>
+                              <span className={`${typeBodyMedium} text-gray-900 flex-1`}>
+                                {step.label}
+                              </span>
+                            </div>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            );
+          })()
+        )}
+
         {/* Highlight banner */}
         <div
           className="mt-10 rounded-2xl px-5 py-4 sm:px-6 sm:py-5 flex items-start gap-3"
