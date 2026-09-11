@@ -501,6 +501,7 @@ const Subscription = () => {
   const [litePlaying, setLitePlaying] = useState(false);
   useEffect(() => {
     setLitePlaying(false);
+    setBathairPlaying(false);
   }, [airconPlanId, washerPlanId, selectedId]);
 
   // Preload all before/after images on mount so tab switching is instant
