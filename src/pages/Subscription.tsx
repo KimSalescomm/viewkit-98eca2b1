@@ -495,6 +495,9 @@ const Subscription = () => {
     : undefined;
   const isWasherLite = isWasher && washerPlanId === "litePlus";
 
+  const isBathair = selected.id === "bathair";
+  const [bathairPlaying, setBathairPlaying] = useState(false);
+
   const [litePlaying, setLitePlaying] = useState(false);
   useEffect(() => {
     setLitePlaying(false);
