@@ -530,7 +530,12 @@ const Subscription = () => {
             dishwasher: "식기세척기 케어서비스 (내부 세척)",
             oven: "광파오븐 케어서비스 (내부 클리닝)",
           };
-          const title = isAircon && airconPlan ? airconPlan.title : sectionTitles[selected.id];
+          const title =
+            isAircon && airconPlan
+              ? airconPlan.title
+              : isWasher && washerPlan
+              ? washerPlan.title
+              : sectionTitles[selected.id];
           if (!title) return null;
           return (
             <div className="mb-4 sm:mb-5 flex flex-wrap items-center justify-between gap-3">
@@ -543,21 +548,27 @@ const Subscription = () => {
                 {title}
               </h2>
               <div className="flex items-center gap-3">
-                {isAircon && (
+                {(isAircon || isWasher) && (
                   <div
                     role="tablist"
-                    aria-label="에어컨 요금제 선택"
+                    aria-label={isAircon ? "에어컨 요금제 선택" : "세탁기 요금제 선택"}
                     className="inline-flex items-center rounded-full border border-gray-200 bg-white p-0.5"
                   >
-                    {airconPlanContents.map((p) => {
-                      const active = p.plan === airconPlanId;
+                    {(isAircon ? airconPlanContents : washerPlanContents).map((p) => {
+                      const active = isAircon
+                        ? p.plan === airconPlanId
+                        : p.plan === washerPlanId;
                       return (
                         <button
                           key={p.plan}
                           type="button"
                           role="tab"
                           aria-selected={active}
-                          onClick={() => setAirconPlanId(p.plan)}
+                          onClick={() =>
+                            isAircon
+                              ? setAirconPlanId(p.plan as AirconPlanId)
+                              : setWasherPlanId(p.plan as WasherPlanId)
+                          }
                           className={`rounded-full px-3 h-7 text-[12px] font-semibold transition-colors ${
                             active ? "bg-gray-900 text-white" : "bg-transparent text-gray-500"
                           }`}
@@ -571,7 +582,9 @@ const Subscription = () => {
                 <FeatureLikeButton
                   productId="subscription"
                   productName="구독 케어"
-                  featureId={`care-before-after:${selected.id}${isAircon ? `:${airconPlanId}` : ""}`}
+                  featureId={`care-before-after:${selected.id}${
+                    isAircon ? `:${airconPlanId}` : isWasher ? `:${washerPlanId}` : ""
+                  }`}
                   featureTitle={title}
                   variant="desktop"
                   className="shrink-0"
