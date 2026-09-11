@@ -1925,7 +1925,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "구독하면 어떤 케어서비스를 받을 수 있나요?",
       subtitle: "체계적인 전문가의 케어를 받으면 더욱 위생적으로 관리할 수 있어요.",
       icon: "Waves",
-      tag: "바스에어 구독",
+      tag: "가전구독",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_CareService_pr.mp4",
       fullWidthMedia: true,
