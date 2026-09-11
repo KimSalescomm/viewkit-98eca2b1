@@ -299,6 +299,69 @@ export const subscriptionProducts: SubscriptionProduct[] = [
   },
 ];
 
+/**
+ * 스탠드 에어컨 요금제(프리미엄 / 라이트플러스)별 케어서비스 콘텐츠.
+ * 라이트플러스는 아직 단계별 이미지 자료가 없어 영상 1개 + 체크리스트만 노출합니다.
+ * 자료가 확보되면 beforeAfterImages를 채우고 각 step의 hasDetailLink를 true로 바꾸면
+ * 프리미엄과 동일한 구조로 동작합니다.
+ */
+type AirconPlanId = "premium" | "litePlus";
+
+interface AirconPlanStep {
+  label: string;
+  hasDetailLink: boolean;
+  detailUrl?: string;
+}
+
+interface AirconPlanContent {
+  plan: AirconPlanId;
+  planLabel: string;
+  title: string;
+  badge: string;
+  badgeClassName: string;
+  beforeAfterImages?: { before: string; after: string };
+  videoUrl?: string;
+  videoCaption?: string;
+  steps: AirconPlanStep[];
+}
+
+export const airconPlanContents: AirconPlanContent[] = [
+  {
+    plan: "premium",
+    planLabel: "프리미엄",
+    title: "스탠드 에어컨 케어서비스 (분해세척)",
+    badge: "완전분해세척 · 열교환기 제외 부품",
+    badgeClassName: "bg-blue-50 text-blue-700 border-blue-100",
+    beforeAfterImages: { before: airconBefore, after: airconAfter },
+    steps: [
+      { label: "분해세척", hasDetailLink: true },
+      { label: "위생케어 (피톤치드, UV케어)", hasDetailLink: true },
+      { label: "필터 세척 & 교체", hasDetailLink: true },
+      { label: "제품 성능 점검", hasDetailLink: false },
+      { label: "무상 A/S", hasDetailLink: false },
+    ],
+  },
+  {
+    plan: "litePlus",
+    planLabel: "라이트플러스",
+    title: "스탠드 에어컨 케어서비스 (부분분해세척)",
+    badge: "부분분해세척 · 전면 커버 분리",
+    badgeClassName: "bg-emerald-50 text-emerald-700 border-emerald-100",
+    videoUrl: "https://youtu.be/t7DwsspCwuM",
+    videoCaption: "전면 커버 분리 후 부분분해세척 과정",
+    steps: [
+      { label: "부분분해세척 (전면 커버)", hasDetailLink: false },
+      { label: "위생케어 (UV, 피톤치드 · 12개월)", hasDetailLink: false },
+      { label: "필터 세척 및 교체", hasDetailLink: false },
+    ],
+  },
+];
+
+const youtubeThumbnail = (url: string): string => {
+  const m = url.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);
+  return m ? `https://img.youtube.com/vi/${m[1]}/hqdefault.jpg` : "";
+};
+
 const Subscription = () => {
   const [searchParams] = useSearchParams();
   const [selectedId, setSelectedId] = useState<string>("washer");
