@@ -330,7 +330,7 @@ export const airconPlanContents: AirconPlanContent[] = [
     plan: "premium",
     planLabel: "프리미엄",
     title: "스탠드 에어컨 케어서비스 (분해세척)",
-    badge: "완전분해세척 · 열교환기 제외 부품",
+    badge: "완전분해세척 · 열교환기 고압 세척",
     badgeClassName: "bg-blue-50 text-blue-700 border-blue-100",
     beforeAfterImages: { before: airconBefore, after: airconAfter },
     steps: [
@@ -387,6 +387,10 @@ const Subscription = () => {
     ? airconPlanContents.find((p) => p.plan === airconPlanId)
     : undefined;
   const isAirconLite = isAircon && airconPlanId === "litePlus";
+  const [litePlaying, setLitePlaying] = useState(false);
+  useEffect(() => {
+    setLitePlaying(false);
+  }, [airconPlanId, selectedId]);
 
   // Preload all before/after images on mount so tab switching is instant
   useEffect(() => {
@@ -674,27 +678,38 @@ const Subscription = () => {
         {/* 라이트플러스: 케어 영상 + 체크리스트 */}
         {isAirconLite && airconPlan && (
           <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
-            <a
-              href={airconPlan.videoUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="group block relative aspect-video bg-gray-100 overflow-hidden"
-              aria-label="라이트플러스 케어 영상 보기"
-            >
-              <img
-                src={youtubeThumbnail(airconPlan.videoUrl!)}
-                alt="라이트플러스 부분분해세척 케어 영상"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05) 45%, transparent)" }}
-              />
-              <div className={`absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 h-7 rounded-lg ${typeCaptionBold} bg-brand-accent text-white shadow-md`}>
-                <Play className={actionIconSize} fill="currentColor" />
-                케어 영상 보기
+            {litePlaying ? (
+              <div className="relative aspect-video bg-black">
+                <iframe
+                  src="https://www.youtube.com/embed/t7DwsspCwuM?autoplay=1&mute=1&rel=0&playsinline=1"
+                  title="라이트플러스 부분분해세척 케어 영상"
+                  className="absolute inset-0 w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
               </div>
-            </a>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setLitePlaying(true)}
+                className="group block w-full relative aspect-video bg-gray-100 overflow-hidden"
+                aria-label="라이트플러스 케어 영상 재생"
+              >
+                <img
+                  src={youtubeThumbnail(airconPlan.videoUrl!)}
+                  alt="라이트플러스 부분분해세척 케어 영상"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05) 45%, transparent)" }}
+                />
+                <div className={`absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 h-7 rounded-lg ${typeCaptionBold} bg-brand-accent text-white shadow-md`}>
+                  <Play className={actionIconSize} fill="currentColor" />
+                  케어 영상 보기
+                </div>
+              </button>
+            )}
             <div className="px-5 py-3 border-t border-gray-50">
               <p className={`${typeCaption} text-gray-500`}>{airconPlan.videoCaption}</p>
             </div>
