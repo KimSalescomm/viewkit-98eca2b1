@@ -453,10 +453,10 @@ const Subscription = () => {
             dishwasher: "식기세척기 케어서비스 (내부 세척)",
             oven: "광파오븐 케어서비스 (내부 클리닝)",
           };
-          const title = sectionTitles[selected.id];
+          const title = isAircon && airconPlan ? airconPlan.title : sectionTitles[selected.id];
           if (!title) return null;
           return (
-            <div className="mb-4 sm:mb-5 flex items-start justify-between gap-3">
+            <div className="mb-4 sm:mb-5 flex flex-wrap items-center justify-between gap-3">
               <h2 className={`${typeSectionTitle} text-gray-900 flex items-center gap-3`}>
                 <span
                   aria-hidden="true"
@@ -465,17 +465,55 @@ const Subscription = () => {
                 />
                 {title}
               </h2>
-              <FeatureLikeButton
-                productId="subscription"
-                productName="구독 케어"
-                featureId={`care-before-after:${selected.id}`}
-                featureTitle={title}
-                variant="desktop"
-                className="shrink-0"
-              />
+              <div className="flex items-center gap-3">
+                {isAircon && (
+                  <div
+                    role="tablist"
+                    aria-label="에어컨 요금제 선택"
+                    className="inline-flex items-center rounded-full border border-gray-200 bg-white p-0.5"
+                  >
+                    {airconPlanContents.map((p) => {
+                      const active = p.plan === airconPlanId;
+                      return (
+                        <button
+                          key={p.plan}
+                          type="button"
+                          role="tab"
+                          aria-selected={active}
+                          onClick={() => setAirconPlanId(p.plan)}
+                          className={`rounded-full px-3 h-7 text-[12px] font-semibold transition-colors ${
+                            active ? "bg-gray-900 text-white" : "bg-transparent text-gray-500"
+                          }`}
+                        >
+                          {p.planLabel}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+                <FeatureLikeButton
+                  productId="subscription"
+                  productName="구독 케어"
+                  featureId={`care-before-after:${selected.id}${isAircon ? `:${airconPlanId}` : ""}`}
+                  featureTitle={title}
+                  variant="desktop"
+                  className="shrink-0"
+                />
+              </div>
             </div>
           );
         })()}
+
+        {/* 에어컨 요금제 배지 */}
+        {isAircon && airconPlan && (
+          <div className="mb-4 sm:mb-5">
+            <span
+              className={`inline-flex items-center rounded-full border px-3 h-7 ${typeCaptionBold} ${airconPlan.badgeClassName}`}
+            >
+              {airconPlan.badge}
+            </span>
+          </div>
+        )}
 
         {/* Before / After */}
         {!isAirconLite && (
