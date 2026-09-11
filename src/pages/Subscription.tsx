@@ -357,6 +357,65 @@ export const airconPlanContents: AirconPlanContent[] = [
   },
 ];
 
+/**
+ * 세탁기 요금제(프리미엄 / 라이트플러스)별 케어서비스 콘텐츠.
+ * 라이트플러스는 단계별 이미지 자료가 없어 영상 1개 + 체크리스트만 노출합니다.
+ */
+type WasherPlanId = "premium" | "litePlus";
+
+interface WasherPlanStep {
+  label: string;
+  hasDetailLink: boolean;
+  detailUrl?: string;
+}
+
+interface WasherPlanContent {
+  plan: WasherPlanId;
+  planLabel: string;
+  title: string;
+  badge: string;
+  badgeClassName: string;
+  beforeAfterImages?: { before: string; after: string };
+  videoUrl?: string;
+  videoCaption?: string;
+  steps: WasherPlanStep[];
+}
+
+export const washerPlanContents: WasherPlanContent[] = [
+  {
+    plan: "premium",
+    planLabel: "프리미엄",
+    title: "세탁기 케어서비스 (분해세척)",
+    badge: "완전분해세척 · 고무패킹 교체",
+    badgeClassName: "bg-blue-50 text-blue-700 border-blue-100",
+    beforeAfterImages: { before: washerBefore, after: washerAfter },
+    steps: [
+      { label: "분해세척", hasDetailLink: true },
+      { label: "세탁조 스팀 & UV 관리", hasDetailLink: true },
+      { label: "고무패킹 교체", hasDetailLink: true },
+      { label: "급/배수 필터 세척", hasDetailLink: false },
+      { label: "배수 필터 교체", hasDetailLink: false },
+      { label: "세탁조 클리너 제공", hasDetailLink: false },
+      { label: "제품 성능 점검", hasDetailLink: false },
+      { label: "토탈 클리닝", hasDetailLink: false },
+    ],
+  },
+  {
+    plan: "litePlus",
+    planLabel: "라이트플러스",
+    title: "세탁기 케어서비스 (부분분해세척)",
+    badge: "부분분해세척 · 세탁조 클리닝",
+    badgeClassName: "bg-emerald-50 text-emerald-700 border-emerald-100",
+    videoUrl: "https://youtu.be/x1dF8E81q0U",
+    videoCaption: "세탁조 클리닝 과정",
+    steps: [
+      { label: "부분분해세척 (세탁조)", hasDetailLink: false },
+      { label: "세탁조 스팀 & UV 관리", hasDetailLink: false },
+      { label: "필터 세척 및 교체", hasDetailLink: false },
+    ],
+  },
+];
+
 const youtubeThumbnail = (url: string): string => {
   const m = url.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);
   return m ? `https://img.youtube.com/vi/${m[1]}/hqdefault.jpg` : "";
