@@ -387,6 +387,7 @@ const Subscription = () => {
     ? airconPlanContents.find((p) => p.plan === airconPlanId)
     : undefined;
   const isAirconLite = isAircon && airconPlanId === "litePlus";
+  const [litePlaying, setLitePlaying] = useState(false);
 
   // Preload all before/after images on mount so tab switching is instant
   useEffect(() => {
