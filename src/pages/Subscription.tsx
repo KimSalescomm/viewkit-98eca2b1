@@ -483,11 +483,14 @@ const Subscription = () => {
 
   const isBathair = selected.id === "bathair";
   const [bathairPlaying, setBathairPlaying] = useState(false);
+  const isWashcombo = selected.id === "washcombo";
+  const [washcomboPlaying, setWashcomboPlaying] = useState(false);
 
   const [litePlaying, setLitePlaying] = useState(false);
   useEffect(() => {
     setLitePlaying(false);
     setBathairPlaying(false);
+    setWashcomboPlaying(false);
   }, [airconPlanId, washerPlanId, selectedId]);
 
   // Preload all before/after images on mount so tab switching is instant
