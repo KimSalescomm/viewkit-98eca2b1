@@ -386,7 +386,7 @@ export const washerPlanContents: WasherPlanContent[] = [
     plan: "premium",
     planLabel: "프리미엄",
     title: "세탁기 케어서비스 (분해세척)",
-    badge: "완전분해세척 · 고무패킹 교체",
+    badge: "완전분해세척 · 세탁조 고압세척",
     badgeClassName: "bg-blue-50 text-blue-700 border-blue-100",
     beforeAfterImages: { before: washerBefore, after: washerAfter },
     steps: [
