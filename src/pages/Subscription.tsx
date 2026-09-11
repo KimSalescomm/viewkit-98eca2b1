@@ -300,6 +300,27 @@ const _subscriptionProducts: SubscriptionProduct[] = [
       { label: "무상 A/S" },
     ],
   },
+  {
+    id: "bathair",
+    name: "바스에어시스템",
+    beforeImage: bathairHomepageImage,
+    afterImage: bathairHomepageImage,
+    careSteps: [
+      {
+        label: "팬 분해세척",
+        image: "https://www.lge.co.kr/kr/Caresolution/images/bath-air-system/img-bath-air-system04.jpg",
+      },
+      {
+        label: "극세필터 교체 및 필터 클리닝",
+        image: "https://www.lge.co.kr/kr/Caresolution/images/bath-air-system/img-bath-air-system01.jpg",
+      },
+      {
+        label: "위생케어 (UV, 피톤치드)",
+        image: "https://www.lge.co.kr/kr/Caresolution/images/bath-air-system/img-bath-air-system02.jpg",
+      },
+      { label: "무상 A/S" },
+    ],
+  },
 ];
 
 const SUBSCRIPTION_PRODUCT_ORDER = [
