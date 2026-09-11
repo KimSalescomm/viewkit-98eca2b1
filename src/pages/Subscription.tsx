@@ -629,7 +629,11 @@ const Subscription = () => {
                   productId="subscription"
                   productName="구독 케어"
                   featureId={`care-before-after:${selected.id}${
-                    isAircon ? `:${airconPlanId}` : isWasher ? `:${washerPlanId}` : ""
+                    isAircon && airconPlanId !== "premium"
+                      ? `:${airconPlanId}`
+                      : isWasher && washerPlanId !== "premium"
+                        ? `:${washerPlanId}`
+                        : ""
                   }`}
                   featureTitle={title}
                   variant="desktop"
