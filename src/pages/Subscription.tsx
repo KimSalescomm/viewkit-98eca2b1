@@ -555,7 +555,7 @@ const Subscription = () => {
         {(() => {
           const sectionTitles: Record<string, string> = {
             washer: "세탁기 케어서비스 (분해세척)",
-            washcombo: "워시타워 케어서비스 (스팀케어)",
+            washcombo: "워시콤보 케어서비스 (분해세척)",
             refrigerator: "냉장고 케어서비스 (기계실 세척)",
             stem: "STEM 냉장고 케어서비스 (기계실 세척)",
             airconditioner: "스탠드 에어컨 케어서비스 (분해세척)",
