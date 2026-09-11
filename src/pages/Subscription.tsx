@@ -381,6 +381,12 @@ const Subscription = () => {
   const [videoOpen, setVideoOpen] = useState(false);
   const selected = subscriptionProducts.find((p) => p.id === selectedId)!;
   const hasAnyImage = selected.careSteps.some((s) => s.image);
+  const [airconPlanId, setAirconPlanId] = useState<AirconPlanId>("premium");
+  const isAircon = selected.id === "airconditioner";
+  const airconPlan = isAircon
+    ? airconPlanContents.find((p) => p.plan === airconPlanId)
+    : undefined;
+  const isAirconLite = isAircon && airconPlanId === "litePlus";
 
   // Preload all before/after images on mount so tab switching is instant
   useEffect(() => {
