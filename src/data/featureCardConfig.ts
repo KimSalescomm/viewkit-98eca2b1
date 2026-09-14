@@ -191,32 +191,39 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     },
   },
   "ai-washtower": {
-    order: ["1", "2", "3", "4", "5", "6"],
+    order: ["1", "2", "3", "4", "5", "6", "7"],
     cards: {
       "1": {
-        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium-interior01.jpg",
-        eyebrow: "AI DD",
+        image: "https://static.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_mainpoint_pc.png",
+        eyebrow: "AI 세탁·건조",
       },
       "2": {
-        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_mainpoint_pc.png",
-        eyebrow: "6모션 · 5방향 터보샷",
-        objectPositionClass: "object-[center_65%]",
+        image: "https://static.lge.co.kr/kr/images/wash-combo/md10867827/gallery/medium05.jpg",
+        eyebrow: "25kg 대용량 세탁·건조",
+        fit: "contain",
+        containBackground: "white",
       },
       "3": {
-        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_C_pc.jpg",
-        eyebrow: "트루스팀",
+        image: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_11_steam_sterilization.jpg",
+        eyebrow: "듀얼 트루스팀",
       },
       "4": {
-        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_A_pc.jpg",
-        eyebrow: "자동세제 플러스",
+        image: "/__l5e/assets-v1/1435d98b-daea-4b7b-a191-f282c8380294/washcombo-automatic.jpg",
+        eyebrow: "플랫세제함(자동세제)",
+        fit: "contain",
       },
       "5": {
-        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_B_pc.jpg",
-        eyebrow: "건조기 자동 관리",
+        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium02.jpg",
+        eyebrow: "건조준비",
       },
       "6": {
-        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium02.jpg",
-        eyebrow: "ThinQ 스마트 기능",
+        image: "https://static.lge.co.kr/kr/images/wash-combo/md10867827/gallery/medium-interior01.jpg",
+        eyebrow: "All New Full 플랫 디자인",
+        fit: "contain",
+      },
+      "7": {
+        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium-interior01.jpg",
+        eyebrow: "가전 구독",
       },
     },
   },
