@@ -1103,27 +1103,27 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
       mediaGallery: [
         {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_01_260724.jpg",
+          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
           title: "직수/고압 세척",
         },
         {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_02_260724.jpg",
+          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
           title: "드럼 케어",
         },
         {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_08_260805.png",
+          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
           title: "UV/스팀케어",
         },
         {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_03_260724.jpg",
+          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
           title: "내시경 카메라 점검",
         },
         {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_04_260724.jpg",
+          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
           title: "필터 세척 및 교체",
         },
         {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_07_260724.jpg",
+          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
           title: "무상 A/S",
         },
       ],
