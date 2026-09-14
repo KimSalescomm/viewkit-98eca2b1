@@ -940,7 +940,7 @@ export const featuresMap: Record<string, Feature[]> = {
           description:
             "세탁물을 투입 후 문을 닫고 시작 버튼을 누르면 무게를 감지해 약 3초 만에 예상 시간을 알려줍니다.\n세탁기 앞에서 오래 기다릴 필요가 없고, 코스별 시간도 바로 확인할 수 있어 편리해요.",
           mediaType: "image",
-          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_03_ai_time_sensing.jpg",
+          mediaUrl: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
           disclaimers: [
             {
               title: "AI 타임 센싱",
@@ -1006,7 +1006,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Beaker",
       tag: "플랫세제함(자동세제)",
       mediaType: "image",
-      mediaUrl: "/__l5e/assets-v1/1435d98b-daea-4b7b-a191-f282c8380294/washcombo-automatic.jpg",
+      mediaUrl: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
       descriptionTitle: "세제와 유연제를 채워두면\n적정량을 알아서 투입",
       description:
         "세탁물의 무게와 오염도를 감지해 필요한 만큼 자동으로 적정량의 세제를 투입해요. 세제 종류에 따라 투입량도 원하는 대로 설정할 수 있어요.",
@@ -1032,7 +1032,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Wifi",
       tag: "건조준비",
       mediaType: "image",
-      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium02.jpg",
+      mediaUrl: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
       imageFit: "contain",
       description:
         "세탁 코스 정보를 건조기에 전달해 알맞은 건조 코스를 추천하고, 세탁 종료 전 건조준비까지 시작할 수 있어요.",
@@ -1103,27 +1103,27 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
       mediaGallery: [
         {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_01_260724.jpg",
+          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
           title: "직수/고압 세척",
         },
         {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_02_260724.jpg",
+          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
           title: "드럼 케어",
         },
         {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_08_260805.png",
+          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
           title: "UV/스팀케어",
         },
         {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_03_260724.jpg",
+          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
           title: "내시경 카메라 점검",
         },
         {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_04_260724.jpg",
+          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
           title: "필터 세척 및 교체",
         },
         {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_07_260724.jpg",
+          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
           title: "무상 A/S",
         },
       ],
