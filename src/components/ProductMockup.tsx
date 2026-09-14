@@ -127,6 +127,7 @@ const Subscription = (p: Props) => (
 const mockups: Record<string, (p: Props) => JSX.Element> = {
   refrigerator: Refrigerator,
   washer: WashTower,
+  "ai-washtower": WashTower,
   washcombo: WashCombo,
   styler: Styler,
   tv: TvMock,

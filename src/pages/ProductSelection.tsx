@@ -48,7 +48,7 @@ const ProductLucideIcon = ({ name, className }: { name: string; className?: stri
   return <Icon className={className} strokeWidth={2} />;
 };
 
-const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "washcombo", "tv", "bathair", "styler", "cooking"];
+const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "washer", "ai-washtower", "washcombo", "tv", "bathair", "styler", "cooking"];
 const disabledProductIds = ["styler", "cooking"];
 
 const ProductSelection = () => {

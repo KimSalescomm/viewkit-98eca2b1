@@ -38,6 +38,8 @@ const KNOWN_PRODUCT_IDS = new Set<string>([
 const NEVER_VISIBLE_PRODUCT_IDS = new Set<string>(["pc"]);
 /** 대외비 제품: 내부 계정(SC/KOR)에서만 열람 가능 */
 const CONFIDENTIAL_PRODUCT_IDS = new Set<string>(["bathair", "washcombo"]);
+/** 관리자 전용 제품: SC 계정에서만 목록 및 직접 URL 열람 가능 */
+export const SC_ONLY_PRODUCT_IDS = new Set<string>(["ai-washtower"]);
 
 /** 스냅샷·캐시에 남아있는 오래된/알 수 없는 id를 걸러냅니다. */
 const sanitizeVisibleIds = (ids: string[]): string[] =>
@@ -93,11 +95,15 @@ const buildValue = (
     getFeatureById: (productId, featureId) =>
       filterFeatures(staticFeaturesMap[productId] ?? []).find((f) => f.id === featureId),
     visibleProductIds: visible,
-    isProductVisible: (productId) =>
-      isAdmin ||
-      isInternal ||
-      visible.includes(productId) ||
-      (isInternal && CONFIDENTIAL_PRODUCT_IDS.has(productId)),
+    isProductVisible: (productId) => {
+      if (SC_ONLY_PRODUCT_IDS.has(productId)) return isAdmin;
+      return (
+        isAdmin ||
+        isInternal ||
+        visible.includes(productId) ||
+        (isInternal && CONFIDENTIAL_PRODUCT_IDS.has(productId))
+      );
+    },
     isInternal,
     source,
     publishedAt,

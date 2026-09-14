@@ -11,10 +11,15 @@ type Status = "idle" | "loading" | "success" | "error";
 
 // 원고가 존재하는(featuresMap에 등록된) 제품만 노출 후보로 사용
 const AUTHORED_PRODUCT_IDS = Object.keys(draftFeaturesMap);
+// SC 관리자 전용 제품은 일반 지점 노출 설정 대상에서 제외
+const SC_ONLY_PRODUCT_IDS = new Set(["ai-washtower"]);
 // "구독" 카드는 별도 제품이지만 항상 노출 후보에 포함 (features에 없음)
 const EXTRA_PRODUCT_IDS = ["subscription"];
 const PUBLISHABLE_IDS = Array.from(
-  new Set([...EXTRA_PRODUCT_IDS, ...AUTHORED_PRODUCT_IDS]),
+  new Set([
+    ...EXTRA_PRODUCT_IDS,
+    ...AUTHORED_PRODUCT_IDS.filter((id) => !SC_ONLY_PRODUCT_IDS.has(id)),
+  ]),
 );
 
 const SUBSCRIPTION_ENTRY = { id: "subscription", name: "구독 케어" };

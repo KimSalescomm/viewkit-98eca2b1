@@ -871,6 +871,133 @@ export const featuresMap: Record<string, Feature[]> = {
     },
   ],
 
+  // AI 워시타워 특장점 (SC 관리자 계정 전용 제품)
+  "ai-washtower": [
+    {
+      id: "1",
+      title: "세탁부터 건조까지, AI가 알아서 맞춰준다면요?",
+      subtitle: "세탁물의 무게와 재질을 감지해\n세탁과 건조 전 과정을 똑똑하게 관리해요.",
+      icon: "Cpu",
+      tag: "AI 세탁·건조",
+      mediaType: "video",
+      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10575829/usp/WA2525EGZF_ai_dd_Cover_pc.mp4",
+      showMainMedia: false,
+      description: "AI가 세탁물의 특성을 감지해 알맞은 세탁 모션과 건조 조건을 적용하고, 코스별 예상 시간까지 안내해줘요.",
+      highlights: ["세탁물 무게·재질 감지", "AI 맞춤 세탁과 탈수", "AI 건조 시간 안내", "세탁·건조 결과 확인"],
+      tabs: [
+        {
+          label: "AI 세탁",
+          mediaType: "video",
+          mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10575829/usp/WA2525EGZF_ai_dd_Cover_pc.mp4",
+          description: "의류의 무게와 재질을 감지한 뒤 옷감에 알맞은 모션으로 세탁하고 안정적으로 탈수해요.",
+          highlights: ["AI DD 모터", "옷감 맞춤 6모션", "안정적인 탈수"],
+        },
+        {
+          label: "AI 건조",
+          mediaType: "video",
+          mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md09942826/usp/TotalAI_3.mp4",
+          description: "세탁물의 무게와 습도를 감지해 알맞은 온도와 시간으로 보송하게 건조해요.",
+          highlights: ["무게·습도 감지", "맞춤 온도와 시간", "정확한 완료 시간 안내"],
+        },
+      ],
+      subFeaturesTitle: "AI 세탁·건조 과정에서 제공되는 세부 기능",
+      subFeatures: [
+        {
+          label: "AI 타임 센싱",
+          step: "빠른 시간 안내",
+          title: "코스별 예상 시간을 빠르게 확인",
+          description: "세탁물의 무게를 감지해 코스별 예상 종료 시간을 안내하므로 세탁기 앞에서 오래 기다리지 않아도 돼요.",
+          mediaType: "image",
+          mediaUrl: washcomboAiTimeGuideAsset.url,
+        },
+        {
+          label: "AI 시간 안내",
+          step: "정확한 건조 예측",
+          title: "사용할수록 더 정확해지는 건조 시간",
+          description: "건조 과정의 변화를 반영해 실제 완료 시간을 더 정확하게 안내해요.",
+          mediaType: "image",
+          mediaUrl: washcomboAiTimeSensingAsset.url,
+        },
+      ],
+      collapsibleDisclaimers: [
+        {
+          title: "AI 기능 세부정보",
+          items: [
+            "AI 세탁과 AI 건조 기능은 세탁물의 종류, 무게 및 사용 환경에 따라 동작 결과가 달라질 수 있습니다.",
+            "초기 표시 시간과 실제 동작 시간은 설치 조건 및 사용 환경에 따라 다를 수 있습니다.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "2",
+      title: "아끼는 옷, 더 섬세하게 세탁·건조하고 싶으시죠?",
+      subtitle: "손빨래와 바람을 본뜬 6모션으로\n옷감에 맞춰 섬세하게 관리해요.",
+      icon: "Waves",
+      tag: "AI DD x 6모션",
+      mediaType: "video",
+      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10575829/usp/WA2525EGZF_ai_dd_Cover_pc.mp4",
+      description: "AI DD 모터가 세탁물의 무게와 옷감 특성을 감지해 최적의 세탁 모션을 적용하고, 건조할 때도 맞춤 모션으로 보송하게 마무리해요.",
+      highlights: ["AI DD 모터", "6모션 맞춤 세탁", "6모션 맞춤 건조", "섬세한 옷감 케어"],
+      collapsibleDisclaimers: [
+        {
+          title: "AI 세탁·건조 세부정보",
+          items: [
+            "AI 세탁 및 건조 코스는 세탁물의 무게와 종류에 따라 동작 조건이 달라질 수 있습니다.",
+            "시험 결과는 실사용 환경에 따라 차이가 있을 수 있습니다.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "3",
+      title: "매일 쓰는 세탁기와 건조기 속, 위생이 걱정되세요?",
+      subtitle: "세탁통부터 건조기 내부까지 살균 코스로\n보이지 않는 곳도 깨끗하게 관리해요.",
+      icon: "ShieldCheck",
+      tag: "통살균 케어",
+      mediaType: "video",
+      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md09942826/usp/TotalAI_3.mp4",
+      description: "세탁통과 건조기 내부의 주요 지점을 살균 케어해 세탁기와 건조기를 따로 관리하는 번거로움을 줄여줘요.",
+      highlights: ["세탁통 살균 케어", "건조기 내부 살균 케어", "유해 세균 관리", "한 번에 위생 관리"],
+      disclaimers: ["살균 효과는 코스, 세탁물 및 사용 환경에 따라 달라질 수 있습니다."],
+    },
+    {
+      id: "4",
+      title: "건조기 속 콘덴서, 직접 청소하지 않아도 된다면요?",
+      subtitle: "건조할 때마다 콘덴서를 자동으로 세척해\n깨끗한 상태와 건조 성능을 유지해요.",
+      icon: "Sparkles",
+      tag: "콘덴서 자동세척",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10575829/usp/WA2525EGZF_ai_cleancare_pc_01-1.mp4",
+      description: "건조 성능을 좌우하는 콘덴서를 물로 자동 세척해 보풀과 먼지가 쌓이는 것을 줄이고 관리 부담을 덜어줘요.",
+      highlights: ["콘덴서 자동 물 세척", "보풀·먼지 관리", "건조 성능 유지", "청소 부담 최소화"],
+    },
+    {
+      id: "5",
+      title: "세탁이 끝나자마자 바로 건조를 시작하고 싶으세요?",
+      subtitle: "세탁이 끝나기 전 건조기를 미리 데워\n기다림 없이 건조를 이어갈 수 있어요.",
+      icon: "Timer",
+      tag: "건조 준비",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10575829/usp/WA2323/WA2323EGZN_dry_ready_Cover_pc.mp4",
+      description: "세탁 종료 전에 건조기를 미리 예열해두어 세탁물을 옮긴 뒤 바로 건조를 시작할 수 있어요.",
+      highlights: ["건조기 사전 예열", "세탁과 건조의 자연스러운 연결", "대기 시간 단축", "효율적인 세탁 동선"],
+    },
+    {
+      id: "6",
+      title: "세탁실도 인테리어처럼 깔끔할 수 있을까요?",
+      subtitle: "세탁기와 건조기를 하나로 잇는 원바디 디자인으로\n공간을 더 단정하고 편리하게 완성해요.",
+      icon: "RectangleHorizontal",
+      tag: "원바디 플랫 디자인",
+      mediaType: "image",
+      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium-interior01.jpg",
+      imageFit: "contain",
+      description: "세탁기와 건조기가 하나처럼 이어지는 일체형 디자인과 중앙 조작부로 세탁 공간은 깔끔하게, 조작은 편리하게 만들어줘요.",
+      highlights: ["원바디 일체형 디자인", "중앙 조작부", "깔끔한 세탁 공간", "편리한 사용 높이"],
+      disclaimers: ["소비자의 이해를 돕기 위해 연출된 이미지이며 제품별 색상 및 사양은 다를 수 있습니다."],
+    },
+  ],
+
   // 에어컨 특장점
   airconditioner: [
     {
