@@ -194,31 +194,29 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     order: ["1", "2", "3", "4", "5", "6"],
     cards: {
       "1": {
-        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_mainpoint_pc.png",
-        eyebrow: "AI 세탁·건조",
+        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium-interior01.jpg",
+        eyebrow: "AI DD",
       },
       "2": {
-        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_B_pc.jpg",
-        eyebrow: "AI DD x 6모션",
+        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_mainpoint_pc.png",
+        eyebrow: "6모션 · 5방향 터보샷",
         objectPositionClass: "object-[center_65%]",
       },
       "3": {
-        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium-interior01.jpg",
-        eyebrow: "통살균 케어",
+        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_C_pc.jpg",
+        eyebrow: "트루스팀",
       },
       "4": {
-        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_mainpoint_pc.png",
-        eyebrow: "콘덴서 자동세척",
+        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_A_pc.jpg",
+        eyebrow: "자동세제 플러스",
       },
       "5": {
-        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium01.jpg",
-        eyebrow: "건조 준비",
-        fit: "contain",
-        containBackground: "white",
+        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_B_pc.jpg",
+        eyebrow: "건조기 자동 관리",
       },
       "6": {
-        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium-interior01.jpg",
-        eyebrow: "원바디 플랫 디자인",
+        image: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium02.jpg",
+        eyebrow: "ThinQ 스마트 기능",
       },
     },
   },
