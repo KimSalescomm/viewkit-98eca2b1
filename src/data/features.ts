@@ -1032,7 +1032,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Wifi",
       tag: "건조준비",
       mediaType: "image",
-      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium02.jpg",
+      mediaUrl: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
       imageFit: "contain",
       description:
         "세탁 코스 정보를 건조기에 전달해 알맞은 건조 코스를 추천하고, 세탁 종료 전 건조준비까지 시작할 수 있어요.",
