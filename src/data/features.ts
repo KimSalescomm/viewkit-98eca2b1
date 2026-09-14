@@ -1006,7 +1006,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Beaker",
       tag: "플랫세제함(자동세제)",
       mediaType: "image",
-      mediaUrl: "/__l5e/assets-v1/1435d98b-daea-4b7b-a191-f282c8380294/washcombo-automatic.jpg",
+      mediaUrl: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
       descriptionTitle: "세제와 유연제를 채워두면\n적정량을 알아서 투입",
       description:
         "세탁물의 무게와 오염도를 감지해 필요한 만큼 자동으로 적정량의 세제를 투입해요. 세제 종류에 따라 투입량도 원하는 대로 설정할 수 있어요.",
