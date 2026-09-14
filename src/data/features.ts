@@ -875,90 +875,258 @@ export const featuresMap: Record<string, Feature[]> = {
   "ai-washtower": [
     {
       id: "1",
-      title: "세탁부터 건조까지, AI가 알아서 맞춰준다면요?",
-      subtitle: "세탁물의 무게와 재질을 감지해\n세탁과 건조 전 과정을 똑똑하게 관리해요.",
+      title: "빨래할 때마다 세탁, 건조 코스 직접 고르세요?",
+      subtitle: "AI 기술로 세탁물의 무게와 재질을 감지해\n세탁부터 건조까지 알아서 완성해줘요.",
       icon: "Cpu",
-      tag: "AI DD",
-      mediaType: "image",
-      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium-interior01.jpg",
-      description: "AI DD가 세탁물의 무게와 의류 재질, 오염도를 감지해 옷감에 알맞은 세탁 조건을 적용해요.",
-      highlights: ["세탁물 무게 감지", "의류 재질 감지", "오염도 감지", "AI 맞춤 세탁"],
-      collapsibleDisclaimers: [
+      tag: "AI 세탁·건조",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_04_ai_wash_dry_pc.mp4",
+      showMainMedia: false,
+      description:
+        "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁·건조를 완성하고, 결과까지 확인할 수 있어요.",
+      highlights: [
+        "세탁·건조 모든 과정에 AI 기술 적용",
+        "6가지 손빨래 동작으로 정교하게 세탁",
+        "바람을 본뜬 6가지 건조 모션으로 꼼꼼하게 건조",
+      ],
+      tabs: [
         {
-          title: "AI 기능 세부정보",
-          items: [
-            "AI 세탁과 AI 건조 기능은 세탁물의 종류, 무게 및 사용 환경에 따라 동작 결과가 달라질 수 있습니다.",
-            "초기 표시 시간과 실제 동작 시간은 설치 조건 및 사용 환경에 따라 다를 수 있습니다.",
+          label: "AI 세탁·건조",
+          description:
+            "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁·건조를 완성하고, 결과까지 확인할 수 있어요.",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_04_ai_wash_dry_pc.mp4",
+          highlights: [
+            "세탁·건조 모든 과정에 AI 기술 적용",
+            "6가지 손빨래 동작으로 정교하게 세탁",
+            "바람을 본뜬 6가지 건조 모션으로 꼼꼼하게 건조",
+          ],
+          collapsibleDisclaimers: [
+            {
+              title: "세부정보",
+              items: [
+                "AI 세탁·건조 코스는 최대용량 5kg 이하에서 동작하며, 실사용 환경 및 세탁물 종류에 따라 다를 수 있습니다.",
+                "AI 세탁은 딥러닝 AI 기술을 이용해 의류의 재질을 감지한 후 6모션 중 최적의 모션으로 세탁하며, 빅데이터 기반 환경에 맞춰 큰 진동을 미리 예측해 안정적으로 탈수하며, AI 세탁에서 센싱한 값으로 AI 건조까지 진행합니다.",
+              ],
+            },
+          ],
+        },
+        {
+          label: "AI DD x 6모션",
+          descriptionTitle: "섬세한 6모션으로 최적화된 세탁·건조",
+          description:
+            "6가지 다양한 손빨래 동작으로 정교하게 세탁하며 바람을 본뜬 6가지 건조 모션으로 꼼꼼하게 건조해요.",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_05_ai_6motion_pc.mp4",
+          highlights: [],
+          collapsibleDisclaimers: [
+            {
+              title: "세부정보",
+              items: [
+                "AI 세탁 코스는 최대용량 6kg 이하에서 동작하며, 실사용 환경 및 세탁물 종류에 따라 다를 수 있습니다.",
+                "AI 세탁은 딥러닝 AI 기술을 이용해 의류의 재질을 감지한 후 6모션 중 최적의 모션으로 세탁하며, 빅데이터 기반 환경에 맞춰 큰 진동을 미리 예측해 안정적으로 탈수합니다.",
+                "AI 건조 코스는 AI 타임 센싱 및 AI 시간 안내 기능이 적용되어 있습니다.",
+                "설치 조건 및 실사용 조건에 따라 시간은 달라질 수 있습니다.",
+              ],
+            },
+          ],
+        },
+      ],
+      subFeaturesTitle: "AI 세탁·건조 과정에서 제공되는 세부 기능",
+      subFeatures: [
+        {
+          label: "AI 타임 센싱",
+          title: "약 3초 만에 알려주는 세탁·건조 예상 시간",
+          description:
+            "세탁물을 투입 후 문을 닫고 시작 버튼을 누르면 무게를 감지해 약 3초 만에 예상 시간을 알려줍니다.\n세탁기 앞에서 오래 기다릴 필요가 없고, 코스별 시간도 바로 확인할 수 있어 편리해요.",
+          mediaType: "image",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_03_ai_time_sensing.jpg",
+          disclaimers: [
+            {
+              title: "AI 타임 센싱",
+              items: [
+                "AI 타임 센싱 3초 : 문을 닫은 후 전원 버튼을 누르고 웰컴 메시지가 나타난 이후 측정된 시간입니다.",
+                "마른 세탁물 기준 세탁물이 가득 찬 경우 최대 약 15초까지 소요될 수 있습니다.",
+                "세탁물의 종류나 사용 환경에 따라 센싱 시간은 달라질 수 있습니다.",
+              ],
+            },
+          ],
+        },
+        {
+          label: "AI 최적화 기록",
+          title: "세탁물의 특성에 맞춰 AI가 최적화한 세탁·건조 과정을 기록",
+          description:
+            "AI 세탁·건조 코스를 사용하면 옷감의 재질과 오염도를 분석해\n최적의 세탁·건조 조건을 설정하고 기록해요.\nAI 최적화 기록은 디스플레이에서 확인할 수 있어요.",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_06_ai_optimization_pc.mp4",
+          disclaimers: [
+            {
+              title: "AI 최적화 기록",
+              items: [
+                "AI 최적화 기록은 AI 세탁 중 감지된 오염도에 따른 세탁 행정을 안내하는 기능으로, 세탁물의 종류나 사용환경에 따라 안내되는 문구는 차이가 있을 수 있습니다.",
+              ],
+            },
           ],
         },
       ],
     },
     {
       id: "2",
-      title: "찌든 때도 옷감에 맞춰 깨끗하게 씻고 싶으시죠?",
-      subtitle: "6모션과 5방향 터보샷으로\n옷감은 섬세하게, 세탁은 강력하게 완성해요.",
-      icon: "Waves",
-      tag: "6모션 · 5방향 터보샷",
+      title: "큰 이불도 넉넉하게 세탁하고 건조할 수 있다면요?",
+      subtitle: "25kg 대용량 세탁과 건조 용량으로\n많은 양의 빨래도 부담 없이 한 번에 해결해요.",
+      icon: "Expand",
+      tag: "25kg 대용량 세탁·건조",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_08_25kg_pc.mp4",
+      descriptionTitle: "세탁 25kg, 건조까지 넉넉하게\n대용량으로 편리한 세탁·건조",
+      description:
+        "기존보다 커진 드럼 사이즈로 세탁 25kg 대용량을 구현했어요. 이불과 패딩, 가족 전체 빨래도 한 번에 넉넉하게 세탁·건조하세요.",
+      highlights: ["세탁 25kg 대용량", "넉넉한 건조 용량", "이불·패딩도 한 번에", "가족 전체 빨래 해결"],
+      disclaimers: [
+        "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
+      ],
+    },
+    {
+      id: "3",
+      title: "세탁과 건조 코스에 스팀을 더하면 뭐가 달라질까요?",
+      subtitle: "물을 끓여 만든 트루스팀과 60℃ 이상\n고온의 물로 의류를 살균 케어해요.",
+      icon: "CloudFog",
+      tag: "듀얼 트루스팀",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_08_true_steam_pc.mp4",
+      description:
+        "물을 끓여 만든 트루스팀과 60℃ 이상 고온의 물로 의류를 살균 케어해요. 세탁부터 건조까지 스팀이 적용된 코스를 선택하거나 옵션 추가해 의류를 관리할 수 있어요.",
+      highlights: ["유해세균 살균", "냄새와 구김 케어", "세탁·건조 모두 적용", "위생적인 의류 관리"],
+      disclaimers: ["트루스팀 효과는 사용 조건 및 대상 세탁물에 따라 달라질 수 있습니다."],
+    },
+    {
+      id: "4",
+      title: "매번 세제 양 맞추기, 번거롭지 않으세요?",
+      subtitle: "세제와 유연제를 한 번 채워두면 세탁물의 무게와\n오염도를 감지해 자동으로 적정량을 투입해줘요.",
+      icon: "Beaker",
+      tag: "플랫세제함(자동세제)",
       mediaType: "image",
-      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_mainpoint_pc.png",
-      description: "손빨래 동작을 닮은 6모션과 다섯 방향에서 뿜어지는 강력한 물살이 세탁물을 꼼꼼하게 세탁해요.",
-      highlights: ["옷감 맞춤 6모션", "5방향 터보샷", "강력한 물살", "섬세한 옷감 케어"],
+      mediaUrl: "/__l5e/assets-v1/1435d98b-daea-4b7b-a191-f282c8380294/washcombo-automatic.jpg",
+      descriptionTitle: "세제와 유연제를 채워두면\n적정량을 알아서 투입",
+      description:
+        "세탁물의 무게와 오염도를 감지해 필요한 만큼 자동으로 적정량의 세제를 투입해요. 세제 종류에 따라 투입량도 원하는 대로 설정할 수 있어요.",
+      highlights: ["자동으로 세제/유연제 투입", "세탁물 맞춤 사용량", "플랫세제함 디자인", "편리한 세탁"],
+      disclaimers: ["세제 용량은 사용 빈도와 코스에 따라 달라질 수 있습니다."],
       collapsibleDisclaimers: [
         {
-          title: "AI 세탁·건조 세부정보",
+          title: "자동세제함 플러스",
           items: [
-            "AI 세탁 및 건조 코스는 세탁물의 무게와 종류에 따라 동작 조건이 달라질 수 있습니다.",
-            "시험 결과는 실사용 환경에 따라 차이가 있을 수 있습니다.",
+            "해당 기능은 자동세제 모델에 한하며, 자동세제 설정 시 세탁량에 알맞게 세제/유연제를 자동으로 투입됩니다.",
+            "AI 세탁 코스 동작 시 세탁물의 오염도에 따라 세제가 추가 투입 될 수 있으며, 세제의 양은 오염도에 따라 달라질 수 있습니다.",
+            "자동세제 또는 수동세제투입으로 사용 할 수 있어, 필요에 따라 원하는 세제/유연제 투입 가능",
+            "자동세제 기준 투입량은 세제/유연제에 표시된 권장량을 참고해 5kg 기준으로 투입량을 설정해 주세요.",
+            "기본값은 세제 45ml, 유연제 60ml로 설정되어 있습니다.",
           ],
         },
       ],
     },
     {
-      id: "3",
-      title: "자주 빨기 어려운 옷도 산뜻하게 관리하고 싶으세요?",
-      subtitle: "트루스팀으로 냄새와 구김을 줄이고\n의류와 세탁통까지 위생적으로 관리해요.",
-      icon: "ShieldCheck",
-      tag: "트루스팀",
-      mediaType: "image",
-      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_C_pc.jpg",
-      description: "트루스팀의 스팀건조·스팀리프레쉬·스팀살균·스팀통살균으로 의류와 제품 내부를 편리하게 관리해요.",
-      highlights: ["스팀건조", "스팀리프레쉬", "스팀살균", "스팀통살균"],
-      disclaimers: ["스팀 기능의 효과는 코스, 세탁물 및 사용 환경에 따라 달라질 수 있습니다."],
-    },
-    {
-      id: "4",
-      title: "세탁할 때마다 세제를 계량하기 번거로우셨죠?",
-      subtitle: "세탁물에 맞춰 세제와 유연제를 자동 투입해\n매번 덜어 쓰는 번거로움을 줄여줘요.",
-      icon: "Sparkles",
-      tag: "자동세제 플러스",
-      mediaType: "image",
-      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_A_pc.jpg",
-      description: "자동세제 플러스가 세탁물의 양에 맞춰 세제와 유연제를 알아서 투입해 세탁 준비를 간편하게 해줘요.",
-      highlights: ["세제 자동 투입", "유연제 자동 투입", "세탁물 맞춤 사용량", "간편한 세탁 준비"],
-    },
-    {
       id: "5",
-      title: "건조기 속 먼지와 콘덴서 관리가 걱정되세요?",
-      subtitle: "콘덴서 자동세척과 2중 안심필터로\n건조기의 주요 부분을 편리하게 관리해요.",
-      icon: "Timer",
-      tag: "콘덴서 자동세척 · 2중 안심필터",
-      mediaType: "image",
-      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_B_pc.jpg",
-      description: "건조 성능을 좌우하는 콘덴서를 자동으로 세척하고 2중 안심필터가 보풀과 먼지를 꼼꼼하게 걸러줘요.",
-      highlights: ["콘덴서 자동세척", "2중 안심필터", "보풀·먼지 관리", "편리한 유지관리"],
-    },
-    {
-      id: "6",
-      title: "세탁기와 건조기가 서로 알아서 이어진다면요?",
-      subtitle: "ThinQ 다이렉트 페어링과 건조준비로\n세탁 다음 건조까지 더 편리하게 연결해요.",
+      title: "세탁이 끝나면 건조까지 알아서 이어진다면요?",
+      subtitle: "세탁 코스 정보를 건조기에 전달해\n맞춤 건조 코스를 추천하고 미리 준비해요.",
       icon: "Wifi",
-      tag: "ThinQ 다이렉트 페어링",
+      tag: "건조준비",
       mediaType: "image",
       mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium02.jpg",
       imageFit: "contain",
-      description: "세탁 코스 정보를 건조기에 전달해 알맞은 건조 코스를 추천하고, 세탁 종료 전 건조준비까지 시작할 수 있어요.",
-      highlights: ["ThinQ 앱 연동", "다이렉트 페어링", "맞춤 건조 코스 추천", "건조준비"],
+      description:
+        "세탁 코스 정보를 건조기에 전달해 알맞은 건조 코스를 추천하고, 세탁 종료 전 건조준비까지 시작할 수 있어요.",
+      highlights: ["세탁·건조 정보 연동", "맞춤 건조 코스 추천", "세탁 종료 전 건조준비", "더 편리한 세탁 일과"],
       disclaimers: ["소비자의 이해를 돕기 위해 연출된 이미지이며 제품별 색상 및 사양은 다를 수 있습니다."],
+    },
+    {
+      id: "6",
+      title: "모던하고 세련된 인테리어를 원한다면?",
+      subtitle: "와이드 디스플레이, 플랫 도어와 플랫 세제함을\n적용해 프리미엄 디자인을 완성했어요.",
+      icon: "RectangleHorizontal",
+      tag: "All New Full 플랫 디자인",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_14_design_pc.mp4",
+      description:
+        "플랫 도어와 플랫 세제함을 적용해 세련되고 깔끔해진 디자인을 만나보세요. 고급스러운 색상을 취향에 맞게 선택해 인테리어를 완성할 수 있어요.",
+      highlights: ["모던하고 세련된 프리미엄 디자인", "플랫 도어·플랫 세제함", "와이드 디스플레이", "인테리어 완성"],
+      tabsVariant: "underline",
+      tabs: [
+        {
+          label: "플랫 도어와 플랫 세제함으로 깔끔한 디자인",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_14_design_pc.mp4",
+        },
+        {
+          label: "더 커진 와이드 디스플레이",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_15_1_control_pc.mp4",
+        },
+      ],
+      disclaimers: [
+        "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
+      ],
+    },
+    {
+      id: "7",
+      title: "가전 케어 매니저가 정기적으로 관리해준다면?",
+      subtitle: "보이지 않는 부분까지 꼼꼼하게 케어하고\n무상 A/S까지 받을 수 있어요.",
+      icon: "Wrench",
+      tag: "가전 구독",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/wash_combo_250804.mp4",
+      description: "가전 케어 매니저가 정기적으로 소모품 교체부터 위생 관리까지 도와줘 편리해요.",
+      highlights: [
+        "LG전자에서 연구한 전용 관리제 사용",
+        "세제함, 필터 등을 스팀 케어",
+        "필터 교체 주기에 맞춰 필터 교체",
+        "무상 A/S까지 제공",
+      ],
+      disclaimers: ["소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
+      collapsibleDisclaimers: [
+        {
+          title: "세부정보",
+          items: [
+            "[가전 구독]",
+            "AI 워시타워 가전 구독은 구독 계약 고객에 한해 제공됩니다.",
+            "정기적인 방문 관리 케어가 제공됩니다.",
+            "구독 케어 서비스와 무상 A/S는 가전 구독 고객에 한하며, 고객 과실로 인한 제품 고장은 제외됩니다.",
+            "자세한 내용은 LGE.COM 내 가전구독 제품별 상세 페이지를 참고해주세요.",
+            "판매처별 운영하는 제품 모델은 상이할 수 있습니다.",
+            "총 계약기간 동안 제품의 소유권은 회사에게 있으며, 재구독은 계약기간 이후에 가능합니다.",
+            "의무 사용기간 내에 해지 시 위약금 등 비용이 발생할 수 있으며 의무 사용기간이 경과하였더라도, 계약기간 이내에 해지할 경우 철거료 등 부대비용이 일부 발생할 수 있습니다.",
+            "가전 구독 계약기간 종료 후에는 케어십을 이용하실 수 있습니다.",
+            "[무상 A/S]",
+            "가전구독 고객에 한하며, 고객 과실로 인한 제품 고장은 제외됩니다.",
+          ],
+        },
+      ],
+      mediaGallery: [
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_01_260724.jpg",
+          title: "직수/고압 세척",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_02_260724.jpg",
+          title: "드럼 케어",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_08_260805.png",
+          title: "UV/스팀케어",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_03_260724.jpg",
+          title: "내시경 카메라 점검",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_04_260724.jpg",
+          title: "필터 세척 및 교체",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_07_260724.jpg",
+          title: "무상 A/S",
+        },
+      ],
     },
   ],
 
