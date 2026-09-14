@@ -871,6 +871,97 @@ export const featuresMap: Record<string, Feature[]> = {
     },
   ],
 
+  // AI 워시타워 특장점 (SC 관리자 계정 전용 제품)
+  "ai-washtower": [
+    {
+      id: "1",
+      title: "세탁부터 건조까지, AI가 알아서 맞춰준다면요?",
+      subtitle: "세탁물의 무게와 재질을 감지해\n세탁과 건조 전 과정을 똑똑하게 관리해요.",
+      icon: "Cpu",
+      tag: "AI DD",
+      mediaType: "image",
+      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium-interior01.jpg",
+      description: "AI DD가 세탁물의 무게와 의류 재질, 오염도를 감지해 옷감에 알맞은 세탁 조건을 적용해요.",
+      highlights: ["세탁물 무게 감지", "의류 재질 감지", "오염도 감지", "AI 맞춤 세탁"],
+      collapsibleDisclaimers: [
+        {
+          title: "AI 기능 세부정보",
+          items: [
+            "AI 세탁과 AI 건조 기능은 세탁물의 종류, 무게 및 사용 환경에 따라 동작 결과가 달라질 수 있습니다.",
+            "초기 표시 시간과 실제 동작 시간은 설치 조건 및 사용 환경에 따라 다를 수 있습니다.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "2",
+      title: "찌든 때도 옷감에 맞춰 깨끗하게 씻고 싶으시죠?",
+      subtitle: "6모션과 5방향 터보샷으로\n옷감은 섬세하게, 세탁은 강력하게 완성해요.",
+      icon: "Waves",
+      tag: "6모션 · 5방향 터보샷",
+      mediaType: "image",
+      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_mainpoint_pc.png",
+      description: "손빨래 동작을 닮은 6모션과 다섯 방향에서 뿜어지는 강력한 물살이 세탁물을 꼼꼼하게 세탁해요.",
+      highlights: ["옷감 맞춤 6모션", "5방향 터보샷", "강력한 물살", "섬세한 옷감 케어"],
+      collapsibleDisclaimers: [
+        {
+          title: "AI 세탁·건조 세부정보",
+          items: [
+            "AI 세탁 및 건조 코스는 세탁물의 무게와 종류에 따라 동작 조건이 달라질 수 있습니다.",
+            "시험 결과는 실사용 환경에 따라 차이가 있을 수 있습니다.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "3",
+      title: "자주 빨기 어려운 옷도 산뜻하게 관리하고 싶으세요?",
+      subtitle: "트루스팀으로 냄새와 구김을 줄이고\n의류와 세탁통까지 위생적으로 관리해요.",
+      icon: "ShieldCheck",
+      tag: "트루스팀",
+      mediaType: "image",
+      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_C_pc.jpg",
+      description: "트루스팀의 스팀건조·스팀리프레쉬·스팀살균·스팀통살균으로 의류와 제품 내부를 편리하게 관리해요.",
+      highlights: ["스팀건조", "스팀리프레쉬", "스팀살균", "스팀통살균"],
+      disclaimers: ["스팀 기능의 효과는 코스, 세탁물 및 사용 환경에 따라 달라질 수 있습니다."],
+    },
+    {
+      id: "4",
+      title: "세탁할 때마다 세제를 계량하기 번거로우셨죠?",
+      subtitle: "세탁물에 맞춰 세제와 유연제를 자동 투입해\n매번 덜어 쓰는 번거로움을 줄여줘요.",
+      icon: "Sparkles",
+      tag: "자동세제 플러스",
+      mediaType: "image",
+      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_A_pc.jpg",
+      description: "자동세제 플러스가 세탁물의 양에 맞춰 세제와 유연제를 알아서 투입해 세탁 준비를 간편하게 해줘요.",
+      highlights: ["세제 자동 투입", "유연제 자동 투입", "세탁물 맞춤 사용량", "간편한 세탁 준비"],
+    },
+    {
+      id: "5",
+      title: "건조기 속 먼지와 콘덴서 관리가 걱정되세요?",
+      subtitle: "콘덴서 자동세척과 2중 안심필터로\n건조기의 주요 부분을 편리하게 관리해요.",
+      icon: "Timer",
+      tag: "콘덴서 자동세척 · 2중 안심필터",
+      mediaType: "image",
+      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_subpoint_B_pc.jpg",
+      description: "건조 성능을 좌우하는 콘덴서를 자동으로 세척하고 2중 안심필터가 보풀과 먼지를 꼼꼼하게 걸러줘요.",
+      highlights: ["콘덴서 자동세척", "2중 안심필터", "보풀·먼지 관리", "편리한 유지관리"],
+    },
+    {
+      id: "6",
+      title: "세탁기와 건조기가 서로 알아서 이어진다면요?",
+      subtitle: "ThinQ 다이렉트 페어링과 건조준비로\n세탁 다음 건조까지 더 편리하게 연결해요.",
+      icon: "Wifi",
+      tag: "ThinQ 다이렉트 페어링",
+      mediaType: "image",
+      mediaUrl: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium02.jpg",
+      imageFit: "contain",
+      description: "세탁 코스 정보를 건조기에 전달해 알맞은 건조 코스를 추천하고, 세탁 종료 전 건조준비까지 시작할 수 있어요.",
+      highlights: ["ThinQ 앱 연동", "다이렉트 페어링", "맞춤 건조 코스 추천", "건조준비"],
+      disclaimers: ["소비자의 이해를 돕기 위해 연출된 이미지이며 제품별 색상 및 사양은 다를 수 있습니다."],
+    },
+  ],
+
   // 에어컨 특장점
   airconditioner: [
     {

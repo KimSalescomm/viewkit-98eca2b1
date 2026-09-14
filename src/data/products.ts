@@ -78,6 +78,15 @@ export const products: Product[] = [
     icon: "Waves",
   },
   {
+    id: "ai-washtower",
+    name: "AI 워시타워",
+    title: "AI 워시타워",
+    description: "세탁부터 건조까지 AI로 더 섬세하고 편리하게",
+    keyVisualImage: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium-interior01.jpg",
+    heroImage: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium01.jpg",
+    icon: "Waves",
+  },
+  {
     id: "airconditioner",
     name: "에어컨",
     title: "LG 휘센 AI 오브제컬렉션",
