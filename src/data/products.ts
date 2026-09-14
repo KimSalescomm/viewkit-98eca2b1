@@ -81,7 +81,7 @@ export const products: Product[] = [
     id: "ai-washtower",
     name: "AI 워시타워",
     title: "AI 워시타워",
-    description: "세탁부터 건조까지 AI로 더 섬세하고 편리하게",
+    description: "진정한 AI 세탁·건조의 완성",
     keyVisualImage: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium-interior01.jpg",
     heroImage: "https://static.lge.co.kr/kr/images/wash-tower/md10793829/gallery/medium01.jpg",
     icon: "Waves",
