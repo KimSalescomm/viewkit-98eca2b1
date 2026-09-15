@@ -1116,8 +1116,8 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "보이지 않는 부분까지 꼼꼼하게 케어하고\n무상 A/S까지 받을 수 있어요.",
       icon: "Wrench",
       tag: "가전 구독",
-      mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/wash_combo_250804.mp4",
+      mediaType: "image",
+      mediaUrl: "https://www.lge.co.kr/kr/images/common/pdp_rentalcare/images/wash-tower-1-pc.png",
       description: "가전 케어 매니저가 정기적으로 소모품 교체부터 위생 관리까지 도와줘 편리해요.",
       highlights: [
         "LG전자에서 연구한 전용 관리제 사용",
@@ -1125,7 +1125,7 @@ export const featuresMap: Record<string, Feature[]> = {
         "필터 교체 주기에 맞춰 필터 교체",
         "무상 A/S까지 제공",
       ],
-      disclaimers: ["소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
+      disclaimers: ["소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
       collapsibleDisclaimers: [
         {
           title: "세부정보",
@@ -1146,28 +1146,28 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
       mediaGallery: [
         {
-          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
-          title: "직수/고압 세척",
-        },
-        {
-          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
+          url: "https://www.lge.co.kr/kr/images/common/pdp_rentalcare/images/wash-tower-1-pc.png",
           title: "드럼 케어",
         },
         {
-          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
-          title: "UV/스팀케어",
+          url: "https://www.lge.co.kr/kr/images/common/pdp_rentalcare/images/wash-tower-2-pc.png",
+          title: "위생 케어",
         },
         {
-          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
-          title: "내시경 카메라 점검",
+          url: "https://www.lge.co.kr/kr/images/common/pdp_rentalcare/images/wash-tower-3-pc.png",
+          title: "2중안심필터 교체",
         },
         {
-          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
-          title: "필터 세척 및 교체",
+          url: "https://www.lge.co.kr/kr/images/common/pdp_rentalcare/images/wash-tower-4-pc.png",
+          title: "무상 철거 및 재설치",
         },
         {
-          url: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
-          title: "무상 A/S",
+          url: "https://www.lge.co.kr/kr/images/common/pdp_rentalcare/images/wash-tower-5-pc.png",
+          title: "배수필터 세척 및 교체",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/images/common/pdp_rentalcare/images/wash-tower-6-pc.png",
+          title: "고무패킹 세척",
         },
       ],
     },
