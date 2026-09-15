@@ -69,6 +69,7 @@ export interface FeatureTab {
   descriptionTitle?: string;
   mediaType?: "video" | "image" | "gallery" | "youtube";
   mediaUrl?: string;
+  posterImage?: string;
   fallbackUrl?: string;
   isShorts?: boolean;
   mediaSlides?: MediaSlide[];
