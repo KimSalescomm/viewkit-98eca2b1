@@ -198,10 +198,8 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
         eyebrow: "AI 세탁·건조",
       },
       "2": {
-        image: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
+        image: "/__l5e/assets-v1/6acff7d2-ed6d-4a0d-ad98-76ad8d77ea31/ai-washtower-25kg-poster.jpg",
         eyebrow: "25kg 대용량 세탁·건조",
-        fit: "contain",
-        containBackground: "white",
       },
       "3": {
         image: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
