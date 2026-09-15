@@ -117,6 +117,7 @@ const ContentViewSection = () => {
       const [, pid, fid] = match;
       if (productFilter !== "all" && pid !== productFilter) return;
       if (storeFilter !== "all" && (r.store_id || "").toUpperCase() !== storeFilter) return;
+      if (!matchesCategory(category, getCategoryByCode(r.store_id))) return;
       const ts = new Date(r.created_at).getTime();
       if (fromTs !== null && ts < fromTs) return;
       if (toTs !== null && ts > toTs) return;
@@ -133,7 +134,7 @@ const ContentViewSection = () => {
       cur.views += 1;
     });
     return [...map.values()].sort((a, b) => b.views - a.views);
-  }, [rows, productFilter, storeFilter, from, to]);
+  }, [rows, productFilter, storeFilter, from, to, category, range]);
 
   const totalViews = useMemo(() => aggregated.reduce((a, r) => a + r.views, 0), [aggregated]);
 
@@ -172,9 +173,17 @@ const ContentViewSection = () => {
         <h2 className="text-base font-bold text-slate-900">콘텐츠 조회수</h2>
         <span className="text-xs text-slate-400">특장점 상세 페이지뷰 집계</span>
       </div>
-      <p className="text-xs text-slate-500 mb-4 leading-relaxed">
+      <p className="text-xs text-slate-500 mb-3 leading-relaxed">
         관리자(SC)·본사(KOR) 접속은 집계에서 제외됩니다.
       </p>
+
+      <StatsFilterBar
+        category={category}
+        onCategoryChange={setCategory}
+        range={range}
+        onRangeChange={setRange}
+        className="mb-4"
+      />
 
       <div className="flex flex-wrap items-end gap-3 mb-4">
         <div className="flex flex-col gap-1">
