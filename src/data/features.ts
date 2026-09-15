@@ -1088,8 +1088,8 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "와이드 디스플레이, 플랫 도어와 플랫 세제함을\n적용해 프리미엄 디자인을 완성했어요.",
       icon: "RectangleHorizontal",
       tag: "All New Full 플랫 디자인",
-      mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_14_design_pc.mp4",
+      mediaType: "image",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525TTP6Z_design_pc.jpg",
       description:
         "플랫 도어와 플랫 세제함을 적용해 세련되고 깔끔해진 디자인을 만나보세요. 고급스러운 색상을 취향에 맞게 선택해 인테리어를 완성할 수 있어요.",
       highlights: ["모던하고 세련된 프리미엄 디자인", "플랫 도어·플랫 세제함", "와이드 디스플레이", "인테리어 완성"],
@@ -1097,13 +1097,13 @@ export const featuresMap: Record<string, Feature[]> = {
       tabs: [
         {
           label: "플랫 도어와 플랫 세제함으로 깔끔한 디자인",
-          mediaType: "video",
-          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_14_design_pc.mp4",
+          mediaType: "image",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525TTP6Z_design_pc.jpg",
         },
         {
           label: "더 커진 와이드 디스플레이",
           mediaType: "video",
-          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_15_1_control_pc.mp4",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_display_pc.mp4",
         },
       ],
       disclaimers: [
