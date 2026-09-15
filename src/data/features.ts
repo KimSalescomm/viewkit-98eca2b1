@@ -880,7 +880,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Cpu",
       tag: "AI 세탁·건조",
       mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_04_ai_wash_dry_pc.mp4",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_tromm_ai_pc.mp4",
       showMainMedia: false,
       description:
         "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁·건조를 완성하고, 결과까지 확인할 수 있어요.",
@@ -895,7 +895,7 @@ export const featuresMap: Record<string, Feature[]> = {
           description:
             "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁·건조를 완성하고, 결과까지 확인할 수 있어요.",
           mediaType: "video",
-          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_04_ai_wash_dry_pc.mp4",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_tromm_ai_pc.mp4",
           highlights: [
             "세탁·건조 모든 과정에 AI 기술 적용",
             "6가지 손빨래 동작으로 정교하게 세탁",
@@ -917,7 +917,7 @@ export const featuresMap: Record<string, Feature[]> = {
           description:
             "6가지 다양한 손빨래 동작으로 정교하게 세탁하며 바람을 본뜬 6가지 건조 모션으로 꼼꼼하게 건조해요.",
           mediaType: "video",
-          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_05_ai_6motion_pc.mp4",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_6motion_pc.mp4",
           highlights: [],
           collapsibleDisclaimers: [
             {
