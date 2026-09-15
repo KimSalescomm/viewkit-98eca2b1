@@ -18,6 +18,8 @@ interface MediaViewerProps {
   imagePosition?: string;
   fullWidthMedia?: boolean;
   poster?: string;
+  videoAspectRatio?: string;
+  videoObjectFit?: "cover" | "contain";
 }
 
 const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, mediaSlides, isShorts, fallbackUrl, imagePosition, fullWidthMedia, poster }: MediaViewerProps) => {
