@@ -535,7 +535,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster, aspectRatio, objectFi
                 inset: 0,
                 width: "100%",
                 height: "100%",
-                objectFit: "contain",
+                objectFit: objectFit === "cover" ? "cover" : "contain",
                 opacity: 0.5,
               }}
             />
