@@ -1175,19 +1175,16 @@ export const featuresMap: Record<string, Feature[]> = {
       courses: [
         {
           name: "세제 따로 유연제 따로",
-          type: "사용 예시",
           description: "세제 넣고 다시 또 유연제 넣는 번거로움 없이 세제 따로 유연제 따로 넣어두시면 알아서 투입해 줘요.",
           imageUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/usp2/WA2525EGP6Z_auto_detergent_detail_1_pc.jpg",
         },
         {
           name: "일반 세제 따로 유아 세제 따로",
-          type: "사용 예시",
           description: "어른 옷과 아이 옷을 따로 세탁하듯 세제도 일반 세제와 유아 세제로 분리하여 사용할 수 있어요.",
           imageUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/usp2/WA2525EGP6Z_auto_detergent_detail_2_pc.jpg",
         },
         {
           name: "한 가지 세제로 오래오래",
-          type: "사용 예시",
           description: "세제함도 분리 없이 한 가지 세제로 더 오래 쓸 수 있어요.",
           imageUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/usp2/WA2525EGP6Z_auto_detergent_detail_3_pc.jpg",
         },
