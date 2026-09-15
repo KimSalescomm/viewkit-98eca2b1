@@ -995,6 +995,22 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_08_true_steam_pc.mp4",
       description:
         "물을 끓여 만든 트루스팀과 60℃ 이상 고온의 물로 의류를 살균 케어해요. 세탁부터 건조까지 스팀이 적용된 코스를 선택하거나 옵션 추가해 의류를 관리할 수 있어요.",
+      courses: [
+        {
+          name: "트루스팀 세탁으로 99.99% 살균",
+          type: "알러지케어 세탁 코스",
+          description:
+            "바이러스, 집먼지진드기와 알러지 유발물질, 유해세균까지 99.99% 살균해 안심하고 세탁할 수 있어요.",
+          imageUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_allergy_care.jpg",
+        },
+        {
+          name: "트루스팀 건조로 살균,탈취,구김까지 관리",
+          type: "스팀살균/스팀리프레쉬 건조 코스",
+          description:
+            "스팀살균 코스를 이용하면 바이러스 및 집먼지진드기, 알레르겐을 99% 제거할 수 있어요. 스팀리프레쉬 코스를 이용하면 매일 빨기 어려운 옷감의 냄새와 생활 속 구김을 제거해줘요.",
+          imageUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_steam.jpg",
+        },
+      ],
       highlights: ["유해세균 살균", "냄새와 구김 케어", "세탁·건조 모두 적용", "위생적인 의류 관리"],
       disclaimers: ["트루스팀 효과는 사용 조건 및 대상 세탁물에 따라 달라질 수 있습니다."],
     },
