@@ -1090,6 +1090,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "All New Full 플랫 디자인",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525TTP6Z_design_pc.jpg",
+      posterImage: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525TTP6Z_design_pc.jpg",
       description:
         "플랫 도어와 플랫 세제함을 적용해 세련되고 깔끔해진 디자인을 만나보세요. 고급스러운 색상을 취향에 맞게 선택해 인테리어를 완성할 수 있어요.",
       highlights: ["모던하고 세련된 프리미엄 디자인", "플랫 도어·플랫 세제함", "와이드 디스플레이", "인테리어 완성"],
@@ -1104,6 +1105,7 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "더 커진 와이드 디스플레이",
           mediaType: "video",
           mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_display_pc.mp4",
+          posterImage: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525TTP6Z_design_pc.jpg",
         },
       ],
       disclaimers: [
@@ -1118,6 +1120,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "가전 구독",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/wash_tower_250804.mp4",
+      posterImage: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_01_260724.jpg",
       description: "케어 매니저가 방문하여 전문 장비를 활용해 고객이 직접하기 어려운 부분까지 꼼꼼하게 관리해 드려요.",
       highlights: [
         "LG전자에서 연구한 전용 관리제 사용",
