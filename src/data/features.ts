@@ -158,6 +158,9 @@ export interface Feature {
   /** 트루스팀 등 실제 적용 코스 소개 카드 */
   courses?: TrueSteamCourse[];
 
+  /** 코스 섹션 제목 (기본값: 트루스팀 적용 코스) */
+  coursesTitle?: string;
+
   /** 구독 케어 서비스 인터랙티브 항목 (이미지 + 설명 + 리스트) */
   subscriptionServiceItems?: SubscriptionServiceItem[];
 
