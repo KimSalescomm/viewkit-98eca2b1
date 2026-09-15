@@ -1046,17 +1046,16 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "5",
-      title: "세탁이 끝나면 건조까지 알아서 이어진다면요?",
-      subtitle: "세탁 코스 정보를 건조기에 전달해\n맞춤 건조 코스를 추천하고 미리 준비해요.",
+      title: "세탁하는 동안 건조기도 미리 준비할 수 있다면?",
+      subtitle: "세탁이 끝날 쯤 건조기를 미리 예열해\n드럼 내부 온도를 높여줘요.",
       icon: "Wifi",
       tag: "건조준비",
-      mediaType: "image",
-      mediaUrl: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
-      imageFit: "contain",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_ready2dry.mp4",
       description:
-        "세탁 코스 정보를 건조기에 전달해 알맞은 건조 코스를 추천하고, 세탁 종료 전 건조준비까지 시작할 수 있어요.",
+        "세탁이 끝날 쯤 건조기를 미리 예열해 건조 시간을 줄여줘요.",
       highlights: ["세탁·건조 정보 연동", "맞춤 건조 코스 추천", "세탁 종료 전 건조준비", "더 편리한 세탁 일과"],
-      disclaimers: ["소비자의 이해를 돕기 위해 연출된 이미지이며 제품별 색상 및 사양은 다를 수 있습니다."],
+      disclaimers: ["소비자의 이해를 돕기 위해 연출된 영상이며 제품별 색상 및 사양은 다를 수 있습니다."],
     },
     {
       id: "6",
