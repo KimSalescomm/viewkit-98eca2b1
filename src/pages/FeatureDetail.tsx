@@ -602,9 +602,11 @@ const FeatureDetail = () => {
                         </div>
                         <div className="hidden w-1 flex-shrink-0 bg-brand-accent md:block" />
                         <div className="flex w-full flex-col justify-center p-5 sm:p-6 md:w-2/5">
-                          <span className="mb-2 inline-block self-start rounded-full bg-gray-100 px-2.5 py-1 text-[12px] font-bold text-brand-accent">
-                            {course.type || "코스"}
-                          </span>
+                          {course.type && (
+                            <span className="mb-2 inline-block self-start rounded-full bg-gray-100 px-2.5 py-1 text-[12px] font-bold text-brand-accent">
+                              {course.type}
+                            </span>
+                          )}
                           <h3 className="mb-2 text-base font-bold text-gray-900 sm:text-lg">
                             {course.name}
                           </h3>
