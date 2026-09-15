@@ -1256,8 +1256,19 @@ export const featuresMap: Record<string, Feature[]> = {
           posterImage: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525TTP6Z_design_pc.jpg",
         },
       ],
-      disclaimers: [
-        "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
+      collapsibleDisclaimers: [
+        {
+          title: "와이드 디스플레이 60% 기준",
+          items: [
+            "7인치로 커진 와이드 디스플레이 : 기존 모델 (WL22GMZU) 4.3인치 대비 60% 커진 7인치 디스플레이 적용",
+          ],
+        },
+        {
+          title: "인체공학 설계",
+          items: [
+            "인체공학 설계 : 디스플레이 높이 103cm (북미 인간공학 가이드 기준 권장 디스플레이 높이 98~167cm)",
+          ],
+        },
       ],
     },
     {
