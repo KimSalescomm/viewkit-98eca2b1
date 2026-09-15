@@ -953,17 +953,17 @@ export const featuresMap: Record<string, Feature[]> = {
           ],
         },
         {
-          label: "AI 최적화 기록",
-          title: "세탁물의 특성에 맞춰 AI가 최적화한 세탁·건조 과정을 기록",
+          label: "AI 세탁 리포트",
+          title: "한눈에 확인하는 세탁·건조 결과",
           description:
-            "AI 세탁·건조 코스를 사용하면 옷감의 재질과 오염도를 분석해\n최적의 세탁·건조 조건을 설정하고 기록해요.\nAI 최적화 기록은 디스플레이에서 확인할 수 있어요.",
+            "세탁·건조가 끝나면 결과를 한눈에 확인할 수 있어요. AI 세탁·건조 코스 사용 시 세탁량, 의류 특성, 세제·유연제 양, 전력 사용량, 오염도까지 세탁·건조 결과를 확인 할 수 있어요.",
           mediaType: "video",
-          mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_06_ai_optimization_pc.mp4",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_report_mo.mp4",
           disclaimers: [
             {
-              title: "AI 최적화 기록",
+              title: "AI 세탁 리포트",
               items: [
-                "AI 최적화 기록은 AI 세탁 중 감지된 오염도에 따른 세탁 행정을 안내하는 기능으로, 세탁물의 종류나 사용환경에 따라 안내되는 문구는 차이가 있을 수 있습니다.",
+                "AI 세탁 리포트는 AI 세탁·건조 코스 사용 후 제공되는 결과 정보로, 세탁물의 종류나 사용 환경에 따라 표시되는 항목과 수치는 차이가 있을 수 있습니다.",
               ],
             },
           ],
