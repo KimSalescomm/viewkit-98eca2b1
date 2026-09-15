@@ -574,7 +574,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "빌트인 감성의 주방을 원한다면?",
       subtitle: "주방이 훨씬 넓고 깔끔해 보이는\n'Fit & Max' 냉장고를 확인해보세요.",
       icon: "Ruler",
-      tag: "Fit & Max란?",
+      tag: "Fit & Max",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/refrigerators/md10780841/ZEROHINGE_SWING.mp4",
       description:
