@@ -1116,9 +1116,9 @@ export const featuresMap: Record<string, Feature[]> = {
       subtitle: "보이지 않는 부분까지 꼼꼼하게 케어하고\n무상 A/S까지 받을 수 있어요.",
       icon: "Wrench",
       tag: "가전 구독",
-      mediaType: "image",
-      mediaUrl: "https://www.lge.co.kr/kr/images/common/pdp_rentalcare/images/wash-tower-1-pc.png",
-      description: "가전 케어 매니저가 정기적으로 소모품 교체부터 위생 관리까지 도와줘 편리해요.",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/wash_tower_250804.mp4",
+      description: "케어 매니저가 방문하여 전문 장비를 활용해 고객이 직접하기 어려운 부분까지 꼼꼼하게 관리해 드려요.",
       highlights: [
         "LG전자에서 연구한 전용 관리제 사용",
         "세제함, 필터 등을 스팀 케어",
