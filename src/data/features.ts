@@ -390,7 +390,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "매번 물 채우기, 번거롭지 않나요?",
       subtitle: "물통 없이 스스로 채우는 편리한\n직수형 냉장고 STEM을 확인해보세요.",
       icon: "Seedling",
-      tag: "자동제빙",
+      tag: "자동 제빙",
       mediaType: "video",
       mediaUrl: "https://static.lge.co.kr/kr/images/refrigerators/md10364835/M825_582_filter.mp4",
       description:
