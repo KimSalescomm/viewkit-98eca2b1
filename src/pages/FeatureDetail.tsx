@@ -330,6 +330,8 @@ const FeatureDetail = () => {
                 fallbackUrl={feature.fallbackUrl}
                 fullWidthMedia={feature.fullWidthMedia}
                 poster={feature.posterImage}
+                videoAspectRatio={feature.videoAspectRatio}
+                videoObjectFit={feature.videoObjectFit}
               />
             </div>
           </div>
