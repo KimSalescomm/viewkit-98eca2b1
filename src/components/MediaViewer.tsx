@@ -22,7 +22,7 @@ interface MediaViewerProps {
   videoObjectFit?: "cover" | "contain";
 }
 
-const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, mediaSlides, isShorts, fallbackUrl, imagePosition, fullWidthMedia, poster }: MediaViewerProps) => {
+const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, mediaSlides, isShorts, fallbackUrl, imagePosition, fullWidthMedia, poster, videoAspectRatio, videoObjectFit }: MediaViewerProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     align: "start",
     containScroll: "trimSnaps",
