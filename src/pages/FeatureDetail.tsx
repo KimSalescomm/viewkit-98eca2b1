@@ -328,6 +328,7 @@ const FeatureDetail = () => {
                 isShorts={feature.isShorts}
                 fallbackUrl={feature.fallbackUrl}
                 fullWidthMedia={feature.fullWidthMedia}
+                poster={feature.posterImage}
               />
             </div>
           </div>
