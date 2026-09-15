@@ -568,12 +568,15 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster, aspectRatio, objectFi
         poster={poster}
         style={{
           width: "100%",
-          height: "auto",
-          maxHeight: "80vh",
+          height: aspectRatio ? "100%" : "auto",
+          maxHeight: aspectRatio ? undefined : "80vh",
           display: "block",
           margin: "0 auto",
           opacity: isLoading ? 0 : 1,
           transition: "opacity 0.3s",
+          ...(aspectRatio
+            ? { position: "absolute", inset: 0, objectFit }
+            : {}),
         }}
       >
         <source src={currentUrl} type={typeAttribute} />
