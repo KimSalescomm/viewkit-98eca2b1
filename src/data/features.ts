@@ -983,6 +983,14 @@ export const featuresMap: Record<string, Feature[]> = {
           ],
         },
         {
+          label: "AI 시간 안내",
+          title: "사용할수록 정교화되는 예상 건조 완료 시간",
+          description:
+            "건조기에서 AI 건조 코스를 사용할수록 사용자의 건조 패턴을 학습해 예상 건조 완료 시간을 더욱 정교하게 안내해줘요.",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_ai_time_notice.mp4",
+        },
+        {
           label: "AI 세탁 리포트",
           title: "한눈에 확인하는 세탁·건조 결과",
           description:
