@@ -1026,9 +1026,30 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "플랫세제함(자동세제)",
       mediaType: "image",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/usp2/WA2525EGP6Z_auto_detergent_pc.jpg",
+      posterImage: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/usp2/WA2525EGP6Z_auto_detergent_pc.jpg",
       descriptionTitle: "세제와 유연제를 채워두면\n적정량을 알아서 투입",
       description:
         "세탁물의 무게와 오염도를 감지해 필요한 만큼 자동으로 적정량의 세제를 투입해요. 세제 종류에 따라 투입량도 원하는 대로 설정할 수 있어요.",
+      courses: [
+        {
+          name: "세제·유연제 자동 투입",
+          type: "사용 예시",
+          description: "세탁물의 무게와 오염도를 감지해 세제와 유연제를 자동으로 적정량 투입해요.",
+          imageUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/usp2/WA2525EGP6Z_auto_detergent_detail_1_pc.jpg",
+        },
+        {
+          name: "세탁물 맞춤 투입량",
+          type: "사용 예시",
+          description: "세탁량과 오염도에 따라 필요한 만큼 세제를 알아서 조절해 투입해요.",
+          imageUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/usp2/WA2525EGP6Z_auto_detergent_detail_2_pc.jpg",
+        },
+        {
+          name: "플랫 세제함 디자인",
+          type: "사용 예시",
+          description: "깔끔한 플랫 세제함에 한 번 채워두면 여러 번 세탁 동안 편리하게 사용해요.",
+          imageUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/usp2/WA2525EGP6Z_auto_detergent_detail_3_pc.jpg",
+        },
+      ],
       highlights: ["자동으로 세제/유연제 투입", "세탁물 맞춤 사용량", "플랫세제함 디자인", "편리한 세탁"],
       disclaimers: ["세제 용량은 사용 빈도와 코스에 따라 달라질 수 있습니다."],
       collapsibleDisclaimers: [
