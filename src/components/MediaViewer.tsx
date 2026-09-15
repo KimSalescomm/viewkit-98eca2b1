@@ -678,7 +678,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
     }
 
     return (
-      <WebOSVideoPlayer mediaUrl={mediaUrl} fallbackUrl={fallbackUrl} />
+      <WebOSVideoPlayer mediaUrl={mediaUrl} fallbackUrl={fallbackUrl} poster={poster} />
     );
   }
 
