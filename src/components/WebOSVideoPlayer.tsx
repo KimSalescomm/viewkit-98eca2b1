@@ -23,7 +23,7 @@ type VideoFormat = "video/mp4" | "video/webm" | "video/ogg" | "unknown";
  * 3. webOS 자동재생 정책 대응 (muted, playsinline, autoplay)
  * 4. 확장자가 아닌 실제 MIME 타입으로 type 속성 설정
  */
-const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerProps) => {
+const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster, aspectRatio, objectFit = "cover" }: WebOSVideoPlayerProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const location = useLocation();
   const { productId, id } = useParams<{ productId?: string; id?: string }>();
