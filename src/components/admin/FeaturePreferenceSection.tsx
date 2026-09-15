@@ -1,12 +1,16 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Heart, Download, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
-import { format, subDays } from "date-fns";
+import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import * as XLSX from "xlsx";
 import { supabase } from "@/integrations/supabase/client";
-
-
-type PeriodKey = "7" | "14" | "30" | "90" | "all";
+import StatsFilterBar, {
+  CategoryKey,
+  RangeKey,
+  getCategoryByCode,
+  getRangeSinceISO,
+  matchesCategory,
+} from "@/components/admin/StatsFilters";
 
 interface ReactionRow {
   created_at: string;
@@ -39,7 +43,8 @@ const selectClass =
 const FeaturePreferenceSection = () => {
   const [rows, setRows] = useState<ReactionRow[]>([]);
   const [loading, setLoading] = useState(true);
-  const [period, setPeriod] = useState<PeriodKey>("30");
+  const [range, setRange] = useState<RangeKey>("7d");
+  const [category, setCategory] = useState<CategoryKey>("all");
   const [productFilter, setProductFilter] = useState<string>("all");
   const [storeFilter, setStoreFilter] = useState<string>("all");
   const [expandedKeys, setExpandedKeys] = useState<Set<string>>(new Set());
@@ -56,13 +61,13 @@ const FeaturePreferenceSection = () => {
 
   const buildCountQuery = useCallback(() => {
     let q = supabase.from("feature_reactions").select("*", { count: "exact", head: true });
-    const cutoff = period === "all" ? null : subDays(new Date(), Number(period)).toISOString();
+    const cutoff = getRangeSinceISO(range);
     if (cutoff) q = q.gte("created_at", cutoff);
     if (productFilter !== "all") q = q.eq("product_id", productFilter);
     if (storeFilter !== "all") q = q.eq("store_slug", storeFilter);
     q = q.not("store_slug", "ilike", "SC").not("store_slug", "ilike", "KOR");
     return q;
-  }, [period, productFilter, storeFilter]);
+  }, [range, productFilter, storeFilter]);
 
   useEffect(() => {
     let cancelled = false;
@@ -111,14 +116,16 @@ const FeaturePreferenceSection = () => {
   }, [buildCountQuery]);
 
   const filtered = useMemo(() => {
-    const cutoff = period === "all" ? null : subDays(new Date(), Number(period));
+    const since = getRangeSinceISO(range);
+    const cutoff = since ? new Date(since) : null;
     return rows.filter((r) => {
       if (cutoff && new Date(r.created_at) < cutoff) return false;
       if (productFilter !== "all" && r.product_id !== productFilter) return false;
       if (storeFilter !== "all" && r.store_slug !== storeFilter) return false;
+      if (!matchesCategory(category, getCategoryByCode(r.store_slug))) return false;
       return true;
     });
-  }, [rows, period, productFilter, storeFilter]);
+  }, [rows, range, productFilter, storeFilter, category]);
 
   const products = useMemo(() => {
     const m = new Map<string, string>();
@@ -243,17 +250,15 @@ const FeaturePreferenceSection = () => {
         관심 표시는 세션당 특장점별 최대 20회로 제한됩니다. 편향 판단을 위해 <b className="text-slate-700">매장 수</b> 지표를 함께 확인하세요.
       </p>
 
+      <StatsFilterBar
+        category={category}
+        onCategoryChange={setCategory}
+        range={range}
+        onRangeChange={setRange}
+        className="mb-4"
+      />
+
       <div className="flex flex-wrap items-end gap-3 mb-4">
-        <div className="flex flex-col gap-1">
-          <label className="text-[11px] font-medium text-slate-500">기간</label>
-          <select value={period} onChange={(e) => setPeriod(e.target.value as PeriodKey)} className={selectClass}>
-            <option value="7">최근 7일</option>
-            <option value="14">최근 14일</option>
-            <option value="30">최근 30일</option>
-            <option value="90">최근 90일</option>
-            <option value="all">전체</option>
-          </select>
-        </div>
         <div className="flex flex-col gap-1">
           <label className="text-[11px] font-medium text-slate-500">제품</label>
           <select value={productFilter} onChange={(e) => setProductFilter(e.target.value)} className={selectClass}>
