@@ -996,6 +996,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "듀얼 트루스팀",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_08_true_steam_pc.mp4",
+      posterImage: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_allergy_care.jpg",
       description:
         "물을 끓여 만든 트루스팀과 60℃ 이상 고온의 물로 의류를 살균 케어해요. 세탁부터 건조까지 스팀이 적용된 코스를 선택하거나 옵션 추가해 의류를 관리할 수 있어요.",
       courses: [
