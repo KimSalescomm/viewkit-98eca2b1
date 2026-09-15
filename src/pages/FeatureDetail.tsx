@@ -138,7 +138,7 @@ const FeatureDetail = () => {
   const renderMediaGallery = (images: GalleryImage[] | undefined) => {
     if (!images || images.length === 0) return null;
     const topRow = images.slice(0, 4);
-    const bottomRow = images.slice(4, 7);
+    const bottomRow = images.slice(4, 8);
     return (
       <section className="my-6 sm:my-8">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-3 sm:mb-4">
@@ -157,7 +157,7 @@ const FeatureDetail = () => {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
           {bottomRow.map((img, idx) => (
             <div key={idx} className="bg-white rounded-2xl overflow-hidden shadow-sm">
               <BlurMediaFrame
