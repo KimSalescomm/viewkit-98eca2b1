@@ -8,6 +8,8 @@ interface WebOSVideoPlayerProps {
   mediaUrl: string;
   fallbackUrl?: string; // MP4 fallback URL if WebM fails
   poster?: string;
+  aspectRatio?: string;
+  objectFit?: "cover" | "contain";
 }
 
 type VideoFormat = "video/mp4" | "video/webm" | "video/ogg" | "unknown";
@@ -21,7 +23,7 @@ type VideoFormat = "video/mp4" | "video/webm" | "video/ogg" | "unknown";
  * 3. webOS 자동재생 정책 대응 (muted, playsinline, autoplay)
  * 4. 확장자가 아닌 실제 MIME 타입으로 type 속성 설정
  */
-const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerProps) => {
+const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster, aspectRatio, objectFit = "cover" }: WebOSVideoPlayerProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const location = useLocation();
   const { productId, id } = useParams<{ productId?: string; id?: string }>();
@@ -487,6 +489,8 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
 
   const typeAttribute = detectedFormat !== "unknown" ? detectedFormat : undefined;
 
+  const forcedRatio = aspectRatio ? { aspectRatio } : {};
+
   return (
     <div
       style={{
@@ -496,6 +500,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
         background: "#000",
         position: "relative",
         lineHeight: 0,
+        ...forcedRatio,
       }}
     >
       {/* (수정 5) 오버레이 - pointer-events:none, 우상단, 높은 z-index, 수동 재생 버튼 */}
@@ -530,7 +535,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
                 inset: 0,
                 width: "100%",
                 height: "100%",
-                objectFit: "contain",
+                objectFit: objectFit === "cover" ? "cover" : "contain",
                 opacity: 0.5,
               }}
             />
@@ -563,12 +568,15 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster }: WebOSVideoPlayerPro
         poster={poster}
         style={{
           width: "100%",
-          height: "auto",
-          maxHeight: "80vh",
+          height: aspectRatio ? "100%" : "auto",
+          maxHeight: aspectRatio ? undefined : "80vh",
           display: "block",
           margin: "0 auto",
           opacity: isLoading ? 0 : 1,
           transition: "opacity 0.3s",
+          ...(aspectRatio
+            ? { position: "absolute", inset: 0, objectFit }
+            : {}),
         }}
       >
         <source src={currentUrl} type={typeAttribute} />

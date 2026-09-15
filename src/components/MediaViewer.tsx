@@ -18,9 +18,11 @@ interface MediaViewerProps {
   imagePosition?: string;
   fullWidthMedia?: boolean;
   poster?: string;
+  videoAspectRatio?: string;
+  videoObjectFit?: "cover" | "contain";
 }
 
-const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, mediaSlides, isShorts, fallbackUrl, imagePosition, fullWidthMedia, poster }: MediaViewerProps) => {
+const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, mediaSlides, isShorts, fallbackUrl, imagePosition, fullWidthMedia, poster, videoAspectRatio, videoObjectFit }: MediaViewerProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     align: "start",
     containScroll: "trimSnaps",
@@ -678,7 +680,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
     }
 
     return (
-      <WebOSVideoPlayer mediaUrl={mediaUrl} fallbackUrl={fallbackUrl} poster={poster} />
+      <WebOSVideoPlayer mediaUrl={mediaUrl} fallbackUrl={fallbackUrl} poster={poster} aspectRatio={videoAspectRatio} objectFit={videoObjectFit} />
     );
   }
 

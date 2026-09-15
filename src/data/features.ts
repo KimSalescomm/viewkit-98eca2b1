@@ -80,6 +80,8 @@ export interface FeatureTab {
   frameBg?: string;
   imageFit?: "cover" | "contain" | "original";
   imagePosition?: string;
+  videoAspectRatio?: string;
+  videoObjectFit?: "cover" | "contain";
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
   /** 메인 미디어(영상) 아래에 표시할 이미지+설명 그리드 */
   mediaGallery?: GalleryImage[];
@@ -149,6 +151,10 @@ export interface Feature {
   fullWidthMedia?: boolean;
   /** 메인 미디어 이미지 표시 방식: original = 원본 비율 유지, 블러 없음 */
   imageFit?: "cover" | "contain" | "original";
+  /** 비디오 강제 가로 비율 (예: "16/9"). 지정 시 object-fit으로 꽉 채움 */
+  videoAspectRatio?: string;
+  /** 비디오 강제 비율 적용 시 object-fit (기본 cover) */
+  videoObjectFit?: "cover" | "contain";
   /** 메인 콘텐츠 하위 세부 기능 (아코디언) */
   subFeatures?: SubFeature[];
   /** 세부 기능 영역 제목/부제 */
@@ -384,7 +390,7 @@ export const featuresMap: Record<string, Feature[]> = {
       title: "매번 물 채우기, 번거롭지 않나요?",
       subtitle: "물통 없이 스스로 채우는 편리한\n직수형 냉장고 STEM을 확인해보세요.",
       icon: "Seedling",
-      tag: "자동제빙",
+      tag: "자동 제빙",
       mediaType: "video",
       mediaUrl: "https://static.lge.co.kr/kr/images/refrigerators/md10364835/M825_582_filter.mp4",
       description:
@@ -1213,6 +1219,8 @@ export const featuresMap: Record<string, Feature[]> = {
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_ready2dry.mp4",
       posterImage: "/__l5e/assets-v1/da37e20a-983d-4986-a08e-7b3f755f5164/ai-washtower-feature5-poster.png",
+      videoAspectRatio: "16/9",
+      videoObjectFit: "cover",
       description:
         "세탁이 끝날 쯤 건조기를 미리 예열해 건조 시간을 줄여줘요.",
       highlights: ["건조 시간 단축", "편리한 세탁 일과"],

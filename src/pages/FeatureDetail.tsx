@@ -330,6 +330,8 @@ const FeatureDetail = () => {
                 fallbackUrl={feature.fallbackUrl}
                 fullWidthMedia={feature.fullWidthMedia}
                 poster={feature.posterImage}
+                videoAspectRatio={feature.videoAspectRatio}
+                videoObjectFit={feature.videoObjectFit}
               />
             </div>
           </div>
@@ -431,6 +433,8 @@ const FeatureDetail = () => {
                       imagePosition={activeTabData?.imagePosition}
                       fullWidthMedia={feature.fullWidthMedia}
                       poster={activeTabData?.posterImage ?? feature.posterImage}
+                      videoAspectRatio={activeTabData?.videoAspectRatio ?? feature.videoAspectRatio}
+                      videoObjectFit={activeTabData?.videoObjectFit ?? feature.videoObjectFit}
                     />
                   </div>
                 </div>

@@ -97,7 +97,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     cards: {
       "7": {
         image: "https://static.lge.co.kr/kr/images/refrigerators/md10364835/M875_filter_pc.jpg",
-        eyebrow: "자동제빙",
+        eyebrow: "자동 제빙",
       },
       "8": {
         image: "/__l5e/assets-v1/5c91565e-d004-4833-9be9-da696f378141/refrigerator-stem-vs-comparison.png",
