@@ -1125,7 +1125,7 @@ export const featuresMap: Record<string, Feature[]> = {
         "필터 교체 주기에 맞춰 필터 교체",
         "무상 A/S까지 제공",
       ],
-      disclaimers: ["소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
+      disclaimers: ["소비자의 이해를 돕기 위해 연출된 영상이며, 제품별 색상 및 스펙은 다를 수 있습니다."],
       collapsibleDisclaimers: [
         {
           title: "세부정보",
