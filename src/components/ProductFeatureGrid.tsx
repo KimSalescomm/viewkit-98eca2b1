@@ -35,6 +35,10 @@ const deriveImage = (feature: Feature): string | undefined => {
   if ((feature.mediaType === "image" || feature.mediaType === "table") && feature.mediaUrl) {
     return feature.mediaUrl;
   }
+  // 영상 특장점은 포스터 이미지를 썸네일로 사용
+  if (feature.mediaType === "video" && feature.posterImage) {
+    return feature.posterImage;
+  }
   if (feature.galleryImages?.length) {
     const first = feature.galleryImages[0];
     return typeof first === "string" ? first : first.url;
