@@ -429,6 +429,7 @@ const FeatureDetail = () => {
                       fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
                       imagePosition={activeTabData?.imagePosition}
                       fullWidthMedia={feature.fullWidthMedia}
+                      poster={activeTabData?.posterImage ?? feature.posterImage}
                     />
                   </div>
                 </div>
