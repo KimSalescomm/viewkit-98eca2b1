@@ -489,6 +489,8 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster, aspectRatio, objectFi
 
   const typeAttribute = detectedFormat !== "unknown" ? detectedFormat : undefined;
 
+  const forcedRatio = aspectRatio ? { aspectRatio, overflow: "hidden" as const } : {};
+
   return (
     <div
       style={{
@@ -498,6 +500,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster, aspectRatio, objectFi
         background: "#000",
         position: "relative",
         lineHeight: 0,
+        ...forcedRatio,
       }}
     >
       {/* (수정 5) 오버레이 - pointer-events:none, 우상단, 높은 z-index, 수동 재생 버튼 */}
