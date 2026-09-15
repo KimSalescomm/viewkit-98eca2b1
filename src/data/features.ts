@@ -939,8 +939,8 @@ export const featuresMap: Record<string, Feature[]> = {
           title: "약 3초 만에 알려주는 세탁·건조 예상 시간",
           description:
             "세탁물을 투입 후 문을 닫고 시작 버튼을 누르면 무게를 감지해 약 3초 만에 예상 시간을 알려줍니다.\n세탁기 앞에서 오래 기다릴 필요가 없고, 코스별 시간도 바로 확인할 수 있어 편리해요.",
-          mediaType: "image",
-          mediaUrl: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
+          mediaType: "video",
+          mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_ai_time_sensing.mp4",
           disclaimers: [
             {
               title: "AI 타임 센싱",
