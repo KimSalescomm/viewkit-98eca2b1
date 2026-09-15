@@ -1033,6 +1033,7 @@ export const featuresMap: Record<string, Feature[]> = {
       descriptionTitle: "세제와 유연제를 채워두면\n적정량을 알아서 투입",
       description:
         "세탁물의 무게와 오염도를 감지해 필요한 만큼 자동으로 적정량의 세제를 투입해요. 세제 종류에 따라 투입량도 원하는 대로 설정할 수 있어요.",
+      coursesTitle: "자동세제함 사용 예시",
       courses: [
         {
           name: "세제·유연제 자동 투입",
