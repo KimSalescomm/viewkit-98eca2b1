@@ -57,7 +57,9 @@ const BlurMediaFrame = ({
         className={
           isOriginal
             ? "h-auto w-full object-contain"
-            : "absolute inset-0 h-full w-full object-contain"
+            : imageFit === "cover"
+              ? "absolute inset-0 h-full w-full object-cover"
+              : "absolute inset-0 h-full w-full object-contain"
         }
       />
     </div>
