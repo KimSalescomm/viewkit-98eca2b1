@@ -17,6 +17,11 @@ import ScreensaverManager from "@/components/ScreensaverManager";
 import FeaturePreferenceSection from "@/components/admin/FeaturePreferenceSection";
 import ContentRequestSection from "@/components/admin/ContentRequestSection";
 import ContentViewSection from "@/components/admin/ContentViewSection";
+import StatsFilterBar, {
+  CategoryKey,
+  getCategoryByName,
+  matchesCategory,
+} from "@/components/admin/StatsFilters";
 import ContentPublishCard from "@/components/ContentPublishCard";
 import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
@@ -322,6 +327,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   const [to, setTo] = useState<string>("");
   const [visitsRange, setVisitsRange] = useState<VisitsRangeKey>("7d");
   const [showAllBranches, setShowAllBranches] = useState(false);
+  const [salesCategory, setSalesCategory] = useState<CategoryKey>("all");
 
 
 
@@ -333,12 +339,13 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
     const rangeFrom = from || (visitsRange === "all" ? "" : getVisitsSinceISO(visitsRange).slice(0, 10));
     return sales.filter((s) => {
       if (branchFilter !== "all" && s.branch !== branchFilter) return false;
+      if (!matchesCategory(salesCategory, getCategoryByName(s.branch))) return false;
       if (productFilter !== "all" && s.product !== productFilter) return false;
       if (rangeFrom && s.sold_at < rangeFrom) return false;
       if (to && s.sold_at > to) return false;
       return true;
     });
-  }, [sales, branchFilter, productFilter, from, to, visitsRange]);
+  }, [sales, branchFilter, productFilter, from, to, visitsRange, salesCategory]);
 
 
   const byBranch = useMemo(() => {
@@ -621,6 +628,16 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
         {/* 필터 / 액션 */}
         {tab !== "content" && tab !== "requests" && tab !== "views" && (
           <div className="rounded-2xl border border-slate-200 bg-white p-4 mb-6 flex flex-wrap items-end gap-3">
+
+          {tab === "sales" && (
+            <StatsFilterBar
+              category={salesCategory}
+              onCategoryChange={setSalesCategory}
+              range={visitsRange}
+              onRangeChange={setVisitsRange}
+              className="w-full"
+            />
+          )}
 
           <div className="flex flex-col gap-1">
             <label className="text-[11px] font-medium text-slate-500">지점</label>
