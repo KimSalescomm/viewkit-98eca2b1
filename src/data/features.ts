@@ -972,15 +972,15 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "큰 이불도 넉넉하게 세탁하고 건조할 수 있다면요?",
-      subtitle: "25kg 대용량 세탁과 건조 용량으로\n많은 양의 빨래도 부담 없이 한 번에 해결해요.",
+      title: "대용량 세탁·건조의 완성!",
+      subtitle: "많은 양의 세탁물도 여유롭게, 부피가 큰 겨울 이불까지\n한 번에 세탁·건조할 수 있어요.",
       icon: "Expand",
       tag: "25kg 대용량 세탁·건조",
       mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_08_25kg_pc.mp4",
-      descriptionTitle: "세탁 25kg, 건조까지 넉넉하게\n대용량으로 편리한 세탁·건조",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_25kg_pc.mp4",
+      descriptionTitle: "대용량 세탁·건조의 완성!",
       description:
-        "기존보다 커진 드럼 사이즈로 세탁 25kg 대용량을 구현했어요. 이불과 패딩, 가족 전체 빨래도 한 번에 넉넉하게 세탁·건조하세요.",
+        "많은 양의 세탁물도 여유롭게, 부피가 큰 겨울 이불까지 한 번에 세탁·건조할 수 있어요.",
       highlights: ["세탁 25kg 대용량", "넉넉한 건조 용량", "이불·패딩도 한 번에", "가족 전체 빨래 해결"],
       disclaimers: [
         "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
