@@ -202,13 +202,13 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
         eyebrow: "25kg 대용량 세탁·건조",
       },
       "3": {
-        image: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
+        image: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_allergy_care.jpg",
         eyebrow: "듀얼 트루스팀",
         fit: "contain",
         containBackground: "white",
       },
       "4": {
-        image: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
+        image: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/usp2/WA2525EGP6Z_auto_detergent_pc.jpg",
         eyebrow: "플랫세제함(자동세제)",
         fit: "contain",
         containBackground: "white",
@@ -220,13 +220,13 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
         containBackground: "white",
       },
       "6": {
-        image: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
+        image: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525TTP6Z_design_pc.jpg",
         eyebrow: "All New Full 플랫 디자인",
         fit: "contain",
         containBackground: "white",
       },
       "7": {
-        image: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
+        image: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_01_260724.jpg",
         eyebrow: "가전 구독",
         fit: "contain",
         containBackground: "white",
