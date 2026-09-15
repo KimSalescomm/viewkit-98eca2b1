@@ -149,6 +149,10 @@ export interface Feature {
   fullWidthMedia?: boolean;
   /** 메인 미디어 이미지 표시 방식: original = 원본 비율 유지, 블러 없음 */
   imageFit?: "cover" | "contain" | "original";
+  /** 비디오 강제 가로 비율 (예: "16/9"). 지정 시 object-fit으로 꽉 채움 */
+  videoAspectRatio?: string;
+  /** 비디오 강제 비율 적용 시 object-fit (기본 cover) */
+  videoObjectFit?: "cover" | "contain";
   /** 메인 콘텐츠 하위 세부 기능 (아코디언) */
   subFeatures?: SubFeature[];
   /** 세부 기능 영역 제목/부제 */
