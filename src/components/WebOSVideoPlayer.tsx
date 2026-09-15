@@ -8,6 +8,8 @@ interface WebOSVideoPlayerProps {
   mediaUrl: string;
   fallbackUrl?: string; // MP4 fallback URL if WebM fails
   poster?: string;
+  aspectRatio?: string;
+  objectFit?: "cover" | "contain";
 }
 
 type VideoFormat = "video/mp4" | "video/webm" | "video/ogg" | "unknown";
