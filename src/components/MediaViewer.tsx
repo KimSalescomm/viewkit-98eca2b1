@@ -290,7 +290,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
                 }}
               >
                 {slide.mediaType === "video" ? (
-                  <WebOSVideoPlayer mediaUrl={slide.mediaUrl} fallbackUrl={slide.fallbackUrl} />
+                  <WebOSVideoPlayer mediaUrl={slide.mediaUrl} fallbackUrl={slide.fallbackUrl} poster={poster} />
                 ) : slide.mediaType === "youtube" ? (
                   <div
                     style={{
