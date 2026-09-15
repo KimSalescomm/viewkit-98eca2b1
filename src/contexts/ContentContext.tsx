@@ -20,7 +20,6 @@ export const DEFAULT_VISIBLE_PRODUCT_IDS = [
   "subscription",
   "tv",
   "refrigerator",
-  "washer",
   "airconditioner",
   "vacuum",
 ];
