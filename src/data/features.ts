@@ -1036,21 +1036,21 @@ export const featuresMap: Record<string, Feature[]> = {
       coursesTitle: "자동세제함 사용 예시",
       courses: [
         {
-          name: "세제·유연제 자동 투입",
+          name: "세제 따로 유연제 따로",
           type: "사용 예시",
-          description: "세탁물의 무게와 오염도를 감지해 세제와 유연제를 자동으로 적정량 투입해요.",
+          description: "세제 넣고 다시 또 유연제 넣는 번거로움 없이 세제 따로 유연제 따로 넣어두시면 알아서 투입해 줘요.",
           imageUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/usp2/WA2525EGP6Z_auto_detergent_detail_1_pc.jpg",
         },
         {
-          name: "세탁물 맞춤 투입량",
+          name: "일반 세제 따로 유아 세제 따로",
           type: "사용 예시",
-          description: "세탁량과 오염도에 따라 필요한 만큼 세제를 알아서 조절해 투입해요.",
+          description: "어른 옷과 아이 옷을 따로 세탁하듯 세제도 일반 세제와 유아 세제로 분리하여 사용할 수 있어요.",
           imageUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/usp2/WA2525EGP6Z_auto_detergent_detail_2_pc.jpg",
         },
         {
-          name: "플랫 세제함 디자인",
+          name: "한 가지 세제로 오래오래",
           type: "사용 예시",
-          description: "깔끔한 플랫 세제함에 한 번 채워두면 여러 번 세탁 동안 편리하게 사용해요.",
+          description: "세제함도 분리 없이 한 가지 세제로 더 오래 쓸 수 있어요.",
           imageUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/usp2/WA2525EGP6Z_auto_detergent_detail_3_pc.jpg",
         },
       ],
