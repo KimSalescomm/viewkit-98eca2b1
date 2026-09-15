@@ -23,6 +23,78 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+const SubscriptionServiceSection = ({
+  items,
+  mediaDisclaimers,
+  accent = "brand",
+}: {
+  items: SubscriptionServiceItem[];
+  mediaDisclaimers?: string[];
+  accent?: "purple" | "brand";
+}) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const selectedItem = items[selectedIndex];
+  const barClass = accent === "brand" ? "bg-brand-accent" : "bg-[#534AB7]";
+  const activeClass = accent === "brand" ? "bg-brand-accent text-white font-medium" : "bg-[#7842F5] text-white font-medium";
+
+
+  return (
+    <div className="mb-6 sm:mb-8">
+      <div className="flex flex-col md:flex-row md:items-stretch bg-white rounded-2xl overflow-hidden border-[0.5px] border-[hsl(var(--border))]">
+        {/* Left block: category detail */}
+        <div className="w-full md:w-[70%] p-5 sm:p-6 md:pr-4">
+          <h3 className="text-gray-900 text-xl font-bold mb-2">
+            {selectedItem.label}
+          </h3>
+          <div className={`w-7 h-[3px] rounded-sm mb-4 ${barClass}`} />
+          <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4">
+            {selectedItem.description}
+          </p>
+          <BlurMediaFrame
+            src={selectedItem.imageUrl}
+            alt={selectedItem.label}
+            aspectClassName="aspect-[16/10]"
+            radiusClassName="rounded-lg"
+          />
+        </div>
+
+        {/* Right block: category list */}
+        <div className="w-full md:w-[30%] p-4 md:pl-4 flex flex-col justify-start border-t md:border-t-0 md:border-l border-[hsl(var(--border))]">
+          <div className="flex flex-col gap-1.5">
+            {items.map((item, idx) => (
+              <button
+                key={item.label}
+                type="button"
+                onClick={() => setSelectedIndex(idx)}
+                className={`w-full text-left px-3.5 py-2.5 min-h-[44px] rounded-[999px] transition-colors duration-200 text-sm sm:text-base ${
+                  selectedIndex === idx
+                    ? activeClass
+                    : "bg-transparent text-gray-900 font-normal border-none"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {mediaDisclaimers && mediaDisclaimers.length > 0 && (
+        <ul className="mt-3 sm:mt-4 px-1 sm:px-2 space-y-1">
+          {mediaDisclaimers.map((text, index) => (
+            <li
+              key={index}
+              className="text-[12px] text-muted-foreground leading-relaxed"
+            >
+              * {text}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
 const FeatureDetail = () => {
   const { productId, id } = useParams<{ productId: string; id: string }>();
   const { trackDetailView, trackVideoClick } = useAnalyticsContext();
@@ -105,77 +177,6 @@ const FeatureDetail = () => {
     );
   };
 
-  const SubscriptionServiceSection = ({
-    items,
-    mediaDisclaimers,
-    accent = "brand",
-  }: {
-    items: SubscriptionServiceItem[];
-    mediaDisclaimers?: string[];
-    accent?: "purple" | "brand";
-  }) => {
-    const [selectedIndex, setSelectedIndex] = useState(0);
-    const selectedItem = items[selectedIndex];
-    const barClass = accent === "brand" ? "bg-brand-accent" : "bg-[#534AB7]";
-    const activeClass = accent === "brand" ? "bg-brand-accent text-white font-medium" : "bg-[#7842F5] text-white font-medium";
-
-
-    return (
-      <div className="mb-6 sm:mb-8">
-        <div className="flex flex-col md:flex-row md:items-stretch bg-white rounded-2xl overflow-hidden border-[0.5px] border-[hsl(var(--border))]">
-          {/* Left block: category detail */}
-          <div className="w-full md:w-[70%] p-5 sm:p-6 md:pr-4">
-            <h3 className="text-gray-900 text-xl font-bold mb-2">
-              {selectedItem.label}
-            </h3>
-            <div className={`w-7 h-[3px] rounded-sm mb-4 ${barClass}`} />
-            <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4">
-              {selectedItem.description}
-            </p>
-            <BlurMediaFrame
-              src={selectedItem.imageUrl}
-              alt={selectedItem.label}
-              aspectClassName="aspect-[16/10]"
-              radiusClassName="rounded-lg"
-            />
-          </div>
-
-          {/* Right block: category list */}
-          <div className="w-full md:w-[30%] p-4 md:pl-4 flex flex-col justify-start border-t md:border-t-0 md:border-l border-[hsl(var(--border))]">
-            <div className="flex flex-col gap-1.5">
-              {items.map((item, idx) => (
-                <button
-                  key={item.label}
-                  type="button"
-                  onClick={() => setSelectedIndex(idx)}
-                  className={`w-full text-left px-3.5 py-2.5 min-h-[44px] rounded-[999px] transition-colors duration-200 text-sm sm:text-base ${
-                    selectedIndex === idx
-                      ? activeClass
-                      : "bg-transparent text-gray-900 font-normal border-none"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {mediaDisclaimers && mediaDisclaimers.length > 0 && (
-          <ul className="mt-3 sm:mt-4 px-1 sm:px-2 space-y-1">
-            {mediaDisclaimers.map((text, index) => (
-              <li
-                key={index}
-                className="text-[12px] text-muted-foreground leading-relaxed"
-              >
-                * {text}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    );
-  };
 
   useEffect(() => {
 
@@ -198,7 +199,8 @@ const FeatureDetail = () => {
     }
   };
 
-  const FeatureDetailLayout = ({
+  // Render helper, not a nested component: preserve media and carousel refs on updates.
+  const renderFeatureDetailLayout = ({
     feature,
     product,
     productId,
@@ -503,7 +505,7 @@ const FeatureDetail = () => {
 
         {/* 구독 케어 서비스 (이미지 + 설명) */}
         {hasSubscriptionService && (
-          <SubscriptionServiceSection items={feature.subscriptionServiceItems!} accent="brand" />
+          <SubscriptionServiceSection items={feature.subscriptionServiceItems ?? []} accent="brand" />
         )}
 
         {/* 설명 카드 */}
@@ -743,12 +745,12 @@ const FeatureDetail = () => {
 
   return (
     <div className="min-h-screen bg-[#F3F4F6]">
-      <FeatureDetailLayout
-        feature={feature}
-        product={product}
-        productId={productId || ""}
-        onVideoClick={handleVideoClick}
-      />
+      {renderFeatureDetailLayout({
+        feature,
+        product,
+        productId: productId || "",
+        onVideoClick: handleVideoClick,
+      })}
     </div>
   );
 };
