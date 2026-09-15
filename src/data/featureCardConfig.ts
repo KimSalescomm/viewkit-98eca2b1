@@ -194,7 +194,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     order: ["1", "2", "3", "4", "5", "6", "7"],
     cards: {
       "1": {
-        image: "/__l5e/assets-v1/f830a2df-4c44-426c-a9a9-0ad821bd9381/ai-washtower-ai-wash-dry-poster.jpg",
+        image: "/__l5e/assets-v1/b2aa3acd-dcfa-42a4-aa1c-7261913de6a3/ai-washtower-feature1-poster.png",
         eyebrow: "AI 세탁·건조",
       },
       "2": {

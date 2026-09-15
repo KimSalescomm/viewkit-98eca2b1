@@ -887,6 +887,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "AI 세탁·건조",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_tromm_ai_pc.mp4",
+      posterImage: "/__l5e/assets-v1/b2aa3acd-dcfa-42a4-aa1c-7261913de6a3/ai-washtower-feature1-poster.png",
       showMainMedia: false,
       description:
         "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁·건조를 완성하고, 결과까지 확인할 수 있어요.",
