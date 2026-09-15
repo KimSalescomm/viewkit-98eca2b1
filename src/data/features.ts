@@ -1116,8 +1116,8 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "7",
-      title: "가전 케어 매니저가 정기적으로 관리해준다면?",
-      subtitle: "보이지 않는 부분까지 꼼꼼하게 케어하고\n무상 A/S까지 받을 수 있어요.",
+      title: "드럼 통이 2개라는 사실, 알고 계셨어요?",
+      subtitle: "가전 케어 매니저가 보이지 않는 부분까지 꼼꼼하게 관리해줘요.",
       icon: "Wrench",
       tag: "가전 구독",
       mediaType: "video",
