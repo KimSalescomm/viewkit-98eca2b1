@@ -582,7 +582,7 @@ const FeatureDetail = () => {
         {feature.courses && feature.courses.length > 0 && (
           <section className="mb-6 sm:mb-8">
             <h2 className="mb-3 text-lg font-bold text-gray-900 sm:mb-4">
-              트루스팀 적용 코스
+              {feature.coursesTitle || "트루스팀 적용 코스"}
             </h2>
             <div className="group relative">
               <div className="overflow-hidden rounded-[14px]" ref={emblaRef}>
