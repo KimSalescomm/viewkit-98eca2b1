@@ -6,6 +6,13 @@ import { products } from "@/data/products";
 import { featuresMap } from "@/data/features";
 import { getBranchNameByCode, cleanBranchName } from "@/data/branches";
 import { cn } from "@/lib/utils";
+import StatsFilterBar, {
+  CategoryKey,
+  RangeKey,
+  getCategoryByCode,
+  getRangeSinceISO,
+  matchesCategory,
+} from "@/components/admin/StatsFilters";
 
 interface ViewRow {
   store_id: string;
