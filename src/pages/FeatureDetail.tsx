@@ -431,6 +431,8 @@ const FeatureDetail = () => {
                       imagePosition={activeTabData?.imagePosition}
                       fullWidthMedia={feature.fullWidthMedia}
                       poster={activeTabData?.posterImage ?? feature.posterImage}
+                      videoAspectRatio={activeTabData?.videoAspectRatio ?? feature.videoAspectRatio}
+                      videoObjectFit={activeTabData?.videoObjectFit ?? feature.videoObjectFit}
                     />
                   </div>
                 </div>
