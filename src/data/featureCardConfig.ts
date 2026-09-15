@@ -210,7 +210,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
         eyebrow: "플랫세제함(자동세제)",
       },
       "5": {
-        image: "/__l5e/assets-v1/ec5d3968-3e4c-496d-bf0f-980e20aca634/ai-washtower-product.png",
+        image: "/__l5e/assets-v1/da37e20a-983d-4986-a08e-7b3f755f5164/ai-washtower-feature5-poster.png",
         eyebrow: "건조준비",
       },
       "6": {
