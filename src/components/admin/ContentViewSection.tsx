@@ -47,6 +47,8 @@ const ContentViewSection = () => {
   const [productFilter, setProductFilter] = useState("all");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
+  const [category, setCategory] = useState<CategoryKey>("all");
+  const [range, setRange] = useState<RangeKey>("7d");
 
   useEffect(() => {
     let cancelled = false;
@@ -101,7 +103,12 @@ const ContentViewSection = () => {
   }, [rows]);
 
   const aggregated = useMemo(() => {
-    const fromTs = from ? new Date(`${from}T00:00:00`).getTime() : null;
+    const rangeSince = getRangeSinceISO(range);
+    const fromTs = from
+      ? new Date(`${from}T00:00:00`).getTime()
+      : rangeSince
+        ? new Date(rangeSince).getTime()
+        : null;
     const toTs = to ? new Date(`${to}T23:59:59.999`).getTime() : null;
     const map = new Map<string, { productName: string; contentName: string; views: number }>();
     rows.forEach((r) => {
