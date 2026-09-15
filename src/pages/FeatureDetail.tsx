@@ -215,7 +215,8 @@ const FeatureDetail = () => {
     const hasSubscriptionService =
       !!feature.subscriptionServiceItems && feature.subscriptionServiceItems.length > 0;
     const belowImg = activeTabData?.belowMediaImage ?? feature.belowMediaImage;
-    const groupedDisclaimers = productId === "washcombo" && id === "7";
+    const groupedDisclaimers =
+      (productId === "washcombo" && id === "7") || (productId === "ai-washtower" && id === "7");
 
     /** 접이식 디스클레이머 블록 (세부정보) */
     const renderCollapsible = (
