@@ -193,7 +193,7 @@ const ProductFeatureGrid = ({
                 <h3 className="whitespace-pre-line text-[17px] font-bold leading-snug tracking-[-0.02em] text-gray-900 sm:text-[18px]">
                   {feature.title}
                 </h3>
-                {hasVideoSource(feature) && (
+                {hasVideoSource(feature) && !(productId === "ai-washtower" && feature.id === "6") && (
                   <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-accent shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
                     <Play className="h-3.5 w-3.5 fill-white text-white" />
                   </span>
