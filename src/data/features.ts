@@ -1121,7 +1121,7 @@ export const featuresMap: Record<string, Feature[]> = {
       icon: "Wrench",
       tag: "가전 구독",
       mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/wash_tower_250804.mp4",
+      mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/caresolution_washtower_260831.mp4",
       posterImage: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_01_260724.jpg",
       description: "케어 매니저가 방문하여 전문 장비를 활용해 고객이 직접하기 어려운 부분까지 꼼꼼하게 관리해 드려요.",
       highlights: [
@@ -1151,28 +1151,36 @@ export const featuresMap: Record<string, Feature[]> = {
       ],
       mediaGallery: [
         {
-          url: "https://www.lge.co.kr/kr/images/common/pdp_rentalcare/images/wash-tower-1-pc.png",
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_01_260724.jpg",
+          title: "직수/고압 세척",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_02_260724.jpg",
           title: "드럼 케어",
         },
         {
-          url: "https://www.lge.co.kr/kr/images/common/pdp_rentalcare/images/wash-tower-2-pc.png",
-          title: "위생 케어",
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_08_260805.png",
+          title: "UV/스팀 케어",
         },
         {
-          url: "https://www.lge.co.kr/kr/images/common/pdp_rentalcare/images/wash-tower-3-pc.png",
-          title: "2중안심필터 교체",
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_03_260724.jpg",
+          title: "내시경 카메라 점검",
         },
         {
-          url: "https://www.lge.co.kr/kr/images/common/pdp_rentalcare/images/wash-tower-4-pc.png",
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_04_260724.jpg",
+          title: "필터 세척 및 교체",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_05_260724.jpg",
+          title: "제품 점검",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_06_260724.jpg",
           title: "무상 철거 및 재설치",
         },
         {
-          url: "https://www.lge.co.kr/kr/images/common/pdp_rentalcare/images/wash-tower-5-pc.png",
-          title: "배수필터 세척 및 교체",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/images/common/pdp_rentalcare/images/wash-tower-6-pc.png",
-          title: "고무패킹 세척",
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_07_260724.jpg",
+          title: "무상 A/S",
         },
       ],
     },
