@@ -291,9 +291,10 @@ const toCsv = (rows: SaleRecord[]) => {
   return [header.join(","), ...body].join("\n");
 };
 
-type TabKey = "visits" | "content" | "sales" | "requests";
+type TabKey = "visits" | "views" | "content" | "sales" | "requests";
 const TABS: { key: TabKey; label: string }[] = [
   { key: "visits", label: "지점별 접속통계" },
+  { key: "views", label: "콘텐츠 조회수" },
   { key: "content", label: "콘텐츠 선호도" },
   { key: "sales", label: "판매 인증" },
   { key: "requests", label: "매장 요청" },
