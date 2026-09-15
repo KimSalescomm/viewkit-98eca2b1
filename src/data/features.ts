@@ -1077,6 +1077,7 @@ export const featuresMap: Record<string, Feature[]> = {
       tag: "건조준비",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_ready2dry.mp4",
+      posterImage: "/__l5e/assets-v1/da37e20a-983d-4986-a08e-7b3f755f5164/ai-washtower-feature5-poster.png",
       description:
         "세탁이 끝날 쯤 건조기를 미리 예열해 건조 시간을 줄여줘요.",
       highlights: ["세탁·건조 정보 연동", "맞춤 건조 코스 추천", "세탁 종료 전 건조준비", "더 편리한 세탁 일과"],
