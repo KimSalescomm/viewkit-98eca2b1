@@ -489,7 +489,7 @@ const WebOSVideoPlayer = ({ mediaUrl, fallbackUrl, poster, aspectRatio, objectFi
 
   const typeAttribute = detectedFormat !== "unknown" ? detectedFormat : undefined;
 
-  const forcedRatio = aspectRatio ? { aspectRatio, overflow: "hidden" as const } : {};
+  const forcedRatio = aspectRatio ? { aspectRatio } : {};
 
   return (
     <div
