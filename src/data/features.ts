@@ -1055,7 +1055,7 @@ export const featuresMap: Record<string, Feature[]> = {
           imageUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/usp2/WA2525EGP6Z_auto_detergent_detail_3_pc.jpg",
         },
       ],
-      highlights: ["자동으로 세제/유연제 투입", "세탁물 맞춤 사용량", "플랫세제함 디자인", "편리한 세탁"],
+      highlights: ["자동으로 세제/유연제 투입", "플랫세제함 디자인", "편리한 세탁"],
       disclaimers: ["세제 용량은 사용 빈도와 코스에 따라 달라질 수 있습니다."],
       collapsibleDisclaimers: [
         {
@@ -1081,7 +1081,7 @@ export const featuresMap: Record<string, Feature[]> = {
       posterImage: "/__l5e/assets-v1/da37e20a-983d-4986-a08e-7b3f755f5164/ai-washtower-feature5-poster.png",
       description:
         "세탁이 끝날 쯤 건조기를 미리 예열해 건조 시간을 줄여줘요.",
-      highlights: ["세탁·건조 정보 연동", "맞춤 건조 코스 추천", "세탁 종료 전 건조준비", "더 편리한 세탁 일과"],
+      highlights: ["건조 시간 단축", "편리한 세탁 일과"],
       disclaimers: ["소비자의 이해를 돕기 위해 연출된 영상이며 제품별 색상 및 사양은 다를 수 있습니다."],
     },
     {
