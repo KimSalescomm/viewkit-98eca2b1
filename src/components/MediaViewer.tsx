@@ -17,9 +17,10 @@ interface MediaViewerProps {
   fallbackUrl?: string; // MP4 fallback URL for webOS compatibility
   imagePosition?: string;
   fullWidthMedia?: boolean;
+  poster?: string;
 }
 
-const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, mediaSlides, isShorts, fallbackUrl, imagePosition, fullWidthMedia }: MediaViewerProps) => {
+const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, mediaSlides, isShorts, fallbackUrl, imagePosition, fullWidthMedia, poster }: MediaViewerProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     align: "start",
     containScroll: "trimSnaps",
@@ -289,7 +290,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
                 }}
               >
                 {slide.mediaType === "video" ? (
-                  <WebOSVideoPlayer mediaUrl={slide.mediaUrl} fallbackUrl={slide.fallbackUrl} />
+                  <WebOSVideoPlayer mediaUrl={slide.mediaUrl} fallbackUrl={slide.fallbackUrl} poster={poster} />
                 ) : slide.mediaType === "youtube" ? (
                   <div
                     style={{
@@ -677,7 +678,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
     }
 
     return (
-      <WebOSVideoPlayer mediaUrl={mediaUrl} fallbackUrl={fallbackUrl} />
+      <WebOSVideoPlayer mediaUrl={mediaUrl} fallbackUrl={fallbackUrl} poster={poster} />
     );
   }
 
