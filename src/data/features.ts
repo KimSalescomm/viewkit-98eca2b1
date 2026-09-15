@@ -972,15 +972,15 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "2",
-      title: "대용량 세탁·건조의 완성!",
-      subtitle: "많은 양의 세탁물도 여유롭게, 부피가 큰 겨울 이불까지\n한 번에 세탁·건조할 수 있어요.",
+      title: "큰 이불도 넉넉하게 세탁하고 건조할 수 있다면요?",
+      subtitle: "세탁 용량과 동일한 25kg 건조 용량으로 많은 양의 세탁물도 여유롭게\n세탁·건조 할 수 있어요.",
       icon: "Expand",
       tag: "25kg 대용량 세탁·건조",
       mediaType: "video",
       mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_25kg_pc.mp4",
-      descriptionTitle: "대용량 세탁·건조의 완성!",
+      descriptionTitle: "큰 이불도 넉넉하게 세탁하고 건조할 수 있다면요?",
       description:
-        "많은 양의 세탁물도 여유롭게, 부피가 큰 겨울 이불까지 한 번에 세탁·건조할 수 있어요.",
+        "세탁 용량과 동일한 25kg 건조 용량으로 많은 양의 세탁물도 여유롭게 세탁·건조 할 수 있어요.",
       highlights: ["세탁 25kg 대용량", "넉넉한 건조 용량", "이불·패딩도 한 번에", "가족 전체 빨래 해결"],
       disclaimers: [
         "소비자의 이해를 돕기 위해 연출된 이미지이며, 제품별 색상 및 스펙은 다를 수 있습니다.",
