@@ -22,6 +22,7 @@ export const DEFAULT_VISIBLE_PRODUCT_IDS = [
   "refrigerator",
   "airconditioner",
   "vacuum",
+  "ai-washtower",
 ];
 
 export interface VisibilityPayload {
