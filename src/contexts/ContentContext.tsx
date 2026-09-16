@@ -22,6 +22,7 @@ export const DEFAULT_VISIBLE_PRODUCT_IDS = [
   "refrigerator",
   "airconditioner",
   "vacuum",
+  "ai-washtower",
 ];
 
 export interface VisibilityPayload {
@@ -38,13 +39,19 @@ const NEVER_VISIBLE_PRODUCT_IDS = new Set<string>(["pc"]);
 /** 대외비 제품: 내부 계정(SC/KOR)에서만 열람 가능 */
 const CONFIDENTIAL_PRODUCT_IDS = new Set<string>(["bathair", "washcombo"]);
 /** 관리자 전용 제품: SC 계정에서만 목록 및 직접 URL 열람 가능 */
-export const SC_ONLY_PRODUCT_IDS = new Set<string>(["ai-washtower"]);
+export const SC_ONLY_PRODUCT_IDS = new Set<string>([]);
+
+/**
+ * 이전 노출 설정 스냅샷에는 없던 신규 제품. 스냅샷이 갱신되기 전까지 항상 노출합니다.
+ * (SC 관리자 화면에서 노출 설정을 다시 저장하면 그 결과가 그대로 적용됩니다.)
+ */
+const NEW_PRODUCT_IDS = ["ai-washtower"];
 
 /** 스냅샷·캐시에 남아있는 오래된/알 수 없는 id를 걸러냅니다. */
 const sanitizeVisibleIds = (ids: string[]): string[] =>
   Array.from(
     new Set(
-      ids.filter(
+      [...ids, ...NEW_PRODUCT_IDS].filter(
         (id) => KNOWN_PRODUCT_IDS.has(id) && !NEVER_VISIBLE_PRODUCT_IDS.has(id),
       ),
     ),
@@ -68,7 +75,7 @@ interface ContentContextValue {
 }
 
 // 기본 노출 세트/필터 로직 변경 시 이전 지점 캐시가 남지 않도록 버전을 올립니다.
-const CACHE_KEY = "viewkit_visibility_snapshot_v5";
+const CACHE_KEY = "viewkit_visibility_snapshot_v6";
 // 캐시 유효 시간: 30분 (퍼블리시 변경이 빠르게 반영되도록)
 const CACHE_TTL_MS = 30 * 60 * 1000;
 
