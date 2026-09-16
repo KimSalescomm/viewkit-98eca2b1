@@ -3,7 +3,7 @@ import { Eye, CheckCircle2, AlertCircle, PackageCheck } from "lucide-react";
 import { featuresMap as draftFeaturesMap } from "@/data/features";
 import { products as draftProducts } from "@/data/products";
 import { supabase } from "@/integrations/supabase/client";
-import { DEFAULT_VISIBLE_PRODUCT_IDS } from "@/contexts/ContentContext";
+import { DEFAULT_VISIBLE_PRODUCT_IDS, NEW_PRODUCT_IDS } from "@/contexts/ContentContext";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 
