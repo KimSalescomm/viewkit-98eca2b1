@@ -51,12 +51,14 @@ const ContentPublishCard = () => {
       .maybeSingle();
     setLastPublishedAt(data?.created_at ?? null);
     const raw = data?.payload as { visibleProductIds?: unknown } | null;
-    if (raw && Array.isArray(raw.visibleProductIds)) {
-      const ids = raw.visibleProductIds.filter(
-        (v): v is string => typeof v === "string",
-      );
-      if (ids.length > 0) setSelected(new Set(ids));
-    }
+      if (raw && Array.isArray(raw.visibleProductIds)) {
+        const ids = raw.visibleProductIds.filter(
+          (v): v is string => typeof v === "string",
+        );
+        if (ids.length > 0)
+          // 신규 제품(예: 워시타워)은 스냅샷에 없어도 자동 체크
+          setSelected(new Set([...ids, ...NEW_PRODUCT_IDS]));
+      }
   };
 
   useEffect(() => {
