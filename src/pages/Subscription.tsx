@@ -593,13 +593,14 @@ const Subscription = () => {
                 {title}
               </h2>
               <div className="flex items-center gap-3">
-                {(isAircon || isWasher) && (
+                {((isAircon && visibleAirconPlans.length > 1) ||
+                  (isWasher && visibleWasherPlans.length > 1)) && (
                   <div
                     role="tablist"
                     aria-label={isAircon ? "에어컨 요금제 선택" : "세탁기 요금제 선택"}
                     className="inline-flex items-center rounded-full border border-gray-200 bg-white p-0.5"
                   >
-                    {(isAircon ? airconPlanContents : washerPlanContents).map((p) => {
+                    {(isAircon ? visibleAirconPlans : visibleWasherPlans).map((p) => {
                       const active = isAircon
                         ? p.plan === airconPlanId
                         : p.plan === washerPlanId;
