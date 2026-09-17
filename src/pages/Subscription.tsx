@@ -475,19 +475,28 @@ const Subscription = () => {
   const [videoOpen, setVideoOpen] = useState(false);
   const selected = subscriptionProducts.find((p) => p.id === selectedId)!;
   const hasAnyImage = selected.careSteps.some((s) => s.image);
+  // 라이트플러스 요금제는 당분간 미노출(데이터는 보존). 다시 노출하려면 true로 변경.
+  const LITE_PLUS_ENABLED = false;
+  const visibleAirconPlans = LITE_PLUS_ENABLED
+    ? airconPlanContents
+    : airconPlanContents.filter((p) => p.plan !== "litePlus");
+  const visibleWasherPlans = LITE_PLUS_ENABLED
+    ? washerPlanContents
+    : washerPlanContents.filter((p) => p.plan !== "litePlus");
+
   const [airconPlanId, setAirconPlanId] = useState<AirconPlanId>("premium");
   const isAircon = selected.id === "airconditioner";
   const airconPlan = isAircon
     ? airconPlanContents.find((p) => p.plan === airconPlanId)
     : undefined;
-  const isAirconLite = isAircon && airconPlanId === "litePlus";
+  const isAirconLite = LITE_PLUS_ENABLED && isAircon && airconPlanId === "litePlus";
 
   const [washerPlanId, setWasherPlanId] = useState<WasherPlanId>("premium");
   const isWasher = selected.id === "washer";
   const washerPlan = isWasher
     ? washerPlanContents.find((p) => p.plan === washerPlanId)
     : undefined;
-  const isWasherLite = isWasher && washerPlanId === "litePlus";
+  const isWasherLite = LITE_PLUS_ENABLED && isWasher && washerPlanId === "litePlus";
 
   const [litePlaying, setLitePlaying] = useState(false);
   useEffect(() => {
