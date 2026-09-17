@@ -572,6 +572,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   };
 
 
+  const [summaryOpen, setSummaryOpen] = useState(false);
+
   const selectClass =
     "h-9 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 " +
     "focus:outline-none focus:ring-2 focus:ring-[#3182CE]/15 focus:border-[#3182CE]";
