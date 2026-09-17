@@ -9,7 +9,10 @@ import {
   Medal,
   LogOut,
   Lock,
+  ExternalLink,
+  X,
 } from "lucide-react";
+import performanceSummaryAsset from "@/assets/viewkit-performance-summary.png.asset.json";
 import { getSales, clearAllSales, deleteSale, deleteSalesByIds, SaleRecord } from "@/utils/salesLog";
 import StoreVisitStats from "@/components/StoreVisitStats";
 import ProductVisitStats from "@/components/ProductVisitStats";
