@@ -293,8 +293,8 @@ const _subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "bathair",
     name: "바스에어시스템",
-    beforeImage: bathairBefore,
-    afterImage: bathairAfter,
+    beforeImage: bathairAfter,
+    afterImage: bathairBefore,
     careVideo: "https://youtu.be/HkCNqxdZ5bs",
     careSteps: [
       {
