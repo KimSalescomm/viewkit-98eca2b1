@@ -600,7 +600,37 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
             <Shield className="w-5 h-5" strokeWidth={2.4} />
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-slate-900">관리자 대시보드</h1>
+          <button
+            type="button"
+            onClick={() => setSummaryOpen(true)}
+            className="ml-auto inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full border border-[#3182CE]/30 bg-white text-xs font-semibold text-[#3182CE] hover:bg-[#3182CE]/5 transition-colors"
+          >
+            뷰킷 실적 요약
+            <ExternalLink className="w-3.5 h-3.5" />
+          </button>
         </div>
+
+        {summaryOpen && (
+          <div
+            className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-3"
+            onClick={() => setSummaryOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setSummaryOpen(false)}
+              aria-label="닫기"
+              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/15 text-white flex items-center justify-center hover:bg-white/25 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <img
+              src={performanceSummaryAsset.url}
+              alt="뷰킷 실적 요약"
+              onClick={(e) => e.stopPropagation()}
+              className="max-w-[98vw] max-h-[96vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
+            />
+          </div>
+        )}
         <p className="text-sm text-slate-500 mb-6">
           전체 {sales.length}건 · 필터 결과 {filtered.length}건
         </p>
