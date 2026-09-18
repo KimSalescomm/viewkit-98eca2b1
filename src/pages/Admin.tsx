@@ -11,8 +11,11 @@ import {
   Lock,
   ExternalLink,
   X,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
-import performanceSummaryAsset from "@/assets/viewkit-performance-summary.png.asset.json";
+import performanceAsset1 from "@/assets/viewkit-performance-1.png.asset.json";
+import performanceAsset2 from "@/assets/viewkit-performance-2.png.asset.json";
 import { getSales, clearAllSales, deleteSale, deleteSalesByIds, SaleRecord } from "@/utils/salesLog";
 import StoreVisitStats from "@/components/StoreVisitStats";
 import ProductVisitStats from "@/components/ProductVisitStats";
@@ -573,6 +576,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
 
 
   const [summaryOpen, setSummaryOpen] = useState(false);
+  const [summarySlide, setSummarySlide] = useState(0);
+  const summarySlides = [performanceAsset1, performanceAsset2];
 
   const selectClass =
     "h-9 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 " +
@@ -604,7 +609,10 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
           <h1 className="text-2xl font-bold tracking-tight text-slate-900">관리자 대시보드</h1>
           <button
             type="button"
-            onClick={() => setSummaryOpen(true)}
+            onClick={() => {
+              setSummarySlide(0);
+              setSummaryOpen(true);
+            }}
             className="ml-auto inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full border border-[#3182CE]/30 bg-white text-xs font-semibold text-[#3182CE] hover:bg-[#3182CE]/5 transition-colors"
           >
             뷰킷 실적 요약
@@ -625,12 +633,59 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
             >
               <X className="w-5 h-5" />
             </button>
-            <img
-              src={performanceSummaryAsset.url}
-              alt="뷰킷 실적 요약"
+            <div
+              className="relative max-w-[98vw] max-h-[96vh]"
               onClick={(e) => e.stopPropagation()}
-              className="max-w-[98vw] max-h-[96vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
-            />
+              onTouchStart={(e) => { (e.currentTarget as HTMLDivElement).dataset.touchX = String(e.touches[0].clientX); }}
+              onTouchEnd={(e) => {
+                const startX = Number((e.currentTarget as HTMLDivElement).dataset.touchX);
+                if (!startX) return;
+                const dx = e.changedTouches[0].clientX - startX;
+                if (Math.abs(dx) > 40) {
+                  if (dx < 0) setSummarySlide((s) => (s + 1) % summarySlides.length);
+                  else setSummarySlide((s) => (s - 1 + summarySlides.length) % summarySlides.length);
+                }
+              }}
+            >
+              <div className="flex transition-transform duration-300 ease-out" style={{ transform: `translateX(-${summarySlide * 100}%)` }}>
+                {summarySlides.map((asset, i) => (
+                  <img
+                    key={i}
+                    src={asset.url}
+                    alt={`뷰킷 실적 요약 ${i + 1}`}
+                    draggable={false}
+                    className="max-w-[98vw] max-h-[96vh] w-auto h-auto object-contain rounded-lg shadow-2xl select-none"
+                  />
+                ))}
+              </div>
+              <button
+                type="button"
+                aria-label="이전"
+                onClick={() => setSummarySlide((s) => (s - 1 + summarySlides.length) % summarySlides.length)}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/25 text-white flex items-center justify-center hover:bg-white/40 transition-colors"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button
+                type="button"
+                aria-label="다음"
+                onClick={() => setSummarySlide((s) => (s + 1) % summarySlides.length)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/25 text-white flex items-center justify-center hover:bg-white/40 transition-colors"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {summarySlides.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    aria-label={`${i + 1}번 이미지`}
+                    onClick={() => setSummarySlide(i)}
+                    className={`w-2.5 h-2.5 rounded-full transition-colors ${summarySlide === i ? "bg-white" : "bg-white/40"}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         )}
         <p className="text-sm text-slate-500 mb-6">
