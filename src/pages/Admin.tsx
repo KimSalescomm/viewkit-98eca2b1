@@ -585,7 +585,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white">
-      <div className="max-w-5xl mx-auto px-5 py-8">
+      <div className="max-w-5xl mx-auto px-5 pt-[4cm] pb-8">
         <div className="flex items-center justify-between mb-6">
           <Link
             to="/"
