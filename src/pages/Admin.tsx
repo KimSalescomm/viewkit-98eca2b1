@@ -636,6 +636,16 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
             <div
               className="relative max-w-[98vw] max-h-[96vh]"
               onClick={(e) => e.stopPropagation()}
+              onTouchStart={(e) => { (e.currentTarget as HTMLDivElement).dataset.touchX = String(e.touches[0].clientX); }}
+              onTouchEnd={(e) => {
+                const startX = Number((e.currentTarget as HTMLDivElement).dataset.touchX);
+                if (!startX) return;
+                const dx = e.changedTouches[0].clientX - startX;
+                if (Math.abs(dx) > 40) {
+                  if (dx < 0) setSummarySlide((s) => (s + 1) % summarySlides.length);
+                  else setSummarySlide((s) => (s - 1 + summarySlides.length) % summarySlides.length);
+                }
+              }}
             >
               <div className="flex transition-transform duration-300 ease-out" style={{ transform: `translateX(-${summarySlide * 100}%)` }}>
                 {summarySlides.map((asset, i) => (
