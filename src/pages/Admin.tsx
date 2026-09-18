@@ -11,8 +11,11 @@ import {
   Lock,
   ExternalLink,
   X,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
-import performanceSummaryAsset from "@/assets/viewkit-performance-summary.png.asset.json";
+import performanceAsset1 from "@/assets/viewkit-performance-1.png.asset.json";
+import performanceAsset2 from "@/assets/viewkit-performance-2.png.asset.json";
 import { getSales, clearAllSales, deleteSale, deleteSalesByIds, SaleRecord } from "@/utils/salesLog";
 import StoreVisitStats from "@/components/StoreVisitStats";
 import ProductVisitStats from "@/components/ProductVisitStats";
@@ -573,6 +576,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
 
 
   const [summaryOpen, setSummaryOpen] = useState(false);
+  const [summarySlide, setSummarySlide] = useState(0);
+  const summarySlides = [performanceAsset1, performanceAsset2];
 
   const selectClass =
     "h-9 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 " +
