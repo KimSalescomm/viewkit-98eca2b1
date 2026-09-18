@@ -6,3 +6,4 @@
 - [x] /subscription 워시콤보를 세탁기와 같은 Before/After 구조로 변경하고 업로드 이미지 4:3 적용
 - [x] 워시콤보 Before/After 이미지 교체 및 After 케어 영상 버튼 복원
 - [x] 바스에어시스템 Before/After 구조·4:3 이미지·After 케어 영상 적용
+- [x] Admin 뷰킷 실적 요약 팝업을 2장 슬라이드 카루셀로 교체
