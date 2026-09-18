@@ -634,7 +634,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
               <X className="w-5 h-5" />
             </button>
             <div
-              className="relative max-w-[98vw] max-h-[96vh]"
+              className="relative w-[98vw] h-[98dvh] flex items-center justify-center overflow-hidden"
               onClick={(e) => e.stopPropagation()}
               onTouchStart={(e) => { (e.currentTarget as HTMLDivElement).dataset.touchX = String(e.touches[0].clientX); }}
               onTouchEnd={(e) => {
@@ -647,15 +647,16 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                 }
               }}
             >
-              <div className="flex transition-transform duration-300 ease-out" style={{ transform: `translateX(-${summarySlide * 100}%)` }}>
+              <div className="flex h-full w-full shrink-0 transition-transform duration-300 ease-out" style={{ transform: `translateX(-${summarySlide * 100}%)` }}>
                 {summarySlides.map((asset, i) => (
-                  <img
-                    key={i}
-                    src={asset.url}
-                    alt={`뷰킷 실적 요약 ${i + 1}`}
-                    draggable={false}
-                    className="max-w-[98vw] max-h-[96vh] w-auto h-auto object-contain rounded-lg shadow-2xl select-none"
-                  />
+                  <div key={i} className="w-full h-full shrink-0 flex items-center justify-center">
+                    <img
+                      src={asset.url}
+                      alt={`뷰킷 실적 요약 ${i + 1}`}
+                      draggable={false}
+                      className="vk-summary-slide max-w-[98vw] max-h-[96vh] w-auto h-auto object-contain rounded-lg shadow-2xl select-none"
+                    />
+                  </div>
                 ))}
               </div>
               <button
