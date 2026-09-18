@@ -609,7 +609,10 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
           <h1 className="text-2xl font-bold tracking-tight text-slate-900">관리자 대시보드</h1>
           <button
             type="button"
-            onClick={() => setSummaryOpen(true)}
+            onClick={() => {
+              setSummarySlide(0);
+              setSummaryOpen(true);
+            }}
             className="ml-auto inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full border border-[#3182CE]/30 bg-white text-xs font-semibold text-[#3182CE] hover:bg-[#3182CE]/5 transition-colors"
           >
             뷰킷 실적 요약
