@@ -366,18 +366,4 @@ All colors MUST be HSL.
   }
 }
 
-/* ============================================================
-   뷰킷 실적 요약 팝업 (관리자)
-   - 세로 화면에서는 이미지를 90도 회전시켜 위아래로 꽉 차게 표시
-   - 가로 화면(모니터/가로 키오스크)에서는 기존처럼 가로 원본 비율 유지
-   ============================================================ */
-@media (orientation: portrait) {
-  .vk-summary-slide {
-    width: 97vh;
-    height: 97vw;
-    max-width: none !important;
-    max-height: none !important;
-    transform: rotate(90deg);
-  }
-}
 
