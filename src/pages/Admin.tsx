@@ -630,12 +630,49 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
             >
               <X className="w-5 h-5" />
             </button>
-            <img
-              src={performanceSummaryAsset.url}
-              alt="뷰킷 실적 요약"
+            <div
+              className="relative max-w-[98vw] max-h-[96vh]"
               onClick={(e) => e.stopPropagation()}
-              className="max-w-[98vw] max-h-[96vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
-            />
+            >
+              <div className="flex transition-transform duration-300 ease-out" style={{ transform: `translateX(-${summarySlide * 100}%)` }}>
+                {summarySlides.map((asset, i) => (
+                  <img
+                    key={i}
+                    src={asset.url}
+                    alt={`뷰킷 실적 요약 ${i + 1}`}
+                    draggable={false}
+                    className="max-w-[98vw] max-h-[96vh] w-auto h-auto object-contain rounded-lg shadow-2xl select-none"
+                  />
+                ))}
+              </div>
+              <button
+                type="button"
+                aria-label="이전"
+                onClick={() => setSummarySlide((s) => (s - 1 + summarySlides.length) % summarySlides.length)}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/25 text-white flex items-center justify-center hover:bg-white/40 transition-colors"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button
+                type="button"
+                aria-label="다음"
+                onClick={() => setSummarySlide((s) => (s + 1) % summarySlides.length)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/25 text-white flex items-center justify-center hover:bg-white/40 transition-colors"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {summarySlides.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    aria-label={`${i + 1}번 이미지`}
+                    onClick={() => setSummarySlide(i)}
+                    className={`w-2.5 h-2.5 rounded-full transition-colors ${summarySlide === i ? "bg-white" : "bg-white/40"}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         )}
         <p className="text-sm text-slate-500 mb-6">
