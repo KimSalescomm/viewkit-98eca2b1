@@ -630,9 +630,9 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
               type="button"
               onClick={() => setSummaryOpen(false)}
               aria-label="닫기"
-              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/15 text-white flex items-center justify-center hover:bg-white/25 transition-colors"
+              className="absolute top-3 right-3 z-30 w-14 h-14 rounded-full bg-white text-slate-800 shadow-lg flex items-center justify-center active:scale-95 transition-transform"
             >
-              <X className="w-5 h-5" />
+              <X className="w-7 h-7" strokeWidth={2.5} />
             </button>
             <div
               className="relative w-[98vw] h-[98dvh] flex items-center justify-center overflow-hidden"
