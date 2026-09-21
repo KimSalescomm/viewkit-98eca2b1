@@ -580,6 +580,16 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   const [summarySlide, setSummarySlide] = useState(0);
   const summarySlides = [performanceAsset1, performanceAsset2, performanceAsset3];
 
+  // ESC 키로도 실적 요약 팝업 닫기
+  useEffect(() => {
+    if (!summaryOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSummaryOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [summaryOpen]);
+
   const selectClass =
     "h-9 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 " +
     "focus:outline-none focus:ring-2 focus:ring-[#3182CE]/15 focus:border-[#3182CE]";
@@ -630,9 +640,9 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
               type="button"
               onClick={() => setSummaryOpen(false)}
               aria-label="닫기"
-              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/15 text-white flex items-center justify-center hover:bg-white/25 transition-colors"
+              className="absolute top-3 right-3 z-30 w-14 h-14 rounded-full bg-white text-slate-800 shadow-lg flex items-center justify-center active:scale-95 transition-transform"
             >
-              <X className="w-5 h-5" />
+              <X className="w-7 h-7" strokeWidth={2.5} />
             </button>
             <div
               className="relative w-[98vw] h-[98dvh] flex items-center justify-center overflow-hidden"
@@ -676,7 +686,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-30 flex gap-2">
                 {summarySlides.map((_, i) => (
                   <button
                     key={i}
@@ -687,6 +697,13 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                   />
                 ))}
               </div>
+              <button
+                type="button"
+                onClick={() => setSummaryOpen(false)}
+                className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 h-12 px-8 rounded-full bg-white text-slate-800 text-sm font-semibold shadow-lg flex items-center justify-center active:scale-95 transition-transform"
+              >
+                닫기
+              </button>
             </div>
           </div>
         )}
