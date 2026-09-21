@@ -676,7 +676,7 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-30 flex gap-2">
                 {summarySlides.map((_, i) => (
                   <button
                     key={i}
@@ -687,6 +687,13 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
                   />
                 ))}
               </div>
+              <button
+                type="button"
+                onClick={() => setSummaryOpen(false)}
+                className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 h-12 px-8 rounded-full bg-white text-slate-800 text-sm font-semibold shadow-lg flex items-center justify-center active:scale-95 transition-transform"
+              >
+                닫기
+              </button>
             </div>
           </div>
         )}
