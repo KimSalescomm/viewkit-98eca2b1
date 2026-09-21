@@ -353,7 +353,7 @@ const StoreVisitStats = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
         <div className="rounded-xl bg-slate-50/70 px-4 py-3">
           <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mb-1">
             <Eye className="w-3 h-3" /> 총 페이지뷰
@@ -365,15 +365,6 @@ const StoreVisitStats = () => {
             <Users className="w-3 h-3" /> 총 방문(세션)
           </div>
           <div className="text-xl font-bold text-slate-900 tabular-nums">{totals.visits.toLocaleString()}</div>
-        </div>
-        <div className="rounded-xl bg-violet-50/70 px-4 py-3">
-          <div className="flex items-center gap-1.5 text-[11px] text-violet-600 mb-1">
-            <Users className="w-3 h-3" /> 방문(보정)
-          </div>
-          <div className="text-xl font-bold text-violet-700 tabular-nums">
-            {totals.visitsCapped.toLocaleString()}
-          </div>
-          <div className="text-[10px] text-violet-500 mt-0.5">지점당 1일 최대 {DAILY_VISIT_CAP}회</div>
         </div>
         <div className="rounded-xl bg-slate-50/70 px-4 py-3">
           <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mb-1">
@@ -398,7 +389,6 @@ const StoreVisitStats = () => {
                 <th className="py-2 pr-4 font-medium">코드</th>
                 <th className="py-2 pr-4 font-medium text-right">페이지뷰</th>
                 <th className="py-2 pr-4 font-medium text-right">방문</th>
-                <th className="py-2 pr-4 font-medium text-right text-violet-500">방문(보정)</th>
                 <th className="py-2 pr-2 font-medium">최근 접속</th>
               </tr>
             </thead>
@@ -424,9 +414,6 @@ const StoreVisitStats = () => {
                       </div>
                     </td>
                     <td className="py-2.5 pr-4 text-right tabular-nums text-slate-600">{s.visits}</td>
-                    <td className="py-2.5 pr-4 text-right tabular-nums font-semibold text-violet-600">
-                      {s.visitsCapped}
-                    </td>
                     <td className="py-2.5 pr-2 text-xs tabular-nums text-slate-400">
                       {format(new Date(s.lastAt), "MM.dd HH:mm", { locale: ko })}
                     </td>
