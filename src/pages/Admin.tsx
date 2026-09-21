@@ -580,6 +580,16 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
   const [summarySlide, setSummarySlide] = useState(0);
   const summarySlides = [performanceAsset1, performanceAsset2, performanceAsset3];
 
+  // ESC 키로도 실적 요약 팝업 닫기
+  useEffect(() => {
+    if (!summaryOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSummaryOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [summaryOpen]);
+
   const selectClass =
     "h-9 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 " +
     "focus:outline-none focus:ring-2 focus:ring-[#3182CE]/15 focus:border-[#3182CE]";
