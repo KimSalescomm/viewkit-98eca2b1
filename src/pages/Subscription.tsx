@@ -392,7 +392,8 @@ export const airconPlanContents: AirconPlanContent[] = [
 
 /**
  * 세탁기 요금제(프리미엄 / 라이트플러스)별 케어서비스 콘텐츠.
- * 라이트플러스는 단계별 이미지 자료가 없어 영상 1개 + 체크리스트만 노출합니다.
+ * 프리미엄/라이트플러스 모두 Before/After 그리드 구조로 노출되며,
+ * After 썸네일의 '케어 영상 보기'는 videoUrl(LG mp4 또는 YouTube)을 재생합니다.
  */
 type WasherPlanId = "premium" | "litePlus";
 
@@ -423,14 +424,12 @@ export const washerPlanContents: WasherPlanContent[] = [
     badgeClassName: "bg-blue-50 text-blue-700 border-blue-100",
     beforeAfterImages: { before: washerBefore, after: washerAfter },
     steps: [
-      { label: "분해세척", hasDetailLink: true },
-      { label: "세탁조 스팀 & UV 관리", hasDetailLink: true },
-      { label: "고무패킹 교체", hasDetailLink: true },
-      { label: "급/배수 필터 세척", hasDetailLink: false },
-      { label: "배수 필터 교체", hasDetailLink: false },
-      { label: "세탁조 클리너 제공", hasDetailLink: false },
-      { label: "제품 성능 점검", hasDetailLink: false },
+      { label: "분해 케어", hasDetailLink: false },
+      { label: "UV/스팀 케어", hasDetailLink: false },
       { label: "토탈 클리닝", hasDetailLink: false },
+      { label: "성능점검", hasDetailLink: false },
+      { label: "정기적인 소모품 교체", hasDetailLink: false },
+      { label: "무상 A/S", hasDetailLink: false },
     ],
   },
   {
@@ -439,10 +438,11 @@ export const washerPlanContents: WasherPlanContent[] = [
     title: "세탁기 케어서비스 (부분분해세척)",
     badge: "부분분해세척 · 세탁조 클리닝",
     badgeClassName: "bg-emerald-50 text-emerald-700 border-emerald-100",
+    beforeAfterImages: { before: washerBefore, after: washerAfter },
     videoUrl: "https://youtu.be/x1dF8E81q0U",
     steps: [
       { label: "드럼케어", hasDetailLink: false },
-      { label: "스팀케어", hasDetailLink: false },
+      { label: "스팀 케어", hasDetailLink: false },
       { label: "토탈 클리닝", hasDetailLink: false },
       { label: "성능점검", hasDetailLink: false },
       { label: "정기적인 소모품 교체", hasDetailLink: false },
