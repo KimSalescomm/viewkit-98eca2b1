@@ -476,7 +476,7 @@ const Subscription = () => {
   const selected = subscriptionProducts.find((p) => p.id === selectedId)!;
   const hasAnyImage = selected.careSteps.some((s) => s.image);
   // 라이트플러스 요금제는 당분간 미노출(데이터는 보존). 다시 노출하려면 true로 변경.
-  const LITE_PLUS_ENABLED = false;
+  const LITE_PLUS_ENABLED = true;
   const visibleAirconPlans = LITE_PLUS_ENABLED
     ? airconPlanContents
     : airconPlanContents.filter((p) => p.plan !== "litePlus");
