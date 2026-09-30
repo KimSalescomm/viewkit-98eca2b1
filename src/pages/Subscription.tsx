@@ -770,7 +770,10 @@ const Subscription = () => {
                 </h3>
               </div>
               <ul className="space-y-2">
-                {selected.careSteps.map((step, i) => {
+                {(isWasher && washerPlan
+                  ? washerPlan.steps.map((s) => ({ label: s.label }))
+                  : selected.careSteps
+                ).map((step, i) => {
                   const clickable = !!step.image;
                   return (
                     <li key={i}>
