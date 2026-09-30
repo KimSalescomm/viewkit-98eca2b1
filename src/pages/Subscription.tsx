@@ -44,11 +44,15 @@ import dishBefore from "@/assets/dishB.png";
 import dishAfter from "@/assets/dishA.jpg";
 import bathairBeforeAsset from "@/assets/bathair-before.jpg.asset.json";
 import bathairAfterAsset from "@/assets/bathair-after.jpg.asset.json";
+import airconLiteBeforeAsset from "@/assets/aircon-lite-before.jpg.asset.json";
+import airconLiteAfterAsset from "@/assets/aircon-lite-after.jpg.asset.json";
 
 const bathairBefore = bathairBeforeAsset.url;
 const bathairAfter = bathairAfterAsset.url;
 const washcomboBefore = washcomboBeforeAsset.url;
 const washcomboAfter = washcomboAfterAsset.url;
+const airconLiteBefore = airconLiteBeforeAsset.url;
+const airconLiteAfter = airconLiteAfterAsset.url;
 
 interface CareStep {
   label: string;
@@ -333,9 +337,8 @@ export const subscriptionProducts: SubscriptionProduct[] = [..._subscriptionProd
 
 /**
  * 스탠드 에어컨 요금제(프리미엄 / 라이트플러스)별 케어서비스 콘텐츠.
- * 라이트플러스는 아직 단계별 이미지 자료가 없어 영상 1개 + 체크리스트만 노출합니다.
- * 자료가 확보되면 beforeAfterImages를 채우고 각 step의 hasDetailLink를 true로 바꾸면
- * 프리미엄과 동일한 구조로 동작합니다.
+ * 프리미엄/라이트플러스 모두 Before/After 그리드로 노출되며,
+ * 라이트플러스는 전용 전·후 이미지와 YouTube 케어 영상을 사용합니다.
  */
 type AirconPlanId = "premium" | "litePlus";
 
@@ -373,6 +376,7 @@ export const airconPlanContents: AirconPlanContent[] = [
     plan: "litePlus",
     planLabel: "라이트플러스",
     title: "스탠드 에어컨 케어서비스",
+    beforeAfterImages: { before: airconLiteBefore, after: airconLiteAfter },
     videoUrl: "https://youtu.be/t7DwsspCwuM",
     steps: [
       { label: "기본 세척(커버 분리)", hasDetailLink: false },
@@ -484,15 +488,27 @@ const Subscription = () => {
   const washerPlan = isWasher
     ? washerPlanContents.find((p) => p.plan === washerPlanId)
     : undefined;
-  // 세탁기는 프리미엄/라이트플러스 모두 Before/After 그리드.
+  // 프리미엄/라이트플러스 모두 Before/After 그리드.
   // After 썸네일 영상: 요금제 videoUrl(라이트플러스=YouTube) 우선, 없으면 제품 공통 케어 영상.
-  const washerCareVideo =
-    isWasher && washerPlan?.videoUrl ? washerPlan.videoUrl : selected.careVideo;
-
-  const [litePlaying, setLitePlaying] = useState(false);
-  useEffect(() => {
-    setLitePlaying(false);
-  }, [airconPlanId, washerPlanId, selectedId]);
+  const planCareVideo = isWasher
+    ? washerPlan?.videoUrl || selected.careVideo
+    : isAircon
+    ? airconPlan?.videoUrl || selected.careVideo
+    : selected.careVideo;
+  // 요금제별 Before/After 이미지 (에어컨 라이트플러스는 전용 이미지 사용)
+  const planBeforeImage =
+    isAircon && airconPlan?.beforeAfterImages
+      ? airconPlan.beforeAfterImages.before
+      : isWasher && washerPlan?.beforeAfterImages
+      ? washerPlan.beforeAfterImages.before
+      : selected.beforeImage;
+  const planAfterImage =
+    isAircon && airconPlan?.beforeAfterImages
+      ? airconPlan.beforeAfterImages.after
+      : isWasher && washerPlan?.beforeAfterImages
+      ? washerPlan.beforeAfterImages.after
+      : selected.afterImage;
+  const planKey = isAircon ? airconPlanId : isWasher ? washerPlanId : "base";
 
   // Preload all before/after images on mount so tab switching is instant
   useEffect(() => {
@@ -636,7 +652,7 @@ const Subscription = () => {
         })()}
 
         {/* Before / After */}
-        {!isAirconLite && (
+        {(!isAirconLite || !!airconPlan?.beforeAfterImages) && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {/* Before */}
           <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)] flex flex-col h-full">
@@ -649,8 +665,8 @@ const Subscription = () => {
             </div>
             <div className="relative overflow-hidden aspect-[4/3] bg-gray-100">
               <img
-                key={`before-${selected.id}`}
-                src={selected.beforeImage}
+                key={`before-${selected.id}-${planKey}`}
+                src={planBeforeImage}
                 alt={`${selected.name} 케어 전`}
                 loading="eager"
                 decoding="async"
@@ -672,7 +688,7 @@ const Subscription = () => {
                 oven: "내부 클리닝 전",
                 dishwasher: "필터 클리닝 전",
               };
-              const label = beforeLabels[selected.id];
+              const label = isAirconLite ? "팬 & 필터 세척 전" : beforeLabels[selected.id];
               if (!label) return null;
               return (
                 <div className="bg-white border-t border-gray-50 flex-1 flex items-center justify-center px-5 py-6 min-h-[56px]">
@@ -692,7 +708,7 @@ const Subscription = () => {
 
             </div>
             <div className="relative aspect-[4/3] bg-gray-100">
-              {washerCareVideo ? (
+              {planCareVideo ? (
                 <button
                   type="button"
                   onClick={() => setVideoOpen(true)}
