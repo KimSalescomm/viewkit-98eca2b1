@@ -349,8 +349,6 @@ interface AirconPlanContent {
   plan: AirconPlanId;
   planLabel: string;
   title: string;
-  badge: string;
-  badgeClassName: string;
   beforeAfterImages?: { before: string; after: string };
   videoUrl?: string;
   videoCaption?: string;
@@ -362,8 +360,6 @@ export const airconPlanContents: AirconPlanContent[] = [
     plan: "premium",
     planLabel: "프리미엄",
     title: "스탠드 에어컨 케어서비스",
-    badge: "완전분해세척 · 열교환기 고압 세척",
-    badgeClassName: "bg-blue-50 text-blue-700 border-blue-100",
     beforeAfterImages: { before: airconBefore, after: airconAfter },
     steps: [
       { label: "분해세척", hasDetailLink: true },
@@ -377,8 +373,6 @@ export const airconPlanContents: AirconPlanContent[] = [
     plan: "litePlus",
     planLabel: "라이트플러스",
     title: "스탠드 에어컨 케어서비스",
-    badge: "부분분해세척 · 전면 커버 분리",
-    badgeClassName: "bg-emerald-50 text-emerald-700 border-emerald-100",
     videoUrl: "https://youtu.be/t7DwsspCwuM",
     steps: [
       { label: "기본 세척(커버 분리)", hasDetailLink: false },
@@ -407,8 +401,6 @@ interface WasherPlanContent {
   plan: WasherPlanId;
   planLabel: string;
   title: string;
-  badge: string;
-  badgeClassName: string;
   beforeAfterImages?: { before: string; after: string };
   videoUrl?: string;
   videoCaption?: string;
@@ -420,8 +412,6 @@ export const washerPlanContents: WasherPlanContent[] = [
     plan: "premium",
     planLabel: "프리미엄",
     title: "세탁기 케어서비스",
-    badge: "완전분해세척 · 세탁조 고압세척",
-    badgeClassName: "bg-blue-50 text-blue-700 border-blue-100",
     beforeAfterImages: { before: washerBefore, after: washerAfter },
     steps: [
       { label: "분해 케어", hasDetailLink: false },
@@ -436,8 +426,6 @@ export const washerPlanContents: WasherPlanContent[] = [
     plan: "litePlus",
     planLabel: "라이트플러스",
     title: "세탁기 케어서비스",
-    badge: "부분분해세척 · 세탁조 클리닝",
-    badgeClassName: "bg-emerald-50 text-emerald-700 border-emerald-100",
     beforeAfterImages: { before: washerBefore, after: washerAfter },
     videoUrl: "https://youtu.be/x1dF8E81q0U",
     steps: [
