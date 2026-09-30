@@ -392,7 +392,8 @@ export const airconPlanContents: AirconPlanContent[] = [
 
 /**
  * 세탁기 요금제(프리미엄 / 라이트플러스)별 케어서비스 콘텐츠.
- * 라이트플러스는 단계별 이미지 자료가 없어 영상 1개 + 체크리스트만 노출합니다.
+ * 프리미엄/라이트플러스 모두 Before/After 그리드 구조로 노출되며,
+ * After 썸네일의 '케어 영상 보기'는 videoUrl(LG mp4 또는 YouTube)을 재생합니다.
  */
 type WasherPlanId = "premium" | "litePlus";
 
@@ -423,14 +424,12 @@ export const washerPlanContents: WasherPlanContent[] = [
     badgeClassName: "bg-blue-50 text-blue-700 border-blue-100",
     beforeAfterImages: { before: washerBefore, after: washerAfter },
     steps: [
-      { label: "분해세척", hasDetailLink: true },
-      { label: "세탁조 스팀 & UV 관리", hasDetailLink: true },
-      { label: "고무패킹 교체", hasDetailLink: true },
-      { label: "급/배수 필터 세척", hasDetailLink: false },
-      { label: "배수 필터 교체", hasDetailLink: false },
-      { label: "세탁조 클리너 제공", hasDetailLink: false },
-      { label: "제품 성능 점검", hasDetailLink: false },
+      { label: "분해 케어", hasDetailLink: false },
+      { label: "UV/스팀 케어", hasDetailLink: false },
       { label: "토탈 클리닝", hasDetailLink: false },
+      { label: "성능점검", hasDetailLink: false },
+      { label: "정기적인 소모품 교체", hasDetailLink: false },
+      { label: "무상 A/S", hasDetailLink: false },
     ],
   },
   {
@@ -439,10 +438,11 @@ export const washerPlanContents: WasherPlanContent[] = [
     title: "세탁기 케어서비스 (부분분해세척)",
     badge: "부분분해세척 · 세탁조 클리닝",
     badgeClassName: "bg-emerald-50 text-emerald-700 border-emerald-100",
+    beforeAfterImages: { before: washerBefore, after: washerAfter },
     videoUrl: "https://youtu.be/x1dF8E81q0U",
     steps: [
       { label: "드럼케어", hasDetailLink: false },
-      { label: "스팀케어", hasDetailLink: false },
+      { label: "스팀 케어", hasDetailLink: false },
       { label: "토탈 클리닝", hasDetailLink: false },
       { label: "성능점검", hasDetailLink: false },
       { label: "정기적인 소모품 교체", hasDetailLink: false },
@@ -496,7 +496,10 @@ const Subscription = () => {
   const washerPlan = isWasher
     ? washerPlanContents.find((p) => p.plan === washerPlanId)
     : undefined;
-  const isWasherLite = LITE_PLUS_ENABLED && isWasher && washerPlanId === "litePlus";
+  // 세탁기는 프리미엄/라이트플러스 모두 Before/After 그리드.
+  // After 썸네일 영상: 요금제 videoUrl(라이트플러스=YouTube) 우선, 없으면 제품 공통 케어 영상.
+  const washerCareVideo =
+    isWasher && washerPlan?.videoUrl ? washerPlan.videoUrl : selected.careVideo;
 
   const [litePlaying, setLitePlaying] = useState(false);
   useEffect(() => {
@@ -658,7 +661,7 @@ const Subscription = () => {
         )}
 
         {/* Before / After */}
-        {!isAirconLite && !isWasherLite && (
+        {!isAirconLite && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {/* Before */}
           <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)] flex flex-col h-full">
@@ -714,7 +717,7 @@ const Subscription = () => {
 
             </div>
             <div className="relative aspect-[4/3] bg-gray-100">
-              {selected.careVideo ? (
+              {washerCareVideo ? (
                 <button
                   type="button"
                   onClick={() => setVideoOpen(true)}
@@ -767,7 +770,10 @@ const Subscription = () => {
                 </h3>
               </div>
               <ul className="space-y-2">
-                {selected.careSteps.map((step, i) => {
+                {(isWasher && washerPlan
+                  ? washerPlan.steps.map((s) => ({ label: s.label }))
+                  : selected.careSteps
+                ).map((step, i) => {
                   const clickable = !!step.image;
                   return (
                     <li key={i}>
@@ -809,7 +815,7 @@ const Subscription = () => {
         )}
 
         {/* 라이트플러스: 케어 영상 + 체크리스트 */}
-        {(isAirconLite || isWasherLite) && (
+        {isAirconLite && (
           (() => {
             const plan = isAirconLite ? airconPlan! : washerPlan!;
             const productName = isAirconLite ? "스탠드 에어컨" : "세탁기";
@@ -974,7 +980,7 @@ const Subscription = () => {
       )}
 
       {/* Care video modal */}
-      {videoOpen && selected.careVideo && (
+      {videoOpen && washerCareVideo && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/85 backdrop-blur-sm animate-in fade-in"
           onClick={() => setVideoOpen(false)}
@@ -1004,7 +1010,7 @@ const Subscription = () => {
               </button>
             </div>
             {(() => {
-              const { embedUrl, isYoutube } = convertToEmbedUrl(selected.careVideo!);
+              const { embedUrl, isYoutube } = convertToEmbedUrl(washerCareVideo!);
               if (isYoutube) {
                 const sep = embedUrl.includes("?") ? "&" : "?";
                 return (
@@ -1021,7 +1027,7 @@ const Subscription = () => {
               }
               return (
                 <video
-                  src={selected.careVideo}
+                  src={washerCareVideo}
                   className="w-full h-auto max-h-[80vh] bg-black"
                   controls
                   autoPlay
