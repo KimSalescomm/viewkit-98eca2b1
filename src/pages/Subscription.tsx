@@ -717,7 +717,7 @@ const Subscription = () => {
 
             </div>
             <div className="relative aspect-[4/3] bg-gray-100">
-              {selected.careVideo ? (
+              {washerCareVideo ? (
                 <button
                   type="button"
                   onClick={() => setVideoOpen(true)}
