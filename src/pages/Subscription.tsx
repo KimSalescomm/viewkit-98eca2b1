@@ -815,7 +815,7 @@ const Subscription = () => {
         )}
 
         {/* 라이트플러스: 케어 영상 + 체크리스트 */}
-        {(isAirconLite || isWasherLite) && (
+        {isAirconLite && (
           (() => {
             const plan = isAirconLite ? airconPlan! : washerPlan!;
             const productName = isAirconLite ? "스탠드 에어컨" : "세탁기";
