@@ -635,19 +635,6 @@ const Subscription = () => {
           );
         })()}
 
-        {/* 요금제 배지 */}
-        {((isAircon && airconPlan) || (isWasher && washerPlan)) && (
-          <div className="mb-4 sm:mb-5">
-            <span
-              className={`inline-flex items-center rounded-full border px-3 h-7 ${typeCaptionBold} ${
-                isAircon && airconPlan ? airconPlan.badgeClassName : washerPlan!.badgeClassName
-              }`}
-            >
-              {isAircon && airconPlan ? airconPlan.badge : washerPlan!.badge}
-            </span>
-          </div>
-        )}
-
         {/* Before / After */}
         {!isAirconLite && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
