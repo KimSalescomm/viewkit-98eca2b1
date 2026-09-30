@@ -496,7 +496,10 @@ const Subscription = () => {
   const washerPlan = isWasher
     ? washerPlanContents.find((p) => p.plan === washerPlanId)
     : undefined;
-  const isWasherLite = LITE_PLUS_ENABLED && isWasher && washerPlanId === "litePlus";
+  // 세탁기는 프리미엄/라이트플러스 모두 Before/After 그리드.
+  // After 썸네일 영상: 요금제 videoUrl(라이트플러스=YouTube) 우선, 없으면 제품 공통 케어 영상.
+  const washerCareVideo =
+    isWasher && washerPlan?.videoUrl ? washerPlan.videoUrl : selected.careVideo;
 
   const [litePlaying, setLitePlaying] = useState(false);
   useEffect(() => {
