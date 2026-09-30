@@ -957,7 +957,7 @@ const Subscription = () => {
               }
               return (
                 <video
-                  src={washerCareVideo}
+                  src={planCareVideo}
                   className="w-full h-auto max-h-[80vh] bg-black"
                   controls
                   autoPlay
