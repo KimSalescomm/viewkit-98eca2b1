@@ -361,7 +361,7 @@ export const airconPlanContents: AirconPlanContent[] = [
   {
     plan: "premium",
     planLabel: "프리미엄",
-    title: "스탠드 에어컨 케어서비스 (분해세척)",
+    title: "스탠드 에어컨 케어서비스",
     badge: "완전분해세척 · 열교환기 고압 세척",
     badgeClassName: "bg-blue-50 text-blue-700 border-blue-100",
     beforeAfterImages: { before: airconBefore, after: airconAfter },
@@ -376,7 +376,7 @@ export const airconPlanContents: AirconPlanContent[] = [
   {
     plan: "litePlus",
     planLabel: "라이트플러스",
-    title: "스탠드 에어컨 케어서비스 (부분분해세척)",
+    title: "스탠드 에어컨 케어서비스",
     badge: "부분분해세척 · 전면 커버 분리",
     badgeClassName: "bg-emerald-50 text-emerald-700 border-emerald-100",
     videoUrl: "https://youtu.be/t7DwsspCwuM",
@@ -419,7 +419,7 @@ export const washerPlanContents: WasherPlanContent[] = [
   {
     plan: "premium",
     planLabel: "프리미엄",
-    title: "세탁기 케어서비스 (분해세척)",
+    title: "세탁기 케어서비스",
     badge: "완전분해세척 · 세탁조 고압세척",
     badgeClassName: "bg-blue-50 text-blue-700 border-blue-100",
     beforeAfterImages: { before: washerBefore, after: washerAfter },
@@ -435,7 +435,7 @@ export const washerPlanContents: WasherPlanContent[] = [
   {
     plan: "litePlus",
     planLabel: "라이트플러스",
-    title: "세탁기 케어서비스 (부분분해세척)",
+    title: "세탁기 케어서비스",
     badge: "부분분해세척 · 세탁조 클리닝",
     badgeClassName: "bg-emerald-50 text-emerald-700 border-emerald-100",
     beforeAfterImages: { before: washerBefore, after: washerAfter },
@@ -567,16 +567,16 @@ const Subscription = () => {
         {/* Section title */}
         {(() => {
           const sectionTitles: Record<string, string> = {
-            washer: "세탁기 케어서비스 (분해세척)",
-            washcombo: "워시콤보 케어서비스 (분해세척)",
-            refrigerator: "냉장고 케어서비스 (기계실 세척)",
-            stem: "STEM 냉장고 케어서비스 (기계실 세척)",
-            airconditioner: "스탠드 에어컨 케어서비스 (분해세척)",
-            airpurifier: "공기청정기 케어서비스 (필터 교체 & 필터 클리닝)",
-            cooktop: "전기레인지 케어서비스 (코팅 및 광택)",
-            dishwasher: "식기세척기 케어서비스 (내부 세척)",
-            oven: "광파오븐 케어서비스 (내부 클리닝)",
-            bathair: "바스에어시스템 케어서비스 (필터 교체 & 필터 클리닝)",
+            washer: "세탁기 케어서비스",
+            washcombo: "워시콤보 케어서비스",
+            refrigerator: "냉장고 케어서비스",
+            stem: "STEM 냉장고 케어서비스",
+            airconditioner: "스탠드 에어컨 케어서비스",
+            airpurifier: "공기청정기 케어서비스",
+            cooktop: "전기레인지 케어서비스",
+            dishwasher: "식기세척기 케어서비스",
+            oven: "광파오븐 케어서비스",
+            bathair: "바스에어시스템 케어서비스",
           };
           const title =
             isAircon && airconPlan
@@ -770,10 +770,10 @@ const Subscription = () => {
                 </h3>
               </div>
               <ul className="space-y-2">
-                {(isWasher && washerPlan
+                {((isWasher && washerPlan
                   ? washerPlan.steps.map((s) => ({ label: s.label }))
                   : selected.careSteps
-                ).map((step, i) => {
+                ) as Array<{ label: string; image?: string; notes?: string[] }>).map((step, i) => {
                   const clickable = !!step.image;
                   return (
                     <li key={i}>
