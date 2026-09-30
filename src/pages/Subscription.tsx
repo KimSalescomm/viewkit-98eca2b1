@@ -770,10 +770,10 @@ const Subscription = () => {
                 </h3>
               </div>
               <ul className="space-y-2">
-                {(isWasher && washerPlan
+                {((isWasher && washerPlan
                   ? washerPlan.steps.map((s) => ({ label: s.label }))
                   : selected.careSteps
-                ).map((step, i) => {
+                ) as Array<{ label: string; image?: string; notes?: string[] }>).map((step, i) => {
                   const clickable = !!step.image;
                   return (
                     <li key={i}>
