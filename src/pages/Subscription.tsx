@@ -940,7 +940,7 @@ const Subscription = () => {
               </button>
             </div>
             {(() => {
-              const { embedUrl, isYoutube } = convertToEmbedUrl(washerCareVideo!);
+              const { embedUrl, isYoutube } = convertToEmbedUrl(planCareVideo!);
               if (isYoutube) {
                 const sep = embedUrl.includes("?") ? "&" : "?";
                 return (
