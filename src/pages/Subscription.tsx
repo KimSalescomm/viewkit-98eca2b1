@@ -30,6 +30,8 @@ import washcomboBeforeAsset from "@/assets/washcombo-before.jpg.asset.json";
 import washcomboAfterAsset from "@/assets/washcombo-after.jpg.asset.json";
 import washerBefore from "@/assets/washercare-b.png";
 import washerAfter from "@/assets/washercare-a.png";
+import washerLiteBeforeAsset from "@/assets/washer-lite-before.jpg.asset.json";
+import washerLiteAfterAsset from "@/assets/washer-lite-after.jpg.asset.json";
 import refrigeratorBefore from "@/assets/refrigerator-before.png";
 import refrigeratorAfter from "@/assets/refrigerator-after.png";
 import airconBefore from "@/assets/airconB.png";
@@ -51,6 +53,8 @@ const bathairBefore = bathairBeforeAsset.url;
 const bathairAfter = bathairAfterAsset.url;
 const washcomboBefore = washcomboBeforeAsset.url;
 const washcomboAfter = washcomboAfterAsset.url;
+const washerLiteBefore = washerLiteBeforeAsset.url;
+const washerLiteAfter = washerLiteAfterAsset.url;
 const airconLiteBefore = airconLiteBeforeAsset.url;
 const airconLiteAfter = airconLiteAfterAsset.url;
 
@@ -428,9 +432,8 @@ export const washerPlanContents: WasherPlanContent[] = [
   },
   {
     plan: "litePlus",
-    planLabel: "라이트플러스",
-    title: "세탁기 케어서비스",
-    beforeAfterImages: { before: washerBefore, after: washerAfter },
+...
+    beforeAfterImages: { before: washerLiteBefore, after: washerLiteAfter },
     videoUrl: "https://youtu.be/x1dF8E81q0U",
     steps: [
       { label: "드럼케어", hasDetailLink: false },
