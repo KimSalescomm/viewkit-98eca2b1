@@ -26,8 +26,6 @@ import {
 } from "@/styles/typeScale";
 
 import washerCareSteamUvAsset from "@/assets/washer-care-steam-uv.png.asset.json";
-import washerLiteBeforeAsset from "@/assets/washer-lite-before.jpg.asset.json";
-import washerLiteAfterAsset from "@/assets/washer-lite-after.jpg.asset.json";
 import washcomboBeforeAsset from "@/assets/washcombo-before.jpg.asset.json";
 import washcomboAfterAsset from "@/assets/washcombo-after.jpg.asset.json";
 import washerBefore from "@/assets/washercare-b.png";
@@ -434,7 +432,7 @@ export const washerPlanContents: WasherPlanContent[] = [
     plan: "litePlus",
     planLabel: "라이트플러스",
     title: "세탁기 케어서비스",
-    beforeAfterImages: { before: washerLiteBefore, after: washerLiteAfter },
+    beforeAfterImages: { before: washerBefore, after: washerAfter },
     videoUrl: "https://youtu.be/x1dF8E81q0U",
     steps: [
       { label: "드럼케어", hasDetailLink: false },
