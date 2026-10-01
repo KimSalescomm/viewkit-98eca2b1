@@ -49,8 +49,6 @@ import airconLiteAfterAsset from "@/assets/aircon-lite-after.jpg.asset.json";
 
 const bathairBefore = bathairBeforeAsset.url;
 const bathairAfter = bathairAfterAsset.url;
-const washerLiteBefore = washerLiteBeforeAsset.url;
-const washerLiteAfter = washerLiteAfterAsset.url;
 const washcomboBefore = washcomboBeforeAsset.url;
 const washcomboAfter = washcomboAfterAsset.url;
 const airconLiteBefore = airconLiteBeforeAsset.url;
