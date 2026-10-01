@@ -238,8 +238,8 @@ const _subscriptionProducts: SubscriptionProduct[] = [
   {
     id: "washcombo",
     name: "워시콤보",
-    beforeImage: washcomboAfter,
-    afterImage: washcomboBefore,
+    beforeImage: washcomboBefore,
+    afterImage: washcomboAfter,
     careVideo: "https://youtu.be/pT9yzJUopzA",
     careSteps: [
       { label: "직수/고압 세척", image: "https://static.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_01_260724.jpg" },
@@ -430,7 +430,7 @@ export const washerPlanContents: WasherPlanContent[] = [
     plan: "litePlus",
     planLabel: "라이트플러스",
     title: "세탁기 케어서비스",
-    beforeAfterImages: { before: washcomboAfter, after: washcomboBefore },
+    beforeAfterImages: { before: washcomboBefore, after: washcomboAfter },
     videoUrl: "https://youtu.be/x1dF8E81q0U",
     steps: [
       { label: "드럼케어", hasDetailLink: false },
