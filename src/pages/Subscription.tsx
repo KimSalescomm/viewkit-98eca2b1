@@ -432,7 +432,8 @@ export const washerPlanContents: WasherPlanContent[] = [
   },
   {
     plan: "litePlus",
-...
+    planLabel: "라이트플러스",
+    title: "세탁기 케어서비스",
     beforeAfterImages: { before: washerLiteBefore, after: washerLiteAfter },
     videoUrl: "https://youtu.be/x1dF8E81q0U",
     steps: [
