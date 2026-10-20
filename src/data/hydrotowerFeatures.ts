@@ -189,7 +189,7 @@ export const hydrotowerFeatures: Feature[] = [
     tag: "360˚ 탈취청정 V2",
     mediaType: "image",
     mediaUrl: filter.url,
-    imageFit: "original",
+    imageFit: "contain",
     fullWidthMedia: true,
     description:
       "교체형 극세필터로 큰 먼지를, 집진 필터로 미세먼지를, 탈취 필터로 생활 냄새의 원인이 되는 유해가스를 걸러줘요. 청정면적 66㎡의 공기청정 성능과 청정 표시 라이팅으로 실내 공기 상태를 확인할 수 있어요.",
