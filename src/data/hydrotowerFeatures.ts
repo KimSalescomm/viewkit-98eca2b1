@@ -183,7 +183,7 @@ export const hydrotowerFeatures: Feature[] = [
   },
   {
     id: "5",
-    title: "눈에 보이지 않는 \n 먼지와 유해가스까지 제거할 수 있을까요?",
+    title: "먼지와 유해가스까지\n 제거한다고요?",
     subtitle: "360˚ 탈취청정 V2 필터로\n먼지와 유해가스까지 제거해요.",
     icon: "Wind",
     tag: "360˚ 탈취청정 V2",
