@@ -1,5 +1,6 @@
 import { convertToEmbedUrl } from "@/utils/videoUtils";
 import SafeImage from "@/components/SafeImage";
+import AirCareComparisonTable from "@/components/AirCareComparisonTable";
 import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
 import { ProductComparisonTable, GalleryImage, MediaSlide } from "@/data/features";
 import useEmblaCarousel from "embla-carousel-react";
@@ -63,6 +64,9 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
   }, [emblaApi, onSelect]);
 
   if (mediaType === "table" && tableData) {
+    if (tableData.some((product) => product.category)) {
+      return <AirCareComparisonTable products={tableData} />;
+    }
     const specLabels = tableData[0]?.specs.map(s => s.label) || [];
 
     // 세로 스크롤 비교표에서 행 높이를 열마다 따로 계산하면 라벨이 어긋나므로,

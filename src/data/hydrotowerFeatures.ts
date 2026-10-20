@@ -1,7 +1,7 @@
 import type { Feature } from "@/data/features";
-import m7Compare from "@/assets/airpurifier-m7-compare.jpg.asset.json";
-import hydrotowerMaxCompare from "@/assets/hydrotower-max-compare.jpg.asset.json";
-import hydrotowerCompare from "@/assets/hydrotower-compare.jpg.asset.json";
+import m7Compare from "@/assets/airpurifier-m7-chart.jpg.asset.json";
+import hydrotowerMaxCompare from "@/assets/hydrotower-max-chart.jpg.asset.json";
+import hydrotowerCompare from "@/assets/hydrotower-chart.jpg.asset.json";
 import spaceAiVideo from "@/assets/hydrotower-space-ai-humidification.mp4.asset.json";
 import spaceAiWebm from "@/assets/hydrotower-space-ai-humidification.webm.asset.json";
 import spaceAiPoster from "@/assets/hydrotower-space-ai-humidification-poster.jpg.asset.json";
@@ -226,16 +226,11 @@ export const hydrotowerFeatures: Feature[] = [
     tableData: [
       {
         name: "AI 360˚ 공기청정기 M7",
+        category: "공기청정기",
         imageUrl: m7Compare.url,
         specs: [
           { label: "제품 유형", values: ["공기청정기"] },
           { label: "대표 모델명", values: ["AS356NSMA"] },
-          {
-            label: "핵심 특징",
-            values: [
-              "114.0㎡ 청정면적의 오염을 감지하는 AI 공기질 센서와 특허 출원한 360˚ M7 필터로 극초미세먼지·유해가스는 물론 세균·바이러스까지 제거하며, 요리 냄새나 반려동물 냄새 등 집집마다 다른 오염원까지 맞춤 관리해주는 공기청정기",
-            ],
-          },
           {
             label: "추천 상황",
             values: [
@@ -245,14 +240,13 @@ export const hydrotowerFeatures: Feature[] = [
           },
           { label: "색상", values: ["카밍 베이지", "네이처 그린"] },
           { label: "최대 가습량", values: ["미지원"] },
-          { label: "청정 사용 면적", values: ["114.0㎡"] },
+          { label: "청정 사용 면적", values: ["114.0㎡"], highlighted: true },
           { label: "물통 (용량/만수용량)", values: ["미지원"] },
           { label: "가습모드", values: ["미지원"] },
           { label: "AI 인증", values: ["AI 공기질 센서", "AI 맞춤 운전"] },
           { label: "필터", values: ["360 강력탈취청정 M7"] },
           { label: "무드등", values: ["미지원"] },
-          { label: "필터 교체 알림", values: ["지원"] },
-          { label: "에너지소비효율등급", values: ["2등급"] },
+          { label: "에너지소비효율등급", values: ["2등급"], highlighted: true },
           { label: "이동성", values: ["무빙휠 (별매)"] },
           { label: "무게", values: ["20.6 kg"] },
           { label: "제품 크기 (WxHxD)", values: ["377 x 1,100 x 377 mm"] },
@@ -260,16 +254,11 @@ export const hydrotowerFeatures: Feature[] = [
       },
       {
         name: "하이드로타워 Max",
+        category: "가습 공기청정기",
         imageUrl: hydrotowerMaxCompare.url,
         specs: [
           { label: "제품 유형", values: ["가습 공기청정기"] },
           { label: "대표 모델명", values: ["HY856RNAA"] },
-          {
-            label: "핵심 특징",
-            values: [
-              "시간 당 850cc의 대용량 가습량과 청정면적 66㎡으로 넓은 공간에서도 사계절 사용하기 좋고, 4단계 프리미엄 정수 가습 기술은 물론 공간을 이해하고 온습도를 센싱해 최적의 습도 환경을 만들어 주는 AI가습 기능을 갖춘 가습 공기청정기",
-            ],
-          },
           {
             label: "추천 상황",
             values: [
@@ -278,32 +267,26 @@ export const hydrotowerFeatures: Feature[] = [
             ],
           },
           { label: "색상", values: ["네오 실버", "카밍 베이지"] },
-          { label: "최대 가습량", values: ["850 cc/hr"] },
+          { label: "최대 가습량", values: ["850 cc/hr"], highlighted: true },
           { label: "청정 사용 면적", values: ["66.0㎡"] },
           { label: "물통 (용량/만수용량)", values: ["5.1 / 4.5 L"] },
-          { label: "가습모드", values: ["AI가습", "일반가습", "포근가습", "가습청정", "공기청정"] },
+          { label: "가습모드", values: ["AI가습", "일반가습", "포근가습", "가습청정", "공기청정"], highlighted: true },
           { label: "AI 인증", values: ["공간 맞춤 AI가습"] },
           { label: "필터", values: ["360 탈취청정 V2"] },
-          { label: "무드등", values: ["테마무드 3종 + 컬러 12종"] },
-          { label: "필터 교체 알림", values: ["지원"] },
+          { label: "무드등", values: ["테마무드 3종 + 컬러 12종"], highlighted: true },
           { label: "에너지소비효율등급", values: ["3등급"] },
-          { label: "이동성", values: ["히든휠 내장"] },
+          { label: "이동성", values: ["히든휠 내장"], highlighted: true },
           { label: "무게", values: ["21.2 kg"] },
           { label: "제품 크기 (WxHxD)", values: ["388(310) x 1,088 x 388(310) mm"] },
         ],
       },
       {
         name: "하이드로타워",
+        category: "정수 가습기",
         imageUrl: hydrotowerCompare.url,
         specs: [
           { label: "제품 유형", values: ["가습기"] },
           { label: "대표 모델명", values: ["HY706RSUA"] },
-          {
-            label: "핵심 특징",
-            values: [
-              "시간 당 700cc의 가습량과 공기청정 모드로 사계절 사용하기 좋고, 4단계 프리미엄 정수 가습 기술과 희망습도 자동 맞춤으로 깨끗하고 편리한 정수 가습기",
-            ],
-          },
           {
             label: "추천 상황",
             values: [
@@ -319,10 +302,9 @@ export const hydrotowerFeatures: Feature[] = [
           { label: "AI 인증", values: ["미지원"] },
           { label: "필터", values: ["에어로 퓨리청정 V"] },
           { label: "무드등", values: ["컬러 12종"] },
-          { label: "필터 교체 알림", values: ["지원"] },
           { label: "에너지소비효율등급", values: ["3등급"] },
           { label: "이동성", values: ["무빙휠 (별매)"] },
-          { label: "무게", values: ["18.7 kg"] },
+          { label: "무게", values: ["18.7 kg"], highlighted: true },
           { label: "제품 크기 (WxHxD)", values: ["310 x 986 x 310 mm"] },
         ],
       },

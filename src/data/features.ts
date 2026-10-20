@@ -13,9 +13,11 @@ const bathairHomepageImage = bathairHomepageAsset.url;
 export interface ProductComparisonTable {
   name: string;
   imageUrl: string;
+  category?: string;
   specs: {
     label: string;
     values: string[];
+    highlighted?: boolean;
   }[];
 }
 

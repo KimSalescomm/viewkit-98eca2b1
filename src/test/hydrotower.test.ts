@@ -80,6 +80,28 @@ describe("hydrotower product navigation data", () => {
     expect(byName("하이드로타워")?.specs.find((s) => s.label === "대표 모델명")?.values).toEqual(["HY706RSUA"]);
   });
 
+  it.each([
+    ["청정 사용 면적", "AI 360˚ 공기청정기 M7", "114.0㎡"],
+    ["에너지소비효율등급", "AI 360˚ 공기청정기 M7", "2등급"],
+    ["최대 가습량", "하이드로타워 Max", "850 cc/hr"],
+    ["가습모드", "하이드로타워 Max", "AI가습"],
+    ["무드등", "하이드로타워 Max", "테마무드 3종 + 컬러 12종"],
+    ["이동성", "하이드로타워 Max", "히든휠 내장"],
+    ["무게", "하이드로타워", "18.7 kg"],
+  ])("marks only the explicit advantage for %s", (label, winner, value) => {
+    const products = getFeatureById("hydrotower", "6")?.tableData ?? [];
+    const highlighted = products.filter((product) => product.specs.find((spec) => spec.label === label)?.highlighted);
+    expect(highlighted.map((product) => product.name)).toEqual([winner]);
+    expect(highlighted[0]?.specs.find((spec) => spec.label === label)?.values).toContain(value);
+  });
+
+  it("does not mark subjective differences or equal capacities as advantages", () => {
+    const products = getFeatureById("hydrotower", "6")?.tableData ?? [];
+    for (const label of ["색상", "필터", "AI 인증", "물통 (용량/만수용량)", "제품 크기 (WxHxD)"]) {
+      expect(products.some((product) => product.specs.find((spec) => spec.label === label)?.highlighted)).toBe(false);
+    }
+  });
+
   it("shows the subscription care card first and no removed cards", () => {
     const features = getFeaturesByProductId("hydrotower");
     expect(features[0].tag).toBe("가전 구독");
