@@ -61,9 +61,15 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
         })}
       </div>
 
-      {/* 사진/영상 전환 버튼 */}
+      {/* 사진/영상 슬라이딩 토글 */}
       <div className="mt-4 flex justify-end">
-        <div className="flex items-center gap-1.5" role="group" aria-label="미디어 유형 선택">
+        <div className="relative grid grid-cols-2 rounded-full bg-gray-100 p-1" role="group" aria-label="미디어 유형 선택">
+          <div
+            aria-hidden
+            className={`absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-brand-accent shadow-sm transition-transform duration-300 ease-out ${
+              mediaType === "video" ? "translate-x-full" : "translate-x-0"
+            }`}
+          />
           {(["image", "video"] as CareMediaType[]).map((type) => {
             const isOn = mediaType === type;
             const disabled = type === "video" && !hasVideo;
@@ -74,10 +80,8 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
                 onClick={() => !disabled && selectMedia(type)}
                 disabled={disabled}
                 aria-pressed={isOn}
-                className={`flex h-10 items-center gap-2 rounded-full border px-5 text-[13px] font-semibold shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/40 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-40 ${
-                  isOn
-                    ? "border-brand-accent bg-brand-accent text-brand-accent-foreground"
-                    : "border-gray-300 bg-white text-gray-600 hover:border-gray-400 hover:text-gray-800"
+                className={`relative z-10 flex h-9 min-w-[92px] items-center justify-center gap-1.5 rounded-full px-4 text-[13px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/40 disabled:cursor-not-allowed disabled:opacity-40 ${
+                  isOn ? "text-brand-accent-foreground" : "text-gray-500"
                 }`}
               >
                 {type === "image" ? <ImageIcon className="h-4 w-4" aria-hidden /> : <Play className="h-4 w-4" aria-hidden />}
