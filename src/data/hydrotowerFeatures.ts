@@ -2,7 +2,9 @@ import type { Feature } from "@/data/features";
 import spaceAiVideo from "@/assets/hydrotower-space-ai-humidification.mp4.asset.json";
 import spaceAiWebm from "@/assets/hydrotower-space-ai-humidification.webm.asset.json";
 import spaceAiPoster from "@/assets/hydrotower-space-ai-humidification-poster.jpg.asset.json";
-import purified from "@/assets/hydrotower-purified.jpg.asset.json";
+import purifiedVideo from "@/assets/hydrotower-purified-humidification.mp4.asset.json";
+import purifiedWebm from "@/assets/hydrotower-purified-humidification.webm.asset.json";
+import purifiedPoster from "@/assets/hydrotower-purified-humidification-poster.jpg.asset.json";
 import drying from "@/assets/hydrotower-drying.jpg.asset.json";
 import filter from "@/assets/hydrotower-filter.jpg.asset.json";
 import care from "@/assets/hydrotower-care.png.asset.json";
@@ -93,9 +95,10 @@ export const hydrotowerFeatures: Feature[] = [
     subtitle: "정수 필터링부터 살균·청정 건조까지\n4단계로 가습 위생을 챙겨드려요.",
     icon: "ShieldCheck",
     tag: "4단계 정수 가습",
-    mediaType: "image",
-    mediaUrl: purified.url,
-    imageFit: "original",
+    mediaType: "video",
+    mediaUrl: purifiedVideo.url,
+    fallbackUrl: purifiedWebm.url,
+    posterImage: purifiedPoster.url,
     fullWidthMedia: true,
     description:
       "정수 필터로 스케일 원인 물질을 걸러내고, 100℃ 고온으로 가습수를 살균해요. 공기청정 필터를 거친 청정 바람에 가습을 실어 보내고, 사용 후에는 내부 물길까지 청정 건조해요.",
