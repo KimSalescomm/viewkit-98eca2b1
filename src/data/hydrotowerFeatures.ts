@@ -183,16 +183,16 @@ export const hydrotowerFeatures: Feature[] = [
   },
   {
     id: "5",
-    title: "가습뿐 아니라,\n먼지와 생활 냄새도 고민이신가요?",
-    subtitle: "360˚ 탈취청정 V2 필터로\n넓은 공간의 공기까지 케어해드려요.",
+    title: "눈에 보이지 않는 \n 먼지와 유해가스까지 제거할 수 있을까요?",
+    subtitle: "360˚ 탈취청정 V2 필터로\n넓먼지와 유해가스까지 제거해요.",
     icon: "Wind",
     tag: "360˚ 탈취청정 V2",
     mediaType: "image",
     mediaUrl: filter.url,
-    imageFit: "contain",
+    imageFit: "original",
     fullWidthMedia: true,
     description:
-      "교체형 극세필터로 큰 먼지를, 집진 필터로 미세먼지를, 탈취 필터로 생활 냄새의 원인이 되는 유해가스를 걸러줘요. 청정면적 66㎡의 공기청정 성능과 청정 표시 라이팅으로 실내 공기 상태를 확인할 수 있어요.",
+      "360˚ 탈취청정 V2 필터가 공기 중에 떠다니는 세균, 곰팡이를 99.9%, 바이러스는 98% 제거해요. \n 눈에 보이지 않는 미세먼지부터 불쾌한 생활 냄새의 원인인 3대 유해가스까지 업애 공기를 쾌적하게 지켜줘요.",
     highlights: ["청정면적 66㎡", "큰 먼지·미세먼지 케어", "생활 냄새·유해가스 케어", "공기 상태 라이팅"],
     disclaimers: [
       imageNote,
