@@ -220,8 +220,7 @@ export const hydrotowerFeatures: Feature[] = [
     tag: "라인업 비교",
     mediaType: "table",
     mediaUrl: hydrotowerMaxCompare.url,
-    description:
-      "LG 퓨리케어 AI 360˚ 공기청정기 M7, 가습 공기청정기 하이드로타워 Max, 정수 가습기 하이드로타워의 라인업별 특장점, 핵심 기능, 주요 스펙을 비교해보세요.",
+    description: "",
     highlights: ["대표 모델명", "최대 가습량", "청정 사용 면적", "가습모드"],
     tableData: [
       {
@@ -229,7 +228,6 @@ export const hydrotowerFeatures: Feature[] = [
         category: "공기청정기",
         imageUrl: m7Compare.url,
         specs: [
-          { label: "제품 유형", values: ["공기청정기"] },
           { label: "대표 모델명", values: ["AS356NSMA"] },
           {
             label: "추천 상황",
@@ -257,7 +255,6 @@ export const hydrotowerFeatures: Feature[] = [
         category: "가습 공기청정기",
         imageUrl: hydrotowerMaxCompare.url,
         specs: [
-          { label: "제품 유형", values: ["가습 공기청정기"] },
           { label: "대표 모델명", values: ["HY856RNAA"] },
           {
             label: "추천 상황",
@@ -285,7 +282,6 @@ export const hydrotowerFeatures: Feature[] = [
         category: "정수 가습기",
         imageUrl: hydrotowerCompare.url,
         specs: [
-          { label: "제품 유형", values: ["가습기"] },
           { label: "대표 모델명", values: ["HY706RSUA"] },
           {
             label: "추천 상황",
@@ -308,11 +304,6 @@ export const hydrotowerFeatures: Feature[] = [
           { label: "제품 크기 (WxHxD)", values: ["310 x 986 x 310 mm"] },
         ],
       },
-    ],
-    disclaimers: [
-      "본 페이지의 내용은 제품 선택을 돕기 위한 참고용 정보로 제공됩니다.",
-      "제품의 실제 사양, 기능, 제공 서비스는 모델별·구독 유형·계약 시점에 따라 다를 수 있으며, 상세 내용은 공식 제품 설명을 기준으로 합니다.",
-      "수치 및 비교 정보는 대표 모델 기준의 일반적인 정보로, 개별 제품에 따라 차이가 있을 수 있습니다.",
     ],
   },
 ];
