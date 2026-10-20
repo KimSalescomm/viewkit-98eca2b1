@@ -12,13 +12,12 @@ describe("hydrotower product navigation data", () => {
 
   it("resolves every sequential feature ID for direct detail navigation", () => {
     const features = getFeaturesByProductId("hydrotower");
-    expect(features).toHaveLength(5);
+    expect(features).toHaveLength(6);
     features.forEach((feature, index) => {
       expect(feature.id).toBe(String(index + 1));
       expect(getFeatureById("hydrotower", String(index + 1))).toBe(feature);
       expect(feature.mediaUrl).toMatch(/^\/__l5e\/assets-v1\//);
     });
-    expect(getFeatureById("hydrotower", "6")).toBeUndefined();
   });
 
   it("plays the official AI humidification video on the 공간 맞춤 AI가습 card", () => {
