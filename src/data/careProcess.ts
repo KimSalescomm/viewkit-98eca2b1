@@ -33,6 +33,8 @@ export interface CareProcessPlan {
   commonVideoUrl?: string;
   defaultMediaType: CareMediaType;
   careServices: CareServiceStep[];
+  /** Aviso sanfonado (clique para abrir) ao final da seção */
+  disclaimers?: { title: string; text: string };
 }
 
 export const careProcessPlans: Record<string, CareProcessPlan> = {
@@ -50,40 +52,40 @@ export const careProcessPlans: Record<string, CareProcessPlan> = {
         careServiceId: "disassembly",
         careServiceName: "분해 케어",
         displayOrder: 1,
-        benefitText: "가습부, 공기청정부, 케이스 등 완전분해",
-        description: "평소 관리하기 어려운 내부까지 전문가가 직접 케어합니다.",
+        benefitText: "분해 케어(완전 분해)",
+        description: "가습부, 공기청정부, 케이스 등 완전분해",
         representativeImageUrl: disassemblyCare.url,
       },
       {
         careServiceId: "steam",
         careServiceName: "위생 케어(스팀)",
         displayOrder: 2,
-        benefitText: "스팀 살균으로 세균 99.999% 제거",
-        description: "스팀으로 위생적으로 관리합니다.",
+        benefitText: "위생 케어(스팀)",
+        description: "진동자, 내부팬, 주요부품을 스티머로 클리닝",
         representativeImageUrl: steamCare.url,
       },
       {
         careServiceId: "uv",
         careServiceName: "위생 케어(UV)",
         displayOrder: 3,
-        benefitText: "UV 살균으로 세균 99.9% 제거",
-        description: "UV 살균 케어를 통해 관리가 필요한 부위를 케어합니다.",
+        benefitText: "위생 케어(UV)",
+        description: "UV살균으로 눈에 보이지 않는 세균까지 위생적으로 케어",
         representativeImageUrl: uvCare.url,
       },
       {
         careServiceId: "water-filter",
         careServiceName: "정수필터 교체",
         displayOrder: 4,
-        benefitText: "고객 선택 주기에 정수필터 무상 교체",
-        description: "제품에 맞는 필터를 정해진 교체 주기에 따라 관리합니다.",
+        benefitText: "정수필터 교체",
+        description: "3/6/12개월 중 고객이 선택한 주기에 따라 정수필터 교체",
         representativeImageUrl: waterFilterCare.url,
       },
       {
         careServiceId: "air-filter",
         careServiceName: "공기청정필터 교체",
         displayOrder: 5,
-        benefitText: "12개월마다 공기청정필터 무상 교체",
-        description: "공기청정 성능 유지를 위해 필터를 주기적으로 교체합니다.",
+        benefitText: "공기청정필터 교체",
+        description: "공기청정필터는 12개월마다, 극세필터는 방문 주기마다 교체",
         representativeImageUrl: airFilterCare.url,
         careCycle: "12개월",
       },
@@ -91,16 +93,16 @@ export const careProcessPlans: Record<string, CareProcessPlan> = {
         careServiceId: "humidifier-cleaning",
         careServiceName: "가습부 클리닝",
         displayOrder: 6,
-        benefitText: "물통, 커버, 미스트케이스 습/건식 클리닝",
-        description: "물이 닿는 가습부를 깨끗하게 관리합니다.",
+        benefitText: "가습부 클리닝",
+        description: "물통, 커버, 미스트케이스 등 가습부 습/건식 클리닝",
         representativeImageUrl: tankCare.url,
       },
       {
         careServiceId: "supply-cleaning",
         careServiceName: "급수부 클리닝",
         displayOrder: 7,
-        benefitText: "진동자 잔수제거, 급수부 건식 클리닝",
-        description: "물을 공급하는 급수부까지 청소합니다.",
+        benefitText: "급수부 클리닝",
+        description: "진동자 잔수제거, 급수부 건식 클리닝",
         representativeImageUrl: supplyCare.url,
       },
     ],
