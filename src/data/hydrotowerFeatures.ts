@@ -1,4 +1,7 @@
 import type { Feature } from "@/data/features";
+import m7Compare from "@/assets/airpurifier-m7-compare.jpg.asset.json";
+import hydrotowerMaxCompare from "@/assets/hydrotower-max-compare.jpg.asset.json";
+import hydrotowerCompare from "@/assets/hydrotower-compare.jpg.asset.json";
 import spaceAiVideo from "@/assets/hydrotower-space-ai-humidification.mp4.asset.json";
 import spaceAiWebm from "@/assets/hydrotower-space-ai-humidification.webm.asset.json";
 import spaceAiPoster from "@/assets/hydrotower-space-ai-humidification-poster.jpg.asset.json";
