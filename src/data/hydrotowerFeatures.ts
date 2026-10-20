@@ -145,7 +145,7 @@ export const hydrotowerFeatures: Feature[] = [
         fallbackUrl: recoveryWebm.url,
         posterImage: recoveryPoster.url,
         videoAspectRatio: "16/9",
-        videoObjectFit: "cover",
+        videoObjectFit: "contain",
         description: "가습 종료 후 잔수를 회수하고, 다음 가습 시작 시 100℃로 재가열해요.",
       },
       {
@@ -155,7 +155,7 @@ export const hydrotowerFeatures: Feature[] = [
         fallbackUrl: dryingWebm.url,
         posterImage: dryingPoster.url,
         videoAspectRatio: "16/9",
-        videoObjectFit: "cover",
+        videoObjectFit: "contain",
         description: "쾌속·집중·섬세·조용 중 선택할 수 있으며, 모드에 따라 2~4시간 동안 내부를 건조해요. 리모컨 또는 LG ThinQ 앱에서 설정할 수 있어요.",
       },
     ],
