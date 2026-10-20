@@ -35,7 +35,8 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
   return (
     <section className="mb-4 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5 sm:p-6">
       {/* 상단 타이틀 */}
-      <h2 className="mb-4 text-[17px] font-bold text-gray-900 sm:text-[20px]">{plan.title}</h2>
+      <h2 className="text-[17px] font-bold text-gray-900 sm:text-[20px]">{plan.title}</h2>
+      <p className="mt-1 mb-4 text-[14px] leading-relaxed text-gray-600">{plan.subtitle}</p>
 
       <div className="grid gap-5 lg:grid-cols-[3fr_2fr] lg:gap-6">
         {/* 왼쪽: 미디어 영역 */}
