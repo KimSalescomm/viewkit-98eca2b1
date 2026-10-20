@@ -206,6 +206,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     },
   },
   washcombo: {
+    order: ["7", "1", "2", "3", "4"],
     cards: {
       "1": {
         image: "https://static.lge.co.kr/kr/images/wash-combo/md10792826/usp/FC2521TX6C_mainpoint_pc.png",
@@ -224,11 +225,6 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       "4": {
         image: "/__l5e/assets-v1/1435d98b-daea-4b7b-a191-f282c8380294/washcombo-automatic.jpg",
         eyebrow: "플랫세제함(자동세제)",
-        fit: "contain",
-      },
-      "5": {
-        image: "https://static.lge.co.kr/kr/images/wash-combo/md10867827/gallery/medium-interior01.jpg",
-        eyebrow: "All New Full 플랫 디자인",
         fit: "contain",
       },
     },
