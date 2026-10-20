@@ -146,18 +146,22 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
         </div>
       )}
 
-      {/* 케어 설명 */}
-      <h3 className="mt-4 text-[17px] font-bold text-gray-900 sm:text-[18px]">{active.benefitText}</h3>
-      <p className="mt-1.5 text-[14px] leading-relaxed text-gray-600 sm:text-[15px]">{active.description}</p>
-      {(active.careCycle || active.disclaimer) && (
-        <div className="mt-2">
-          {active.careCycle && (
-            <p className="text-[12px] text-muted-foreground">제공 주기: {active.careCycle}</p>
+      {/* 케어 설명 (영상 모드에서는 숨김) */}
+      {mediaType === "image" && (
+        <>
+          <h3 className="mt-4 text-[17px] font-bold text-gray-900 sm:text-[18px]">{active.benefitText}</h3>
+          <p className="mt-1.5 text-[14px] leading-relaxed text-gray-600 sm:text-[15px]">{active.description}</p>
+          {(active.careCycle || active.disclaimer) && (
+            <div className="mt-2">
+              {active.careCycle && (
+                <p className="text-[12px] text-muted-foreground">제공 주기: {active.careCycle}</p>
+              )}
+              {active.disclaimer && (
+                <p className="mt-1 text-[11px] text-muted-foreground">* {active.disclaimer}</p>
+              )}
+            </div>
           )}
-          {active.disclaimer && (
-            <p className="mt-1 text-[11px] text-muted-foreground">* {active.disclaimer}</p>
-          )}
-        </div>
+        </>
       )}
 
       {/* 디스클레이머 (클릭하면 열림) */}
