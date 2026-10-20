@@ -106,7 +106,7 @@ export const careProcessPlans: Record<string, CareProcessPlan> = {
       },
     ],
     disclaimers: {
-      title: "구독하기 전에 꼭 확인하세요!",
+      title: "구독 세부 정보",
       text: `케어서비스는 제품 · 모델 및 구독 유형, 가입 시점, 방문 주기 등에 따라 제공 대상과 내용, 제공 주기가 상이할 수 있습니다.
 
 [분해 케어(완전 분해)] 상단 가습부는 토출구 및 케이스 분해, 하단 공청부는 팬까지 분해하여 생활오염을 케어합니다.
@@ -146,5 +146,4 @@ export const careProcessPlans: Record<string, CareProcessPlan> = {
   },
 };
 
-export const getCareProcessPlan = (productId: string): CareProcessPlan | undefined =>
-  careProcessPlans[productId];
+export const getCareProcessPlan = (productId: string): CareProcessPlan | undefined => careProcessPlans[productId];
