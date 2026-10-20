@@ -1,6 +1,7 @@
 import stylerKeyVisualAsset from "@/assets/styler-keyvisual.png.asset.json";
 import bathairHomepageAsset from "@/assets/bathair-homepage.jpg.asset.json";
 import washcomboMainWideAsset from "@/assets/washcombo-main-wide.jpg.asset.json";
+import hydrotowerProductAsset from "@/assets/hydrotower-product.jpg.asset.json";
 
 // 퍼블리시 스냅샷에 안정적인 CDN URL을 저장하기 위해 자산 포인터의 url을 사용합니다.
 const stylerKeyVisual = stylerKeyVisualAsset.url;
@@ -24,6 +25,15 @@ export interface Product {
 }
 
 export const products: Product[] = [
+  {
+    id: "hydrotower",
+    name: "하이드로타워",
+    title: "LG 퓨리케어 AI 오브제컬렉션 하이드로타워 Max",
+    description: "가습과 공기청정을 하나로, 사계절 맞춤 공기 케어",
+    keyVisualImage: hydrotowerProductAsset.url,
+    heroImage: hydrotowerProductAsset.url,
+    icon: "Droplets",
+  },
   {
     id: "refrigerator",
     name: "냉장고",

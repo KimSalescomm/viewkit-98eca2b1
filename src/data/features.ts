@@ -9,6 +9,7 @@ import washcomboAiTimeSensingDisplayAsset from "@/assets/washcombo-ai-time-sensi
 import washcomboAiReportWideAsset from "@/assets/washcombo-ai-report-wide.mp4.asset.json";
 import washcomboAutomaticAsset from "@/assets/washcombo-automatic.jpg.asset.json";
 import bathairHomepageAsset from "@/assets/bathair-homepage.jpg.asset.json";
+import { hydrotowerFeatures } from "@/data/hydrotowerFeatures";
 
 const bathairHomepageImage = bathairHomepageAsset.url;
 
@@ -177,6 +178,7 @@ export interface Feature {
 }
 
 export const featuresMap: Record<string, Feature[]> = {
+  hydrotower: hydrotowerFeatures,
   // 스타일러 특장점
   styler: [
     {
