@@ -37,6 +37,19 @@ describe("hydrotower product navigation data", () => {
     expect(feature?.posterImage).toContain("hydrotower-purified-humidification-poster.jpg");
   });
 
+  it("provides two independent hygiene videos on feature 4", () => {
+    const feature = getFeatureById("hydrotower", "4");
+    expect(feature?.tabs).toHaveLength(2);
+    const [recovery, drying] = feature?.tabs ?? [];
+    expect(recovery?.mediaType).toBe("video");
+    expect(recovery?.mediaUrl).toContain("hydrotower-residual-water-recovery.mp4");
+    expect(recovery?.fallbackUrl).toContain("hydrotower-residual-water-recovery.webm");
+    expect(drying?.mediaType).toBe("video");
+    expect(drying?.mediaUrl).toContain("hydrotower-air-path-drying.mp4");
+    expect(drying?.fallbackUrl).toContain("hydrotower-air-path-drying.webm");
+    expect(feature?.mediaUrl).toBe(recovery?.mediaUrl);
+  });
+
   it("shows the subscription care card first and no removed cards", () => {
     const features = getFeaturesByProductId("hydrotower");
     expect(features[0].tag).toBe("가전 구독");
