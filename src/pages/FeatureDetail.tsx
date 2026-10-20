@@ -523,7 +523,7 @@ const FeatureDetail = () => {
         )}
 
         {/* 설명 카드 */}
-        {(activeTabData?.caption || activeTabData?.description || feature.description) && (
+        {!careProcessPlan && (activeTabData?.caption || activeTabData?.description || feature.description) && (
           <div className="mb-4 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
             {(activeTabData?.descriptionTitle || feature.descriptionTitle) && (
               <h2 className="mb-2 text-lg font-bold text-gray-900">
@@ -677,7 +677,7 @@ const FeatureDetail = () => {
         )}
 
         {/* 핵심만 쏙 */}
-        {highlights.length > 0 && (
+        {!careProcessPlan && highlights.length > 0 && (
           <div className="mb-8 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-10">
             <h2 className="mb-4 text-lg font-bold text-gray-900">핵심만 쏙</h2>
             <div className="grid grid-cols-2 gap-3">
