@@ -156,7 +156,8 @@ export const hydrotowerFeatures: Feature[] = [
         posterImage: dryingPoster.url,
         videoAspectRatio: "16/9",
         videoObjectFit: "contain",
-        description: "쾌속·집중·섬세·조용 중 선택할 수 있으며, 모드에 따라 2~4시간 동안 내부를 건조해요. 리모컨 또는 LG ThinQ 앱에서 설정할 수 있어요.",
+        description:
+          "가습 종료 시 내부에 남은 물을 가열 수조로 회수하고, 다시 가습을 시작할 때 재가열해요. 청정 건조는 내부 가습길의 물기를 말려 물때와 냄새 발생을 줄이도록 도와드려요.",
       },
     ],
     description:
