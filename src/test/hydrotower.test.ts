@@ -12,13 +12,12 @@ describe("hydrotower product navigation data", () => {
 
   it("resolves every sequential feature ID for direct detail navigation", () => {
     const features = getFeaturesByProductId("hydrotower");
-    expect(features).toHaveLength(5);
+    expect(features).toHaveLength(6);
     features.forEach((feature, index) => {
       expect(feature.id).toBe(String(index + 1));
       expect(getFeatureById("hydrotower", String(index + 1))).toBe(feature);
       expect(feature.mediaUrl).toMatch(/^\/__l5e\/assets-v1\//);
     });
-    expect(getFeatureById("hydrotower", "6")).toBeUndefined();
   });
 
   it("plays the official AI humidification video on the 공간 맞춤 AI가습 card", () => {
@@ -55,6 +54,30 @@ describe("hydrotower product navigation data", () => {
     expect(feature?.mediaType).toBe("image");
     expect(feature?.mediaUrl).toContain("hydrotower-filter.jpg");
     expect(feature?.imageFit).toBe("contain");
+  });
+
+  it("compares three official air care lineups with aligned spec labels", () => {
+    const feature = getFeatureById("hydrotower", "6");
+    expect(feature?.mediaType).toBe("table");
+    expect(feature?.tag).toBe("라인업 비교");
+    const tableData = feature?.tableData ?? [];
+    expect(tableData).toHaveLength(3);
+    expect(tableData.map((product) => product.name)).toEqual([
+      "AI 360˚ 공기청정기 M7",
+      "하이드로타워 Max",
+      "하이드로타워",
+    ]);
+    const labels = tableData[0].specs.map((spec) => spec.label);
+    expect(labels).toContain("대표 모델명");
+    expect(labels).toContain("최대 가습량");
+    expect(labels).toContain("청정 사용 면적");
+    tableData.forEach((product) => {
+      expect(product.specs.map((spec) => spec.label)).toEqual(labels);
+    });
+    const byName = (name: string) => tableData.find((product) => product.name === name);
+    expect(byName("AI 360˚ 공기청정기 M7")?.specs.find((s) => s.label === "대표 모델명")?.values).toEqual(["AS356NSMA"]);
+    expect(byName("하이드로타워 Max")?.specs.find((s) => s.label === "최대 가습량")?.values).toEqual(["850 cc/hr"]);
+    expect(byName("하이드로타워")?.specs.find((s) => s.label === "대표 모델명")?.values).toEqual(["HY706RSUA"]);
   });
 
   it("shows the subscription care card first and no removed cards", () => {
