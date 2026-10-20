@@ -411,7 +411,7 @@ const FeatureDetail = () => {
                       imageFit={activeTabData?.imageFit ?? feature.imageFit ?? "cover"}
                     />
                   </button>
-                  <span className="pointer-events-none absolute bottom-3 right-3 flex items-center gap-1 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-sm">
+                  <span className="pointer-events-none absolute bottom-3 right-3 hidden items-center gap-1 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-sm sm:flex">
                     <Maximize2 className="h-3 w-3" />
                     클릭하면 크게 보기
                   </span>
