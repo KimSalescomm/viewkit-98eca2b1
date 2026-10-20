@@ -38,152 +38,127 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
       <h2 className="text-[17px] font-bold text-gray-900 sm:text-[20px]">{plan.title}</h2>
       <p className="mt-1 mb-4 text-[14px] leading-relaxed text-gray-600">{plan.subtitle}</p>
 
-      <div className="grid gap-5 lg:grid-cols-[3fr_2fr] lg:gap-6">
-        {/* 왼쪽: 미디어 영역 */}
-        <div className="min-w-0">
-          {/* 선택한 케어 제목 + 설명 */}
-          <h3 className="text-[17px] font-bold text-gray-900 sm:text-[18px]">
-            {active.benefitText}
-          </h3>
-          <div className="mt-1.5 h-0.5 w-8 rounded-full bg-brand" aria-hidden />
-          <p className="mt-2.5 text-[14px] leading-relaxed text-gray-700 sm:text-[15px]">
-            {active.description}
-          </p>
-
-          {/* 사진/영상 전환 버튼 */}
-          <div className="mt-3.5 flex gap-1.5">
+      {/* 상단 케어 메뉴: 가로형 캡슐 탭, 공간 부족 시 줄바꿈 (스크롤 없음) */}
+      <div role="tablist" aria-label="케어 항목" className="flex flex-wrap gap-1.5">
+        {steps.map((step, idx) => {
+          const isActive = idx === activeIndex;
+          return (
             <button
+              key={step.careServiceId}
               type="button"
-              onClick={() => selectMedia("image")}
-              aria-pressed={mediaType === "image"}
-              className={`flex min-h-[40px] items-center gap-1.5 rounded-full border px-4 text-[13px] font-medium transition-colors ${
-                mediaType === "image"
-                  ? "border-brand bg-brand text-brand-foreground"
-                  : "border-gray-200 bg-white text-gray-600"
+              role="tab"
+              aria-selected={isActive}
+              onClick={() => setActiveIndex(idx)}
+              className={`min-h-[40px] rounded-full border px-4 text-[14px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/40 ${
+                isActive
+                  ? "border-brand-accent bg-brand-accent font-semibold text-brand-accent-foreground"
+                  : "border-gray-200 bg-white font-medium text-gray-800 hover:bg-gray-50"
               }`}
             >
-              <ImageIcon className="h-3.5 w-3.5" aria-hidden />
-              사진
+              {step.careServiceName}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* 사진/영상 전환 버튼 */}
+      <div className="mt-4 flex justify-end gap-1.5">
+        {(["image", "video"] as CareMediaType[]).map((type) => {
+          const isOn = mediaType === type;
+          const disabled = type === "video" && !hasVideo;
+          return (
+            <button
+              key={type}
+              type="button"
+              onClick={() => !disabled && selectMedia(type)}
+              disabled={disabled}
+              aria-pressed={isOn}
+              className={`flex min-h-[40px] items-center gap-1.5 rounded-full border px-4 text-[13px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/40 disabled:cursor-not-allowed disabled:opacity-40 ${
+                isOn
+                  ? "border-brand-accent bg-brand-accent text-brand-accent-foreground"
+                  : "border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
+              }`}
+            >
+              {type === "image" ? <ImageIcon className="h-3.5 w-3.5" aria-hidden /> : <Play className="h-3.5 w-3.5" aria-hidden />}
+              {type === "image" ? "사진" : "영상"}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* 메인 미디어 (16:9, 카드 가로 너비) */}
+      <div className="relative mt-3 aspect-video w-full overflow-hidden rounded-[14px] bg-gray-50">
+        {mediaType === "video" && hasVideo ? (
+          <video
+            ref={videoRef}
+            key={activeVideoUrl}
+            src={activeVideoUrl}
+            controls
+            playsInline
+            preload="metadata"
+            className="h-full w-full object-contain"
+          />
+        ) : (
+          <SafeImage
+            key={images[imageIndex]}
+            src={images[imageIndex]}
+            alt={active.careServiceName}
+            className="h-full w-full object-contain"
+          />
+        )}
+        {mediaType === "image" && images.length > 1 && (
+          <>
+            <button
+              type="button"
+              aria-label="이전 사진"
+              onClick={() => setImageIndex((i) => (i - 1 + images.length) % images.length)}
+              className="absolute left-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90"
+            >
+              <ChevronLeft className="h-5 w-5 text-gray-800" />
             </button>
             <button
               type="button"
-              onClick={() => hasVideo && selectMedia("video")}
-              disabled={!hasVideo}
-              aria-pressed={mediaType === "video"}
-              className={`flex min-h-[40px] items-center gap-1.5 rounded-full border px-4 text-[13px] font-medium transition-colors ${
-                mediaType === "video"
-                  ? "border-brand bg-brand text-brand-foreground"
-                  : "border-gray-200 bg-white text-gray-600"
-              } disabled:cursor-not-allowed disabled:opacity-40`}
+              aria-label="다음 사진"
+              onClick={() => setImageIndex((i) => (i + 1) % images.length)}
+              className="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90"
             >
-              <Play className="h-3.5 w-3.5" aria-hidden />
-              영상
+              <ChevronRight className="h-5 w-5 text-gray-800" />
             </button>
-          </div>
-
-          {/* 메인 미디어 (16:9) */}
-          <div className="relative mt-3 aspect-video w-full overflow-hidden rounded-[14px] bg-gray-100">
-            {mediaType === "video" && hasVideo ? (
-              <video
-                ref={videoRef}
-                key={activeVideoUrl}
-                src={activeVideoUrl}
-                controls
-                playsInline
-                preload="metadata"
-                className="h-full w-full object-contain"
-              />
-            ) : (
-              <SafeImage
-                key={images[imageIndex]}
-                src={images[imageIndex]}
-                alt={active.careServiceName}
-                className="h-full w-full object-contain"
-              />
-            )}
-            {/* 이미지가 여러 장일 때 좌우 탐색 */}
-            {mediaType === "image" && images.length > 1 && (
-              <>
-                <button
-                  type="button"
-                  aria-label="이전 사진"
-                  onClick={() => setImageIndex((i) => (i - 1 + images.length) % images.length)}
-                  className="absolute left-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md"
-                >
-                  <ChevronLeft className="h-5 w-5 text-gray-800" />
-                </button>
-                <button
-                  type="button"
-                  aria-label="다음 사진"
-                  onClick={() => setImageIndex((i) => (i + 1) % images.length)}
-                  className="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md"
-                >
-                  <ChevronRight className="h-5 w-5 text-gray-800" />
-                </button>
-              </>
-            )}
-          </div>
-
-          {/* 썸네일 (이미지 여러 장일 때) */}
-          {mediaType === "image" && images.length > 1 && (
-            <div className="mt-2.5 flex gap-2 overflow-x-auto scrollbar-hide">
-              {images.map((url, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => setImageIndex(idx)}
-                  aria-label={`사진 ${idx + 1}`}
-                  className={`aspect-video w-20 flex-shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${
-                    idx === imageIndex ? "border-brand" : "border-transparent"
-                  }`}
-                >
-                  <SafeImage src={url} alt="" className="h-full w-full object-cover" />
-                </button>
-              ))}
-            </div>
-          )}
-
-          {(active.careCycle || active.disclaimer) && (
-            <div className="mt-3">
-              {active.careCycle && (
-                <p className="text-[12px] text-muted-foreground">제공 주기: {active.careCycle}</p>
-              )}
-              {active.disclaimer && (
-                <p className="mt-1 text-[11px] text-muted-foreground">* {active.disclaimer}</p>
-              )}
-            </div>
-          )}
-        </div>
-
-        {/* 오른쪽: 케어 항목 세로 목록 */}
-        <div role="tablist" aria-label="케어 항목" className="flex flex-col gap-1 lg:border-l lg:border-gray-100 lg:pl-5">
-          {steps.map((step, idx) => {
-            const isActive = idx === activeIndex;
-            return (
-              <button
-                key={step.careServiceId}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => setActiveIndex(idx)}
-                className={`flex min-h-[52px] items-center justify-between gap-2 rounded-full px-5 text-left transition-colors ${
-                  isActive
-                    ? "bg-brand text-brand-foreground"
-                    : "text-gray-800 hover:bg-gray-50"
-                }`}
-              >
-                <span className={`text-[15px] ${isActive ? "font-semibold" : "font-medium"}`}>
-                  {step.careServiceName}
-                </span>
-                <ChevronRight
-                  className={`h-4 w-4 flex-shrink-0 ${isActive ? "text-brand-foreground/80" : "text-gray-300"}`}
-                  aria-hidden
-                />
-              </button>
-            );
-          })}
-        </div>
+          </>
+        )}
       </div>
+
+      {mediaType === "image" && images.length > 1 && (
+        <div className="mt-2.5 flex flex-wrap gap-2">
+          {images.map((url, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setImageIndex(idx)}
+              aria-label={`사진 ${idx + 1}`}
+              className={`aspect-video w-20 overflow-hidden rounded-lg border-2 transition-colors ${
+                idx === imageIndex ? "border-brand-accent" : "border-transparent"
+              }`}
+            >
+              <SafeImage src={url} alt="" className="h-full w-full object-cover" />
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* 케어 설명 */}
+      <h3 className="mt-4 text-[17px] font-bold text-gray-900 sm:text-[18px]">{active.benefitText}</h3>
+      <p className="mt-1.5 text-[14px] leading-relaxed text-gray-600 sm:text-[15px]">{active.description}</p>
+      {(active.careCycle || active.disclaimer) && (
+        <div className="mt-2">
+          {active.careCycle && (
+            <p className="text-[12px] text-muted-foreground">제공 주기: {active.careCycle}</p>
+          )}
+          {active.disclaimer && (
+            <p className="mt-1 text-[11px] text-muted-foreground">* {active.disclaimer}</p>
+          )}
+        </div>
+      )}
 
       {/* 디스클레이머 (클릭하면 열림) */}
       {plan.disclaimers && (
