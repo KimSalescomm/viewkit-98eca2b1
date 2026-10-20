@@ -129,7 +129,7 @@ export const hydrotowerFeatures: Feature[] = [
   {
     id: "4",
     title: "가습이 끝난 뒤,\n남은 물기가 걱정되시나요?",
-    subtitle: "남은 물을 회수하고 내부 물길을 말려\n사용 후 위생까지 관리해드려요.",
+    subtitle: "가습이 끝난 뒤에도\n남은 물기를 말려 깨끗하게 관리해요.",
     icon: "Sparkles",
     tag: "자동 위생 관리",
     mediaType: "video",
