@@ -182,7 +182,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
                           fontWeight: 500,
                           fontSize: "12px",
                           color: isCellHighlighted ? "#2563eb" : "#666",
-                          height: "35px",
+                          minHeight: "35px",
                           display: "flex",
                           alignItems: "center",
                         }}
