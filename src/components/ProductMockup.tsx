@@ -89,6 +89,20 @@ const AirConditioner = (p: Props) => (
   </Svg>
 );
 
+/** 하이드로타워 — 원통형 가습 공기청정기 */
+const HydroTower = (p: Props) => (
+  <Svg {...p}>
+    <rect x="33" y="22" width="34" height="66" rx="10" />
+    <ellipse cx="50" cy="24" rx="17" ry="5" />
+    <line x1="33" y1="44" x2="67" y2="44" />
+    <line x1="45" y1="52" x2="55" y2="52" />
+    <line x1="42" y1="63" x2="42" y2="77" />
+    <line x1="50" y1="63" x2="50" y2="77" />
+    <line x1="58" y1="63" x2="58" y2="77" />
+    <path d="M43 14c-3-4 3-4 0-8 M57 14c-3-4 3-4 0-8" />
+  </Svg>
+);
+
 /** 식기세척기 */
 const DishWasher = (p: Props) => (
   <Svg {...p}>
@@ -132,6 +146,7 @@ const mockups: Record<string, (p: Props) => JSX.Element> = {
   tv: TvMock,
   vacuum: Vacuum,
   airconditioner: AirConditioner,
+  hydrotower: HydroTower,
   cooking: DishWasher,
   dishwasher: DishWasher,
   bathair: BathAir,
