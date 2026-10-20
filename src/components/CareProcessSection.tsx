@@ -40,7 +40,7 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
 
       {/* 케어 프로세스 스텝 탭 */}
       <div
-        className="mb-4 flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-hide sm:gap-2"
+        className="mb-4 flex flex-wrap items-center gap-1.5 sm:gap-2"
         role="tablist"
         aria-label="케어 프로세스"
       >
@@ -54,19 +54,19 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
                 aria-selected={isActive}
                 onClick={() => setActiveIndex(idx)}
                 className={`flex min-h-[44px] items-center gap-2 whitespace-nowrap rounded-full border bg-white px-3.5 transition-colors sm:px-4 ${
-                  isActive ? "border-gray-900" : "border-gray-200"
+                  isActive ? "border-brand" : "border-gray-200"
                 }`}
               >
                 <span
                   className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-[12px] font-bold ${
-                    isActive ? "bg-gray-900 text-white" : "bg-gray-200 text-gray-500"
+                    isActive ? "bg-brand text-brand-foreground" : "bg-gray-200 text-gray-500"
                   }`}
                 >
                   {idx + 1}
                 </span>
                 <span
                   className={`text-[14px] font-medium ${
-                    isActive ? "font-semibold text-gray-900" : "text-gray-500"
+                    isActive ? "font-semibold text-brand" : "text-gray-500"
                   }`}
                 >
                   {step.careServiceName}
@@ -88,7 +88,7 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
           aria-pressed={mediaType === "image"}
           className={`flex min-h-[36px] items-center gap-1.5 rounded-full border px-3.5 text-[13px] font-medium transition-colors ${
             mediaType === "image"
-              ? "border-gray-900 bg-gray-900 text-white"
+              ? "border-brand bg-brand text-brand-foreground"
               : "border-gray-200 bg-white text-gray-600"
           }`}
         >
@@ -102,7 +102,7 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
           aria-pressed={mediaType === "video"}
           className={`flex min-h-[36px] items-center gap-1.5 rounded-full border px-3.5 text-[13px] font-medium transition-colors ${
             mediaType === "video"
-              ? "border-gray-900 bg-gray-900 text-white"
+              ? "border-brand bg-brand text-brand-foreground"
               : "border-gray-200 bg-white text-gray-600"
           } disabled:cursor-not-allowed disabled:opacity-40`}
         >
@@ -164,7 +164,7 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
               onClick={() => setImageIndex(idx)}
               aria-label={`사진 ${idx + 1}`}
               className={`aspect-video w-20 flex-shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${
-                idx === imageIndex ? "border-gray-900" : "border-transparent"
+                idx === imageIndex ? "border-brand" : "border-transparent"
               }`}
             >
               <SafeImage src={url} alt="" className="h-full w-full object-cover" />
@@ -184,6 +184,19 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
           <p className="mt-1 text-[11px] text-muted-foreground">* {active.disclaimer}</p>
         )}
       </div>
+
+      {/* 디스클레이머 (클릭하면 열림) */}
+      {plan.disclaimers && (
+        <details className="group mt-4 rounded-lg border border-gray-200 bg-gray-50">
+          <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-2 px-4 py-2.5 text-[13px] font-semibold text-gray-700 [&::-webkit-details-marker]:hidden">
+            {plan.disclaimers.title}
+            <ChevronRight className="h-4 w-4 flex-shrink-0 text-gray-400 transition-transform group-open:rotate-90" aria-hidden />
+          </summary>
+          <p className="whitespace-pre-line border-t border-gray-200 px-4 py-3 text-[12px] leading-relaxed text-muted-foreground">
+            {plan.disclaimers.text}
+          </p>
+        </details>
+      )}
     </section>
   );
 };
