@@ -61,7 +61,7 @@ export const careProcessPlans: Record<string, CareProcessPlan> = {
         careServiceName: "위생 케어(스팀)",
         displayOrder: 2,
         benefitText: "위생 케어(스팀)",
-        description: "진동자, 내부팬, 주요부품을 스티머로 클리닝",
+        description: "스팀 살균으로 세균 99.999% 제거",
         representativeImageUrl: steamCare.url,
       },
       {
@@ -77,7 +77,7 @@ export const careProcessPlans: Record<string, CareProcessPlan> = {
         careServiceName: "정수필터 교체",
         displayOrder: 4,
         benefitText: "정수필터 교체",
-        description: "3/6/12개월 중 고객이 선택한 주기에 따라 정수필터 교체",
+        description: "고객 선택 주기에 정수필터 무상 교체",
         representativeImageUrl: waterFilterCare.url,
       },
       {
@@ -85,9 +85,8 @@ export const careProcessPlans: Record<string, CareProcessPlan> = {
         careServiceName: "공기청정필터 교체",
         displayOrder: 5,
         benefitText: "공기청정필터 교체",
-        description: "공기청정필터는 12개월마다, 극세필터는 방문 주기마다 교체",
+        description: "12개월마다 공기청정필터 무상 교체",
         representativeImageUrl: airFilterCare.url,
-        careCycle: "12개월",
       },
       {
         careServiceId: "humidifier-cleaning",

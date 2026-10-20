@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { products } from "@/data/products";
 import { getFeatureById, getFeaturesByProductId } from "@/data/features";
+import { getCareProcessPlan } from "@/data/careProcess";
 
 describe("hydrotower product navigation data", () => {
   it("registers the product with locally served media", () => {
@@ -27,5 +28,29 @@ describe("hydrotower product navigation data", () => {
     expect(tags).not.toContain("사계절 공기 케어");
     expect(tags).not.toContain("맞춤 가습 모드");
     expect(tags).not.toContain("편의 기능·오브제 디자인");
+  });
+});
+
+describe("hydrotower care service copy", () => {
+  const plan = getCareProcessPlan("hydrotower");
+
+  it("uses the approved detail line for each care service", () => {
+    const byId = (id: string) => plan?.careServices.find((step) => step.careServiceId === id);
+    expect(byId("steam")?.description).toBe("스팀 살균으로 세균 99.999% 제거");
+    expect(byId("water-filter")?.description).toBe("고객 선택 주기에 정수필터 무상 교체");
+    expect(byId("air-filter")?.description).toBe("12개월마다 공기청정필터 무상 교체");
+  });
+
+  it("keeps every care service name and benefit title in the official order", () => {
+    expect(plan?.careServices.map((step) => step.careServiceName)).toEqual([
+      "분해 케어",
+      "위생 케어(스팀)",
+      "위생 케어(UV)",
+      "정수필터 교체",
+      "공기청정필터 교체",
+      "가습부 클리닝",
+      "급수부 클리닝",
+    ]);
+    expect(plan?.careServices.map((step) => step.displayOrder)).toEqual([1, 2, 3, 4, 5, 6, 7]);
   });
 });
