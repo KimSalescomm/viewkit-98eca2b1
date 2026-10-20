@@ -50,6 +50,13 @@ describe("hydrotower product navigation data", () => {
     expect(feature?.mediaUrl).toBe(recovery?.mediaUrl);
   });
 
+  it("shows the V2 filter image inside the shared card frame", () => {
+    const feature = getFeatureById("hydrotower", "5");
+    expect(feature?.mediaType).toBe("image");
+    expect(feature?.mediaUrl).toContain("hydrotower-filter.jpg");
+    expect(feature?.imageFit).toBe("contain");
+  });
+
   it("shows the subscription care card first and no removed cards", () => {
     const features = getFeaturesByProductId("hydrotower");
     expect(features[0].tag).toBe("가전 구독");
