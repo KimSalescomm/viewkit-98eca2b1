@@ -158,7 +158,7 @@ export const hydrotowerFeatures: Feature[] = [
         videoAspectRatio: "16/9",
         videoObjectFit: "contain",
         description:
-          "가습 종료 시 내부에 남은 물을 가열 수조로 회수하고, 다시 가습을 시작할 때 재가열해요. 청정 건조는 내부 가습길의 물기를 말려 물때와 냄새 발생을 줄이도록 도와드려요.",
+          "가습이 끝나면 물이 지나간 길을 청정바람으로 말끔하게 건조해요. 남은 물기가 1g 미만이 될 때까지 말려 물때와 냄새가 생기는 것을 예방해 줍니다..",
       },
     ],
     description:
