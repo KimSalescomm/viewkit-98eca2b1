@@ -3,7 +3,12 @@ import spaceAiVideo from "@/assets/hydrotower-space-ai-humidification.mp4.asset.
 import spaceAiWebm from "@/assets/hydrotower-space-ai-humidification.webm.asset.json";
 import spaceAiPoster from "@/assets/hydrotower-space-ai-humidification-poster.jpg.asset.json";
 import purified from "@/assets/hydrotower-purified.jpg.asset.json";
-import drying from "@/assets/hydrotower-drying.jpg.asset.json";
+import recoveryVideo from "@/assets/hydrotower-residual-water-recovery.mp4.asset.json";
+import recoveryWebm from "@/assets/hydrotower-residual-water-recovery.webm.asset.json";
+import recoveryPoster from "@/assets/hydrotower-residual-water-recovery-poster.jpg.asset.json";
+import dryingVideo from "@/assets/hydrotower-air-path-drying.mp4.asset.json";
+import dryingWebm from "@/assets/hydrotower-air-path-drying.webm.asset.json";
+import dryingPoster from "@/assets/hydrotower-air-path-drying-poster.jpg.asset.json";
 import filter from "@/assets/hydrotower-filter.jpg.asset.json";
 import care from "@/assets/hydrotower-care.png.asset.json";
 import disassemblyCare from "@/assets/hydrotower-care-01-disassembly-care.png.asset.json";
@@ -124,10 +129,33 @@ export const hydrotowerFeatures: Feature[] = [
     subtitle: "남은 물을 회수하고 내부 물길을 말려\n사용 후 위생까지 관리해드려요.",
     icon: "Sparkles",
     tag: "자동 위생 관리",
-    mediaType: "image",
-    mediaUrl: drying.url,
-    imageFit: "original",
+    mediaType: "video",
+    mediaUrl: recoveryVideo.url,
+    fallbackUrl: recoveryWebm.url,
+    posterImage: recoveryPoster.url,
     fullWidthMedia: true,
+    tabs: [
+      {
+        label: "남아 있는 물까지 회수",
+        mediaType: "video",
+        mediaUrl: recoveryVideo.url,
+        fallbackUrl: recoveryWebm.url,
+        posterImage: recoveryPoster.url,
+        videoAspectRatio: "720/630",
+        videoObjectFit: "contain",
+        description: "가습 종료 후 잔수를 회수하고, 다음 가습 시작 시 100℃로 재가열해요.",
+      },
+      {
+        label: "물이 지나가는 길까지 건조",
+        mediaType: "video",
+        mediaUrl: dryingVideo.url,
+        fallbackUrl: dryingWebm.url,
+        posterImage: dryingPoster.url,
+        videoAspectRatio: "720/630",
+        videoObjectFit: "contain",
+        description: "쾌속·집중·섬세·조용 중 선택할 수 있으며, 모드에 따라 2~4시간 동안 내부를 건조해요. 리모컨 또는 LG ThinQ 앱에서 설정할 수 있어요.",
+      },
+    ],
     description:
       "가습 종료 시 내부에 남은 물을 가열 수조로 회수하고, 다시 가습을 시작할 때 재가열해요. 청정 건조는 내부 가습길의 물기를 말려 물때와 냄새 발생을 줄이도록 도와드려요.",
     highlights: ["종료 후 잔수 회수", "재시작 시 재가열", "내부 물길 청정 건조", "건조 모드 4가지"],
