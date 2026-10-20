@@ -1,5 +1,7 @@
 import type { Feature } from "@/data/features";
-import ai from "@/assets/hydrotower-ai.jpg.asset.json";
+import spaceAiVideo from "@/assets/hydrotower-space-ai-humidification.mp4.asset.json";
+import spaceAiWebm from "@/assets/hydrotower-space-ai-humidification.webm.asset.json";
+import spaceAiPoster from "@/assets/hydrotower-space-ai-humidification-poster.jpg.asset.json";
 import purified from "@/assets/hydrotower-purified.jpg.asset.json";
 import drying from "@/assets/hydrotower-drying.jpg.asset.json";
 import filter from "@/assets/hydrotower-filter.jpg.asset.json";
@@ -61,9 +63,10 @@ export const hydrotowerFeatures: Feature[] = [
     subtitle: "공간의 크기와 온도를 판단해\nAI가습이 적정 습도로 맞춰드려요.",
     icon: "Cpu",
     tag: "공간 맞춤 AI가습",
-    mediaType: "image",
-    mediaUrl: ai.url,
-    imageFit: "original",
+    mediaType: "video",
+    mediaUrl: spaceAiVideo.url,
+    fallbackUrl: spaceAiWebm.url,
+    posterImage: spaceAiPoster.url,
     fullWidthMedia: true,
     description:
       "공간 맞춤 AI가습은 공간의 크기와 실내 온도를 판단해 목표 습도와 가습 속도를 조절해요. 공간 조건에 맞춰 습도를 유지하고, 실내에 고르게 가습할 수 있도록 도와드려요.",

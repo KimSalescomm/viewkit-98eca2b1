@@ -21,6 +21,14 @@ describe("hydrotower product navigation data", () => {
     expect(getFeatureById("hydrotower", "6")).toBeUndefined();
   });
 
+  it("plays the official AI humidification video on the 공간 맞춤 AI가습 card", () => {
+    const feature = getFeatureById("hydrotower", "2");
+    expect(feature?.mediaType).toBe("video");
+    expect(feature?.mediaUrl).toContain("hydrotower-space-ai-humidification.mp4");
+    expect(feature?.fallbackUrl).toContain("hydrotower-space-ai-humidification.webm");
+    expect(feature?.posterImage).toContain("hydrotower-space-ai-humidification-poster.jpg");
+  });
+
   it("shows the subscription care card first and no removed cards", () => {
     const features = getFeaturesByProductId("hydrotower");
     expect(features[0].tag).toBe("가전 구독");
