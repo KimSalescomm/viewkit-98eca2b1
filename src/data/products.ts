@@ -8,7 +8,6 @@ const stylerKeyVisual = stylerKeyVisualAsset.url;
 const bathairHomepage = bathairHomepageAsset.url;
 const washcomboMainWide = washcomboMainWideAsset.url;
 
-
 export interface Product {
   id: string;
   name: string;
@@ -29,7 +28,7 @@ export const products: Product[] = [
     id: "hydrotower",
     name: "하이드로타워",
     title: "LG 퓨리케어 AI 오브제컬렉션 하이드로타워 Max",
-    description: "가습과 공기청정을 하나로, 사계절 맞춤 공기 케어",
+    description: "가습과 공기청정을 하나로 담은 사계절 프리미엄 가전",
     keyVisualImage: hydrotowerProductAsset.url,
     heroImage: hydrotowerProductAsset.url,
     icon: "Droplets",
@@ -50,14 +49,14 @@ export const products: Product[] = [
     title: "청소로봇",
     description: "세계최초 100℃ 투웨이 스팀 청소로봇.",
     // 상세 페이지(/product/vacuum) 전용 PC 가로형 이미지 — 제품 리스트(/) 썸네일과는 별도 관리
-    keyVisualImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg",
-    secondaryKeyVisualImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
+    keyVisualImage:
+      "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/usp/N95THO_lifestyle_livingroom_pc_01.jpg",
+    secondaryKeyVisualImage:
+      "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730839/usp2/N95TWU_lifestyle_kitchen_pc_01.jpg",
     // 상세 페이지 히어로 우측 제품컷 (누끼형)
     heroImage: "https://static.lge.co.kr/kr/images/vacuum-cleaners/md10730837/gallery/medium05.jpg",
     icon: "Sparkles",
     imageZoom: 1.1,
-
-
   },
   {
     id: "styler",
@@ -129,8 +128,6 @@ export const products: Product[] = [
     keyVisualImage: "https://static.lge.co.kr/kr/images/wash-combo/md10867827/gallery/medium01.jpg",
     icon: "Waves",
   },
-
-
 ];
 
 export const iconMap: Record<string, string> = {
@@ -144,7 +141,6 @@ export const iconMap: Record<string, string> = {
   UtensilsCrossed: "🍽️",
   Droplets: "💧",
 };
-
 
 export const getProductById = (id: string): Product | undefined => {
   return products.find((p) => p.id === id);
