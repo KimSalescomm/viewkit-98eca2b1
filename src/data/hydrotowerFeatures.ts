@@ -220,8 +220,7 @@ export const hydrotowerFeatures: Feature[] = [
     tag: "라인업 비교",
     mediaType: "table",
     mediaUrl: hydrotowerMaxCompare.url,
-    description:
-      "LG 퓨리케어 AI 360˚ 공기청정기 M7, 가습 공기청정기 하이드로타워 Max, 정수 가습기 하이드로타워의 라인업별 특장점, 핵심 기능, 주요 스펙을 비교해보세요.",
+    description: "",
     highlights: ["대표 모델명", "최대 가습량", "청정 사용 면적", "가습모드"],
     tableData: [
       {
