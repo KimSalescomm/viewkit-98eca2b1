@@ -97,7 +97,7 @@ describe("hydrotower product navigation data", () => {
 
   it("does not mark subjective differences or equal capacities as advantages", () => {
     const products = getFeatureById("hydrotower", "6")?.tableData ?? [];
-    for (const label of ["色상", "색상", "필터", "AI 인증", "물통 (용량/만수용량)", "제품 크기 (WxHxD)"]) {
+    for (const label of ["색상", "필터", "AI 인증", "물통 (용량/만수용량)", "제품 크기 (WxHxD)"]) {
       expect(products.some((product) => product.specs.find((spec) => spec.label === label)?.highlighted)).toBe(false);
     }
   });
