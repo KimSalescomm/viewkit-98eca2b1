@@ -213,7 +213,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
                           color: isCellHighlighted ? "#2563eb" : "#333",
                           textAlign: "center",
                           lineHeight: "1.4",
-                          minHeight: "51px",
+                          minHeight: rowMinHeights[label] || 51,
                           display: "flex",
                           flexDirection: "column",
                           justifyContent: "center",
