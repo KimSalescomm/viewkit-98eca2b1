@@ -146,7 +146,8 @@ export const hydrotowerFeatures: Feature[] = [
         posterImage: recoveryPoster.url,
         videoAspectRatio: "16/9",
         videoObjectFit: "contain",
-        description: "가습 종료 후 잔수를 회수하고, 다음 가습 시작 시 100℃로 재가열해요.",
+        description:
+          "가습이 끝나면 내부에 남은 물을 자동으로 회수하고, 다음에 사용할 때 100℃ 가열해 위생적으로 관리해요.",
       },
       {
         label: "물이 지나가는 길까지 건조",
