@@ -64,6 +64,23 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
 
   if (mediaType === "table" && tableData) {
     const specLabels = tableData[0]?.specs.map(s => s.label) || [];
+
+    // 세로 스크롤 비교표에서 행 높이를 열마다 따로 계산하면 라벨이 어긋나므로,
+    // 행마다 가장 긴 셀을 기준으로 minHeight을 정해 모든 열의 행 높이를 맞춘다.
+    const CHAR_PER_LINE = 18;
+    const estimateValueLines = (values: string[]) =>
+      values.reduce((total, value) => total + Math.max(1, Math.ceil(value.length / CHAR_PER_LINE)), 0);
+    const rowMinHeights: Record<string, number> = {};
+    specLabels.forEach((label) => {
+      const maxLines = Math.max(
+        ...tableData.map((product) => {
+          const spec = product.specs.find(s => s.label === label);
+          return estimateValueLines(spec?.values || ["-"]);
+        })
+      );
+      rowMinHeights[label] = Math.max(51, 16 + maxLines * 18.2);
+    });
+
     
     // Check if THIS product's value differs from the majority for a given spec label
     const isCellDifferent = (productIdx: number, label: string): boolean => {
