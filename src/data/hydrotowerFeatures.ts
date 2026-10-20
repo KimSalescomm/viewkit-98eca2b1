@@ -184,7 +184,7 @@ export const hydrotowerFeatures: Feature[] = [
   {
     id: "5",
     title: "눈에 보이지 않는 \n 먼지와 유해가스까지 제거할 수 있을까요?",
-    subtitle: "360˚ 탈취청정 V2 필터로\n넓먼지와 유해가스까지 제거해요.",
+    subtitle: "360˚ 탈취청정 V2 필터로\n먼지와 유해가스까지 제거해요.",
     icon: "Wind",
     tag: "360˚ 탈취청정 V2",
     mediaType: "image",
@@ -193,7 +193,7 @@ export const hydrotowerFeatures: Feature[] = [
     fullWidthMedia: true,
     description:
       "360˚ 탈취청정 V2 필터가 공기 중에 떠다니는 세균, 곰팡이를 99.9%, 바이러스는 98% 제거해요. \n 눈에 보이지 않는 미세먼지부터 불쾌한 생활 냄새의 원인인 3대 유해가스까지 업애 공기를 쾌적하게 지켜줘요.",
-    highlights: ["청정면적 66㎡", "큰 먼지·미세먼지 케어", "생활 냄새·유해가스 케어", "공기 상태 라이팅"],
+    highlights: ["청정면적 66㎡", "세균, 곰팡이 99.9% 제거,", "바이러스는 98% 제거", "3대 유해가스 제거"],
     disclaimers: [
       imageNote,
       "공기청정 성능은 공기청정 모드 기준이며, 운전 모드 및 실제 사용 환경에 따라 달라질 수 있습니다.",
