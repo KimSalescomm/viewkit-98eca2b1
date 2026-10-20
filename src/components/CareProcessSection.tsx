@@ -1,0 +1,191 @@
+import { useEffect, useRef, useState } from "react";
+import { ChevronRight, Play, Image as ImageIcon, ChevronLeft } from "lucide-react";
+import type { CareProcessPlan, CareMediaType } from "@/data/careProcess";
+import SafeImage from "@/components/SafeImage";
+
+/**
+ * 케어 프로세스형 상세 섹션 (제품 공통 재사용)
+ * - 숫자 + 화살표 스텝 탭, 사진/영상 전환, 16:9 메인 미디어, 베네핏 + 설명
+ * - 케어 개수·순서·콘텐츠는 careProcess.ts 데이터에서 관리
+ */
+const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
+  const steps = [...plan.careServices].sort((a, b) => a.displayOrder - b.displayOrder);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [mediaType, setMediaType] = useState<CareMediaType>(plan.defaultMediaType);
+  const [imageIndex, setImageIndex] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const active = steps[activeIndex];
+  const images = [active.representativeImageUrl, ...(active.detailImageUrls ?? [])];
+  const activeVideoUrl = active.videoUrl ?? plan.commonVideoUrl;
+  const hasVideo = !!activeVideoUrl;
+
+  // 단계 전환 시: 사진 모드 복귀 + 영상 정지 + 첫 이미지
+  useEffect(() => {
+    setMediaType(plan.defaultMediaType);
+    setImageIndex(0);
+    videoRef.current?.pause();
+  }, [activeIndex, plan.defaultMediaType]);
+
+  const selectMedia = (type: CareMediaType) => {
+    if (type === "image") videoRef.current?.pause();
+    setMediaType(type);
+  };
+
+  return (
+    <section className="mb-4 rounded-[14px] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5 sm:p-6">
+      {/* 상단 타이틀 */}
+      <h2 className="text-[17px] font-bold text-gray-900 sm:text-[20px]">{plan.title}</h2>
+      <p className="mt-1 mb-4 text-[14px] leading-relaxed text-gray-600">{plan.subtitle}</p>
+
+      {/* 케어 프로세스 스텝 탭 */}
+      <div
+        className="mb-4 flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-hide sm:gap-2"
+        role="tablist"
+        aria-label="케어 프로세스"
+      >
+        {steps.map((step, idx) => {
+          const isActive = idx === activeIndex;
+          return (
+            <div key={step.careServiceId} className="flex flex-shrink-0 items-center gap-1.5 sm:gap-2">
+              <button
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setActiveIndex(idx)}
+                className={`flex min-h-[44px] items-center gap-2 whitespace-nowrap rounded-full border bg-white px-3.5 transition-colors sm:px-4 ${
+                  isActive ? "border-gray-900" : "border-gray-200"
+                }`}
+              >
+                <span
+                  className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-[12px] font-bold ${
+                    isActive ? "bg-gray-900 text-white" : "bg-gray-200 text-gray-500"
+                  }`}
+                >
+                  {idx + 1}
+                </span>
+                <span
+                  className={`text-[14px] font-medium ${
+                    isActive ? "font-semibold text-gray-900" : "text-gray-500"
+                  }`}
+                >
+                  {step.careServiceName}
+                </span>
+              </button>
+              {idx < steps.length - 1 && (
+                <ChevronRight className="h-4 w-4 flex-shrink-0 text-gray-300" aria-hidden />
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* 사진/영상 전환 버튼 (우측 정렬) */}
+      <div className="mb-2.5 flex justify-end gap-1.5">
+        <button
+          type="button"
+          onClick={() => selectMedia("image")}
+          aria-pressed={mediaType === "image"}
+          className={`flex min-h-[36px] items-center gap-1.5 rounded-full border px-3.5 text-[13px] font-medium transition-colors ${
+            mediaType === "image"
+              ? "border-gray-900 bg-gray-900 text-white"
+              : "border-gray-200 bg-white text-gray-600"
+          }`}
+        >
+          <ImageIcon className="h-3.5 w-3.5" aria-hidden />
+          사진
+        </button>
+        <button
+          type="button"
+          onClick={() => hasVideo && selectMedia("video")}
+          disabled={!hasVideo}
+          aria-pressed={mediaType === "video"}
+          className={`flex min-h-[36px] items-center gap-1.5 rounded-full border px-3.5 text-[13px] font-medium transition-colors ${
+            mediaType === "video"
+              ? "border-gray-900 bg-gray-900 text-white"
+              : "border-gray-200 bg-white text-gray-600"
+          } disabled:cursor-not-allowed disabled:opacity-40`}
+        >
+          <Play className="h-3.5 w-3.5" aria-hidden />
+          영상
+        </button>
+      </div>
+
+      {/* 메인 미디어 (16:9) */}
+      <div className="relative aspect-video w-full overflow-hidden rounded-[14px] bg-gray-100">
+        {mediaType === "video" && hasVideo ? (
+          <video
+            ref={videoRef}
+            key={activeVideoUrl}
+            src={activeVideoUrl}
+            controls
+            playsInline
+            preload="metadata"
+            className="h-full w-full object-contain"
+          />
+        ) : (
+          <SafeImage
+            key={images[imageIndex]}
+            src={images[imageIndex]}
+            alt={active.careServiceName}
+            className="h-full w-full object-contain"
+          />
+        )}
+        {/* 이미지가 여러 장일 때 좌우 탐색 */}
+        {mediaType === "image" && images.length > 1 && (
+          <>
+            <button
+              type="button"
+              aria-label="이전 사진"
+              onClick={() => setImageIndex((i) => (i - 1 + images.length) % images.length)}
+              className="absolute left-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md"
+            >
+              <ChevronLeft className="h-5 w-5 text-gray-800" />
+            </button>
+            <button
+              type="button"
+              aria-label="다음 사진"
+              onClick={() => setImageIndex((i) => (i + 1) % images.length)}
+              className="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md"
+            >
+              <ChevronRight className="h-5 w-5 text-gray-800" />
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* 썸네일 (이미지 여러 장일 때) */}
+      {mediaType === "image" && images.length > 1 && (
+        <div className="mt-2.5 flex gap-2 overflow-x-auto scrollbar-hide">
+          {images.map((url, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setImageIndex(idx)}
+              aria-label={`사진 ${idx + 1}`}
+              className={`aspect-video w-20 flex-shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${
+                idx === imageIndex ? "border-gray-900" : "border-transparent"
+              }`}
+            >
+              <SafeImage src={url} alt="" className="h-full w-full object-cover" />
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* 케어 핵심 베네핏 + 상세 설명 */}
+      <div className="mt-4">
+        <h3 className="text-[17px] font-bold text-gray-900 sm:text-[18px]">{active.benefitText}</h3>
+        <p className="mt-1.5 text-[15px] leading-relaxed text-gray-700">{active.description}</p>
+        {active.careCycle && (
+          <p className="mt-1 text-[12px] text-muted-foreground">제공 주기: {active.careCycle}</p>
+        )}
+        {active.disclaimer && (
+          <p className="mt-1 text-[11px] text-muted-foreground">* {active.disclaimer}</p>
+        )}
+      </div>
+    </section>
+  );
+};
+
+export default CareProcessSection;
