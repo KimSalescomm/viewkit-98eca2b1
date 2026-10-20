@@ -61,29 +61,31 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
         })}
       </div>
 
-      {/* 사진/영상 전환 버튼 */}
-      <div className="mt-4 flex justify-end gap-1.5">
-        {(["image", "video"] as CareMediaType[]).map((type) => {
-          const isOn = mediaType === type;
-          const disabled = type === "video" && !hasVideo;
-          return (
-            <button
-              key={type}
-              type="button"
-              onClick={() => !disabled && selectMedia(type)}
-              disabled={disabled}
-              aria-pressed={isOn}
-              className={`flex min-h-[40px] items-center gap-1.5 rounded-full border px-4 text-[13px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/40 disabled:cursor-not-allowed disabled:opacity-40 ${
-                isOn
-                  ? "border-brand-accent bg-brand-accent text-brand-accent-foreground"
-                  : "border-gray-200 bg-white text-gray-600 hover:bg-gray-50"
-              }`}
-            >
-              {type === "image" ? <ImageIcon className="h-3.5 w-3.5" aria-hidden /> : <Play className="h-3.5 w-3.5" aria-hidden />}
-              {type === "image" ? "사진" : "영상"}
-            </button>
-          );
-        })}
+      {/* 사진/영상 전환 (세그먼트 컨트롤) */}
+      <div className="mt-4 flex justify-end">
+        <div className="flex items-center gap-0.5 rounded-[12px] bg-gray-100 p-1" role="group" aria-label="미디어 유형 선택">
+          {(["image", "video"] as CareMediaType[]).map((type) => {
+            const isOn = mediaType === type;
+            const disabled = type === "video" && !hasVideo;
+            return (
+              <button
+                key={type}
+                type="button"
+                onClick={() => !disabled && selectMedia(type)}
+                disabled={disabled}
+                aria-pressed={isOn}
+                className={`flex h-8 items-center gap-1.5 rounded-[9px] px-4 text-[13px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/40 disabled:cursor-not-allowed disabled:opacity-40 ${
+                  isOn
+                    ? "bg-brand-accent text-brand-accent-foreground"
+                    : "text-gray-500 hover:text-gray-700"
+                }`}
+              >
+                {type === "image" ? <ImageIcon className="h-4 w-4" aria-hidden /> : <Play className="h-4 w-4" aria-hidden />}
+                {type === "image" ? "사진" : "영상"}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* 메인 미디어 (16:9, 카드 가로 너비) */}
