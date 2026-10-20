@@ -29,6 +29,14 @@ describe("hydrotower product navigation data", () => {
     expect(feature?.posterImage).toContain("hydrotower-space-ai-humidification-poster.jpg");
   });
 
+  it("plays the official purified humidification video on the 4단계 정수 가습 card", () => {
+    const feature = getFeatureById("hydrotower", "3");
+    expect(feature?.mediaType).toBe("video");
+    expect(feature?.mediaUrl).toContain("hydrotower-purified-humidification.mp4");
+    expect(feature?.fallbackUrl).toContain("hydrotower-purified-humidification.webm");
+    expect(feature?.posterImage).toContain("hydrotower-purified-humidification-poster.jpg");
+  });
+
   it("shows the subscription care card first and no removed cards", () => {
     const features = getFeaturesByProductId("hydrotower");
     expect(features[0].tag).toBe("가전 구독");
