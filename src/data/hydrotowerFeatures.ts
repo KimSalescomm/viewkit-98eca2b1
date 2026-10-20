@@ -192,8 +192,8 @@ export const hydrotowerFeatures: Feature[] = [
     tag: "360˚ 탈취청정 V2",
     mediaType: "image",
     mediaUrl: filter.url,
-    imageFit: "original",
-    fullWidthMedia: true,
+    imageFit: "contain",
+    fullWidthMedia: false,
     description:
       "360˚ 탈취청정 V2 필터가 공기 중에 떠다니는 세균, 곰팡이를 99.9%, 바이러스는 98% 제거해요. \n 눈에 보이지 않는 미세먼지부터 불쾌한 생활 냄새의 원인인 3대 유해가스까지 업애 공기를 쾌적하게 지켜줘요.",
     highlights: ["청정면적 66㎡", "세균, 곰팡이 99.9% 제거,", "바이러스는 98% 제거", "3대 유해가스 제거"],
