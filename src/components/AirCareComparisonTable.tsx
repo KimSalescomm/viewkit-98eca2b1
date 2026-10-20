@@ -13,7 +13,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
               <th key={product.name} scope="col" className="border-r border-border p-0 align-top last:border-r-0">
                 <div className="flex min-h-24 flex-col items-center justify-center gap-2 border-b border-border bg-muted px-3 py-4">
                   <h4 className="text-base font-bold leading-snug">{product.name}</h4>
-                  <span className="text-xs font-medium">{product.category}</span>
+                  <span className="text-[0.825rem] font-medium">{product.category}</span>
                 </div>
                 <div className="flex h-56 items-center justify-center bg-card p-3">
                   <SafeImage src={product.imageUrl} alt={product.name} className="h-full w-full object-contain" />

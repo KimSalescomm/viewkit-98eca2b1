@@ -229,7 +229,6 @@ export const hydrotowerFeatures: Feature[] = [
         category: "공기청정기",
         imageUrl: m7Compare.url,
         specs: [
-          { label: "제품 유형", values: ["공기청정기"] },
           { label: "대표 모델명", values: ["AS356NSMA"] },
           {
             label: "추천 상황",
@@ -257,7 +256,6 @@ export const hydrotowerFeatures: Feature[] = [
         category: "가습 공기청정기",
         imageUrl: hydrotowerMaxCompare.url,
         specs: [
-          { label: "제품 유형", values: ["가습 공기청정기"] },
           { label: "대표 모델명", values: ["HY856RNAA"] },
           {
             label: "추천 상황",
@@ -285,7 +283,6 @@ export const hydrotowerFeatures: Feature[] = [
         category: "정수 가습기",
         imageUrl: hydrotowerCompare.url,
         specs: [
-          { label: "제품 유형", values: ["가습기"] },
           { label: "대표 모델명", values: ["HY706RSUA"] },
           {
             label: "추천 상황",
