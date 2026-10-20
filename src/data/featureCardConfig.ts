@@ -119,7 +119,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     },
   },
   airconditioner: {
-    order: ["23", "15", "18", "19", "20", "21", "17", "22"],
+    order: ["23", "15", "18", "19", "21", "17"],
     cards: {
       "23": {
         image: "https://img.youtube.com/vi/t7DwsspCwuM/hqdefault.jpg",
@@ -136,11 +136,6 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       "19": {
         image: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_specialized_wind_cover.jpg",
         eyebrow: "청정 · UVnano",
-        objectPositionClass: "object-top",
-      },
-      "20": {
-        image: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AI_radar_cover.jpg",
-        eyebrow: "AI편의기능 · 절전",
         objectPositionClass: "object-top",
       },
       "21": {
