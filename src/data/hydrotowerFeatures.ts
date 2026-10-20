@@ -21,7 +21,7 @@ const environmentNote = "시험 결과는 특정 시험 조건에서 측정한 �
 export const hydrotowerFeatures: Feature[] = [
   {
     id: "1",
-    title: "하이드로타워 구독하면 무엇이 좋을까요?",
+    title: "하이드로타워 구독하면\n 무엇이 좋을까요?",
     subtitle: "전문가의 케어로\n깨끗하게 오래 사용할 수 있어요.",
     icon: "ShieldCheck",
     tag: "가전 구독",
