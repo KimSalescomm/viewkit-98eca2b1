@@ -102,6 +102,15 @@ describe("hydrotower product navigation data", () => {
     }
   });
 
+  it("keeps product type out of the rows, drops the footer notes, and keeps categories", () => {
+    const feature = getFeatureById("hydrotower", "6");
+    const products = feature?.tableData ?? [];
+    expect(products.some((product) => product.specs.some((spec) => spec.label === "제품 유형"))).toBe(false);
+    expect(feature?.disclaimers ?? []).toHaveLength(0);
+    expect(products.map((product) => product.category)).toEqual(["공기청정기", "가습 공기청정기", "정수 가습기"]);
+  });
+
+
   it("shows the subscription care card first and no removed cards", () => {
     const features = getFeaturesByProductId("hydrotower");
     expect(features[0].tag).toBe("가전 구독");
