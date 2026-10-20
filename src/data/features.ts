@@ -1474,7 +1474,6 @@ export const featuresMap: Record<string, Feature[]> = {
         },
       ],
     },
-
   ],
 
   // 청소기 특장점
