@@ -15,6 +15,8 @@ import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { useContent } from "@/contexts/ContentContext";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { GalleryImage, SubscriptionServiceItem, type Feature } from "@/data/features";
+import CareProcessSection from "@/components/CareProcessSection";
+import { getCareProcessPlan } from "@/data/careProcess";
 
 import {
   Accordion,
@@ -214,6 +216,7 @@ const FeatureDetail = () => {
     const highlights = activeTabData?.highlights ?? feature.highlights ?? [];
     const hasSubscriptionService =
       !!feature.subscriptionServiceItems && feature.subscriptionServiceItems.length > 0;
+    const careProcessPlan = hasSubscriptionService ? getCareProcessPlan(productId) : undefined;
     const belowImg = activeTabData?.belowMediaImage ?? feature.belowMediaImage;
     const groupedDisclaimers =
       (productId === "washcombo" && id === "7") || (productId === "ai-washtower" && id === "7");
