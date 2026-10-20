@@ -2,7 +2,9 @@ import type { Feature } from "@/data/features";
 import spaceAiVideo from "@/assets/hydrotower-space-ai-humidification.mp4.asset.json";
 import spaceAiWebm from "@/assets/hydrotower-space-ai-humidification.webm.asset.json";
 import spaceAiPoster from "@/assets/hydrotower-space-ai-humidification-poster.jpg.asset.json";
-import purified from "@/assets/hydrotower-purified.jpg.asset.json";
+import purifiedVideo from "@/assets/hydrotower-purified-humidification.mp4.asset.json";
+import purifiedWebm from "@/assets/hydrotower-purified-humidification.webm.asset.json";
+import purifiedPoster from "@/assets/hydrotower-purified-humidification-poster.jpg.asset.json";
 import recoveryVideo from "@/assets/hydrotower-residual-water-recovery.mp4.asset.json";
 import recoveryWebm from "@/assets/hydrotower-residual-water-recovery.webm.asset.json";
 import recoveryPoster from "@/assets/hydrotower-residual-water-recovery-poster.jpg.asset.json";
@@ -98,9 +100,10 @@ export const hydrotowerFeatures: Feature[] = [
     subtitle: "정수 필터링부터 살균·청정 건조까지\n4단계로 정수 가습 기술로 위생적이에요.",
     icon: "ShieldCheck",
     tag: "4단계 정수 가습",
-    mediaType: "image",
-    mediaUrl: purified.url,
-    imageFit: "original",
+    mediaType: "video",
+    mediaUrl: purifiedVideo.url,
+    fallbackUrl: purifiedWebm.url,
+    posterImage: purifiedPoster.url,
     fullWidthMedia: true,
     description:
       "정수 필터로 스케일 원인 물질을 걸러내고, 100℃ 고온으로 가습수를 살균해요. 공기청정 필터를 거친 청정 바람에 가습을 실어 보내고, 사용 후에는 내부 물길까지 청정 건조해요.",
@@ -159,19 +162,6 @@ export const hydrotowerFeatures: Feature[] = [
     description:
       "가습 종료 시 내부에 남은 물을 가열 수조로 회수하고, 다시 가습을 시작할 때 재가열해요. 청정 건조는 내부 가습길의 물기를 말려 물때와 냄새 발생을 줄이도록 도와드려요.",
     highlights: ["종료 후 잔수 회수", "재시작 시 재가열", "내부 물길 청정 건조", "건조 모드 4가지"],
-    subFeatures: [
-      {
-        label: "잔수 회수",
-        title: "남은 물을 다시 가열 수조로",
-        description: "가습 종료 후 잔수를 회수하고, 다음 가습 시작 시 100℃로 재가열해요.",
-      },
-      {
-        label: "청정 건조",
-        title: "생활에 맞춰 건조 모드 선택",
-        description:
-          "쾌속·집중·섬세·조용 중 선택할 수 있으며, 모드에 따라 2~4시간 동안 내부를 건조해요. 리모컨 또는 LG ThinQ 앱에서 설정할 수 있어요.",
-      },
-    ],
     disclaimers: [
       imageNote,
       "자동 위생 관리가 정기적인 물통·부품 청소 및 필터 교체를 대신하지는 않습니다. 제품 사용설명서의 관리 방법을 따라주세요.",
