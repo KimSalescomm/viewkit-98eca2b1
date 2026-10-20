@@ -515,7 +515,11 @@ const FeatureDetail = () => {
 
         {/* 구독 케어 서비스 (이미지 + 설명) */}
         {hasSubscriptionService && (
-          <SubscriptionServiceSection items={feature.subscriptionServiceItems ?? []} accent="brand" />
+          careProcessPlan ? (
+            <CareProcessSection plan={careProcessPlan} />
+          ) : (
+            <SubscriptionServiceSection items={feature.subscriptionServiceItems ?? []} accent="brand" />
+          )
         )}
 
         {/* 설명 카드 */}
