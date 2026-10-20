@@ -39,7 +39,7 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
       <p className="mt-1 mb-4 text-[14px] leading-relaxed text-gray-600">{plan.subtitle}</p>
 
       {/* 상단 케어 메뉴: 가로형 캡슐 탭, 공간 부족 시 줄바꿈 (스크롤 없음) */}
-      <div role="tablist" aria-label="케어 항목" className="flex flex-wrap gap-1.5">
+      <div role="tablist" aria-label="케어 항목" className="flex flex-wrap gap-1.5 lg:gap-1">
         {steps.map((step, idx) => {
           const isActive = idx === activeIndex;
           return (
@@ -49,7 +49,7 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
               role="tab"
               aria-selected={isActive}
               onClick={() => setActiveIndex(idx)}
-              className={`min-h-[40px] rounded-full border px-4 text-[14px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/40 ${
+              className={`min-h-[40px] rounded-full border px-4 text-[14px] lg:min-h-[36px] lg:px-3 lg:text-[13px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/40 ${
                 isActive
                   ? "border-brand-accent bg-brand-accent font-semibold text-brand-accent-foreground"
                   : "border-gray-200 bg-white font-medium text-gray-800 hover:bg-gray-50"
