@@ -1,5 +1,6 @@
 import type { Feature } from "@/data/features";
 import spaceAiVideo from "@/assets/hydrotower-space-ai-humidification.mp4.asset.json";
+import spaceAiWebm from "@/assets/hydrotower-space-ai-humidification.webm.asset.json";
 import spaceAiPoster from "@/assets/hydrotower-space-ai-humidification-poster.jpg.asset.json";
 import purified from "@/assets/hydrotower-purified.jpg.asset.json";
 import drying from "@/assets/hydrotower-drying.jpg.asset.json";
@@ -64,6 +65,7 @@ export const hydrotowerFeatures: Feature[] = [
     tag: "공간 맞춤 AI가습",
     mediaType: "video",
     mediaUrl: spaceAiVideo.url,
+    fallbackUrl: spaceAiWebm.url,
     posterImage: spaceAiPoster.url,
     fullWidthMedia: true,
     description:
