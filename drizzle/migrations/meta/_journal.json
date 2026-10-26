@@ -22,6 +22,13 @@
       "when": 1792992948542,
       "tag": "0002_allow_model_specific_care_segments",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792992977289,
+      "tag": "0003_preserve_legacy_care_video_visibility",
+      "breakpoints": true
     }
   ]
 }

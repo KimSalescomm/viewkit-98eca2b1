@@ -172,6 +172,7 @@ export type Database = {
       }
       product_care_videos: {
         Row: {
+          allow_full_video: boolean
           common_video_url: string | null
           id: string
           model_id: string
@@ -182,6 +183,7 @@ export type Database = {
           video_duration: number | null
         }
         Insert: {
+          allow_full_video?: boolean
           common_video_url?: string | null
           id?: string
           model_id?: string
@@ -192,6 +194,7 @@ export type Database = {
           video_duration?: number | null
         }
         Update: {
+          allow_full_video?: boolean
           common_video_url?: string | null
           id?: string
           model_id?: string
