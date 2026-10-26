@@ -229,4 +229,13 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       },
     },
   },
+  hydrotower: {
+    cards: {
+      "5": {
+        image: "/__l5e/assets-v1/1c7a7d77-f60c-46d5-8b25-5369e06f0614/hydrotower-360-filter-thumb.png",
+        fit: "contain",
+        containBackground: "white",
+      },
+    },
+  },
 };
