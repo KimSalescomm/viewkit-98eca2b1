@@ -45,7 +45,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       },
       "7": {
         image: "https://static.lge.co.kr/kr/Caresolution/images/bath-air-system/img-bath-air-system04.jpg",
-        eyebrow: "가전구독",
+        eyebrow: "가전 구독",
       },
     },
   },
@@ -123,7 +123,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     cards: {
       "23": {
         image: "https://img.youtube.com/vi/t7DwsspCwuM/hqdefault.jpg",
-        eyebrow: "가전구독",
+        eyebrow: "가전 구독",
       },
       "15": {
         image: "https://www.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AI_coldfree_detail_03.jpg",
