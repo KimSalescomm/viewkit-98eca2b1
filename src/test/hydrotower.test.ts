@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { products } from "@/data/products";
 import { getFeatureById, getFeaturesByProductId } from "@/data/features";
 import { getCareProcessPlan } from "@/data/careProcess";
+import { hasCareVideo } from "@/utils/careVideoSegments";
 import { productCardConfig } from "@/data/featureCardConfig";
 
 describe("hydrotower product navigation data", () => {
@@ -233,5 +234,27 @@ describe("hydrotower lineup comparison card thumbnail", () => {
     );
     expect(pointer.url).toBe(card?.image);
     expect(pointer.content_type).toBe("image/webp");
+  });
+});
+
+describe("hydrotower care video availability", () => {
+  const plan = getCareProcessPlan("hydrotower");
+
+  it("정수필터 교체·가습부 클리닝·급수부 클리닝은 영상 미등록이라 영상 버튼 대상이 아니다", () => {
+    const noVideoIds = ["water-filter", "humidifier-cleaning", "supply-cleaning"];
+    for (const id of noVideoIds) {
+      const step = plan?.careServices.find((s) => s.careServiceId === id);
+      expect(step).toBeDefined();
+      expect(step?.videoUrl).toBeUndefined();
+      expect(hasCareVideo(undefined, step?.videoUrl)).toBe(false);
+    }
+  });
+
+  it("구간이 저장된 케어(분해·스팀·UV·공기청정필터)는 영상 버튼이 표시된다", () => {
+    const savedIds = ["disassembly", "steam", "uv", "air-filter"];
+    for (const id of savedIds) {
+      const step = plan?.careServices.find((s) => s.careServiceId === id);
+      expect(hasCareVideo({ videoUrl: plan?.commonVideoUrl, startSeconds: 0, endSeconds: null }, step?.videoUrl)).toBe(true);
+    }
   });
 });

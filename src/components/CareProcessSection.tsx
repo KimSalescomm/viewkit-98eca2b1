@@ -3,7 +3,7 @@ import { ChevronRight, Play, Image as ImageIcon, ChevronLeft } from "lucide-reac
 import type { CareProcessPlan, CareMediaType } from "@/data/careProcess";
 import SafeImage from "@/components/SafeImage";
 import useCareVideoSegments from "@/hooks/useCareVideoSegments";
-import { hasReachedEnd, resolveVideoUrl } from "@/utils/careVideoSegments";
+import { hasCareVideo, hasReachedEnd, resolveVideoUrl } from "@/utils/careVideoSegments";
 
 /**
  * 케어 목록형 상세 섹션 (제품 공통 재사용)
@@ -23,8 +23,9 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
   const active = steps[activeIndex];
   const images = [active.representativeImageUrl, ...(active.detailImageUrls ?? [])];
   const segment = segments[active.careServiceId];
+  // 저장된 구간이나 케어별 개별 영상이 없으면 영상으로 재생할 영상이 없습니다.
+  const hasVideo = hasCareVideo(segment, active.videoUrl);
   const activeVideoUrl = resolveVideoUrl(segment, active.videoUrl, plan.commonVideoUrl);
-  const hasVideo = !!activeVideoUrl;
 
   // 단계 전환 시: 사진 모드 복귀 + 영상 정지 + 첫 이미지
   useEffect(() => {
@@ -82,35 +83,35 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
         })}
       </div>
 
-      {/* 사진/영상 슬라이딩 토글 */}
-      <div className="mt-4 flex justify-end">
-        <div className="relative grid grid-cols-2 rounded-full bg-gray-100 p-1" role="group" aria-label="미디어 유형 선택">
-          <div
-            aria-hidden
-            className={`absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-brand-accent shadow-sm transition-transform duration-300 ease-out ${
-              mediaType === "video" ? "translate-x-full" : "translate-x-0"
-            }`}
-          />
-          {(["image", "video"] as CareMediaType[]).map((type) => {
-            const isOn = mediaType === type;
-            const disabled = type === "video" && !hasVideo;
-            return (
-              <button
-                key={type}
-                type="button"
-                onClick={() => !disabled && selectMedia(type)}
-                disabled={disabled}
-                aria-pressed={isOn}
-                className={`relative z-10 flex h-9 min-w-[92px] items-center justify-center gap-1.5 rounded-full px-4 text-[13px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/40 disabled:cursor-not-allowed disabled:opacity-40 ${
-                  isOn ? "text-brand-accent-foreground" : "text-gray-500"
-                }`}
-              >
-                {type === "image" ? <ImageIcon className="h-4 w-4" aria-hidden /> : <Play className="h-4 w-4" aria-hidden />}
-                {type === "image" ? "사진" : "영상"}
-              </button>
-            );
-          })}
-        </div>
+      {/* 사진/영상 슬라이딩 토글 — 영상이 등록된 케어만 표시 (행 높이는 고정해 탭 전환 시 흔들림 방지) */}
+      <div className="mt-4 flex min-h-[44px] justify-end">
+        {hasVideo && (
+          <div className="relative grid grid-cols-2 rounded-full bg-gray-100 p-1" role="group" aria-label="미디어 유형 선택">
+            <div
+              aria-hidden
+              className={`absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-brand-accent shadow-sm transition-transform duration-300 ease-out ${
+                mediaType === "video" ? "translate-x-full" : "translate-x-0"
+              }`}
+            />
+            {(["image", "video"] as CareMediaType[]).map((type) => {
+              const isOn = mediaType === type;
+              return (
+                <button
+                  key={type}
+                  type="button"
+                  onClick={() => selectMedia(type)}
+                  aria-pressed={isOn}
+                  className={`relative z-10 flex h-9 min-w-[92px] items-center justify-center gap-1.5 rounded-full px-4 text-[13px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/40 ${
+                    isOn ? "text-brand-accent-foreground" : "text-gray-500"
+                  }`}
+                >
+                  {type === "image" ? <ImageIcon className="h-4 w-4" aria-hidden /> : <Play className="h-4 w-4" aria-hidden />}
+                  {type === "image" ? "사진" : "영상"}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {/* 메인 미디어 (16:9, 카드 가로 너비) */}
