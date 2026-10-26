@@ -35,6 +35,12 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
   bathair: {
     order: ["7", "5", "4", "1", "2", "6"],
     cards: {
+      "1": {
+        image: "/__l5e/assets-v1/2c4703fa-d12c-4725-a992-64800a7f4a49/bathair-dual-ventilation.png",
+        eyebrow: "듀얼 배기",
+        fit: "contain",
+        containBackground: "blur",
+      },
       "4": {
         image: "/__l5e/assets-v1/ef0cc59e-c910-415e-90d8-d87525609aac/bathair-install-cropped.png",
         eyebrow: "설치 환경",
