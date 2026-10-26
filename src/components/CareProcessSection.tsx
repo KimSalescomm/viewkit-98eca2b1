@@ -38,8 +38,9 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
   useEffect(() => {
     if (mediaType !== "video") return;
     const target = segment?.startSeconds ?? 0;
+    console.log("[care-debug] video effect", { activeIndex, target, hasSegment: !!segment, segment });
     const video = videoRef.current;
-    if (!video) return;
+    if (!video) { console.log("[care-debug] no video el"); return; }
     if (video.readyState >= 1) {
       video.currentTime = target;
       void video.play().catch(() => {});
@@ -131,6 +132,7 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
               preload="metadata"
               className="h-full w-full object-contain"
               onLoadedMetadata={(e) => {
+                console.log("[care-debug] loadedmetadata", { pending: pendingSeekRef.current });
                 if (pendingSeekRef.current !== null) {
                   e.currentTarget.currentTime = pendingSeekRef.current;
                   void e.currentTarget.play().catch(() => {});
