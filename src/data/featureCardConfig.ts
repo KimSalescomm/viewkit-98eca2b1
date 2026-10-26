@@ -36,10 +36,8 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     order: ["7", "5", "4", "1", "2", "6"],
     cards: {
       "1": {
-        image: "/__l5e/assets-v1/2c4703fa-d12c-4725-a992-64800a7f4a49/bathair-dual-ventilation.png",
+        image: "/__l5e/assets-v1/ac4779cd-ad5e-4e12-b3f8-6d229beca0b7/bathair-dual-ventilation-4x3.png",
         eyebrow: "듀얼 배기",
-        fit: "contain",
-        containBackground: "blur",
       },
       "4": {
         image: "/__l5e/assets-v1/ef0cc59e-c910-415e-90d8-d87525609aac/bathair-install-cropped.png",
