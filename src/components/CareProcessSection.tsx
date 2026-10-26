@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronRight, Play, Image as ImageIcon, ChevronLeft } from "lucide-react";
 import type { CareProcessPlan, CareMediaType } from "@/data/careProcess";
 import SafeImage from "@/components/SafeImage";
+import useCareVideoSegments from "@/hooks/useCareVideoSegments";
+import { hasReachedEnd, resolveVideoUrl } from "@/utils/careVideoSegments";
 
 /**
  * 케어 목록형 상세 섹션 (제품 공통 재사용)
