@@ -14,6 +14,8 @@ export interface ProductComparisonTable {
   name: string;
   imageUrl: string;
   category?: string;
+  /** 대표 추천 제품에만 표시하는 BEST 배지 플래그 */
+  best?: boolean;
   specs: {
     label: string;
     values: string[];
