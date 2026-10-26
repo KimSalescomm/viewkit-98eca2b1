@@ -1,3 +1,5 @@
+// @refresh reset
+// Do not reuse pre-expansion hook queues when the preview hot-reloads this editor.
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Clapperboard, Search, Save, Trash2, Play, Pause, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";

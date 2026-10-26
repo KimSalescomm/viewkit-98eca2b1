@@ -1,3 +1,5 @@
+// @refresh reset
+// Refresh must remount consumers when this custom hook's state layout changes.
 import { useCallback, useEffect, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { type CareVideoSegment, type CareVideoSegmentRow, toSegmentMap } from "@/utils/careVideoSegments";
