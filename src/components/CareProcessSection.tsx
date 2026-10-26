@@ -10,7 +10,7 @@ import { hasCareVideo, hasReachedEnd, resolveVideoUrl } from "@/utils/careVideoS
  * - 왼쪽: 선택한 케어의 큰 미디어(사진/영상 전환), 오른쪽: 케어 항목 세로 목록
  * - 케어 개수·순서·콘텐츠는 careProcess.ts 데이터에서 관리
  */
-const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
+const CareProcessSection = ({ plan, modelId }: { plan: CareProcessPlan; modelId?: string }) => {
   const steps = [...plan.careServices].sort((a, b) => a.displayOrder - b.displayOrder);
   const [activeIndex, setActiveIndex] = useState(0);
   const [mediaType, setMediaType] = useState<CareMediaType>(plan.defaultMediaType);
@@ -18,14 +18,15 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
   const [videoError, setVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const pendingSeekRef = useRef<number | null>(null);
-  const { segments } = useCareVideoSegments(plan.productId);
+  const { segments, productVideo } = useCareVideoSegments(plan.productId, modelId ?? plan.modelId);
 
   const active = steps[activeIndex];
   const images = [active.representativeImageUrl, ...(active.detailImageUrls ?? [])];
   const segment = segments[active.careServiceId];
   // 저장된 구간이나 케어별 개별 영상이 없으면 영상으로 재생할 영상이 없습니다.
-  const hasVideo = hasCareVideo(segment, active.videoUrl);
-  const activeVideoUrl = resolveVideoUrl(segment, active.videoUrl, plan.commonVideoUrl);
+  const commonUrl = productVideo?.common_video_url ?? plan.commonVideoUrl;
+  const hasVideo = hasCareVideo(segment, active.videoUrl, productVideo?.allow_full_video ? commonUrl : undefined);
+  const activeVideoUrl = resolveVideoUrl(segment, active.videoUrl, commonUrl);
 
   // 단계 전환 시: 사진 모드 복귀 + 영상 정지 + 첫 이미지
   useEffect(() => {
@@ -47,7 +48,7 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
     } else {
       pendingSeekRef.current = target;
     }
-  }, [mediaType, activeIndex, segment]);
+  }, [mediaType, activeIndex, segment?.startSeconds, segment?.endSeconds, activeVideoUrl]);
 
   const selectMedia = (type: CareMediaType) => {
     if (type === "image") videoRef.current?.pause();
@@ -147,8 +148,16 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
               onPlay={(e) => {
                 // 구간 끝에서 다시 재생하면 구간 시작 위치부터 재생
                 const v = e.currentTarget;
-                if (segment && hasReachedEnd(v.currentTime, segment.endSeconds)) {
+                if (segment && (v.currentTime < segment.startSeconds || hasReachedEnd(v.currentTime, segment.endSeconds))) {
                   v.currentTime = segment.startSeconds;
+                }
+              }}
+              onSeeking={e => {
+                if (!segment) return;
+                const video = e.currentTarget;
+                if (video.currentTime < segment.startSeconds) video.currentTime = segment.startSeconds;
+                if (segment.endSeconds !== null && video.currentTime > segment.endSeconds) {
+                  video.pause(); video.currentTime = segment.endSeconds;
                 }
               }}
               onError={() => setVideoError(true)}

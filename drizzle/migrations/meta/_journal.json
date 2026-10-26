@@ -8,6 +8,27 @@
       "when": 1792991179102,
       "tag": "0000_create_care_video_segments",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792992921100,
+      "tag": "0001_extend_product_care_video_management",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792992948542,
+      "tag": "0002_allow_model_specific_care_segments",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792992977289,
+      "tag": "0003_preserve_legacy_care_video_visibility",
+      "breakpoints": true
     }
   ]
 }

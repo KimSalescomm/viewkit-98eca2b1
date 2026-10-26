@@ -1,36 +1,56 @@
-import { useCallback, useEffect, useState } from "react";
+// @refresh reset
+// Refresh must remount consumers when this custom hook's state layout changes.
+import { useCallback, useEffect, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import {
-  CareVideoSegment,
-  CareVideoSegmentRow,
-  toSegmentMap,
-} from "@/utils/careVideoSegments";
+import { type CareVideoSegment, type CareVideoSegmentRow, toSegmentMap } from "@/utils/careVideoSegments";
 
-/**
- * 제품별 케어 영상 구간(관리자가 저장한 시작·종료 시간)을 불러옵니다.
- * 저장된 구간이 없으면 빈 맵을 반환하고, 이 경우 전체 영상을 처음부터 재생합니다.
- */
-const useCareVideoSegments = (productId: string) => {
-  const [segments, setSegments] = useState<Record<string, CareVideoSegment>>({});
-  const [loaded, setLoaded] = useState(false);
-
-  const refetch = useCallback(async () => {
-    const { data, error } = await supabase
-      .from("care_video_segments")
-      .select("product_id, care_service_id, video_url, start_seconds, end_seconds")
-      .eq("product_id", productId);
-    if (!error && data) {
-      setSegments(toSegmentMap(data as CareVideoSegmentRow[]));
-    }
-    setLoaded(true);
-  }, [productId]);
-
-  useEffect(() => {
-    setLoaded(false);
-    void refetch();
-  }, [refetch]);
-
-  return { segments, loaded, refetch };
+export interface ProductCareVideo {
+  product_id: string; model_id: string; common_video_url: string | null;
+  video_duration: number | null; shared_product_id: string | null; shared_model_id: string;
+  allow_full_video: boolean;
+}
+export const resolveCareSource = (rows: ProductCareVideo[], productId: string, modelId = "") => {
+  let current = rows.find(r => r.product_id === productId && r.model_id === modelId)
+    ?? rows.find(r => r.product_id === productId && r.model_id === "");
+  const visited = new Set<string>();
+  while (current?.shared_product_id) {
+    const key = `${current.product_id}/${current.model_id}`;
+    if (visited.has(key)) return undefined;
+    visited.add(key);
+    current = rows.find(r => r.product_id === current?.shared_product_id && r.model_id === current?.shared_model_id);
+  }
+  return current;
 };
-
+const useCareVideoSegments = (productId: string, modelId = "") => {
+  const [segments, setSegments] = useState<Record<string, CareVideoSegment>>({});
+  const [videos, setVideos] = useState<ProductCareVideo[]>([]);
+  const [productVideo, setProductVideo] = useState<ProductCareVideo>();
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const generation = useRef(0);
+  const refetch = useCallback(async () => {
+    const request = ++generation.current;
+    const { data, error: videoError } = await supabase.from("product_care_videos").select("*");
+    if (request !== generation.current) return;
+    if (videoError) { setError(videoError.message); setLoaded(true); return; }
+    const rows = (data ?? []) as ProductCareVideo[];
+    const source = resolveCareSource(rows, productId, modelId);
+    const { data: segmentRows, error: segmentError } = await supabase.from("care_video_segments")
+      .select("product_id,care_service_id,video_url,individual_video_url,start_seconds,end_seconds")
+      .eq("product_id", source?.product_id ?? productId).eq("model_id", source?.model_id ?? modelId);
+    if (request !== generation.current) return;
+    setVideos(rows); setProductVideo(source);
+    setSegments(segmentError ? {} : toSegmentMap((segmentRows ?? []) as CareVideoSegmentRow[]));
+    setError(segmentError?.message ?? null); setLoaded(true);
+  }, [productId, modelId]);
+  useEffect(() => {
+    setLoaded(false); setSegments({}); setProductVideo(undefined); setError(null);
+    void refetch();
+    const timer = window.setInterval(() => { void refetch(); }, 15000);
+    const refresh = () => { void refetch(); };
+    window.addEventListener("focus", refresh); window.addEventListener("care-video-updated", refresh);
+    return () => { ++generation.current; clearInterval(timer); window.removeEventListener("focus", refresh); window.removeEventListener("care-video-updated", refresh); };
+  }, [refetch]);
+  return { segments, productVideo, videos, loaded, error, refetch };
+};
 export default useCareVideoSegments;

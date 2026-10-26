@@ -84,4 +84,18 @@ describe("케어 영상 구간 로직", () => {
     expect(hasCareVideo(undefined, "https://example.com/step.mp4")).toBe(true); // 케어별 개별 영상
     expect(hasCareVideo(undefined, undefined)).toBe(false); // 영상 미등록 케어
   });
+  it("관리자가 공통 영상을 등록하면 미설정 케어도 전체 영상 재생을 제공한다", () => {
+    expect(hasCareVideo(undefined, undefined, "https://example.com/common.mp4")).toBe(true);
+    expect(hasCareVideo(undefined, undefined, null)).toBe(false);
+  });
+  it("시작 시점도 영상 길이 안에 있어야 한다", () => {
+    expect(validateSegment(120, null, 118)).not.toBeNull();
+    expect(validateSegment(47, 65, 118)).toBeNull();
+  });
+  it("개별 영상이 없는 구간은 제품 공통 URL을 사용한다", () => {
+    const map = toSegmentMap([{ product_id: "hydrotower", care_service_id: "steam", video_url: "legacy", individual_video_url: null, start_seconds: 47, end_seconds: 65 }]);
+    expect(resolveVideoUrl(map.steam, undefined, "common-new")).toBe("common-new");
+    expect(map.steam.startSeconds).toBe(47);
+    expect(map.steam.endSeconds).toBe(65);
+  });
 });

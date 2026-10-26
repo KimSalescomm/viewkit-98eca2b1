@@ -14,6 +14,7 @@ export interface CareVideoSegmentRow {
   video_url: string;
   start_seconds: number;
   end_seconds: number | null;
+  individual_video_url?: string | null;
 }
 
 /** DB 행 목록을 careServiceId → 구간 맵으로 변환 */
@@ -23,7 +24,7 @@ export const toSegmentMap = (
   const map: Record<string, CareVideoSegment> = {};
   for (const row of rows) {
     map[row.care_service_id] = {
-      videoUrl: row.video_url,
+      videoUrl: row.individual_video_url === undefined ? row.video_url : row.individual_video_url ?? "",
       startSeconds: Number(row.start_seconds) || 0,
       endSeconds:
         row.end_seconds === null || row.end_seconds === undefined
@@ -53,7 +54,8 @@ export const resolveVideoUrl = (
 export const hasCareVideo = (
   segment: CareVideoSegment | undefined,
   stepVideoUrl: string | undefined,
-): boolean => !!segment || !!stepVideoUrl;
+  registeredCommonUrl?: string | null,
+): boolean => !!segment || !!stepVideoUrl || !!registeredCommonUrl;
 
 
 /** "분:초" 또는 "분:초.소수" 문자열을 초로 변환. 유효하지 않으면 null */
@@ -91,6 +93,8 @@ export const validateSegment = (
 ): string | null => {
   if (!Number.isFinite(startSeconds) || startSeconds < 0)
     return "시작 시간은 0초 이상이어야 합니다.";
+  if (durationSeconds !== undefined && Number.isFinite(durationSeconds) && startSeconds >= durationSeconds)
+    return "시작 시간이 영상 길이를 초과합니다.";
   if (endSeconds !== null) {
     if (!Number.isFinite(endSeconds) || endSeconds <= startSeconds)
       return "종료 시간은 시작 시간보다 늦어야 합니다.";

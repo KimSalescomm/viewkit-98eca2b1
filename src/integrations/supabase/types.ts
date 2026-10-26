@@ -19,6 +19,8 @@ export type Database = {
           care_service_id: string
           end_seconds: number | null
           id: string
+          individual_video_url: string | null
+          model_id: string
           product_id: string
           start_seconds: number
           updated_at: string
@@ -28,6 +30,8 @@ export type Database = {
           care_service_id: string
           end_seconds?: number | null
           id?: string
+          individual_video_url?: string | null
+          model_id?: string
           product_id: string
           start_seconds?: number
           updated_at?: string
@@ -37,6 +41,8 @@ export type Database = {
           care_service_id?: string
           end_seconds?: number | null
           id?: string
+          individual_video_url?: string | null
+          model_id?: string
           product_id?: string
           start_seconds?: number
           updated_at?: string
@@ -161,6 +167,42 @@ export type Database = {
           session_id?: string
           store_id?: string
           store_name?: string | null
+        }
+        Relationships: []
+      }
+      product_care_videos: {
+        Row: {
+          allow_full_video: boolean
+          common_video_url: string | null
+          id: string
+          model_id: string
+          product_id: string
+          shared_model_id: string
+          shared_product_id: string | null
+          updated_at: string
+          video_duration: number | null
+        }
+        Insert: {
+          allow_full_video?: boolean
+          common_video_url?: string | null
+          id?: string
+          model_id?: string
+          product_id: string
+          shared_model_id?: string
+          shared_product_id?: string | null
+          updated_at?: string
+          video_duration?: number | null
+        }
+        Update: {
+          allow_full_video?: boolean
+          common_video_url?: string | null
+          id?: string
+          model_id?: string
+          product_id?: string
+          shared_model_id?: string
+          shared_product_id?: string | null
+          updated_at?: string
+          video_duration?: number | null
         }
         Relationships: []
       }

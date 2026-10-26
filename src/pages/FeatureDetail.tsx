@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Check, ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
@@ -17,6 +17,8 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { GalleryImage, SubscriptionServiceItem, type Feature } from "@/data/features";
 import CareProcessSection from "@/components/CareProcessSection";
 import { getCareProcessPlan } from "@/data/careProcess";
+import CareSegmentVideo from "@/components/CareSegmentVideo";
+import { careServiceIdFor } from "@/data/careCatalog";
 
 import {
   Accordion,
@@ -29,7 +31,11 @@ const SubscriptionServiceSection = ({
   items,
   mediaDisclaimers,
   accent = "brand",
+  productId,
+  modelId,
 }: {
+  productId: string;
+  modelId?: string;
   items: SubscriptionServiceItem[];
   mediaDisclaimers?: string[];
   accent?: "purple" | "brand";
@@ -58,6 +64,7 @@ const SubscriptionServiceSection = ({
             aspectClassName="aspect-[16/10]"
             radiusClassName="rounded-lg"
           />
+          <CareSegmentVideo productId={productId} modelId={modelId} careServiceId={careServiceIdFor(productId, selectedItem.label)} />
         </div>
 
         {/* Right block: category list */}
@@ -99,6 +106,7 @@ const SubscriptionServiceSection = ({
 
 const FeatureDetail = () => {
   const { productId, id } = useParams<{ productId: string; id: string }>();
+  const [careParams] = useSearchParams();
   const { trackDetailView, trackVideoClick } = useAnalyticsContext();
   const { getFeatureById, getProductById, isProductVisible } = useContent();
 
@@ -516,9 +524,9 @@ const FeatureDetail = () => {
         {/* 구독 케어 서비스 (이미지 + 설명) */}
         {hasSubscriptionService && (
           careProcessPlan ? (
-            <CareProcessSection plan={careProcessPlan} />
+            <CareProcessSection plan={careProcessPlan} modelId={careParams.get("modelId") ?? undefined} />
           ) : (
-            <SubscriptionServiceSection items={feature.subscriptionServiceItems ?? []} accent="brand" />
+            <SubscriptionServiceSection productId={productId} modelId={careParams.get("modelId") ?? undefined} items={feature.subscriptionServiceItems ?? []} accent="brand" />
           )
         )}
 

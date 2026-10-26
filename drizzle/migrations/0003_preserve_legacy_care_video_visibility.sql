@@ -1,0 +1,2 @@
+ALTER TABLE public.product_care_videos ADD COLUMN allow_full_video boolean NOT NULL DEFAULT false;
+UPDATE public.care_video_segments s SET individual_video_url = NULL FROM public.product_care_videos v WHERE s.product_id = v.product_id AND s.model_id = v.model_id AND s.video_url = v.common_video_url;
