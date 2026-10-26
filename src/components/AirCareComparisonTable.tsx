@@ -6,19 +6,22 @@ import SafeImage from "@/components/SafeImage";
 
 /** 항목명 옆 정보 아이콘: 마우스를 올리거나 누르면 표기 설명을 보여준다. */
 function LabelHint({ text }: { text: string }) {
-  const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [pinned, setPinned] = useState(false);
+  const open = hovered || pinned;
 
   return (
     <span
       className="relative inline-flex shrink-0 items-center"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       <button
         type="button"
         aria-label={`항목 표기 설명: ${text}`}
-        onClick={() => setOpen((value) => !value)}
-        onBlur={() => setOpen(false)}
+        aria-expanded={open}
+        onClick={() => setPinned((value) => !value)}
+        onBlur={() => setPinned(false)}
         className="flex h-4 w-4 items-center justify-center rounded-full border border-muted-foreground/40 text-muted-foreground transition-colors hover:border-brand-accent hover:text-brand-accent focus:outline-none focus-visible:ring-1 focus-visible:ring-brand-accent"
       >
         <Info className="h-2.5 w-2.5" aria-hidden="true" />
@@ -34,6 +37,7 @@ function LabelHint({ text }: { text: string }) {
     </span>
   );
 }
+
 
 export default function AirCareComparisonTable({ products }: { products: ProductComparisonTable[] }) {
 
