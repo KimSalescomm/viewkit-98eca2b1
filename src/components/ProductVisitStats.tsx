@@ -61,7 +61,7 @@ const PRODUCT_NAMES: Record<string, string> = Object.fromEntries(
 
 // 경로 → 제품 탭 분류 (제품 외 주요 페이지도 별도 그룹으로 집계)
 const OTHER_GROUPS: { key: string; label: string; match: (p: string) => boolean }[] = [
-  { key: "__subscription", label: "가전구독", match: (p) => p.startsWith("/subscription") },
+  { key: "__subscription", label: "가전 구독", match: (p) => p.startsWith("/subscription") },
   { key: "__home", label: "홈", match: (p) => p === "/" || p === "" },
   { key: "__guide", label: "가이드/매뉴얼", match: (p) => p.includes("guide") || p.includes("manual") },
 ];
