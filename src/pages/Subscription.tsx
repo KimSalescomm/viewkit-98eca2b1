@@ -5,6 +5,8 @@ import OrientationToggle from "@/components/OrientationToggle";
 import BackButton from "@/components/BackButton";
 import PageContainer from "@/components/PageContainer";
 import FeatureTabs from "@/components/FeatureTabs";
+import CareSegmentVideo from "@/components/CareSegmentVideo";
+import { careItemId } from "@/data/careCatalog";
 
 import FeatureLikeButton from "@/components/FeatureLikeButton";
 import { logFeatureReaction } from "@/utils/featureReactionLog";
@@ -349,11 +351,11 @@ const Subscription = () => {
               </div>
               <ul className="space-y-2">
                 {((isAircon && airconPlan && isAirconLite
-                  ? airconPlan.steps.map((s) => ({ label: s.label }))
+                  ? airconPlan.steps.map((s) => ({ label: s.label, careServiceId: s.careServiceId }))
                   : isWasher && washerPlan
-                  ? washerPlan.steps.map((s) => ({ label: s.label }))
+                  ? washerPlan.steps.map((s) => ({ label: s.label, careServiceId: s.careServiceId }))
                   : selected.careSteps
-                ) as Array<{ label: string; image?: string; notes?: string[] }>).map((step, i) => {
+                ) as Array<{ label: string; careServiceId?: string; image?: string; notes?: string[] }>).map((step, i) => {
                   const clickable = !!step.image;
                   return (
                     <li key={i}>
@@ -384,6 +386,7 @@ const Subscription = () => {
                           </span>
                         </div>
                       )}
+                      <CareSegmentVideo productId={selected.id === "dishwasher" ? "cooking" : selected.id} careServiceId={step.careServiceId ?? careItemId(step.label)} />
                     </li>
                   );
 

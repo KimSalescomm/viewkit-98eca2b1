@@ -17,6 +17,8 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { GalleryImage, SubscriptionServiceItem, type Feature } from "@/data/features";
 import CareProcessSection from "@/components/CareProcessSection";
 import { getCareProcessPlan } from "@/data/careProcess";
+import CareSegmentVideo from "@/components/CareSegmentVideo";
+import { careItemId } from "@/data/careCatalog";
 
 import {
   Accordion,
@@ -29,7 +31,9 @@ const SubscriptionServiceSection = ({
   items,
   mediaDisclaimers,
   accent = "brand",
+  productId,
 }: {
+  productId: string;
   items: SubscriptionServiceItem[];
   mediaDisclaimers?: string[];
   accent?: "purple" | "brand";
@@ -58,6 +62,7 @@ const SubscriptionServiceSection = ({
             aspectClassName="aspect-[16/10]"
             radiusClassName="rounded-lg"
           />
+          <CareSegmentVideo productId={productId} careServiceId={careItemId(selectedItem.label)} />
         </div>
 
         {/* Right block: category list */}
@@ -518,7 +523,7 @@ const FeatureDetail = () => {
           careProcessPlan ? (
             <CareProcessSection plan={careProcessPlan} />
           ) : (
-            <SubscriptionServiceSection items={feature.subscriptionServiceItems ?? []} accent="brand" />
+            <SubscriptionServiceSection productId={productId} items={feature.subscriptionServiceItems ?? []} accent="brand" />
           )
         )}
 
