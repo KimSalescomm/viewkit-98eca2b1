@@ -108,6 +108,7 @@ describe("hydrotower product navigation data", () => {
     expect(products.some((product) => product.specs.some((spec) => spec.label === "제품 유형"))).toBe(false);
     expect(feature?.disclaimers ?? []).toHaveLength(0);
     expect(feature?.description).toBe("");
+    expect(feature?.highlights ?? []).toHaveLength(0);
     expect(products.map((product) => product.category)).toEqual(["공기청정기", "가습 공기청정기", "정수 가습기"]);
   });
 
