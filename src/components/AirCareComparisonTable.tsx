@@ -3,6 +3,14 @@ import SafeImage from "@/components/SafeImage";
 
 export default function AirCareComparisonTable({ products }: { products: ProductComparisonTable[] }) {
   const labels = products[0]?.specs.map((spec) => spec.label) ?? [];
+  const rows = labels.map((label) => ({
+    label,
+    entries: products.map((product) => ({
+      product,
+      spec: product.specs.find((item) => item.label === label),
+    })),
+    compact: products.some((product) => product.specs.find((item) => item.label === label)?.compact),
+  }));
 
   return (
     <div className="w-full overflow-x-auto rounded-lg border border-border bg-card">
@@ -48,34 +56,31 @@ export default function AirCareComparisonTable({ products }: { products: Product
           </tr>
         </thead>
         <tbody>
-          {labels.map((label) => (
+          {rows.map(({ label, entries, compact }) => (
             <tr key={label}>
               <th
                 scope="row"
-                className="w-[7.5rem] border-r border-t border-border bg-muted px-3 py-3 align-middle text-xs font-semibold leading-relaxed"
+                className={`w-[7.5rem] border-r border-t border-border bg-muted align-middle font-semibold leading-relaxed ${compact ? "px-2 py-2 text-[0.6875rem]" : "px-3 py-3 text-xs"}`}
               >
                 {label}
               </th>
-              {products.map((product) => {
-                const spec = product.specs.find((item) => item.label === label);
-                return (
-                  <td
-                    key={product.name}
-                    className={`border-r border-t border-border px-4 py-3 align-middle last:border-r-0 ${spec?.highlighted ? "bg-brand-soft" : "bg-card"}`}
-                  >
-                    <div className={`space-y-1 leading-relaxed ${spec?.highlighted ? "font-semibold" : "font-normal"}`}>
-                      {(spec?.values ?? ["—"]).map((value, index) => (
-                        <p
-                          key={index}
-                          className={label === "추천 상황" && index === 0 ? "font-semibold" : undefined}
-                        >
-                          {value}
-                        </p>
-                      ))}
-                    </div>
-                  </td>
-                );
-              })}
+              {entries.map(({ product, spec }) => (
+                <td
+                  key={product.name}
+                  className={`border-r border-t border-border align-middle last:border-r-0 ${compact ? "px-2 py-2 text-xs tabular-nums lg:text-sm" : "px-4 py-3"} ${spec?.highlighted ? "bg-brand-soft" : "bg-card"}`}
+                >
+                  <div className={`space-y-1 leading-relaxed ${spec?.highlighted ? "font-semibold" : "font-normal"}`}>
+                    {(spec?.values ?? ["—"]).map((value, index) => (
+                      <p
+                        key={index}
+                        className={`${compact ? "whitespace-nowrap" : ""} ${label === "추천 상황" && index === 0 ? "font-semibold" : ""}`}
+                      >
+                        {value}
+                      </p>
+                    ))}
+                  </div>
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>
