@@ -2480,7 +2480,7 @@ export const featuresMap: Record<string, Feature[]> = {
     },
     {
       id: "7",
-      title: "드럼 통이 2개라는 사실, 알고 계셨어요?",
+      title: "워시콤보 구독하면\n무엇이 좋을까요?",
       subtitle: "가전 케어 매니저가 보이지 않는 부분까지 꼼꼼하게 관리해줘요.",
       icon: "Wrench",
       tag: "가전 구독",
