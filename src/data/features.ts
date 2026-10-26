@@ -2180,19 +2180,43 @@ export const featuresMap: Record<string, Feature[]> = {
       description:
         "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 더 원활하게 설치할 수 있어요.",
       highlights: [],
-      mediaDisclaimers: [
-        "설치 환경에 따라 설치기사의 현장 확인 및 추가 비용이 발생할 수 있습니다.",
-        "바스에어시스템 프리미엄 듀얼 설치 시, 공기 흐름이 원활하도록 배기팬과 떨어뜨려 설치하는 것을 권장합니다.",
+      mediaCollapsibleDisclaimers: [
+        {
+          title: "[설치 전 꼭 확인하세요]",
+          items: [
+            "설치 환경에 따라 설치기사의 현장 확인 및 추가 비용이 발생할 수 있습니다.",
+            "바스에어시스템 프리미엄 듀얼 설치 시, 공기 흐름이 원활하도록 배기팬과 떨어뜨려 설치하는 것을 권장합니다.",
+          ],
+        },
       ],
       tabs: [
         {
           label: "설치 체크리스트",
           description:
             "기존 환풍기 위치, 멀티 배기형 여부, 천장 구조와 재질, 제품 설치 공간 등을 미리 확인하면 더 원활하게 설치할 수 있어요.",
-          mediaType: "image",
-          mediaUrl:
-            "https://www.lge.co.kr/kr/images/common/pdp_multi_banner/images/bath-air-system/Banner_BathAir_InstallChk_B_PC_x2.png",
-          imageFit: "original",
+          mediaType: "gallery",
+          galleryImages: [
+            {
+              url: "/__l5e/assets-v1/1bd7ca50-6c6b-4a94-ac9b-da5dc85d95d4/bathair-install-check1.png",
+              title: "체크 1 · 기존 환풍기의 위치를 확인해 주세요",
+            },
+            {
+              url: "/__l5e/assets-v1/dd355c16-9ffb-40ab-b6f0-a2c1057a8bd6/bathair-install-check2.png",
+              title: "체크 2 · 기존 환풍기가 멀티 배기형인가요?",
+            },
+            {
+              url: "/__l5e/assets-v1/0037ce53-9831-442d-a55c-c4e8cf8cc6cc/bathair-install-check3.png",
+              title: "체크 3 · 욕실 천장의 구조와 재질을 확인해 주세요",
+            },
+            {
+              url: "/__l5e/assets-v1/e90cdb31-9972-4590-8589-9e177f6db5c0/bathair-install-check4.png",
+              title: "체크 4 · 제품 설치 공간을 확인해 주세요",
+            },
+            {
+              url: "/__l5e/assets-v1/6c4d2709-46ba-4217-959b-99d179fb8019/bathair-install-check5.png",
+              title: "체크 5 · 기타 주의사항",
+            },
+          ],
         },
         {
           label: "추가 설치 비용",
