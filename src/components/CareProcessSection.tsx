@@ -18,14 +18,15 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
   const [videoError, setVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const pendingSeekRef = useRef<number | null>(null);
-  const { segments } = useCareVideoSegments(plan.productId);
+  const { segments, productVideo } = useCareVideoSegments(plan.productId, plan.modelId);
 
   const active = steps[activeIndex];
   const images = [active.representativeImageUrl, ...(active.detailImageUrls ?? [])];
   const segment = segments[active.careServiceId];
   // 저장된 구간이나 케어별 개별 영상이 없으면 영상으로 재생할 영상이 없습니다.
-  const hasVideo = hasCareVideo(segment, active.videoUrl);
-  const activeVideoUrl = resolveVideoUrl(segment, active.videoUrl, plan.commonVideoUrl);
+  const commonUrl = productVideo?.common_video_url ?? plan.commonVideoUrl;
+  const hasVideo = hasCareVideo(segment, active.videoUrl, productVideo?.allow_full_video ? commonUrl : undefined);
+  const activeVideoUrl = resolveVideoUrl(segment, active.videoUrl, commonUrl);
 
   // 단계 전환 시: 사진 모드 복귀 + 영상 정지 + 첫 이미지
   useEffect(() => {
@@ -47,7 +48,7 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
     } else {
       pendingSeekRef.current = target;
     }
-  }, [mediaType, activeIndex, segment]);
+  }, [mediaType, activeIndex, segment?.startSeconds, segment?.endSeconds, activeVideoUrl]);
 
   const selectMedia = (type: CareMediaType) => {
     if (type === "image") videoRef.current?.pause();

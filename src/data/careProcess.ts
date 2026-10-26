@@ -26,6 +26,7 @@ export interface CareServiceStep {
 
 export interface CareProcessPlan {
   productId: string;
+  modelId?: string;
   productName: string;
   planId: string;
   title: string;
