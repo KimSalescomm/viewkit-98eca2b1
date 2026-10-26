@@ -72,8 +72,8 @@ describe("케어 영상 구간 로직", () => {
 
   it("종료 시점 도달 여부를 판정한다", () => {
     expect(hasReachedEnd(30, 30)).toBe(true);
-    expect(hasReachedEnd(29.9, 30)).toBe(true); // 0.05초 오차 허용
-    expect(hasReachedEnd(29, 30)).toBe(false);
+    expect(hasReachedEnd(29.96, 30)).toBe(true); // 0.05초 오차 허용
+    expect(hasReachedEnd(29.9, 30)).toBe(false);
     expect(hasReachedEnd(999, null)).toBe(false); // 종료 미설정 = 끝까지 재생
   });
 });
