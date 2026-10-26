@@ -63,9 +63,9 @@ describe("hydrotower product navigation data", () => {
     const tableData = feature?.tableData ?? [];
     expect(tableData).toHaveLength(3);
     expect(tableData.map((product) => product.name)).toEqual([
-      "AI 360˚ 공기청정기 M7",
       "하이드로타워 Max",
       "하이드로타워",
+      "AI 360˚ 공기청정기 M7",
     ]);
     const labels = tableData[0].specs.map((spec) => spec.label);
     expect(labels).toContain("대표 모델명");
@@ -109,7 +109,31 @@ describe("hydrotower product navigation data", () => {
     expect(feature?.disclaimers ?? []).toHaveLength(0);
     expect(feature?.description).toBe("");
     expect(feature?.highlights ?? []).toHaveLength(0);
-    expect(products.map((product) => product.category)).toEqual(["공기청정기", "가습 공기청정기", "정수 가습기"]);
+    expect(products.map((product) => product.category)).toEqual(["가습 공기청정기", "정수 가습기", "공기청정기"]);
+  });
+
+  it("marks only the Hydro Tower Max as the recommended BEST lineup", () => {
+    const lineup = getFeatureById("hydrotower", "6")?.tableData ?? [];
+    expect(lineup.map((product) => product.name)).toEqual(["하이드로타워 Max", "하이드로타워", "AI 360˚ 공기청정기 M7"]);
+    expect(lineup.map((product) => product.best)).toEqual([true, undefined, undefined]);
+  });
+
+  it("keeps the recommended situation copy short and uniform across the three lineups", () => {
+    const lineup = getFeatureById("hydrotower", "6")?.tableData ?? [];
+    const recommended = (name: string) =>
+      lineup.find((product) => product.name === name)?.specs.find((spec) => spec.label === "추천 상황")?.values;
+    expect(recommended("하이드로타워 Max")).toEqual(["넓은 거실부터 침실까지", "공기청정과 가습을 함께 관리하고 싶은 경우"]);
+    expect(recommended("하이드로타워")).toEqual(["침실이나 안방 등에서", "깨끗한 물로 습도를 관리하고 싶은 경우"]);
+    expect(recommended("AI 360˚ 공기청정기 M7")).toEqual(["넓은 거실 등에서", "미세먼지와 유해가스까지 관리하고 싶은 경우"]);
+    lineup.forEach((product) => {
+      expect(product.specs.find((spec) => spec.label === "추천 상황")?.values).toHaveLength(2);
+    });
+  });
+
+  it("shows the lineup comparison headline and lead copy", () => {
+    const feature = getFeatureById("hydrotower", "6");
+    expect(feature?.title).toBe("우리집엔 어떤\n에어케어 제품이 맞을까?");
+    expect(feature?.subtitle).toBe("하이드로타워 Max, 하이드로타워, 360˚공기청정기 M7의\n차이를 한눈에 비교해보세요.");
   });
 
 

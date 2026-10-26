@@ -13,10 +13,15 @@ export default function AirCareComparisonTable({ products }: { products: Product
             {products.map((product) => (
               <th key={product.name} scope="col" className="border-r border-border p-0 align-top last:border-r-0">
                 <div className="flex min-h-24 flex-col items-center justify-center gap-2 border-b border-border bg-muted px-3 py-4">
+                  {product.best && (
+                    <span className="rounded-full bg-brand-accent px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.14em] text-brand-accent-foreground">
+                      BEST
+                    </span>
+                  )}
                   <h4 className="text-base font-bold leading-snug">{product.name}</h4>
                   <span className="text-[0.825rem] font-medium">{product.category}</span>
                 </div>
-                <div className="flex h-56 items-center justify-center bg-card p-3">
+                <div className={`flex h-56 items-center justify-center p-3 ${product.best ? "bg-brand-muted" : "bg-card"}`}>
                   <SafeImage src={product.imageUrl} alt={product.name} className="h-full w-full object-contain" />
                 </div>
               </th>
@@ -28,7 +33,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
             <tr key={label}>
               <th
                 scope="row"
-                className="w-[7.5rem] border-r border-t border-border bg-muted px-3 py-4 align-middle text-xs font-semibold leading-relaxed"
+                className="w-[7.5rem] border-r border-t border-border bg-muted px-3 py-3 align-middle text-xs font-semibold leading-relaxed"
               >
                 {label}
               </th>
@@ -37,11 +42,16 @@ export default function AirCareComparisonTable({ products }: { products: Product
                 return (
                   <td
                     key={product.name}
-                    className={`border-r border-t border-border px-4 py-4 align-middle last:border-r-0 ${spec?.highlighted ? "bg-brand-soft" : "bg-card"}`}
+                    className={`border-r border-t border-border px-4 py-3 align-middle last:border-r-0 ${spec?.highlighted ? "bg-brand-soft" : "bg-card"}`}
                   >
                     <div className={`space-y-1 leading-relaxed ${spec?.highlighted ? "font-semibold" : "font-normal"}`}>
                       {(spec?.values ?? ["—"]).map((value, index) => (
-                        <p key={index}>{value}</p>
+                        <p
+                          key={index}
+                          className={label === "추천 상황" && index === 0 ? "font-semibold" : undefined}
+                        >
+                          {value}
+                        </p>
                       ))}
                     </div>
                   </td>
