@@ -29,7 +29,7 @@ function LabelHint({ text }: { text: string }) {
       {open && (
         <span
           role="tooltip"
-          className="pointer-events-none absolute left-full top-1/2 z-20 ml-1.5 -translate-y-1/2 whitespace-nowrap rounded-md bg-foreground px-2 py-1 text-[0.6875rem] font-medium leading-none text-background shadow-md"
+          className="pointer-events-none absolute bottom-full left-0 z-20 mb-1.5 whitespace-nowrap rounded-md bg-foreground px-2 py-1 text-[0.6875rem] font-medium leading-none text-background shadow-md"
         >
           {text}
         </span>
