@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   formatTimeInput,
+  hasCareVideo,
   hasReachedEnd,
   parseTimeInput,
   resolveVideoUrl,
@@ -75,5 +76,12 @@ describe("케어 영상 구간 로직", () => {
     expect(hasReachedEnd(29.96, 30)).toBe(true); // 0.05초 오차 허용
     expect(hasReachedEnd(29.9, 30)).toBe(false);
     expect(hasReachedEnd(999, null)).toBe(false); // 종료 미설정 = 끝까지 재생
+  });
+
+  it("저장된 구간도 케어별 영상도 없으면 영상 버튼이 없다 (공통 영상만 있어도 예외)", () => {
+    const segment = { videoUrl: "https://example.com/care.mp4", startSeconds: 47, endSeconds: 65 };
+    expect(hasCareVideo(segment, undefined)).toBe(true); // 관리자가 구간을 저장한 케어
+    expect(hasCareVideo(undefined, "https://example.com/step.mp4")).toBe(true); // 케어별 개별 영상
+    expect(hasCareVideo(undefined, undefined)).toBe(false); // 영상 미등록 케어
   });
 });
