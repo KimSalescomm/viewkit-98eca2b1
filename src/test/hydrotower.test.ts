@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
 import { products } from "@/data/products";
 import { getFeatureById, getFeaturesByProductId } from "@/data/features";
 import { getCareProcessPlan } from "@/data/careProcess";
+import { productCardConfig } from "@/data/featureCardConfig";
 
 describe("hydrotower product navigation data", () => {
   it("registers the product with locally served media", () => {
