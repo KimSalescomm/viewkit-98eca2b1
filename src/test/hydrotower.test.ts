@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { products } from "@/data/products";
 import { getFeatureById, getFeaturesByProductId } from "@/data/features";
 import { getCareProcessPlan } from "@/data/careProcess";
+import { hasCareVideo } from "@/utils/careVideoSegments";
 import { productCardConfig } from "@/data/featureCardConfig";
 
 describe("hydrotower product navigation data", () => {
