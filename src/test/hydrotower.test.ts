@@ -215,3 +215,22 @@ describe("hydrotower care service copy", () => {
     expect(plan?.careServices.map((step) => step.displayOrder)).toEqual([1, 2, 3, 4, 5, 6, 7]);
   });
 });
+
+describe("hydrotower lineup comparison card thumbnail", () => {
+  const card = productCardConfig.hydrotower?.cards?.["6"];
+
+  it("shows the official buying-guide photo in full without cropping", () => {
+    expect(card?.image).toBe(
+      "/__l5e/assets-v1/22791ec0-c21f-4a67-a696-3fe9c20dddc4/hydrotower-lineup-thumb.webp"
+    );
+    expect(card?.fit).toBe("contain");
+  });
+
+  it("serves that thumbnail from a locally stored asset pointer", () => {
+    const pointer = JSON.parse(
+      readFileSync("src/assets/hydrotower-lineup-thumb.webp.asset.json", "utf8")
+    );
+    expect(pointer.url).toBe(card?.image);
+    expect(pointer.content_type).toBe("image/webp");
+  });
+});
