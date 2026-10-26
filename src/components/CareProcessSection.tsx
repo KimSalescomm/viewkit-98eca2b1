@@ -34,7 +34,7 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
     videoRef.current?.pause();
   }, [activeIndex, plan.defaultMediaType]);
 
-  // 영상 모드 진입 시: 설정된 구간의 시작 위치로 이동 (메타데이터 로딩 후)
+  // 영상 모드 진입 시: 설정된 구간의 시작 위치로 이동 후 자동 재생
   useEffect(() => {
     if (mediaType !== "video") return;
     const target = segment?.startSeconds ?? 0;
@@ -42,6 +42,7 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
     if (!video) return;
     if (video.readyState >= 1) {
       video.currentTime = target;
+      void video.play().catch(() => {});
     } else {
       pendingSeekRef.current = target;
     }
@@ -132,6 +133,7 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
               onLoadedMetadata={(e) => {
                 if (pendingSeekRef.current !== null) {
                   e.currentTarget.currentTime = pendingSeekRef.current;
+                  void e.currentTarget.play().catch(() => {});
                   pendingSeekRef.current = null;
                 }
               }}
