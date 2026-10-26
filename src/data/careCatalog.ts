@@ -26,7 +26,7 @@ export const getCatalogCare = (productId: string, planId = "premium"): CatalogCa
     : id === "airconditioner" && planId === "litePlus" ? airconPlanContents.find(p => p.plan === planId)?.steps
     : subscription?.careSteps;
   const items = featuresMap[productId]?.flatMap(f => f.subscriptionServiceItems ?? []) ?? [];
-  const combined = [ ...(steps ?? []).map(step => ({ careServiceId: step.careServiceId ?? careItemId(step.label), careServiceName: step.label })),
+  const combined = [ ...[...(steps ?? []), ...(subscription?.careSteps ?? [])].map(step => ({ careServiceId: step.careServiceId ?? careItemId(step.label), careServiceName: step.label })),
     ...items.map(item => ({ careServiceId: careServiceIdFor(productId, item.label), careServiceName: item.label })) ];
   return Array.from(new Map(combined.map(item => [item.careServiceId, item])).values());
 };
