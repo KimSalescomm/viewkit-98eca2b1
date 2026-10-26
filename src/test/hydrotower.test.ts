@@ -130,6 +130,32 @@ describe("hydrotower product navigation data", () => {
     });
   });
 
+  it("moves the weight and size units into the row labels and keeps the numbers unchanged", () => {
+    const lineup = getFeatureById("hydrotower", "6")?.tableData ?? [];
+    const specOf = (name: string, label: string) =>
+      lineup.find((product) => product.name === name)?.specs.find((spec) => spec.label === label);
+
+    expect(lineup.some((product) => product.specs.some((spec) => spec.label === "무게" || spec.label === "제품 크기 (WxHxD)"))).toBe(false);
+
+    lineup.forEach((product) => {
+      const weight = product.specs.find((spec) => spec.label === "무게 (kg)");
+      const size = product.specs.find((spec) => spec.label === "제품 크기 (W×H×D, mm)");
+      expect(weight?.values).toHaveLength(1);
+      expect(weight?.values[0]).toMatch(/^\d+(?:\.\d+)?$/);
+      expect(size?.values).toHaveLength(1);
+      expect(size?.values[0]).not.toMatch(/mm/);
+      expect(size?.compact).toBe(true);
+      expect(weight?.compact).toBe(true);
+    });
+
+    expect(specOf("하이드로타워 Max", "무게 (kg)")?.values).toEqual(["21.2"]);
+    expect(specOf("하이드로타워", "무게 (kg)")?.values).toEqual(["18.7"]);
+    expect(specOf("AI 360˚ 공기청정기 M7", "무게 (kg)")?.values).toEqual(["20.6"]);
+    expect(specOf("하이드로타워 Max", "제품 크기 (W×H×D, mm)")?.values).toEqual(["388(310) x 1,088 x 388(310)"]);
+    expect(specOf("하이드로타워", "제품 크기 (W×H×D, mm)")?.values).toEqual(["310 x 986 x 310"]);
+    expect(specOf("AI 360˚ 공기청정기 M7", "제품 크기 (W×H×D, mm)")?.values).toEqual(["377 x 1,100 x 377"]);
+  });
+
   it("shows the lineup comparison headline and lead copy", () => {
     const feature = getFeatureById("hydrotower", "6");
     expect(feature?.title).toBe("우리집엔 어떤\n에어케어 제품이 맞을까?");
