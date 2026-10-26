@@ -186,7 +186,7 @@ export const hydrotowerFeatures: Feature[] = [
   },
   {
     id: "5",
-    title: "먼지와 유해가스까지\n 제거한다고요?",
+    title: "공기 청정 성능도\n 좋은가요?",
     subtitle: "360˚ 탈취청정 V2 필터로\n먼지와 유해가스까지 제거해요.",
     icon: "Wind",
     tag: "360˚ 탈취청정 V2",
