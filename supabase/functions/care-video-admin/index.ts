@@ -20,7 +20,10 @@ Deno.serve(async req => {
   const body = parsed.data;
   const expected = Deno.env.get("ADMIN_PASSCODE");
   if (!expected || body.passcode !== expected) return json({ error: "관리자 패스코드를 확인해 주세요." }, 401);
-  const client = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
+  const serviceUrl = Deno.env.get("SUPABASE_URL");
+  const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  if (!serviceUrl || !serviceKey) return json({ error: "영상 관리 연결이 준비되지 않았습니다." }, 500);
+  const client = createClient(serviceUrl, serviceKey);
   try {
     if (body.action === "save-product") {
       if (!body.common_video_url && !body.shared_product_id) return json({ error: "영상 주소 또는 공유할 영상을 선택해 주세요." }, 400);

@@ -33,6 +33,7 @@ const CareVideoSegmentSection = () => {
   const [message, setMessage] = useState("");
   const [videoError, setVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const pendingPreview = useRef<number | null>(null);
   const previewUrl = previewScope === "common" ? commonUrl : individualUrl || commonUrl;
   const matches = careCatalogProducts.filter(p => {
     const text = `${p.name} ${p.title} ${videos.filter(v => v.product_id === p.id).map(v => v.model_id).join(" ")}`;
@@ -93,7 +94,10 @@ const CareVideoSegmentSection = () => {
     if (start === null || (endInput.trim() && end === null)) { setMessage("시간을 확인해 주세요."); return; }
     const invalid = validateSegment(start, end, duration);
     if (invalid) { setMessage(invalid); return; }
-    if (previewScope !== "step") { setPreviewScope("step"); setMessage("케어 영상 미리보기를 선택했습니다. 구간 미리보기를 다시 눌러 주세요."); return; }
+    if (previewScope !== "step") {
+      setPreviewScope("step");
+      if (individualUrl && individualUrl !== commonUrl) { pendingPreview.current = start; return; }
+    }
     try { video.currentTime = start; await video.play(); setPreviewing(true); } catch { setMessage("영상이 준비된 후 다시 시도해 주세요."); }
   };
   const currentPoint = (setter: (v: string) => void) => setter(formatTimeInput(Math.floor((videoRef.current?.currentTime ?? 0) * 10) / 10));
@@ -120,7 +124,7 @@ const CareVideoSegmentSection = () => {
             <input aria-label="전체 케어 MP4 URL" className={inputClass} placeholder="https://…/care.mp4" disabled={!!sharing} value={commonUrl} onChange={e => { setCommonUrl(e.target.value); setPreviewScope("common"); }} />
             <div className="flex flex-wrap gap-2"><Button variant="outline" onClick={() => setPreviewScope("common")}><Play />전체 영상 미리보기</Button><Button variant="brand" disabled={busy || !loaded} onClick={saveProduct}><Save />영상 저장</Button></div>
           </div>
-          {previewUrl ? <div className="overflow-hidden rounded-lg bg-muted"><video aria-label="케어 영상 미리보기" ref={videoRef} key={previewUrl} src={previewUrl} controls playsInline preload="metadata" className="aspect-video w-full object-contain" onLoadedMetadata={e => setDuration(e.currentTarget.duration)} onError={() => setVideoError(true)} onTimeUpdate={e => { const end = parseTimeInput(endInput); if (previewing && end !== null && e.currentTarget.currentTime >= end) { e.currentTarget.pause(); setPreviewing(false); } }} onPause={() => setPreviewing(false)} /></div> : <div className="flex aspect-video items-center justify-center rounded-lg bg-muted text-sm text-muted-foreground">등록된 영상 없음</div>}
+          {previewUrl ? <div className="overflow-hidden rounded-lg bg-muted"><video aria-label="케어 영상 미리보기" ref={videoRef} key={previewUrl} src={previewUrl} controls playsInline preload="metadata" className="aspect-video w-full object-contain" onLoadedMetadata={e => { setDuration(e.currentTarget.duration); if (pendingPreview.current !== null) { e.currentTarget.currentTime = pendingPreview.current; pendingPreview.current = null; setPreviewing(true); void e.currentTarget.play().catch(() => setPreviewing(false)); } }} onError={() => setVideoError(true)} onTimeUpdate={e => { const end = parseTimeInput(endInput); if (previewing && end !== null && e.currentTarget.currentTime >= end) { e.currentTarget.pause(); setPreviewing(false); } }} onPause={() => setPreviewing(false)} /></div> : <div className="flex aspect-video items-center justify-center rounded-lg bg-muted text-sm text-muted-foreground">등록된 영상 없음</div>}
           {videoError && <p role="alert" className="text-sm text-destructive">영상을 불러오지 못했습니다. 주소와 연결 상태를 확인해 주세요.</p>}
           <p className="flex items-center gap-1 text-xs text-muted-foreground"><Clock className="h-3.5 w-3.5" />영상 길이: {formatTimeInput(duration ?? productVideo?.video_duration ?? null) || "확인 대기"}</p>
           <h3 className="text-sm font-semibold">케어 항목 · 구간 설정</h3>

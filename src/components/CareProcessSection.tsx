@@ -148,8 +148,16 @@ const CareProcessSection = ({ plan, modelId }: { plan: CareProcessPlan; modelId?
               onPlay={(e) => {
                 // 구간 끝에서 다시 재생하면 구간 시작 위치부터 재생
                 const v = e.currentTarget;
-                if (segment && hasReachedEnd(v.currentTime, segment.endSeconds)) {
+                if (segment && (v.currentTime < segment.startSeconds || hasReachedEnd(v.currentTime, segment.endSeconds))) {
                   v.currentTime = segment.startSeconds;
+                }
+              }}
+              onSeeking={e => {
+                if (!segment) return;
+                const video = e.currentTarget;
+                if (video.currentTime < segment.startSeconds) video.currentTime = segment.startSeconds;
+                if (segment.endSeconds !== null && video.currentTime > segment.endSeconds) {
+                  video.pause(); video.currentTime = segment.endSeconds;
                 }
               }}
               onError={() => setVideoError(true)}
