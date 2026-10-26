@@ -761,6 +761,22 @@ export const featuresMap: Record<string, Feature[]> = {
   // AI 워시타워 특장점 (SC 관리자 계정 전용 제품)
   "ai-washtower": [
     {
+      id: "1",
+      title: "빨래할 때마다 세탁, 건조 코스 직접 고르세요?",
+      subtitle: "AI 기술로 세탁물의 무게와 재질을 감지해\n세탁부터 건조까지 알아서 완성해줘요.",
+      icon: "Cpu",
+      tag: "AI 세탁·건조",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_tromm_ai_pc.mp4",
+      posterImage: "/__l5e/assets-v1/b2aa3acd-dcfa-42a4-aa1c-7261913de6a3/ai-washtower-feature1-poster.png",
+      showMainMedia: false,
+      description:
+        "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁·건조를 완성하고, 결과까지 확인할 수 있어요.",
+      highlights: [
+        "세탁·건조 모든 과정에 AI 기술 적용",
+        "6가지 손빨래 동작으로 정교하게 세탁",
+        "바람을 본뜬 6가지 건조 모션으로 꼼꼼하게 건조",
+    {
       id: "7",
       title: "워시타워 구독하면\n무엇이 좋을까요?",
       subtitle: "가전 케어 매니저가 보이지 않는 부분까지 꼼꼼하게 관리해줘요.",
@@ -831,22 +847,6 @@ export const featuresMap: Record<string, Feature[]> = {
         },
       ],
     },
-    {
-      id: "1",
-      title: "빨래할 때마다 세탁, 건조 코스 직접 고르세요?",
-      subtitle: "AI 기술로 세탁물의 무게와 재질을 감지해\n세탁부터 건조까지 알아서 완성해줘요.",
-      icon: "Cpu",
-      tag: "AI 세탁·건조",
-      mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/images/wash-tower/md10793829/usp/WA2525EGP6Z_tromm_ai_pc.mp4",
-      posterImage: "/__l5e/assets-v1/b2aa3acd-dcfa-42a4-aa1c-7261913de6a3/ai-washtower-feature1-poster.png",
-      showMainMedia: false,
-      description:
-        "세탁과 건조 모든 과정에 AI 기술을 적용해 더 편리해진 세탁·건조를 완성하고, 결과까지 확인할 수 있어요.",
-      highlights: [
-        "세탁·건조 모든 과정에 AI 기술 적용",
-        "6가지 손빨래 동작으로 정교하게 세탁",
-        "바람을 본뜬 6가지 건조 모션으로 꼼꼼하게 건조",
       ],
       tabs: [
         {
