@@ -386,7 +386,7 @@ const Subscription = () => {
                           </span>
                         </div>
                       )}
-                      <CareSegmentVideo productId={selected.id === "dishwasher" ? "cooking" : selected.id} careServiceId={step.careServiceId ?? careItemId(step.label)} />
+                      <CareSegmentVideo productId={selected.id} modelId={searchParams.get("modelId") ?? undefined} careServiceId={step.careServiceId ?? careItemId(step.label)} />
                     </li>
                   );
 

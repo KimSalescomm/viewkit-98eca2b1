@@ -11,19 +11,24 @@ export const careItemId = (label: string) => {
 };
 export interface CatalogCare { careServiceId: string; careServiceName: string }
 export const subscriptionProductId = (id: string) => id === "cooking" ? "dishwasher" : id;
+export const canonicalCareProductId = (id: string) => id === "dishwasher" ? "cooking" : id;
+export const careServiceIdFor = (productId: string, label: string) => {
+  const product = subscriptionProducts.find(p => p.id === subscriptionProductId(productId));
+  const known = [...(product?.careSteps ?? []), ...(productId === "washer" ? washerPlanContents.flatMap(p => p.steps) : []), ...(productId === "airconditioner" ? airconPlanContents.flatMap(p => p.steps) : [])].find(s => s.label === label);
+  return known?.careServiceId ?? careItemId(label);
+};
 export const getCatalogCare = (productId: string, planId = "premium"): CatalogCare[] => {
   const process = careProcessPlans[productId];
   if (process) return process.careServices;
-  const items = featuresMap[productId]?.flatMap(f => f.subscriptionServiceItems ?? []);
-  if (items?.length) return Array.from(new Map(items.map(item => [careItemId(item.label), {
-    careServiceId: careItemId(item.label), careServiceName: item.label,
-  }])).values());
   const id = subscriptionProductId(productId);
   const subscription = subscriptionProducts.find(p => p.id === id);
   const steps = id === "washer" ? washerPlanContents.find(p => p.plan === planId)?.steps
     : id === "airconditioner" && planId === "litePlus" ? airconPlanContents.find(p => p.plan === planId)?.steps
     : subscription?.careSteps;
-  return (steps ?? []).map(step => ({ careServiceId: step.careServiceId ?? careItemId(step.label), careServiceName: step.label }));
+  const items = featuresMap[productId]?.flatMap(f => f.subscriptionServiceItems ?? []) ?? [];
+  const combined = [ ...(steps ?? []).map(step => ({ careServiceId: step.careServiceId ?? careItemId(step.label), careServiceName: step.label })),
+    ...items.map(item => ({ careServiceId: careServiceIdFor(productId, item.label), careServiceName: item.label })) ];
+  return Array.from(new Map(combined.map(item => [item.careServiceId, item])).values());
 };
 export const careCatalogProducts = [
   ...products,

@@ -64,7 +64,7 @@ const CareVideoSegmentSection = () => {
   const saveProduct = async () => {
     if (!sharing && !/^https:\/\//.test(commonUrl)) { setMessage("HTTPS 영상 주소를 입력해 주세요."); return; }
     const [sharedProduct, sharedModel = ""] = sharing.split("|");
-    await invoke({ action: "save-product", common_video_url: sharing ? null : commonUrl, video_duration: previewScope === "common" ? duration ?? productVideo?.video_duration ?? null : null, shared_product_id: sharedProduct || null, shared_model_id: sharedModel, allow_full_video: true });
+    await invoke({ action: "save-product", common_video_url: sharing ? null : commonUrl, video_duration: previewScope === "common" ? duration ?? (commonUrl === productVideo?.common_video_url ? productVideo?.video_duration : null) ?? null : null, shared_product_id: sharedProduct || null, shared_model_id: sharedModel, allow_full_video: true });
   };
   const saveSegment = async () => {
     if (!step) return;

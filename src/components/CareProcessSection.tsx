@@ -10,7 +10,7 @@ import { hasCareVideo, hasReachedEnd, resolveVideoUrl } from "@/utils/careVideoS
  * - 왼쪽: 선택한 케어의 큰 미디어(사진/영상 전환), 오른쪽: 케어 항목 세로 목록
  * - 케어 개수·순서·콘텐츠는 careProcess.ts 데이터에서 관리
  */
-const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
+const CareProcessSection = ({ plan, modelId }: { plan: CareProcessPlan; modelId?: string }) => {
   const steps = [...plan.careServices].sort((a, b) => a.displayOrder - b.displayOrder);
   const [activeIndex, setActiveIndex] = useState(0);
   const [mediaType, setMediaType] = useState<CareMediaType>(plan.defaultMediaType);
@@ -18,7 +18,7 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
   const [videoError, setVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const pendingSeekRef = useRef<number | null>(null);
-  const { segments, productVideo } = useCareVideoSegments(plan.productId, plan.modelId);
+  const { segments, productVideo } = useCareVideoSegments(plan.productId, modelId ?? plan.modelId);
 
   const active = steps[activeIndex];
   const images = [active.representativeImageUrl, ...(active.detailImageUrls ?? [])];

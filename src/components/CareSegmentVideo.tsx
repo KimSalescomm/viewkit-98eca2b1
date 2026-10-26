@@ -3,10 +3,11 @@ import { Button } from "@/components/ui/button";
 import { ImageIcon, Play } from "lucide-react";
 import useCareVideoSegments from "@/hooks/useCareVideoSegments";
 import { hasCareVideo, hasReachedEnd, resolveVideoUrl } from "@/utils/careVideoSegments";
+import { canonicalCareProductId } from "@/data/careCatalog";
 
 /** Optional media control for legacy care layouts; their photos and copy remain untouched. */
 const CareSegmentVideo = ({ productId, careServiceId, modelId = "" }: { productId: string; careServiceId: string; modelId?: string }) => {
-  const { segments, productVideo } = useCareVideoSegments(productId, modelId);
+  const { segments, productVideo } = useCareVideoSegments(canonicalCareProductId(productId), modelId);
   const segment = segments[careServiceId];
   const common = productVideo?.common_video_url ?? undefined;
   const url = resolveVideoUrl(segment, undefined, common);
