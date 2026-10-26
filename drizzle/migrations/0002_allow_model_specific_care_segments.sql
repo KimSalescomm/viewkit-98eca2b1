@@ -1,0 +1,1 @@
+ALTER TABLE public.care_video_segments DROP CONSTRAINT care_video_segments_product_id_care_service_id_key;

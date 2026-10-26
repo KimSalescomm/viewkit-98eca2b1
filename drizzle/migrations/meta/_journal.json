@@ -15,6 +15,13 @@
       "when": 1792992921100,
       "tag": "0001_extend_product_care_video_management",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792992948542,
+      "tag": "0002_allow_model_specific_care_segments",
+      "breakpoints": true
     }
   ]
 }
