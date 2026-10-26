@@ -36,7 +36,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     order: ["7", "5", "4", "1", "2", "6"],
     cards: {
       "1": {
-        image: "/__l5e/assets-v1/e947fdc2-a55b-4c57-bf32-9e3c69ac6938/bathair-dual-ventilation-4x3.png",
+        image: "/__l5e/assets-v1/44757b98-cbab-4867-80f5-fcb5d60e341a/bathair-dual-ventilation-4x3.png",
         eyebrow: "듀얼 배기",
       },
       "4": {
