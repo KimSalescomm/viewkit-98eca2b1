@@ -168,6 +168,9 @@ describe("hydrotower product navigation data", () => {
       expect(product.specs.find((spec) => spec.label === "크기 (mm)")?.hint).toBe("가로 × 높이 × 깊이");
       expect(product.specs.find((spec) => spec.label === "무게 (kg)")?.hint).toBeUndefined();
     });
+  });
+
+
 
 
   it("shows the lineup comparison headline and lead copy", () => {
