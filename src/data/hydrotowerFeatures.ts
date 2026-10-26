@@ -221,6 +221,7 @@ export const hydrotowerFeatures: Feature[] = [
     mediaType: "table",
     mediaUrl: hydrotowerMaxCompare.url,
     description: "",
+    highlights: [],
     tableData: [
       {
         name: "AI 360˚ 공기청정기 M7",
