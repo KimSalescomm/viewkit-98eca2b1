@@ -6,6 +6,9 @@ import washcomboAiTimeSensingDisplayAsset from "@/assets/washcombo-ai-time-sensi
 import washcomboAiReportWideAsset from "@/assets/washcombo-ai-report-wide.mp4.asset.json";
 import washcomboAutomaticAsset from "@/assets/washcombo-automatic.jpg.asset.json";
 import bathairHomepageAsset from "@/assets/bathair-homepage.jpg.asset.json";
+import tvLineupGSeriesAsset from "@/assets/tv-lineup-g-series.png.asset.json";
+import tvLineupCSeriesAsset from "@/assets/tv-lineup-c-series.png.asset.json";
+import tvLineupBSeriesAsset from "@/assets/tv-lineup-b-series.png.asset.json";
 import { hydrotowerFeatures } from "@/data/hydrotowerFeatures";
 
 const bathairHomepageImage = bathairHomepageAsset.url;
