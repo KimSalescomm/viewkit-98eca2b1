@@ -3,7 +3,7 @@ import { ChevronRight, Play, Image as ImageIcon, ChevronLeft } from "lucide-reac
 import type { CareProcessPlan, CareMediaType } from "@/data/careProcess";
 import SafeImage from "@/components/SafeImage";
 import useCareVideoSegments from "@/hooks/useCareVideoSegments";
-import { hasReachedEnd, resolveVideoUrl } from "@/utils/careVideoSegments";
+import { hasCareVideo, hasReachedEnd, resolveVideoUrl } from "@/utils/careVideoSegments";
 
 /**
  * 케어 목록형 상세 섹션 (제품 공통 재사용)
@@ -23,8 +23,9 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
   const active = steps[activeIndex];
   const images = [active.representativeImageUrl, ...(active.detailImageUrls ?? [])];
   const segment = segments[active.careServiceId];
+  // 저장된 구간이나 케어별 개별 영상이 없으면 영상으로 재생할 영상이 없습니다.
+  const hasVideo = hasCareVideo(segment, active.videoUrl);
   const activeVideoUrl = resolveVideoUrl(segment, active.videoUrl, plan.commonVideoUrl);
-  const hasVideo = !!activeVideoUrl;
 
   // 단계 전환 시: 사진 모드 복귀 + 영상 정지 + 첫 이미지
   useEffect(() => {

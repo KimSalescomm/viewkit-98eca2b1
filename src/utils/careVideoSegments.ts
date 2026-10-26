@@ -45,6 +45,17 @@ export const resolveVideoUrl = (
 ): string | undefined =>
   segment?.videoUrl || stepVideoUrl || commonVideoUrl || undefined;
 
+/**
+ * 케어 항목에 '영상' 버튼을 표시할지 여부
+ * 관리자가 저장한 구간이 없고 케어별 개별 영상도 없으면 재생할 영상이 없습니다.
+ * (공통 영상은 구간/개별 영상이 있는 케어에만 적용됩니다.)
+ */
+export const hasCareVideo = (
+  segment: CareVideoSegment | undefined,
+  stepVideoUrl: string | undefined,
+): boolean => !!segment || !!stepVideoUrl;
+
+
 /** "분:초" 또는 "분:초.소수" 문자열을 초로 변환. 유효하지 않으면 null */
 export const parseTimeInput = (input: string): number | null => {
   const trimmed = input.trim();
