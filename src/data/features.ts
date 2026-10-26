@@ -22,6 +22,9 @@ export interface ProductComparisonTable {
     highlighted?: boolean;
     /** 단위를 항목명(라벨)로 옮긴 수치 행: 여백·글자 크기를 줄여 한 줄로 표시 */
     compact?: boolean;
+    /** 항목명 옆 정보 아이콘(i)에 보여주는 표기 설명 */
+    hint?: string;
+
   }[];
 }
 

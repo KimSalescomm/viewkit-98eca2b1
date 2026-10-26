@@ -1,16 +1,57 @@
+import { useState } from "react";
+import { Info } from "lucide-react";
 import type { ProductComparisonTable } from "@/data/features";
 import SafeImage from "@/components/SafeImage";
 
+
+/** 항목명 옆 정보 아이콘: 마우스를 올리거나 누르면 표기 설명을 보여준다. */
+function LabelHint({ text }: { text: string }) {
+  const [hovered, setHovered] = useState(false);
+  const [pinned, setPinned] = useState(false);
+  const open = hovered || pinned;
+
+  return (
+    <span
+      className="inline-flex shrink-0 items-center"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <button
+        type="button"
+        aria-label={`항목 표기 설명: ${text}`}
+        aria-expanded={open}
+        onClick={() => setPinned((value) => !value)}
+        onBlur={() => setPinned(false)}
+        className="flex h-4 w-4 items-center justify-center rounded-full border border-muted-foreground/40 text-muted-foreground transition-colors hover:border-brand-accent hover:text-brand-accent focus:outline-none focus-visible:ring-1 focus-visible:ring-brand-accent"
+      >
+        <Info className="h-2.5 w-2.5" aria-hidden="true" />
+      </button>
+      {open && (
+        <span
+          role="tooltip"
+          className="pointer-events-none absolute bottom-full left-0 z-20 mb-1.5 whitespace-nowrap rounded-md bg-foreground px-2 py-1 text-[0.6875rem] font-medium leading-none text-background shadow-md"
+        >
+          {text}
+        </span>
+      )}
+    </span>
+  );
+}
+
+
 export default function AirCareComparisonTable({ products }: { products: ProductComparisonTable[] }) {
+
   const labels = products[0]?.specs.map((spec) => spec.label) ?? [];
   const rows = labels.map((label) => ({
     label,
+    hint: products[0]?.specs.find((item) => item.label === label)?.hint,
     entries: products.map((product) => ({
       product,
       spec: product.specs.find((item) => item.label === label),
     })),
     compact: products.some((product) => product.specs.find((item) => item.label === label)?.compact),
   }));
+
 
   return (
     <div className="w-full overflow-x-auto rounded-lg border border-border bg-card">
@@ -56,14 +97,18 @@ export default function AirCareComparisonTable({ products }: { products: Product
           </tr>
         </thead>
         <tbody>
-          {rows.map(({ label, entries, compact }) => (
+          {rows.map(({ label, entries, compact, hint }) => (
             <tr key={label}>
               <th
                 scope="row"
                 className={`w-[7.5rem] border-r border-t border-border bg-muted align-middle font-semibold leading-relaxed ${compact ? "px-2 py-2 text-[0.6875rem]" : "px-3 py-3 text-xs"}`}
               >
-                {label}
+                <div className="relative flex items-center gap-1">
+                  <span>{label}</span>
+                  {hint && <LabelHint text={hint} />}
+                </div>
               </th>
+
               {entries.map(({ product, spec }) => (
                 <td
                   key={product.name}
