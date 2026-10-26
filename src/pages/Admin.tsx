@@ -21,6 +21,7 @@ import { getSales, clearAllSales, deleteSale, deleteSalesByIds, SaleRecord } fro
 import StoreVisitStats from "@/components/StoreVisitStats";
 import ProductVisitStats from "@/components/ProductVisitStats";
 import ScreensaverManager from "@/components/ScreensaverManager";
+import CareVideoSegmentSection from "@/components/admin/CareVideoSegmentSection";
 import FeaturePreferenceSection from "@/components/admin/FeaturePreferenceSection";
 import ContentRequestSection from "@/components/admin/ContentRequestSection";
 import ContentViewSection from "@/components/admin/ContentViewSection";
@@ -712,6 +713,8 @@ const Dashboard = ({ onLogout }: { onLogout: () => void }) => {
         </p>
 
         <ContentPublishCard />
+
+        <CareVideoSegmentSection />
 
         <ScreensaverManager />
 

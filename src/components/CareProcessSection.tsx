@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronRight, Play, Image as ImageIcon, ChevronLeft } from "lucide-react";
 import type { CareProcessPlan, CareMediaType } from "@/data/careProcess";
 import SafeImage from "@/components/SafeImage";
+import useCareVideoSegments from "@/hooks/useCareVideoSegments";
+import { hasReachedEnd, resolveVideoUrl } from "@/utils/careVideoSegments";
 
 /**
  * 케어 목록형 상세 섹션 (제품 공통 재사용)
@@ -13,19 +15,37 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [mediaType, setMediaType] = useState<CareMediaType>(plan.defaultMediaType);
   const [imageIndex, setImageIndex] = useState(0);
+  const [videoError, setVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const pendingSeekRef = useRef<number | null>(null);
+  const { segments } = useCareVideoSegments(plan.productId);
 
   const active = steps[activeIndex];
   const images = [active.representativeImageUrl, ...(active.detailImageUrls ?? [])];
-  const activeVideoUrl = active.videoUrl ?? plan.commonVideoUrl;
+  const segment = segments[active.careServiceId];
+  const activeVideoUrl = resolveVideoUrl(segment, active.videoUrl, plan.commonVideoUrl);
   const hasVideo = !!activeVideoUrl;
 
   // 단계 전환 시: 사진 모드 복귀 + 영상 정지 + 첫 이미지
   useEffect(() => {
     setMediaType(plan.defaultMediaType);
     setImageIndex(0);
+    setVideoError(false);
     videoRef.current?.pause();
   }, [activeIndex, plan.defaultMediaType]);
+
+  // 영상 모드 진입 시: 설정된 구간의 시작 위치로 이동 (메타데이터 로딩 후)
+  useEffect(() => {
+    if (mediaType !== "video") return;
+    const target = segment?.startSeconds ?? 0;
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.readyState >= 1) {
+      video.currentTime = target;
+    } else {
+      pendingSeekRef.current = target;
+    }
+  }, [mediaType, activeIndex, segment]);
 
   const selectMedia = (type: CareMediaType) => {
     if (type === "image") videoRef.current?.pause();
@@ -95,15 +115,42 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
       {/* 메인 미디어 (16:9, 카드 가로 너비) */}
       <div className="relative mt-3 aspect-video w-full overflow-hidden rounded-[14px] bg-gray-50">
         {mediaType === "video" && hasVideo ? (
-          <video
-            ref={videoRef}
-            key={activeVideoUrl}
-            src={activeVideoUrl}
-            controls
-            playsInline
-            preload="metadata"
-            className="h-full w-full object-contain"
-          />
+          videoError ? (
+            <div className="flex h-full w-full flex-col items-center justify-center gap-1.5 px-6 text-center">
+              <p className="text-[14px] font-semibold text-gray-800">영상을 불러오지 못했습니다.</p>
+              <p className="text-[12px] text-muted-foreground">네트워크 연결을 확인한 뒤 다시 시도해 주세요.</p>
+            </div>
+          ) : (
+            <video
+              ref={videoRef}
+              key={`${active.careServiceId}-${activeVideoUrl}`}
+              src={activeVideoUrl}
+              controls
+              playsInline
+              preload="metadata"
+              className="h-full w-full object-contain"
+              onLoadedMetadata={(e) => {
+                if (pendingSeekRef.current !== null) {
+                  e.currentTarget.currentTime = pendingSeekRef.current;
+                  pendingSeekRef.current = null;
+                }
+              }}
+              onTimeUpdate={(e) => {
+                // 설정된 종료 시점에 도달하면 자동 일시정지
+                if (hasReachedEnd(e.currentTarget.currentTime, segment?.endSeconds ?? null)) {
+                  e.currentTarget.pause();
+                }
+              }}
+              onPlay={(e) => {
+                // 구간 끝에서 다시 재생하면 구간 시작 위치부터 재생
+                const v = e.currentTarget;
+                if (segment && hasReachedEnd(v.currentTime, segment.endSeconds)) {
+                  v.currentTime = segment.startSeconds;
+                }
+              }}
+              onError={() => setVideoError(true)}
+            />
+          )
         ) : (
           <SafeImage
             key={images[imageIndex]}

@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      care_video_segments: {
+        Row: {
+          care_service_id: string
+          end_seconds: number | null
+          id: string
+          product_id: string
+          start_seconds: number
+          updated_at: string
+          video_url: string
+        }
+        Insert: {
+          care_service_id: string
+          end_seconds?: number | null
+          id?: string
+          product_id: string
+          start_seconds?: number
+          updated_at?: string
+          video_url: string
+        }
+        Update: {
+          care_service_id?: string
+          end_seconds?: number | null
+          id?: string
+          product_id?: string
+          start_seconds?: number
+          updated_at?: string
+          video_url?: string
+        }
+        Relationships: []
+      }
       content_requests: {
         Row: {
           category: string
