@@ -238,7 +238,8 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       },
       "6": {
         image: "/__l5e/assets-v1/22791ec0-c21f-4a67-a696-3fe9c20dddc4/hydrotower-lineup-thumb.webp",
-        fit: "contain",
+        fit: "cover",
+        objectPositionClass: "object-center",
       },
     },
   },
