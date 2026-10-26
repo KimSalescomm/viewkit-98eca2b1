@@ -17,7 +17,11 @@ export default function AirCareComparisonTable({ products }: { products: Product
               aria-label="항목"
             />
             {products.map((product) => (
-              <th key={product.name} scope="col" className="border-r border-b border-border bg-muted p-0 align-middle last:border-r-0">
+              <th
+                key={product.name}
+                scope="col"
+                className={`border-r border-b border-border p-0 align-middle last:border-r-0 ${product.best ? "bg-brand-soft" : "bg-muted"}`}
+              >
                 <div className="flex flex-col items-center justify-center px-3 py-4">
                   <div className="flex min-h-7 items-center justify-center gap-1.5">
                     <h4 className="text-base font-bold leading-snug">{product.name}</h4>
