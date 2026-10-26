@@ -761,6 +761,77 @@ export const featuresMap: Record<string, Feature[]> = {
   // AI 워시타워 특장점 (SC 관리자 계정 전용 제품)
   "ai-washtower": [
     {
+      id: "7",
+      title: "워시타워 구독하면\n무엇이 좋을까요?",
+      subtitle: "가전 케어 매니저가 보이지 않는 부분까지 꼼꼼하게 관리해줘요.",
+      icon: "Wrench",
+      tag: "가전 구독",
+      mediaType: "video",
+      mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/caresolution_washtower_260831.mp4",
+      posterImage: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_01_260724.jpg",
+      description: "케어 매니저가 방문하여 전문 장비를 활용해 고객이 직접하기 어려운 부분까지 꼼꼼하게 관리해 드려요.",
+      highlights: [
+        "LG전자에서 연구한 전용 관리제 사용",
+        "세제함, 필터 등을 스팀 케어",
+        "필터 교체 주기에 맞춰 필터 교체",
+        "무상 A/S까지 제공",
+      ],
+      disclaimers: [],
+      collapsibleDisclaimers: [
+        {
+          title: "세부정보",
+          items: [
+            "· 직수/고압세척 적용 모델 : 26년 6월 출시 워시타워 WA2525** 6P* 한정",
+            "· Intetek에서 2024년 4월 및 2026년 6월 인공 오염 누적 조건으로 드럼 케어 및 직수/고압 세척의 세척력을 시험한 결과, 직수/고압 세척은 드럼 케어 대비 11% 우수했으며, 2024년 드럼 케어 세척력 기준 환산 시 분해 세척 대비 90% 수준의 세척력을 확인했으나, 세척률 및 오염 정도는 사용 환경에 따라 차이가 있을 수 있습니다.",
+            "· 방문 관리는 사전 안내드리고 있으며, 고객 요청에 의해 협의된 일정으로 변경하실 수 있습니다.",
+            "· UV 적용 모델 : 26년 6월 출시 워시타워 WA2525** 6P* 한정",
+            "· 내시경 카메라 점검 적용 모델 : 26년 6월 출시 워시타워 WA2525** 6P* 한정",
+            "· 배수 필터 : 24개월 주기 교체",
+            "· 건조 필터 : 최초 방문 시 1회 교체",
+            "· 제품 점검 적용 모델 : 26년 6월 출시 워시타워 WA2525** 6P* 한정",
+            "· 무상 철거 및 재설치는 가전구독 고객에 한하여 계약기간 내 1회 무상 제공 (운송비 별도) 해드립니다.",
+            "· 운송 서비스를 희망할 경우 유상 제공되며 비용은 고객 부담입니다.",
+            "· 제품 설치 환경에 따라 추가 비용이 발생할 수 있습니다.",
+            "· 무상 A/S는 가전구독 고객에 한하며, 고객 과실로 인한 제품 고장은 제외됩니다.",
+          ],
+        },
+      ],
+      mediaGallery: [
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_01_260724.jpg",
+          title: "직수/고압 세척",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_02_260724.jpg",
+          title: "드럼 케어",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_08_260805.png",
+          title: "UV/스팀 케어",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_03_260724.jpg",
+          title: "내시경 카메라 점검",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_04_260724.jpg",
+          title: "필터 세척 및 교체",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_05_260724.jpg",
+          title: "제품 점검",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_06_260724.jpg",
+          title: "무상 철거 및 재설치",
+        },
+        {
+          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_07_260724.jpg",
+          title: "무상 A/S",
+        },
+      ],
+    },
+    {
       id: "1",
       title: "빨래할 때마다 세탁, 건조 코스 직접 고르세요?",
       subtitle: "AI 기술로 세탁물의 무게와 재질을 감지해\n세탁부터 건조까지 알아서 완성해줘요.",
@@ -1156,77 +1227,6 @@ export const featuresMap: Record<string, Feature[]> = {
           items: [
             "인체공학 설계 : 디스플레이 높이 103cm (북미 인간공학 가이드 기준 권장 디스플레이 높이 98~167cm)",
           ],
-        },
-      ],
-    },
-    {
-      id: "7",
-      title: "드럼 통이 2개라는 사실, 알고 계셨어요?",
-      subtitle: "가전 케어 매니저가 보이지 않는 부분까지 꼼꼼하게 관리해줘요.",
-      icon: "Wrench",
-      tag: "가전 구독",
-      mediaType: "video",
-      mediaUrl: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/caresolution_washtower_260831.mp4",
-      posterImage: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_01_260724.jpg",
-      description: "케어 매니저가 방문하여 전문 장비를 활용해 고객이 직접하기 어려운 부분까지 꼼꼼하게 관리해 드려요.",
-      highlights: [
-        "LG전자에서 연구한 전용 관리제 사용",
-        "세제함, 필터 등을 스팀 케어",
-        "필터 교체 주기에 맞춰 필터 교체",
-        "무상 A/S까지 제공",
-      ],
-      disclaimers: [],
-      collapsibleDisclaimers: [
-        {
-          title: "세부정보",
-          items: [
-            "· 직수/고압세척 적용 모델 : 26년 6월 출시 워시타워 WA2525** 6P* 한정",
-            "· Intetek에서 2024년 4월 및 2026년 6월 인공 오염 누적 조건으로 드럼 케어 및 직수/고압 세척의 세척력을 시험한 결과, 직수/고압 세척은 드럼 케어 대비 11% 우수했으며, 2024년 드럼 케어 세척력 기준 환산 시 분해 세척 대비 90% 수준의 세척력을 확인했으나, 세척률 및 오염 정도는 사용 환경에 따라 차이가 있을 수 있습니다.",
-            "· 방문 관리는 사전 안내드리고 있으며, 고객 요청에 의해 협의된 일정으로 변경하실 수 있습니다.",
-            "· UV 적용 모델 : 26년 6월 출시 워시타워 WA2525** 6P* 한정",
-            "· 내시경 카메라 점검 적용 모델 : 26년 6월 출시 워시타워 WA2525** 6P* 한정",
-            "· 배수 필터 : 24개월 주기 교체",
-            "· 건조 필터 : 최초 방문 시 1회 교체",
-            "· 제품 점검 적용 모델 : 26년 6월 출시 워시타워 WA2525** 6P* 한정",
-            "· 무상 철거 및 재설치는 가전구독 고객에 한하여 계약기간 내 1회 무상 제공 (운송비 별도) 해드립니다.",
-            "· 운송 서비스를 희망할 경우 유상 제공되며 비용은 고객 부담입니다.",
-            "· 제품 설치 환경에 따라 추가 비용이 발생할 수 있습니다.",
-            "· 무상 A/S는 가전구독 고객에 한하며, 고객 과실로 인한 제품 고장은 제외됩니다.",
-          ],
-        },
-      ],
-      mediaGallery: [
-        {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_01_260724.jpg",
-          title: "직수/고압 세척",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_02_260724.jpg",
-          title: "드럼 케어",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_08_260805.png",
-          title: "UV/스팀 케어",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_03_260724.jpg",
-          title: "내시경 카메라 점검",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_04_260724.jpg",
-          title: "필터 세척 및 교체",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_05_260724.jpg",
-          title: "제품 점검",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_06_260724.jpg",
-          title: "무상 철거 및 재설치",
-        },
-        {
-          url: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2026/s-common/img_washtower_07_260724.jpg",
-          title: "무상 A/S",
         },
       ],
     },
