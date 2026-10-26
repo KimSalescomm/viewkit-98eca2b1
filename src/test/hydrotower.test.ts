@@ -219,11 +219,12 @@ describe("hydrotower care service copy", () => {
 describe("hydrotower lineup comparison card thumbnail", () => {
   const card = productCardConfig.hydrotower?.cards?.["6"];
 
-  it("shows the official buying-guide photo in full without cropping", () => {
+  it("fills the card frame by zooming in, cropping only the sides", () => {
     expect(card?.image).toBe(
       "/__l5e/assets-v1/22791ec0-c21f-4a67-a696-3fe9c20dddc4/hydrotower-lineup-thumb.webp"
     );
-    expect(card?.fit).toBe("contain");
+    expect(card?.fit).toBe("cover");
+    expect(card?.objectPositionClass).toBe("object-center");
   });
 
   it("serves that thumbnail from a locally stored asset pointer", () => {
