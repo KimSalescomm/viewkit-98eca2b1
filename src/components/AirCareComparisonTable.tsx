@@ -6,9 +6,10 @@ export default function AirCareComparisonTable({ products }: { products: Product
 
   return (
     <div className="w-full overflow-x-auto rounded-lg border border-border bg-card">
-      <table className="w-full min-w-[660px] table-fixed border-collapse text-sm text-foreground" aria-label="LG 퓨리케어 라인업 비교">
+      <table className="w-full min-w-[720px] table-fixed border-collapse text-sm text-foreground" aria-label="LG 퓨리케어 라인업 비교">
         <thead>
           <tr>
+            <th scope="col" className="w-[7.5rem] border-r border-border bg-muted p-0 align-bottom last:border-r-0" aria-label="항목" />
             {products.map((product) => (
               <th key={product.name} scope="col" className="border-r border-border p-0 align-top last:border-r-0">
                 <div className="flex min-h-24 flex-col items-center justify-center gap-2 border-b border-border bg-muted px-3 py-4">
@@ -25,13 +26,23 @@ export default function AirCareComparisonTable({ products }: { products: Product
         <tbody>
           {labels.map((label) => (
             <tr key={label}>
+              <th
+                scope="row"
+                className="w-[7.5rem] border-r border-t border-border bg-muted px-3 py-4 align-middle text-xs font-semibold leading-relaxed"
+              >
+                {label}
+              </th>
               {products.map((product) => {
                 const spec = product.specs.find((item) => item.label === label);
                 return (
-                  <td key={product.name} className={`border-r border-t border-border px-4 py-4 align-top last:border-r-0 ${spec?.highlighted ? "bg-brand-soft" : "bg-card"}`}>
-                    <div className="mb-2 text-xs font-semibold leading-relaxed">{label}</div>
+                  <td
+                    key={product.name}
+                    className={`border-r border-t border-border px-4 py-4 align-middle last:border-r-0 ${spec?.highlighted ? "bg-brand-soft" : "bg-card"}`}
+                  >
                     <div className={`space-y-1 leading-relaxed ${spec?.highlighted ? "font-semibold" : "font-normal"}`}>
-                      {(spec?.values ?? ["—"]).map((value, index) => <p key={index}>{value}</p>)}
+                      {(spec?.values ?? ["—"]).map((value, index) => (
+                        <p key={index}>{value}</p>
+                      ))}
                     </div>
                   </td>
                 );
