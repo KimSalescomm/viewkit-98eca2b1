@@ -69,8 +69,8 @@ export const hydrotowerFeatures: Feature[] = [
   },
   {
     id: "2",
-    title: "공간 전체를\n촉촉하게 할 수 있을까?",
-    subtitle: "공간의 크기와 온도를 판단해\nAI가습이 적정 습도로 맞춰드려요.",
+    title: "공간 전체를\n고르게 가습할 수 있을까요?",
+    subtitle: "공간의 크기와 온도를 판단해\nAI가습이 쾌적한 습도로 맞춰드려요.",
     icon: "Cpu",
     tag: "공간 맞춤 AI가습",
     mediaType: "video",
