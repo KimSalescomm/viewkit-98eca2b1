@@ -87,7 +87,7 @@ describe("hydrotower product navigation data", () => {
     ["가습모드", "하이드로타워 Max", "AI가습"],
     ["무드등", "하이드로타워 Max", "테마무드 3종 + 컬러 12종"],
     ["이동성", "하이드로타워 Max", "히든휠 내장"],
-    ["무게", "하이드로타워", "18.7 kg"],
+    ["무게 (kg)", "하이드로타워", "18.7"],
   ])("marks only the explicit advantage for %s", (label, winner, value) => {
     const products = getFeatureById("hydrotower", "6")?.tableData ?? [];
     const highlighted = products.filter((product) => product.specs.find((spec) => spec.label === label)?.highlighted);
@@ -97,7 +97,7 @@ describe("hydrotower product navigation data", () => {
 
   it("does not mark subjective differences or equal capacities as advantages", () => {
     const products = getFeatureById("hydrotower", "6")?.tableData ?? [];
-    for (const label of ["색상", "필터", "AI 인증", "물통 (용량/만수용량)", "제품 크기 (WxHxD)"]) {
+    for (const label of ["색상", "필터", "AI 인증", "물통 (용량/만수용량)", "제품 크기 (W×H×D, mm)"]) {
       expect(products.some((product) => product.specs.find((spec) => spec.label === label)?.highlighted)).toBe(false);
     }
   });
