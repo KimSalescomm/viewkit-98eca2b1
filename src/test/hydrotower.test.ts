@@ -151,9 +151,9 @@ describe("hydrotower product navigation data", () => {
     expect(specOf("하이드로타워 Max", "무게 (kg)")?.values).toEqual(["21.2"]);
     expect(specOf("하이드로타워", "무게 (kg)")?.values).toEqual(["18.7"]);
     expect(specOf("AI 360˚ 공기청정기 M7", "무게 (kg)")?.values).toEqual(["20.6"]);
-    expect(specOf("하이드로타워 Max", "제품 크기 (W×H×D, mm)")?.values).toEqual(["388(310) x 1,088 x 388(310)"]);
-    expect(specOf("하이드로타워", "제품 크기 (W×H×D, mm)")?.values).toEqual(["310 x 986 x 310"]);
-    expect(specOf("AI 360˚ 공기청정기 M7", "제품 크기 (W×H×D, mm)")?.values).toEqual(["377 x 1,100 x 377"]);
+    expect(specOf("하이드로타워 Max", "제품 크기 (W×H×D, mm)")?.values).toEqual(["388(310) × 1,088 × 388(310)"]);
+    expect(specOf("하이드로타워", "제품 크기 (W×H×D, mm)")?.values).toEqual(["310 × 986 × 310"]);
+    expect(specOf("AI 360˚ 공기청정기 M7", "제품 크기 (W×H×D, mm)")?.values).toEqual(["377 × 1,100 × 377"]);
   });
 
   it("shows the lineup comparison headline and lead copy", () => {

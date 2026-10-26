@@ -245,7 +245,7 @@ export const hydrotowerFeatures: Feature[] = [
           { label: "에너지소비효율등급", values: ["3등급"] },
           { label: "이동성", values: ["히든휠 내장"], highlighted: true },
           { label: "무게 (kg)", values: ["21.2"], compact: true },
-          { label: "제품 크기 (W×H×D, mm)", values: ["388(310) x 1,088 x 388(310)"], compact: true },
+          { label: "제품 크기 (W×H×D, mm)", values: ["388(310) × 1,088 × 388(310)"], compact: true },
         ],
       },
       {
@@ -269,7 +269,7 @@ export const hydrotowerFeatures: Feature[] = [
           { label: "에너지소비효율등급", values: ["3등급"] },
           { label: "이동성", values: ["무빙휠 (별매)"] },
           { label: "무게 (kg)", values: ["18.7"], highlighted: true, compact: true },
-          { label: "제품 크기 (W×H×D, mm)", values: ["310 x 986 x 310"], compact: true },
+          { label: "제품 크기 (W×H×D, mm)", values: ["310 × 986 × 310"], compact: true },
         ],
       },
       {
@@ -293,7 +293,7 @@ export const hydrotowerFeatures: Feature[] = [
           { label: "에너지소비효율등급", values: ["2등급"], highlighted: true },
           { label: "이동성", values: ["무빙휠 (별매)"] },
           { label: "무게 (kg)", values: ["20.6"], compact: true },
-          { label: "제품 크기 (W×H×D, mm)", values: ["377 x 1,100 x 377"], compact: true },
+          { label: "제품 크기 (W×H×D, mm)", values: ["377 × 1,100 × 377"], compact: true },
         ],
       },
     ],
