@@ -12,7 +12,7 @@ function LabelHint({ text }: { text: string }) {
 
   return (
     <span
-      className="relative inline-flex shrink-0 items-center"
+      className="inline-flex shrink-0 items-center"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -103,7 +103,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
                 scope="row"
                 className={`w-[7.5rem] border-r border-t border-border bg-muted align-middle font-semibold leading-relaxed ${compact ? "px-2 py-2 text-[0.6875rem]" : "px-3 py-3 text-xs"}`}
               >
-                <div className="flex items-center gap-1">
+                <div className="relative flex items-center gap-1">
                   <span>{label}</span>
                   {hint && <LabelHint text={hint} />}
                 </div>
