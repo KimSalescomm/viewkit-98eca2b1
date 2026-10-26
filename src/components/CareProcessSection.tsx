@@ -15,19 +15,37 @@ const CareProcessSection = ({ plan }: { plan: CareProcessPlan }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [mediaType, setMediaType] = useState<CareMediaType>(plan.defaultMediaType);
   const [imageIndex, setImageIndex] = useState(0);
+  const [videoError, setVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const pendingSeekRef = useRef<number | null>(null);
+  const { segments } = useCareVideoSegments(plan.productId);
 
   const active = steps[activeIndex];
   const images = [active.representativeImageUrl, ...(active.detailImageUrls ?? [])];
-  const activeVideoUrl = active.videoUrl ?? plan.commonVideoUrl;
+  const segment = segments[active.careServiceId];
+  const activeVideoUrl = resolveVideoUrl(segment, active.videoUrl, plan.commonVideoUrl);
   const hasVideo = !!activeVideoUrl;
 
   // 단계 전환 시: 사진 모드 복귀 + 영상 정지 + 첫 이미지
   useEffect(() => {
     setMediaType(plan.defaultMediaType);
     setImageIndex(0);
+    setVideoError(false);
     videoRef.current?.pause();
   }, [activeIndex, plan.defaultMediaType]);
+
+  // 영상 모드 진입 시: 설정된 구간의 시작 위치로 이동 (메타데이터 로딩 후)
+  useEffect(() => {
+    if (mediaType !== "video") return;
+    const target = segment?.startSeconds ?? 0;
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.readyState >= 1) {
+      video.currentTime = target;
+    } else {
+      pendingSeekRef.current = target;
+    }
+  }, [mediaType, activeIndex, segment]);
 
   const selectMedia = (type: CareMediaType) => {
     if (type === "image") videoRef.current?.pause();
