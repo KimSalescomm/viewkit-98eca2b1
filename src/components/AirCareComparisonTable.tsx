@@ -67,7 +67,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
               {entries.map(({ product, spec }) => (
                 <td
                   key={product.name}
-                  className={`border-r border-t border-border align-middle last:border-r-0 ${compact ? "px-2 py-2 text-[0.8125rem] tabular-nums" : "px-4 py-3"} ${spec?.highlighted ? "bg-brand-soft" : "bg-card"}`}
+                  className={`border-r border-t border-border align-middle last:border-r-0 ${compact ? "px-2 py-2 text-xs tabular-nums" : "px-4 py-3"} ${spec?.highlighted ? "bg-brand-soft" : "bg-card"}`}
                 >
                   <div className={`space-y-1 leading-relaxed ${spec?.highlighted ? "font-semibold" : "font-normal"}`}>
                     {(spec?.values ?? ["—"]).map((value, index) => (
