@@ -58,8 +58,27 @@ describe("airconditioner lineup comparison table", () => {
       ["2등급"],
     ]);
   });
-  it("highlights only the unique advantages", () => {
+  it("highlights O cells in mixed O/X rows and unique advantages", () => {
     const highlighted = lineup.map((product) => product.specs.filter((spec) => spec.highlighted).map((spec) => spec.label));
-    expect(highlighted).toEqual([["필터클린봇"], [], [], ["뷰케이스(별매)"], ["뷰케이스(별매)"]]);
+    expect(highlighted).toEqual([
+      ["필터클린봇", "알러지케어 공기청정 필터", "공기청정"],
+      ["알러지케어 공기청정 필터", "공기청정"],
+      [],
+      ["알러지케어 공기청정 필터", "공기청정", "뷰케이스(별매)"],
+      ["뷰케이스(별매)"],
+    ]);
+  });
+  it("groups rows into the original section order", () => {
+    const groups = lineup[0]?.specs.map((spec) => spec.group);
+    expect(groups).toEqual([
+      "AI특화기능", "AI특화기능", "AI특화기능", "AI특화기능",
+      "냉방", "냉방",
+      "청정관리", "청정관리", "청정관리",
+      "셀프청정",
+      "공기청정",
+      "에너지등급",
+      "디자인", "디자인", "디자인",
+      "출시년도",
+    ]);
   });
 });
