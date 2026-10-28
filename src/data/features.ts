@@ -2177,6 +2177,7 @@ export const featuresMap: Record<string, Feature[]> = {
         "https://www.lge.co.kr/kr/images/common/pdp_multi_banner/images/bath-air-system/Banner_BathAir_InstallChk_B_PC_x2.png",
       fullWidthMedia: true,
       imageFit: "original",
+      description: "",
       highlights: [],
       mediaCollapsibleDisclaimers: [
         {
