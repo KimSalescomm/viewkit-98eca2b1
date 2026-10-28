@@ -10,6 +10,7 @@ import tvLineupGSeriesAsset from "@/assets/tv-lineup-g-series.png.asset.json";
 import tvLineupCSeriesAsset from "@/assets/tv-lineup-c-series.png.asset.json";
 import tvLineupBSeriesAsset from "@/assets/tv-lineup-b-series.png.asset.json";
 import { hydrotowerFeatures } from "@/data/hydrotowerFeatures";
+import { bathairLineupFeatures } from "@/data/bathairLineupFeatures";
 
 const bathairHomepageImage = bathairHomepageAsset.url;
 
@@ -1966,6 +1967,7 @@ export const featuresMap: Record<string, Feature[]> = {
 
   // 바스에어 특장점 (대외비 · SC/KOR 계정 전용 미리보기)
   bathair: [
+    ...bathairLineupFeatures,
     {
       id: "1",
       title: "듀얼배기, 무엇이 좋을까요?",
