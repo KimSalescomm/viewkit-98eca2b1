@@ -122,7 +122,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       },
       "10": {
         image: "https://static.lge.co.kr/kr/images/refrigerators/md10781901/refrigerator-lg-dios-ai-objet-d646-071-04-reason-direct-water-pc.jpg",
-        eyebrow: "구독 전문케어",
+        eyebrow: "가전 구독",
       },
       "9": {
         image: "https://www.lge.co.kr/kr/bestcare/service-installation-removal/images/img-refrigerators-step02.jpg",

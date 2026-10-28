@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { getFeaturesByProductId } from "@/data/features";
 import { applyCardOrder, productCardConfig } from "@/data/featureCardConfig";
 
-/** 구독(가전 구독 / 구독 전문케어) 카드가 있는 제품 */
+/** '가전 구독' 카드가 있는 제품 */
 const WITH_SUBSCRIPTION = [
   "hydrotower",
   "refrigerator",
