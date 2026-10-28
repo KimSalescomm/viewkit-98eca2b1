@@ -5,6 +5,10 @@
  * 문구만 수정할 때 id는 변경하지 마세요. 카드 순서는 featureCardConfig.ts에서 관리합니다.
  */
 import type { Feature } from "@/data/features";
+import acAiRadarVideo from "@/assets/ac-ai-radar.mp4.asset.json";
+import acAiRadarWebm from "@/assets/ac-ai-radar.webm.asset.json";
+import acAiRadarPoster from "@/assets/ac-ai-radar-poster.jpg.asset.json";
+
 
 export const airconditionerFeatures: Feature[] = [
     {
@@ -78,7 +82,10 @@ export const airconditionerFeatures: Feature[] = [
       icon: "Wind",
       tag: "AI바람",
       mediaType: "video",
-      mediaUrl: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_choice_02.mp4",
+      mediaUrl: acAiRadarVideo.url,
+      fallbackUrl: acAiRadarWebm.url,
+      posterImage: acAiRadarPoster.url,
+
       descriptionTitle: "원하는 온도는 기본, 나에게 맞는 기류까지",
       description:
         "더울 때는 빠르고 강력한 바람으로 바로 시원하게,\n시원해지면 잔잔하고 조용한 한쪽바람, 소프트바람으로 쾌적하게 유지해요.\n적정 온도에 맞춰 자동으로 조절하고,\n사용 패턴을 학습해 온도, 습도, 기류를 알아서 찾아줍니다.",
