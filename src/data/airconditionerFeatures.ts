@@ -4,56 +4,7 @@
  * highlights: 핵심만 쏙 / tabs: 탭별 내용 / disclaimers: 유의사항
  * 문구만 수정할 때 id는 변경하지 마세요. 카드 순서는 featureCardConfig.ts에서 관리합니다.
  */
-import type { Feature, ProductComparisonTable } from "@/data/features";
-import acLineupTower9 from "@/assets/ac-lineup-tower9.asset.json";
-import acLineupTower7 from "@/assets/ac-lineup-tower7.asset.json";
-import acLineupTower5 from "@/assets/ac-lineup-tower5.asset.json";
-import acLineupView6 from "@/assets/ac-lineup-view6.asset.json";
-import acLineupView5 from "@/assets/ac-lineup-view5.asset.json";
-
-/** 26년 LG 휘센 라인업 비교 (타워I 9·7·5, 뷰I 프로 6·5) — 공식 비교 이미지 기준 */
-const acLineups = [
-  { name: "타워I 9시리즈", category: "프리미엄 에어컨", imageUrl: acLineupTower9.url, tier: 9 },
-  { name: "타워I 7시리즈", category: "프리미엄 에어컨", imageUrl: acLineupTower7.url, tier: 7 },
-  { name: "타워I 5시리즈", category: "프리미엄 에어컨", imageUrl: acLineupTower5.url, tier: 5 },
-  { name: "뷰I 프로 6시리즈", category: "인테리어 에어컨", imageUrl: acLineupView6.url, tier: 6 },
-  { name: "뷰I 프로 5시리즈", category: "인테리어 에어컨", imageUrl: acLineupView5.url, tier: 55 },
-] as const;
-
-const support = (on: boolean) => (on ? "지원" : "미지원");
-
-const airConditionerLineupTable: ProductComparisonTable[] = acLineups.map(({ name, category, imageUrl, tier }) => {
-  const tower = tier === 9 || tier === 7 || tier === 5;
-  return {
-    name,
-    category,
-    imageUrl,
-    specs: [
-      { label: "레이더센서 (외출절전/홈모니터링)", values: ["지원"] },
-      {
-        label: "AI콜드프리",
-        values: [tier === 5 || tier === 55 ? "미지원" : "모델별 상이"],
-      },
-      { label: "AI수면", values: ["지원"] },
-      { label: "AI음성인식", values: [tower ? "지원 (본체/리모컨)" : "지원 (리모컨)"] },
-      { label: "AI바람", values: ["지원"] },
-      { label: "소프트바람", values: ["지원"] },
-      { label: "필터클린봇", values: [support(tier === 9)], highlighted: tier === 9 },
-      { label: "알러지케어 공기청정 필터", values: [support(tier === 9 || tier === 7 || tier === 6)] },
-      { label: "UV-LED 팬살균", values: [tower ? "지원" : "모델별 상이"] },
-      { label: "셀프청정/클린뷰", values: [tower ? "셀프청정" : "클린뷰"] },
-      { label: "공기청정", values: [tier === 9 || tier === 7 ? "지원 (PM1.0센서)" : tier === 6 ? "지원" : "미지원"] },
-      {
-        label: "에너지등급",
-        values: [tier === 9 || tier === 6 ? "1/2등급 (모델별 상이)" : "2등급"],
-      },
-      { label: "색상", values: [tower ? "카밍베이지/크림화이트" : "에센스화이트/카밍베이지"] },
-      { label: "뷰케이스(별매)", values: [support(!tower)], highlighted: !tower },
-      { label: "토출구 커버 자동개폐", values: ["지원"] },
-      { label: "출시년도", values: ["2026년"] },
-    ],
-  };
-});
+import type { Feature } from "@/data/features";
 import acAiRadarVideo from "@/assets/ac-ai-radar.mp4.asset.json";
 import acAiRadarWebm from "@/assets/ac-ai-radar.webm.asset.json";
 import acAiRadarPoster from "@/assets/ac-ai-radar-poster.jpg.asset.json";
@@ -151,7 +102,7 @@ export const airconditionerFeatures: Feature[] = [
     title: "휘센, 깨끗한 바람의 비결은?",
     subtitle: "바람이 지나가는 길을 꼼꼼하게 케어하는\n휘센 청정관리 시스템 덕분이죠",
     icon: "Sparkles",
-    tag: "청정 · UVnano",
+    tag: "청정관리",
     mediaType: "video",
     mediaUrl: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/25_Tower1_9s_Whisen_Detail_1.mp4",
     descriptionTitle: "눈에 보이지 않는 곳까지 알아서 관리해 언제나 깨끗한 바람이 나와요",
@@ -247,13 +198,17 @@ export const airconditionerFeatures: Feature[] = [
     icon: "Search",
     tag: "라인업 비교",
     mediaSectionTitle: "26년 LG 휘센 한눈에 비교하기",
-    mediaType: "table",
+    mediaType: "image",
     mediaUrl:
       "https://static.lge.co.kr/kr/images/common/pdp_lineup_compare/images/air-conditioners/whisen_type1_2026_line_up_pc.png",
     description:
       "타워I 9·7·5시리즈는 원하는 온도는 기본, 원하는 습도까지 AI로 더 편리해진 프리미엄 에어컨입니다.\n뷰I 프로 6·5시리즈는 공간 맞춤 냉방과 제습, 뷰케이스로 다양한 홈스타일링까지 가능한 인테리어 에어컨입니다.\n\nAI 특화기능(레이더센서·AI 콜드프리·AI 수면·AI 음성인식), 냉방(AI바람·소프트바람), 청정관리(필터클린봇·알러지케어 필터·UV-LED 팬살균), 셀프청정, 공기청정(PM1.0 센서), 에너지 등급, 색상·뷰케이스 등 항목별 사양을 비교해 우리 집에 맞는 모델을 선택해보세요.",
-    highlights: [],
-    tableData: airConditionerLineupTable,
+    highlights: [
+      "타워I 9시리즈 · 프리미엄 AI 에어컨",
+      "타워I 7·5시리즈 · 합리적 선택",
+      "뷰I 프로 6·5시리즈 · 인테리어 에어컨",
+      "전 모델 2026년 출시",
+    ],
     disclaimers: [
       "실제 판매 모델의 스펙과 다를 수 있으며, 매장 재고 및 시즌에 따라 라인업이 조정될 수 있습니다.",
       "상세 사양은 LG전자 공식 홈페이지의 최신 정보를 기준으로 확인해주세요.",
