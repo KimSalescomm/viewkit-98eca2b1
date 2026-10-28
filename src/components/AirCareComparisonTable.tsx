@@ -82,7 +82,9 @@ export default function AirCareComparisonTable({ products }: { products: Product
                       </span>
                     )}
                   </div>
-                  <span className="mt-1 flex min-h-5 items-center text-[0.825rem] font-medium">{product.category}</span>
+                  {showCategory && (
+                    <span className="mt-1 flex min-h-5 items-center text-[0.825rem] font-medium">{product.category}</span>
+                  )}
                 </div>
               </th>
             ))}
