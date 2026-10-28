@@ -70,12 +70,20 @@ export default function AirCareComparisonTable({ products }: { products: Product
     <div className="w-full overflow-x-auto rounded-lg border border-border bg-card">
       <table
         className="w-full table-fixed border-collapse text-sm text-foreground"
-        style={{ minWidth: `${Math.max(720, 110 + products.length * 140)}px` }}
+        style={{ minWidth: `${Math.max(720, 110 + products.length * 140 + (hasGroups ? 88 : 0))}px` }}
         aria-label="라인업 비교"
       >
         <thead>
           {/* 제품명 + 카테고리 행: 세 제품이 동일한 높이를 공유하는 독립 행 */}
           <tr>
+            {hasGroups && (
+              <th
+                scope="col"
+                rowSpan={hasImages ? 2 : 1}
+                className="w-[5.5rem] border-r border-b border-border bg-muted p-0 align-middle"
+                aria-label="구분"
+              />
+            )}
             <th
               scope="col"
               rowSpan={hasImages ? 2 : 1}
