@@ -399,6 +399,13 @@ const FeatureDetail = () => {
               ? "gallery"
               : activeTabData?.mediaType ?? feature.mediaType;
           const mainUrl = activeTabData?.mediaUrl ?? feature.mediaUrl;
+          const toggleVideo = activeTabData?.videoUrl ?? feature.videoUrl;
+          const showMediaToggle =
+            !!toggleVideo &&
+            mainType === "image" &&
+            !!mainUrl &&
+            !(activeTabData?.mediaSlides ?? feature.mediaSlides) &&
+            !(activeTabData?.galleryImages ?? feature.galleryImages);
 
           return (
             <>
@@ -407,7 +414,25 @@ const FeatureDetail = () => {
                   {feature.mediaSectionTitle}
                 </h2>
               )}
-              {mainType === "image" && mainUrl ? (
+              {showMediaToggle && <MediaKindToggle value={mediaKind} onChange={setMediaKind} />}
+              {showMediaToggle && mediaKind === "video" ? (
+                /* 영상: 사진/영상 토글의 영상 모드 */
+                <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
+                  <div onClick={onVideoClick}>
+                    <MediaViewer
+                      key={tabs ? `tab-${activeTab}-video` : "main-video"}
+                      mediaType="video"
+                      mediaUrl={toggleVideo}
+                      fallbackUrl={activeTabData?.videoFallbackUrl ?? feature.videoFallbackUrl}
+                      poster={activeTabData?.videoPosterImage ?? feature.videoPosterImage}
+                      title={feature.title}
+                      fullWidthMedia={feature.fullWidthMedia}
+                      videoAspectRatio={feature.videoAspectRatio ?? "16/9"}
+                      videoObjectFit={feature.videoObjectFit ?? "contain"}
+                    />
+                  </div>
+                </div>
+              ) : mainType === "image" && mainUrl ? (
                 /* 이미지: 블러 확장 배경 프레임 (클릭 시 확대) */
                 <div className="group relative mb-4 sm:mb-5">
                   <button

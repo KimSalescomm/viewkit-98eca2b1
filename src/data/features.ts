@@ -119,6 +119,12 @@ export interface FeatureTab {
   imagePosition?: string;
   videoAspectRatio?: string;
   videoObjectFit?: "cover" | "contain";
+  /** 사진/영상 전환 토글로 사진(mediaUrl)과 함께 보여주는 영상 */
+  videoUrl?: string;
+  /** 영상 재생 실패 시 사용할 대체 파일(WebM) */
+  videoFallbackUrl?: string;
+  /** 토글 영상의 포스터 이미지 */
+  videoPosterImage?: string;
   collapsibleDisclaimers?: CollapsibleDisclaimer[];
   /** 메인 미디어(영상) 아래에 표시할 이미지+설명 그리드 */
   mediaGallery?: GalleryImage[];
