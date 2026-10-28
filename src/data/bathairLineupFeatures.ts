@@ -47,7 +47,7 @@ const tableData: ProductComparisonTable[] = lineups.map(({ name, model, dual, pr
 export const bathairLineupFeatures: Feature[] = [
   {
     id: "8",
-    title: "LG 퓨리케어 바스에어시스템 한눈에 비교하기",
+    title: "우리집엔 어떤 제품이 맞을까요?",
     subtitle: "바스에어시스템의 라인업별 특장점, 핵심 기능, 주요 스펙을 아래 표로 확인해보세요.
     icon: "Search",
     tag: "라인업 비교",
