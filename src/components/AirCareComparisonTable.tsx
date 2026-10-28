@@ -46,6 +46,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
   const labels = products[0]?.specs.map((spec) => spec.label) ?? [];
   const rows = labels.map((label) => ({
     label,
+    group: products[0]?.specs.find((item) => item.label === label)?.group,
     hint: products[0]?.specs.find((item) => item.label === label)?.hint,
     entries: products.map((product) => ({
       product,
@@ -53,18 +54,36 @@ export default function AirCareComparisonTable({ products }: { products: Product
     })),
     compact: products.some((product) => product.specs.find((item) => item.label === label)?.compact),
   }));
+  // 같은 그룹명이 연속되는 행을 하나의 구분 셀로 묶기 위한 시작 위치와 길이
+  const hasGroups = rows.some((row) => Boolean(row.group));
+  const groupStarts = new Map<number, { name: string; span: number }>();
+  rows.forEach((row, index) => {
+    if (!row.group) return;
+    if (index > 0 && rows[index - 1].group === row.group) return;
+    let span = 1;
+    while (index + span < rows.length && rows[index + span].group === row.group) span += 1;
+    groupStarts.set(index, { name: row.group, span });
+  });
 
 
   return (
     <div className="w-full overflow-x-auto rounded-lg border border-border bg-card">
       <table
         className="w-full table-fixed border-collapse text-sm text-foreground"
-        style={{ minWidth: `${Math.max(720, 110 + products.length * 140)}px` }}
+        style={{ minWidth: `${Math.max(720, 110 + products.length * 140 + (hasGroups ? 88 : 0))}px` }}
         aria-label="라인업 비교"
       >
         <thead>
           {/* 제품명 + 카테고리 행: 세 제품이 동일한 높이를 공유하는 독립 행 */}
           <tr>
+            {hasGroups && (
+              <th
+                scope="col"
+                rowSpan={hasImages ? 2 : 1}
+                className="w-[5.5rem] border-r border-b border-border bg-muted p-0 align-middle"
+                aria-label="구분"
+              />
+            )}
             <th
               scope="col"
               rowSpan={hasImages ? 2 : 1}
@@ -105,8 +124,17 @@ export default function AirCareComparisonTable({ products }: { products: Product
           </tr>}
         </thead>
         <tbody>
-          {rows.map(({ label, entries, compact, hint }) => (
+          {rows.map(({ label, entries, compact, hint }, rowIndex) => (
             <tr key={label}>
+              {groupStarts.has(rowIndex) && (
+                <th
+                  scope="rowgroup"
+                  rowSpan={groupStarts.get(rowIndex)!.span}
+                  className="w-[5.5rem] border-r border-t border-border bg-muted px-2 py-3 align-middle text-xs font-bold leading-relaxed"
+                >
+                  {groupStarts.get(rowIndex)!.name}
+                </th>
+              )}
               <th
                 scope="row"
                 className={`w-[7.5rem] border-r border-t border-border bg-muted text-left align-middle font-semibold leading-relaxed ${compact ? "px-2 py-2 text-[0.6875rem]" : "px-3 py-3 text-xs"}`}
