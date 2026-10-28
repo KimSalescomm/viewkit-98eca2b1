@@ -437,7 +437,8 @@ const FeatureDetail = () => {
                       mediaUrl={mainUrl}
                       mediaSlides={activeTabData?.mediaSlides ?? feature.mediaSlides}
                       title={feature.title}
-                      tableData={feature.tableData}
+                      tableData={activeTabData?.tableData ?? feature.tableData}
+                      costTable={activeTabData?.costTable ?? feature.costTable}
                       galleryImages={activeTabData?.galleryImages ?? feature.galleryImages}
                       isShorts={activeTabData?.isShorts ?? feature.isShorts}
                       fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}

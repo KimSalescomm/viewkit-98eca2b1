@@ -13,6 +13,23 @@ import { hydrotowerFeatures } from "@/data/hydrotowerFeatures";
 
 const bathairHomepageImage = bathairHomepageAsset.url;
 
+/** 추가 설치 비용 표의 한 행 */
+export interface InstallCostRow {
+  item: string;
+  price: string;
+  unit: string;
+  description: string;
+}
+
+/** 행 기반 추가 설치 비용 표 */
+export interface InstallCostTable {
+  /** 표 우측 상단 기준 문구 (예: [단가 : 원, VAT 포함]) */
+  headerNote?: string;
+  rows: InstallCostRow[];
+  /** 표 하단 참고 문구 */
+  notes?: string[];
+}
+
 export interface ProductComparisonTable {
   name: string;
   imageUrl: string;
@@ -77,7 +94,9 @@ export interface FeatureTab {
   label: string;
   description?: string;
   descriptionTitle?: string;
-  mediaType?: "video" | "image" | "gallery" | "youtube";
+  mediaType?: "video" | "image" | "table" | "gallery" | "youtube";
+  tableData?: ProductComparisonTable[];
+  costTable?: InstallCostTable;
   mediaUrl?: string;
   posterImage?: string;
   fallbackUrl?: string;
@@ -140,6 +159,7 @@ export interface Feature {
   highlights: string[];
   highlightDetails?: Record<string, HighlightDetail>;
   tableData?: ProductComparisonTable[];
+  costTable?: InstallCostTable;
   galleryImages?: (string | GalleryImage)[];
   mediaSlides?: MediaSlide[];
   belowMediaImage?: { url: string; alt?: string; caption?: string };
@@ -2217,11 +2237,74 @@ export const featuresMap: Record<string, Feature[]> = {
         },
         {
           label: "추가 설치 비용",
-          description:
-            "기본 설치 비용은 제품 가격에 포함되어 있어요. 다만 타공, 덕트 연장, 콘센트 설치처럼 욕실 환경에 따라 추가 작업이 필요한 경우에는 아래 항목별 비용이 발생할 수 있어요.",
-          mediaType: "image",
+          mediaType: "table",
           mediaUrl: "/__l5e/assets-v1/6234ad47-4be2-4560-9908-9adc3359716f/bathair-install-cost.png",
-          imageFit: "original",
+          costTable: {
+            headerNote: "[단가 : 원, VAT 포함]",
+            rows: [
+              {
+                item: "신규 타공",
+                price: "10,000",
+                unit: "1개",
+                description:
+                  "욕실에 설치된 기존 환풍기 위치의 타공면을 활용하지 않고, 다른 위치에 새롭게 타공 작업 진행 시",
+              },
+              {
+                item: "덕트 추가 및 교체",
+                price: "10,000",
+                unit: "1M",
+                description:
+                  "욕실에 설치된 기존 환풍기의 덕트가 노후/파손 등의 이유로 교체 필요한 경우, 또는 덕트 길이가 짧아 제품 연결을 위해 연장이 필요한 경우",
+              },
+              {
+                item: "레듀샤(덕트 연결소켓)",
+                price: "5,000",
+                unit: "1개",
+                description:
+                  "욕실에 설치된 기존 환풍기의 덕트 구경이 작거나 커서 바스에어시스템 덕트 연결 구경과 결합이 안될 때 사용",
+              },
+              {
+                item: "콘센트 설치",
+                price: "7,000 / 10,000",
+                unit: "1구 / 2구",
+                description:
+                  "바스에어시스템, 배기팬 전원 공급을 위한 욕실 천장 내 전원선 체결 타입이 콘센트가 아닐 경우 또는 부족할 경우, 기존 욕실 천장 속고 내 콘센트가 방우형 타입이 아닐 경우",
+              },
+              {
+                item: "전원선 연장",
+                price: "10,000",
+                unit: "1M",
+                description: "바스에어시스템, 배기팬 전원 공급을 위한 욕실 천장 내 전원선이 짧아 연장이 필요할 경우",
+              },
+              {
+                item: "천장 보강 작업",
+                price: "20,000",
+                unit: "1식",
+                description:
+                  "제품 설치를 위해 욕실 천장의 구조물 M-bar(경량철골) 등을 절단하여 보강이 필요하다고 판단될 경우, 또는 제품 설치로 인해 천장 처짐 발생 우려로 보강이 필요하다고 판단될 경우",
+              },
+              {
+                item: "점검구 설치",
+                price: "50,000",
+                unit: "1개",
+                description: "(※ 바스에어시스템, 배기팬 이전 설치 시) 욕실 천장 인테리어 마감용 점검구 설치 시",
+              },
+              {
+                item: "기존 제품 재설치",
+                price: "10,000",
+                unit: "1대",
+                description:
+                  "(※ 바스에어시스템, 배기팬 이전 설치 시) 바스에어시스템에 연결된 덕트를 기존 환풍기에 연결(전원포함) 작업 필요시",
+              },
+            ],
+            notes: [
+              "기존 환풍기는 바스에어시스템 설치 전 사용하던 제품 또는 별도 구입한 제품을 의미합니다.",
+              "기본 설치 비용은 제품 가격에 포함되어 있습니다.",
+              "구독 이전 설치는 유상 지원(판토스)으로 제품 이전에 따른 천장 복구 비용은 고객 부담입니다.",
+              "구독 이전 설치 신청은 판토스 홈페이지 또는 LG전자서비스센터(1544-7777)를 통해 신청할 수 있습니다.",
+              "구독 이전 설치 과정은 이전 설치 신청 > 일정 조율 및 예약 > 철거 & 설치 > 시운전 & 고객 인도 순서로 진행됩니다.",
+            ],
+          },
         },
       ],
 
