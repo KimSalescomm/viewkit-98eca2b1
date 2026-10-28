@@ -77,7 +77,7 @@ export const airconditionerFeatures: Feature[] = [
     title: "에어컨 바람,\n원하는대로 맞출 수 있다고요?",
     subtitle: "AI가 사용 패턴과 공간을 분석해\n온도와 바람 방향까지 알아서 맞춰줘요.",
     icon: "Wind",
-    tag: "AI바람 - 레이더센",
+    tag: "AI바람 - 레이더센서",
     mediaType: "video",
     mediaUrl: acAiRadarVideo.url,
     fallbackUrl: acAiRadarWebm.url,
