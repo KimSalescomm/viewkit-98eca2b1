@@ -48,7 +48,7 @@ export const bathairLineupFeatures: Feature[] = [
   {
     id: "8",
     title: "LG 퓨리케어 바스에어시스템 한눈에 비교하기",
-    subtitle: "바스에어시스템의 라인업별 특장점, 핵심 기능, 주요 스펙 등을 아래 표로 확인하고\n나의 라이프스타일에 맞는 바스에어시스템을 선택해 보세요.",
+    subtitle: "바스에어시스템의 라인업별 특장점, 핵심 기능, 주요 스펙을 아래 표로 확인해보세요.
     icon: "Search",
     tag: "라인업 비교",
     mediaType: "table",
