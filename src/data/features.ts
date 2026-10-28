@@ -23,6 +23,8 @@ export interface InstallCostRow {
 
 /** 행 기반 추가 설치 비용 표 */
 export interface InstallCostTable {
+  /** 표 위 제목 (예: 바스에어시스템 추가 설치 비용) */
+  title?: string;
   /** 표 우측 상단 기준 문구 (예: [단가 : 원, VAT 포함]) */
   headerNote?: string;
   rows: InstallCostRow[];
@@ -2253,6 +2255,7 @@ export const featuresMap: Record<string, Feature[]> = {
           mediaType: "table",
           mediaUrl: "/__l5e/assets-v1/6234ad47-4be2-4560-9908-9adc3359716f/bathair-install-cost.png",
           costTable: {
+            title: "바스에어시스템 추가 설치 비용",
             headerNote: "[단가 : 원, VAT 포함]",
             rows: [
               {
