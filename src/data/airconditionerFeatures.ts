@@ -13,7 +13,7 @@ import acAiRadarPoster from "@/assets/ac-ai-radar-poster.jpg.asset.json";
 export const airconditionerFeatures: Feature[] = [
     {
       id: "23",
-      title: "에어컨 구독은 왜 좋을까요?",
+      title: "에어컨을 구독하면\n무엇이 좋을까요?",
       subtitle: "라이트플러스와 프리미엄 케어를\n영상으로 비교해 보세요.",
       icon: "Gift",
       tag: "가전 구독",
