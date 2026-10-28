@@ -41,6 +41,8 @@ function LabelHint({ text }: { text: string }) {
 
 export default function AirCareComparisonTable({ products }: { products: ProductComparisonTable[] }) {
   const hasImages = products.some((product) => Boolean(product.imageUrl));
+  // 세 제품 모두 같은 이름이면 헤더에 같은 카테고리를 세 번 반복하지 않는다.
+  const showCategory = new Set(products.map((product) => product.category)).size > 1;
   const labels = products[0]?.specs.map((spec) => spec.label) ?? [];
   const rows = labels.map((label) => ({
     label,
@@ -80,7 +82,9 @@ export default function AirCareComparisonTable({ products }: { products: Product
                       </span>
                     )}
                   </div>
-                  <span className="mt-1 flex min-h-5 items-center text-[0.825rem] font-medium">{product.category}</span>
+                  {showCategory && (
+                    <span className="mt-1 flex min-h-5 items-center text-[0.825rem] font-medium">{product.category}</span>
+                  )}
                 </div>
               </th>
             ))}

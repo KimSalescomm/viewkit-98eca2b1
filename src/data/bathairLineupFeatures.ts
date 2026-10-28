@@ -1,17 +1,18 @@
 import type { Feature, ProductComparisonTable } from "@/data/features";
 import bathairHomepage from "@/assets/bathair-homepage.jpg.asset.json";
+import premiumDualPhoto from "@/assets/bathair-lineup-premium-dual.png.asset.json";
+import premiumPhoto from "@/assets/bathair-lineup-premium.png.asset.json";
 
 const lineups = [
-  { name: "프리미엄 듀얼", model: "MX0120BASV", dual: true, premium: true },
-  { name: "프리미엄", model: "M-X0120BASV", dual: false, premium: true },
-  { name: "일반", model: "M-X0120BASA", dual: false, premium: false },
+  { name: "프리미엄 듀얼", model: "MX0120BASV", dual: true, premium: true, imageUrl: premiumDualPhoto.url },
+  { name: "프리미엄", model: "M-X0120BASV", dual: false, premium: true, imageUrl: premiumPhoto.url },
+  { name: "일반", model: "M-X0120BASA", dual: false, premium: false, imageUrl: premiumPhoto.url },
 ];
 
-const tableData: ProductComparisonTable[] = lineups.map(({ name, model, dual, premium }) => ({
+const tableData: ProductComparisonTable[] = lineups.map(({ name, model, dual, premium, imageUrl }) => ({
   name,
   category: "바스에어시스템",
-  // No model-specific photos were supplied; do not imply identical model imagery.
-  imageUrl: "",
+  imageUrl,
   specs: [
     { label: "모델명", values: [model] },
     {
