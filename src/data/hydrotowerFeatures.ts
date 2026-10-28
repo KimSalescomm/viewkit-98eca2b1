@@ -233,6 +233,7 @@ export const hydrotowerFeatures: Feature[] = [
           {
             label: "추천 상황",
             values: ["넓은 거실부터 침실까지", "공기청정과 가습을 함께 관리하고 싶은 경우"],
+            emphasizeFirst: true,
           },
           { label: "색상", values: ["네오 실버", "카밍 베이지"] },
           { label: "최대 가습량", values: ["850 cc/hr"], highlighted: true },
@@ -257,6 +258,7 @@ export const hydrotowerFeatures: Feature[] = [
           {
             label: "추천 상황",
             values: ["침실이나 안방 등에서", "깨끗한 물로 습도를 관리하고 싶은 경우"],
+            emphasizeFirst: true,
           },
           { label: "색상", values: ["카밍 베이지", "에센스 화이트"] },
           { label: "최대 가습량", values: ["700 cc/hr"] },
@@ -281,6 +283,7 @@ export const hydrotowerFeatures: Feature[] = [
           {
             label: "추천 상황",
             values: ["넓은 거실 등에서", "미세먼지와 유해가스까지 관리하고 싶은 경우"],
+            emphasizeFirst: true,
           },
           { label: "색상", values: ["카밍 베이지", "네이처 그린"] },
           { label: "최대 가습량", values: ["미지원"] },
