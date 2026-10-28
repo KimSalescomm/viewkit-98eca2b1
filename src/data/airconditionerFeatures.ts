@@ -22,12 +22,16 @@ const acLineups = [
 
 const support = (on: boolean) => (on ? "O" : "X");
 
-const airConditionerLineupTable: ProductComparisonTable[] = acLineups.map(({ name, category, imageUrl, tier }) => {
+const airConditionerLineupTable: ProductComparisonTable[] = acLineups.map(
+  ({ name, category, imageUrl, tier }, index) => {
   const tower = tier === 9 || tier === 7 || tier === 5;
   return {
     name,
     category,
     imageUrl,
+    ...(index === 0 ? { cornerLabel: "모델라인업" } : {}),
+    hideCategoryLine: true,
+
     specs: [
       { label: "레이더센서 (외출절전/홈모니터링)", group: "AI특화기능", values: ["O"] },
       {
@@ -262,8 +266,8 @@ export const airconditionerFeatures: Feature[] = [
     mediaType: "table",
     mediaUrl:
       "https://static.lge.co.kr/kr/images/common/pdp_lineup_compare/images/air-conditioners/whisen_type1_2026_line_up_pc.png",
-    description:
-      "타워I 9·7·5시리즈는 원하는 온도는 기본, 원하는 습도까지 AI로 더 편리해진 프리미엄 에어컨입니다.\n뷰I 프로 6·5시리즈는 공간 맞춤 냉방과 제습, 뷰케이스로 다양한 홈스타일링까지 가능한 인테리어 에어컨입니다.\n\nAI 특화기능(레이더센서·AI 콜드프리·AI 수면·AI 음성인식), 냉방(AI바람·소프트바람), 청정관리(필터클린봇·알러지케어 필터·UV-LED 팬살균), 셀프청정, 공기청정(PM1.0 센서), 에너지 등급, 색상·뷰케이스 등 항목별 사양을 비교해 우리 집에 맞는 모델을 선택해보세요.",
+    description: "",
+
     highlights: [],
     tableData: airConditionerLineupTable,
     disclaimers: [

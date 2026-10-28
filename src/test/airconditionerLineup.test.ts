@@ -25,6 +25,13 @@ describe("airconditioner lineup comparison table", () => {
       "인테리어 에어컨",
     ]);
   });
+  it("marks the merged corner cell as 모델라인업 without a category line or description box", () => {
+    expect(lineup[0]?.cornerLabel).toBe("모델라인업");
+    expect(lineup.filter((product) => product.cornerLabel)).toHaveLength(1);
+    expect(lineup.every((product) => product.hideCategoryLine)).toBe(true);
+    expect(feature?.description).toBe("");
+  });
+
   it("supports 필터클린봇 only on 타워I 9시리즈", () => {
     expect(values("필터클린봇")).toEqual([["O"], ["X"], ["X"], ["X"], ["X"]]);
   });
