@@ -22,6 +22,12 @@ export const bathairFeatures: Feature[] = [
     mediaUrl: "https://www.lge.co.kr/kr/usp_dcr/Bath%20Air%20System/new/MX0120BASV_160CMH_pc.jpg",
     fullWidthMedia: true,
     imageFit: "original",
+    /** 사진/영상 토글: 영상 모드에서 재생하는 공식 영상 */
+    videoUrl: dualExhaustVideo.url,
+    videoFallbackUrl: dualExhaustWebm.url,
+    videoPosterImage: dualExhaustPoster.url,
+    videoAspectRatio: "16/9",
+    videoObjectFit: "contain",
     description:
       "강력한 듀얼배기로 욕실의 습기를 단 16분 만에 60%까지 낮춰요, 최대 풍량 160CMH로 빠르게 습기를 제거해 금방 보송해져요.",
     highlights: [],

@@ -11,6 +11,7 @@ import FeatureTabs from "@/components/FeatureTabs";
 
 import SafeImage from "@/components/SafeImage";
 import BlurMediaFrame from "@/components/BlurMediaFrame";
+import MediaKindToggle, { type MediaKind } from "@/components/MediaKindToggle";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { useContent } from "@/contexts/ContentContext";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
@@ -117,6 +118,13 @@ const FeatureDetail = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [zoomUrl, setZoomUrl] = useState<string | null>(null);
+  /** 사진/영상 전환 토글의 현재 표시 유형 */
+  const [mediaKind, setMediaKind] = useState<MediaKind>("image");
+
+  // 다른 특장점이나 탭으로 이동하면 사진 모드로 복귀
+  useEffect(() => {
+    setMediaKind("image");
+  }, [productId, id, activeTab]);
 
   // 트루스팀 적용 코스 캐러셀
   const [courseIndex, setCourseIndex] = useState(0);
