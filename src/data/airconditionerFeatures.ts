@@ -5,11 +5,11 @@
  * 문구만 수정할 때 id는 변경하지 마세요. 카드 순서는 featureCardConfig.ts에서 관리합니다.
  */
 import type { Feature, ProductComparisonTable } from "@/data/features";
-import acLineupTower9 from "@/assets/ac-lineup-tower9.png.asset.json";
-import acLineupTower7 from "@/assets/ac-lineup-tower7.png.asset.json";
-import acLineupTower5 from "@/assets/ac-lineup-tower5.png.asset.json";
-import acLineupView6 from "@/assets/ac-lineup-view6.png.asset.json";
-import acLineupView5 from "@/assets/ac-lineup-view5.png.asset.json";
+import acLineupTower9 from "@/assets/ac-lineup-tower9.asset.json";
+import acLineupTower7 from "@/assets/ac-lineup-tower7.asset.json";
+import acLineupTower5 from "@/assets/ac-lineup-tower5.asset.json";
+import acLineupView6 from "@/assets/ac-lineup-view6.asset.json";
+import acLineupView5 from "@/assets/ac-lineup-view5.asset.json";
 
 /** 26년 LG 휘센 라인업 비교 (타워I 9·7·5, 뷰I 프로 6·5) — 공식 비교 이미지 기준 */
 const acLineups = [
