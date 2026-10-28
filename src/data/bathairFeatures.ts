@@ -378,7 +378,7 @@ export const bathairFeatures: Feature[] = [
   },
   {
     id: "7",
-    title: "바스에어시스템을 구독하면\n 무엇이 좋을까요?",
+    title: "바스에어시스템을 구독하면\n무엇이 좋을까요?",
     subtitle: "체계적인 전문가의 케어를 받으면 더욱 위생적으로 관리할 수 있어요.",
     icon: "Waves",
     tag: "가전 구독",

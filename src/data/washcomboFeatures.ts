@@ -306,7 +306,7 @@ export const washcomboFeatures: Feature[] = [
     },
     {
       id: "7",
-      title: "워시콤보 구독하면\n무엇이 좋을까요?",
+      title: "워시콤보를 구독하면\n무엇이 좋을까요?",
       subtitle: "가전 케어 매니저가 보이지 않는 부분까지 꼼꼼하게 관리해줘요.",
       icon: "Wrench",
       tag: "가전 구독",

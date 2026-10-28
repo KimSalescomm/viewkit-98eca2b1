@@ -295,7 +295,7 @@ export const vacuumFeatures: Feature[] = [
     },
     {
       id: "7",
-      title: "구독, \n더 편해질까요?",
+      title: "청소로봇을 구독하면\n무엇이 좋을까요?",
       subtitle: "구독으로 편하게,\n전문가가 관리해요",
       icon: "Wrench",
       tag: "가전 구독",
