@@ -440,6 +440,7 @@ const FeatureDetail = () => {
                       tableData={activeTabData?.tableData ?? feature.tableData}
                       costTable={activeTabData?.costTable ?? feature.costTable}
                       galleryImages={activeTabData?.galleryImages ?? feature.galleryImages}
+                      galleryImageMaxHeight={activeTabData?.galleryImageMaxHeight ?? feature.galleryImageMaxHeight}
                       isShorts={activeTabData?.isShorts ?? feature.isShorts}
                       fallbackUrl={activeTabData?.fallbackUrl ?? feature.fallbackUrl}
                       imagePosition={activeTabData?.imagePosition}
