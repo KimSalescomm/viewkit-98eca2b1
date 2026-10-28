@@ -105,7 +105,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
             <tr key={label}>
               <th
                 scope="row"
-                className={`w-[7.5rem] border-r border-t border-border bg-muted align-middle font-semibold leading-relaxed ${compact ? "px-2 py-2 text-[0.6875rem]" : "px-3 py-3 text-xs"}`}
+                className={`w-[7.5rem] border-r border-t border-border bg-muted text-left align-middle font-semibold leading-relaxed ${compact ? "px-2 py-2 text-[0.6875rem]" : "px-3 py-3 text-xs"}`}
               >
                 <div className="relative flex items-center gap-1">
                   <span>{label}</span>
@@ -122,7 +122,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
                     {(spec?.values ?? ["—"]).map((value, index) => (
                       <p
                         key={index}
-                        className={`${compact ? "whitespace-nowrap" : ""} ${label === "추천 상황" && index === 0 ? "font-semibold" : ""}`}
+                        className={`${compact ? "whitespace-nowrap" : ""} ${spec?.emphasizeFirst && index === 0 ? "font-semibold" : ""}`}
                       >
                         {value}
                       </p>

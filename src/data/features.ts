@@ -47,6 +47,8 @@ export interface ProductComparisonTable {
     compact?: boolean;
     /** 항목명 옆 정보 아이콘(i)에 보여주는 표기 설명 */
     hint?: string;
+    /** 값의 첫 줄만 굵게 표시 (제품별 추천 상황 등) */
+    emphasizeFirst?: boolean;
 
   }[];
 }
