@@ -95,6 +95,7 @@ export interface FeatureTab {
   description?: string;
   descriptionTitle?: string;
   mediaType?: "video" | "image" | "table" | "gallery" | "youtube";
+  tableData?: ProductComparisonTable[];
   costTable?: InstallCostTable;
   mediaUrl?: string;
   posterImage?: string;
