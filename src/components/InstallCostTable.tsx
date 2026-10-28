@@ -7,6 +7,9 @@ import { InstallCostTable } from "@/data/features";
 const InstallCostTableView = ({ data }: { data: InstallCostTable }) => {
   return (
     <div className="w-full px-4 py-5 sm:px-6 sm:py-6">
+      {data.title && (
+        <h3 className="mb-3 text-[16px] font-bold text-gray-900 sm:text-[17px]">{data.title}</h3>
+      )}
       {data.headerNote && (
         <p className="mb-2 text-right text-[12px] font-medium text-gray-500">{data.headerNote}</p>
       )}
