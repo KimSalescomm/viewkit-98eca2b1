@@ -1,6 +1,6 @@
 # Project conventions
 
-- Keep new product feature collections in focused data modules and register them in the shared features map; this preserves the existing three-level product navigation without enlarging the legacy data file.
+- Keep all product feature collections in product-specific `src/data/*Features.ts` modules and register them in `features.ts`, which retains shared types, icons and lookup exports; this makes copy editing discoverable without changing navigation or existing consumers. Use `docs/content-editing.md` as the editing path index and preserve IDs during copy-only changes.
 - Store downloaded official media as immutable asset pointers and import their URLs; this keeps published product content independent of external image hosting failures.
 - Render category-based air-care comparisons in a semantic row-based table with explicit per-spec advantage flags; this guarantees aligned rows without inferring superiority from differing values and preserves legacy comparisons.
 - Omit the shared comparison table's image row when no model-specific images are supplied; this avoids misleading repeated product imagery while preserving existing illustrated comparisons.
