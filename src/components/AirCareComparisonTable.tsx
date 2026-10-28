@@ -42,7 +42,12 @@ function LabelHint({ text }: { text: string }) {
 export default function AirCareComparisonTable({ products }: { products: ProductComparisonTable[] }) {
   const hasImages = products.some((product) => Boolean(product.imageUrl));
   // 세 제품 모두 같은 이름이면 헤더에 같은 카테고리를 세 번 반복하지 않는다.
-  const showCategory = new Set(products.map((product) => product.category)).size > 1;
+  // 좌상단에 모델라인업 같은 구분자를 쓰는 표는 제품명 아래 카테고리 줄을 숨긴다.
+  const cornerLabel = products.find((product) => product.cornerLabel)?.cornerLabel;
+  const showCategory =
+    !products.some((product) => product.hideCategoryLine) &&
+    new Set(products.map((product) => product.category)).size > 1;
+
   const labels = products[0]?.specs.map((spec) => spec.label) ?? [];
   const rows = labels.map((label) => ({
     label,
@@ -73,23 +78,28 @@ export default function AirCareComparisonTable({ products }: { products: Product
         style={{ minWidth: `${Math.max(720, 110 + products.length * 126 + (hasGroups ? 76 : 0))}px` }}
         aria-label="라인업 비교"
       >
+        <colgroup>
+          {hasGroups && <col className="w-[5.5rem]" />}
+          <col className="w-[7.5rem]" />
+        </colgroup>
         <thead>
           {/* 제품명 + 카테고리 행: 세 제품이 동일한 높이를 공유하는 독립 행 */}
           <tr>
-            {hasGroups && (
-              <th
-                scope="col"
-                rowSpan={hasImages ? 2 : 1}
-                className="w-[5.5rem] border-r border-b border-border bg-muted p-0 align-middle"
-                aria-label="구분"
-              />
-            )}
+            {/* 구분 열과 항목 열을 하나의 좌상단 셀로 묶어 표의 시작을 알려준다. */}
             <th
               scope="col"
               rowSpan={hasImages ? 2 : 1}
-              className="w-[7.5rem] border-r border-b border-border bg-muted p-0 align-middle"
-              aria-label="항목"
-            />
+              colSpan={hasGroups ? 2 : 1}
+              className="border-r border-b border-border bg-muted p-0 align-middle"
+              aria-label={cornerLabel ?? "항목"}
+            >
+              {cornerLabel && (
+                <div className="px-2 py-4 text-center text-xs font-bold leading-relaxed">
+                  {cornerLabel}
+                </div>
+              )}
+            </th>
+
             {products.map((product) => (
               <th
                 key={product.name}

@@ -36,6 +36,11 @@ export interface ProductComparisonTable {
   category?: string;
   /** 대표 추천 제품에만 표시하는 BEST 배지 플래그 */
   best?: boolean;
+  /** 좌상단 빈 칸 대신 표시하는 구분자 문구 (예: 모델라인업). 첫 모델에만 지정한다. */
+  cornerLabel?: string;
+  /** 제품명 아래 카테고리 줄을 숨김 (좌상단 구분자로 모델 구분을 대체할 때) */
+  hideCategoryLine?: boolean;
+
   specs: {
     label: string;
     /** 같은 그룹명이 연속되면 표 왼쪽에 하나의 구분 셀로 묶어 표시 (예: AI특화기능) */
