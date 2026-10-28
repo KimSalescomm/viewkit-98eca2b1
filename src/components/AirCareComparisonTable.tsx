@@ -46,6 +46,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
   const labels = products[0]?.specs.map((spec) => spec.label) ?? [];
   const rows = labels.map((label) => ({
     label,
+    group: products[0]?.specs.find((item) => item.label === label)?.group,
     hint: products[0]?.specs.find((item) => item.label === label)?.hint,
     entries: products.map((product) => ({
       product,
@@ -53,6 +54,16 @@ export default function AirCareComparisonTable({ products }: { products: Product
     })),
     compact: products.some((product) => product.specs.find((item) => item.label === label)?.compact),
   }));
+  // 같은 그룹명이 연속되는 행을 하나의 구분 셀로 묶기 위한 시작 위치와 길이
+  const hasGroups = rows.some((row) => Boolean(row.group));
+  const groupStarts = new Map<number, { name: string; span: number }>();
+  rows.forEach((row, index) => {
+    if (!row.group) return;
+    if (index > 0 && rows[index - 1].group === row.group) return;
+    let span = 1;
+    while (index + span < rows.length && rows[index + span].group === row.group) span += 1;
+    groupStarts.set(index, { name: row.group, span });
+  });
 
 
   return (
