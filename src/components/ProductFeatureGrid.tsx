@@ -5,7 +5,7 @@ import SafeImage from "@/components/SafeImage";
 import { useFeatureLikeCounts } from "@/hooks/useFeatureLikeCounts";
 import { logFeatureReaction } from "@/utils/featureReactionLog";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
-import { productCardConfig } from "@/data/featureCardConfig";
+import { applyCardOrder, productCardConfig } from "@/data/featureCardConfig";
 import type { Feature } from "@/data/features";
 
 /**
@@ -78,14 +78,10 @@ const ProductFeatureGrid = ({
 
   const config = productCardConfig[productId] ?? {};
 
-  const ordered = useMemo(() => {
-    const order = config.order;
-    if (!order || order.length === 0) return features;
-    const byId = new Map(features.map((f) => [f.id, f]));
-    const sorted = order.map((fid) => byId.get(fid)).filter(Boolean) as Feature[];
-    const rest = features.filter((f) => !order.includes(f.id));
-    return [...sorted, ...rest];
-  }, [features, config.order]);
+  const ordered = useMemo(
+    () => applyCardOrder(features, config.order),
+    [features, config.order],
+  );
 
   const likeCount = (id: string) =>
     (counts[id] ?? config.fallbackLikes?.[id] ?? 0) + (localLikes[id] ?? 0);

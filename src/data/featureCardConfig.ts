@@ -31,6 +31,18 @@ export interface ProductCardConfig {
   fallbackLikes?: Record<string, number>;
 }
 
+/**
+ * 카드 노출 순서를 적용합니다.
+ * order에 적힌 featureId 순서대로 앞에 배치하고, 적히지 않은 카드는 원래 순서대로 뒤에 붙입니다.
+ */
+export const applyCardOrder = <T extends { id: string }>(features: T[], order?: string[]): T[] => {
+  if (!order || order.length === 0) return features;
+  const byId = new Map(features.map((f) => [f.id, f]));
+  const sorted = order.map((id) => byId.get(id)).filter(Boolean) as T[];
+  const rest = features.filter((f) => !order.includes(f.id));
+  return [...sorted, ...rest];
+};
+
 export const productCardConfig: Record<string, ProductCardConfig> = {
   bathair: {
     order: ["7", "5", "4", "1", "2", "6", "8"],
@@ -98,6 +110,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     },
   },
   refrigerator: {
+    order: ["10", "7", "8", "9", "11", "12", "13"],
     cards: {
       "7": {
         image: "https://static.lge.co.kr/kr/images/refrigerators/md10364835/M875_filter_pc.jpg",
@@ -234,6 +247,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     },
   },
   hydrotower: {
+    order: ["1", "2", "3", "4", "5", "6"],
     cards: {
       "5": {
         image: "/__l5e/assets-v1/1c7a7d77-f60c-46d5-8b25-5369e06f0614/hydrotower-360-filter-thumb.png",
