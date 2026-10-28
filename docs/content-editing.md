@@ -34,7 +34,7 @@
 찾으려는 카드의 현재 제목이나 `id`로 파일 안에서 검색하세요. 예: `/product/washcombo/feature/7`은 `washcomboFeatures.ts`의 `id: "7"`입니다. 워시타워 주소의 제품 ID는 `ai-washtower`이고 문구 파일명은 `washtowerFeatures.ts`입니다.
 
 ```ts
-title: "워시콤보 구독하면\n무엇이 좋을까요?",
+title: "워시콤보를 구독하면\n무엇이 좋을까요?",
 subtitle: "가전 케어 매니저가 보이지 않는 부분까지 꼼꼼하게 관리해줘요.",
 ```
 
