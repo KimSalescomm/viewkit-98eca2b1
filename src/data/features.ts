@@ -13,6 +13,23 @@ import { hydrotowerFeatures } from "@/data/hydrotowerFeatures";
 
 const bathairHomepageImage = bathairHomepageAsset.url;
 
+/** 추가 설치 비용 표의 한 행 */
+export interface InstallCostRow {
+  item: string;
+  price: string;
+  unit: string;
+  description: string;
+}
+
+/** 행 기반 추가 설치 비용 표 */
+export interface InstallCostTable {
+  /** 표 우측 상단 기준 문구 (예: [단가 : 원, VAT 포함]) */
+  headerNote?: string;
+  rows: InstallCostRow[];
+  /** 표 하단 참고 문구 */
+  notes?: string[];
+}
+
 export interface ProductComparisonTable {
   name: string;
   imageUrl: string;
@@ -77,7 +94,8 @@ export interface FeatureTab {
   label: string;
   description?: string;
   descriptionTitle?: string;
-  mediaType?: "video" | "image" | "gallery" | "youtube";
+  mediaType?: "video" | "image" | "table" | "gallery" | "youtube";
+  costTable?: InstallCostTable;
   mediaUrl?: string;
   posterImage?: string;
   fallbackUrl?: string;
@@ -140,6 +158,7 @@ export interface Feature {
   highlights: string[];
   highlightDetails?: Record<string, HighlightDetail>;
   tableData?: ProductComparisonTable[];
+  costTable?: InstallCostTable;
   galleryImages?: (string | GalleryImage)[];
   mediaSlides?: MediaSlide[];
   belowMediaImage?: { url: string; alt?: string; caption?: string };
