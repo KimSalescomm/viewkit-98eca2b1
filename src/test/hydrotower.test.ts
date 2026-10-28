@@ -180,7 +180,7 @@ describe("hydrotower product navigation data", () => {
 
   it("shows the lineup comparison headline and lead copy", () => {
     const feature = getFeatureById("hydrotower", "6");
-    expect(feature?.title).toBe("우리집엔 어떤\n에어케어 제품이 맞을까?");
+    expect(feature?.title).toBe("우리집엔 어떤\n에어케어 제품이 맞을까요?");
     expect(feature?.subtitle).toBe("하이드로타워 Max, 하이드로타워, 360˚공기청정기 M7의\n차이를 한눈에 비교해보세요.");
   });
 
