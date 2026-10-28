@@ -2219,23 +2219,23 @@ export const featuresMap: Record<string, Feature[]> = {
           galleryImageMaxHeight: 520,
           galleryImages: [
             {
-              url: "/__l5e/assets-v1/6db819de-8818-4cf4-b983-34dc7c73ea83/bathair-install-check1-v2.png",
+              url: "/__l5e/assets-v1/431348cd-6464-4b11-b969-340b30068c02/bathair-install-check1-v3.png",
               title: "체크 1 · 기존 환풍기의 위치를 확인해 주세요",
             },
             {
-              url: "/__l5e/assets-v1/360d867e-ad31-416a-a5e6-a2e41f159254/bathair-install-check2-v2.png",
+              url: "/__l5e/assets-v1/895cf99c-b650-434d-83de-3cc85ba15096/bathair-install-check2-v3.png",
               title: "체크 2 · 기존 환풍기가 멀티 배기형인가요?",
             },
             {
-              url: "/__l5e/assets-v1/2da6507a-699c-4fff-917c-2c785c752e83/bathair-install-check3-v2.png",
+              url: "/__l5e/assets-v1/74197998-e939-4e28-b5ad-1546271bbe51/bathair-install-check3-v3.png",
               title: "체크 3 · 욕실 천장의 구조와 재질을 확인해 주세요",
             },
             {
-              url: "/__l5e/assets-v1/0e8a5c12-1b7a-46b4-ba12-6669448cd2c7/bathair-install-check4-v2.png",
+              url: "/__l5e/assets-v1/4ce45c19-fed2-4a33-82e5-573dac385715/bathair-install-check4-v3.png",
               title: "체크 4 · 제품 설치 공간을 확인해 주세요",
             },
             {
-              url: "/__l5e/assets-v1/2304bf54-cbd1-4869-9db6-41e391900654/bathair-install-check5-v2.png",
+              url: "/__l5e/assets-v1/ff08b5c4-5a38-4ded-a57c-b5864d540abe/bathair-install-check5-v3.png",
               title: "체크 5 · 기타 주의사항",
             },
           ],
