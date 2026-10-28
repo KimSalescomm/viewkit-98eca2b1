@@ -198,17 +198,13 @@ export const airconditionerFeatures: Feature[] = [
     icon: "Search",
     tag: "라인업 비교",
     mediaSectionTitle: "26년 LG 휘센 한눈에 비교하기",
-    mediaType: "image",
+    mediaType: "table",
     mediaUrl:
       "https://static.lge.co.kr/kr/images/common/pdp_lineup_compare/images/air-conditioners/whisen_type1_2026_line_up_pc.png",
     description:
       "타워I 9·7·5시리즈는 원하는 온도는 기본, 원하는 습도까지 AI로 더 편리해진 프리미엄 에어컨입니다.\n뷰I 프로 6·5시리즈는 공간 맞춤 냉방과 제습, 뷰케이스로 다양한 홈스타일링까지 가능한 인테리어 에어컨입니다.\n\nAI 특화기능(레이더센서·AI 콜드프리·AI 수면·AI 음성인식), 냉방(AI바람·소프트바람), 청정관리(필터클린봇·알러지케어 필터·UV-LED 팬살균), 셀프청정, 공기청정(PM1.0 센서), 에너지 등급, 색상·뷰케이스 등 항목별 사양을 비교해 우리 집에 맞는 모델을 선택해보세요.",
-    highlights: [
-      "타워I 9시리즈 · 프리미엄 AI 에어컨",
-      "타워I 7·5시리즈 · 합리적 선택",
-      "뷰I 프로 6·5시리즈 · 인테리어 에어컨",
-      "전 모델 2026년 출시",
-    ],
+    highlights: [],
+    tableData: airConditionerLineupTable,
     disclaimers: [
       "실제 판매 모델의 스펙과 다를 수 있으며, 매장 재고 및 시즌에 따라 라인업이 조정될 수 있습니다.",
       "상세 사양은 LG전자 공식 홈페이지의 최신 정보를 기준으로 확인해주세요.",
