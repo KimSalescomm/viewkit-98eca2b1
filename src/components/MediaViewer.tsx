@@ -6,7 +6,7 @@ import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
 import { ProductComparisonTable, InstallCostTable, GalleryImage, MediaSlide } from "@/data/features";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 interface MediaViewerProps {
   mediaType: "video" | "image" | "table" | "gallery" | "youtube";
@@ -16,6 +16,10 @@ interface MediaViewerProps {
   costTable?: InstallCostTable;
   galleryImages?: (string | GalleryImage)[];
   galleryImageMaxHeight?: number;
+  /** 갤러리 캡션(이미지 아래 제목·설명 박스) 숨김 */
+  galleryHideCaptions?: boolean;
+  /** 이미지 클릭 시 확대 보기(라이트박스) 허용 */
+  galleryZoom?: boolean;
   mediaSlides?: MediaSlide[];
   isShorts?: boolean;
   fallbackUrl?: string; // MP4 fallback URL for webOS compatibility
@@ -26,7 +30,7 @@ interface MediaViewerProps {
   videoObjectFit?: "cover" | "contain";
 }
 
-const MediaViewer = ({ mediaType, mediaUrl, title, tableData, costTable, galleryImages, galleryImageMaxHeight, mediaSlides, isShorts, fallbackUrl, imagePosition, fullWidthMedia, poster, videoAspectRatio, videoObjectFit }: MediaViewerProps) => {
+const MediaViewer = ({ mediaType, mediaUrl, title, tableData, costTable, galleryImages, galleryImageMaxHeight, galleryHideCaptions, galleryZoom, mediaSlides, isShorts, fallbackUrl, imagePosition, fullWidthMedia, poster, videoAspectRatio, videoObjectFit }: MediaViewerProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     align: "start",
     containScroll: "trimSnaps",
@@ -35,6 +39,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, costTable, gallery
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   // Prevent out-of-range access when switching between galleries of different sizes
   const galleryLength = galleryImages?.length ?? 0;
@@ -527,7 +532,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, costTable, gallery
         )}
 
         {/* Gallery Carousel */}
-        <div ref={emblaRef} style={{ overflow: "hidden", borderRadius: "16px 16px 0 0" }}>
+        <div ref={emblaRef} style={{ overflow: "hidden", borderRadius: galleryHideCaptions ? "16px" : "16px 16px 0 0" }}>
           <div style={{ display: "flex" }}>
             {normalizedImages.map((image, idx) => (
               <div
@@ -541,12 +546,14 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, costTable, gallery
                   src={image.url}
                   alt={image.title || `${title} - 이미지 ${idx + 1}`}
                   loading="lazy"
+                  onClick={galleryZoom ? () => setLightboxIndex(idx) : undefined}
                   style={{
                     width: "100%",
                     height: "auto",
                     maxHeight: galleryImageMaxHeight ? `${galleryImageMaxHeight}px` : undefined,
                     objectFit: galleryImageMaxHeight ? "contain" : undefined,
                     display: "block",
+                    cursor: galleryZoom ? "zoom-in" : undefined,
                   }}
                 />
               </div>
@@ -555,7 +562,7 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, costTable, gallery
         </div>
 
         {/* Caption Box */}
-        {(currentImage?.title || currentImage?.description) && (
+        {!galleryHideCaptions && (currentImage?.title || currentImage?.description) && (
           <div
             style={{
               background: "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
@@ -620,6 +627,112 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, costTable, gallery
         }}>
           {selectedIndex + 1} / {normalizedImages.length}
         </div>
+
+        {/* 확대 보기 (라이트박스) */}
+        {galleryZoom && lightboxIndex !== null && normalizedImages[lightboxIndex] && (
+          <div
+            onClick={() => setLightboxIndex(null)}
+            style={{
+              position: "fixed",
+              inset: 0,
+              zIndex: 200,
+              background: "rgba(0,0,0,0.88)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "24px",
+            }}
+          >
+            <button
+              aria-label="닫기"
+              onClick={() => setLightboxIndex(null)}
+              style={{
+                position: "absolute",
+                top: "20px",
+                right: "20px",
+                width: "44px",
+                height: "44px",
+                borderRadius: "50%",
+                border: "none",
+                background: "rgba(255,255,255,0.15)",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <X size={24} color="#fff" />
+            </button>
+            {normalizedImages.length > 1 && (
+              <>
+                <button
+                  aria-label="이전"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxIndex((lightboxIndex - 1 + normalizedImages.length) % normalizedImages.length);
+                  }}
+                  style={{
+                    position: "absolute",
+                    left: "16px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "44px",
+                    height: "44px",
+                    borderRadius: "50%",
+                    border: "none",
+                    background: "rgba(255,255,255,0.15)",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <ChevronLeft size={24} color="#fff" />
+                </button>
+                <button
+                  aria-label="다음"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxIndex((lightboxIndex + 1) % normalizedImages.length);
+                  }}
+                  style={{
+                    position: "absolute",
+                    right: "16px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "44px",
+                    height: "44px",
+                    borderRadius: "50%",
+                    border: "none",
+                    background: "rgba(255,255,255,0.15)",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <ChevronRight size={24} color="#fff" />
+                </button>
+              </>
+            )}
+            <img
+              src={normalizedImages[lightboxIndex].url}
+              alt={normalizedImages[lightboxIndex].title || `${title} - 확대 이미지 ${lightboxIndex + 1}`}
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                maxWidth: "94vw",
+                maxHeight: "88vh",
+                width: "auto",
+                height: "auto",
+                objectFit: "contain",
+                borderRadius: "8px",
+              }}
+            />
+            <div style={{ position: "absolute", bottom: "24px", left: "50%", transform: "translateX(-50%)", color: "#fff", fontSize: "14px" }}>
+              {lightboxIndex + 1} / {normalizedImages.length}
+            </div>
+          </div>
+        )}
       </div>
     );
   }
