@@ -124,8 +124,17 @@ export default function AirCareComparisonTable({ products }: { products: Product
           </tr>}
         </thead>
         <tbody>
-          {rows.map(({ label, entries, compact, hint }) => (
+          {rows.map(({ label, entries, compact, hint }, rowIndex) => (
             <tr key={label}>
+              {groupStarts.has(rowIndex) && (
+                <th
+                  scope="rowgroup"
+                  rowSpan={groupStarts.get(rowIndex)!.span}
+                  className="w-[5.5rem] border-r border-t border-border bg-muted px-2 py-3 align-middle text-xs font-bold leading-relaxed"
+                >
+                  {groupStarts.get(rowIndex)!.name}
+                </th>
+              )}
               <th
                 scope="row"
                 className={`w-[7.5rem] border-r border-t border-border bg-muted text-left align-middle font-semibold leading-relaxed ${compact ? "px-2 py-2 text-[0.6875rem]" : "px-3 py-3 text-xs"}`}
