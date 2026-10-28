@@ -1,8 +1,9 @@
 import { convertToEmbedUrl } from "@/utils/videoUtils";
 import SafeImage from "@/components/SafeImage";
 import AirCareComparisonTable from "@/components/AirCareComparisonTable";
+import InstallCostTableView from "@/components/InstallCostTable";
 import WebOSVideoPlayer from "@/components/WebOSVideoPlayer";
-import { ProductComparisonTable, GalleryImage, MediaSlide } from "@/data/features";
+import { ProductComparisonTable, InstallCostTable, GalleryImage, MediaSlide } from "@/data/features";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -12,6 +13,7 @@ interface MediaViewerProps {
   mediaUrl: string;
   title: string;
   tableData?: ProductComparisonTable[];
+  costTable?: InstallCostTable;
   galleryImages?: (string | GalleryImage)[];
   mediaSlides?: MediaSlide[];
   isShorts?: boolean;
@@ -23,7 +25,7 @@ interface MediaViewerProps {
   videoObjectFit?: "cover" | "contain";
 }
 
-const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, mediaSlides, isShorts, fallbackUrl, imagePosition, fullWidthMedia, poster, videoAspectRatio, videoObjectFit }: MediaViewerProps) => {
+const MediaViewer = ({ mediaType, mediaUrl, title, tableData, costTable, galleryImages, mediaSlides, isShorts, fallbackUrl, imagePosition, fullWidthMedia, poster, videoAspectRatio, videoObjectFit }: MediaViewerProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     align: "start",
     containScroll: "trimSnaps",
@@ -63,6 +65,9 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, galleryImages, med
     };
   }, [emblaApi, onSelect]);
 
+  if (mediaType === "table" && costTable) {
+    return <InstallCostTableView data={costTable} />;
+  }
   if (mediaType === "table" && tableData) {
     if (tableData.some((product) => product.category)) {
       return <AirCareComparisonTable products={tableData} />;
