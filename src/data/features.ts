@@ -105,6 +105,10 @@ export interface FeatureTab {
   galleryImages?: (string | GalleryImage)[];
   /** 갤러리 캐러셀 이미지의 최대 높이(px). 세로 이미지를 다른 미디어와 비슷한 높이로 제한 */
   galleryImageMaxHeight?: number;
+  /** 갤러리 이미지 아래 캡션 박스 숨김 */
+  galleryHideCaptions?: boolean;
+  /** 갤러리 이미지 클릭 시 확대 보기(라이트박스) 활성 */
+  galleryZoom?: boolean;
   highlights?: string[];
   caption?: string;
   belowMediaImage?: { url: string; alt?: string; caption?: string };
@@ -165,6 +169,8 @@ export interface Feature {
   galleryImages?: (string | GalleryImage)[];
   /** 갤러리 캐러셀 이미지의 최대 높이(px). 세로 이미지를 다른 미디어와 비슷한 높이로 제한 */
   galleryImageMaxHeight?: number;
+  galleryHideCaptions?: boolean;
+  galleryZoom?: boolean;
   mediaSlides?: MediaSlide[];
   belowMediaImage?: { url: string; alt?: string; caption?: string };
   mediaSectionTitle?: string;
@@ -2217,6 +2223,8 @@ export const featuresMap: Record<string, Feature[]> = {
           label: "설치 체크리스트",
           mediaType: "gallery",
           galleryImageMaxHeight: 520,
+          galleryHideCaptions: true,
+          galleryZoom: true,
           galleryImages: [
             {
               url: "/__l5e/assets-v1/431348cd-6464-4b11-b969-340b30068c02/bathair-install-check1-v3.png",
