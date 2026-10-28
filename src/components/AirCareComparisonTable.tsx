@@ -40,7 +40,7 @@ function LabelHint({ text }: { text: string }) {
 
 
 export default function AirCareComparisonTable({ products }: { products: ProductComparisonTable[] }) {
-
+  const hasImages = products.some((product) => Boolean(product.imageUrl));
   const labels = products[0]?.specs.map((spec) => spec.label) ?? [];
   const rows = labels.map((label) => ({
     label,
@@ -61,7 +61,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
           <tr>
             <th
               scope="col"
-              rowSpan={2}
+              rowSpan={hasImages ? 2 : 1}
               className="w-[7.5rem] border-r border-b border-border bg-muted p-0 align-middle"
               aria-label="항목"
             />
@@ -86,7 +86,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
             ))}
           </tr>
           {/* 이미지 행: 모든 제품이 같은 높이·같은 배경의 독립 행 */}
-          <tr>
+          {hasImages && <tr>
             {products.map((product) => (
               <th key={`${product.name}-image`} scope="col" className="border-r border-border bg-card p-0 last:border-r-0">
                 <div className="flex h-56 items-center justify-center p-3">
@@ -94,7 +94,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
                 </div>
               </th>
             ))}
-          </tr>
+          </tr>}
         </thead>
         <tbody>
           {rows.map(({ label, entries, compact, hint }) => (
