@@ -59,7 +59,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
     <div className="w-full overflow-x-auto rounded-lg border border-border bg-card">
       <table
         className="w-full table-fixed border-collapse text-sm text-foreground"
-        style={{ minWidth: `${120 + products.length * 150}px` }}
+        style={{ minWidth: `${Math.max(720, 110 + products.length * 140)}px` }}
         aria-label="라인업 비교"
       >
         <thead>
