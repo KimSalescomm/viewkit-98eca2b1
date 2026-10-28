@@ -6,6 +6,9 @@
  */
 import type { Feature } from "@/data/features";
 import { bathairLineupFeatures } from "@/data/bathairLineupFeatures";
+import dualExhaustVideo from "@/assets/bathair-dual-exhaust.mp4.asset.json";
+import dualExhaustWebm from "@/assets/bathair-dual-exhaust.webm.asset.json";
+import dualExhaustPoster from "@/assets/bathair-dual-exhaust-poster.jpg.asset.json";
 
 export const bathairFeatures: Feature[] = [
   ...bathairLineupFeatures,

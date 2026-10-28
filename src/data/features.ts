@@ -197,6 +197,13 @@ export interface Feature {
   videoAspectRatio?: string;
   /** 비디오 강제 비율 적용 시 object-fit (기본 cover) */
   videoObjectFit?: "cover" | "contain";
+  /** 사진/영상 전환 토글로 사진(mediaUrl)과 함께 보여주는 영상 */
+  videoUrl?: string;
+  /** 영상 재생 실패 시 사용할 대체 파일(WebM) */
+  videoFallbackUrl?: string;
+  /** 토글 영상의 포스터 이미지 */
+  videoPosterImage?: string;
+
   /** 메인 콘텐츠 하위 세부 기능 (아코디언) */
   subFeatures?: SubFeature[];
   /** 세부 기능 영역 제목/부제 */
