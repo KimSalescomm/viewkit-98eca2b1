@@ -9,10 +9,10 @@ import type { Feature } from "@/data/features";
 export const refrigeratorFeatures: Feature[] = [
     {
       id: "10",
-      title: "보이지 않는 물길 속,\n관리는 누가 할까요?",
+      title: "냉장고를 구독하면\n무엇이 좋을까요?",
       subtitle: "필터부터 청소까지, 전문가가 알아서\n챙겨주는 전문 케어를 보여드려요.",
       icon: "Wrench",
-      tag: "구독 전문케어",
+      tag: "가전 구독",
       mediaType: "youtube",
       mediaUrl: "https://www.youtube.com/embed/dVEO3aYykTM?si=j4iIwotCwLBvji5k",
       description:
