@@ -11,6 +11,7 @@ import FeatureTabs from "@/components/FeatureTabs";
 
 import SafeImage from "@/components/SafeImage";
 import BlurMediaFrame from "@/components/BlurMediaFrame";
+import MediaKindToggle, { type MediaKind } from "@/components/MediaKindToggle";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { useContent } from "@/contexts/ContentContext";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
@@ -117,6 +118,13 @@ const FeatureDetail = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [zoomUrl, setZoomUrl] = useState<string | null>(null);
+  /** 사진/영상 전환 토글의 현재 표시 유형 */
+  const [mediaKind, setMediaKind] = useState<MediaKind>("image");
+
+  // 다른 특장점이나 탭으로 이동하면 사진 모드로 복귀
+  useEffect(() => {
+    setMediaKind("image");
+  }, [productId, id, activeTab]);
 
   // 트루스팀 적용 코스 캐러셀
   const [courseIndex, setCourseIndex] = useState(0);
@@ -391,6 +399,13 @@ const FeatureDetail = () => {
               ? "gallery"
               : activeTabData?.mediaType ?? feature.mediaType;
           const mainUrl = activeTabData?.mediaUrl ?? feature.mediaUrl;
+          const toggleVideo = activeTabData?.videoUrl ?? feature.videoUrl;
+          const showMediaToggle =
+            !!toggleVideo &&
+            mainType === "image" &&
+            !!mainUrl &&
+            !(activeTabData?.mediaSlides ?? feature.mediaSlides) &&
+            !(activeTabData?.galleryImages ?? feature.galleryImages);
 
           return (
             <>
@@ -399,7 +414,25 @@ const FeatureDetail = () => {
                   {feature.mediaSectionTitle}
                 </h2>
               )}
-              {mainType === "image" && mainUrl ? (
+              {showMediaToggle && <MediaKindToggle value={mediaKind} onChange={setMediaKind} />}
+              {showMediaToggle && mediaKind === "video" ? (
+                /* 영상: 사진/영상 토글의 영상 모드 */
+                <div className="mb-4 overflow-hidden rounded-[14px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] sm:mb-5">
+                  <div onClick={onVideoClick}>
+                    <MediaViewer
+                      key={tabs ? `tab-${activeTab}-video` : "main-video"}
+                      mediaType="video"
+                      mediaUrl={toggleVideo}
+                      fallbackUrl={activeTabData?.videoFallbackUrl ?? feature.videoFallbackUrl}
+                      poster={activeTabData?.videoPosterImage ?? feature.videoPosterImage}
+                      title={feature.title}
+                      fullWidthMedia={feature.fullWidthMedia}
+                      videoAspectRatio={feature.videoAspectRatio ?? "16/9"}
+                      videoObjectFit={feature.videoObjectFit ?? "contain"}
+                    />
+                  </div>
+                </div>
+              ) : mainType === "image" && mainUrl ? (
                 /* 이미지: 블러 확장 배경 프레임 (클릭 시 확대) */
                 <div className="group relative mb-4 sm:mb-5">
                   <button
