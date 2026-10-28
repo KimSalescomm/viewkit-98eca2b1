@@ -22,4 +22,8 @@ describe("bathair supplied model specifications", () => {
   it.each(["와이드 자동 바람", "온풍", "송풍", "공간케어", "바디케어", "원격제어(ThinQ)"])("supports %s on all three models", (label) => {
     expect(values(label)).toEqual([["지원"], ["지원"], ["지원"]]);
   });
+  it("shows the recommendation row without bold emphasis", () => {
+    const specs = lineup.map((product) => product.specs.find((spec) => spec.label === "추천 상황"));
+    expect(specs.every((spec) => spec && !spec.emphasizeFirst)).toBe(true);
+  });
 });
