@@ -214,7 +214,7 @@ export const hydrotowerFeatures: Feature[] = [
   },
   {
     id: "6",
-    title: "우리집엔 어떤\n에어케어 제품이 맞을까?",
+    title: "우리집엔 어떤\n에어케어 제품이 맞을까요?",
     subtitle: "하이드로타워 Max, 하이드로타워, 360˚공기청정기 M7의\n차이를 한눈에 비교해보세요.",
     icon: "Search",
     tag: "라인업 비교",
