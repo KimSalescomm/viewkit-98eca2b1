@@ -129,7 +129,9 @@ describe("hydrotower product navigation data", () => {
     expect(recommended("하이드로타워")).toEqual(["침실이나 안방 등에서", "깨끗한 물로 습도를 관리하고 싶은 경우"]);
     expect(recommended("AI 360˚ 공기청정기 M7")).toEqual(["넓은 거실 등에서", "미세먼지와 유해가스까지 관리하고 싶은 경우"]);
     lineup.forEach((product) => {
-      expect(product.specs.find((spec) => spec.label === "추천 상황")?.values).toHaveLength(2);
+      const spec = product.specs.find((item) => item.label === "추천 상황");
+      expect(spec?.values).toHaveLength(2);
+      expect(spec?.emphasizeFirst).toBe(true);
     });
   });
 
