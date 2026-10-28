@@ -15,6 +15,7 @@ interface MediaViewerProps {
   tableData?: ProductComparisonTable[];
   costTable?: InstallCostTable;
   galleryImages?: (string | GalleryImage)[];
+  galleryImageMaxHeight?: number;
   mediaSlides?: MediaSlide[];
   isShorts?: boolean;
   fallbackUrl?: string; // MP4 fallback URL for webOS compatibility
@@ -25,7 +26,7 @@ interface MediaViewerProps {
   videoObjectFit?: "cover" | "contain";
 }
 
-const MediaViewer = ({ mediaType, mediaUrl, title, tableData, costTable, galleryImages, mediaSlides, isShorts, fallbackUrl, imagePosition, fullWidthMedia, poster, videoAspectRatio, videoObjectFit }: MediaViewerProps) => {
+const MediaViewer = ({ mediaType, mediaUrl, title, tableData, costTable, galleryImages, galleryImageMaxHeight, mediaSlides, isShorts, fallbackUrl, imagePosition, fullWidthMedia, poster, videoAspectRatio, videoObjectFit }: MediaViewerProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     align: "start",
     containScroll: "trimSnaps",
@@ -543,6 +544,8 @@ const MediaViewer = ({ mediaType, mediaUrl, title, tableData, costTable, gallery
                   style={{
                     width: "100%",
                     height: "auto",
+                    maxHeight: galleryImageMaxHeight ? `${galleryImageMaxHeight}px` : undefined,
+                    objectFit: galleryImageMaxHeight ? "contain" : undefined,
                     display: "block",
                   }}
                 />
