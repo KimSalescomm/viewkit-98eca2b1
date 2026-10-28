@@ -107,7 +107,7 @@ export const airconditionerFeatures: Feature[] = [
     mediaUrl: "https://static.lge.co.kr/kr/images/air-conditioners/md10731826/usp/25_Tower1_9s_Whisen_Detail_1.mp4",
     descriptionTitle: "눈에 보이지 않는 곳까지 알아서 관리해 언제나 깨끗한 바람이 나와요",
     description:
-      "필터 클린봇이 극세필터의 먼지를 청소하고, UV-LED 팬살균, AI열교환기 세척과 AI건조 기능으로\n에어컨 속까지 위생적으로 관리해요.",
+      "바람이 지나는 길을 따라 청정하게 관리해요.\n바람이 들어오는 필터부터 바람이 나가는 토출구까지 깨끗한 바람을 만듭니다.",
     highlights: ["필터 클린봇", "알러지케어 공기청정", "AI열교환기 세척", "UV-LED 팬살균"],
     collapsibleDisclaimers: [
       {
