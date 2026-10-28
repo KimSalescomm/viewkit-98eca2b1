@@ -20,7 +20,7 @@ const acLineups = [
   { name: "뷰I 프로 5시리즈", category: "인테리어 에어컨", imageUrl: acLineupView5.url, tier: 55 },
 ] as const;
 
-const support = (on: boolean) => (on ? "지원" : "미지원");
+const support = (on: boolean) => (on ? "O" : "X");
 
 const airConditionerLineupTable: ProductComparisonTable[] = acLineups.map(({ name, category, imageUrl, tier }) => {
   const tower = tier === 9 || tier === 7 || tier === 5;
@@ -29,27 +29,27 @@ const airConditionerLineupTable: ProductComparisonTable[] = acLineups.map(({ nam
     category,
     imageUrl,
     specs: [
-      { label: "레이더센서 (외출절전/홈모니터링)", values: ["지원"] },
+      { label: "레이더센서 (외출절전/홈모니터링)", values: ["O"] },
       {
         label: "AI콜드프리",
-        values: [tier === 5 || tier === 55 ? "미지원" : "모델별 상이"],
+        values: [tier === 5 || tier === 55 ? "X" : "※ 모델별 상이"],
       },
-      { label: "AI수면", values: ["지원"] },
-      { label: "AI음성인식", values: [tower ? "지원 (본체/리모컨)" : "지원 (리모컨)"] },
-      { label: "AI바람", values: ["지원"] },
-      { label: "소프트바람", values: ["지원"] },
+      { label: "AI수면", values: ["O"] },
+      { label: "AI음성인식", values: [tower ? "O (본체/리모컨)" : "O (리모컨)"] },
+      { label: "AI바람", values: ["O"] },
+      { label: "소프트바람", values: ["O"] },
       { label: "필터클린봇", values: [support(tier === 9)], highlighted: tier === 9 },
       { label: "알러지케어 공기청정 필터", values: [support(tier === 9 || tier === 7 || tier === 6)] },
-      { label: "UV-LED 팬살균", values: [tower ? "지원" : "모델별 상이"] },
+      { label: "UV-LED 팬살균", values: [tower ? "O" : "※ 모델별 상이"] },
       { label: "셀프청정/클린뷰", values: [tower ? "셀프청정" : "클린뷰"] },
-      { label: "공기청정", values: [tier === 9 || tier === 7 ? "지원 (PM1.0센서)" : tier === 6 ? "지원" : "미지원"] },
+      { label: "공기청정", values: [tier === 9 || tier === 7 ? "O (PM1.0센서)" : tier === 6 ? "O" : "X"] },
       {
         label: "에너지등급",
-        values: [tier === 9 || tier === 6 ? "1/2등급 (모델별 상이)" : "2등급"],
+        values: [tier === 9 || tier === 6 ? "1/2등급 ※ 모델별 상이" : "2등급"],
       },
       { label: "색상", values: [tower ? "카밍베이지/크림화이트" : "에센스화이트/카밍베이지"] },
       { label: "뷰케이스(별매)", values: [support(!tower)], highlighted: !tower },
-      { label: "토출구 커버 자동개폐", values: ["지원"] },
+      { label: "토출구 커버 자동개폐", values: ["O"] },
       { label: "출시년도", values: ["2026년"] },
     ],
   };

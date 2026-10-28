@@ -26,35 +26,35 @@ describe("airconditioner lineup comparison table", () => {
     ]);
   });
   it("supports 필터클린봇 only on 타워I 9시리즈", () => {
-    expect(values("필터클린봇")).toEqual([["지원"], ["미지원"], ["미지원"], ["미지원"], ["미지원"]]);
+    expect(values("필터클린봇")).toEqual([["O"], ["X"], ["X"], ["X"], ["X"]]);
   });
   it("supports 뷰케이스 only on 뷰I 프로 lineups", () => {
-    expect(values("뷰케이스(별매)")).toEqual([["미지원"], ["미지원"], ["미지원"], ["지원"], ["지원"]]);
+    expect(values("뷰케이스(별매)")).toEqual([["X"], ["X"], ["X"], ["O"], ["O"]]);
   });
   it("marks AI콜드프리 as model-dependent or unsupported per series", () => {
     expect(values("AI콜드프리")).toEqual([
-      ["모델별 상이"],
-      ["모델별 상이"],
-      ["미지원"],
-      ["모델별 상이"],
-      ["미지원"],
+      ["※ 모델별 상이"],
+      ["※ 모델별 상이"],
+      ["X"],
+      ["※ 모델별 상이"],
+      ["X"],
     ]);
   });
   it("keeps voice recognition scope per lineup", () => {
     expect(values("AI음성인식")).toEqual([
-      ["지원 (본체/리모컨)"],
-      ["지원 (본체/리모컨)"],
-      ["지원 (본체/리모컨)"],
-      ["지원 (리모컨)"],
-      ["지원 (리모컨)"],
+      ["O (본체/리모컨)"],
+      ["O (본체/리모컨)"],
+      ["O (본체/리모컨)"],
+      ["O (리모컨)"],
+      ["O (리모컨)"],
     ]);
   });
   it("keeps energy grades per series", () => {
     expect(values("에너지등급")).toEqual([
-      ["1/2등급 (모델별 상이)"],
+      ["1/2등급 ※ 모델별 상이"],
       ["2등급"],
       ["2등급"],
-      ["1/2등급 (모델별 상이)"],
+      ["1/2등급 ※ 모델별 상이"],
       ["2등급"],
     ]);
   });
