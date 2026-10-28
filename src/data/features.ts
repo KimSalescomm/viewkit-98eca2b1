@@ -38,6 +38,8 @@ export interface ProductComparisonTable {
   best?: boolean;
   specs: {
     label: string;
+    /** 같은 그룹명이 연속되면 표 왼쪽에 하나의 구분 셀로 묶어 표시 (예: AI특화기능) */
+    group?: string;
     values: string[];
     highlighted?: boolean;
     /** 단위를 항목명(라벨)로 옮긴 수치 행: 여백·글자 크기를 줄여 한 줄로 표시 */
