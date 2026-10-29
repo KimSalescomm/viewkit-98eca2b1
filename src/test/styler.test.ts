@@ -17,5 +17,15 @@ describe("SC5GMR80S 공식 자료 연결", () => {
     const videos = stylerFeatures.filter((f) => f.mediaType === "video");
     expect(videos.length).toBe(8);
     for (const f of videos) expect(f.posterImage).toMatch(/^\/__l5e\/assets-v1\//);
+});
+
+describe("카드 썸네일 표시", () => {
+  it("모든 카드 썸네일이 이미지 영역을 가득 채운다", () => {
+    const cards = productCardConfig.styler.cards ?? {};
+    expect(Object.keys(cards).length).toBe(stylerFeatures.length);
+    for (const f of stylerFeatures) {
+      expect(cards[f.id]?.fit, `feature ${f.id}`).toBe("cover");
+    }
   });
+});
 });
