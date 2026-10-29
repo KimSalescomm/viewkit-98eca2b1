@@ -14,6 +14,7 @@
 
 import acSubscriptionCare from "@/assets/subscription-stand-air-conditioner-01-disassembly-care.png.asset.json";
 import stylerVentPoster from "@/assets/styler-2026-poster-15-auto-ventilation.jpg.asset.json";
+import stylerAiDryPoster from "@/assets/styler-2026-poster-06-ai-drying-4x3.jpg.asset.json";
 
 export interface FeatureCardConfig {
 
@@ -56,7 +57,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       "2": { fit: "cover" },
       "3": { fit: "cover" },
       "4": { fit: "cover" },
-      "5": { fit: "cover" },
+      "5": { fit: "cover", image: stylerAiDryPoster.url },
       "6": { fit: "cover" },
       "7": { fit: "cover" },
       "8": { fit: "cover", image: stylerVentPoster.url },
