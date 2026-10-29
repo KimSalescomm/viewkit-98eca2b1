@@ -27,7 +27,6 @@ import steamModesImage from "@/assets/styler-2026-07-steamer-01.jpg.asset.json";
 import steamWeightImage from "@/assets/styler-2026-07-steamer-02.jpg.asset.json";
 import steamStorageImage from "@/assets/styler-2026-07-steamer-03.jpg.asset.json";
 import designImage from "@/assets/styler-2026-18-design-01-pc.jpg.asset.json";
-import coursesImage from "@/assets/styler-2026-10-all-rounder-styler-01-pc.jpg.asset.json";
 
 const aiNotices = [
   "AI 스타일링 / AI 건조 코스는 다이내믹 무빙행어의 동작 등 데이터로 의류 무게를 추론하는 과정에 AI 딥러닝 기술을 적용합니다.",
