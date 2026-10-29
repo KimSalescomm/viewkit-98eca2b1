@@ -1,4 +1,5 @@
 import stylerKeyVisualAsset from "@/assets/styler-keyvisual.png.asset.json";
+import stylerHeaderAsset from "@/assets/styler-sc5gmr80s-header.png.asset.json";
 import bathairHomepageAsset from "@/assets/bathair-homepage.jpg.asset.json";
 import washcomboMainWideAsset from "@/assets/washcombo-main-wide.jpg.asset.json";
 import hydrotowerProductAsset from "@/assets/hydrotower-product.jpg.asset.json";
@@ -64,6 +65,7 @@ export const products: Product[] = [
     title: "스타일러",
     description: "스타일링, 건조, 제습을 ALL NEW 스타일러 하나로",
     keyVisualImage: stylerKeyVisual,
+    heroImage: stylerHeaderAsset.url,
     icon: "Shirt",
   },
   {
