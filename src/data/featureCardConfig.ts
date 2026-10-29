@@ -12,7 +12,10 @@
  *       eyebrow가 비어있으면 ProductFeatureGrid에서 feature.tag를 폴백으로 사용합니다.
  */
 
+import acSubscriptionCare from "@/assets/subscription-stand-air-conditioner-01-disassembly-care.png.asset.json";
+
 export interface FeatureCardConfig {
+
   image?: string;
   eyebrow?: string;
   /** 썸네일 크롭 위치 (tailwind object-position 클래스) */
@@ -139,9 +142,10 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
     order: ["23", "15", "18", "19", "21", "17"],
     cards: {
       "23": {
-        image: "https://img.youtube.com/vi/t7DwsspCwuM/hqdefault.jpg",
+        image: acSubscriptionCare.url,
         eyebrow: "가전 구독",
       },
+
       "15": {
         image: "https://www.lge.co.kr/kr/images/air-conditioners/md10731826/usp/26_Tower1_9s_AI_coldfree_detail_03.jpg",
         eyebrow: "AI 콜드프리",
