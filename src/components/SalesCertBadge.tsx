@@ -35,7 +35,7 @@ const PRODUCT_OPTIONS = ["구독", ...products.filter((p) => p.id !== "pc").map(
 // 1차 제품 분류 → 하위 카테고리 매핑
 const SUBCATEGORY_MAP: Record<string, string[]> = {
   "구독": [
-    "세탁기",
+    "트롬",
     "스탠드 에어컨",
     "공기청정기",
     "냉장고",
@@ -48,7 +48,7 @@ const SUBCATEGORY_MAP: Record<string, string[]> = {
   ],
   "냉장고": ["STEM", "Fit&Max", "양문형 냉장고"],
   "에어컨": ["스탠드 에어컨"],
-  "워시타워": ["워시타워", "워시타워 콤보", "세탁기", "건조기"],
+  "워시타워": ["워시타워", "워시타워 콤보", "트롬", "건조기"],
 };
 
 const MEMO_PLACEHOLDER =

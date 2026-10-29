@@ -114,7 +114,7 @@ const _subscriptionProducts: SubscriptionProduct[] = [
   })(),
   {
     id: "washer",
-    name: "세탁기",
+    name: "트롬",
     beforeImage: washerBefore,
     afterImage: washerAfter,
     careVideo: "https://www.lge.co.kr/kr/main/caresolution/renew_2206/assets/rmsf2025/washing_machines_250826.mp4",
@@ -431,7 +431,7 @@ export const airconPlanContents: AirconPlanContent[] = [
 ];
 
 /**
- * 세탁기 요금제(프리미엄 / 라이트플러스)별 케어서비스 콘텐츠.
+ * 트롬 요금제(프리미엄 / 라이트플러스)별 케어서비스 콘텐츠.
  * 프리미엄/라이트플러스 모두 Before/After 그리드 구조로 노출되며,
  * After 썸네일의 '케어 영상 보기'는 videoUrl(LG mp4 또는 YouTube)을 재생합니다.
  */
@@ -458,7 +458,7 @@ export const washerPlanContents: WasherPlanContent[] = [
   {
     plan: "premium",
     planLabel: "프리미엄",
-    title: "세탁기 케어서비스",
+    title: "트롬 케어서비스",
     beforeAfterImages: { before: washerBefore, after: washerAfter },
     steps: [
       { careServiceId: "service-6800665a02d1", label: "분해 케어", hasDetailLink: false },
@@ -472,7 +472,7 @@ export const washerPlanContents: WasherPlanContent[] = [
   {
     plan: "litePlus",
     planLabel: "라이트플러스",
-    title: "세탁기 케어서비스",
+    title: "트롬 케어서비스",
     beforeAfterImages: { before: washerLiteBefore, after: washerLiteAfter },
     videoUrl: "https://youtu.be/x1dF8E81q0U",
     steps: [
