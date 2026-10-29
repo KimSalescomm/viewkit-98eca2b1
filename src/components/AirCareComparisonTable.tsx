@@ -126,10 +126,11 @@ export default function AirCareComparisonTable({ products }: { products: Product
           {hasImages && <tr>
             {products.map((product) => (
               <th key={`${product.name}-image`} scope="col" className="bg-card p-0">
-                <div className="flex h-72 items-center justify-center px-1 lg:h-80">
+                <div className="flex h-52 items-center justify-center px-5 py-4 lg:h-60">
                   <SafeImage src={product.imageUrl} alt={product.name} className="h-full w-full object-contain" />
                 </div>
               </th>
+
             ))}
           </tr>}
         </thead>
