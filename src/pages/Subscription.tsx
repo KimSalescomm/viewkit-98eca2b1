@@ -261,7 +261,7 @@ const Subscription = () => {
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                className={`w-full h-full ${selected.careImageLabels ? "object-contain" : "object-cover transition-transform duration-500 hover:scale-105"}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent pointer-events-none" />
             </div>
@@ -335,7 +335,7 @@ const Subscription = () => {
                     loading="eager"
                     decoding="async"
                     fetchPriority="high"
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    className={`w-full h-full ${selected.careImageLabels ? "object-contain" : "object-cover transition-transform duration-500 hover:scale-105"}`}
                   />
                   <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "linear-gradient(to top, hsl(var(--brand-accent)/0.12), transparent)" }} />
                 </div>
@@ -485,6 +485,11 @@ const Subscription = () => {
                 <p className="text-[12px] leading-relaxed text-gray-500">
                   * {previewStep.disclaimer}
                 </p>
+              </div>
+            )}
+            {selected.careImageLabels && previewStep.description && (
+              <div className="px-5 py-3 border-t border-border bg-card">
+                <p className={`${typeBodyMedium} text-foreground`}>{previewStep.description}</p>
               </div>
             )}
             {previewStep.notes && previewStep.notes.length > 0 && (
