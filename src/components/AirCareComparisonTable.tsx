@@ -125,7 +125,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
           {/* 이미지 행: 모든 제품이 같은 높이·같은 배경의 독립 행 */}
           {hasImages && <tr>
             {products.map((product) => (
-              <th key={`${product.name}-image`} scope="col" className="bg-card p-0">
+              <th key={`${product.name}-image`} scope="col" className="border-r border-border bg-card p-0 last:border-r-0">
                 <div className="flex h-44 items-center justify-center px-8 py-3 lg:h-48">
                   <SafeImage src={product.imageUrl} alt={product.name} className="h-full w-full object-contain" />
                 </div>
