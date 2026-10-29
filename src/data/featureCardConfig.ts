@@ -13,6 +13,7 @@
  */
 
 import acSubscriptionCare from "@/assets/subscription-stand-air-conditioner-01-disassembly-care.png.asset.json";
+import stylerVentPoster from "@/assets/styler-2026-poster-15-auto-ventilation.jpg.asset.json";
 
 export interface FeatureCardConfig {
 
