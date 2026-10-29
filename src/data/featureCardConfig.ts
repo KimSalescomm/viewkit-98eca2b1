@@ -59,7 +59,7 @@ export const productCardConfig: Record<string, ProductCardConfig> = {
       "5": { fit: "cover" },
       "6": { fit: "cover" },
       "7": { fit: "cover" },
-      "8": { fit: "cover" },
+      "8": { fit: "cover", image: stylerVentPoster.url },
       "9": { fit: "cover" },
     },
   },
