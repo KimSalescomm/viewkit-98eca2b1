@@ -261,7 +261,7 @@ const Subscription = () => {
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
-                className={`w-full h-full ${selected.careImageLabels ? "object-contain" : "object-cover transition-transform duration-500 hover:scale-105"}`}
+                className={`w-full h-full ${selected.careImageLabels || selected.comparisonImageFit === "contain" ? "object-contain" : "object-cover transition-transform duration-500 hover:scale-105"}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent pointer-events-none" />
             </div>
@@ -277,6 +277,7 @@ const Subscription = () => {
                 cooktop: "코팅 및 광택 서비스 전",
                 oven: "내부 클리닝 전",
                 dishwasher: "필터 클리닝 전",
+                hydrotower: "공청부 분해세척 전",
               };
               const label = selected.careImageLabels ? selected.careSteps[0]?.description : isAirconLite ? "팬 & 필터 세척 전" : beforeLabels[selected.id];
               if (!label) return null;
@@ -335,7 +336,7 @@ const Subscription = () => {
                     loading="eager"
                     decoding="async"
                     fetchPriority="high"
-                    className={`w-full h-full ${selected.careImageLabels ? "object-contain" : "object-cover transition-transform duration-500 hover:scale-105"}`}
+                    className={`w-full h-full ${selected.careImageLabels || selected.comparisonImageFit === "contain" ? "object-contain" : "object-cover transition-transform duration-500 hover:scale-105"}`}
                   />
                   <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "linear-gradient(to top, hsl(var(--brand-accent)/0.12), transparent)" }} />
                 </div>
@@ -387,7 +388,7 @@ const Subscription = () => {
                           </span>
                         </div>
                       )}
-                      <CareSegmentVideo productId={selected.id} modelId={searchParams.get("modelId") ?? undefined} careServiceId={step.careServiceId ?? careItemId(step.label)} />
+                      {!selected.hideCareStepVideos && <CareSegmentVideo productId={selected.id} modelId={searchParams.get("modelId") ?? undefined} careServiceId={step.careServiceId ?? careItemId(step.label)} />}
                     </li>
                   );
 
@@ -487,7 +488,7 @@ const Subscription = () => {
                 </p>
               </div>
             )}
-            {selected.careImageLabels && previewStep.description && (
+            {(selected.careImageLabels || selected.hideCareStepVideos) && previewStep.description && (
               <div className="px-5 py-3 border-t border-border bg-card">
                 <p className={`${typeBodyMedium} text-foreground`}>{previewStep.description}</p>
               </div>
