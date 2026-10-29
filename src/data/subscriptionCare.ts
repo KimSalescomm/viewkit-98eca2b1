@@ -26,6 +26,15 @@ import hydrotowerBefore from "@/assets/hydrotower-care-before.png.asset.json";
 import hydrotowerAfter from "@/assets/hydrotower-care-after.png.asset.json";
 import hydrotowerCareVideo from "@/assets/hydrotower-subscription-care.mp4.asset.json";
 import hydrotowerCareWebm from "@/assets/hydrotower-subscription-care.webm.asset.json";
+import topBefore from "@/assets/top-loader-before.jpg.asset.json";
+import topAfter from "@/assets/top-loader-after-final.jpg.asset.json";
+import topVideo from "@/assets/top-loader-care.mp4.asset.json";
+import topWebm from "@/assets/top-loader-care.webm.asset.json";
+import topDisassembly from "@/assets/top-loader-disassembly-care.png.asset.json";
+import topSteam from "@/assets/top-loader-hygiene-care.png.asset.json";
+import topParts from "@/assets/top-loader-dust-filter-cleaning.png.asset.json";
+import topCleaning from "@/assets/top-loader-t-full-sterilization-total-cleaning.png.asset.json";
+import topFilter from "@/assets/top-loader-dust-filter-replacement.png.asset.json";
 
 const bathairBefore = bathairBeforeAsset.url;
 const bathairAfter = bathairAfterAsset.url;
@@ -62,6 +71,24 @@ export interface SubscriptionProduct {
 }
 
 const _subscriptionProducts: SubscriptionProduct[] = [
+  {
+    id: "toploader",
+    name: "통돌이",
+    beforeImage: topBefore.url,
+    afterImage: topAfter.url,
+    comparisonImageFit: "contain",
+    hideAfterImageOverlay: true,
+    careVideo: topVideo.url,
+    careVideoFallback: topWebm.url,
+    careSteps: [
+      { careServiceId: "toploader-disassembly", label: "완전 분해", image: topDisassembly.url, notes: ["분해 케어는 프리미엄 케어서비스 구독 시에만 48개월 차에 1회 제공해 드립니다.", "방문 관리는 사전 안내드리고 있으며, 고객 요청에 의해 협의된 일정으로 변경하실 수 있습니다."] },
+      { careServiceId: "toploader-steam", label: "스팀 케어", image: topSteam.url },
+      { careServiceId: "toploader-parts", label: "부품 클리닝", image: topParts.url },
+      { careServiceId: "toploader-tub-cleaning", label: "통살균 세척", image: topCleaning.url, notes: ["세탁조 클리너로 통살균 세척", "라이트 케어서비스에 해당합니다."] },
+      { careServiceId: "toploader-filter", label: "먼지필터", image: topFilter.url, notes: ["먼지필터: 24개월 주기 교체"] },
+      { careServiceId: "service-4946c2df5d27", label: "무상 A/S" },
+    ],
+  },
   ...((): SubscriptionProduct[] => {
     const plan = getCareProcessPlan("hydrotower");
     const disassembly = plan?.careServices.find(step => step.careServiceId === "disassembly");
@@ -333,6 +360,7 @@ const _subscriptionProducts: SubscriptionProduct[] = [
 
 const SUBSCRIPTION_PRODUCT_ORDER = [
   "washer",
+  "toploader",
   "washcombo",
   "airconditioner",
   "airpurifier",
