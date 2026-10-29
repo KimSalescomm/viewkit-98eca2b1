@@ -10,7 +10,7 @@ describe("Hydrotower subscription care", () => {
   it("registers the product once without replacing existing products", () => {
     expect(subscriptionProducts.filter(item => item.id === "hydrotower")).toHaveLength(1);
     expect(subscriptionProducts.map(item => item.id)).toEqual([
-      "washer", "washcombo", "airconditioner", "airpurifier", "hydrotower",
+      "washer", "toploader", "washcombo", "airconditioner", "airpurifier", "hydrotower",
       "bathair", "refrigerator", "stem", "cooktop", "oven", "dishwasher",
     ]);
   });

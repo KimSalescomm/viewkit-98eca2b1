@@ -161,6 +161,7 @@ const Subscription = () => {
         {(() => {
           const sectionTitles: Record<string, string> = {
             washer: "세탁기 케어서비스",
+            toploader: "통돌이 케어서비스",
             washcombo: "워시콤보 케어서비스",
             refrigerator: "냉장고 케어서비스",
             stem: "STEM 냉장고 케어서비스",
@@ -278,6 +279,7 @@ const Subscription = () => {
                 oven: "내부 클리닝 전",
                 dishwasher: "필터 클리닝 전",
                 hydrotower: "공청부 분해세척 전",
+                toploader: "통돌이 세탁조 분해세척 전",
               };
               const label = selected.careImageLabels ? selected.careSteps[0]?.description : isAirconLite ? "팬 & 필터 세척 전" : beforeLabels[selected.id];
               if (!label) return null;
