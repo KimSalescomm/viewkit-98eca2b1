@@ -32,6 +32,17 @@ describe("airconditioner lineup comparison table", () => {
     expect(feature?.description).toBe("");
   });
 
+  it("uses the trimmed product images that carry no baked-in table border", () => {
+    expect(lineup.map((product) => product.imageUrl?.split("/").pop())).toEqual([
+      "ac-lineup-tower9-v2.png",
+      "ac-lineup-tower7-v2.png",
+      "ac-lineup-tower5-v2.png",
+      "ac-lineup-view6-v2.png",
+      "ac-lineup-view5-v2.png",
+    ]);
+  });
+
+
   it("supports 필터클린봇 only on 타워I 9시리즈", () => {
     expect(values("필터클린봇")).toEqual([["O"], ["X"], ["X"], ["X"], ["X"]]);
   });
