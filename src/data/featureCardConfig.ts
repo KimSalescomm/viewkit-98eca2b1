@@ -49,18 +49,20 @@ export const applyCardOrder = <T extends { id: string }>(features: T[], order?: 
 export const productCardConfig: Record<string, ProductCardConfig> = {
   styler: {
     order: ["4", "5", "6", "1", "2", "3", "7", "8", "9"],
+    // 썸네일은 이미지 영역을 가득 채우도록 크롭 노출(레터박스/블러 배경 없음)
     cards: {
-      "1": { fit: "contain" },
-      "2": { fit: "contain" },
-      "3": { fit: "contain" },
-      "4": { fit: "contain" },
-      "5": { fit: "contain" },
-      "6": { fit: "contain" },
-      "7": { fit: "contain" },
-      "8": { fit: "contain" },
-      "9": { fit: "contain" },
+      "1": { fit: "cover" },
+      "2": { fit: "cover" },
+      "3": { fit: "cover" },
+      "4": { fit: "cover" },
+      "5": { fit: "cover" },
+      "6": { fit: "cover" },
+      "7": { fit: "cover" },
+      "8": { fit: "cover" },
+      "9": { fit: "cover" },
     },
   },
+
   bathair: {
     order: ["7", "5", "4", "1", "2", "6", "8"],
     cards: {
