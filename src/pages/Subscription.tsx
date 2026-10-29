@@ -160,7 +160,7 @@ const Subscription = () => {
         {/* Section title */}
         {(() => {
           const sectionTitles: Record<string, string> = {
-            washer: "세탁기 케어서비스",
+            washer: "트롬 케어서비스",
             toploader: "통돌이 케어서비스",
             washcombo: "워시콤보 케어서비스",
             refrigerator: "냉장고 케어서비스",
@@ -195,7 +195,7 @@ const Subscription = () => {
                   (isWasher && visibleWasherPlans.length > 1)) && (
                   <div
                     role="tablist"
-                    aria-label={isAircon ? "에어컨 요금제 선택" : "세탁기 요금제 선택"}
+                    aria-label={isAircon ? "에어컨 요금제 선택" : "트롬 요금제 선택"}
                     className="inline-flex items-center rounded-full border border-gray-200 bg-white p-0.5"
                   >
                     {(isAircon ? visibleAirconPlans : visibleWasherPlans).map((p) => {
@@ -268,7 +268,7 @@ const Subscription = () => {
             </div>
             {(() => {
               const beforeLabels: Record<string, string> = {
-                washer: "세탁기 분해세척 전",
+                washer: "트롬 분해세척 전",
                 washcombo: "워시콤보 분해세척 전",
                 bathair: "바스에어시스템 팬 분해세척 전",
                 refrigerator: "기계실 세척 전",
