@@ -170,6 +170,7 @@ const Subscription = () => {
             dishwasher: "식기세척기 케어서비스",
             oven: "광파오븐 케어서비스",
             bathair: "바스에어시스템 케어서비스",
+            hydrotower: "하이드로타워 Max 케어서비스",
           };
           const title =
             isAircon && airconPlan
@@ -247,20 +248,20 @@ const Subscription = () => {
           <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)] flex flex-col h-full">
             <div className="px-5 pt-4 pb-3 flex items-center justify-between">
               <span className={`${typeCaptionBold} tracking-wider uppercase text-gray-400`}>
-                Before
+                {selected.careImageLabels?.before ?? "Before"}
               </span>
-              <span className={`${typeCaption} text-gray-500`}>케어 전</span>
+              {!selected.careImageLabels && <span className={`${typeCaption} text-gray-500`}>케어 전</span>}
 
             </div>
             <div className="relative overflow-hidden aspect-[4/3] bg-gray-100">
               <img
                 key={`before-${selected.id}-${planKey}`}
                 src={planBeforeImage}
-                alt={`${selected.name} 케어 전`}
+                alt={`${selected.name} ${selected.careImageLabels?.before ?? "케어 전"}`}
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                className={`w-full h-full ${selected.careImageLabels ? "object-contain" : "object-cover transition-transform duration-500 hover:scale-105"}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent pointer-events-none" />
             </div>
@@ -277,7 +278,7 @@ const Subscription = () => {
                 oven: "내부 클리닝 전",
                 dishwasher: "필터 클리닝 전",
               };
-              const label = isAirconLite ? "팬 & 필터 세척 전" : beforeLabels[selected.id];
+              const label = selected.careImageLabels ? selected.careSteps[0]?.description : isAirconLite ? "팬 & 필터 세척 전" : beforeLabels[selected.id];
               if (!label) return null;
               return (
                 <div className="bg-white border-t border-gray-50 flex-1 flex items-center justify-center px-5 py-6 min-h-[56px]">
@@ -291,9 +292,9 @@ const Subscription = () => {
           <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
             <div className="px-5 pt-4 pb-3 flex items-center justify-between">
               <span className={`${typeCaptionBold} tracking-wider uppercase text-brand-accent`}>
-                After
+                {selected.careImageLabels?.after ?? "After"}
               </span>
-              <span className={`${typeCaption} text-brand-accent`}>케어 후</span>
+              {!selected.careImageLabels && <span className={`${typeCaption} text-brand-accent`}>케어 후</span>}
 
             </div>
             <div className="relative aspect-[4/3] bg-gray-100">
@@ -307,7 +308,7 @@ const Subscription = () => {
                   <img
                     key={`after-${selected.id}-${planKey}`}
                     src={planAfterImage}
-                    alt={`${selected.name} 케어 후`}
+                    alt={`${selected.name} ${selected.careImageLabels?.after ?? "케어 후"}`}
                     loading="eager"
                     decoding="async"
                     fetchPriority="high"
@@ -330,11 +331,11 @@ const Subscription = () => {
                   <img
                     key={`after-${selected.id}-${planKey}`}
                     src={planAfterImage}
-                    alt={`${selected.name} 케어 후`}
+                    alt={`${selected.name} ${selected.careImageLabels?.after ?? "케어 후"}`}
                     loading="eager"
                     decoding="async"
                     fetchPriority="high"
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    className={`w-full h-full ${selected.careImageLabels ? "object-contain" : "object-cover transition-transform duration-500 hover:scale-105"}`}
                   />
                   <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "linear-gradient(to top, hsl(var(--brand-accent)/0.12), transparent)" }} />
                 </div>
@@ -484,6 +485,11 @@ const Subscription = () => {
                 <p className="text-[12px] leading-relaxed text-gray-500">
                   * {previewStep.disclaimer}
                 </p>
+              </div>
+            )}
+            {selected.careImageLabels && previewStep.description && (
+              <div className="px-5 py-3 border-t border-border bg-card">
+                <p className={`${typeBodyMedium} text-foreground`}>{previewStep.description}</p>
               </div>
             )}
             {previewStep.notes && previewStep.notes.length > 0 && (

@@ -21,6 +21,7 @@ import bathairBeforeAsset from "@/assets/bathair-before.jpg.asset.json";
 import bathairAfterAsset from "@/assets/bathair-after.jpg.asset.json";
 import airconLiteBeforeAsset from "@/assets/aircon-lite-before.jpg.asset.json";
 import airconLiteAfterAsset from "@/assets/aircon-lite-after.jpg.asset.json";
+import { getCareProcessPlan } from "@/data/careProcess";
 
 const bathairBefore = bathairBeforeAsset.url;
 const bathairAfter = bathairAfterAsset.url;
@@ -46,11 +47,33 @@ export interface SubscriptionProduct {
   name: string;
   beforeImage: string;
   afterImage: string;
+  /** Official care illustrations without a documented before/after pair use truthful labels. */
+  careImageLabels?: { before: string; after: string };
   careVideo?: string;
   careSteps: CareStep[];
 }
 
 const _subscriptionProducts: SubscriptionProduct[] = [
+  ...((): SubscriptionProduct[] => {
+    const plan = getCareProcessPlan("hydrotower");
+    const disassembly = plan?.careServices.find(step => step.careServiceId === "disassembly");
+    const steam = plan?.careServices.find(step => step.careServiceId === "steam");
+    if (!plan || !disassembly || !steam) return [];
+    return [{
+      id: "hydrotower",
+      name: "하이드로타워 Max",
+      beforeImage: disassembly.representativeImageUrl,
+      afterImage: steam.representativeImageUrl,
+      careImageLabels: { before: "분해 케어(완전 분해)", after: "위생 케어(스팀)" },
+      careSteps: plan.careServices.map(step => ({
+        careServiceId: step.careServiceId,
+        label: step.careServiceId === "disassembly" ? "분해 케어(완전 분해)" : step.careServiceName,
+        image: step.representativeImageUrl,
+        description: step.description,
+        notes: plan.disclaimers?.text.split("\n\n").filter((_, index) => index === 0 || index === step.displayOrder),
+      })),
+    }];
+  })(),
   {
     id: "washer",
     name: "세탁기",
@@ -301,6 +324,7 @@ const SUBSCRIPTION_PRODUCT_ORDER = [
   "washcombo",
   "airconditioner",
   "airpurifier",
+  "hydrotower",
   "bathair",
   "refrigerator",
   "stem",
