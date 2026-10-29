@@ -555,6 +555,15 @@ const Subscription = () => {
               return (
                 <video
                   src={planCareVideo}
+                  onError={(event) => {
+                    const video = event.currentTarget;
+                    const fallback = selected.careVideoFallback;
+                    if (!fallback || video.dataset.fallbackUsed) return;
+                    video.dataset.fallbackUsed = "true";
+                    video.src = fallback;
+                    video.load();
+                    void video.play().catch(() => undefined);
+                  }}
                   className="w-full h-auto max-h-[80vh] bg-black"
                   controls
                   autoPlay
