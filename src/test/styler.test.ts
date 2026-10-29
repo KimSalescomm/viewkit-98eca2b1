@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { stylerFeatures } from "@/data/stylerFeatures";
 import { products } from "@/data/products";
+import { productCardConfig } from "@/data/featureCardConfig";
 import header from "@/assets/styler-sc5gmr80s-header.png.asset.json";
 
 describe("SC5GMR80S 공식 자료 연결", () => {
