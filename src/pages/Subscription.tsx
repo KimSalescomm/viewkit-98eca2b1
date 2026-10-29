@@ -313,12 +313,12 @@ const Subscription = () => {
                     loading="eager"
                     decoding="async"
                     fetchPriority="high"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className={`w-full h-full ${selected.comparisonImageFit === "contain" ? "object-contain" : "object-cover transition-transform duration-500 group-hover:scale-105"}`}
                   />
-                  <div
+                  {!selected.hideAfterImageOverlay && <div
                     className="absolute inset-0 pointer-events-none"
                     style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05) 45%, transparent)" }}
-                  />
+                  />}
                   {/* (Center play button removed — image-first display) */}
                   {/* Hint chip */}
                   <div className={`absolute left-3 bottom-3 inline-flex items-center gap-1 px-2.5 h-7 rounded-lg ${typeCaptionBold} bg-brand-accent text-white shadow-md`}>
@@ -338,7 +338,7 @@ const Subscription = () => {
                     fetchPriority="high"
                     className={`w-full h-full ${selected.careImageLabels || selected.comparisonImageFit === "contain" ? "object-contain" : "object-cover transition-transform duration-500 hover:scale-105"}`}
                   />
-                  <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "linear-gradient(to top, hsl(var(--brand-accent)/0.12), transparent)" }} />
+                  {!selected.hideAfterImageOverlay && <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "linear-gradient(to top, hsl(var(--brand-accent)/0.12), transparent)" }} />}
                 </div>
               )}
             </div>
@@ -555,6 +555,15 @@ const Subscription = () => {
               return (
                 <video
                   src={planCareVideo}
+                  onError={(event) => {
+                    const video = event.currentTarget;
+                    const fallback = selected.careVideoFallback;
+                    if (!fallback || video.dataset.fallbackUsed) return;
+                    video.dataset.fallbackUsed = "true";
+                    video.src = fallback;
+                    video.load();
+                    void video.play().catch(() => undefined);
+                  }}
                   className="w-full h-auto max-h-[80vh] bg-black"
                   controls
                   autoPlay

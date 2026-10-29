@@ -24,6 +24,8 @@ import airconLiteAfterAsset from "@/assets/aircon-lite-after.jpg.asset.json";
 import { getCareProcessPlan } from "@/data/careProcess";
 import hydrotowerBefore from "@/assets/hydrotower-care-before.png.asset.json";
 import hydrotowerAfter from "@/assets/hydrotower-care-after.png.asset.json";
+import hydrotowerCareVideo from "@/assets/hydrotower-subscription-care.mp4.asset.json";
+import hydrotowerCareWebm from "@/assets/hydrotower-subscription-care.webm.asset.json";
 
 const bathairBefore = bathairBeforeAsset.url;
 const bathairAfter = bathairAfterAsset.url;
@@ -53,7 +55,9 @@ export interface SubscriptionProduct {
   careImageLabels?: { before: string; after: string };
   comparisonImageFit?: "contain" | "cover";
   hideCareStepVideos?: boolean;
+  hideAfterImageOverlay?: boolean;
   careVideo?: string;
+  careVideoFallback?: string;
   careSteps: CareStep[];
 }
 
@@ -70,6 +74,9 @@ const _subscriptionProducts: SubscriptionProduct[] = [
       afterImage: hydrotowerAfter.url,
       comparisonImageFit: "contain",
       hideCareStepVideos: true,
+      hideAfterImageOverlay: true,
+      careVideo: hydrotowerCareVideo.url,
+      careVideoFallback: hydrotowerCareWebm.url,
       careSteps: plan.careServices.map(step => ({
         careServiceId: step.careServiceId,
         label: step.careServiceId === "disassembly" ? "분해 케어(완전 분해)" : step.careServiceName,
