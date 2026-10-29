@@ -26,8 +26,8 @@ import hydrotowerBefore from "@/assets/hydrotower-care-before.png.asset.json";
 import hydrotowerAfter from "@/assets/hydrotower-care-after.png.asset.json";
 import hydrotowerCareVideo from "@/assets/hydrotower-subscription-care.mp4.asset.json";
 import hydrotowerCareWebm from "@/assets/hydrotower-subscription-care.webm.asset.json";
-import topBefore from "@/assets/top-loader-before.jpg.asset.json";
-import topAfter from "@/assets/top-loader-after-final.jpg.asset.json";
+import topBefore from "@/assets/top-loader-tub-before.jpg.asset.json";
+import topAfter from "@/assets/top-loader-tub-after.jpg.asset.json";
 import topVideo from "@/assets/top-loader-care.mp4.asset.json";
 import topWebm from "@/assets/top-loader-care.webm.asset.json";
 import topDisassembly from "@/assets/top-loader-disassembly-care.png.asset.json";
@@ -76,7 +76,6 @@ const _subscriptionProducts: SubscriptionProduct[] = [
     name: "통돌이",
     beforeImage: topBefore.url,
     afterImage: topAfter.url,
-    comparisonImageFit: "contain",
     hideAfterImageOverlay: true,
     careVideo: topVideo.url,
     careVideoFallback: topWebm.url,
