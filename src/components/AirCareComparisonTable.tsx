@@ -75,7 +75,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
     <div className="w-full overflow-x-auto rounded-lg border border-border bg-card">
       <table
         className="w-full table-fixed border-collapse text-sm text-foreground"
-        style={{ minWidth: `${Math.max(720, 110 + products.length * 126 + (hasGroups ? 76 : 0))}px` }}
+        style={{ minWidth: `${Math.max(720, 110 + products.length * 104 + (hasGroups ? 72 : 0))}px` }}
         aria-label="라인업 비교"
       >
         <colgroup>
@@ -90,7 +90,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
               scope="col"
               rowSpan={hasImages ? 2 : 1}
               colSpan={hasGroups ? 2 : 1}
-              className="border-r border-b border-border bg-muted p-0 align-middle"
+              className={`border-r border-border bg-muted p-0 align-middle ${hasImages ? "" : "border-b"}`}
               aria-label={cornerLabel ?? "항목"}
             >
               {cornerLabel && (
@@ -104,7 +104,7 @@ export default function AirCareComparisonTable({ products }: { products: Product
               <th
                 key={product.name}
                 scope="col"
-                className={`border-r border-b border-border p-0 align-middle last:border-r-0 ${product.best ? "bg-brand-soft" : "bg-muted"}`}
+                className={`border-r border-border p-0 align-middle last:border-r-0 ${hasImages ? "" : "border-b"} ${product.best ? "bg-brand-soft" : "bg-muted"}`}
               >
                 <div className="flex flex-col items-center justify-center px-3 py-4">
                   <div className="flex min-h-7 items-center justify-center gap-1.5">
@@ -125,8 +125,8 @@ export default function AirCareComparisonTable({ products }: { products: Product
           {/* 이미지 행: 모든 제품이 같은 높이·같은 배경의 독립 행 */}
           {hasImages && <tr>
             {products.map((product) => (
-              <th key={`${product.name}-image`} scope="col" className="border-r border-border bg-card p-0 last:border-r-0">
-                <div className="flex h-56 items-center justify-center p-3">
+              <th key={`${product.name}-image`} scope="col" className="bg-card p-0">
+                <div className="flex h-72 items-center justify-center px-1 lg:h-80">
                   <SafeImage src={product.imageUrl} alt={product.name} className="h-full w-full object-contain" />
                 </div>
               </th>
