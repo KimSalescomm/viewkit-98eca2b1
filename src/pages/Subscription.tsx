@@ -279,7 +279,7 @@ const Subscription = () => {
                 oven: "내부 클리닝 전",
                 dishwasher: "필터 클리닝 전",
                 hydrotower: "공청부 분해세척 전",
-                toploader: "통돌이 세탁조 분해세척 전",
+                toploader: "세탁조 세척 전",
               };
               const label = selected.careImageLabels ? selected.careSteps[0]?.description : isAirconLite ? "팬 & 필터 세척 전" : beforeLabels[selected.id];
               if (!label) return null;

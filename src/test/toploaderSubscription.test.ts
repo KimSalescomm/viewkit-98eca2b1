@@ -8,4 +8,9 @@ describe("통돌이 케어 제공 조건", () => {
   it("먼지필터는 24개월 주기로 교체한다", () => {
     expect(product?.careSteps.find(s => s.careServiceId === "toploader-filter")?.notes).toContain("먼지필터: 24개월 주기 교체");
   });
+  it("전후 비교 사진은 이번 주 전/후 사진이며 프레임 가득 채운다", () => {
+    expect(product?.beforeImage).toContain("top-loader-tub-before.jpg");
+    expect(product?.afterImage).toContain("top-loader-tub-after.jpg");
+    expect(product?.comparisonImageFit).toBeUndefined();
+  });
 });
