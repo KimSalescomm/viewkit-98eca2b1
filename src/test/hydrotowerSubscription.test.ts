@@ -28,4 +28,8 @@ describe("Hydrotower subscription care", () => {
     expect(product?.careSteps[3]?.notes?.join("\n")).toContain("3/6/12개월");
     expect(product?.careSteps[4]?.notes?.join("\n")).toContain("12개월마다");
   });
+  it("hides subscription step videos without changing other products", () => {
+    expect(product?.hideCareStepVideos).toBe(true);
+    expect(subscriptionProducts.filter(item => item.id !== "hydrotower").every(item => !item.hideCareStepVideos)).toBe(true);
+  });
 });
