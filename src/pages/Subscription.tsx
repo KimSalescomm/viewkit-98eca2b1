@@ -28,7 +28,8 @@ import {
 } from "@/styles/typeScale";
 
 import { subscriptionProducts, airconPlanContents, washerPlanContents, type CareStep } from "@/data/subscriptionCare";
-import { filterVisibleCareTabs, useContent } from "@/contexts/ContentContext";
+import { filterVisibleCareTabs } from "@/data/visibility";
+import { useContent } from "@/contexts/ContentContext";
 export { subscriptionProducts, airconPlanContents, washerPlanContents } from "@/data/subscriptionCare";
 type AirconPlanId = "premium" | "litePlus";
 type WasherPlanId = "premium" | "litePlus";

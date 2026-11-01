@@ -26,7 +26,7 @@ import useAnalytics from "@/hooks/useAnalytics";
 import { products } from "@/data/products";
 import { appendSale } from "@/utils/salesLog";
 import { getStoreCategoryLabel, isAdminStore, getBranchNameByCode, cleanBranchName } from "@/data/branches";
-import { isInternalSlug, UNRELEASED_PRODUCT_IDS } from "@/contexts/ContentContext";
+import { isInternalSlug, UNRELEASED_PRODUCT_IDS } from "@/data/visibility";
 import { getCurrentStore } from "@/utils/storeId";
 import { useToast } from "@/hooks/use-toast";
 
