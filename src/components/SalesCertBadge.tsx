@@ -26,11 +26,18 @@ import useAnalytics from "@/hooks/useAnalytics";
 import { products } from "@/data/products";
 import { appendSale } from "@/utils/salesLog";
 import { getStoreCategoryLabel, isAdminStore, getBranchNameByCode, cleanBranchName } from "@/data/branches";
+import { isInternalSlug, UNRELEASED_PRODUCT_IDS } from "@/contexts/ContentContext";
 import { getCurrentStore } from "@/utils/storeId";
 import { useToast } from "@/hooks/use-toast";
 
 // 구독을 맨 위로, 그 외 뷰킷 활성 제품 카드
-const PRODUCT_OPTIONS = ["구독", ...products.filter((p) => p.id !== "pc").map((p) => p.name)];
+// 미공개 제품(하이드로타워·스타일러·식기세척기 등)은 내부 계정(SC/KOR)만 판매 인증 목록에서 선택 가능
+const buildProductOptions = (isInternal: boolean): string[] => [
+  "구독",
+  ...products
+    .filter((p) => p.id !== "pc" && (isInternal || !UNRELEASED_PRODUCT_IDS.has(p.id)))
+    .map((p) => p.name),
+];
 
 // 1차 제품 분류 → 하위 카테고리 매핑
 const SUBCATEGORY_MAP: Record<string, string[]> = {
@@ -79,6 +86,8 @@ const SalesCertBadge = () => {
 
   const currentStore = getCurrentStore();
   const isAdmin = isAdminStore(currentStore?.slug);
+  const isInternal = isInternalSlug(currentStore?.slug);
+  const productOptions = useMemo(() => buildProductOptions(isInternal), [isInternal]);
   const defaultBranch = useMemo(() => {
     const name = currentStore?.name?.trim() || "";
     if (name) return name;
@@ -290,7 +299,7 @@ const SalesCertBadge = () => {
                       <SelectValue placeholder="제품을 선택해보세요" />
                     </SelectTrigger>
                     <SelectContent className="bg-white border border-slate-200 rounded-xl text-slate-800">
-                      {PRODUCT_OPTIONS.map((p) => (
+                      {productOptions.map((p) => (
                         <SelectItem key={p} value={p} className="rounded-lg focus:bg-[#A50034]/10 focus:text-[#A50034]">
                           {p}
                         </SelectItem>
