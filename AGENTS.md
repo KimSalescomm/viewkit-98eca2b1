@@ -11,3 +11,4 @@
 - Subscription products reuse existing care-process IDs, media and notices; optional care-image labels distinguish official service illustrations from documented before/after evidence.
 - Change a product card's on-screen position only through productCardConfig order; the features array order is not what the product page renders, so reordering the array leaves the visible layout unchanged.
 - A media area that offers both a photo and a video declares them in data (`mediaUrl` plus `videoUrl`/`videoFallbackUrl`/`videoPosterImage`) and renders the switch through the shared `MediaKindToggle`; duplicating the toggle markup in a page or section lets the two designs drift apart.
+- Keep release gating (which products and subscription-care tabs are internal-only) in `src/data/visibility.ts` and enforce it through `canOpenProduct` / `filterVisibleCareTabs`; per-page lists of hidden ids let a new product leak to branch accounts before it is approved.
