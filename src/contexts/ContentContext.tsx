@@ -14,6 +14,7 @@ import { products as staticProducts, type Product } from "@/data/products";
 import { supabase } from "@/integrations/supabase/client";
 import { getCurrentStore } from "@/utils/storeId";
 import { isAdminStore } from "@/data/branches";
+import { canOpenProduct, isInternalSlug } from "@/data/visibility";
 
 // 스냅샷이 없거나 실패했을 때 지점 계정에서 활성화할 기본 제품 목록
 export const DEFAULT_VISIBLE_PRODUCT_IDS = [
@@ -37,10 +38,8 @@ const KNOWN_PRODUCT_IDS = new Set<string>([
 ]);
 /** 지점 계정에 절대 노출하지 않는 내부/미사용 제품 */
 const NEVER_VISIBLE_PRODUCT_IDS = new Set<string>(["pc"]);
-/** 대외비 제품: 내부 계정(SC/KOR)에서만 열람 가능 */
-const CONFIDENTIAL_PRODUCT_IDS = new Set<string>(["bathair", "washcombo"]);
-/** 관리자 전용 제품: SC 계정에서만 목록 및 직접 URL 열람 가능 */
-export const SC_ONLY_PRODUCT_IDS = new Set<string>([]);
+// 열람 권한 규칙(미공개 제품·대외비 제품·내부 계정 판정)은 src/data/visibility.ts 에서 관리합니다.
+export { SC_ONLY_PRODUCT_IDS } from "@/data/visibility";
 
 /**
  * 이전 노출 설정 스냅샷에는 없던 신규 제품. 스냅샷이 갱신되기 전까지 항상 노출합니다.
@@ -102,15 +101,8 @@ const buildValue = (
     getFeatureById: (productId, featureId) =>
       filterFeatures(staticFeaturesMap[productId] ?? []).find((f) => f.id === featureId),
     visibleProductIds: visible,
-    isProductVisible: (productId) => {
-      if (SC_ONLY_PRODUCT_IDS.has(productId)) return isAdmin;
-      return (
-        isAdmin ||
-        isInternal ||
-        visible.includes(productId) ||
-        (isInternal && CONFIDENTIAL_PRODUCT_IDS.has(productId))
-      );
-    },
+    isProductVisible: (productId) =>
+      canOpenProduct(productId, { isAdmin, isInternal, visible }),
     isInternal,
     source,
     publishedAt,
@@ -164,7 +156,7 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
 
   const isAdmin = isAdminStore(slug);
   // 내부 계정(SC/KOR): 대외비 제품도 열람 가능
-  const isInternal = isAdmin || slug === "KOR";
+  const isInternal = isInternalSlug(slug);
 
   // SC(관리자): 항상 전체 제품 노출 (구독 가상 카드 포함)
   const [state, setState] = useState<{

@@ -4,6 +4,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import SafeImage from "@/components/SafeImage";
 import { usePopularFeatures } from "@/hooks/usePopularFeatures";
+import { UNRELEASED_CARE_TAB_IDS } from "@/data/visibility";
 import { useContent } from "@/contexts/ContentContext";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { subscriptionProducts } from "@/pages/Subscription";
@@ -22,7 +23,7 @@ const THUMBNAIL_OVERRIDES: Record<string, string> = {
 
 export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSliderProps) => {
   const { items, loading } = usePopularFeatures({ days, limit });
-  const { getProductById, getFeatureById, isProductVisible } = useContent();
+  const { getProductById, getFeatureById, isProductVisible, isInternal } = useContent();
   const { trackProductClick } = useAnalyticsContext();
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -60,8 +61,11 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
   const visibleItems = items
     .map((item) => {
       const isSubscription = item.productId === "subscription";
+      const subTabId = item.featureId.replace("tab_", "");
+      // 미공개 제품(하이드로타워 Max·통돌이) 탭은 내부 계정(SC/KOR)에만 노출
+      if (isSubscription && !isInternal && UNRELEASED_CARE_TAB_IDS.has(subTabId)) return null;
       const subProduct = isSubscription
-        ? subscriptionProducts.find((p) => p.id === item.featureId.replace("tab_", ""))
+        ? subscriptionProducts.find((p) => p.id === subTabId)
         : undefined;
 
       let product: Product | undefined;

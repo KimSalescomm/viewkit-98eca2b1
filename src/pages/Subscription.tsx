@@ -28,6 +28,8 @@ import {
 } from "@/styles/typeScale";
 
 import { subscriptionProducts, airconPlanContents, washerPlanContents, type CareStep } from "@/data/subscriptionCare";
+import { filterVisibleCareTabs } from "@/data/visibility";
+import { useContent } from "@/contexts/ContentContext";
 export { subscriptionProducts, airconPlanContents, washerPlanContents } from "@/data/subscriptionCare";
 type AirconPlanId = "premium" | "litePlus";
 type WasherPlanId = "premium" | "litePlus";
@@ -41,6 +43,9 @@ const Subscription = () => {
   const [searchParams] = useSearchParams();
   const [selectedId, setSelectedId] = useState<string>("washer");
   const { trackEvent } = useAnalyticsContext();
+  // 미공개 제품(하이드로타워 Max·통돌이) 탭은 내부 계정(SC/KOR)에만 노출
+  const { isInternal } = useContent();
+  const careTabs = filterVisibleCareTabs(subscriptionProducts, isInternal);
   const handleTabClick = (productId: string, productName: string) => {
     if (productId === selectedId) return;
     setSelectedId(productId);
@@ -54,7 +59,7 @@ const Subscription = () => {
   };
   const [previewStep, setPreviewStep] = useState<CareStep | null>(null);
   const [videoOpen, setVideoOpen] = useState(false);
-  const selected = subscriptionProducts.find((p) => p.id === selectedId) ?? subscriptionProducts[0];
+  const selected = careTabs.find((p) => p.id === selectedId) ?? careTabs[0];
   const hasAnyImage = selected.careSteps.some((s) => s.image);
   // 라이트플러스 요금제는 당분간 미노출(데이터는 보존). 다시 노출하려면 true로 변경.
   const LITE_PLUS_ENABLED = true;
@@ -112,7 +117,7 @@ const Subscription = () => {
   // URL 쿼리(?tab=productId)로 진입 시 해당 제품 탭 선택
   useEffect(() => {
     const tab = searchParams.get("tab");
-    if (tab && subscriptionProducts.some((p) => p.id === tab)) {
+    if (tab && careTabs.some((p) => p.id === tab)) {
       setSelectedId(tab);
     }
   }, [searchParams]);
@@ -146,10 +151,10 @@ const Subscription = () => {
         {/* Category buttons */}
         <div className="-mx-5 sm:mx-0 mb-8 px-5 sm:px-0">
           <FeatureTabs
-            tabs={subscriptionProducts.map((p) => ({ label: p.name }))}
-            activeIndex={subscriptionProducts.findIndex((p) => p.id === selectedId)}
+            tabs={careTabs.map((p) => ({ label: p.name }))}
+            activeIndex={careTabs.findIndex((p) => p.id === selectedId)}
             onChange={(idx) => {
-              const p = subscriptionProducts[idx];
+              const p = careTabs[idx];
               if (p) handleTabClick(p.id, p.name);
             }}
             scrollable

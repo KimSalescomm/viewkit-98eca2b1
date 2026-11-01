@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { UNRELEASED_PRODUCT_IDS } from "@/data/visibility";
 import { useContent } from "@/contexts/ContentContext";
 import { cn } from "@/lib/utils";
 import {
@@ -49,7 +50,7 @@ const ProductLucideIcon = ({ name, className }: { name: string; className?: stri
 };
 
 const desiredOrder = ["subscription", "vacuum", "refrigerator", "airconditioner", "hydrotower", "ai-washtower", "washcombo", "tv", "bathair", "styler", "cooking"];
-const disabledProductIds = ["styler", "cooking"];
+// 미공개 제품은 내부 계정(SC/KOR)에서만 카드 노출 (목록은 ContentContext에서 관리)
 
 const ProductSelection = () => {
   const { products, isProductVisible, isInternal } = useContent();
@@ -70,7 +71,7 @@ const ProductSelection = () => {
     .filter((p): p is (typeof allProducts)[number] => {
       if (!p) return false;
       // 비활성 제품(의류관리기·식기세척기)은 내부 계정(SC/KOR)에서만 카드 노출
-      if (disabledProductIds.includes(p.id)) return isInternal;
+      if (UNRELEASED_PRODUCT_IDS.has(p.id)) return isInternal;
       return isProductVisible(p.id);
     });
 
@@ -235,7 +236,7 @@ const ProductSelection = () => {
               const showNewBadge = isNewProduct(product.id);
               // 비활성 제품은 일반 매장에서는 목록에서 제거되고,
               // SC/KOR 내부 계정에 노출될 때는 작업할 수 있도록 정상 활성화합니다.
-              const isDisabled = disabledProductIds.includes(product.id) && !isInternal;
+              const isDisabled = UNRELEASED_PRODUCT_IDS.has(product.id) && !isInternal;
               const cardContent = (
                 <div
                   className={cn(
