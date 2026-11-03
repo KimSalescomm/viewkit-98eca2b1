@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Eye, Download, RefreshCw } from "lucide-react";
 import { format } from "date-fns";
 import { supabase } from "@/integrations/supabase/client";
-import { products } from "@/data/products";
+import { getContentViewProductOptions, resolveContentView } from "@/utils/contentViewContent";
 import { featuresMap } from "@/data/features";
 import { getBranchNameByCode, cleanBranchName } from "@/data/branches";
 import { cn } from "@/lib/utils";
@@ -25,8 +25,6 @@ const selectClass =
   "h-9 px-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 " +
   "focus:outline-none focus:ring-2 focus:ring-[#3182CE]/15 focus:border-[#3182CE]";
 
-const PRODUCT_NAMES: Record<string, string> = Object.fromEntries(products.map((p) => [p.id, p.name]));
-
 const FEATURE_TITLES: Record<string, string> = (() => {
   const map: Record<string, string> = {};
   Object.entries(featuresMap).forEach(([pid, list]) => {
@@ -36,8 +34,6 @@ const FEATURE_TITLES: Record<string, string> = (() => {
   });
   return map;
 })();
-
-const FEATURE_PATH = /^\/product\/([^/?#]+)\/feature\/([^/?#]+)$/;
 
 const ContentViewSection = () => {
   const [rows, setRows] = useState<ViewRow[]>([]);
@@ -60,7 +56,7 @@ const ContentViewSection = () => {
         const { data, error } = await supabase
           .from("page_views")
           .select("store_id, store_name, path, created_at")
-          .like("path", "/product/%/feature/%")
+          .or("path.like./product/%/feature/%,path.eq./subscription,path.like./subscription?%,path.eq./subscription/")
           .order("created_at", { ascending: false })
           .range(offset, offset + PAGE - 1);
         if (error || cancelled) break;
@@ -92,15 +88,7 @@ const ContentViewSection = () => {
     return [...m.entries()].sort((a, b) => a[1].localeCompare(b[1], "ko"));
   }, [rows]);
 
-  const productOptions = useMemo(() => {
-    const m = new Map<string, string>();
-    rows.forEach((r) => {
-      const match = r.path.match(FEATURE_PATH);
-      if (!match) return;
-      m.set(match[1], PRODUCT_NAMES[match[1]] || match[1]);
-    });
-    return [...m.entries()].sort((a, b) => a[1].localeCompare(b[1], "ko"));
-  }, [rows]);
+  const productOptions = useMemo(() => getContentViewProductOptions(rows.map(r => r.path)), [rows]);
 
   const aggregated = useMemo(() => {
     const rangeSince = getRangeSinceISO(range);
@@ -112,9 +100,9 @@ const ContentViewSection = () => {
     const toTs = to ? new Date(`${to}T23:59:59.999`).getTime() : null;
     const map = new Map<string, { productName: string; contentName: string; views: number }>();
     rows.forEach((r) => {
-      const match = r.path.match(FEATURE_PATH);
-      if (!match) return;
-      const [, pid, fid] = match;
+      const content = resolveContentView(r.path);
+      if (!content) return;
+      const { productId: pid, featureId: fid, productName } = content;
       if (productFilter !== "all" && pid !== productFilter) return;
       if (storeFilter !== "all" && (r.store_id || "").toUpperCase() !== storeFilter) return;
       if (!matchesCategory(category, getCategoryByCode(r.store_id))) return;
@@ -125,8 +113,8 @@ const ContentViewSection = () => {
       let cur = map.get(key);
       if (!cur) {
         cur = {
-          productName: PRODUCT_NAMES[pid] || pid,
-          contentName: FEATURE_TITLES[key] || `특장점 ${fid}`,
+          productName,
+          contentName: pid === "subscription" ? "구독 케어 전후 비교" : FEATURE_TITLES[key] || `특장점 ${fid}`,
           views: 0,
         };
         map.set(key, cur);
@@ -171,7 +159,7 @@ const ContentViewSection = () => {
           <Eye className="w-4 h-4" strokeWidth={2.4} />
         </div>
         <h2 className="text-base font-bold text-slate-900">콘텐츠 조회수</h2>
-        <span className="text-xs text-slate-400">특장점 상세 페이지뷰 집계</span>
+        <span className="text-xs text-slate-400">특장점·가전 구독 페이지뷰 집계</span>
       </div>
       <p className="text-xs text-slate-500 mb-3 leading-relaxed">
         관리자(SC)·본사(KOR) 접속은 집계에서 제외됩니다.

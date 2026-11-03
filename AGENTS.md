@@ -1,4 +1,5 @@
 # Project conventions
+- Resolve historical analytics product aliases and subscription-page classification through `contentViewContent`; shared normalization keeps filters and view totals consistent without modifying stored records.
 
 - Keep all product feature collections in product-specific `src/data/*Features.ts` modules and register them in `features.ts`, which retains shared types, icons and lookup exports; this makes copy editing discoverable without changing navigation or existing consumers. Use `docs/content-editing.md` as the editing path index and preserve IDs during copy-only changes.
 - Store downloaded official media as immutable asset pointers and import their URLs; this keeps published product content independent of external image hosting failures.
