@@ -32,9 +32,11 @@ describe("Hydrotower subscription care", () => {
     expect(product?.hideCareStepVideos).toBe(true);
     expect(subscriptionProducts.filter(item => item.id !== "hydrotower").every(item => !item.hideCareStepVideos)).toBe(true);
   });
-  it("uses the supplied before/after photos and fills the frame without letterboxing", () => {
+  it("uses the supplied before/after photos and fills a 3:2 frame without cropping the parts", () => {
     expect(product?.beforeImage).toContain("hydrotower-care-before-v2.png");
     expect(product?.afterImage).toContain("hydrotower-care-after-v2.png");
     expect(product?.comparisonImageFit).toBeUndefined();
+    expect(product?.comparisonImageAspect).toBe("3/2");
+    expect(subscriptionProducts.filter(item => item.id !== "hydrotower").every(item => !item.comparisonImageAspect)).toBe(true);
   });
 });
