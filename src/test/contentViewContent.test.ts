@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getContentViewProductOptions, resolveContentView } from "@/utils/contentViewContent";
+import { featureContentName, getContentViewProductOptions, resolveContentView } from "@/utils/contentViewContent";
 
 describe("content view classification", () => {
   it("merges historical dishwasher and cooking records into one product", () => {
@@ -29,5 +29,10 @@ describe("content view classification", () => {
     expect(tab?.featureId).toBe("hydrotower");
     expect(tab?.contentName).toBe("하이드로타워 Max 케어 전후 비교");
     expect(resolveContentView("/subscription/washer")?.featureId).not.toBe(tab?.featureId);
+  });
+  it("never labels content as 특장점 N", () => {
+    expect(featureContentName("washcombo", "6")).toBe("적은 양의 빨래는 따로 세탁하길 원한다면?");
+    expect(featureContentName("tv", "99")).not.toContain("특장점");
+    expect(featureContentName("tv", "1", "올레드?\nLCD")).toBe("올레드? LCD");
   });
 });
