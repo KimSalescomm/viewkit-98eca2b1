@@ -2,6 +2,7 @@ import { products } from "@/data/products";
 import { subscriptionProducts } from "@/data/subscriptionCare";
 
 const aliases: Record<string, string> = { dishwasher: "cooking" };
+const careNames: Record<string, string> = Object.fromEntries(subscriptionProducts.map(p => [p.id, p.name]));
 const names: Record<string, string> = {
   ...Object.fromEntries(subscriptionProducts.map(p => [p.id, p.name])),
   ...Object.fromEntries(products.map(p => [p.id, p.name])),
@@ -16,7 +17,7 @@ export const resolveContentView = (path: string) => {
   }
   const tab = pathname.match(/^\/subscription\/([^/]+)$/);
   if (tab) {
-    return { productId: "subscription", featureId: tab[1], productName: names.subscription, contentName: `${names[tab[1]] ?? tab[1]} 케어 전후 비교` };
+    return { productId: "subscription", featureId: tab[1], productName: names.subscription, contentName: `${careNames[tab[1]] ?? tab[1]} 케어 전후 비교` };
   }
   const match = pathname.match(/^\/product\/([^/]+)\/feature\/([^/]+)$/);
   if (!match) return null;
