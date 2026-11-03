@@ -100,6 +100,7 @@ const _subscriptionProducts: SubscriptionProduct[] = [
       name: "하이드로타워 Max",
       beforeImage: hydrotowerBefore.url,
       afterImage: hydrotowerAfter.url,
+      comparisonImageAspect: "3/2",
       hideCareStepVideos: true,
       hideAfterImageOverlay: true,
       careVideo: hydrotowerCareVideo.url,
