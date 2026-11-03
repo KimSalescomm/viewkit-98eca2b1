@@ -53,30 +53,38 @@ let lastLoggedAt = 0;
 let inflightLog = false; // 진행 중인 insert 중복 방지
 
 
-export const logPageView = async (path: string) => {
+/** 구독 페이지 제품 탭 조회를 콘텐츠 조회수용 가상 경로로 기록 (방문 집계에서는 제외) */
+export const SUBSCRIPTION_TAB_PATH_PATTERN = "/subscription/_%";
+export const subscriptionTabPath = (tabId: string) => `/subscription/${tabId}`;
+
+export const logPageView = async (path: string, opts: { concurrent?: boolean } = {}) => {
   // URL에서 store_id 쿼리 파라미터는 제거하고 경로 부분만 사용
   const cleanPath = path.split("?")[0] || path;
 
   // 3초 내 동일 경로 중복 방지 (StrictMode 이중 마운트 대응)
   const now = Date.now();
-  if (lastLogged === cleanPath && now - lastLoggedAt < 3000) return;
-  // 진행 중인 insert가 있으면 skip
-  if (inflightLog) return;
-  lastLogged = cleanPath;
-  lastLoggedAt = now;
-  inflightLog = true;
+  const concurrent = !!opts.concurrent;
+  if (!concurrent) {
+    if (lastLogged === cleanPath && now - lastLoggedAt < 3000) return;
+    // 진행 중인 insert가 있으면 skip
+    if (inflightLog) return;
+    lastLogged = cleanPath;
+    lastLoggedAt = now;
+    inflightLog = true;
+  }
+  const release = () => { if (!concurrent) inflightLog = false; };
 
   const store = getCurrentStore();
   // 지점 미설정 상태에서는 기록하지 않음 (모달 노출 단계)
   if (!store?.slug) {
-    inflightLog = false;
+    release();
     return;
   }
 
   const slug = store.slug.toUpperCase();
   // 관리자(SC) / 본사(KOR) 계정은 집계에서 제외
   if (isAdminStore(slug) || slug === "KOR") {
-    inflightLog = false;
+    release();
     return;
   }
 
@@ -85,7 +93,7 @@ export const logPageView = async (path: string) => {
   // 세션 갱신(슬라이딩 TTL) 후 동일 경로 재기록 여부 판단
   const sessionId = ensureSessionId();
   if (shouldSkipPath(cleanPath)) {
-    inflightLog = false;
+    release();
     return;
   }
 
@@ -100,6 +108,6 @@ export const logPageView = async (path: string) => {
   } catch {
     /* noop - 분석은 실패해도 앱 동작에 영향 없음 */
   } finally {
-    inflightLog = false;
+    release();
   }
 };

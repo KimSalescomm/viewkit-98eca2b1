@@ -12,7 +12,11 @@ const names: Record<string, string> = {
 export const resolveContentView = (path: string) => {
   const pathname = path.split(/[?#]/)[0].replace(/\/$/, "");
   if (pathname === "/subscription") {
-    return { productId: "subscription", featureId: "overview", productName: names.subscription };
+    return { productId: "subscription", featureId: "overview", productName: names.subscription, contentName: "구독 케어 전후 비교 (제품 미구분)" };
+  }
+  const tab = pathname.match(/^\/subscription\/([^/]+)$/);
+  if (tab) {
+    return { productId: "subscription", featureId: tab[1], productName: names.subscription, contentName: `${names[tab[1]] ?? tab[1]} 케어 전후 비교` };
   }
   const match = pathname.match(/^\/product\/([^/]+)\/feature\/([^/]+)$/);
   if (!match) return null;
@@ -21,6 +25,7 @@ export const resolveContentView = (path: string) => {
     productId,
     featureId: match[2],
     productName: names[productId] ?? "기타 제품",
+    contentName: undefined as string | undefined,
   };
 };
 
