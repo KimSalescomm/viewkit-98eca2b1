@@ -22,8 +22,8 @@ import bathairAfterAsset from "@/assets/bathair-after.jpg.asset.json";
 import airconLiteBeforeAsset from "@/assets/aircon-lite-before.jpg.asset.json";
 import airconLiteAfterAsset from "@/assets/aircon-lite-after.jpg.asset.json";
 import { getCareProcessPlan } from "@/data/careProcess";
-import hydrotowerBefore from "@/assets/hydrotower-care-before.png.asset.json";
-import hydrotowerAfter from "@/assets/hydrotower-care-after.png.asset.json";
+import hydrotowerBefore from "@/assets/hydrotower-care-before-v2.png.asset.json";
+import hydrotowerAfter from "@/assets/hydrotower-care-after-v2.png.asset.json";
 import hydrotowerCareVideo from "@/assets/hydrotower-subscription-care.mp4.asset.json";
 import hydrotowerCareWebm from "@/assets/hydrotower-subscription-care.webm.asset.json";
 import topBefore from "@/assets/top-loader-tub-before-v2.png.asset.json";
@@ -98,7 +98,6 @@ const _subscriptionProducts: SubscriptionProduct[] = [
       name: "하이드로타워 Max",
       beforeImage: hydrotowerBefore.url,
       afterImage: hydrotowerAfter.url,
-      comparisonImageFit: "contain",
       hideCareStepVideos: true,
       hideAfterImageOverlay: true,
       careVideo: hydrotowerCareVideo.url,
