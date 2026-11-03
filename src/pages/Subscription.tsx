@@ -259,7 +259,7 @@ const Subscription = () => {
               {!selected.careImageLabels && <span className={`${typeCaption} text-gray-500`}>케어 전</span>}
 
             </div>
-            <div className="relative overflow-hidden aspect-[4/3] bg-gray-100">
+            <div className={`relative overflow-hidden ${selected.comparisonImageAspect === "3/2" ? "aspect-[3/2]" : "aspect-[4/3]"} bg-gray-100`}>
               <img
                 key={`before-${selected.id}-${planKey}`}
                 src={planBeforeImage}
@@ -305,7 +305,7 @@ const Subscription = () => {
               {!selected.careImageLabels && <span className={`${typeCaption} text-brand-accent`}>케어 후</span>}
 
             </div>
-            <div className="relative aspect-[4/3] bg-gray-100">
+            <div className={`relative ${selected.comparisonImageAspect === "3/2" ? "aspect-[3/2]" : "aspect-[4/3]"} bg-gray-100`}>
               {planCareVideo ? (
                 <button
                   type="button"
