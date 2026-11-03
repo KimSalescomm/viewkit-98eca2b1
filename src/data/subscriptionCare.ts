@@ -63,6 +63,8 @@ export interface SubscriptionProduct {
   /** Official care illustrations without a documented before/after pair use truthful labels. */
   careImageLabels?: { before: string; after: string };
   comparisonImageFit?: "contain" | "cover";
+  /** Photo boxes keep the shared 4:3 frame unless a product's photos need their own ratio. */
+  comparisonImageAspect?: "3/2" | "4/3";
   hideCareStepVideos?: boolean;
   hideAfterImageOverlay?: boolean;
   careVideo?: string;
@@ -98,6 +100,7 @@ const _subscriptionProducts: SubscriptionProduct[] = [
       name: "하이드로타워 Max",
       beforeImage: hydrotowerBefore.url,
       afterImage: hydrotowerAfter.url,
+      comparisonImageAspect: "3/2",
       hideCareStepVideos: true,
       hideAfterImageOverlay: true,
       careVideo: hydrotowerCareVideo.url,
