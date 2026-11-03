@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Eye, Download, RefreshCw } from "lucide-react";
 import { format } from "date-fns";
 import { supabase } from "@/integrations/supabase/client";
-import { getContentViewProductOptions, resolveContentView } from "@/utils/contentViewContent";
+import { featureContentName, getContentViewProductOptions, resolveContentView } from "@/utils/contentViewContent";
 import { featuresMap } from "@/data/features";
 import { getBranchNameByCode, cleanBranchName } from "@/data/branches";
 import { cn } from "@/lib/utils";
@@ -114,7 +114,7 @@ const ContentViewSection = () => {
       if (!cur) {
         cur = {
           productName,
-          contentName: contentName ?? (FEATURE_TITLES[key] || `특장점 ${fid}`),
+          contentName: contentName ?? featureContentName(pid, fid, FEATURE_TITLES[key]),
           views: 0,
         };
         map.set(key, cur);
