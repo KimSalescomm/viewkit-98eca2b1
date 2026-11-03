@@ -1,3 +1,4 @@
+import { logPageView, subscriptionTabPath } from "@/utils/pageViewLog";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Check, Sparkles, ImageIcon, X, Play } from "lucide-react";
@@ -113,6 +114,11 @@ const Subscription = () => {
       });
     });
   }, []);
+
+  // 제품 탭별 콘텐츠 조회수 기록 (관리자 콘텐츠 조회수 > 가전 구독 하위 항목)
+  useEffect(() => {
+    logPageView(subscriptionTabPath(selectedId), { concurrent: true });
+  }, [selectedId]);
 
   // URL 쿼리(?tab=productId)로 진입 시 해당 제품 탭 선택
   useEffect(() => {

@@ -23,4 +23,11 @@ describe("content view classification", () => {
     expect(resolveContentView("/product/washer")).toBeNull();
     expect(resolveContentView("/admin")).toBeNull();
   });
+  it("counts each subscription product tab as its own content under 가전 구독", () => {
+    const tab = resolveContentView("/subscription/hydrotower");
+    expect(tab?.productId).toBe("subscription");
+    expect(tab?.featureId).toBe("hydrotower");
+    expect(tab?.contentName).toBe("하이드로타워 Max 케어 전후 비교");
+    expect(resolveContentView("/subscription/washer")?.featureId).not.toBe(tab?.featureId);
+  });
 });

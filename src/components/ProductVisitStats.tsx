@@ -1,3 +1,4 @@
+import { SUBSCRIPTION_TAB_PATH_PATTERN } from "@/utils/pageViewLog";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Layers, Users, Eye, Download, RefreshCw, CalendarIcon } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -96,7 +97,7 @@ const ProductVisitStats = () => {
     const PAGE_SIZE = 1000;
 
     const fetchAll = async () => {
-      let countQ = supabase.from("page_views").select("id", { count: "exact", head: true }).gte("created_at", effectiveSince);
+      let countQ = supabase.from("page_views").select("id", { count: "exact", head: true }).not("path", "like", SUBSCRIPTION_TAB_PATH_PATTERN).gte("created_at", effectiveSince);
       if (until) countQ = countQ.lt("created_at", until);
       const { count } = await countQ;
 
@@ -107,6 +108,7 @@ const ProductVisitStats = () => {
         let q = supabase
           .from("page_views")
           .select("store_id, path, session_id, created_at")
+          .not("path", "like", SUBSCRIPTION_TAB_PATH_PATTERN)
           .gte("created_at", effectiveSince)
           .order("created_at", { ascending: false })
           .range(from, from + PAGE_SIZE - 1);

@@ -1,3 +1,4 @@
+import { SUBSCRIPTION_TAB_PATH_PATTERN } from "@/utils/pageViewLog";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { BarChart3, Users, Eye, Store, Download, RefreshCw } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -94,6 +95,7 @@ const StoreVisitStats = () => {
       const { count } = await supabase
         .from("page_views")
         .select("id", { count: "exact", head: true })
+        .not("path", "like", SUBSCRIPTION_TAB_PATH_PATTERN)
         .gte("created_at", effectiveSince);
       if (!cancelled) setServerTotal(count ?? null);
 
@@ -104,6 +106,7 @@ const StoreVisitStats = () => {
         const { data, error } = await supabase
           .from("page_views")
           .select("id, store_id, store_name, path, session_id, created_at")
+          .not("path", "like", SUBSCRIPTION_TAB_PATH_PATTERN)
           .gte("created_at", effectiveSince)
           .order("created_at", { ascending: false })
           .range(from, from + PAGE_SIZE - 1);

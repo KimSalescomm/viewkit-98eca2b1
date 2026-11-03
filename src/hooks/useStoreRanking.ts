@@ -1,3 +1,4 @@
+import { SUBSCRIPTION_TAB_PATH_PATTERN } from "@/utils/pageViewLog";
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { getBranchNameByCode, cleanBranchName } from "@/data/branches";
@@ -47,6 +48,7 @@ export const useStoreRanking = (autoLoad = true) => {
       const { data, error } = await supabase
         .from("page_views")
         .select("store_id,store_name,session_id")
+        .not("path", "like", SUBSCRIPTION_TAB_PATH_PATTERN)
         .gte("created_at", startISO)
         .lte("created_at", endISO)
         .limit(20000);

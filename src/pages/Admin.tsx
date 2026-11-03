@@ -1,3 +1,4 @@
+import { SUBSCRIPTION_TAB_PATH_PATTERN } from "@/utils/pageViewLog";
 import { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -58,6 +59,7 @@ const fetchAllPageViews = async (sinceISO: string, untilISO?: string) => {
     let q = supabase
       .from("page_views")
       .select("store_id, store_name, session_id, created_at")
+      .not("path", "like", SUBSCRIPTION_TAB_PATH_PATTERN)
       .gte("created_at", sinceISO);
     if (untilISO) q = q.lte("created_at", untilISO);
     const { data, error } = await q

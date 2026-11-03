@@ -56,7 +56,7 @@ const ContentViewSection = () => {
         const { data, error } = await supabase
           .from("page_views")
           .select("store_id, store_name, path, created_at")
-          .or("path.like./product/%/feature/%,path.eq./subscription,path.like./subscription?%,path.eq./subscription/")
+          .or("path.like./product/%/feature/%,path.eq./subscription,path.like./subscription?%,path.like./subscription/%,path.eq./subscription/")
           .order("created_at", { ascending: false })
           .range(offset, offset + PAGE - 1);
         if (error || cancelled) break;
@@ -102,7 +102,7 @@ const ContentViewSection = () => {
     rows.forEach((r) => {
       const content = resolveContentView(r.path);
       if (!content) return;
-      const { productId: pid, featureId: fid, productName } = content;
+      const { productId: pid, featureId: fid, productName, contentName } = content;
       if (productFilter !== "all" && pid !== productFilter) return;
       if (storeFilter !== "all" && (r.store_id || "").toUpperCase() !== storeFilter) return;
       if (!matchesCategory(category, getCategoryByCode(r.store_id))) return;
@@ -114,7 +114,7 @@ const ContentViewSection = () => {
       if (!cur) {
         cur = {
           productName,
-          contentName: pid === "subscription" ? "구독 케어 전후 비교" : FEATURE_TITLES[key] || `특장점 ${fid}`,
+          contentName: contentName ?? (FEATURE_TITLES[key] || `특장점 ${fid}`),
           views: 0,
         };
         map.set(key, cur);
