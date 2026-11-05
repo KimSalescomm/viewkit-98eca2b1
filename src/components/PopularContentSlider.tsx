@@ -183,7 +183,11 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
           </div>
         </div>
         <div className="p-2.5 sm:p-3">
-          <p className="text-brand-accent text-[10px] font-semibold mb-1">{item.product.name}</p>
+          <p className="text-brand-accent text-[10px] font-semibold mb-1">
+            {item.feature.tag === "가전 구독" && item.product.id !== "subscription"
+              ? `${item.product.name} · 가전 구독`
+              : item.product.name}
+          </p>
           <h3 className="text-white text-[13px] sm:text-[15px] font-medium leading-[1.35] line-clamp-2">
             {item.feature.title}
           </h3>
