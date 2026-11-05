@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import SafeImage from "@/components/SafeImage";
 import { usePopularFeatures } from "@/hooks/usePopularFeatures";
 import { UNRELEASED_CARE_TAB_IDS } from "@/data/visibility";
+import { applyPinnedPopularItems } from "@/data/popularContent";
 import { useContent } from "@/contexts/ContentContext";
 import { useAnalyticsContext } from "@/components/AnalyticsProvider";
 import { subscriptionProducts } from "@/pages/Subscription";
@@ -23,11 +24,12 @@ const THUMBNAIL_OVERRIDES: Record<string, string> = {
 
 export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSliderProps) => {
   const { items, loading } = usePopularFeatures({ days, limit });
+  const rankedItems = useMemo(() => applyPinnedPopularItems(items, limit), [items, limit]);
   const { getProductById, getFeatureById, isProductVisible, isInternal } = useContent();
   const { trackProductClick } = useAnalyticsContext();
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: items.length > 3,
+    loop: rankedItems.length > 3,
     align: "start",
     slidesToScroll: 1,
     containScroll: false,
@@ -58,7 +60,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
-  const visibleItems = items
+  const visibleItems = rankedItems
     .map((item) => {
       const isSubscription = item.productId === "subscription";
       const subTabId = item.featureId.replace("tab_", "");
@@ -119,7 +121,7 @@ export const PopularContentSlider = ({ days = 30, limit = 5 }: PopularContentSli
     })
     .filter((item): item is NonNullable<typeof item> => item !== null);
 
-  if (loading && items.length === 0) {
+  if (loading && rankedItems.length === 0) {
     return (
       <section className="bg-gray-900 px-4 sm:px-10 py-6 sm:py-8">
         <div className="max-w-5xl mx-auto">
