@@ -19,13 +19,12 @@ export const SC_ONLY_PRODUCT_IDS = new Set<string>([]);
  * 매장에 공개할 때는 이 목록에서 제거한 뒤 관리자 화면에서 노출 설정을 저장합니다.
  */
 export const UNRELEASED_PRODUCT_IDS = new Set<string>([
-  "hydrotower",
   "styler",
   "cooking",
 ]);
 
 /** 구독 케어 탭 중 미공개 제품 항목 (매장 계정에서 탭 숨김) */
-export const UNRELEASED_CARE_TAB_IDS = new Set<string>(["hydrotower", "toploader"]);
+export const UNRELEASED_CARE_TAB_IDS = new Set<string>([]);
 
 /** 내부 계정(SC=관리자, KOR=유관부서) 여부 */
 export const isInternalSlug = (slug?: string | null): boolean => {
