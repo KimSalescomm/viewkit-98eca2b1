@@ -24,22 +24,21 @@ const SC = { isAdmin: true, isInternal: true, visible: STORE_VISIBLE };
 const KOR = { isAdmin: false, isInternal: true, visible: STORE_VISIBLE };
 
 describe("미공개 제품 열람 권한", () => {
-  it("미공개 제품은 하이드로타워·스타일러·식기세척기 3개", () => {
+  it("미공개 제품은 스타일러·식기세척기 2개", () => {
     expect(Array.from(UNRELEASED_PRODUCT_IDS).sort()).toEqual([
       "cooking",
-      "hydrotower",
       "styler",
     ]);
   });
 
   it("매장 계정은 미공개 제품을 열람할 수 없다", () => {
-    for (const id of ["hydrotower", "styler", "cooking"]) {
+    for (const id of ["styler", "cooking"]) {
       expect(canOpenProduct(id, STORE)).toBe(false);
     }
   });
 
   it("SC(관리자)와 KOR(유관부서)는 미공개 제품을 열람할 수 있다", () => {
-    for (const id of ["hydrotower", "styler", "cooking"]) {
+    for (const id of ["styler", "cooking"]) {
       expect(canOpenProduct(id, SC)).toBe(true);
       expect(canOpenProduct(id, KOR)).toBe(true);
     }
@@ -47,12 +46,17 @@ describe("미공개 제품 열람 권한", () => {
 
   it("노출 설정에 체크되더라도 매장 계정에는 열람할 수 없다", () => {
     expect(
-      canOpenProduct("hydrotower", {
+      canOpenProduct("styler", {
         isAdmin: false,
         isInternal: false,
-        visible: ["hydrotower", "tv"],
+        visible: ["styler", "tv"],
       }),
     ).toBe(false);
+  });
+
+  it("하이드로타워는 매장 계정에 공개되었다", () => {
+    expect(UNRELEASED_PRODUCT_IDS.has("hydrotower")).toBe(false);
+    expect(canOpenProduct("hydrotower", STORE)).toBe(true);
   });
 
   it("이미 공개된 제품은 매장 계정에서 계속 열람할 수 있다", () => {
@@ -63,10 +67,10 @@ describe("미공개 제품 열람 권한", () => {
 });
 
 describe("구독 케어 탭 노출", () => {
-  it("매장 계정은 하이드로타워 Max·통돌이 탭을 보지 못한다", () => {
+  it("매장 계정도 하이드로타워 Max·통돌이 탭을 본다", () => {
     const ids = filterVisibleCareTabs(subscriptionProducts, false).map((p) => p.id);
-    expect(ids).not.toContain("hydrotower");
-    expect(ids).not.toContain("toploader");
+    expect(ids).toContain("hydrotower");
+    expect(ids).toContain("toploader");
     expect(ids).toContain("washer");
     expect(ids).toContain("bathair");
   });
