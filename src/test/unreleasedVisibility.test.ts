@@ -18,6 +18,7 @@ const STORE_VISIBLE = [
   "vacuum",
   "bathair",
   "washcombo",
+  "hydrotower",
 ];
 const STORE = { isAdmin: false, isInternal: false, visible: STORE_VISIBLE };
 const SC = { isAdmin: true, isInternal: true, visible: STORE_VISIBLE };
